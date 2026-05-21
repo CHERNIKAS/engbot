@@ -60,8 +60,7 @@ async def on_idle_text(
 ) -> None:
     result = parse_input(message.text or "", max_lines=200, max_words=200)
     if not result.words:
-        active = await user_track_service.list_active(user.id)
-        await message.answer(QUICK_ADD_NONE, reply_markup=main_menu_kb(active, current_track))
+        await message.answer(QUICK_ADD_NONE)
         return
 
     token = secrets.token_urlsafe(8)
@@ -203,9 +202,8 @@ async def on_quick_cancel(
     redis: Redis,
 ) -> None:
     await redis.delete(QUICK_ADD_KEY.format(token=callback_data.token))
-    active = await user_track_service.list_active(user.id)
     if query.message:
-        await query.message.edit_text(MAIN_MENU, reply_markup=main_menu_kb(active, current_track))
+        await query.message.edit_text(MAIN_MENU)
     await query.answer()
 
 

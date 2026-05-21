@@ -24,6 +24,19 @@ ONBOARDING_DONE = "Готово! Бот настроен."
 
 MAIN_MENU = "Главное меню"
 
+# Persistent bottom reply-keyboard buttons (main navigation).
+BTN_MY_WORDS = "📚 Мои слова"
+BTN_STUDY = "🔥 Учить"
+BTN_ADD = "➕ Добавить слова"
+BTN_IMPORT = "📂 Импорт TXT"
+BTN_PACKS = "📦 Паки"
+BTN_PROGRESS = "📊 Прогресс"
+BTN_SETTINGS = "⚙️ Настройки"
+MENU_BUTTON_TEXTS: frozenset[str] = frozenset(
+    {BTN_MY_WORDS, BTN_STUDY, BTN_ADD, BTN_IMPORT, BTN_PACKS, BTN_PROGRESS, BTN_SETTINGS}
+)
+MENU_PLACEHOLDER = "Выберите действие…"
+
 ADD_WORDS_PROMPT = (
     "Отправь слово или несколько слов. Можно каждое с новой строки.\n\n"
     "Форматы:\n"

@@ -105,7 +105,7 @@ async def start_session(
         await state_service.clear(user.id)
         from app.services.user_track_service import UserTrackService as _UTS  # noqa
         if query.message:
-            await query.message.edit_text(STUDY_NO_WORDS, reply_markup=main_menu_kb(None, current_track))
+            await query.message.edit_text(STUDY_NO_WORDS, reply_markup=None)
         await query.answer()
         return
 
@@ -203,7 +203,7 @@ async def finish_and_render(
 
     if snap is None:
         if query.message:
-            await query.message.edit_text(MAIN_MENU, reply_markup=main_menu_kb(None, current_track or LearningTrack.ENGLISH))
+            await query.message.edit_text(MAIN_MENU, reply_markup=None)
         await query.answer()
         return
 

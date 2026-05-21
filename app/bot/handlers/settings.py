@@ -108,7 +108,7 @@ async def on_goal_value(
     await state_service.clear(user.id)
     if query.message:
         await query.message.edit_text(
-            SETTINGS_GOAL_UPDATED.format(goal=value), reply_markup=main_menu_kb()
+            SETTINGS_GOAL_UPDATED.format(goal=value), reply_markup=settings_kb()
         )
     await query.answer()
 
@@ -181,5 +181,5 @@ async def on_settings_goal_text(
     await user_track_service.set_daily_goal(user.id, current_track, value)
     await state_service.clear(user.id)
     await message.answer(
-        SETTINGS_GOAL_UPDATED.format(goal=value), reply_markup=main_menu_kb()
+        SETTINGS_GOAL_UPDATED.format(goal=value), reply_markup=settings_kb()
     )

@@ -7,10 +7,9 @@ from aiogram.types import CallbackQuery, Message
 from app.bot.callbacks.schema import OnboardingCB
 from app.bot.filters import InState
 from app.config import get_settings
-from app.bot.keyboards.main_menu import main_menu_kb
+from app.bot.keyboards.main_menu import main_menu_reply_kb
 from app.bot.keyboards.onboarding import (
     daily_goal_kb,
-    onboarding_done_kb,
     onboarding_intro_kb,
     tracks_picker_kb,
 )
@@ -95,10 +94,7 @@ async def cmd_start(
         return
 
     if user.onboarding_completed:
-        active = await user_track_service.list_active(user.id)
-        await message.answer(
-            MAIN_MENU, reply_markup=main_menu_kb(active, current_track)
-        )
+        await message.answer(MAIN_MENU, reply_markup=main_menu_reply_kb())
         return
     await state_service.set(
         user.id,
@@ -242,7 +238,8 @@ async def on_goal_picked(
         daily_goal=value,
     )
     if query.message:
-        await query.message.edit_text(ONBOARDING_DONE, reply_markup=onboarding_done_kb())
+        await query.message.edit_text(ONBOARDING_DONE)
+        await query.message.answer(MAIN_MENU, reply_markup=main_menu_reply_kb())
     await query.answer()
 
 
@@ -268,16 +265,11 @@ async def on_custom_goal(
 async def on_done(
     query: CallbackQuery,
     user: User,
-    current_track: LearningTrack,
-    user_track_service: UserTrackService,
     state_service: InteractionStateService,
 ) -> None:
     await state_service.clear(user.id)
-    active = await user_track_service.list_active(user.id)
     if query.message:
-        await query.message.edit_text(
-            MAIN_MENU, reply_markup=main_menu_kb(active, current_track)
-        )
+        await query.message.answer(MAIN_MENU, reply_markup=main_menu_reply_kb())
     await query.answer()
 
 
@@ -313,4 +305,5 @@ async def on_custom_goal_text(
         tracks=tracks,
         daily_goal=value,
     )
-    await message.answer(ONBOARDING_DONE, reply_markup=onboarding_done_kb())
+    await message.answer(ONBOARDING_DONE)
+    await message.answer(MAIN_MENU, reply_markup=main_menu_reply_kb())

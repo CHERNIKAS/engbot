@@ -1,11 +1,41 @@
 from __future__ import annotations
 
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.types import (
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    KeyboardButton,
+    ReplyKeyboardMarkup,
+)
 
 from app.bot.callbacks.schema import MainMenuCB
+from app.bot.texts import (
+    BTN_ADD,
+    BTN_IMPORT,
+    BTN_MY_WORDS,
+    BTN_PACKS,
+    BTN_PROGRESS,
+    BTN_SETTINGS,
+    BTN_STUDY,
+    MENU_PLACEHOLDER,
+)
 from app.config import get_settings
 from app.domain.enums import LearningTrack, TRACK_LABELS, enabled_tracks
 from app.domain.models import UserTrack
+
+
+def main_menu_reply_kb() -> ReplyKeyboardMarkup:
+    """Persistent bottom menu — the primary navigation surface."""
+    return ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text=BTN_MY_WORDS), KeyboardButton(text=BTN_STUDY)],
+            [KeyboardButton(text=BTN_ADD), KeyboardButton(text=BTN_IMPORT)],
+            [KeyboardButton(text=BTN_PACKS), KeyboardButton(text=BTN_PROGRESS)],
+            [KeyboardButton(text=BTN_SETTINGS)],
+        ],
+        resize_keyboard=True,
+        is_persistent=True,
+        input_field_placeholder=MENU_PLACEHOLDER,
+    )
 
 
 def _track_switcher_row(

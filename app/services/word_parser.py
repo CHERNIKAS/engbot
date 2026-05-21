@@ -15,12 +15,30 @@ from dataclasses import dataclass
 # - Deduplicates within the same input by normalized word (lowercase + nfkc-ish).
 
 _BOM = "﻿"
-# Tight delimiters (no surrounding spaces needed): ; tab — – =
-# ASCII hyphen "-" is a separator ONLY when space-padded, so hyphenated words
-# like "well-known" / "e-mail" are preserved.
-_TRANSLATION_SEPS = re.compile(r"(?:\s*[;\t—–=]\s*)|(?:\s+-\s+)", re.UNICODE)
-_QUOTE_CHARS = "\"'«»“”„"
-_VALID_WORD_RE = re.compile(r"^[A-Za-z][A-Za-z0-9\-'\s]{0,63}$")
+_QUOTE_CHARS = "\"'«»“”„`"
+
+# Leading bullet / numbering markers to drop: "- ", "* ", "• ", "1. ", "1) ".
+_LIST_MARKER_RE = re.compile(r"^\s*(?:[-*•·‣–—]\s+|\d+[.)]\s+)", re.UNICODE)
+
+# Word↔translation delimiters. We split on the FIRST (leftmost) match with
+# maxsplit=1, so:
+#   - the word is whatever comes before the first delimiter;
+#   - everything after stays as the translation (commas inside a translation
+#     survive, e.g. "wonder - удивляться, чудо").
+# Order matters only when two delimiters start at the same position; specific
+# ones are listed before the generic "2+ spaces" rule.
+# ASCII hyphen "-" counts only when space-padded, so "well-known"/"e-mail" stay.
+_TRANSLATION_SEPS = re.compile(
+    r"\s*(?:->|=>|→|⇒|⟶)\s*"   # arrows: ->  =>  →  ⇒  ⟶
+    r"|\t+"                       # tab(s) — TSV / Anki export
+    r"|\s*[;:=]\s*"               # ;   :   =
+    r"|\s*[—–]\s*"                # em / en dash (tight ok)
+    r"|\s+-\s+"                   # ASCII hyphen, space-padded
+    r"|\s*,\s*"                   # comma — CSV
+    r"|\s{2,}",                   # 2+ spaces — aligned columns
+    re.UNICODE,
+)
+_VALID_WORD_RE = re.compile(r"^[A-Za-z][A-Za-z0-9\-'.\s]{0,63}$")
 
 
 @dataclass(frozen=True)
@@ -52,6 +70,9 @@ def _strip_quotes(s: str) -> str:
 
 
 def _split_line(line: str) -> tuple[str, str | None, str | None]:
+    # Drop a leading bullet / numbering marker ("- ", "* ", "• ", "1. ", "1) ").
+    line = _LIST_MARKER_RE.sub("", line, count=1)
+
     # First split on "|" for example.
     example: str | None = None
     if "|" in line:

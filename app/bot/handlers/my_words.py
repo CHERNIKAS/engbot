@@ -185,11 +185,8 @@ async def on_delete_confirm(
     categories = await cat_service.list_user_categories(user.id, current_track)
     counts = await cat_service.counts(user.id, current_track)
     if sum(counts.values()) == 0 and not categories:
-        active = await user_track_service.list_active(user.id)
         if query.message:
-            await query.message.edit_text(
-                MY_WORDS_EMPTY, reply_markup=main_menu_kb(active, current_track)
-            )
+            await query.message.edit_text(MY_WORDS_EMPTY, reply_markup=None)
         return
     if query.message:
         await query.message.edit_text(
@@ -217,9 +214,6 @@ async def on_delete_cancel(
         await query.answer()
         return
     await state_service.clear(user.id)
-    active = await user_track_service.list_active(user.id)
     if query.message:
-        await query.message.edit_text(
-            MAIN_MENU, reply_markup=main_menu_kb(active, current_track)
-        )
+        await query.message.edit_text(MAIN_MENU, reply_markup=None)
     await query.answer()

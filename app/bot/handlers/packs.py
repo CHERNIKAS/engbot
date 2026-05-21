@@ -215,8 +215,7 @@ async def on_pick_category_for_pack(
     )
     await state_service.clear(user.id)
 
-    active = await user_track_service.list_active(user.id)
     text = PACK_ADDED.format(count=result.added) if result.added > 0 else PACK_ALREADY_ADDED
     if query.message:
-        await query.message.edit_text(text, reply_markup=main_menu_kb(active, current_track))
+        await query.message.edit_text(text, reply_markup=None)
     await query.answer()

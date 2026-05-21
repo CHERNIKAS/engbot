@@ -8,7 +8,7 @@ from app.bot.callbacks.schema import CategoryCB
 from app.bot.filters import InState
 from app.bot.keyboards.add_words import add_choose_category_kb
 from app.bot.keyboards.common import cancel_only_kb
-from app.bot.keyboards.main_menu import main_menu_kb
+from app.bot.keyboards.main_menu import main_menu_reply_kb
 from app.bot.states import InteractionState
 from app.bot.texts import (
     ADD_CHOOSE_CATEGORY,
@@ -109,5 +109,4 @@ async def on_new_category_text(
         )
     else:
         await state_service.clear(user.id)
-        active = await user_track_service.list_active(user.id)
-        await message.answer(MAIN_MENU, reply_markup=main_menu_kb(active, current_track))
+        await message.answer(MAIN_MENU, reply_markup=main_menu_reply_kb())

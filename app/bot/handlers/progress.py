@@ -37,7 +37,5 @@ async def on_progress_open(
         )
     text = PROGRESS_TITLE.format(streak=user.streak_days, per_track="\n".join(lines) or "—")
     if query.message:
-        await query.message.edit_text(
-            text, reply_markup=main_menu_kb(active, current_track), parse_mode="HTML"
-        )
+        await query.message.edit_text(text, reply_markup=None, parse_mode="HTML")
     await query.answer()

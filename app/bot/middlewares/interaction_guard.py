@@ -12,7 +12,7 @@ from app.bot.states import (
     UNIVERSAL_PREFIXES,
     InteractionState,
 )
-from app.bot.texts import CONFLICT_STATE
+from app.bot.texts import CONFLICT_STATE, MENU_BUTTON_TEXTS
 from app.services.interaction_state_service import InteractionStateService
 
 
@@ -58,6 +58,11 @@ class InteractionGuardMiddleware(BaseMiddleware):
         if isinstance(event, Message):
             # /start always allowed (handled separately).
             if event.text and event.text.startswith("/start"):
+                return await handler(event, data)
+
+            # Bottom reply-menu taps are navigation — allowed in any state and
+            # treated as a reset by their handlers (like /start).
+            if event.text is not None and event.text in MENU_BUTTON_TEXTS:
                 return await handler(event, data)
 
             if event.document is not None:

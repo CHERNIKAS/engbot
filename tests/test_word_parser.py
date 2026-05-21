@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from app.services.word_parser import parse_input
 
 
@@ -83,3 +85,48 @@ def test_quoted_word_with_pipe_example():
     assert result.words[0].english == "persistent"
     assert result.words[0].translation == "настойчивый"
     assert result.words[0].example == "He is persistent."
+
+
+@pytest.mark.parametrize(
+    "line,word,translation",
+    [
+        ("apple - яблоко", "apple", "яблоко"),
+        ("apple — яблоко", "apple", "яблоко"),
+        ("apple – яблоко", "apple", "яблоко"),
+        ("apple = яблоко", "apple", "яблоко"),
+        ("apple: яблоко", "apple", "яблоко"),
+        ("apple:яблоко", "apple", "яблоко"),
+        ("apple; яблоко", "apple", "яблоко"),
+        ("apple;яблоко", "apple", "яблоко"),
+        ("apple,яблоко", "apple", "яблоко"),
+        ("apple -> яблоко", "apple", "яблоко"),
+        ("apple => яблоко", "apple", "яблоко"),
+        ("apple → яблоко", "apple", "яблоко"),
+        ("apple\tяблоко", "apple", "яблоко"),
+        ("apple     яблоко", "apple", "яблоко"),
+        ('"apple";"яблоко"', "apple", "яблоко"),
+        ('"apple","яблоко"', "apple", "яблоко"),
+        ("1. apple - яблоко", "apple", "яблоко"),
+        ("1) apple = яблоко", "apple", "яблоко"),
+        ("- apple — яблоко", "apple", "яблоко"),
+        ("• apple: яблоко", "apple", "яблоко"),
+    ],
+)
+def test_all_translation_formats(line: str, word: str, translation: str) -> None:
+    result = parse_input(line + "\n")
+    assert len(result.words) == 1, line
+    assert result.words[0].english == word, line
+    assert result.words[0].translation == translation, line
+
+
+def test_comma_inside_translation_is_preserved():
+    # Leftmost-split + maxsplit=1 keeps commas that belong to the translation.
+    result = parse_input("wonder - удивляться, чудо\n")
+    assert result.words[0].english == "wonder"
+    assert result.words[0].translation == "удивляться, чудо"
+
+
+def test_multiword_term_with_single_space_kept():
+    result = parse_input("new york - Нью-Йорк\n")
+    assert result.words[0].english == "new york"
+    assert result.words[0].translation == "Нью-Йорк"
