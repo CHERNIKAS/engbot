@@ -70,7 +70,12 @@ def category_words_kb(
             [
                 InlineKeyboardButton(
                     text=english,
-                    callback_data=DeleteCB(action="ask", user_word_id=uw_id, flow="mw").pack(),
+                    callback_data=MyWordsCB(
+                        action="word",
+                        user_word_id=uw_id,
+                        category_id=category_id,
+                        page=page,
+                    ).pack(),
                 )
             ]
         )
@@ -221,6 +226,25 @@ def category_target_kb(
         ]
     )
     return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+def word_detail_kb(user_word_id: int, category_id: int, page: int) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text="🗑 Удалить",
+                    callback_data=DeleteCB(action="ask", user_word_id=user_word_id, flow="mw").pack(),
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    text="↩️ Назад",
+                    callback_data=MyWordsCB(action="open", category_id=category_id, page=page).pack(),
+                )
+            ],
+        ]
+    )
 
 
 def delete_confirm_kb(user_word_id: int, flow: str, version: str = "") -> InlineKeyboardMarkup:

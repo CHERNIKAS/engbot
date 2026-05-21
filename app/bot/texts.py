@@ -95,6 +95,7 @@ CATEGORY_UNCATEGORIZED = "📁 Без категории"
 
 MY_WORDS_EMPTY = "Пока нет слов. Добавь первые через «➕ Добавить»."
 MY_WORDS_TITLE = "📁 {category}\nСлов: {count}"
+WORD_DETAIL = "<b>{writing}</b>\n{translation}\n\n💡 {example}"
 
 STUDY_NO_WORDS = "Сегодня нечего учить. Добавь слов или загляни в «📦 Паки»."
 STUDY_FINISHED = (

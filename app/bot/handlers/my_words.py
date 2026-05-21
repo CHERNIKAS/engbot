@@ -10,6 +10,7 @@ from app.bot.keyboards.my_words import (
     categories_overview_kb,
     category_words_kb,
     delete_confirm_kb,
+    word_detail_kb,
 )
 from app.bot.states import InteractionState
 from app.bot.texts import (
@@ -18,6 +19,9 @@ from app.bot.texts import (
     MAIN_MENU,
     MY_WORDS_EMPTY,
     MY_WORDS_TITLE,
+    STUDY_CARD_NO_TRANSLATION,
+    STUDY_EXAMPLE_MISSING,
+    WORD_DETAIL,
 )
 from app.domain.enums import LearningTrack, StudyMode, StudyScope
 from app.domain.models import User, UserTrack
@@ -82,6 +86,30 @@ async def on_open_category(
     session: AsyncSession,
 ) -> None:
     await _render_category(query, user, current_track, session, callback_data.category_id, callback_data.page)
+    await query.answer()
+
+
+@router.callback_query(MyWordsCB.filter(F.action == "word"))
+async def on_word_detail(
+    query: CallbackQuery,
+    callback_data: MyWordsCB,
+    user: User,
+    session: AsyncSession,
+) -> None:
+    pair = await UserWordRepository(session).get_with_word(callback_data.user_word_id)
+    if pair is None:
+        await query.answer("Не найдено.")
+        return
+    uw, word = pair
+    translation = uw.custom_translation or word.translation or STUDY_CARD_NO_TRANSLATION
+    example = word.example_sentence or STUDY_EXAMPLE_MISSING
+    text = WORD_DETAIL.format(writing=word.writing, translation=translation, example=example)
+    if query.message:
+        await query.message.edit_text(
+            text,
+            reply_markup=word_detail_kb(uw.id, callback_data.category_id, callback_data.page),
+            parse_mode="HTML",
+        )
     await query.answer()
 
 

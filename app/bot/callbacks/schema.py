@@ -27,9 +27,10 @@ class MainMenuCB(CallbackData, prefix="mm"):
 
 # My words / categories list browsing.
 class MyWordsCB(CallbackData, prefix="mw"):
-    action: str  # open | list | study_cat | manage
+    action: str  # open | list | study_cat | manage | word
     category_id: int = 0  # 0 = all, -1 = uncategorized, >0 = specific
     page: int = 0
+    user_word_id: int = 0  # for action == "word" (open a word's detail card)
 
 
 # Categories CRUD + management.
