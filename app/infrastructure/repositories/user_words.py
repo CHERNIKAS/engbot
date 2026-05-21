@@ -207,6 +207,24 @@ class UserWordRepository:
         )
         return (await self.session.execute(q)).scalar_one()
 
+    async def existing_normalized(
+        self, user_id: int, track: LearningTrack, normalized: list[str]
+    ) -> set[str]:
+        """Which of these normalized words the user already has (for honest
+        import previews — already-owned words won't be added again)."""
+        if not normalized:
+            return set()
+        q = (
+            select(Word.normalized_word)
+            .join(UserWord, UserWord.word_id == Word.id)
+            .where(
+                UserWord.user_id == user_id,
+                UserWord.track == track.value,
+                Word.normalized_word.in_(normalized),
+            )
+        )
+        return {row[0] for row in (await self.session.execute(q)).all()}
+
     async def quiz_distractors(
         self,
         user_id: int,

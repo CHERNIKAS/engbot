@@ -120,17 +120,25 @@ async def on_document(
         },
     )
 
+    already = await UserWordRepository(session).existing_normalized(
+        user.id, current_track, [w.normalized for w in result.words]
+    )
+    already_count = len(already)
+    will_add = len(result.words) - already_count
+
     preview_lines = [
         f"Найдено: <b>{result.seen_count}</b> слов",
         f"Дубликатов: <b>{result.duplicates}</b>",
     ]
     if result.invalid:
         preview_lines.append(f"Не распознано: <b>{result.invalid}</b>")
+    if already_count:
+        preview_lines.append(f"Уже в словаре: <b>{already_count}</b>")
     if result.truncated:
         preview_lines.append(
             f"⚠️ Лимит {settings.import_max_words}: <b>{result.truncated}</b> слов не влезли"
         )
-    preview_lines.append(f"Будет добавлено: <b>{len(result.words)}</b>")
+    preview_lines.append(f"Будет добавлено: <b>{will_add}</b>")
     preview = "\n".join(preview_lines)
     version = await screen_service.bump(user.id, CATEGORY_PICK_KIND)
     categories = await CategoryService(CategoryRepository(session)).list_user_categories(
@@ -199,9 +207,10 @@ async def on_pick_category_for_import(
         category_id=category_id,
     )
     await state_service.clear(user.id)
+    skipped = len(words) - result.added
+    done_text = TXT_IMPORT_DONE.format(count=result.added)
+    if skipped > 0:
+        done_text += f"\n({skipped} уже были у тебя)"
     if query.message:
-        await query.message.edit_text(
-            TXT_IMPORT_DONE.format(count=result.added),
-            reply_markup=post_add_kb(),
-        )
+        await query.message.edit_text(done_text, reply_markup=post_add_kb())
     await query.answer()
