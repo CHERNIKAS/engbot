@@ -17,19 +17,18 @@ def settings_kb() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
-def push_settings_kb(enabled: bool, ws: int, we: int) -> InlineKeyboardMarkup:
-    toggle = "🔔 Пуши: ВКЛ ✅" if enabled else "🔕 Пуши: выкл"
-    rows = [
-        [InlineKeyboardButton(text=toggle, callback_data=SettingsCB(action="push_toggle").pack())],
-        [
-            InlineKeyboardButton(
-                text=f"🕐 Окно: {ws:02d}:00–{we:02d}:00",
-                callback_data=SettingsCB(action="push_win").pack(),
-            )
-        ],
-        [home_button()],
-    ]
-    return InlineKeyboardMarkup(inline_keyboard=rows)
+def push_settings_kb(ws: int, we: int) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text=f"🕐 Окно: {ws:02d}:00–{we:02d}:00",
+                    callback_data=SettingsCB(action="push_win").pack(),
+                )
+            ],
+            [home_button()],
+        ]
+    )
 
 
 def push_window_kb(ws: int, we: int) -> InlineKeyboardMarkup:

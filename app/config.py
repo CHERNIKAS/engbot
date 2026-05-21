@@ -30,7 +30,8 @@ class Settings(BaseSettings):
 
     # Reminders (daily / streak / inactivity). Sent once per day per user, only
     # within the local-time window below. Anti-spam tracked in Redis.
-    reminders_enabled: bool = Field(True, alias="REMINDERS_ENABLED")
+    # Off by default — push-learning (always on) replaces the once-a-day nudge.
+    reminders_enabled: bool = Field(False, alias="REMINDERS_ENABLED")
     reminder_window_start: int = Field(19, alias="REMINDER_WINDOW_START")  # local hour
     reminder_window_end: int = Field(22, alias="REMINDER_WINDOW_END")  # exclusive
     reminder_interval_seconds: int = Field(1800, alias="REMINDER_INTERVAL_SECONDS")

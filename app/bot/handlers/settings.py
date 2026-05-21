@@ -217,33 +217,12 @@ async def on_push_open(
     state_service: InteractionStateService,
 ) -> None:
     await state_service.clear(user.id)
-    enabled = bool((user_track.settings or {}).get("push_enabled", False))
     ws, we = _window(user_track)
     if query.message:
         await query.message.edit_text(
-            PUSH_TITLE, reply_markup=push_settings_kb(enabled, ws, we), parse_mode="HTML"
+            PUSH_TITLE, reply_markup=push_settings_kb(ws, we), parse_mode="HTML"
         )
     await query.answer()
-
-
-@router.callback_query(SettingsCB.filter(F.action == "push_toggle"))
-async def on_push_toggle(
-    query: CallbackQuery,
-    user: User,
-    current_track: LearningTrack,
-    user_track: UserTrack,
-    user_track_service: UserTrackService,
-) -> None:
-    new_enabled = not bool((user_track.settings or {}).get("push_enabled", False))
-    ut = await user_track_service.update_settings(
-        user.id, current_track, {"push_enabled": new_enabled}
-    )
-    ws, we = _window(ut)
-    if query.message:
-        await query.message.edit_text(
-            PUSH_TITLE, reply_markup=push_settings_kb(new_enabled, ws, we), parse_mode="HTML"
-        )
-    await query.answer("Включено 🔔" if new_enabled else "Выключено 🔕")
 
 
 @router.callback_query(SettingsCB.filter(F.action == "push_win"))

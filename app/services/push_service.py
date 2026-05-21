@@ -81,12 +81,18 @@ class PushService:
     # ---- worker tick ----
 
     async def run_all(self) -> int:
+        # Push-learning is the main mode — on for every onboarded user.
         from app.infrastructure.repositories.user_tracks import UserTrackRepository
+        from app.infrastructure.repositories.users import UserRepository
 
         if self._bot is None:
             return 0
+        ut_repo = UserTrackRepository(self._session)
         pushed = 0
-        for user, ut in await UserTrackRepository(self._session).list_push_enabled():
+        for user in await UserRepository(self._session).list_for_reminders():
+            ut = await ut_repo.get(user.id, _TRACK)
+            if ut is None:
+                continue
             try:
                 if await self.run_tick(user, ut):
                     pushed += 1
