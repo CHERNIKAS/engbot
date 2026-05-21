@@ -94,6 +94,22 @@ def test_full_session_simulation_two_words():
     assert sorted(s.learned) == [1, 2]
 
 
+def test_quiz_only_word_learned_after_single_quiz():
+    s = DrillState.new([10], quiz_only=[10])
+    assert s.current() == (10, STAGE_QUIZ)
+    s.answer(True)  # quiz ok → learned directly, no TYPE stage for phrases
+    assert s.learned == [10]
+    assert s.is_complete()
+
+
+def test_quiz_only_wrong_requeues_at_quiz():
+    s = DrillState.new([10, 20], quiz_only=[10])
+    s.answer(False)  # 10 wrong → back to quiz, not learned
+    assert 10 not in s.learned
+    restored = DrillState.from_dict(s.to_dict())
+    assert restored.quiz_only == [10]
+
+
 def test_serialization_roundtrip():
     s = DrillState.new([1, 2, 3])
     s.answer(True)

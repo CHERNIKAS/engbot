@@ -147,7 +147,10 @@ class StudySessionService:
             words_total=len(rows),
         )
 
-        drill = DrillState.new([uw.id for uw, _ in rows])
+        # Multi-word entries (phrases, phrasal verbs) are recognition-only:
+        # cleared after QUIZ, no typing stage.
+        quiz_only = [uw.id for uw, w in rows if " " in (w.writing or "").strip()]
+        drill = DrillState.new([uw.id for uw, _ in rows], quiz_only=quiz_only)
         snap = {
             "session_id": db_session.id,
             "track": track.value,

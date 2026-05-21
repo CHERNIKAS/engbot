@@ -39,11 +39,13 @@ class DrillState:
     learned: list[int] = field(default_factory=list)
     mistakes: dict[str, int] = field(default_factory=dict)  # str(uw_id) -> count
     total: int = 0
+    quiz_only: list[int] = field(default_factory=list)  # phrases: cleared after QUIZ, no TYPE
 
     @classmethod
-    def new(cls, user_word_ids: list[int]) -> DrillState:
+    def new(cls, user_word_ids: list[int], quiz_only: list[int] | None = None) -> DrillState:
         ids = list(dict.fromkeys(int(i) for i in user_word_ids))  # dedupe, keep order
-        return cls(queue=[[i, STAGE_QUIZ] for i in ids], learned=[], mistakes={}, total=len(ids))
+        qo = [int(i) for i in (quiz_only or [])]
+        return cls(queue=[[i, STAGE_QUIZ] for i in ids], learned=[], mistakes={}, total=len(ids), quiz_only=qo)
 
     # ---- inspection ----
 
@@ -73,7 +75,7 @@ class DrillState:
         uw_id, stage = self.queue.pop(0)
         uw_id = int(uw_id)
         if correct:
-            if stage == STAGE_QUIZ:
+            if stage == STAGE_QUIZ and uw_id not in self.quiz_only:
                 self._requeue([uw_id, STAGE_TYPE])
             elif uw_id not in self.learned:
                 self.learned.append(uw_id)
@@ -110,6 +112,7 @@ class DrillState:
             "learned": [int(i) for i in self.learned],
             "mistakes": {str(k): int(v) for k, v in self.mistakes.items()},
             "total": int(self.total),
+            "quiz_only": [int(i) for i in self.quiz_only],
         }
 
     @classmethod
@@ -119,4 +122,5 @@ class DrillState:
             learned=[int(i) for i in data.get("learned", [])],
             mistakes={str(k): int(v) for k, v in (data.get("mistakes") or {}).items()},
             total=int(data.get("total", 0)),
+            quiz_only=[int(i) for i in (data.get("quiz_only") or [])],
         )
