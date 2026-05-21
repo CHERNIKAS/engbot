@@ -1,0 +1,83 @@
+# Production stack. Deploy with:
+#   docker compose -f docker-compose.prod.yml up -d --build
+#
+# Differences vs the dev docker-compose.yml:
+#   - Postgres & Redis are NOT published to the host (reachable only on the
+#     internal compose network) — smaller attack surface.
+#   - restart: unless-stopped on every service.
+#   - Redis persistence (AOF) + named volumes for both stores.
+#   - Log rotation so JSON logs can't fill the server disk.
+#   - DB credentials come from a single source (.env) and DATABASE_URL is
+#     assembled here, so you only set the password once.
+#
+# Required in .env: BOT_TOKEN, POSTGRES_PASSWORD
+# Optional in .env: POSTGRES_USER, POSTGRES_DB, ACCESS_PASSWORD, LOG_LEVEL, LOG_FORMAT
+
+# Fixed project name → containers/volumes/network are namespaced as englshbot-*.
+# On a shared host this guarantees we never collide with or touch other projects.
+name: englshbot
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-englsh}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set in .env}
+      POSTGRES_DB: ${POSTGRES_DB:-englsh}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-englsh} -d ${POSTGRES_DB:-englsh}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes", "--save", "60", "1000"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  bot:
+    build: .
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      # Assembled from the single DB credential source; overrides any value in .env.
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-englsh}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-englsh}
+      REDIS_URL: redis://redis:6379/0
+      LOG_FORMAT: ${LOG_FORMAT:-json}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    # Apply migrations, then start polling.
+    command: ["sh", "-c", "alembic upgrade head && python -m app.main"]
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  postgres_data:
+  redis_data:

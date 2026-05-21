@@ -1,0 +1,95 @@
+from __future__ import annotations
+
+from aiogram.filters.callback_data import CallbackData
+
+
+# Navigation — always allowed.
+class NavCB(CallbackData, prefix="nav"):
+    action: str  # home | back | cancel
+
+
+class NoopCB(CallbackData, prefix="noop"):
+    tag: str = "_"
+
+
+# Onboarding.
+class OnboardingCB(CallbackData, prefix="ob"):
+    action: str  # start | toggle_track | tracks_done | goal | custom | seed_skip | done
+    value: int = 0
+    track: str = ""  # for action == "toggle_track"
+
+
+# Main menu.
+class MainMenuCB(CallbackData, prefix="mm"):
+    section: str  # words | study | add | import | packs | progress | settings | track
+    value: str = ""  # for section == "track" — LearningTrack value
+
+
+# My words / categories list browsing.
+class MyWordsCB(CallbackData, prefix="mw"):
+    action: str  # open | list | study_cat | manage
+    category_id: int = 0  # 0 = all, -1 = uncategorized, >0 = specific
+    page: int = 0
+
+
+# Categories CRUD.
+class CategoryCB(CallbackData, prefix="cat"):
+    action: str  # pick | new | rename | delete | confirm_delete | list
+    category_id: int = 0
+    flow: str = ""  # which flow invoked us: add | imp | mw
+    v: str = ""  # screen version — checked on destructive `pick`
+
+
+# Add words flow.
+class AddWordsCB(CallbackData, prefix="add"):
+    action: str  # start | choose_cat | confirm | more
+
+
+# TXT import flow.
+class ImportCB(CallbackData, prefix="imp"):
+    action: str  # start | confirm | choose_cat
+    category_id: int = 0
+    v: str = ""  # screen version
+
+
+# Packs.
+class PacksCB(CallbackData, prefix="pk"):
+    action: str  # menu | toggle_cat | reset_cats | list | preview | add
+    category: str = ""
+    pack_id: int = 0
+
+
+# Study session.
+class StudyCB(CallbackData, prefix="st"):
+    action: str  # menu | start | show_translation | answer | example | skip | delete | finish
+    mode: str = ""
+    scope: str = ""
+    scope_ref_id: int = 0
+    answer: str = ""
+    v: str = ""  # screen version
+
+
+# Progress.
+class ProgressCB(CallbackData, prefix="pg"):
+    action: str = "open"
+
+
+# Settings.
+class SettingsCB(CallbackData, prefix="set"):
+    action: str  # open | goal | goal_value | pace | pace_value
+    value: str = ""
+    v: str = ""  # screen version — checked on goal_value / pace_value
+
+
+# Delete confirmation.
+class DeleteCB(CallbackData, prefix="del"):
+    action: str  # ask | confirm | cancel
+    user_word_id: int = 0
+    flow: str = ""  # mw | st
+    v: str = ""  # screen version — checked on confirm
+
+
+# Quick add popup (idle text).
+class QuickAddCB(CallbackData, prefix="qa"):
+    action: str  # add | choose_cat | cancel
+    token: str = ""

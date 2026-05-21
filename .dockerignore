@@ -1,0 +1,30 @@
+# Secrets — never bake into the image. Provided at runtime via env_file/environment.
+.env
+.env.local
+*.env
+!.env.example
+
+# VCS / IDE / OS
+.git/
+.gitignore
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Python caches / virtualenvs
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local artifacts
+*.log
+*.sqlite
+*.sqlite3
+dist/
+build/
