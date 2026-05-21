@@ -32,23 +32,10 @@ BTN_IMPORT = "📂 Импорт TXT"
 BTN_PACKS = "📦 Паки"
 BTN_PROGRESS = "📊 Прогресс"
 BTN_SETTINGS = "⚙️ Настройки"
-BTN_COLLAPSE = "🔽 Свернуть"
-BTN_EXPAND = "☰ Меню"
 MENU_BUTTON_TEXTS: frozenset[str] = frozenset(
-    {
-        BTN_MY_WORDS,
-        BTN_STUDY,
-        BTN_ADD,
-        BTN_IMPORT,
-        BTN_PACKS,
-        BTN_PROGRESS,
-        BTN_SETTINGS,
-        BTN_COLLAPSE,
-        BTN_EXPAND,
-    }
+    {BTN_MY_WORDS, BTN_STUDY, BTN_ADD, BTN_IMPORT, BTN_PACKS, BTN_PROGRESS, BTN_SETTINGS}
 )
 MENU_PLACEHOLDER = "Выберите действие…"
-MENU_COLLAPSED = "Меню свёрнуто. Нажми «☰ Меню», чтобы развернуть."
 
 ADD_WORDS_PROMPT = (
     "Отправь слово или несколько слов. Можно каждое с новой строки.\n\n"

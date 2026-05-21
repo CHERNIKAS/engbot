@@ -10,8 +10,6 @@ from aiogram.types import (
 from app.bot.callbacks.schema import MainMenuCB
 from app.bot.texts import (
     BTN_ADD,
-    BTN_COLLAPSE,
-    BTN_EXPAND,
     BTN_IMPORT,
     BTN_MY_WORDS,
     BTN_PACKS,
@@ -25,25 +23,21 @@ from app.domain.enums import LearningTrack, TRACK_LABELS, enabled_tracks
 from app.domain.models import UserTrack
 
 
-def main_menu_reply_kb(collapsed: bool = False) -> ReplyKeyboardMarkup:
-    """Persistent bottom menu — the primary navigation surface.
+def main_menu_reply_kb() -> ReplyKeyboardMarkup:
+    """Bottom navigation menu.
 
-    When ``collapsed`` the keyboard shrinks to a single "☰ Меню" button to
-    free up screen space; tapping it expands the full menu again.
+    ``is_persistent`` is intentionally left False so Telegram shows its native
+    collapse (⌄) icon in the input field — the user hides/expands the keyboard
+    themselves, no custom button needed.
     """
-    if collapsed:
-        keyboard = [[KeyboardButton(text=BTN_EXPAND)]]
-    else:
-        keyboard = [
+    return ReplyKeyboardMarkup(
+        keyboard=[
             [KeyboardButton(text=BTN_MY_WORDS), KeyboardButton(text=BTN_STUDY)],
             [KeyboardButton(text=BTN_ADD), KeyboardButton(text=BTN_IMPORT)],
             [KeyboardButton(text=BTN_PACKS), KeyboardButton(text=BTN_PROGRESS)],
-            [KeyboardButton(text=BTN_SETTINGS), KeyboardButton(text=BTN_COLLAPSE)],
-        ]
-    return ReplyKeyboardMarkup(
-        keyboard=keyboard,
+            [KeyboardButton(text=BTN_SETTINGS)],
+        ],
         resize_keyboard=True,
-        is_persistent=True,
         input_field_placeholder=MENU_PLACEHOLDER,
     )
 

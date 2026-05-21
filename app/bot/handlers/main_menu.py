@@ -15,8 +15,6 @@ from app.bot.states import InteractionState
 from app.bot.texts import (
     ADD_WORDS_PROMPT,
     BTN_ADD,
-    BTN_COLLAPSE,
-    BTN_EXPAND,
     BTN_IMPORT,
     BTN_MY_WORDS,
     BTN_PACKS,
@@ -24,7 +22,6 @@ from app.bot.texts import (
     BTN_SETTINGS,
     BTN_STUDY,
     MAIN_MENU,
-    MENU_COLLAPSED,
     MY_WORDS_EMPTY,
     PACE_LABELS,
     PACKS_PICK_CATEGORIES,
@@ -45,19 +42,8 @@ router = Router(name="main_menu")
 
 
 async def send_main_menu(message: Message, text: str = MAIN_MENU) -> None:
-    """Show (or refresh) the persistent bottom menu."""
+    """Show (or refresh) the bottom menu."""
     await message.answer(text, reply_markup=main_menu_reply_kb())
-
-
-# Collapse / expand the bottom menu (state-neutral — a pure visual toggle).
-@router.message(F.text == BTN_COLLAPSE)
-async def msg_collapse(message: Message) -> None:
-    await message.answer(MENU_COLLAPSED, reply_markup=main_menu_reply_kb(collapsed=True))
-
-
-@router.message(F.text == BTN_EXPAND)
-async def msg_expand(message: Message) -> None:
-    await message.answer(MAIN_MENU, reply_markup=main_menu_reply_kb(collapsed=False))
 
 
 # --------------------------------------------------------------------------- #
