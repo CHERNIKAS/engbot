@@ -93,3 +93,17 @@ def typing_card_kb(version: str, user_word_id: int) -> InlineKeyboardMarkup:
 
 def finished_kb() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[[home_button()]])
+
+
+def study_now_kb() -> InlineKeyboardMarkup:
+    """Single 'study now' button — used in reminder messages."""
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text="🔥 Учить",
+                    callback_data=StudyCB(action="start", scope="goal").pack(),
+                )
+            ]
+        ]
+    )

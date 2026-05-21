@@ -28,3 +28,13 @@ class UserRepository:
         if user is not None:
             return user, False
         return await self.create(telegram_id=telegram_id, language=language), True
+
+    async def list_for_reminders(self) -> list[User]:
+        """Authorized, onboarded users — candidates for daily reminders."""
+        result = await self.session.execute(
+            select(User).where(
+                User.onboarding_completed.is_(True),
+                User.is_authorized.is_(True),
+            )
+        )
+        return list(result.scalars().all())

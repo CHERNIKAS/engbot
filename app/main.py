@@ -20,8 +20,26 @@ from app.infrastructure.example_provider.local_json import LocalJsonExampleProvi
 from app.infrastructure.redis_client import build_redis
 from app.logging_setup import get_logger, setup_logging
 from app.services.interaction_state_service import InteractionStateService
+from app.services.reminder_service import ReminderService
 from app.services.screen_service import ScreenVersionService
 from app.services.track_context_service import TrackContextService
+
+
+async def _reminder_worker(sessionmaker, redis, bot) -> None:
+    settings = get_settings()
+    log = get_logger("reminders")
+    while True:
+        await asyncio.sleep(settings.reminder_interval_seconds)
+        try:
+            async with sessionmaker() as session:
+                sent = await ReminderService(session, redis, bot).run()
+                await session.commit()
+            if sent:
+                log.info("reminders_sent", count=sent)
+        except asyncio.CancelledError:
+            raise
+        except Exception:  # noqa: BLE001 — never let the worker die
+            log.exception("reminder_worker_error")
 
 
 async def run() -> None:
@@ -74,10 +92,16 @@ async def run() -> None:
     register_handlers(dp)
     register_error_handler(dp)
 
+    reminder_task: asyncio.Task | None = None
+    if settings.reminders_enabled:
+        reminder_task = asyncio.create_task(_reminder_worker(sessionmaker, redis, bot))
+
     log.info("bot_starting")
     try:
         await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
     finally:
+        if reminder_task is not None:
+            reminder_task.cancel()
         await bot.session.close()
         await redis.aclose()
         await engine.dispose()

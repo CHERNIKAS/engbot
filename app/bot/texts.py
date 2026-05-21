@@ -123,6 +123,10 @@ PROGRESS_TITLE = (
     "{per_track}"
 )
 
+REMINDER_STREAK = "🔥 Streak {streak} дн. под угрозой! Позанимайся сегодня — хватит пары минут."
+REMINDER_DAILY = "🎯 Сегодня {studied}/{goal}. Закроем цель? Осталось {left}."
+REMINDER_INACTIVE = "👋 Давно не виделись. Вернись и повтори слова — даже 5 минут в день работают."
+
 SETTINGS_TITLE = (
     "⚙️ <b>Настройки</b>\n"
     "Трек: {track}\n\n"

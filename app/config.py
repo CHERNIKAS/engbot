@@ -28,6 +28,13 @@ class Settings(BaseSettings):
 
     rate_limit_per_second: int = Field(5, alias="RATE_LIMIT_PER_SECOND")
 
+    # Reminders (daily / streak / inactivity). Sent once per day per user, only
+    # within the local-time window below. Anti-spam tracked in Redis.
+    reminders_enabled: bool = Field(True, alias="REMINDERS_ENABLED")
+    reminder_window_start: int = Field(19, alias="REMINDER_WINDOW_START")  # local hour
+    reminder_window_end: int = Field(22, alias="REMINDER_WINDOW_END")  # exclusive
+    reminder_interval_seconds: int = Field(1800, alias="REMINDER_INTERVAL_SECONDS")
+
     # Pre-shared password required to use the bot. Empty string disables gating.
     access_password: str = Field("", alias="ACCESS_PASSWORD")
 
