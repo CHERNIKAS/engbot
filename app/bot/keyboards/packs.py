@@ -4,29 +4,29 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from app.bot.callbacks.schema import PacksCB
 from app.bot.keyboards.common import home_button
-from app.domain.models import Pack
 
 PACK_PAGE_SIZE = 8
 
+# A lightweight row cached in Redis: (pack_id, title, words_count, learned_pct).
+PackRow = tuple[int, str, int, int]
+
 
 def pack_browser_kb(
-    packs: list[Pack],
-    stats: dict[int, tuple[int, int]],
+    rows_in: list[PackRow],
     selected: set[int],
     page: int,
     total_pages: int,
 ) -> InlineKeyboardMarkup:
-    """ReWord-style checklist: each pack shows count + learned %, tap toggles it."""
+    """ReWord-style checklist: each pack shows count + learned %, tap toggles it.
+    Takes pre-computed rows (cached) so toggling never re-hits the DB."""
     rows: list[list[InlineKeyboardButton]] = []
-    for p in packs:
-        _owned, mastered = stats.get(p.id, (0, 0))
-        pct = round(100 * mastered / p.words_count) if p.words_count else 0
-        mark = "✅" if p.id in selected else "☑️"
+    for pid, title, wc, pct in rows_in:
+        mark = "✅" if pid in selected else "☑️"
         rows.append(
             [
                 InlineKeyboardButton(
-                    text=f"{mark} {p.title} · {p.words_count} · {pct}%",
-                    callback_data=PacksCB(action="toggle", pack_id=p.id, page=page).pack(),
+                    text=f"{mark} {title} · {wc} · {pct}%",
+                    callback_data=PacksCB(action="toggle", pack_id=pid, page=page).pack(),
                 )
             ]
         )
