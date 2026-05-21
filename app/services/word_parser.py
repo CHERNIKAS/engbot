@@ -15,7 +15,11 @@ from dataclasses import dataclass
 # - Deduplicates within the same input by normalized word (lowercase + nfkc-ish).
 
 _BOM = "﻿"
-_TRANSLATION_SEPS = re.compile(r"\s*[-—=–]\s*", re.UNICODE)
+# Tight delimiters (no surrounding spaces needed): ; tab — – =
+# ASCII hyphen "-" is a separator ONLY when space-padded, so hyphenated words
+# like "well-known" / "e-mail" are preserved.
+_TRANSLATION_SEPS = re.compile(r"(?:\s*[;\t—–=]\s*)|(?:\s+-\s+)", re.UNICODE)
+_QUOTE_CHARS = "\"'«»“”„"
 _VALID_WORD_RE = re.compile(r"^[A-Za-z][A-Za-z0-9\-'\s]{0,63}$")
 
 
@@ -39,19 +43,28 @@ def normalize(word: str) -> str:
     return word.strip().lower()
 
 
+def _strip_quotes(s: str) -> str:
+    """Strip matching surrounding quotes (handles CSV-style `"word";"перевод"`)."""
+    s = s.strip()
+    while len(s) >= 2 and s[0] in _QUOTE_CHARS and s[-1] in _QUOTE_CHARS:
+        s = s[1:-1].strip()
+    return s
+
+
 def _split_line(line: str) -> tuple[str, str | None, str | None]:
-    # First split on " | " for example.
+    # First split on "|" for example.
     example: str | None = None
     if "|" in line:
         word_part, _, example_part = line.partition("|")
         line = word_part.strip()
-        example = example_part.strip() or None
+        example = _strip_quotes(example_part) or None
 
-    # Then split on separator for translation.
+    # Then split on separator for translation (quotes stripped per field, so
+    # `"which";"который"`, `hello\tпривет`, `word - перевод` all work).
     parts = _TRANSLATION_SEPS.split(line, maxsplit=1)
     if len(parts) == 2:
-        return parts[0].strip(), parts[1].strip() or None, example
-    return line.strip(), None, example
+        return _strip_quotes(parts[0]), (_strip_quotes(parts[1]) or None), example
+    return _strip_quotes(line), None, example
 
 
 def _valid_english(word: str) -> bool:
