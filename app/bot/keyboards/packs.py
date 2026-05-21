@@ -55,5 +55,28 @@ def pack_browser_kb(
         rows.append(
             [InlineKeyboardButton(text="🔄 Сбросить", callback_data=PacksCB(action="reset").pack())]
         )
+    rows.append(
+        [
+            InlineKeyboardButton(text="↩️ Группы", callback_data=PacksCB(action="menu").pack()),
+            home_button(),
+        ]
+    )
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+_GROUP_EMOJI = {"Уровни": "🎯", "Грамматика": "🔤", "Темы": "🗂", "Фразы": "💬"}
+
+
+def pack_groups_kb(groups: list[tuple[str, int]]) -> InlineKeyboardMarkup:
+    """Top level of the pack browser: pick a group (category)."""
+    rows = [
+        [
+            InlineKeyboardButton(
+                text=f"{_GROUP_EMOJI.get(cat, '📦')} {cat} ({count})",
+                callback_data=PacksCB(action="group", category=cat).pack(),
+            )
+        ]
+        for cat, count in groups
+    ]
     rows.append([home_button()])
     return InlineKeyboardMarkup(inline_keyboard=rows)

@@ -19,6 +19,22 @@ class PackRepository:
         )
         return list(result.scalars().all())
 
+    async def category_counts(self, track: LearningTrack) -> list[tuple[str, int]]:
+        result = await self.session.execute(
+            select(Pack.category, func.count(Pack.id))
+            .where(Pack.is_active.is_(True), Pack.track == track.value)
+            .group_by(Pack.category)
+        )
+        return [(r[0], int(r[1])) for r in result.all()]
+
+    async def list_by_category(self, track: LearningTrack, category: str) -> list[Pack]:
+        result = await self.session.execute(
+            select(Pack)
+            .where(Pack.is_active.is_(True), Pack.track == track.value, Pack.category == category)
+            .order_by(Pack.title.asc())
+        )
+        return list(result.scalars().all())
+
     async def list_categories(self, track: LearningTrack) -> list[str]:
         result = await self.session.execute(
             select(Pack.category)

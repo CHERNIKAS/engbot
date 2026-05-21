@@ -158,6 +158,7 @@ PACE_LABELS = {
     "hardcore": "💀 Hardcore",
 }
 
+PACKS_GROUPS_TITLE = "📦 Паки — выбери раздел 🌸"
 PACKS_TITLE = (
     "📦 Паки\n"
     "Отметь нужные и жми «Добавить выбранные». "
