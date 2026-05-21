@@ -110,7 +110,6 @@ async def on_study_category(
         study_session=study_session,
         screen_service=screen_service,
         analytics=analytics,
-        mode=StudyMode.CLASSIC,
         scope=StudyScope.CATEGORY,
         scope_ref_id=callback_data.category_id,
     )

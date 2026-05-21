@@ -32,12 +32,13 @@ class MyWordsCB(CallbackData, prefix="mw"):
     page: int = 0
 
 
-# Categories CRUD.
+# Categories CRUD + management.
 class CategoryCB(CallbackData, prefix="cat"):
-    action: str  # pick | new | rename | delete | confirm_delete | list
+    action: str  # pick | new | manage | rename | del_ask | del_confirm | move | merge | move_to | merge_to
     category_id: int = 0
     flow: str = ""  # which flow invoked us: add | imp | mw
-    v: str = ""  # screen version — checked on destructive `pick`
+    v: str = ""  # screen version — checked on destructive actions
+    target_id: int = 0  # move/merge destination (-1 = «Без категории», >0 = category)
 
 
 # Add words flow.

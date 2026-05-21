@@ -152,10 +152,9 @@ async def _finish_edit(
 # --------------------------------------------------------------------------- #
 
 
-@router.callback_query(StudyCB.filter(F.action == "start"))
-async def on_start(
+async def start_session(
+    *,
     query: CallbackQuery,
-    callback_data: StudyCB,
     user: User,
     user_track: UserTrack,
     current_track: LearningTrack,
@@ -164,13 +163,10 @@ async def on_start(
     study_session: StudySessionService,
     screen_service: ScreenVersionService,
     analytics: Analytics,
+    scope: StudyScope,
+    scope_ref_id: int | None = None,
 ) -> None:
-    try:
-        scope = StudyScope(callback_data.scope or StudyScope.GOAL.value)
-    except ValueError:
-        await query.answer()
-        return
-
+    """Reusable session starter — used by the study menu and 'Учить категорию'."""
     studied_today = await ProgressService(session).studied_today_count(
         user.id, current_track, tz_name=user.timezone
     )
@@ -179,7 +175,7 @@ async def on_start(
         user_track=user_track,
         track=current_track,
         scope=scope,
-        scope_ref_id=callback_data.scope_ref_id or None,
+        scope_ref_id=scope_ref_id,
         studied_today=studied_today,
     )
     if view is None:
@@ -199,6 +195,39 @@ async def on_start(
     )
     await _render_edit(query, user, view, screen_service, user_track)
     await query.answer()
+
+
+@router.callback_query(StudyCB.filter(F.action == "start"))
+async def on_start(
+    query: CallbackQuery,
+    callback_data: StudyCB,
+    user: User,
+    user_track: UserTrack,
+    current_track: LearningTrack,
+    session: AsyncSession,
+    state_service: InteractionStateService,
+    study_session: StudySessionService,
+    screen_service: ScreenVersionService,
+    analytics: Analytics,
+) -> None:
+    try:
+        scope = StudyScope(callback_data.scope or StudyScope.GOAL.value)
+    except ValueError:
+        await query.answer()
+        return
+    await start_session(
+        query=query,
+        user=user,
+        user_track=user_track,
+        current_track=current_track,
+        session=session,
+        state_service=state_service,
+        study_session=study_session,
+        screen_service=screen_service,
+        analytics=analytics,
+        scope=scope,
+        scope_ref_id=callback_data.scope_ref_id or None,
+    )
 
 
 @router.callback_query(StudyCB.filter(F.action == "answer"))

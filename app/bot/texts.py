@@ -79,6 +79,20 @@ CATEGORY_NEW_EMPTY = "Название не может быть пустым."
 CATEGORY_NEW_EXISTS = "Категория с таким именем уже есть."
 CATEGORY_CREATED = "✅ Категория «{name}» создана."
 
+CATEGORY_MANAGE_TITLE = "⚙️ Управление категорией «{name}»\nСлов: {count}"
+CATEGORY_RENAME_PROMPT = "Введи новое имя категории (до 64 символов)."
+CATEGORY_RENAMED = "✅ Переименовано в «{name}»."
+CATEGORY_DELETE_CONFIRM = (
+    "Удалить категорию «{name}»?\nСлова не пропадут — станут «Без категории»."
+)
+CATEGORY_DELETED = "🗑 Категория удалена. Слова перемещены в «Без категории»."
+CATEGORY_MOVE_PICK = "Куда переместить слова из «{name}»?"
+CATEGORY_MERGE_PICK = "С какой категорией объединить «{name}»?\nСлова переедут туда, а «{name}» удалится."
+CATEGORY_MOVED = "✅ Перемещено слов: {count}."
+CATEGORY_MERGED = "✅ Объединено. Перемещено слов: {count}."
+CATEGORY_NO_TARGETS = "Нет других категорий. Сначала создай ещё одну."
+CATEGORY_UNCATEGORIZED = "📁 Без категории"
+
 MY_WORDS_EMPTY = "Пока нет слов. Добавь первые через «➕ Добавить»."
 MY_WORDS_TITLE = "📁 {category}\nСлов: {count}"
 

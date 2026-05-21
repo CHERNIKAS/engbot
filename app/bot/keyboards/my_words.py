@@ -101,6 +101,15 @@ def category_words_kb(
                 )
             ]
         )
+    if category_id > 0:
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    text="⚙️ Управление",
+                    callback_data=CategoryCB(action="manage", category_id=category_id).pack(),
+                )
+            ]
+        )
     rows.append(
         [
             InlineKeyboardButton(
@@ -108,6 +117,107 @@ def category_words_kb(
                 callback_data=MainMenuCB(section="add").pack(),
             ),
             home_button(),
+        ]
+    )
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+def category_manage_kb(category_id: int) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text="✏️ Переименовать",
+                    callback_data=CategoryCB(action="rename", category_id=category_id).pack(),
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    text="📦 Переместить слова",
+                    callback_data=CategoryCB(action="move", category_id=category_id).pack(),
+                ),
+                InlineKeyboardButton(
+                    text="🔗 Объединить",
+                    callback_data=CategoryCB(action="merge", category_id=category_id).pack(),
+                ),
+            ],
+            [
+                InlineKeyboardButton(
+                    text="🗑 Удалить категорию",
+                    callback_data=CategoryCB(action="del_ask", category_id=category_id).pack(),
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    text="↩️ Назад",
+                    callback_data=MyWordsCB(action="open", category_id=category_id).pack(),
+                )
+            ],
+        ]
+    )
+
+
+def category_delete_confirm_kb(category_id: int, version: str) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text="✅ Да, удалить",
+                    callback_data=CategoryCB(
+                        action="del_confirm", category_id=category_id, v=version
+                    ).pack(),
+                ),
+                InlineKeyboardButton(
+                    text="↩️ Нет",
+                    callback_data=CategoryCB(action="manage", category_id=category_id).pack(),
+                ),
+            ]
+        ]
+    )
+
+
+def category_target_kb(
+    category_id: int,
+    categories: list[Category],
+    action: str,  # "move" | "merge"
+    version: str,
+    *,
+    include_uncategorized: bool,
+) -> InlineKeyboardMarkup:
+    rows: list[list[InlineKeyboardButton]] = []
+    if include_uncategorized:
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    text="📁 Без категории",
+                    callback_data=CategoryCB(
+                        action=f"{action}_to", category_id=category_id, target_id=-1, v=version
+                    ).pack(),
+                )
+            ]
+        )
+    for cat in categories:
+        if cat.id == category_id:
+            continue
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    text=f"📁 {cat.name}",
+                    callback_data=CategoryCB(
+                        action=f"{action}_to",
+                        category_id=category_id,
+                        target_id=cat.id,
+                        v=version,
+                    ).pack(),
+                )
+            ]
+        )
+    rows.append(
+        [
+            InlineKeyboardButton(
+                text="↩️ Назад",
+                callback_data=CategoryCB(action="manage", category_id=category_id).pack(),
+            )
         ]
     )
     return InlineKeyboardMarkup(inline_keyboard=rows)

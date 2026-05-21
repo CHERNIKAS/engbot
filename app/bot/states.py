@@ -13,6 +13,7 @@ class InteractionState(StrEnum):
     WAITING_MANUAL_WORDS = "waiting_manual_words"
     WAITING_CATEGORY_FOR_WORDS = "waiting_category_for_words"
     WAITING_NEW_CATEGORY_NAME = "waiting_new_category_name"
+    WAITING_CATEGORY_RENAME = "waiting_category_rename"
 
     WAITING_TXT_FILE = "waiting_txt_file"
     WAITING_TXT_CATEGORY = "waiting_txt_category"
@@ -40,6 +41,7 @@ STATE_CALLBACK_PREFIXES: dict[InteractionState, frozenset[str]] = {
     InteractionState.WAITING_MANUAL_WORDS: frozenset({"add"}),
     InteractionState.WAITING_CATEGORY_FOR_WORDS: frozenset({"add", "cat"}),
     InteractionState.WAITING_NEW_CATEGORY_NAME: frozenset({"cat", "add", "imp"}),
+    InteractionState.WAITING_CATEGORY_RENAME: frozenset({"cat", "mw"}),
     InteractionState.WAITING_TXT_FILE: frozenset({"imp"}),
     InteractionState.WAITING_TXT_CATEGORY: frozenset({"imp", "cat"}),
     InteractionState.WAITING_DELETE_CONFIRMATION: frozenset({"del", "mw", "st"}),
@@ -58,6 +60,7 @@ TEXT_ACCEPTING_STATES: frozenset[InteractionState] = frozenset(
         InteractionState.ONBOARDING_CUSTOM_GOAL,
         InteractionState.WAITING_MANUAL_WORDS,
         InteractionState.WAITING_NEW_CATEGORY_NAME,
+        InteractionState.WAITING_CATEGORY_RENAME,
         InteractionState.SETTINGS_GOAL_INPUT,
         InteractionState.STUDY_ACTIVE,  # typing-stage answers
     }

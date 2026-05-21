@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from sqlalchemy import and_, func, select
+from sqlalchemy import and_, func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.enums import CategoryType, LearningTrack
@@ -65,6 +65,28 @@ class CategoryRepository:
             return
         await self.session.delete(category)
         await self.session.flush()
+
+    async def move_words(
+        self,
+        user_id: int,
+        track: LearningTrack,
+        from_category_id: int | None,
+        to_category_id: int | None,
+    ) -> int:
+        """Reassign every word in one category to another (or to NULL).
+        Returns how many words moved. No dedup needed: unique(user_id, word_id)
+        means each word is a single row carrying exactly one category."""
+        result = await self.session.execute(
+            update(UserWord)
+            .where(
+                UserWord.user_id == user_id,
+                UserWord.track == track.value,
+                UserWord.category_id == from_category_id,
+            )
+            .values(category_id=to_category_id)
+        )
+        await self.session.flush()
+        return int(result.rowcount or 0)
 
     async def counts_for_user(
         self, user_id: int, track: LearningTrack
