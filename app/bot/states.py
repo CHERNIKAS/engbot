@@ -29,7 +29,8 @@ class InteractionState(StrEnum):
 
 
 # Universal callback prefixes always allowed regardless of state.
-UNIVERSAL_PREFIXES: frozenset[str] = frozenset({"nav", "noop"})
+# "pu" = push-learning cards arrive out-of-band and must answer in any state.
+UNIVERSAL_PREFIXES: frozenset[str] = frozenset({"nav", "noop", "pu"})
 
 # Per-state allowlist of callback prefixes (in addition to UNIVERSAL_PREFIXES).
 STATE_CALLBACK_PREFIXES: dict[InteractionState, frozenset[str]] = {

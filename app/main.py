@@ -20,6 +20,7 @@ from app.infrastructure.example_provider.local_json import LocalJsonExampleProvi
 from app.infrastructure.redis_client import build_redis
 from app.logging_setup import get_logger, setup_logging
 from app.services.interaction_state_service import InteractionStateService
+from app.services.push_service import PushService
 from app.services.reminder_service import ReminderService
 from app.services.screen_service import ScreenVersionService
 from app.services.track_context_service import TrackContextService
@@ -40,6 +41,21 @@ async def _reminder_worker(sessionmaker, redis, bot) -> None:
             raise
         except Exception:  # noqa: BLE001 — never let the worker die
             log.exception("reminder_worker_error")
+
+
+async def _push_worker(sessionmaker, redis, bot) -> None:
+    settings = get_settings()
+    log = get_logger("push")
+    while True:
+        await asyncio.sleep(settings.push_worker_interval_seconds)
+        try:
+            async with sessionmaker() as session:
+                await PushService(session, redis, bot).run_all()
+                await session.commit()
+        except asyncio.CancelledError:
+            raise
+        except Exception:  # noqa: BLE001 — never let the worker die
+            log.exception("push_worker_error")
 
 
 async def run() -> None:
@@ -92,16 +108,17 @@ async def run() -> None:
     register_handlers(dp)
     register_error_handler(dp)
 
-    reminder_task: asyncio.Task | None = None
+    background: list[asyncio.Task] = []
     if settings.reminders_enabled:
-        reminder_task = asyncio.create_task(_reminder_worker(sessionmaker, redis, bot))
+        background.append(asyncio.create_task(_reminder_worker(sessionmaker, redis, bot)))
+    background.append(asyncio.create_task(_push_worker(sessionmaker, redis, bot)))
 
     log.info("bot_starting")
     try:
         await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
     finally:
-        if reminder_task is not None:
-            reminder_task.cancel()
+        for task in background:
+            task.cancel()
         await bot.session.close()
         await redis.aclose()
         await engine.dispose()

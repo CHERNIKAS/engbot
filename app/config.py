@@ -35,6 +35,19 @@ class Settings(BaseSettings):
     reminder_window_end: int = Field(22, alias="REMINDER_WINDOW_END")  # exclusive
     reminder_interval_seconds: int = Field(1800, alias="REMINDER_INTERVAL_SECONDS")
 
+    # Push-learning: bot proactively sends single quiz cards through the day.
+    # Opt-in per user; one card in flight at a time; ignored cards are re-pushed
+    # at short random intervals until answered, only inside the user's window.
+    push_worker_interval_seconds: int = Field(300, alias="PUSH_WORKER_INTERVAL_SECONDS")
+    push_default_window_start: int = Field(10, alias="PUSH_DEFAULT_WINDOW_START")
+    push_default_window_end: int = Field(22, alias="PUSH_DEFAULT_WINDOW_END")
+    push_min_window_hours: int = Field(10, alias="PUSH_MIN_WINDOW_HOURS")
+    push_gap_min_minutes: int = Field(20, alias="PUSH_GAP_MIN_MINUTES")
+    push_gap_max_minutes: int = Field(55, alias="PUSH_GAP_MAX_MINUTES")
+    push_retry_min_minutes: int = Field(15, alias="PUSH_RETRY_MIN_MINUTES")
+    push_retry_max_minutes: int = Field(40, alias="PUSH_RETRY_MAX_MINUTES")
+    push_repeats_per_word: int = Field(2, alias="PUSH_REPEATS_PER_WORD")
+
     # Pre-shared password required to use the bot. Empty string disables gating.
     access_password: str = Field("", alias="ACCESS_PASSWORD")
 

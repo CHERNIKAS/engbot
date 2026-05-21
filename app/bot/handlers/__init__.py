@@ -11,6 +11,7 @@ from app.bot.handlers import (
     onboarding,
     packs,
     progress,
+    push,
     settings,
     study,
     txt_import,
@@ -29,4 +30,5 @@ def register_handlers(dp: Dispatcher) -> None:
     dp.include_router(study.router)
     dp.include_router(progress.router)
     dp.include_router(settings.router)
+    dp.include_router(push.router)
     dp.include_router(fallback.router)

@@ -8,17 +8,27 @@ from app.bot.callbacks.schema import SettingsCB
 from app.bot.filters import InState
 from app.bot.keyboards.common import cancel_only_kb
 from app.bot.keyboards.main_menu import main_menu_kb
-from app.bot.keyboards.settings import goal_values_kb, pace_kb, settings_kb
+from app.bot.keyboards.settings import (
+    goal_values_kb,
+    pace_kb,
+    push_settings_kb,
+    push_window_kb,
+    settings_kb,
+)
 from app.bot.states import InteractionState
 from app.bot.texts import (
     ERROR_GOAL_NOT_NUMBER,
     ERROR_GOAL_TOO_BIG,
     ERROR_GOAL_TOO_SMALL,
     PACE_LABELS,
+    PUSH_TITLE,
+    PUSH_WINDOW_TITLE,
+    PUSH_WINDOW_TOO_SHORT,
     SETTINGS_GOAL_PROMPT,
     SETTINGS_GOAL_UPDATED,
     SETTINGS_TITLE,
 )
+from app.config import get_settings
 from app.domain.enums import LearningPace, LearningTrack, TRACK_LABELS
 from app.domain.models import User, UserTrack
 from app.services.interaction_state_service import InteractionStateService
@@ -183,3 +193,91 @@ async def on_settings_goal_text(
     await message.answer(
         SETTINGS_GOAL_UPDATED.format(goal=value), reply_markup=settings_kb()
     )
+
+
+# --------------------------------------------------------------------------- #
+# Push-learning settings
+# --------------------------------------------------------------------------- #
+
+
+def _window(user_track: UserTrack) -> tuple[int, int]:
+    cfg = get_settings()
+    s = user_track.settings or {}
+    return (
+        int(s.get("push_ws", cfg.push_default_window_start)),
+        int(s.get("push_we", cfg.push_default_window_end)),
+    )
+
+
+@router.callback_query(SettingsCB.filter(F.action == "push_open"))
+async def on_push_open(
+    query: CallbackQuery,
+    user: User,
+    user_track: UserTrack,
+    state_service: InteractionStateService,
+) -> None:
+    await state_service.clear(user.id)
+    enabled = bool((user_track.settings or {}).get("push_enabled", False))
+    ws, we = _window(user_track)
+    if query.message:
+        await query.message.edit_text(
+            PUSH_TITLE, reply_markup=push_settings_kb(enabled, ws, we), parse_mode="HTML"
+        )
+    await query.answer()
+
+
+@router.callback_query(SettingsCB.filter(F.action == "push_toggle"))
+async def on_push_toggle(
+    query: CallbackQuery,
+    user: User,
+    current_track: LearningTrack,
+    user_track: UserTrack,
+    user_track_service: UserTrackService,
+) -> None:
+    new_enabled = not bool((user_track.settings or {}).get("push_enabled", False))
+    ut = await user_track_service.update_settings(
+        user.id, current_track, {"push_enabled": new_enabled}
+    )
+    ws, we = _window(ut)
+    if query.message:
+        await query.message.edit_text(
+            PUSH_TITLE, reply_markup=push_settings_kb(new_enabled, ws, we), parse_mode="HTML"
+        )
+    await query.answer("Включено 🔔" if new_enabled else "Выключено 🔕")
+
+
+@router.callback_query(SettingsCB.filter(F.action == "push_win"))
+async def on_push_win(query: CallbackQuery, user_track: UserTrack) -> None:
+    ws, we = _window(user_track)
+    if query.message:
+        await query.message.edit_text(PUSH_WINDOW_TITLE, reply_markup=push_window_kb(ws, we))
+    await query.answer()
+
+
+@router.callback_query(SettingsCB.filter(F.action == "push_win_set"))
+async def on_push_win_set(
+    query: CallbackQuery,
+    callback_data: SettingsCB,
+    user: User,
+    current_track: LearningTrack,
+    user_track: UserTrack,
+    user_track_service: UserTrackService,
+) -> None:
+    cfg = get_settings()
+    ws, we = _window(user_track)
+    val = callback_data.value or ""
+    try:
+        kind, hour = val[0], int(val[1:])
+    except (IndexError, ValueError):
+        await query.answer()
+        return
+    new_ws, new_we = (hour, we) if kind == "s" else (ws, hour)
+    if new_we - new_ws < cfg.push_min_window_hours:
+        await query.answer(PUSH_WINDOW_TOO_SHORT, show_alert=True)
+        return
+    await user_track_service.update_settings(
+        user.id, current_track, {"push_ws": new_ws, "push_we": new_we}
+    )
+    if query.message:
+        await query.message.edit_reply_markup(reply_markup=push_window_kb(new_ws, new_we))
+    await query.answer(f"{new_ws:02d}:00–{new_we:02d}:00")

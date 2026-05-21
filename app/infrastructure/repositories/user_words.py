@@ -185,6 +185,51 @@ class UserWordRepository:
         news = [(r[0], r[1]) for r in (await self.session.execute(new_q)).all()]
         return due + news
 
+    async def pick_for_push(
+        self,
+        user_id: int,
+        track: LearningTrack,
+        new_quota_left: int,
+        exclude_uw_id: int = 0,
+        now: datetime | None = None,
+    ) -> tuple[UserWord, Word, bool] | None:
+        """Pick one word for a push: a due review first, else a new word (if the
+        daily new-quota allows). Returns (user_word, word, is_new) or None.
+        Only words that have a translation (quizzable)."""
+        now = now or datetime.now(timezone.utc)
+        base = [
+            UserWord.user_id == user_id,
+            UserWord.track == track.value,
+            UserWord.status != WordStatus.MASTERED.value,
+            Word.translation.isnot(None),
+        ]
+        if exclude_uw_id:
+            base.append(UserWord.id != exclude_uw_id)
+
+        due_q = (
+            select(UserWord, Word)
+            .join(Word, Word.id == UserWord.word_id)
+            .where(and_(*base, UserWord.status != WordStatus.NEW.value, UserWord.next_review_at <= now))
+            .order_by(UserWord.next_review_at.asc())
+            .limit(1)
+        )
+        row = (await self.session.execute(due_q)).first()
+        if row is not None:
+            return row[0], row[1], False
+
+        if new_quota_left > 0:
+            new_q = (
+                select(UserWord, Word)
+                .join(Word, Word.id == UserWord.word_id)
+                .where(and_(*base, UserWord.status == WordStatus.NEW.value))
+                .order_by(UserWord.created_at.asc())
+                .limit(1)
+            )
+            row = (await self.session.execute(new_q)).first()
+            if row is not None:
+                return row[0], row[1], True
+        return None
+
     async def count_weak(self, user_id: int, track: LearningTrack) -> int:
         q = select(func.count(UserWord.id)).where(
             UserWord.user_id == user_id,

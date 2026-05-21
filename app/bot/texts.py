@@ -127,6 +127,16 @@ REMINDER_STREAK = "🔥 Streak {streak} дн. под угрозой! Позан�
 REMINDER_DAILY = "🎯 Сегодня {studied}/{goal}. Закроем цель? Осталось {left}."
 REMINDER_INACTIVE = "👋 Давно не виделись. Вернись и повтори слова — даже 5 минут в день работают."
 
+PUSH_CARD = "🔔 Что значит <b>{word}</b>?"
+PUSH_ANSWER_CORRECT = "✅ Верно!"
+PUSH_ANSWER_WRONG = "❌ Неверно. Правильно: <b>{answer}</b>"
+PUSH_STALE = "Эта карточка уже неактуальна."
+PUSH_SCHEDULE_PROMPT = "🔔 График пушей: <b>{ws:02d}:00–{we:02d}:00</b>. Оставить или поменять?"
+PUSH_SCHEDULE_KEPT = "Ок, график прежний."
+PUSH_TITLE = "🔔 <b>Пуш-обучение</b>\nБот сам присылает карточки в течение дня."
+PUSH_WINDOW_TITLE = "🕐 Окно пушей (минимум 10 ч).\nВерхний ряд — начало дня, нижний — конец."
+PUSH_WINDOW_TOO_SHORT = "Окно должно быть не меньше 10 часов."
+
 SETTINGS_TITLE = (
     "⚙️ <b>Настройки</b>\n"
     "Трек: {track}\n\n"

@@ -5,7 +5,7 @@ from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.enums import LearningTrack
-from app.domain.models import UserTrack
+from app.domain.models import User, UserTrack
 
 
 class UserTrackRepository:
@@ -33,6 +33,20 @@ class UserTrackRepository:
             select(UserTrack).where(UserTrack.user_id == user_id).order_by(UserTrack.track.asc())
         )
         return list(result.scalars().all())
+
+    async def list_push_enabled(self) -> list[tuple[User, UserTrack]]:
+        """English tracks with push-learning turned on, for the push worker."""
+        result = await self.session.execute(
+            select(User, UserTrack)
+            .join(UserTrack, UserTrack.user_id == User.id)
+            .where(
+                UserTrack.track == LearningTrack.ENGLISH.value,
+                UserTrack.settings["push_enabled"].astext == "true",
+                User.is_authorized.is_(True),
+                User.onboarding_completed.is_(True),
+            )
+        )
+        return [(row[0], row[1]) for row in result.all()]
 
     async def upsert(
         self,

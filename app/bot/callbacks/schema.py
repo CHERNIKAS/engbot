@@ -96,3 +96,10 @@ class DeleteCB(CallbackData, prefix="del"):
 class QuickAddCB(CallbackData, prefix="qa"):
     action: str  # add | choose_cat | cancel
     token: str = ""
+
+
+# Push-learning card answer.
+class PushCB(CallbackData, prefix="pu"):
+    action: str  # ans | keep_schedule
+    uw_id: int = 0
+    idx: int = 0
