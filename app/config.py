@@ -19,9 +19,9 @@ class Settings(BaseSettings):
     log_format: str = Field("json", alias="LOG_FORMAT")
 
     default_daily_goal: int = Field(10, alias="DEFAULT_DAILY_GOAL")
-    txt_max_bytes: int = Field(524_288, alias="TXT_MAX_BYTES")
-    txt_max_lines: int = Field(5_000, alias="TXT_MAX_LINES")
-    import_max_words: int = Field(1_000, alias="IMPORT_MAX_WORDS")
+    txt_max_bytes: int = Field(2_097_152, alias="TXT_MAX_BYTES")  # 2 MB
+    txt_max_lines: int = Field(10_000, alias="TXT_MAX_LINES")
+    import_max_words: int = Field(5_000, alias="IMPORT_MAX_WORDS")
 
     interaction_ttl_seconds: int = Field(900, alias="INTERACTION_TTL_SECONDS")
     study_ttl_seconds: int = Field(3_600, alias="STUDY_TTL_SECONDS")

@@ -52,9 +52,10 @@ class ParsedWord:
 @dataclass
 class ParseResult:
     words: list[ParsedWord]
-    seen_count: int      # all non-blank lines that parsed to something (incl. invalid + duplicates)
+    seen_count: int      # all non-blank, non-comment lines (incl. invalid + duplicates)
     duplicates: int      # how many were dedup'd within this input
     invalid: int         # how many failed validation
+    truncated: int = 0   # valid unique words dropped because of the max_words cap
 
 
 def normalize(word: str) -> str:
@@ -139,7 +140,18 @@ def parse_input(
                 example=example,
             )
         )
-        if len(out) >= max_words:
-            break
 
-    return ParseResult(words=out, seen_count=seen_count, duplicates=duplicates, invalid=invalid)
+    # Count the TRUE number of valid words first, then cap what we import — so
+    # the preview never lies about how many words were actually found.
+    truncated = 0
+    if len(out) > max_words:
+        truncated = len(out) - max_words
+        out = out[:max_words]
+
+    return ParseResult(
+        words=out,
+        seen_count=seen_count,
+        duplicates=duplicates,
+        invalid=invalid,
+        truncated=truncated,
+    )

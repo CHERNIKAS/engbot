@@ -120,11 +120,18 @@ async def on_document(
         },
     )
 
-    preview = TXT_PREVIEW.format(
-        found=result.seen_count,
-        dups=result.duplicates + (result.seen_count - len(result.words) - result.invalid - result.duplicates),
-        will=len(result.words),
-    )
+    preview_lines = [
+        f"Найдено: <b>{result.seen_count}</b> слов",
+        f"Дубликатов: <b>{result.duplicates}</b>",
+    ]
+    if result.invalid:
+        preview_lines.append(f"Не распознано: <b>{result.invalid}</b>")
+    if result.truncated:
+        preview_lines.append(
+            f"⚠️ Лимит {settings.import_max_words}: <b>{result.truncated}</b> слов не влезли"
+        )
+    preview_lines.append(f"Будет добавлено: <b>{len(result.words)}</b>")
+    preview = "\n".join(preview_lines)
     version = await screen_service.bump(user.id, CATEGORY_PICK_KIND)
     categories = await CategoryService(CategoryRepository(session)).list_user_categories(
         user.id, current_track

@@ -48,6 +48,17 @@ def test_respects_max_words_cap():
     text = "\n".join(f"word{i}" for i in range(50))
     result = parse_input(text, max_words=10)
     assert len(result.words) == 10
+    # The preview must report the TRUE totals, not the capped number.
+    assert result.seen_count == 50
+    assert result.truncated == 40
+
+
+def test_no_truncation_under_cap():
+    text = "\n".join(f"word{i}" for i in range(50))
+    result = parse_input(text, max_words=1000)
+    assert len(result.words) == 50
+    assert result.seen_count == 50
+    assert result.truncated == 0
 
 
 def test_parses_quoted_semicolon_csv():
