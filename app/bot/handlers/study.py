@@ -1,131 +1,41 @@
 from __future__ import annotations
 
 from aiogram import F, Router
-from aiogram.types import CallbackQuery
+from aiogram.types import CallbackQuery, Message
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.bot.callbacks.schema import StudyCB
-from app.bot.keyboards.main_menu import main_menu_kb
-from app.bot.keyboards.study import (
-    classic_answer_kb,
-    classic_question_kb,
-    finished_kb,
-    quiz_kb,
-)
+from app.bot.filters import InState
+from app.bot.keyboards.study import finished_kb, quiz_card_kb, typing_card_kb
 from app.bot.states import InteractionState
 from app.bot.texts import (
     MAIN_MENU,
-    STUDY_CARD_NO_TRANSLATION,
-    STUDY_EXAMPLE_MISSING,
+    STUDY_ANSWER_CORRECT,
+    STUDY_ANSWER_WRONG,
     STUDY_FINISHED,
     STUDY_NO_WORDS,
+    STUDY_QUIZ_PROMPT,
+    STUDY_TYPE_PROMPT,
+    STUDY_USE_BUTTONS,
 )
-from app.domain.enums import LearningTrack, ReviewResult, StudyMode, StudyScope
+from app.domain.enums import LearningTrack, StudyScope
 from app.domain.models import User, UserTrack
+from app.domain.study_drill import STAGE_QUIZ, is_typing_correct
 from app.services.analytics import EVENT_STUDY_COMPLETED, EVENT_STUDY_STARTED, Analytics
 from app.services.interaction_state_service import InteractionStateService
 from app.services.progress_service import ProgressService
 from app.services.screen_service import ScreenVersionService
-from app.services.study_session_service import StudySessionService
-from app.services.user_track_service import UserTrackService
+from app.services.study_session_service import CardView, StudySessionService
 
 router = Router(name="study")
 
 SCREEN_KIND = "study_card"
+_BAR_WIDTH = 10
 
 
-def _is_japanese(track: str | None) -> bool:
-    return track == LearningTrack.JAPANESE.value
-
-
-def _card_text_question(card: dict, current: int, total: int, track: str | None) -> str:
-    writing = card.get("writing", "")
-    if _is_japanese(track):
-        # For Japanese we show writing (kanji/kana) only on the question side.
-        return f"<b>{writing}</b>\n\n<i>Карточка {current}/{total}</i>"
-    return f"<b>{writing}</b>\n\n<i>Карточка {current}/{total}</i>"
-
-
-def _card_text_revealed(
-    card: dict, current: int, total: int, track: str | None, romaji_enabled: bool
-) -> str:
-    writing = card.get("writing", "")
-    translation = card.get("translation") or STUDY_CARD_NO_TRANSLATION
-    if _is_japanese(track):
-        lines = [f"<b>{writing}</b>"]
-        if card.get("kana") and card["kana"] != writing:
-            lines.append(f"<i>{card['kana']}</i>")
-        if romaji_enabled and card.get("romaji"):
-            lines.append(f"<code>{card['romaji']}</code>")
-        lines.append("")
-        lines.append(translation)
-        lines.append("")
-        lines.append(f"<i>Карточка {current}/{total}</i>")
-        return "\n".join(lines)
-    return f"<b>{writing}</b>\n\n{translation}\n\n<i>Карточка {current}/{total}</i>"
-
-
-def _quiz_text(card: dict, current: int, total: int, track: str | None) -> str:
-    writing = card.get("writing", "")
-    if _is_japanese(track):
-        kana = card.get("kana")
-        prompt = writing if not kana or kana == writing else f"{writing} ({kana})"
-    else:
-        prompt = writing
-    return f"Что значит <b>{prompt}</b>?\n\n<i>Карточка {current}/{total}</i>"
-
-
-async def start_session(
-    *,
-    query: CallbackQuery,
-    user: User,
-    user_track: UserTrack,
-    current_track: LearningTrack,
-    session: AsyncSession,
-    state_service: InteractionStateService,
-    study_session: StudySessionService,
-    screen_service: ScreenVersionService,
-    analytics: Analytics,
-    mode: StudyMode,
-    scope: StudyScope,
-    scope_ref_id: int | None = None,
-) -> None:
-    progress = ProgressService(session)
-    studied_today = await progress.studied_today_count(user.id, current_track, tz_name=user.timezone)
-    snap = await study_session.start(
-        user=user,
-        user_track=user_track,
-        track=current_track,
-        mode=mode,
-        scope=scope,
-        scope_ref_id=scope_ref_id,
-        studied_today=studied_today,
-    )
-    if snap is None:
-        await state_service.clear(user.id)
-        from app.services.user_track_service import UserTrackService as _UTS  # noqa
-        if query.message:
-            await query.message.edit_text(STUDY_NO_WORDS, reply_markup=None)
-        await query.answer()
-        return
-
-    await state_service.set(user.id, InteractionState.STUDY_ACTIVE)
-    await analytics.emit(
-        EVENT_STUDY_STARTED,
-        user_id=user.id,
-        track=current_track.value,
-        mode=mode.value,
-        scope=scope.value,
-        words_total=len(snap.cards),
-    )
-    await render_current_card(
-        query=query,
-        user=user,
-        session=session,
-        state_service=state_service,
-        study_session=study_session,
-        screen_service=screen_service,
-    )
+# --------------------------------------------------------------------------- #
+# Rendering helpers
+# --------------------------------------------------------------------------- #
 
 
 def _romaji_enabled(user_track: UserTrack | None) -> bool:
@@ -134,87 +44,112 @@ def _romaji_enabled(user_track: UserTrack | None) -> bool:
     return bool((user_track.settings or {}).get("romaji_enabled", True))
 
 
-async def render_current_card(
-    query: CallbackQuery,
-    user: User,
-    session: AsyncSession,
-    state_service: InteractionStateService,
-    study_session: StudySessionService,
-    screen_service: ScreenVersionService,
-    user_track: UserTrack | None = None,
-) -> None:
-    snap = await study_session.get(user.id)
-    if snap is None or snap.index >= len(snap.cards):
-        await finish_and_render(query, user, session, state_service, study_session)
-        return
+def _progress_bar(learned: int, total: int) -> str:
+    if total <= 0:
+        return ""
+    filled = max(0, min(_BAR_WIDTH, round(_BAR_WIDTH * learned / total)))
+    return "▓" * filled + "░" * (_BAR_WIDTH - filled)
 
-    card = snap.cards[snap.index]
-    total = len(snap.cards)
-    current = snap.index + 1
-    version = await screen_service.bump(user.id, SCREEN_KIND)
-    romaji = _romaji_enabled(user_track)
-    track = snap.track
-    user_word_id = card.get("user_word_id", 0)
 
-    if snap.mode == StudyMode.QUIZ.value:
-        options = snap.quiz_options.get(str(user_word_id))
-        if not options:
-            text = _card_text_question(card, current, total, track)
-            if query.message:
-                await query.message.edit_text(
-                    text,
-                    reply_markup=classic_question_kb(user_word_id, version),
-                    parse_mode="HTML",
-                )
-            return
-        text = _quiz_text(card, current, total, track)
-        if query.message:
-            await query.message.edit_text(
-                text,
-                reply_markup=quiz_kb(options, version, user_word_id),
-                parse_mode="HTML",
-            )
-        return
-
-    revealed = snap.revealed.get(str(snap.index), False)
-    if revealed:
-        text = _card_text_revealed(card, current, total, track, romaji)
-        kb = classic_answer_kb(user_word_id, version)
+def _card_text(view: CardView, romaji_enabled: bool) -> str:
+    bar = _progress_bar(view.learned, view.total)
+    head = f"{bar} {view.learned}/{view.total} освоено · 🔁 {max(0, view.total - view.learned)}"
+    is_ja = view.script_type is not None and view.script_type != "latin"
+    if view.stage == STAGE_QUIZ:
+        prompt = view.writing
+        if is_ja and view.kana and view.kana != view.writing:
+            prompt = f"{view.writing} ({view.kana})"
+        body = f"{STUDY_QUIZ_PROMPT}\n\n<b>{prompt}</b>"
     else:
-        text = _card_text_question(card, current, total, track)
-        kb = classic_question_kb(user_word_id, version)
-
-    if query.message:
-        await query.message.edit_text(text, reply_markup=kb, parse_mode="HTML")
+        body = f"{STUDY_TYPE_PROMPT}\n\n<b>{view.translation}</b>"
+    return f"{head}\n\n{body}"
 
 
-async def finish_and_render(
+def _card_kb(view: CardView, version: str):
+    if view.stage == STAGE_QUIZ:
+        return quiz_card_kb(view.options, version, view.uw_id)
+    return typing_card_kb(version, view.uw_id)
+
+
+async def _check_screen(
+    query: CallbackQuery, user_id: int, screen_service: ScreenVersionService, version: str
+) -> bool:
+    if not await screen_service.check(user_id, SCREEN_KIND, version):
+        await query.answer("Это действие уже устарело.", show_alert=False)
+        return False
+    return True
+
+
+async def _render_edit(
     query: CallbackQuery,
     user: User,
+    view: CardView,
+    screen_service: ScreenVersionService,
+    user_track: UserTrack | None,
+) -> None:
+    version = await screen_service.bump(user.id, SCREEN_KIND)
+    text = _card_text(view, _romaji_enabled(user_track))
+    if query.message:
+        await query.message.edit_text(text, reply_markup=_card_kb(view, version), parse_mode="HTML")
+
+
+async def _render_send(
+    message: Message,
+    user: User,
+    view: CardView,
+    screen_service: ScreenVersionService,
+    user_track: UserTrack | None,
+    prefix: str = "",
+) -> None:
+    version = await screen_service.bump(user.id, SCREEN_KIND)
+    body = _card_text(view, _romaji_enabled(user_track))
+    text = f"{prefix}\n\n{body}" if prefix else body
+    await message.answer(text, reply_markup=_card_kb(view, version), parse_mode="HTML")
+
+
+async def _finalize(
+    user: User,
+    user_track: UserTrack | None,
     session: AsyncSession,
     state_service: InteractionStateService,
     study_session: StudySessionService,
-    current_track: LearningTrack | None = None,
-) -> None:
-    snap = await study_session.finish(user.id)
-    progress = ProgressService(session)
-    await progress.update_streak(user)
+) -> str:
+    """Persist SR + streak; return the summary text (or MAIN_MENU)."""
     await state_service.clear(user.id)
-
-    if snap is None:
-        if query.message:
-            await query.message.edit_text(MAIN_MENU, reply_markup=None)
-        await query.answer()
-        return
-
-    text = STUDY_FINISHED.format(
-        correct=snap.correct,
-        wrong=snap.wrong,
-        total=snap.correct + snap.wrong,
+    if user_track is None:
+        await study_session.clear(user.id)
+        return MAIN_MENU
+    summary = await study_session.finish(user, user_track)
+    await ProgressService(session).update_streak(user)
+    if summary is None:
+        return MAIN_MENU
+    return STUDY_FINISHED.format(
+        learned=summary.learned, total=summary.total, mistakes=summary.mistakes
     )
+
+
+async def _finish_edit(
+    query: CallbackQuery,
+    user: User,
+    user_track: UserTrack | None,
+    session: AsyncSession,
+    state_service: InteractionStateService,
+    study_session: StudySessionService,
+    analytics: Analytics | None = None,
+) -> None:
+    text = await _finalize(user, user_track, session, state_service, study_session)
+    if analytics is not None and text != MAIN_MENU:
+        await analytics.emit(EVENT_STUDY_COMPLETED, user_id=user.id)
     if query.message:
-        await query.message.edit_text(text, reply_markup=finished_kb())
+        await query.message.edit_text(
+            text, reply_markup=finished_kb() if text != MAIN_MENU else None
+        )
     await query.answer()
+
+
+# --------------------------------------------------------------------------- #
+# Handlers
+# --------------------------------------------------------------------------- #
 
 
 @router.callback_query(StudyCB.filter(F.action == "start"))
@@ -231,150 +166,47 @@ async def on_start(
     analytics: Analytics,
 ) -> None:
     try:
-        mode = StudyMode(callback_data.mode or StudyMode.CLASSIC.value)
         scope = StudyScope(callback_data.scope or StudyScope.GOAL.value)
     except ValueError:
         await query.answer()
         return
-    await start_session(
-        query=query,
+
+    studied_today = await ProgressService(session).studied_today_count(
+        user.id, current_track, tz_name=user.timezone
+    )
+    view = await study_session.start(
         user=user,
         user_track=user_track,
-        current_track=current_track,
-        session=session,
-        state_service=state_service,
-        study_session=study_session,
-        screen_service=screen_service,
-        analytics=analytics,
-        mode=mode,
+        track=current_track,
         scope=scope,
         scope_ref_id=callback_data.scope_ref_id or None,
+        studied_today=studied_today,
     )
-
-
-async def _check_screen(query: CallbackQuery, user_id: int, screen_service: ScreenVersionService, version: str) -> bool:
-    if not await screen_service.check(user_id, SCREEN_KIND, version):
-        await query.answer("Это действие уже устарело.", show_alert=False)
-        return False
-    return True
-
-
-@router.callback_query(StudyCB.filter(F.action == "show_translation"))
-async def on_show_translation(
-    query: CallbackQuery,
-    callback_data: StudyCB,
-    user: User,
-    user_track: UserTrack,
-    session: AsyncSession,
-    state_service: InteractionStateService,
-    study_session: StudySessionService,
-    screen_service: ScreenVersionService,
-) -> None:
-    if not await _check_screen(query, user.id, screen_service, callback_data.v):
+    if view is None:
+        await state_service.clear(user.id)
+        if query.message:
+            await query.message.edit_text(STUDY_NO_WORDS, reply_markup=None)
+        await query.answer()
         return
-    await study_session.reveal_translation(user.id)
-    await render_current_card(query, user, session, state_service, study_session, screen_service, user_track=user_track)
-    await query.answer()
 
-
-@router.callback_query(StudyCB.filter(F.action == "example"))
-async def on_example(
-    query: CallbackQuery,
-    callback_data: StudyCB,
-    user: User,
-    screen_service: ScreenVersionService,
-    study_session: StudySessionService,
-) -> None:
-    if not await _check_screen(query, user.id, screen_service, callback_data.v):
-        return
-    card = await study_session.current_card(user.id)
-    if card is None or not card.example:
-        await query.answer(STUDY_EXAMPLE_MISSING, show_alert=True)
-        return
-    await query.answer(card.example, show_alert=True)
-
-
-@router.callback_query(StudyCB.filter(F.action == "skip"))
-async def on_skip(
-    query: CallbackQuery,
-    callback_data: StudyCB,
-    user: User,
-    user_track: UserTrack,
-    current_track: LearningTrack,
-    session: AsyncSession,
-    state_service: InteractionStateService,
-    study_session: StudySessionService,
-    screen_service: ScreenVersionService,
-) -> None:
-    if not await _check_screen(query, user.id, screen_service, callback_data.v):
-        return
-    snap = await study_session.skip(user.id)
-    if snap is None or study_session.is_complete(snap):
-        await finish_and_render(query, user, session, state_service, study_session, current_track)
-        return
-    await render_current_card(query, user, session, state_service, study_session, screen_service, user_track=user_track)
+    await state_service.set(user.id, InteractionState.STUDY_ACTIVE)
+    await analytics.emit(
+        EVENT_STUDY_STARTED,
+        user_id=user.id,
+        track=current_track.value,
+        scope=scope.value,
+        words_total=view.total,
+    )
+    await _render_edit(query, user, view, screen_service, user_track)
     await query.answer()
 
 
 @router.callback_query(StudyCB.filter(F.action == "answer"))
-async def on_answer(
+async def on_quiz_answer(
     query: CallbackQuery,
     callback_data: StudyCB,
     user: User,
     user_track: UserTrack,
-    current_track: LearningTrack,
-    session: AsyncSession,
-    state_service: InteractionStateService,
-    study_session: StudySessionService,
-    screen_service: ScreenVersionService,
-) -> None:
-    if not await _check_screen(query, user.id, screen_service, callback_data.v):
-        return
-    snap = await study_session.get(user.id)
-    if snap is None:
-        await query.answer()
-        return
-
-    if snap.mode == StudyMode.QUIZ.value:
-        if not callback_data.answer.startswith("q"):
-            await query.answer()
-            return
-        try:
-            idx = int(callback_data.answer[1:])
-        except ValueError:
-            await query.answer()
-            return
-        card = await study_session.current_card(user.id)
-        if card is None:
-            await query.answer()
-            return
-        options = snap.quiz_options.get(str(card.user_word_id)) or []
-        if idx < 0 or idx >= len(options):
-            await query.answer()
-            return
-        is_correct = options[idx] == card.translation
-        result = ReviewResult.CORRECT if is_correct else ReviewResult.WRONG
-    else:
-        try:
-            result = ReviewResult(callback_data.answer)
-        except ValueError:
-            await query.answer()
-            return
-
-    new_snap = await study_session.answer(user, user_track, result)
-    if new_snap is None or study_session.is_complete(new_snap):
-        await finish_and_render(query, user, session, state_service, study_session, current_track)
-        return
-    await render_current_card(query, user, session, state_service, study_session, screen_service, user_track=user_track)
-    await query.answer("✓" if result in (ReviewResult.EASY, ReviewResult.NORMAL, ReviewResult.CORRECT) else "")
-
-
-@router.callback_query(StudyCB.filter(F.action == "finish"))
-async def on_finish(
-    query: CallbackQuery,
-    callback_data: StudyCB,
-    user: User,
-    current_track: LearningTrack,
     session: AsyncSession,
     state_service: InteractionStateService,
     study_session: StudySessionService,
@@ -383,17 +215,141 @@ async def on_finish(
 ) -> None:
     if not await _check_screen(query, user.id, screen_service, callback_data.v):
         return
-    snap = await study_session.get(user.id)
-    if snap is not None:
-        await analytics.emit(
-            EVENT_STUDY_COMPLETED,
-            user_id=user.id,
-            track=snap.track,
-            correct=snap.correct,
-            wrong=snap.wrong,
-            total=snap.correct + snap.wrong,
-        )
-    await finish_and_render(query, user, session, state_service, study_session, current_track)
+    view = await study_session.current_view(user.id)
+    if view is None:
+        await _finish_edit(query, user, user_track, session, state_service, study_session, analytics)
+        return
+    if view.stage != STAGE_QUIZ or not callback_data.answer.startswith("q"):
+        await query.answer(STUDY_USE_BUTTONS)
+        return
+    try:
+        idx = int(callback_data.answer[1:])
+    except ValueError:
+        await query.answer()
+        return
+    if idx < 0 or idx >= len(view.options):
+        await query.answer()
+        return
+
+    correct = view.options[idx] == view.translation
+    new_view = await study_session.answer(user.id, correct)
+    if new_view is None:
+        await _finish_edit(query, user, user_track, session, state_service, study_session, analytics)
+        return
+    await _render_edit(query, user, new_view, screen_service, user_track)
+    await query.answer("✅" if correct else "❌")
+
+
+@router.message(InState(InteractionState.STUDY_ACTIVE), F.text)
+async def on_typing_answer(
+    message: Message,
+    user: User,
+    user_track: UserTrack,
+    session: AsyncSession,
+    state_service: InteractionStateService,
+    study_session: StudySessionService,
+    screen_service: ScreenVersionService,
+    analytics: Analytics,
+) -> None:
+    view = await study_session.current_view(user.id)
+    if view is None:
+        return
+    if view.stage == STAGE_QUIZ:
+        await message.answer(STUDY_USE_BUTTONS)
+        return
+
+    correct = is_typing_correct(message.text or "", view.writing)
+    prefix = STUDY_ANSWER_CORRECT if correct else STUDY_ANSWER_WRONG.format(answer=view.writing)
+    new_view = await study_session.answer(user.id, correct)
+    if new_view is None:
+        text = await _finalize(user, user_track, session, state_service, study_session)
+        if text != MAIN_MENU:
+            await analytics.emit(EVENT_STUDY_COMPLETED, user_id=user.id)
+            await message.answer(f"{prefix}\n\n{text}", reply_markup=finished_kb())
+        else:
+            await message.answer(text)
+        return
+    await _render_send(message, user, new_view, screen_service, user_track, prefix=prefix)
+
+
+@router.callback_query(StudyCB.filter(F.action == "skip"))
+async def on_skip(
+    query: CallbackQuery,
+    callback_data: StudyCB,
+    user: User,
+    user_track: UserTrack,
+    session: AsyncSession,
+    state_service: InteractionStateService,
+    study_session: StudySessionService,
+    screen_service: ScreenVersionService,
+    analytics: Analytics,
+) -> None:
+    if not await _check_screen(query, user.id, screen_service, callback_data.v):
+        return
+    new_view = await study_session.skip(user.id)
+    if new_view is None:
+        await _finish_edit(query, user, user_track, session, state_service, study_session, analytics)
+        return
+    await _render_edit(query, user, new_view, screen_service, user_track)
+    await query.answer("Пропущено")
+
+
+@router.callback_query(StudyCB.filter(F.action == "hint"))
+async def on_hint(
+    query: CallbackQuery,
+    callback_data: StudyCB,
+    user: User,
+    screen_service: ScreenVersionService,
+    study_session: StudySessionService,
+) -> None:
+    if not await _check_screen(query, user.id, screen_service, callback_data.v):
+        return
+    view = await study_session.current_view(user.id)
+    if view is None:
+        await query.answer()
+        return
+    parts = [f"Начинается с «{view.writing[:1]}…»"]
+    if view.example:
+        parts.append(view.example)
+    await query.answer("\n".join(parts), show_alert=True)
+
+
+@router.callback_query(StudyCB.filter(F.action == "finish"))
+async def on_finish(
+    query: CallbackQuery,
+    callback_data: StudyCB,
+    user: User,
+    user_track: UserTrack,
+    session: AsyncSession,
+    state_service: InteractionStateService,
+    study_session: StudySessionService,
+    screen_service: ScreenVersionService,
+    analytics: Analytics,
+) -> None:
+    if not await _check_screen(query, user.id, screen_service, callback_data.v):
+        return
+    await _finish_edit(query, user, user_track, session, state_service, study_session, analytics)
+
+
+# --------------------------------------------------------------------------- #
+# Called from the delete-confirmation flow in my_words.py
+# --------------------------------------------------------------------------- #
+
+
+async def render_current_card(
+    query: CallbackQuery,
+    user: User,
+    session: AsyncSession,
+    state_service: InteractionStateService,
+    study_session: StudySessionService,
+    screen_service: ScreenVersionService,
+    user_track: UserTrack | None = None,
+) -> None:
+    view = await study_session.current_view(user.id)
+    if view is None:
+        await _finish_edit(query, user, user_track, session, state_service, study_session)
+        return
+    await _render_edit(query, user, view, screen_service, user_track)
 
 
 async def handle_in_study_delete(
@@ -405,10 +361,10 @@ async def handle_in_study_delete(
     screen_service: ScreenVersionService,
     user_track: UserTrack | None = None,
 ) -> None:
-    snap = await study_session.delete_current(user.id)
+    new_view = await study_session.delete_current(user.id)
     await state_service.set(user.id, InteractionState.STUDY_ACTIVE)
-    if snap is None or study_session.is_complete(snap):
-        await finish_and_render(query, user, session, state_service, study_session)
+    if new_view is None:
+        await _finish_edit(query, user, user_track, session, state_service, study_session)
         return
-    await query.answer("Удалено.")
-    await render_current_card(query, user, session, state_service, study_session, screen_service, user_track=user_track)
+    await query.answer("Удалено")
+    await _render_edit(query, user, new_view, screen_service, user_track)

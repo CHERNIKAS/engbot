@@ -20,7 +20,7 @@ from app.bot.texts import (
     MY_WORDS_TITLE,
 )
 from app.domain.enums import LearningTrack, StudyMode, StudyScope
-from app.domain.models import User
+from app.domain.models import User, UserTrack
 from app.infrastructure.repositories.categories import CategoryRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
 from app.services.category_service import CategoryService
@@ -161,6 +161,7 @@ async def on_delete_confirm(
     state_service: InteractionStateService,
     study_session,
     screen_service,
+    user_track: UserTrack | None = None,
 ) -> None:
     if not await screen_service.check(user.id, DELETE_SCREEN_KIND, callback_data.v):
         await query.answer("Это действие уже устарело.", show_alert=False)
@@ -170,6 +171,7 @@ async def on_delete_confirm(
         await handle_in_study_delete(
             query=query,
             user=user,
+            user_track=user_track,
             session=session,
             state_service=state_service,
             study_session=study_session,

@@ -59,6 +59,7 @@ TEXT_ACCEPTING_STATES: frozenset[InteractionState] = frozenset(
         InteractionState.WAITING_MANUAL_WORDS,
         InteractionState.WAITING_NEW_CATEGORY_NAME,
         InteractionState.SETTINGS_GOAL_INPUT,
+        InteractionState.STUDY_ACTIVE,  # typing-stage answers
     }
 )
 

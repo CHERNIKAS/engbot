@@ -3,7 +3,7 @@ from __future__ import annotations
 import pytest
 
 from app.bot.callbacks.schema import StudyCB
-from app.bot.keyboards.study import quiz_kb
+from app.bot.keyboards.study import quiz_card_kb
 
 
 TELEGRAM_CALLBACK_LIMIT = 64
@@ -15,7 +15,7 @@ def test_quiz_callback_uses_index_not_translation_text():
     aiogram's `:` field separator if the text contains a colon."""
     long_translation = "невероятно длинный перевод с двоеточием: и пробелами"
     version = "abcd"
-    kb = quiz_kb(
+    kb = quiz_card_kb(
         options=[long_translation, "вариант B", "вариант C", "вариант D"],
         version=version,
         user_word_id=123456,

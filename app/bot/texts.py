@@ -85,10 +85,14 @@ MY_WORDS_TITLE = "📁 {category}\nСлов: {count}"
 STUDY_NO_WORDS = "Сегодня нечего учить. Добавь слов или загляни в «📦 Паки»."
 STUDY_FINISHED = (
     "✅ Сессия завершена\n\n"
-    "Верно: {correct}\n"
-    "Ошибки: {wrong}\n"
-    "Всего: {total}"
+    "Освоено: {learned} из {total}\n"
+    "Ошибок: {mistakes}"
 )
+STUDY_QUIZ_PROMPT = "Выбери перевод:"
+STUDY_TYPE_PROMPT = "✍️ Напиши по-английски:"
+STUDY_ANSWER_CORRECT = "✅ Верно!"
+STUDY_ANSWER_WRONG = "❌ Неверно. Правильно: {answer}"
+STUDY_USE_BUTTONS = "Выбери вариант кнопкой 👆"
 STUDY_CARD_NO_TRANSLATION = "(перевода нет)"
 STUDY_EXAMPLE_MISSING = "Для этого слова пока нет примера."
 

@@ -2,9 +2,7 @@ from __future__ import annotations
 
 import json
 import random
-from dataclasses import asdict, dataclass, field
-from datetime import datetime
-from typing import Any
+from dataclasses import dataclass
 
 from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -15,10 +13,10 @@ from app.domain.enums import (
     LearningPace,
     LearningTrack,
     ReviewResult,
-    StudyMode,
     StudyScope,
 )
 from app.domain.models import User, UserTrack
+from app.domain.study_drill import STAGE_QUIZ, DrillState
 from app.infrastructure.repositories.reviews import WordReviewRepository
 from app.infrastructure.repositories.sessions import StudySessionRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
@@ -28,35 +26,33 @@ SESSION_KEY = "session:{user_id}"
 
 
 @dataclass
-class StudyCardSnapshot:
-    user_word_id: int
-    word_id: int
+class CardView:
+    uw_id: int
+    stage: str
     writing: str
     translation: str | None
     example: str | None
-    # Japanese-friendly fields (None for English).
+    options: list[str]
+    learned: int
+    total: int
     kana: str | None = None
     romaji: str | None = None
     script_type: str | None = None
-    level: str | None = None
 
 
 @dataclass
-class StudySessionSnapshot:
-    session_id: int
-    track: str
-    mode: str
-    scope: str
-    scope_ref_id: int | None
-    cards: list[dict]
-    index: int = 0
-    correct: int = 0
-    wrong: int = 0
-    quiz_options: dict[str, list[str]] = field(default_factory=dict)
-    revealed: dict[str, bool] = field(default_factory=dict)
+class FinishSummary:
+    learned: int
+    total: int
+    mistakes: int
 
 
 class StudySessionService:
+    """Drill-based study: each word is cleared through QUIZ then TYPE, and wrong
+    answers keep coming back until answered correctly. Spaced repetition is
+    persisted once, on finish, from how many mistakes a word needed (mistakes →
+    shorter interval → it returns sooner)."""
+
     def __init__(self, session: AsyncSession, redis: Redis) -> None:
         self._session = session
         self._redis = redis
@@ -68,22 +64,19 @@ class StudySessionService:
     def _key(self, user_id: int) -> str:
         return SESSION_KEY.format(user_id=user_id)
 
-    async def get(self, user_id: int) -> StudySessionSnapshot | None:
+    async def _get_raw(self, user_id: int) -> dict | None:
         raw = await self._redis.get(self._key(user_id))
         if not raw:
             return None
         try:
-            data = json.loads(raw)
+            return json.loads(raw)
         except json.JSONDecodeError:
             await self._redis.delete(self._key(user_id))
             return None
-        return StudySessionSnapshot(**data)
 
-    async def _save(self, user_id: int, snap: StudySessionSnapshot) -> None:
+    async def _save_raw(self, user_id: int, snap: dict) -> None:
         await self._redis.set(
-            self._key(user_id),
-            json.dumps(asdict(snap), ensure_ascii=False),
-            ex=self._ttl,
+            self._key(user_id), json.dumps(snap, ensure_ascii=False), ex=self._ttl
         )
 
     async def clear(self, user_id: int) -> None:
@@ -94,11 +87,10 @@ class StudySessionService:
         user: User,
         user_track: UserTrack,
         track: LearningTrack,
-        mode: StudyMode,
         scope: StudyScope,
         scope_ref_id: int | None = None,
         studied_today: int = 0,
-    ) -> StudySessionSnapshot | None:
+    ) -> CardView | None:
         pace = LearningPace(user_track.learning_pace)
         new_cap = PACE_NEW_WORDS_PER_SESSION.get(pace, 6)
 
@@ -110,7 +102,6 @@ class StudySessionService:
             limit = max(user_track.daily_goal_words, 20)
 
         category_id = scope_ref_id if scope == StudyScope.CATEGORY else None
-
         rows = await self._user_words.pick_for_study(
             user_id=user.id,
             track=track,
@@ -119,150 +110,161 @@ class StudySessionService:
             category_id=category_id,
             scope=scope.value,
         )
+        # Only testable words (with a translation) can be quizzed/typed.
+        rows = [(uw, w) for uw, w in rows if (uw.custom_translation or w.translation)]
         if not rows:
             return None
 
-        cards = [
-            asdict(
-                StudyCardSnapshot(
-                    user_word_id=uw.id,
-                    word_id=w.id,
-                    writing=w.writing,
-                    translation=uw.custom_translation or w.translation,
-                    example=w.example_sentence,
-                    kana=w.kana,
-                    romaji=w.romaji,
-                    script_type=w.script_type,
-                    level=w.level,
-                )
+        cards: dict[str, dict] = {}
+        quiz_options: dict[str, list[str]] = {}
+        for uw, w in rows:
+            correct = uw.custom_translation or w.translation
+            cards[str(uw.id)] = {
+                "writing": w.writing,
+                "translation": correct,
+                "example": w.example_sentence,
+                "kana": w.kana,
+                "romaji": w.romaji,
+                "script_type": w.script_type,
+            }
+            distractors = await self._user_words.quiz_distractors(
+                user.id,
+                track=track,
+                exclude_user_word_id=uw.id,
+                limit=3,
+                exclude_translations=[correct],
             )
-            for uw, w in rows
-        ]
+            opts = [correct, *distractors[:3]]
+            random.shuffle(opts)
+            quiz_options[str(uw.id)] = opts
 
         db_session = await self._sessions.create(
             user_id=user.id,
             track=track,
-            mode=mode.value,
+            mode="learn",
             scope=scope.value,
             scope_ref_id=scope_ref_id,
-            words_total=len(cards),
+            words_total=len(rows),
         )
 
-        quiz_options: dict[str, list[str]] = {}
-        if mode == StudyMode.QUIZ:
-            for uw, _w in rows:
-                if not uw.custom_translation and not _w.translation:
-                    continue
-                correct = uw.custom_translation or _w.translation
-                distractors = await self._user_words.quiz_distractors(
-                    user.id,
-                    track=track,
-                    exclude_user_word_id=uw.id,
-                    limit=3,
-                    exclude_translations=[correct],
-                )
-                opts = [correct, *distractors[:3]]
-                random.shuffle(opts)
-                quiz_options[str(uw.id)] = opts
+        drill = DrillState.new([uw.id for uw, _ in rows])
+        snap = {
+            "session_id": db_session.id,
+            "track": track.value,
+            "scope": scope.value,
+            "scope_ref_id": scope_ref_id,
+            "cards": cards,
+            "quiz_options": quiz_options,
+            "drill": drill.to_dict(),
+        }
+        await self._save_raw(user.id, snap)
+        return self._view(snap, drill)
 
-        snap = StudySessionSnapshot(
-            session_id=db_session.id,
-            track=track.value,
-            mode=mode.value,
-            scope=scope.value,
-            scope_ref_id=scope_ref_id,
-            cards=cards,
-            quiz_options=quiz_options,
+    def _view(self, snap: dict, drill: DrillState) -> CardView | None:
+        cur = drill.current()
+        if cur is None:
+            return None
+        uw_id, stage = cur
+        card = snap["cards"].get(str(uw_id))
+        if card is None:
+            return None
+        options = snap["quiz_options"].get(str(uw_id), []) if stage == STAGE_QUIZ else []
+        return CardView(
+            uw_id=uw_id,
+            stage=stage,
+            writing=card["writing"],
+            translation=card.get("translation"),
+            example=card.get("example"),
+            options=options,
+            learned=drill.learned_count(),
+            total=drill.total,
+            kana=card.get("kana"),
+            romaji=card.get("romaji"),
+            script_type=card.get("script_type"),
         )
-        await self._save(user.id, snap)
-        return snap
 
-    async def current_card(self, user_id: int) -> StudyCardSnapshot | None:
-        snap = await self.get(user_id)
+    async def current_view(self, user_id: int) -> CardView | None:
+        snap = await self._get_raw(user_id)
         if snap is None:
             return None
-        if snap.index >= len(snap.cards):
-            return None
-        return StudyCardSnapshot(**snap.cards[snap.index])
+        return self._view(snap, DrillState.from_dict(snap["drill"]))
 
-    async def reveal_translation(self, user_id: int) -> None:
-        snap = await self.get(user_id)
+    async def answer(self, user_id: int, correct: bool) -> CardView | None:
+        snap = await self._get_raw(user_id)
         if snap is None:
-            return
-        snap.revealed[str(snap.index)] = True
-        await self._save(user_id, snap)
+            return None
+        drill = DrillState.from_dict(snap["drill"])
+        drill.answer(correct)
+        snap["drill"] = drill.to_dict()
+        await self._save_raw(user_id, snap)
+        return self._view(snap, drill)
 
-    async def answer(
-        self,
-        user: User,
-        user_track: UserTrack,
-        result: ReviewResult,
-    ) -> StudySessionSnapshot | None:
-        snap = await self.get(user.id)
-        if snap is None or snap.index >= len(snap.cards):
-            return snap
+    async def skip(self, user_id: int) -> CardView | None:
+        snap = await self._get_raw(user_id)
+        if snap is None:
+            return None
+        drill = DrillState.from_dict(snap["drill"])
+        drill.skip()
+        snap["drill"] = drill.to_dict()
+        await self._save_raw(user_id, snap)
+        return self._view(snap, drill)
 
-        card = StudyCardSnapshot(**snap.cards[snap.index])
-        track = LearningTrack(snap.track)
+    async def delete_current(self, user_id: int) -> CardView | None:
+        snap = await self._get_raw(user_id)
+        if snap is None:
+            return None
+        drill = DrillState.from_dict(snap["drill"])
+        cur = drill.current()
+        if cur is not None:
+            uw_id, _ = cur
+            await self._user_words.delete(uw_id)
+            drill.remove_current()
+            snap["cards"].pop(str(uw_id), None)
+            snap["quiz_options"].pop(str(uw_id), None)
+        snap["drill"] = drill.to_dict()
+        await self._save_raw(user_id, snap)
+        return self._view(snap, drill)
 
-        user_word = await self._user_words.get(card.user_word_id)
-        if user_word is not None:
-            apply_review(user_word, result, LearningPace(user_track.learning_pace))
-            await self._session.flush()
+    async def is_complete(self, user_id: int) -> bool:
+        snap = await self._get_raw(user_id)
+        if snap is None:
+            return True
+        return DrillState.from_dict(snap["drill"]).is_complete()
 
+    async def finish(self, user: User, user_track: UserTrack) -> FinishSummary | None:
+        snap = await self._get_raw(user.id)
+        if snap is None:
+            return None
+        drill = DrillState.from_dict(snap["drill"])
+        pace = LearningPace(user_track.learning_pace)
+        track = LearningTrack(snap["track"])
+
+        for uw_id in drill.learned:
+            uw = await self._user_words.get(uw_id)
+            if uw is None:
+                continue
+            m = drill.mistakes_for(uw_id)
+            if m == 0:
+                result = ReviewResult.NORMAL
+            elif m <= 2:
+                result = ReviewResult.HARD
+            else:
+                result = ReviewResult.WRONG
+            apply_review(uw, result, pace)
             await self._reviews.create(
                 user_id=user.id,
                 track=track,
-                user_word_id=user_word.id,
-                session_id=snap.session_id,
+                user_word_id=uw.id,
+                session_id=snap["session_id"],
                 result=result.value,
             )
+        await self._session.flush()
 
-        if result in (ReviewResult.EASY, ReviewResult.NORMAL, ReviewResult.CORRECT):
-            snap.correct += 1
-        else:
-            snap.wrong += 1
-
-        await self._sessions.increment_counters(
-            snap.session_id,
-            correct_delta=1 if result in (ReviewResult.EASY, ReviewResult.NORMAL, ReviewResult.CORRECT) else 0,
-            wrong_delta=1 if result in (ReviewResult.HARD, ReviewResult.WRONG) else 0,
+        mistakes_total = sum(int(v) for v in drill.mistakes.values())
+        await self._sessions.finish(
+            snap["session_id"], correct=drill.learned_count(), wrong=mistakes_total
         )
-
-        snap.index += 1
-        await self._save(user.id, snap)
-        return snap
-
-    async def skip(self, user_id: int) -> StudySessionSnapshot | None:
-        snap = await self.get(user_id)
-        if snap is None or snap.index >= len(snap.cards):
-            return snap
-        snap.index += 1
-        await self._save(user_id, snap)
-        return snap
-
-    async def delete_current(self, user_id: int) -> StudySessionSnapshot | None:
-        snap = await self.get(user_id)
-        if snap is None or snap.index >= len(snap.cards):
-            return snap
-        card = StudyCardSnapshot(**snap.cards[snap.index])
-        await self._user_words.delete(card.user_word_id)
-        snap.cards.pop(snap.index)
-        if snap.session_id:
-            db_session = await self._sessions.get(snap.session_id)
-            if db_session is not None:
-                db_session.words_total = max(0, db_session.words_total - 1)
-                await self._session.flush()
-        await self._save(user_id, snap)
-        return snap
-
-    async def finish(self, user_id: int) -> StudySessionSnapshot | None:
-        snap = await self.get(user_id)
-        if snap is None:
-            return None
-        await self._sessions.finish(snap.session_id, correct=snap.correct, wrong=snap.wrong)
-        await self.clear(user_id)
-        return snap
-
-    def is_complete(self, snap: StudySessionSnapshot) -> bool:
-        return snap.index >= len(snap.cards)
+        await self.clear(user.id)
+        return FinishSummary(
+            learned=drill.learned_count(), total=drill.total, mistakes=mistakes_total
+        )
