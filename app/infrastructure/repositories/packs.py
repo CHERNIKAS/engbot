@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-from sqlalchemy import select
+from sqlalchemy import and_, func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.domain.enums import LearningTrack
-from app.domain.models import Pack, PackWord, Word
+from app.domain.enums import LearningTrack, WordStatus
+from app.domain.models import Pack, PackWord, UserWord, Word
 
 
 class PackRepository:
@@ -61,3 +61,28 @@ class PackRepository:
             select(PackWord.word_id).where(PackWord.pack_id == pack_id).order_by(PackWord.position.asc())
         )
         return [r[0] for r in result.all()]
+
+    async def stats_for_user(
+        self, user_id: int, track: LearningTrack
+    ) -> dict[int, tuple[int, int]]:
+        """Per-pack (owned, mastered) counts for one user — one query, no N+1."""
+        q = (
+            select(
+                PackWord.pack_id,
+                func.count(UserWord.id),
+                func.count(UserWord.id).filter(
+                    UserWord.status == WordStatus.MASTERED.value
+                ),
+            )
+            .join(
+                UserWord,
+                and_(
+                    UserWord.word_id == PackWord.word_id,
+                    UserWord.user_id == user_id,
+                    UserWord.track == track.value,
+                ),
+            )
+            .group_by(PackWord.pack_id)
+        )
+        rows = (await self.session.execute(q)).all()
+        return {int(r[0]): (int(r[1]), int(r[2])) for r in rows}

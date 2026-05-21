@@ -138,6 +138,14 @@ PACE_LABELS = {
     "hardcore": "💀 Hardcore",
 }
 
+PACKS_TITLE = (
+    "📦 Паки\n"
+    "Отметь нужные и нажми «Добавить выбранные». "
+    "Каждый пак станет папкой в «📚 Мои слова»."
+)
+PACKS_ADDED_SUMMARY = "✅ Добавлено: {added} новых слов из {packs} паков."
+PACKS_NONE_SELECTED = "Ничего не выбрано."
+
 PACKS_PICK_CATEGORIES = "Выбери категории паков:"
 PACKS_LIST_TITLE = "Доступные паки"
 PACK_PREVIEW = "<b>{title}</b>\n{description}\n\nСлов: {count}"

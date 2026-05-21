@@ -53,11 +53,12 @@ class ImportCB(CallbackData, prefix="imp"):
     v: str = ""  # screen version
 
 
-# Packs.
+# Packs browser (ReWord-style checklist).
 class PacksCB(CallbackData, prefix="pk"):
-    action: str  # menu | toggle_cat | reset_cats | list | preview | add
+    action: str  # menu | toggle | page | reset | add
     category: str = ""
     pack_id: int = 0
+    page: int = 0
 
 
 # Study session.

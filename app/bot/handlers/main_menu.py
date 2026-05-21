@@ -8,7 +8,6 @@ from app.bot.callbacks.schema import NavCB
 from app.bot.keyboards.common import cancel_only_kb
 from app.bot.keyboards.main_menu import main_menu_reply_kb
 from app.bot.keyboards.my_words import categories_overview_kb
-from app.bot.keyboards.packs import pack_categories_kb
 from app.bot.keyboards.settings import settings_kb
 from app.bot.keyboards.study import study_menu_kb
 from app.bot.states import InteractionState
@@ -24,7 +23,6 @@ from app.bot.texts import (
     MAIN_MENU,
     MY_WORDS_EMPTY,
     PACE_LABELS,
-    PACKS_PICK_CATEGORIES,
     PROGRESS_TITLE,
     SETTINGS_TITLE,
     TXT_PROMPT,
@@ -32,7 +30,6 @@ from app.bot.texts import (
 from app.domain.enums import LearningTrack, TRACK_LABELS
 from app.domain.models import User, UserTrack
 from app.infrastructure.repositories.categories import CategoryRepository
-from app.infrastructure.repositories.packs import PackRepository
 from app.services.category_service import CategoryService
 from app.services.interaction_state_service import InteractionStateService
 from app.services.progress_service import ProgressService
@@ -111,12 +108,9 @@ async def msg_packs(
     session: AsyncSession,
     state_service: InteractionStateService,
 ) -> None:
-    categories = await PackRepository(session).list_categories(current_track)
-    await state_service.set(user.id, InteractionState.PACK_SELECTION, {"selected": []})
-    await message.answer(
-        PACKS_PICK_CATEGORIES,
-        reply_markup=pack_categories_kb(categories, selected=set()),
-    )
+    from app.bot.handlers.packs import open_packs
+
+    await open_packs(message, user, current_track, session, state_service)
 
 
 @router.message(F.text == BTN_PROGRESS)

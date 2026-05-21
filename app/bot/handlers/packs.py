@@ -1,41 +1,74 @@
 from __future__ import annotations
 
 from aiogram import F, Router
-from aiogram.types import CallbackQuery
+from aiogram.types import CallbackQuery, InlineKeyboardMarkup, Message
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.bot.callbacks.schema import CategoryCB, PacksCB
-from app.bot.keyboards.main_menu import main_menu_kb
-from app.bot.keyboards.packs import (
-    pack_add_category_kb,
-    pack_categories_kb,
-    pack_list_kb,
-    pack_preview_kb,
-)
+from app.bot.callbacks.schema import PacksCB
+from app.bot.keyboards.packs import PACK_PAGE_SIZE, pack_browser_kb
 from app.bot.states import InteractionState
-from app.bot.texts import (
-    PACKS_LIST_TITLE,
-    PACKS_PICK_CATEGORIES,
-    PACK_ADDED,
-    PACK_ALREADY_ADDED,
-    PACK_PREVIEW,
-)
+from app.bot.texts import PACKS_ADDED_SUMMARY, PACKS_NONE_SELECTED, PACKS_TITLE
 from app.domain.enums import LearningTrack
 from app.domain.models import User
 from app.infrastructure.repositories.categories import CategoryRepository
 from app.infrastructure.repositories.packs import PackRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
 from app.services.analytics import EVENT_PACK_ADDED, Analytics
-from app.services.category_service import CategoryService
+from app.services.category_service import CategoryService, CategoryServiceError
 from app.services.interaction_state_service import InteractionStateService
 from app.services.pack_service import PackService
-from app.services.user_track_service import UserTrackService
 
 router = Router(name="packs")
 
 
-def _selected(payload) -> set[str]:
-    return set((payload.data or {}).get("selected") or [])
+def _selected(payload) -> set[int]:
+    return {int(x) for x in (payload.data or {}).get("selected") or []}
+
+
+async def _browser_view(
+    user_id: int,
+    track: LearningTrack,
+    session: AsyncSession,
+    page: int,
+    selected: set[int],
+) -> tuple[str, InlineKeyboardMarkup | None]:
+    repo = PackRepository(session)
+    packs = await repo.list_active(track)
+    if not packs:
+        return "Паков для этого трека пока нет.", None
+    stats = await repo.stats_for_user(user_id, track)
+    total_pages = max(1, (len(packs) + PACK_PAGE_SIZE - 1) // PACK_PAGE_SIZE)
+    page = max(0, min(page, total_pages - 1))
+    page_packs = packs[page * PACK_PAGE_SIZE : (page + 1) * PACK_PAGE_SIZE]
+    return PACKS_TITLE, pack_browser_kb(page_packs, stats, selected, page, total_pages)
+
+
+async def open_packs(
+    message: Message,
+    user: User,
+    current_track: LearningTrack,
+    session: AsyncSession,
+    state_service: InteractionStateService,
+) -> None:
+    """Entry point from the bottom menu (📦 Паки)."""
+    await state_service.set(user.id, InteractionState.PACK_SELECTION, {"selected": []})
+    text, kb = await _browser_view(user.id, current_track, session, 0, set())
+    await message.answer(text, reply_markup=kb)
+
+
+async def _rerender(
+    query: CallbackQuery,
+    user: User,
+    current_track: LearningTrack,
+    session: AsyncSession,
+    state_service: InteractionStateService,
+    page: int,
+) -> None:
+    payload = await state_service.get(user.id)
+    selected = _selected(payload)
+    text, kb = await _browser_view(user.id, current_track, session, page, selected)
+    if query.message:
+        await query.message.edit_text(text, reply_markup=kb)
 
 
 @router.callback_query(PacksCB.filter(F.action == "menu"))
@@ -46,18 +79,13 @@ async def on_packs_menu(
     session: AsyncSession,
     state_service: InteractionStateService,
 ) -> None:
-    categories = await PackRepository(session).list_categories(current_track)
     await state_service.set(user.id, InteractionState.PACK_SELECTION, {"selected": []})
-    if query.message:
-        await query.message.edit_text(
-            PACKS_PICK_CATEGORIES,
-            reply_markup=pack_categories_kb(categories, set()),
-        )
+    await _rerender(query, user, current_track, session, state_service, 0)
     await query.answer()
 
 
-@router.callback_query(PacksCB.filter(F.action == "toggle_cat"))
-async def on_toggle_cat(
+@router.callback_query(PacksCB.filter(F.action == "toggle"))
+async def on_toggle(
     query: CallbackQuery,
     callback_data: PacksCB,
     user: User,
@@ -67,25 +95,34 @@ async def on_toggle_cat(
 ) -> None:
     payload = await state_service.get(user.id)
     if payload.state != InteractionState.PACK_SELECTION:
-        await query.answer()
-        return
+        await state_service.set(user.id, InteractionState.PACK_SELECTION, {"selected": []})
+        payload = await state_service.get(user.id)
     selected = _selected(payload)
-    cat = callback_data.category
-    if cat in selected:
-        selected.remove(cat)
+    pid = callback_data.pack_id
+    if pid in selected:
+        selected.discard(pid)
     else:
-        selected.add(cat)
+        selected.add(pid)
     await state_service.update_data(user.id, selected=list(selected))
-    categories = await PackRepository(session).list_categories(current_track)
-    if query.message:
-        await query.message.edit_reply_markup(
-            reply_markup=pack_categories_kb(categories, selected)
-        )
+    await _rerender(query, user, current_track, session, state_service, callback_data.page)
     await query.answer()
 
 
-@router.callback_query(PacksCB.filter(F.action == "reset_cats"))
-async def on_reset_cats(
+@router.callback_query(PacksCB.filter(F.action == "page"))
+async def on_page(
+    query: CallbackQuery,
+    callback_data: PacksCB,
+    user: User,
+    current_track: LearningTrack,
+    session: AsyncSession,
+    state_service: InteractionStateService,
+) -> None:
+    await _rerender(query, user, current_track, session, state_service, callback_data.page)
+    await query.answer()
+
+
+@router.callback_query(PacksCB.filter(F.action == "reset"))
+async def on_reset(
     query: CallbackQuery,
     user: User,
     current_track: LearningTrack,
@@ -93,129 +130,63 @@ async def on_reset_cats(
     state_service: InteractionStateService,
 ) -> None:
     await state_service.update_data(user.id, selected=[])
-    categories = await PackRepository(session).list_categories(current_track)
-    if query.message:
-        await query.message.edit_reply_markup(reply_markup=pack_categories_kb(categories, set()))
+    await _rerender(query, user, current_track, session, state_service, 0)
     await query.answer()
-
-
-@router.callback_query(PacksCB.filter(F.action == "list"))
-async def on_list(
-    query: CallbackQuery,
-    user: User,
-    current_track: LearningTrack,
-    session: AsyncSession,
-    state_service: InteractionStateService,
-) -> None:
-    payload = await state_service.get(user.id)
-    selected = list(_selected(payload))
-    packs = await PackRepository(session).list_by_categories(current_track, selected)
-    if not packs:
-        await query.answer("Нет паков по выбранным категориям.", show_alert=True)
-        return
-    if query.message:
-        await query.message.edit_text(PACKS_LIST_TITLE, reply_markup=pack_list_kb(packs))
-    await query.answer()
-
-
-@router.callback_query(PacksCB.filter(F.action == "preview"))
-async def on_preview(
-    query: CallbackQuery,
-    callback_data: PacksCB,
-    user: User,
-    session: AsyncSession,
-) -> None:
-    pack = await PackRepository(session).get(callback_data.pack_id)
-    if pack is None:
-        await query.answer("Не найдено.")
-        return
-    text = PACK_PREVIEW.format(
-        title=pack.title,
-        description=pack.description or "",
-        count=pack.words_count,
-    )
-    if query.message:
-        await query.message.edit_text(text, reply_markup=pack_preview_kb(pack.id), parse_mode="HTML")
-    await query.answer()
-
-
-CATEGORY_PICK_KIND = "cat_pick"
 
 
 @router.callback_query(PacksCB.filter(F.action == "add"))
-async def on_add_pack(
+async def on_add(
     query: CallbackQuery,
-    callback_data: PacksCB,
     user: User,
     current_track: LearningTrack,
     session: AsyncSession,
-    state_service: InteractionStateService,
-    screen_service,
-) -> None:
-    pack = await PackRepository(session).get(callback_data.pack_id)
-    if pack is None:
-        await query.answer("Не найдено.")
-        return
-    categories = await CategoryService(CategoryRepository(session)).list_user_categories(
-        user.id, current_track
-    )
-    await state_service.update_data(user.id, pending_pack_id=callback_data.pack_id)
-    version = await screen_service.bump(user.id, CATEGORY_PICK_KIND)
-    if query.message:
-        await query.message.edit_text(
-            f"Куда сохранить «{pack.title}»?",
-            reply_markup=pack_add_category_kb(pack.id, categories, version=version),
-        )
-    await query.answer()
-
-
-@router.callback_query(CategoryCB.filter((F.action == "pick") & (F.flow == "pk")))
-async def on_pick_category_for_pack(
-    query: CallbackQuery,
-    callback_data: CategoryCB,
-    user: User,
-    current_track: LearningTrack,
-    session: AsyncSession,
-    user_track_service: UserTrackService,
     state_service: InteractionStateService,
     analytics: Analytics,
-    screen_service,
 ) -> None:
-    if not await screen_service.check(user.id, CATEGORY_PICK_KIND, callback_data.v):
-        await query.answer("Это действие уже устарело.", show_alert=False)
-        return
     payload = await state_service.get(user.id)
-    pack_id = (payload.data or {}).get("pending_pack_id")
-    if not pack_id:
-        await query.answer()
+    selected = _selected(payload)
+    if not selected:
+        await query.answer(PACKS_NONE_SELECTED, show_alert=True)
         return
 
-    pack = await PackRepository(session).get(int(pack_id))
-    if pack is None:
-        await query.answer("Не найдено.")
-        return
+    pack_repo = PackRepository(session)
+    cat_repo = CategoryRepository(session)
+    cat_service = CategoryService(cat_repo)
+    pack_service = PackService(pack_repo, UserWordRepository(session))
 
-    # Use the pack's track, not the current_track — pack defines its track.
-    try:
-        track = LearningTrack(pack.track)
-    except ValueError:
-        track = current_track
+    total_added = 0
+    packs_done = 0
+    for pid in selected:
+        pack = await pack_repo.get(pid)
+        if pack is None:
+            continue
+        try:
+            track = LearningTrack(pack.track)
+        except ValueError:
+            track = current_track
+        # Each pack becomes its own folder in «Мои слова».
+        category = await cat_repo.get_by_name(user.id, track, pack.title)
+        if category is None:
+            try:
+                category = await cat_service.create(user.id, track, pack.title)
+            except CategoryServiceError:
+                category = await cat_repo.get_by_name(user.id, track, pack.title)
+        category_id = category.id if category else None
+        result = await pack_service.add_pack(user.id, track, pid, category_id)
+        total_added += result.added
+        packs_done += 1
+        await analytics.emit(
+            EVENT_PACK_ADDED,
+            user_id=user.id,
+            track=track.value,
+            pack_id=pid,
+            added=result.added,
+        )
 
-    service = PackService(PackRepository(session), UserWordRepository(session))
-    category_id = callback_data.category_id or None
-    result = await service.add_pack(
-        user_id=user.id, track=track, pack_id=int(pack_id), category_id=category_id
-    )
-    await analytics.emit(
-        EVENT_PACK_ADDED,
-        user_id=user.id,
-        track=track.value,
-        pack_id=int(pack_id),
-        added=result.added,
-    )
     await state_service.clear(user.id)
-
-    text = PACK_ADDED.format(count=result.added) if result.added > 0 else PACK_ALREADY_ADDED
     if query.message:
-        await query.message.edit_text(text, reply_markup=None)
+        await query.message.edit_text(
+            PACKS_ADDED_SUMMARY.format(added=total_added, packs=packs_done),
+            reply_markup=None,
+        )
     await query.answer()
