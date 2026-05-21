@@ -12,8 +12,54 @@ def settings_kb() -> InlineKeyboardMarkup:
         [InlineKeyboardButton(text="🎯 Дневная цель", callback_data=SettingsCB(action="goal").pack())],
         [InlineKeyboardButton(text="⚡ Темп обучения", callback_data=SettingsCB(action="pace").pack())],
         [InlineKeyboardButton(text="🔔 Пуш-обучение", callback_data=SettingsCB(action="push_open").pack())],
+        [InlineKeyboardButton(text="🕐 Часовой пояс", callback_data=SettingsCB(action="tz_open").pack())],
         [home_button()],
     ]
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+# IANA timezone → label (CIS/Europe focus; DST handled by zoneinfo).
+TZ_ZONES: list[tuple[str, str]] = [
+    ("UTC", "🌍 UTC"),
+    ("Europe/Kaliningrad", "Калининград +2"),
+    ("Europe/Moscow", "Москва +3"),
+    ("Europe/Samara", "Самара +4"),
+    ("Asia/Yekaterinburg", "Екатеринбург +5"),
+    ("Asia/Omsk", "Омск +6"),
+    ("Asia/Krasnoyarsk", "Красноярск +7"),
+    ("Asia/Irkutsk", "Иркутск +8"),
+    ("Asia/Yakutsk", "Якутск +9"),
+    ("Asia/Vladivostok", "Владивосток +10"),
+    ("Asia/Magadan", "Магадан +11"),
+    ("Asia/Kamchatka", "Камчатка +12"),
+    ("Europe/Kyiv", "Киев +2/3"),
+    ("Europe/Minsk", "Минск +3"),
+    ("Asia/Almaty", "Алматы +5"),
+    ("Asia/Tbilisi", "Тбилиси +4"),
+    ("Asia/Yerevan", "Ереван +4"),
+    ("Asia/Tashkent", "Ташкент +5"),
+    ("Europe/Berlin", "Берлин +1/2"),
+    ("Europe/London", "Лондон 0/+1"),
+]
+
+
+def timezone_kb(current: str) -> InlineKeyboardMarkup:
+    rows: list[list[InlineKeyboardButton]] = []
+    row: list[InlineKeyboardButton] = []
+    for zone, label in TZ_ZONES:
+        mark = "✅ " if zone == current else ""
+        row.append(
+            InlineKeyboardButton(
+                text=f"{mark}{label}",
+                callback_data=SettingsCB(action="tz_set", value=zone).pack(),
+            )
+        )
+        if len(row) == 2:
+            rows.append(row)
+            row = []
+    if row:
+        rows.append(row)
+    rows.append([InlineKeyboardButton(text="↩️ Назад", callback_data=SettingsCB(action="open").pack())])
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 

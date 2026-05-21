@@ -9,11 +9,13 @@ from app.bot.filters import InState
 from app.bot.keyboards.common import cancel_only_kb
 from app.bot.keyboards.main_menu import main_menu_kb
 from app.bot.keyboards.settings import (
+    TZ_ZONES,
     goal_values_kb,
     pace_kb,
     push_settings_kb,
     push_window_kb,
     settings_kb,
+    timezone_kb,
 )
 from app.bot.states import InteractionState
 from app.bot.texts import (
@@ -27,6 +29,7 @@ from app.bot.texts import (
     SETTINGS_GOAL_PROMPT,
     SETTINGS_GOAL_UPDATED,
     SETTINGS_TITLE,
+    TZ_TITLE,
 )
 from app.config import get_settings
 from app.domain.enums import LearningPace, LearningTrack, TRACK_LABELS
@@ -260,3 +263,46 @@ async def on_push_win_set(
     if query.message:
         await query.message.edit_reply_markup(reply_markup=push_window_kb(new_ws, new_we))
     await query.answer(f"{new_ws:02d}:00–{new_we:02d}:00")
+
+
+# --------------------------------------------------------------------------- #
+# Timezone
+# --------------------------------------------------------------------------- #
+
+_VALID_TZ = {zone for zone, _ in TZ_ZONES}
+
+
+@router.callback_query(SettingsCB.filter(F.action == "tz_open"))
+async def on_tz_open(
+    query: CallbackQuery,
+    user: User,
+    state_service: InteractionStateService,
+) -> None:
+    await state_service.clear(user.id)
+    if query.message:
+        await query.message.edit_text(
+            TZ_TITLE.format(tz=user.timezone),
+            reply_markup=timezone_kb(user.timezone),
+            parse_mode="HTML",
+        )
+    await query.answer()
+
+
+@router.callback_query(SettingsCB.filter(F.action == "tz_set"))
+async def on_tz_set(
+    query: CallbackQuery,
+    callback_data: SettingsCB,
+    user: User,
+    session: AsyncSession,
+) -> None:
+    zone = callback_data.value or ""
+    if zone in _VALID_TZ and zone != user.timezone:
+        user.timezone = zone
+        await session.flush()
+    if query.message:
+        await query.message.edit_text(
+            TZ_TITLE.format(tz=user.timezone),
+            reply_markup=timezone_kb(user.timezone),
+            parse_mode="HTML",
+        )
+    await query.answer(f"🕐 {user.timezone}")

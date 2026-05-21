@@ -150,6 +150,11 @@ SETTINGS_TITLE = (
 )
 SETTINGS_GOAL_PROMPT = "🎯 Новая дневная цель (1–100):"
 SETTINGS_GOAL_UPDATED = "🌸 Цель: {goal} слов в день"
+TZ_TITLE = (
+    "🕐 <b>Часовой пояс</b>\n"
+    "Сейчас: <b>{tz}</b>\n"
+    "Выбери свой — окно пушей и «сегодня/streak» будут по твоему времени."
+)
 
 PACE_LABELS = {
     "chill": "🐢 Chill",
