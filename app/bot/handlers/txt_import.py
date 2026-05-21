@@ -127,7 +127,7 @@ async def on_document(
     will_add = len(result.words) - already_count
 
     preview_lines = [
-        f"Найдено: <b>{result.seen_count}</b> слов",
+        f"🔎 Найдено: <b>{result.seen_count}</b>",
         f"Дубликатов: <b>{result.duplicates}</b>",
     ]
     if result.invalid:
@@ -136,9 +136,9 @@ async def on_document(
         preview_lines.append(f"Уже в словаре: <b>{already_count}</b>")
     if result.truncated:
         preview_lines.append(
-            f"⚠️ Лимит {settings.import_max_words}: <b>{result.truncated}</b> слов не влезли"
+            f"⚠️ Лимит {settings.import_max_words}: <b>{result.truncated}</b> не влезли"
         )
-    preview_lines.append(f"Будет добавлено: <b>{will_add}</b>")
+    preview_lines.append(f"🌱 Будет добавлено: <b>{will_add}</b>")
     preview = "\n".join(preview_lines)
     version = await screen_service.bump(user.id, CATEGORY_PICK_KIND)
     categories = await CategoryService(CategoryRepository(session)).list_user_categories(
