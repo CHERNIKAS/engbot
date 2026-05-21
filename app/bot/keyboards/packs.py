@@ -64,7 +64,7 @@ def pack_browser_kb(
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
-_GROUP_EMOJI = {"Уровни": "🎯", "Грамматика": "🔤", "Темы": "🗂", "Фразы": "💬"}
+_GROUP_EMOJI = {"Уровни": "🎯", "Грамматика": "🔤", "Темы": "🗂", "Фразы": "💬", "Экзамены": "🎓"}
 
 
 def pack_groups_kb(groups: list[tuple[str, int]]) -> InlineKeyboardMarkup:

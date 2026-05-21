@@ -25,7 +25,7 @@ from app.services.pack_service import PackService
 
 router = Router(name="packs")
 
-_GROUP_ORDER = {"Уровни": 0, "Грамматика": 1, "Темы": 2, "Фразы": 3}
+_GROUP_ORDER = {"Уровни": 0, "Грамматика": 1, "Темы": 2, "Фразы": 3, "Экзамены": 4}
 
 
 def _selected(payload) -> set[int]:
