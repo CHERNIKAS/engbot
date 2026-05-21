@@ -100,6 +100,6 @@ class QuickAddCB(CallbackData, prefix="qa"):
 
 # Push-learning card answer.
 class PushCB(CallbackData, prefix="pu"):
-    action: str  # ans | keep_schedule
+    action: str  # ans | keep_schedule | open_window
     uw_id: int = 0
     idx: int = 0

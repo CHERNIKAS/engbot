@@ -254,7 +254,7 @@ class PushService:
         repeats = state.get("repeats", [])
         repeats.append({
             "uw_id": uw_id,
-            "due_ts": now_ts + _minutes(self._s.push_gap_max_minutes, self._s.push_gap_max_minutes * 2),
+            "due_ts": now_ts + _minutes(self._s.push_repeat_min_minutes, self._s.push_repeat_max_minutes),
             "left": self._s.push_repeats_per_word,
         })
         state["repeats"] = repeats
