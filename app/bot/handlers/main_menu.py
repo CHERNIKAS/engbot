@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from aiogram import F, Router
+from aiogram.filters import Command
 from aiogram.types import CallbackQuery, Message
 from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -17,12 +18,14 @@ from app.bot.states import InteractionState
 from app.bot.texts import (
     ADD_WORDS_PROMPT,
     BTN_ADD,
+    BTN_HELP,
     BTN_IMPORT,
     BTN_MY_WORDS,
     BTN_PACKS,
     BTN_PROGRESS,
     BTN_SETTINGS,
     BTN_STUDY,
+    HELP_TEXT,
     MAIN_MENU,
     MY_WORDS_EMPTY,
     PACE_LABELS,
@@ -174,6 +177,18 @@ async def msg_settings(
         pace=PACE_LABELS.get(user_track.learning_pace, user_track.learning_pace),
     )
     await send_menu_card(message, redis, user.id, text, reply_markup=settings_kb(), parse_mode="HTML")
+
+
+@router.message(F.text == BTN_HELP)
+@router.message(Command("help"))
+async def msg_help(
+    message: Message,
+    user: User,
+    state_service: InteractionStateService,
+    redis: Redis,
+) -> None:
+    await state_service.clear(user.id)
+    await send_menu_card(message, redis, user.id, HELP_TEXT, parse_mode="HTML")
 
 
 # --------------------------------------------------------------------------- #

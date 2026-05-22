@@ -10,6 +10,7 @@ from aiogram.types import (
 from app.bot.callbacks.schema import MainMenuCB
 from app.bot.texts import (
     BTN_ADD,
+    BTN_HELP,
     BTN_IMPORT,
     BTN_MY_WORDS,
     BTN_PACKS,
@@ -35,7 +36,7 @@ def main_menu_reply_kb() -> ReplyKeyboardMarkup:
             [KeyboardButton(text=BTN_MY_WORDS), KeyboardButton(text=BTN_STUDY)],
             [KeyboardButton(text=BTN_ADD), KeyboardButton(text=BTN_IMPORT)],
             [KeyboardButton(text=BTN_PACKS), KeyboardButton(text=BTN_PROGRESS)],
-            [KeyboardButton(text=BTN_SETTINGS)],
+            [KeyboardButton(text=BTN_SETTINGS), KeyboardButton(text=BTN_HELP)],
         ],
         resize_keyboard=True,
         input_field_placeholder=MENU_PLACEHOLDER,
