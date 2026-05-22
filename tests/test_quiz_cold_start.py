@@ -13,14 +13,22 @@ class FakeResult:
         self._rows = rows
 
     def all(self) -> list[Any]:
-        return [(r,) for r in self._rows]
+        # quiz_distractors selects (translation, part_of_speech, level).
+        # Plain-string rows mean "untagged" -> pos/level None.
+        out = []
+        for r in self._rows:
+            if isinstance(r, tuple):
+                out.append(r)
+            else:
+                out.append((r, None, None))
+        return out
 
 
 class QuizDistractorsFakeSession:
     """Returns different rows for the 'own user_words' query vs the 'pack_words'
     fallback query. We tell them apart by inspecting the FROM tables of the Select."""
 
-    def __init__(self, own: list[str], pack: list[str]) -> None:
+    def __init__(self, own: list[Any], pack: list[Any]) -> None:
         self._own = own
         self._pack = pack
         self.queries: list[str] = []
@@ -76,7 +84,7 @@ async def test_quiz_distractors_falls_back_to_packs_for_cold_start():
 
 async def test_quiz_distractors_excludes_correct_answer():
     session = QuizDistractorsFakeSession(
-        own=["correct", "x", "y", "z"],
+        own=["correct", "xxx", "yyy", "zzz"],
         pack=[],
     )
     repo = UserWordRepository(session)  # type: ignore[arg-type]
@@ -94,8 +102,8 @@ async def test_quiz_distractors_excludes_correct_answer():
 async def test_quiz_distractors_deduplicates_across_sources():
     """If a word appears both in user vocab and packs, only counted once."""
     session = QuizDistractorsFakeSession(
-        own=["a"],
-        pack=["a", "b", "c"],
+        own=["aaa"],
+        pack=["aaa", "bbb", "ccc"],
     )
     repo = UserWordRepository(session)  # type: ignore[arg-type]
     distractors = await repo.quiz_distractors(
@@ -105,7 +113,7 @@ async def test_quiz_distractors_deduplicates_across_sources():
         limit=3,
         exclude_translations=[],
     )
-    assert sorted(distractors) == ["a", "b", "c"]
+    assert sorted(distractors) == ["aaa", "bbb", "ccc"]
 
 
 async def test_quiz_distractors_with_no_data_at_all_returns_empty():
@@ -119,3 +127,70 @@ async def test_quiz_distractors_with_no_data_at_all_returns_empty():
         exclude_translations=[],
     )
     assert distractors == []
+
+
+async def test_quiz_distractors_prefers_same_part_of_speech():
+    """Given the answer is an A1 verb, verb distractors must outrank nouns/adjs."""
+    session = QuizDistractorsFakeSession(
+        own=[
+            ("бежать", "verb", "A1"),
+            ("стол", "noun", "A1"),
+            ("красный", "adj", "A1"),
+            ("идти", "verb", "A2"),
+            ("прыгать", "verb", "B1"),
+        ],
+        pack=[],
+    )
+    repo = UserWordRepository(session)  # type: ignore[arg-type]
+    distractors = await repo.quiz_distractors(
+        user_id=1,
+        track=LearningTrack.ENGLISH,
+        exclude_user_word_id=42,
+        limit=3,
+        exclude_translations=["думать"],
+        correct_pos="verb",
+        correct_level="A1",
+    )
+    assert distractors == ["бежать", "идти", "прыгать"]  # all verbs, A1 first
+
+
+async def test_quiz_distractors_drops_overlapping_meaning():
+    """A distractor that shares a meaning word with the answer is never offered."""
+    session = QuizDistractorsFakeSession(
+        own=[
+            ("хранить / держать", "verb", "A1"),  # overlaps the answer «держать»
+            ("бежать", "verb", "A1"),
+            ("прыгать", "verb", "A1"),
+            ("идти", "verb", "A1"),
+        ],
+        pack=[],
+    )
+    repo = UserWordRepository(session)  # type: ignore[arg-type]
+    distractors = await repo.quiz_distractors(
+        user_id=1,
+        track=LearningTrack.ENGLISH,
+        exclude_user_word_id=42,
+        limit=3,
+        exclude_translations=["держать"],
+        correct_pos="verb",
+        correct_level="A1",
+    )
+    assert "хранить / держать" not in distractors
+    assert len(distractors) == 3
+
+
+async def test_quiz_distractors_meaning_guard_does_not_over_exclude():
+    """Sharing letters but not a whole word must NOT be filtered (есть vs шесть)."""
+    session = QuizDistractorsFakeSession(
+        own=[("шесть", "noun", "A1"), ("семь", "noun", "A1"), ("восемь", "noun", "A1")],
+        pack=[],
+    )
+    repo = UserWordRepository(session)  # type: ignore[arg-type]
+    distractors = await repo.quiz_distractors(
+        user_id=1,
+        track=LearningTrack.ENGLISH,
+        exclude_user_word_id=42,
+        limit=3,
+        exclude_translations=["есть"],
+    )
+    assert sorted(distractors) == ["восемь", "семь", "шесть"]

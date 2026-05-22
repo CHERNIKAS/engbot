@@ -10,6 +10,31 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.domain.enums import LearningTrack, WordSource, WordStatus
 from app.domain.models import Pack, PackWord, UserWord, Word
 
+_TOKEN_SEPARATORS = "/,;()"
+
+
+def _norm(text: str) -> str:
+    return " ".join(text.strip().lower().split())
+
+
+def _meaning_tokens(translation: str) -> set[str]:
+    """Content words of a translation, for detecting overlapping meanings.
+    «хранить / держать» -> {хранить, держать}; «ждать с нетерпением» -> {ждать,
+    нетерпением}. Tokens of length <= 2 (prepositions, single letters) are
+    dropped so they can't cause spurious overlaps."""
+    s = translation.lower()
+    for sep in _TOKEN_SEPARATORS:
+        s = s.replace(sep, " ")
+    return {tok for tok in s.split() if len(tok) > 2}
+
+
+def _meaning_tokens_of(translations: list[str]) -> set[str]:
+    out: set[str] = set()
+    for t in translations:
+        if t:
+            out |= _meaning_tokens(t)
+    return out
+
 
 class UserWordRepository:
     def __init__(self, session: AsyncSession) -> None:
@@ -412,18 +437,52 @@ class UserWordRepository:
         exclude_user_word_id: int,
         limit: int = 3,
         exclude_translations: list[str] | None = None,
+        correct_pos: str | None = None,
+        correct_level: str | None = None,
     ) -> list[str]:
         """Pick distractor translations for a quiz card.
 
-        Prefer the user's own translated vocabulary (same context for them). If
-        they're cold-starting and have <`limit` own translations, top up from
-        translations of pack words in the same track. Never mix in other users'
-        data.
+        Candidates come from the user's own translated vocabulary first (same
+        context for them); on a cold start (<`limit` usable own translations) we
+        top up from pack words in the same track. Never mix in other users' data.
+
+        Quality:
+        - candidates are ranked so that the same part of speech / level as the
+          answer come first (a verb is quizzed against verbs, not random nouns);
+        - a candidate that shares a meaning word with the correct answer is
+          dropped, so we never offer a translation that's actually also correct
+          (e.g. «держать» as a distractor when the answer is «хранить / держать»).
         """
-        excluded = {t for t in (exclude_translations or []) if t}
+        protected = _meaning_tokens_of(exclude_translations or [])
+        seen: set[str] = {_norm(t) for t in (exclude_translations or []) if t}
+
+        def tier(pos: str | None, level: str | None) -> int:
+            pos_match = correct_pos is not None and pos == correct_pos
+            level_match = correct_level is not None and level == correct_level
+            if pos_match and level_match:
+                return 0
+            if pos_match:
+                return 1
+            if level_match:
+                return 2
+            return 3
+
+        candidates: list[tuple[int, str]] = []
+
+        def consider(rows: list) -> None:
+            for translation, pos, level in rows:
+                if not translation:
+                    continue
+                n = _norm(translation)
+                if n in seen:
+                    continue
+                if _meaning_tokens(translation) & protected:
+                    continue  # shares a meaning with the answer -> would be valid
+                seen.add(n)
+                candidates.append((tier(pos, level), translation))
 
         own_q = (
-            select(Word.translation)
+            select(Word.translation, Word.part_of_speech, Word.level)
             .join(UserWord, UserWord.word_id == Word.id)
             .where(
                 UserWord.user_id == user_id,
@@ -432,43 +491,26 @@ class UserWordRepository:
                 Word.translation.isnot(None),
             )
             .order_by(func.random())
-            .limit(limit * 2)  # over-fetch to survive dedup against the right answer
+            .limit(limit * 4)  # over-fetch for dedup + tier variety
         )
-        own_rows = [r[0] for r in (await self.session.execute(own_q)).all() if r[0]]
+        consider(list((await self.session.execute(own_q)).all()))
 
-        out: list[str] = []
-        seen: set[str] = set(excluded)
-        for t in own_rows:
-            if t in seen:
-                continue
-            out.append(t)
-            seen.add(t)
-            if len(out) >= limit:
-                return out
-
-        if len(out) >= limit:
-            return out
-
-        remaining = limit - len(out)
-        pack_q = (
-            select(Word.translation)
-            .join(PackWord, PackWord.word_id == Word.id)
-            .join(Pack, Pack.id == PackWord.pack_id)
-            .where(
-                Pack.track == track.value,
-                Pack.is_active.is_(True),
-                Word.translation.isnot(None),
+        # Only reach for pack words when the user's own vocab can't fill the card.
+        if len(candidates) < limit:
+            pack_q = (
+                select(Word.translation, Word.part_of_speech, Word.level)
+                .join(PackWord, PackWord.word_id == Word.id)
+                .join(Pack, Pack.id == PackWord.pack_id)
+                .where(
+                    Pack.track == track.value,
+                    Pack.is_active.is_(True),
+                    Word.translation.isnot(None),
+                )
+                .order_by(func.random())
+                .limit(limit * 8)
             )
-            .order_by(func.random())
-            .limit(remaining * 4)
-        )
-        pack_rows = [r[0] for r in (await self.session.execute(pack_q)).all() if r[0]]
-        for t in pack_rows:
-            if t in seen:
-                continue
-            out.append(t)
-            seen.add(t)
-            if len(out) >= limit:
-                return out
+            consider(list((await self.session.execute(pack_q)).all()))
 
-        return out
+        # Stable sort keeps own-before-pack and random order within a tier.
+        candidates.sort(key=lambda c: c[0])
+        return [translation for _, translation in candidates[:limit]]

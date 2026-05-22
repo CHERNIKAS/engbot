@@ -133,6 +133,8 @@ class StudySessionService:
                 exclude_user_word_id=uw.id,
                 limit=3,
                 exclude_translations=[correct],
+                correct_pos=w.part_of_speech,
+                correct_level=w.level,
             )
             opts = [correct, *distractors[:3]]
             random.shuffle(opts)

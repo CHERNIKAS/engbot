@@ -130,7 +130,14 @@ def test_serialization_roundtrip():
         ("to run", "run", True),
         ("run", "to run", True),
         ("new   york", "new york", True),
-        ("helo", "hello", False),
+        # one typo on a longer word is forgiven
+        ("helo", "hello", True),       # deletion
+        ("hellol", "hello", True),     # insertion
+        ("hallo", "hello", True),      # substitution
+        # but two edits is a different word
+        ("halla", "hello", False),
+        # short words must match exactly (one edit = another word)
+        ("car", "cat", False),
         ("", "hello", False),
         ("bye", "hello", False),
     ],

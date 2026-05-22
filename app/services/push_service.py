@@ -248,7 +248,8 @@ class PushService:
         if not correct:
             return None
         distractors = await self._uw.quiz_distractors(
-            user_id, track=_TRACK, exclude_user_word_id=uw_id, limit=3, exclude_translations=[correct]
+            user_id, track=_TRACK, exclude_user_word_id=uw_id, limit=3, exclude_translations=[correct],
+            correct_pos=word.part_of_speech, correct_level=word.level,
         )
         options = [correct, *distractors[:3]]
         random.shuffle(options)

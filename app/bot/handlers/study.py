@@ -337,10 +337,13 @@ async def on_hint(
     if view is None:
         await query.answer()
         return
-    parts = [f"Начинается с «{view.writing[:1]}…»"]
-    if view.example:
-        parts.append(view.example)
-    await query.answer("\n".join(parts), show_alert=True)
+    # Don't show the example sentence: it usually contains the word itself (or
+    # its other forms), which would give the typing answer away. First letter +
+    # length is enough of a nudge.
+    letters = len((view.writing or "").replace(" ", ""))
+    await query.answer(
+        f"Начинается с «{view.writing[:1]}…» · букв: {letters}", show_alert=True
+    )
 
 
 @router.callback_query(StudyCB.filter(F.action == "finish"))

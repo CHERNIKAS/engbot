@@ -27,10 +27,33 @@ def normalize_answer(text: str) -> str:
     return s
 
 
+def _levenshtein(a: str, b: str) -> int:
+    if a == b:
+        return 0
+    if not a:
+        return len(b)
+    if not b:
+        return len(a)
+    prev = list(range(len(b) + 1))
+    for i, ca in enumerate(a, 1):
+        cur = [i]
+        for j, cb in enumerate(b, 1):
+            cur.append(min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (ca != cb)))
+        prev = cur
+    return prev[-1]
+
+
 def is_typing_correct(user_input: str, writing: str) -> bool:
     if not user_input or not writing:
         return False
-    return normalize_answer(user_input) == normalize_answer(writing)
+    typed = normalize_answer(user_input)
+    target = normalize_answer(writing)
+    if typed == target:
+        return True
+    # Forgive a single typo on longer words (a slip shouldn't fail the card and
+    # tank the spacing interval). Short words must match exactly — there one
+    # edit is a different word ("cat"/"car").
+    return len(target) >= 4 and _levenshtein(typed, target) <= 1
 
 
 @dataclass
