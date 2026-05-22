@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import html
+
 from aiogram import F, Router
 from aiogram.types import CallbackQuery
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -16,7 +18,6 @@ from app.bot.states import InteractionState
 from app.bot.texts import (
     DELETED,
     DELETE_CONFIRM,
-    MAIN_MENU,
     MY_WORDS_EMPTY,
     MY_WORDS_TITLE,
     STUDY_CARD_NO_TRANSLATION,
@@ -103,7 +104,11 @@ async def on_word_detail(
     uw, word = pair
     translation = uw.custom_translation or word.translation or STUDY_CARD_NO_TRANSLATION
     example = word.example_sentence or STUDY_EXAMPLE_MISSING
-    text = WORD_DETAIL.format(writing=word.writing, translation=translation, example=example)
+    text = WORD_DETAIL.format(
+        writing=html.escape(word.writing),
+        translation=html.escape(translation),
+        example=html.escape(example),
+    )
     if query.message:
         await query.message.edit_text(
             text,
@@ -243,6 +248,16 @@ async def on_delete_cancel(
         await query.answer()
         return
     await state_service.clear(user.id)
+    # Back to the word list rather than a "Главное меню" stub.
+    cat_service = CategoryService(CategoryRepository(session))
+    categories = await cat_service.list_user_categories(user.id, current_track)
+    counts = await cat_service.counts(user.id, current_track)
     if query.message:
-        await query.message.edit_text(MAIN_MENU, reply_markup=None)
+        if sum(counts.values()) == 0 and not categories:
+            await query.message.edit_text(MY_WORDS_EMPTY, reply_markup=None)
+        else:
+            await query.message.edit_text(
+                "📚 Мои слова",
+                reply_markup=categories_overview_kb(categories, counts, flow="mw"),
+            )
     await query.answer()

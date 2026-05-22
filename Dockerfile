@@ -16,4 +16,8 @@ RUN pip install --upgrade pip && pip install .
 
 COPY . .
 
+# Drop root: the bot only reads /app and writes logs to stdout.
+RUN useradd --create-home --uid 10001 appuser && chown -R appuser /app
+USER appuser
+
 CMD ["python", "-m", "app.main"]

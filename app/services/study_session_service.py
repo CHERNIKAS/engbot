@@ -194,6 +194,25 @@ class StudySessionService:
             return None
         return self._view(snap, DrillState.from_dict(snap["drill"]))
 
+    async def remember_card_msg(self, user_id: int, msg_id: int) -> None:
+        """Remember which message holds the live drill card, so the typing path
+        can edit it in place (one rolling card) instead of spamming new ones."""
+        snap = await self._get_raw(user_id)
+        if snap is None:
+            return
+        snap["card_msg_id"] = int(msg_id)
+        await self._save_raw(user_id, snap)
+
+    async def card_msg(self, user_id: int) -> int | None:
+        snap = await self._get_raw(user_id)
+        if snap is None:
+            return None
+        raw = snap.get("card_msg_id")
+        try:
+            return int(raw) if raw else None
+        except (TypeError, ValueError):
+            return None
+
     async def answer(self, user_id: int, correct: bool) -> CardView | None:
         snap = await self._get_raw(user_id)
         if snap is None:

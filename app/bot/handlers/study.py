@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import html
+
 from aiogram import F, Router
 from aiogram.types import CallbackQuery, Message
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -56,12 +58,12 @@ def _card_text(view: CardView, romaji_enabled: bool) -> str:
     head = f"{bar} {view.learned}/{view.total} освоено · 🔁 {max(0, view.total - view.learned)}"
     is_ja = view.script_type is not None and view.script_type != "latin"
     if view.stage == STAGE_QUIZ:
-        prompt = view.writing
+        prompt = html.escape(view.writing or "")
         if is_ja and view.kana and view.kana != view.writing:
-            prompt = f"{view.writing} ({view.kana})"
+            prompt = f"{html.escape(view.writing)} ({html.escape(view.kana)})"
         body = f"{STUDY_QUIZ_PROMPT}\n\n<b>{prompt}</b>"
     else:
-        body = f"{STUDY_TYPE_PROMPT}\n\n<b>{view.translation}</b>"
+        body = f"{STUDY_TYPE_PROMPT}\n\n<b>{html.escape(view.translation or '')}</b>"
     return f"{head}\n\n{body}"
 
 
@@ -86,11 +88,13 @@ async def _render_edit(
     view: CardView,
     screen_service: ScreenVersionService,
     user_track: UserTrack | None,
+    study_session: StudySessionService,
 ) -> None:
     version = await screen_service.bump(user.id, SCREEN_KIND)
     text = _card_text(view, _romaji_enabled(user_track))
     if query.message:
         await query.message.edit_text(text, reply_markup=_card_kb(view, version), parse_mode="HTML")
+        await study_session.remember_card_msg(user.id, query.message.message_id)
 
 
 async def _render_send(
@@ -99,12 +103,31 @@ async def _render_send(
     view: CardView,
     screen_service: ScreenVersionService,
     user_track: UserTrack | None,
+    study_session: StudySessionService,
     prefix: str = "",
 ) -> None:
     version = await screen_service.bump(user.id, SCREEN_KIND)
     body = _card_text(view, _romaji_enabled(user_track))
     text = f"{prefix}\n\n{body}" if prefix else body
-    await message.answer(text, reply_markup=_card_kb(view, version), parse_mode="HTML")
+    kb = _card_kb(view, version)
+    # Keep ONE rolling drill card: edit the live card in place instead of
+    # spamming a new message per typed answer. Fall back to a fresh send if the
+    # tracked message is gone.
+    card_msg_id = await study_session.card_msg(user.id)
+    if card_msg_id is not None:
+        try:
+            await message.bot.edit_message_text(
+                text,
+                chat_id=message.chat.id,
+                message_id=card_msg_id,
+                reply_markup=kb,
+                parse_mode="HTML",
+            )
+            return
+        except Exception:  # noqa: BLE001 — card gone/too old: send a fresh one
+            pass
+    sent = await message.answer(text, reply_markup=kb, parse_mode="HTML")
+    await study_session.remember_card_msg(user.id, sent.message_id)
 
 
 async def _finalize(
@@ -193,7 +216,7 @@ async def start_session(
         scope=scope.value,
         words_total=view.total,
     )
-    await _render_edit(query, user, view, screen_service, user_track)
+    await _render_edit(query, user, view, screen_service, user_track, study_session)
     await query.answer()
 
 
@@ -265,7 +288,7 @@ async def on_quiz_answer(
     if new_view is None:
         await _finish_edit(query, user, user_track, session, state_service, study_session, analytics)
         return
-    await _render_edit(query, user, new_view, screen_service, user_track)
+    await _render_edit(query, user, new_view, screen_service, user_track, study_session)
     await query.answer("✅" if correct else "❌")
 
 
@@ -288,17 +311,35 @@ async def on_typing_answer(
         return
 
     correct = is_typing_correct(message.text or "", view.writing)
-    prefix = STUDY_ANSWER_CORRECT if correct else STUDY_ANSWER_WRONG.format(answer=view.writing)
+    prefix = STUDY_ANSWER_CORRECT if correct else STUDY_ANSWER_WRONG.format(
+        answer=html.escape(view.writing or "")
+    )
     new_view = await study_session.answer(user.id, correct)
+    # Capture the live card before finalize clears the session, then drop the
+    # user's typed answer so the chat stays a single rolling card.
+    card_msg_id = await study_session.card_msg(user.id)
+    try:
+        await message.delete()
+    except Exception:  # noqa: BLE001 — can't delete (too old / no rights)
+        pass
+
     if new_view is None:
         text = await _finalize(user, user_track, session, state_service, study_session)
+        final_text = f"{prefix}\n\n{text}" if text != MAIN_MENU else text
+        kb = finished_kb() if text != MAIN_MENU else None
         if text != MAIN_MENU:
             await analytics.emit(EVENT_STUDY_COMPLETED, user_id=user.id)
-            await message.answer(f"{prefix}\n\n{text}", reply_markup=finished_kb())
-        else:
-            await message.answer(text)
+        if card_msg_id is not None:
+            try:
+                await message.bot.edit_message_text(
+                    final_text, chat_id=message.chat.id, message_id=card_msg_id, reply_markup=kb
+                )
+                return
+            except Exception:  # noqa: BLE001 — card gone: send a fresh summary
+                pass
+        await message.answer(final_text, reply_markup=kb)
         return
-    await _render_send(message, user, new_view, screen_service, user_track, prefix=prefix)
+    await _render_send(message, user, new_view, screen_service, user_track, study_session, prefix=prefix)
 
 
 @router.callback_query(StudyCB.filter(F.action == "skip"))
@@ -319,7 +360,7 @@ async def on_skip(
     if new_view is None:
         await _finish_edit(query, user, user_track, session, state_service, study_session, analytics)
         return
-    await _render_edit(query, user, new_view, screen_service, user_track)
+    await _render_edit(query, user, new_view, screen_service, user_track, study_session)
     await query.answer("Пропущено")
 
 
@@ -381,7 +422,7 @@ async def render_current_card(
     if view is None:
         await _finish_edit(query, user, user_track, session, state_service, study_session)
         return
-    await _render_edit(query, user, view, screen_service, user_track)
+    await _render_edit(query, user, view, screen_service, user_track, study_session)
 
 
 async def handle_in_study_delete(
@@ -399,4 +440,4 @@ async def handle_in_study_delete(
         await _finish_edit(query, user, user_track, session, state_service, study_session)
         return
     await query.answer("Удалено")
-    await _render_edit(query, user, new_view, screen_service, user_track)
+    await _render_edit(query, user, new_view, screen_service, user_track, study_session)

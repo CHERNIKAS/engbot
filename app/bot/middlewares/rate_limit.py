@@ -36,5 +36,12 @@ class RateLimitMiddleware(BaseMiddleware):
         if count > self._limit:
             if isinstance(event, CallbackQuery):
                 await event.answer("Слишком быстро. Подожди секунду.", show_alert=False)
+            elif isinstance(event, Message) and count == self._limit + 1:
+                # Notify once per burst (not on every dropped message) so a fast
+                # typist isn't left wondering why input vanished.
+                try:
+                    await event.answer("⏳ Слишком быстро. Подожди секунду.")
+                except Exception:  # noqa: BLE001
+                    pass
             return None
         return await handler(event, data)

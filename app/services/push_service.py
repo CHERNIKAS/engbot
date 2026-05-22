@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import html
 import json
 import random
 from datetime import datetime, timedelta, timezone
@@ -100,7 +101,7 @@ class PushService:
             return 0
         ut_repo = UserTrackRepository(self._session)
         pushed = 0
-        for user in await UserRepository(self._session).list_for_reminders():
+        for user in await UserRepository(self._session).list_for_push():
             ut = await ut_repo.get(user.id, _TRACK)
             if ut is None:
                 continue
@@ -262,7 +263,7 @@ class PushService:
         )
         options = [correct, *distractors[:3]]
         random.shuffle(options)
-        text = f"{PUSH_CARD.format(word=word.writing)}\n<i>{_progress_line(uw)}</i>"
+        text = f"{PUSH_CARD.format(word=html.escape(word.writing))}\n<i>{_progress_line(uw)}</i>"
         return text, options, correct, uw.status
 
     # ---- card controls (handler path): я знаю / перестать показывать / отложить ----
@@ -335,7 +336,11 @@ class PushService:
         state["next_ts"] = now_ts + _minutes(self._s.push_gap_min_minutes, self._s.push_gap_max_minutes)
         await self._save(user.id, state)
 
-        feedback = PUSH_ANSWER_CORRECT if correct else PUSH_ANSWER_WRONG.format(answer=inflight.get("correct"))
+        feedback = (
+            PUSH_ANSWER_CORRECT
+            if correct
+            else PUSH_ANSWER_WRONG.format(answer=html.escape(str(inflight.get("correct") or "")))
+        )
         if query.message:
             try:
                 await query.message.edit_text(feedback, parse_mode="HTML")

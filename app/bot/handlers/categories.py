@@ -2,13 +2,14 @@ from __future__ import annotations
 
 from aiogram import F, Router
 from aiogram.types import CallbackQuery, Message
+from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.bot.callbacks.schema import CategoryCB
 from app.bot.filters import InState
 from app.bot.keyboards.add_words import add_choose_category_kb
 from app.bot.keyboards.common import cancel_only_kb
-from app.bot.keyboards.main_menu import main_menu_reply_kb
+from app.bot.menu_nav import send_menu_card
 from app.bot.keyboards.my_words import (
     categories_overview_kb,
     category_delete_confirm_kb,
@@ -33,7 +34,6 @@ from app.bot.texts import (
     CATEGORY_NO_TARGETS,
     CATEGORY_RENAME_PROMPT,
     CATEGORY_RENAMED,
-    MAIN_MENU,
     MY_WORDS_EMPTY,
     STALE_CALLBACK,
 )
@@ -79,6 +79,7 @@ async def on_new_category_text(
     user_track_service: UserTrackService,
     screen_service,
     interaction_state,
+    redis: Redis,
 ) -> None:
     name = (message.text or "").strip()
     repo = CategoryRepository(session)
@@ -108,8 +109,7 @@ async def on_new_category_text(
     else:
         previous_state = InteractionState.IDLE
 
-    await message.answer(CATEGORY_CREATED.format(name=category.name))
-
+    created = CATEGORY_CREATED.format(name=category.name)
     if previous_state in (
         InteractionState.WAITING_CATEGORY_FOR_WORDS,
         InteractionState.WAITING_TXT_CATEGORY,
@@ -119,15 +119,18 @@ async def on_new_category_text(
         # from the picker shown before "➕ Новая категория" was clicked.
         version = await screen_service.bump(user.id, "cat_pick")
         categories = await service.list_user_categories(user.id, current_track)
-        await message.answer(
-            ADD_CHOOSE_CATEGORY,
-            reply_markup=add_choose_category_kb(
-                categories, flow=return_flow, version=version
-            ),
+        # Replace the name prompt + delete the user's typed name: show the picker
+        # (with the "created" line on top) as the single live card.
+        await send_menu_card(
+            message,
+            redis,
+            user.id,
+            f"{created}\n\n{ADD_CHOOSE_CATEGORY}",
+            reply_markup=add_choose_category_kb(categories, flow=return_flow, version=version),
         )
     else:
         await state_service.clear(user.id)
-        await message.answer(MAIN_MENU, reply_markup=main_menu_reply_kb())
+        await send_menu_card(message, redis, user.id, created)
 
 
 # --------------------------------------------------------------------------- #
