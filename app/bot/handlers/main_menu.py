@@ -8,6 +8,7 @@ from app.bot.callbacks.schema import NavCB
 from app.bot.keyboards.common import cancel_only_kb
 from app.bot.keyboards.main_menu import main_menu_reply_kb
 from app.bot.keyboards.my_words import categories_overview_kb
+from app.bot.keyboards.progress import progress_kb
 from app.bot.keyboards.settings import settings_kb
 from app.bot.keyboards.study import study_menu_kb
 from app.bot.states import InteractionState
@@ -30,6 +31,7 @@ from app.bot.texts import (
 from app.domain.enums import LearningTrack, TRACK_LABELS
 from app.domain.models import User, UserTrack
 from app.infrastructure.repositories.categories import CategoryRepository
+from app.infrastructure.repositories.user_words import UserWordRepository
 from app.services.category_service import CategoryService
 from app.services.interaction_state_service import InteractionStateService
 from app.services.progress_service import ProgressService
@@ -135,7 +137,8 @@ async def msg_progress(
             f"📚 {view.total_words} • ✅ {view.mastered_words} • 🔥 {view.weak_words}"
         )
     text = PROGRESS_TITLE.format(streak=user.streak_days, per_track="\n".join(lines) or "—")
-    await message.answer(text, parse_mode="HTML")
+    has_managed = await UserWordRepository(session).has_managed(user.id, LearningTrack.ENGLISH)
+    await message.answer(text, parse_mode="HTML", reply_markup=progress_kb(has_managed))
 
 
 @router.message(F.text == BTN_SETTINGS)

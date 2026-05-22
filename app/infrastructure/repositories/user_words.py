@@ -310,6 +310,61 @@ class UserWordRepository:
         row = (await self.session.execute(q)).first()
         return (row[0], row[1]) if row is not None else None
 
+    async def has_managed(
+        self, user_id: int, track: LearningTrack, now: datetime | None = None
+    ) -> bool:
+        """Whether the user has any archived or currently-snoozed words (to show
+        the management entry on the Progress screen)."""
+        now = now or datetime.now(timezone.utc)
+        q = (
+            select(UserWord.id)
+            .where(
+                UserWord.user_id == user_id,
+                UserWord.track == track.value,
+                or_(
+                    UserWord.archived.is_(True),
+                    and_(UserWord.snooze_until.isnot(None), UserWord.snooze_until > now),
+                ),
+            )
+            .limit(1)
+        )
+        return (await self.session.execute(q)).first() is not None
+
+    async def list_archived(
+        self, user_id: int, track: LearningTrack, limit: int = 30
+    ) -> list[tuple[UserWord, Word]]:
+        q = (
+            select(UserWord, Word)
+            .join(Word, Word.id == UserWord.word_id)
+            .where(
+                UserWord.user_id == user_id,
+                UserWord.track == track.value,
+                UserWord.archived.is_(True),
+            )
+            .order_by(UserWord.id.desc())
+            .limit(limit)
+        )
+        return [(r[0], r[1]) for r in (await self.session.execute(q)).all()]
+
+    async def list_snoozed(
+        self, user_id: int, track: LearningTrack, now: datetime | None = None, limit: int = 30
+    ) -> list[tuple[UserWord, Word]]:
+        now = now or datetime.now(timezone.utc)
+        q = (
+            select(UserWord, Word)
+            .join(Word, Word.id == UserWord.word_id)
+            .where(
+                UserWord.user_id == user_id,
+                UserWord.track == track.value,
+                UserWord.archived.is_(False),
+                UserWord.snooze_until.isnot(None),
+                UserWord.snooze_until > now,
+            )
+            .order_by(UserWord.snooze_until.asc())
+            .limit(limit)
+        )
+        return [(r[0], r[1]) for r in (await self.session.execute(q)).all()]
+
     async def count_weak(self, user_id: int, track: LearningTrack) -> int:
         q = select(func.count(UserWord.id)).where(
             UserWord.user_id == user_id,
