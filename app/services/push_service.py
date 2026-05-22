@@ -141,10 +141,17 @@ class PushService:
 
         sent = False
         if action == "retry" and inflight:
-            sent = await self._send(user, inflight["uw_id"], inflight["options"], retry=True)
-            if sent:
+            new_msg_id = await self._send(user, inflight["uw_id"], inflight["options"], retry=True)
+            if new_msg_id:
+                # Drop the previous (ignored) card so retries don't stack up as
+                # duplicate messages in the chat — only the latest one stays.
+                old_msg_id = inflight.get("msg_id")
+                if old_msg_id:
+                    await self._delete(user.telegram_id, old_msg_id)
+                inflight["msg_id"] = new_msg_id
                 inflight["attempts"] = inflight.get("attempts", 1) + 1
                 inflight["retry_ts"] = now_ts + _minutes(self._s.push_retry_min_minutes, self._s.push_retry_max_minutes)
+                sent = True
         elif action == "repeat":
             rep = min((r for r in repeats if r.get("due_ts", 0) <= now_ts and r.get("left", 0) > 0), key=lambda r: r["due_ts"], default=None)
             if rep:
@@ -153,8 +160,9 @@ class PushService:
                     repeats.remove(rep)
                 else:
                     text, options, correct = card
-                    if await self._raw_send(user.telegram_id, text, options, rep["uw_id"]):
-                        state["inflight"] = self._inflight(rep["uw_id"], options, correct, now_ts)
+                    msg_id = await self._raw_send(user.telegram_id, text, options, rep["uw_id"])
+                    if msg_id:
+                        state["inflight"] = self._inflight(rep["uw_id"], options, correct, now_ts, msg_id)
                         rep["left"] -= 1
                         if rep["left"] <= 0:
                             repeats.remove(rep)
@@ -167,8 +175,9 @@ class PushService:
                 card = await self._build_card(user.id, uw.id)
                 if card is not None:
                     text, options, correct = card
-                    if await self._raw_send(user.telegram_id, text, options, uw.id):
-                        state["inflight"] = self._inflight(uw.id, options, correct, now_ts)
+                    msg_id = await self._raw_send(user.telegram_id, text, options, uw.id)
+                    if msg_id:
+                        state["inflight"] = self._inflight(uw.id, options, correct, now_ts, msg_id)
                         if is_new:
                             state["new_today"] = state.get("new_today", 0) + 1
                         sent = True
@@ -177,31 +186,44 @@ class PushService:
         await self._save(user.id, state)
         return sent
 
-    def _inflight(self, uw_id: int, options: list[str], correct: str, now_ts: float) -> dict:
+    def _inflight(
+        self, uw_id: int, options: list[str], correct: str, now_ts: float, msg_id: int | None = None
+    ) -> dict:
         return {
             "uw_id": uw_id,
             "options": options,
             "correct": correct,
+            "msg_id": msg_id,
             "retry_ts": now_ts + _minutes(self._s.push_retry_min_minutes, self._s.push_retry_max_minutes),
             "attempts": 1,
         }
 
-    async def _send(self, user: User, uw_id: int, options: list[str], *, retry: bool) -> bool:
+    async def _send(self, user: User, uw_id: int, options: list[str], *, retry: bool) -> int | None:
         card = await self._build_card(user.id, uw_id)
         text = card[0] if card else PUSH_CARD.format(word="…")
         return await self._raw_send(user.telegram_id, text, options, uw_id)
 
-    async def _raw_send(self, telegram_id: int, text: str, options: list[str], uw_id: int) -> bool:
+    async def _raw_send(self, telegram_id: int, text: str, options: list[str], uw_id: int) -> int | None:
+        """Send a push card; return the new message_id (so retries can delete the
+        previous one), or None on failure."""
         if self._bot is None:
-            return False
+            return None
         try:
-            await self._bot.send_message(
+            msg = await self._bot.send_message(
                 telegram_id, text, reply_markup=push_card_kb(options, uw_id), parse_mode="HTML"
             )
-            return True
+            return msg.message_id
         except Exception:  # noqa: BLE001 — user may have blocked the bot
             log.warning("push_send_failed", tg=telegram_id)
-            return False
+            return None
+
+    async def _delete(self, chat_id: int, message_id: int) -> None:
+        if self._bot is None:
+            return
+        try:
+            await self._bot.delete_message(chat_id, message_id)
+        except Exception:  # noqa: BLE001 — message may already be gone / too old
+            pass
 
     async def _build_card(self, user_id: int, uw_id: int) -> tuple[str, list[str], str] | None:
         pair = await self._uw.get_with_word(uw_id)
