@@ -23,6 +23,7 @@ from app.bot.texts import (
     ERROR_GOAL_TOO_BIG,
     ERROR_GOAL_TOO_SMALL,
     PACE_LABELS,
+    PACE_TITLE,
     PUSH_TITLE,
     PUSH_WINDOW_TITLE,
     PUSH_WINDOW_TOO_SHORT,
@@ -138,8 +139,9 @@ async def on_pace(
     version = await screen_service.bump(user.id, SETTINGS_PACE_KIND)
     if query.message:
         await query.message.edit_text(
-            "Выбери темп обучения:",
+            PACE_TITLE,
             reply_markup=pace_kb(user_track.learning_pace, version=version),
+            parse_mode="HTML",
         )
     await query.answer()
 
