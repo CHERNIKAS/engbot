@@ -98,6 +98,11 @@ class QuickAddCB(CallbackData, prefix="qa"):
     token: str = ""
 
 
+# Guided course ("🎓 Курс").
+class CourseCB(CallbackData, prefix="cr"):
+    action: str  # open | start | pause
+
+
 # Push-learning card answer.
 class PushCB(CallbackData, prefix="pu"):
     action: str  # ans | keep_schedule | open_window | know | hide | snooze | unarchive | unsnooze

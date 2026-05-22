@@ -35,7 +35,7 @@ UNIVERSAL_PREFIXES: frozenset[str] = frozenset({"nav", "noop", "pu"})
 # Per-state allowlist of callback prefixes (in addition to UNIVERSAL_PREFIXES).
 STATE_CALLBACK_PREFIXES: dict[InteractionState, frozenset[str]] = {
     InteractionState.IDLE: frozenset(
-        {"mm", "mw", "cat", "add", "imp", "pk", "st", "pg", "set", "ob", "qa", "del"}
+        {"mm", "mw", "cat", "add", "imp", "pk", "st", "pg", "set", "ob", "qa", "del", "cr"}
     ),
     InteractionState.WAITING_PASSWORD: frozenset(),
     InteractionState.ONBOARDING_TRACKS: frozenset({"ob"}),

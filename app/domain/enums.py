@@ -64,6 +64,7 @@ class WordSource(StrEnum):
     MANUAL = "manual"
     TXT_IMPORT = "txt_import"
     PACK = "pack"
+    COURSE = "course"
 
 
 class CategoryType(StrEnum):

@@ -319,6 +319,7 @@ class PushService:
 
         uw = await self._uw.get(uw_id)
         if uw is not None:
+            was_mastered = uw.status == WordStatus.MASTERED.value
             apply_review(
                 uw,
                 ReviewResult.CORRECT if correct else ReviewResult.WRONG,
@@ -330,6 +331,12 @@ class PushService:
             )
             await self._session.flush()
             await ProgressService(self._session).update_streak(user)
+            # A word just got mastered → a course slot freed up; top the pipeline
+            # back up with the next word from the spine (no-op if not enrolled).
+            if not was_mastered and uw.status == WordStatus.MASTERED.value:
+                from app.services.course_service import CourseService
+
+                await CourseService(self._session, self._redis).refill(user, ut, _TRACK)
 
         now_ts = datetime.now(timezone.utc).timestamp()
         state["inflight"] = None

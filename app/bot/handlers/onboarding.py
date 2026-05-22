@@ -8,6 +8,7 @@ from app.bot.callbacks.schema import OnboardingCB
 from app.bot.filters import InState
 from app.config import get_settings
 from app.bot.keyboards.main_menu import main_menu_reply_kb
+from app.bot.keyboards.course import course_onboarding_offer_kb
 from app.bot.keyboards.onboarding import (
     daily_goal_kb,
     onboarding_intro_kb,
@@ -238,7 +239,7 @@ async def on_goal_picked(
         daily_goal=value,
     )
     if query.message:
-        await query.message.edit_text(ONBOARDING_DONE)
+        await query.message.edit_text(ONBOARDING_DONE, reply_markup=course_onboarding_offer_kb())
         await query.message.answer(MAIN_MENU, reply_markup=main_menu_reply_kb())
     await query.answer()
 
@@ -305,5 +306,5 @@ async def on_custom_goal_text(
         tracks=tracks,
         daily_goal=value,
     )
-    await message.answer(ONBOARDING_DONE)
+    await message.answer(ONBOARDING_DONE, reply_markup=course_onboarding_offer_kb())
     await message.answer(MAIN_MENU, reply_markup=main_menu_reply_kb())

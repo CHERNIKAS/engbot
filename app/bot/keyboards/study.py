@@ -2,12 +2,18 @@ from __future__ import annotations
 
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from app.bot.callbacks.schema import DeleteCB, StudyCB
+from app.bot.callbacks.schema import CourseCB, DeleteCB, StudyCB
 from app.bot.keyboards.common import home_button
 
 
 def study_menu_kb() -> InlineKeyboardMarkup:
     rows = [
+        [
+            InlineKeyboardButton(
+                text="🎓 Курс — учись по плану",
+                callback_data=CourseCB(action="open").pack(),
+            )
+        ],
         [
             InlineKeyboardButton(
                 text="🎯 Сегодняшняя цель",

@@ -47,6 +47,10 @@ class PackRepository:
     async def get(self, pack_id: int) -> Pack | None:
         return await self.session.get(Pack, pack_id)
 
+    async def get_by_slug(self, slug: str) -> Pack | None:
+        result = await self.session.execute(select(Pack).where(Pack.slug == slug))
+        return result.scalar_one_or_none()
+
     async def list_by_categories(
         self, track: LearningTrack, categories: list[str]
     ) -> list[Pack]:

@@ -390,6 +390,20 @@ class UserWordRepository:
         )
         return [(r[0], r[1]) for r in (await self.session.execute(q)).all()]
 
+    async def status_map(
+        self, user_id: int, track: LearningTrack, word_ids: list[int]
+    ) -> dict[int, str]:
+        """{word_id: status} for the user's owned words among `word_ids`. Words
+        the user doesn't own are absent. Used by the course to decide top-ups."""
+        if not word_ids:
+            return {}
+        q = select(UserWord.word_id, UserWord.status).where(
+            UserWord.user_id == user_id,
+            UserWord.track == track.value,
+            UserWord.word_id.in_(word_ids),
+        )
+        return {int(r[0]): str(r[1]) for r in (await self.session.execute(q)).all()}
+
     async def count_weak(self, user_id: int, track: LearningTrack) -> int:
         q = select(func.count(UserWord.id)).where(
             UserWord.user_id == user_id,
