@@ -11,13 +11,21 @@ from aiogram.types import CallbackQuery
 from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.bot.keyboards.push import SNOOZE_LABELS, push_card_kb, push_schedule_prompt_kb
+from app.bot.keyboards.push import (
+    SNOOZE_LABELS,
+    push_card_kb,
+    push_grammar_card_kb,
+    push_rule_kb,
+    push_schedule_prompt_kb,
+)
 from app.bot.texts import (
     PUSH_ANSWER_CORRECT,
     PUSH_ANSWER_WRONG,
     PUSH_CARD,
+    PUSH_GRAMMAR_CARD,
     PUSH_HIDDEN,
     PUSH_KNOWN,
+    PUSH_RULE_CARD,
     PUSH_SCHEDULE_PROMPT,
     PUSH_SNOOZED,
     PUSH_STALE,
@@ -27,6 +35,7 @@ from app.domain.enums import LearningPace, LearningTrack, ReviewResult, WordStat
 from app.domain.models import User, UserTrack
 from app.domain.push import in_window, normalize_window
 from app.domain.push_nudges import nudge_line
+from app.infrastructure.repositories.grammar import GrammarRepository
 from app.infrastructure.repositories.reviews import WordReviewRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
 from app.logging_setup import get_logger
@@ -64,6 +73,7 @@ class PushService:
         self._redis = redis
         self._bot = bot
         self._uw = UserWordRepository(session)
+        self._grammar = GrammarRepository(session)
         self._reviews = WordReviewRepository(session)
         self._s = get_settings()
 
@@ -105,10 +115,14 @@ class PushService:
             ut = await ut_repo.get(user.id, _TRACK)
             if ut is None:
                 continue
+            # Commit per user: a tick can write (e.g. marking a grammar rule
+            # seen), so one user's failure must not poison the shared transaction.
             try:
                 if await self.run_tick(user, ut):
                     pushed += 1
+                await self._session.commit()
             except Exception:  # noqa: BLE001
+                await self._session.rollback()
                 log.warning("push_tick_failed", uid=user.id)
         return pushed
 
@@ -140,7 +154,7 @@ class PushService:
 
         inflight = state.get("inflight")
 
-        # ---- a card is waiting for an answer: keep nudging the SAME word until
+        # ---- a card is waiting for an answer: keep nudging the SAME card until
         #      the user replies (the "force"); replace the old message each time.
         #      Each re-push carries an escalating "stop ignoring me" line.
         if inflight is not None:
@@ -148,8 +162,12 @@ class PushService:
             if win and now_ts >= inflight.get("retry_ts", 0):
                 attempts = int(inflight.get("attempts", 0)) + 1
                 inflight["attempts"] = attempts
-                new_msg_id = await self._send(
-                    user, inflight["uw_id"], inflight["options"], prefix=nudge_line(attempts)
+                new_msg_id, _o, _c = await self._send_card(
+                    user,
+                    inflight.get("kind", "word"),
+                    int(inflight.get("id", inflight.get("uw_id", 0))),
+                    options_override=inflight.get("options"),
+                    prefix=nudge_line(attempts),
                 )
                 if new_msg_id:
                     old_msg_id = inflight.get("msg_id")
@@ -168,19 +186,43 @@ class PushService:
             await self._save(user.id, state)
             return False
 
-        # ---- pick the next card: random among three streams ----
-        #   "new"    — introduce a new word, only if the active set has room
-        #              (words being learned < daily goal). One out, one in.
-        #   "repeat" — reinforce a random word currently being learned.
-        #   "review" — a mastered word whose spaced-repetition review is due.
+        # ---- a grammar rule waiting to be introduced? show it once, first ----
+        rule_topic = await self._grammar.pending_rule(user.id, _TRACK)
+        if rule_topic is not None:
+            msg_id = await self._raw_send(
+                user.telegram_id,
+                PUSH_RULE_CARD.format(title=html.escape(rule_topic.title), rule=rule_topic.rule),
+                push_rule_kb(),
+            )
+            if msg_id:
+                await self._grammar.mark_rule_seen(user.id, rule_topic.id)
+                state["next_ts"] = now_ts + _minutes(self._s.push_gap_min_minutes, self._s.push_gap_max_minutes)
+            await self._save(user.id, state)
+            return msg_id is not None
+
+        # ---- pick the next card: random among streams (words + grammar) ----
+        #   "new" — introduce a new word (only if the active set has room)
+        #   "repeat" — reinforce a random word being learned
+        #   "review" — a mastered word due for review
+        #   "grammar" — a non-mastered grammar exercise
         active_count = await self._uw.count_active(user.id, _TRACK)
         streams: list[str] = ["repeat", "review"]
         if active_count < ut.daily_goal_words:
             streams.append("new")
+        grammar_pick = await self._grammar.pick_for_push(user.id, _TRACK)
+        if grammar_pick is not None:
+            streams.append("grammar")
         random.shuffle(streams)
 
         sent = False
         for stream in streams:
+            if stream == "grammar":
+                ugi, _gi = grammar_pick
+                msg_id, options, correct = await self._send_card(user, "grammar", ugi.id)
+                if msg_id:
+                    state["inflight"] = self._inflight("grammar", ugi.id, options, correct, now_ts, msg_id)
+                    sent = True
+                break
             if stream == "new":
                 pick = await self._uw.pick_new_for_push(user.id, _TRACK)
             elif stream == "repeat":
@@ -190,13 +232,9 @@ class PushService:
             if pick is None:
                 continue
             uw, _w = pick
-            card = await self._build_card(user.id, uw.id)
-            if card is None:
-                continue
-            text, options, correct, status = card
-            msg_id = await self._raw_send(user.telegram_id, text, options, uw.id, status)
+            msg_id, options, correct = await self._send_card(user, "word", uw.id)
             if msg_id:
-                state["inflight"] = self._inflight(uw.id, options, correct, now_ts, msg_id)
+                state["inflight"] = self._inflight("word", uw.id, options, correct, now_ts, msg_id)
                 sent = True
             break
 
@@ -204,10 +242,12 @@ class PushService:
         return sent
 
     def _inflight(
-        self, uw_id: int, options: list[str], correct: str, now_ts: float, msg_id: int | None = None
+        self, kind: str, item_id: int, options: list[str], correct: str, now_ts: float, msg_id: int | None = None
     ) -> dict:
         return {
-            "uw_id": uw_id,
+            "kind": kind,
+            "id": item_id,
+            "uw_id": item_id,  # back-compat for the answer callback validation
             "options": options,
             "correct": correct,
             "msg_id": msg_id,
@@ -215,29 +255,50 @@ class PushService:
             "retry_ts": now_ts + _minutes(self._s.push_retry_min_minutes, self._s.push_retry_max_minutes),
         }
 
-    async def _send(self, user: User, uw_id: int, options: list[str], prefix: str = "") -> int | None:
-        card = await self._build_card(user.id, uw_id)
-        text = card[0] if card else PUSH_CARD.format(word="…")
+    async def _send_card(
+        self, user: User, kind: str, item_id: int, options_override: list[str] | None = None, prefix: str = ""
+    ) -> tuple[int | None, list[str] | None, str | None]:
+        """Build and send a card (word or grammar). Returns (msg_id, options,
+        correct). On a re-push pass options_override so the button order matches
+        the stored inflight (otherwise a re-shuffle would break answer checking)."""
+        built = await self._build_grammar(item_id) if kind == "grammar" else await self._build_card(user.id, item_id)
+        if built is None:
+            return None, None, None
+        text = built[0]
+        options = options_override or built[1]
+        correct = built[2]
         if prefix:
             text = f"{prefix}\n\n{text}"
-        status = card[3] if card else WordStatus.NEW.value
-        return await self._raw_send(user.telegram_id, text, options, uw_id, status)
+        if kind == "grammar":
+            kb = push_grammar_card_kb(options, item_id)
+        else:
+            kb = push_card_kb(options, item_id, built[3])
+        msg_id = await self._raw_send(user.telegram_id, text, kb)
+        return msg_id, options, correct
 
-    async def _raw_send(
-        self, telegram_id: int, text: str, options: list[str], uw_id: int, status: str
-    ) -> int | None:
-        """Send a push card; return the new message_id (so retries can delete the
-        previous one), or None on failure."""
+    async def _raw_send(self, telegram_id: int, text: str, reply_markup) -> int | None:
+        """Send a push card with a prebuilt keyboard; return the new message_id
+        (so retries can delete the previous one), or None on failure."""
         if self._bot is None:
             return None
         try:
             msg = await self._bot.send_message(
-                telegram_id, text, reply_markup=push_card_kb(options, uw_id, status), parse_mode="HTML"
+                telegram_id, text, reply_markup=reply_markup, parse_mode="HTML"
             )
             return msg.message_id
         except Exception:  # noqa: BLE001 — user may have blocked the bot
             log.warning("push_send_failed", tg=telegram_id)
             return None
+
+    async def _build_grammar(self, ugi_id: int) -> tuple[str, list[str], str] | None:
+        pair = await self._grammar.item_with_progress(ugi_id)
+        if pair is None:
+            return None
+        ugi, item = pair
+        options = [item.correct, *(item.distractors or [])][:4]
+        random.shuffle(options)
+        text = f"{PUSH_GRAMMAR_CARD.format(prompt=html.escape(item.prompt))}\n<i>{_progress_line(ugi)}</i>"
+        return text, options, item.correct
 
     async def _delete(self, chat_id: int, message_id: int) -> None:
         if self._bot is None:
@@ -308,7 +369,8 @@ class PushService:
     ) -> None:
         state = await self._load(user.id)
         inflight = state.get("inflight")
-        if not inflight or int(inflight.get("uw_id", 0)) != uw_id:
+        iid = int(inflight.get("id", inflight.get("uw_id", 0))) if inflight else 0
+        if not inflight or iid != uw_id:
             await query.answer(PUSH_STALE, show_alert=False)
             return
         options = inflight.get("options") or []
@@ -317,26 +379,10 @@ class PushService:
             return
         correct = options[idx] == inflight.get("correct")
 
-        uw = await self._uw.get(uw_id)
-        if uw is not None:
-            was_mastered = uw.status == WordStatus.MASTERED.value
-            apply_review(
-                uw,
-                ReviewResult.CORRECT if correct else ReviewResult.WRONG,
-                LearningPace(ut.learning_pace),
-            )
-            await self._reviews.create(
-                user_id=user.id, track=_TRACK, user_word_id=uw_id,
-                session_id=None, result=(ReviewResult.CORRECT if correct else ReviewResult.WRONG).value,
-            )
-            await self._session.flush()
-            await ProgressService(self._session).update_streak(user)
-            # A word just got mastered → a course slot freed up; top the pipeline
-            # back up with the next word from the spine (no-op if not enrolled).
-            if not was_mastered and uw.status == WordStatus.MASTERED.value:
-                from app.services.course_service import CourseService
-
-                await CourseService(self._session, self._redis).refill(user, ut, _TRACK)
+        if inflight.get("kind") == "grammar":
+            await self._apply_grammar_answer(user, ut, iid, correct)
+        else:
+            await self._apply_word_answer(user, ut, iid, correct)
 
         now_ts = datetime.now(timezone.utc).timestamp()
         state["inflight"] = None
@@ -354,3 +400,35 @@ class PushService:
             except Exception:  # noqa: BLE001
                 pass
         await query.answer("✅" if correct else "❌")
+
+    async def _apply_word_answer(self, user: User, ut: UserTrack, uw_id: int, correct: bool) -> None:
+        uw = await self._uw.get(uw_id)
+        if uw is None:
+            return
+        was_mastered = uw.status == WordStatus.MASTERED.value
+        apply_review(uw, ReviewResult.CORRECT if correct else ReviewResult.WRONG, LearningPace(ut.learning_pace))
+        await self._reviews.create(
+            user_id=user.id, track=_TRACK, user_word_id=uw_id,
+            session_id=None, result=(ReviewResult.CORRECT if correct else ReviewResult.WRONG).value,
+        )
+        await self._session.flush()
+        await ProgressService(self._session).update_streak(user)
+        # A word just got mastered → a course slot freed up; top the pipeline back up.
+        if not was_mastered and uw.status == WordStatus.MASTERED.value:
+            from app.services.course_service import CourseService
+
+            await CourseService(self._session, self._redis).refill(user, ut, _TRACK)
+
+    async def _apply_grammar_answer(self, user: User, ut: UserTrack, ugi_id: int, correct: bool) -> None:
+        ugi = await self._grammar.get_user_item(ugi_id)
+        if ugi is None:
+            return
+        was_mastered = ugi.status == WordStatus.MASTERED.value
+        apply_review(ugi, ReviewResult.CORRECT if correct else ReviewResult.WRONG, LearningPace(ut.learning_pace))
+        await self._session.flush()
+        await ProgressService(self._session).update_streak(user)
+        # Grammar item mastered → advance the course (next topic + word top-up).
+        if not was_mastered and ugi.status == WordStatus.MASTERED.value:
+            from app.services.course_service import CourseService
+
+            await CourseService(self._session, self._redis).refill(user, ut, _TRACK)

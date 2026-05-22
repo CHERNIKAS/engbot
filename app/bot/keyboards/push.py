@@ -41,6 +41,24 @@ def push_card_kb(options: list[str], uw_id: int, status: str) -> InlineKeyboardM
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
+def push_grammar_card_kb(options: list[str], ugi_id: int) -> InlineKeyboardMarkup:
+    """A grammar exercise card: answer buttons only (no archive/snooze). The
+    answer callback reuses the universal 'ans' action; uw_id carries the
+    user_grammar_item id and the handler routes by the inflight 'kind'."""
+    rows = [
+        [InlineKeyboardButton(text=opt[:60], callback_data=PushCB(action="ans", uw_id=ugi_id, idx=i).pack())]
+        for i, opt in enumerate(options)
+    ]
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+def push_rule_kb() -> InlineKeyboardMarkup:
+    """A grammar rule card — just an acknowledge button (no answer)."""
+    return InlineKeyboardMarkup(
+        inline_keyboard=[[InlineKeyboardButton(text="👌 Понятно", callback_data=PushCB(action="rule_ok").pack())]]
+    )
+
+
 def push_schedule_prompt_kb() -> InlineKeyboardMarkup:
     """Daily 'keep or change schedule?' prompt. Both buttons use the universal
     'pu' prefix so they work in any interaction state."""

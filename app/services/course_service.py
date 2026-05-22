@@ -10,6 +10,7 @@ from app.domain.course import current_lesson, total_lessons, words_to_add
 from app.domain.enums import LearningTrack, WordSource, WordStatus
 from app.domain.models import User, UserTrack
 from app.infrastructure.repositories.categories import CategoryRepository
+from app.infrastructure.repositories.grammar import GrammarRepository
 from app.infrastructure.repositories.packs import PackRepository
 from app.infrastructure.repositories.user_tracks import UserTrackRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
@@ -109,10 +110,23 @@ class CourseService:
         ids = [w for w, _ in spine]
         owned = await self._uw.status_map(user.id, track, ids)
         to_add = words_to_add(ids, owned, user_track.daily_goal_words)
-        if not to_add:
-            return 0
-        cat_id = await self._ensure_category(user.id, track)
-        return await self._uw.bulk_add(user.id, track, to_add, cat_id, WordSource.COURSE)
+        added = 0
+        if to_add:
+            cat_id = await self._ensure_category(user.id, track)
+            added = await self._uw.bulk_add(user.id, track, to_add, cat_id, WordSource.COURSE)
+        await self._refill_grammar(user.id, track)
+        return added
+
+    async def _refill_grammar(self, user_id: int, track: LearningTrack) -> None:
+        """Keep one grammar topic in progress at a time: when the current topic
+        is fully mastered (or none yet), introduce the next one. Its rule card +
+        exercises are then delivered by the push worker."""
+        gr = GrammarRepository(self._session)
+        if await gr.active_topic(user_id, track) is not None:
+            return
+        nxt = await gr.next_unstarted_topic(user_id, track)
+        if nxt is not None:
+            await gr.introduce_topic(user_id, nxt.id)
 
     async def progress(self, user: User, user_track: UserTrack, track: LearningTrack) -> CourseProgress:
         spine = await self._spine(track)

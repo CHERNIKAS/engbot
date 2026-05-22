@@ -137,6 +137,9 @@ REMINDER_DAILY = "🎯 Сегодня {studied}/{goal}. Закроем цель?
 REMINDER_INACTIVE = "👋 Давно не виделись. Вернись и повтори слова — даже 5 минут в день работают."
 
 PUSH_CARD = "🔔 Что значит <b>{word}</b>?"
+PUSH_GRAMMAR_CARD = "📖 Выбери верную форму:\n\n{prompt}"
+PUSH_RULE_CARD = "📖 <b>{title}</b>\n\n{rule}"
+PUSH_RULE_OK = "👍 Поехали — лови упражнения."
 PUSH_ANSWER_CORRECT = "✅ Верно! 🎉"
 PUSH_ANSWER_WRONG = "❌ Мимо. Правильно: <b>{answer}</b>"
 PUSH_STALE = "⌛ Эта карточка уже неактуальна."

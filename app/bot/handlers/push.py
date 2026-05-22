@@ -51,6 +51,16 @@ async def on_push_snooze(
     await PushService(session, redis).handle_snooze(user, callback_data.uw_id, callback_data.days, query)
 
 
+@router.callback_query(PushCB.filter(F.action == "rule_ok"))
+async def on_push_rule_ok(query: CallbackQuery) -> None:
+    if query.message:
+        try:
+            await query.message.delete()
+        except Exception:  # noqa: BLE001 — message gone / too old
+            pass
+    await query.answer("👍")
+
+
 @router.callback_query(PushCB.filter(F.action == "keep_schedule"))
 async def on_keep_schedule(query: CallbackQuery) -> None:
     if query.message:
