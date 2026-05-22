@@ -230,6 +230,76 @@ class UserWordRepository:
                 return row[0], row[1], True
         return None
 
+    async def count_active(self, user_id: int, track: LearningTrack) -> int:
+        """Words the user is currently learning (started, not yet mastered).
+        This is the 'active set' the push engine keeps at daily_goal size."""
+        q = select(func.count(UserWord.id)).where(
+            UserWord.user_id == user_id,
+            UserWord.track == track.value,
+            UserWord.status.in_([WordStatus.LEARNING.value, WordStatus.REVIEW.value]),
+        )
+        return (await self.session.execute(q)).scalar_one()
+
+    async def pick_new_for_push(
+        self, user_id: int, track: LearningTrack
+    ) -> tuple[UserWord, Word] | None:
+        """One brand-new (unstudied) quizzable word, oldest first — to introduce
+        into the active set when a slot frees up."""
+        q = (
+            select(UserWord, Word)
+            .join(Word, Word.id == UserWord.word_id)
+            .where(
+                UserWord.user_id == user_id,
+                UserWord.track == track.value,
+                UserWord.status == WordStatus.NEW.value,
+                Word.translation.isnot(None),
+            )
+            .order_by(UserWord.created_at.asc())
+            .limit(1)
+        )
+        row = (await self.session.execute(q)).first()
+        return (row[0], row[1]) if row is not None else None
+
+    async def pick_active_random(
+        self, user_id: int, track: LearningTrack
+    ) -> tuple[UserWord, Word] | None:
+        """A random word from the active set (being learned) — for reinforcement."""
+        q = (
+            select(UserWord, Word)
+            .join(Word, Word.id == UserWord.word_id)
+            .where(
+                UserWord.user_id == user_id,
+                UserWord.track == track.value,
+                UserWord.status.in_([WordStatus.LEARNING.value, WordStatus.REVIEW.value]),
+                Word.translation.isnot(None),
+            )
+            .order_by(func.random())
+            .limit(1)
+        )
+        row = (await self.session.execute(q)).first()
+        return (row[0], row[1]) if row is not None else None
+
+    async def pick_due_mastered(
+        self, user_id: int, track: LearningTrack, now: datetime | None = None
+    ) -> tuple[UserWord, Word] | None:
+        """A mastered ('learned') word whose spaced-repetition review is due."""
+        now = now or datetime.now(timezone.utc)
+        q = (
+            select(UserWord, Word)
+            .join(Word, Word.id == UserWord.word_id)
+            .where(
+                UserWord.user_id == user_id,
+                UserWord.track == track.value,
+                UserWord.status == WordStatus.MASTERED.value,
+                UserWord.next_review_at <= now,
+                Word.translation.isnot(None),
+            )
+            .order_by(UserWord.next_review_at.asc())
+            .limit(1)
+        )
+        row = (await self.session.execute(q)).first()
+        return (row[0], row[1]) if row is not None else None
+
     async def count_weak(self, user_id: int, track: LearningTrack) -> int:
         q = select(func.count(UserWord.id)).where(
             UserWord.user_id == user_id,

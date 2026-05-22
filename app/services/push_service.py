@@ -21,7 +21,7 @@ from app.bot.texts import (
 from app.config import get_settings
 from app.domain.enums import LearningPace, LearningTrack, ReviewResult
 from app.domain.models import User, UserTrack
-from app.domain.push import in_window, normalize_window, plan_next
+from app.domain.push import in_window, normalize_window
 from app.infrastructure.repositories.reviews import WordReviewRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
 from app.logging_setup import get_logger
@@ -109,7 +109,7 @@ class PushService:
 
         state = await self._load(user.id)
         if state.get("day") != today:
-            state = {"day": today, "new_today": 0, "next_ts": 0.0, "inflight": None, "repeats": [], "sched_asked": state.get("sched_asked", "")}
+            state = {"day": today, "next_ts": 0.0, "inflight": None, "sched_asked": state.get("sched_asked", "")}
 
         win = in_window(local.hour, ws, we)
 
@@ -127,62 +127,62 @@ class PushService:
                 log.warning("push_prompt_failed", uid=user.id)
 
         inflight = state.get("inflight")
-        repeats = state.get("repeats", [])
-        repeat_due = any(r.get("due_ts", 0) <= now_ts and r.get("left", 0) > 0 for r in repeats)
 
-        action = plan_next(
-            in_window_now=win,
-            has_inflight=inflight is not None,
-            inflight_retry_due=bool(inflight) and now_ts >= inflight.get("retry_ts", 0),
-            gap_due=now_ts >= state.get("next_ts", 0.0),
-            repeat_due=repeat_due,
-            new_allowed=True,
-        )
+        # ---- a card is waiting for an answer: keep nudging the SAME word until
+        #      the user replies (the "force"); replace the old message each time.
+        if inflight is not None:
+            sent = False
+            if win and now_ts >= inflight.get("retry_ts", 0):
+                new_msg_id = await self._send(user, inflight["uw_id"], inflight["options"])
+                if new_msg_id:
+                    old_msg_id = inflight.get("msg_id")
+                    if old_msg_id:
+                        await self._delete(user.telegram_id, old_msg_id)
+                    inflight["msg_id"] = new_msg_id
+                    inflight["retry_ts"] = now_ts + _minutes(
+                        self._s.push_retry_min_minutes, self._s.push_retry_max_minutes
+                    )
+                    sent = True
+            await self._save(user.id, state)
+            return sent
+
+        # ---- no card pending: gated by the window + the post-answer gap ----
+        if not win or now_ts < state.get("next_ts", 0.0):
+            await self._save(user.id, state)
+            return False
+
+        # ---- pick the next card: random among three streams ----
+        #   "new"    — introduce a new word, only if the active set has room
+        #              (words being learned < daily goal). One out, one in.
+        #   "repeat" — reinforce a random word currently being learned.
+        #   "review" — a mastered word whose spaced-repetition review is due.
+        active_count = await self._uw.count_active(user.id, _TRACK)
+        streams: list[str] = ["repeat", "review"]
+        if active_count < ut.daily_goal_words:
+            streams.append("new")
+        random.shuffle(streams)
 
         sent = False
-        if action == "retry" and inflight:
-            new_msg_id = await self._send(user, inflight["uw_id"], inflight["options"], retry=True)
-            if new_msg_id:
-                # Drop the previous (ignored) card so retries don't stack up as
-                # duplicate messages in the chat — only the latest one stays.
-                old_msg_id = inflight.get("msg_id")
-                if old_msg_id:
-                    await self._delete(user.telegram_id, old_msg_id)
-                inflight["msg_id"] = new_msg_id
-                inflight["attempts"] = inflight.get("attempts", 1) + 1
-                inflight["retry_ts"] = now_ts + _minutes(self._s.push_retry_min_minutes, self._s.push_retry_max_minutes)
+        for stream in streams:
+            if stream == "new":
+                pick = await self._uw.pick_new_for_push(user.id, _TRACK)
+            elif stream == "repeat":
+                pick = await self._uw.pick_active_random(user.id, _TRACK)
+            else:
+                pick = await self._uw.pick_due_mastered(user.id, _TRACK)
+            if pick is None:
+                continue
+            uw, _w = pick
+            card = await self._build_card(user.id, uw.id)
+            if card is None:
+                continue
+            text, options, correct = card
+            msg_id = await self._raw_send(user.telegram_id, text, options, uw.id)
+            if msg_id:
+                state["inflight"] = self._inflight(uw.id, options, correct, now_ts, msg_id)
                 sent = True
-        elif action == "repeat":
-            rep = min((r for r in repeats if r.get("due_ts", 0) <= now_ts and r.get("left", 0) > 0), key=lambda r: r["due_ts"], default=None)
-            if rep:
-                card = await self._build_card(user.id, rep["uw_id"])
-                if card is None:
-                    repeats.remove(rep)
-                else:
-                    text, options, correct = card
-                    msg_id = await self._raw_send(user.telegram_id, text, options, rep["uw_id"])
-                    if msg_id:
-                        state["inflight"] = self._inflight(rep["uw_id"], options, correct, now_ts, msg_id)
-                        rep["left"] -= 1
-                        if rep["left"] <= 0:
-                            repeats.remove(rep)
-                        sent = True
-        elif action == "new":
-            new_left = max(0, ut.daily_goal_words - state.get("new_today", 0))
-            pick = await self._uw.pick_for_push(user.id, _TRACK, new_left)
-            if pick is not None:
-                uw, _w, is_new = pick
-                card = await self._build_card(user.id, uw.id)
-                if card is not None:
-                    text, options, correct = card
-                    msg_id = await self._raw_send(user.telegram_id, text, options, uw.id)
-                    if msg_id:
-                        state["inflight"] = self._inflight(uw.id, options, correct, now_ts, msg_id)
-                        if is_new:
-                            state["new_today"] = state.get("new_today", 0) + 1
-                        sent = True
+            break
 
-        state["repeats"] = repeats
         await self._save(user.id, state)
         return sent
 
@@ -195,10 +195,9 @@ class PushService:
             "correct": correct,
             "msg_id": msg_id,
             "retry_ts": now_ts + _minutes(self._s.push_retry_min_minutes, self._s.push_retry_max_minutes),
-            "attempts": 1,
         }
 
-    async def _send(self, user: User, uw_id: int, options: list[str], *, retry: bool) -> int | None:
+    async def _send(self, user: User, uw_id: int, options: list[str]) -> int | None:
         card = await self._build_card(user.id, uw_id)
         text = card[0] if card else PUSH_CARD.format(word="…")
         return await self._raw_send(user.telegram_id, text, options, uw_id)
@@ -273,13 +272,6 @@ class PushService:
         now_ts = datetime.now(timezone.utc).timestamp()
         state["inflight"] = None
         state["next_ts"] = now_ts + _minutes(self._s.push_gap_min_minutes, self._s.push_gap_max_minutes)
-        repeats = state.get("repeats", [])
-        repeats.append({
-            "uw_id": uw_id,
-            "due_ts": now_ts + _minutes(self._s.push_repeat_min_minutes, self._s.push_repeat_max_minutes),
-            "left": self._s.push_repeats_per_word,
-        })
-        state["repeats"] = repeats
         await self._save(user.id, state)
 
         feedback = PUSH_ANSWER_CORRECT if correct else PUSH_ANSWER_WRONG.format(answer=inflight.get("correct"))

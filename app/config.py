@@ -43,13 +43,10 @@ class Settings(BaseSettings):
     push_default_window_start: int = Field(10, alias="PUSH_DEFAULT_WINDOW_START")
     push_default_window_end: int = Field(22, alias="PUSH_DEFAULT_WINDOW_END")
     push_min_window_hours: int = Field(10, alias="PUSH_MIN_WINDOW_HOURS")
-    push_gap_min_minutes: int = Field(10, alias="PUSH_GAP_MIN_MINUTES")  # answered → next card
-    push_gap_max_minutes: int = Field(30, alias="PUSH_GAP_MAX_MINUTES")
-    push_retry_min_minutes: int = Field(10, alias="PUSH_RETRY_MIN_MINUTES")  # ignored → re-push
-    push_retry_max_minutes: int = Field(20, alias="PUSH_RETRY_MAX_MINUTES")
-    push_repeat_min_minutes: int = Field(55, alias="PUSH_REPEAT_MIN_MINUTES")  # same-day repeat delay
-    push_repeat_max_minutes: int = Field(110, alias="PUSH_REPEAT_MAX_MINUTES")
-    push_repeats_per_word: int = Field(2, alias="PUSH_REPEATS_PER_WORD")
+    push_gap_min_minutes: int = Field(2, alias="PUSH_GAP_MIN_MINUTES")  # answered → next card (random)
+    push_gap_max_minutes: int = Field(15, alias="PUSH_GAP_MAX_MINUTES")
+    push_retry_min_minutes: int = Field(7, alias="PUSH_RETRY_MIN_MINUTES")  # ignored → re-push same word
+    push_retry_max_minutes: int = Field(7, alias="PUSH_RETRY_MAX_MINUTES")
 
     # Pre-shared password required to use the bot. Empty string disables gating.
     access_password: str = Field("", alias="ACCESS_PASSWORD")
