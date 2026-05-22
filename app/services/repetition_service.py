@@ -47,9 +47,9 @@ def apply_review(
 
     pace_mult = PACE_INTERVAL_MULTIPLIER.get(pace, 1.0)
     ease = user_word.ease_score or 2.5
-    interval = max(user_word.interval_days, 0.0)
-    reps = user_word.repetitions_count
-    mistakes = user_word.mistakes_count
+    interval = max(user_word.interval_days or 0.0, 0.0)
+    reps = user_word.repetitions_count or 0
+    mistakes = user_word.mistakes_count or 0
 
     if result in (ReviewResult.EASY,):
         ease = _clamp(ease + 0.15, MIN_EASE, MAX_EASE)

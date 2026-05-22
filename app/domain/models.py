@@ -243,3 +243,81 @@ class AnalyticsEvent(Base):
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False, index=True
     )
+
+
+class GrammarTopic(Base):
+    """A grammar lesson: a rule + a set of choose-the-form exercises. Delivered
+    inside the course/push, choice-only (no typing)."""
+    __tablename__ = "grammar_topics"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    slug: Mapped[str] = mapped_column(String(64), unique=True, nullable=False)
+    track: Mapped[str] = mapped_column(String(8), default="en", nullable=False, index=True)
+    title: Mapped[str] = mapped_column(String(128), nullable=False)
+    rule: Mapped[str] = mapped_column(Text, nullable=False)
+    level: Mapped[str | None] = mapped_column(String(8), nullable=True)
+    position: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+
+
+class GrammarItem(Base):
+    """One exercise: a sentence with a gap, the correct option, and distractors.
+    Options shown = [correct, *distractors], shuffled at render."""
+    __tablename__ = "grammar_items"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    topic_id: Mapped[int] = mapped_column(
+        Integer, ForeignKey("grammar_topics.id", ondelete="CASCADE"), nullable=False, index=True
+    )
+    prompt: Mapped[str] = mapped_column(Text, nullable=False)
+    correct: Mapped[str] = mapped_column(String(64), nullable=False)
+    distractors: Mapped[list] = mapped_column(JSONB, default=list, nullable=False)
+    position: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
+
+
+class UserGrammarItem(Base):
+    """Per-user spaced-repetition progress on a grammar exercise — mirrors the
+    UserWord fields so apply_review() works on it unchanged."""
+    __tablename__ = "user_grammar_items"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False
+    )
+    grammar_item_id: Mapped[int] = mapped_column(
+        Integer, ForeignKey("grammar_items.id", ondelete="CASCADE"), nullable=False
+    )
+    status: Mapped[str] = mapped_column(String(16), default="new", nullable=False, index=True)
+    ease_score: Mapped[float] = mapped_column(Float, default=2.5, nullable=False)
+    repetitions_count: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
+    mistakes_count: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
+    interval_days: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
+    mastery_score: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
+    last_reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    next_review_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+
+    __table_args__ = (
+        UniqueConstraint("user_id", "grammar_item_id", name="uq_user_grammar_item"),
+        Index("ix_user_grammar_items_user_status", "user_id", "status"),
+    )
+
+
+class UserGrammarTopic(Base):
+    """Tracks that the user has been shown a topic's rule card (so we show it
+    once, before its exercises)."""
+    __tablename__ = "user_grammar_topics"
+
+    user_id: Mapped[int] = mapped_column(
+        Integer, ForeignKey("users.id", ondelete="CASCADE"), primary_key=True
+    )
+    topic_id: Mapped[int] = mapped_column(
+        Integer, ForeignKey("grammar_topics.id", ondelete="CASCADE"), primary_key=True
+    )
+    rule_seen_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
