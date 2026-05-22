@@ -79,7 +79,13 @@ class UserTrackRepository:
             stmt = stmt.on_conflict_do_nothing(index_elements=["user_id", "track"])
         await self.session.execute(stmt)
         await self.session.flush()
-        return await self.get(user_id, track)  # type: ignore[return-value]
+        ut = await self.get(user_id, track)
+        # The ON CONFLICT update above is a Core statement, so an instance already
+        # in the session's identity map would come back stale — refresh it so
+        # callers (e.g. update_settings) always see the written values.
+        if ut is not None:
+            await self.session.refresh(ut)
+        return ut  # type: ignore[return-value]
 
     async def set_active(self, user_id: int, track: LearningTrack, active: bool) -> None:
         ut = await self.get(user_id, track)
