@@ -30,6 +30,27 @@ async def on_push_answer(
     )
 
 
+@router.callback_query(PushCB.filter(F.action == "know"))
+async def on_push_know(
+    query: CallbackQuery, callback_data: PushCB, user: User, session: AsyncSession, redis: Redis
+) -> None:
+    await PushService(session, redis).handle_remove(user, callback_data.uw_id, query, known=True)
+
+
+@router.callback_query(PushCB.filter(F.action == "hide"))
+async def on_push_hide(
+    query: CallbackQuery, callback_data: PushCB, user: User, session: AsyncSession, redis: Redis
+) -> None:
+    await PushService(session, redis).handle_remove(user, callback_data.uw_id, query, known=False)
+
+
+@router.callback_query(PushCB.filter(F.action == "snooze"))
+async def on_push_snooze(
+    query: CallbackQuery, callback_data: PushCB, user: User, session: AsyncSession, redis: Redis
+) -> None:
+    await PushService(session, redis).handle_snooze(user, callback_data.uw_id, callback_data.days, query)
+
+
 @router.callback_query(PushCB.filter(F.action == "keep_schedule"))
 async def on_keep_schedule(query: CallbackQuery) -> None:
     if query.message:

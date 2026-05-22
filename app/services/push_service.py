@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 import random
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from aiogram import Bot
@@ -10,16 +10,19 @@ from aiogram.types import CallbackQuery
 from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.bot.keyboards.push import push_card_kb, push_schedule_prompt_kb
+from app.bot.keyboards.push import SNOOZE_LABELS, push_card_kb, push_schedule_prompt_kb
 from app.bot.texts import (
     PUSH_ANSWER_CORRECT,
     PUSH_ANSWER_WRONG,
     PUSH_CARD,
+    PUSH_HIDDEN,
+    PUSH_KNOWN,
     PUSH_SCHEDULE_PROMPT,
+    PUSH_SNOOZED,
     PUSH_STALE,
 )
 from app.config import get_settings
-from app.domain.enums import LearningPace, LearningTrack, ReviewResult
+from app.domain.enums import LearningPace, LearningTrack, ReviewResult, WordStatus
 from app.domain.models import User, UserTrack
 from app.domain.push import in_window, normalize_window
 from app.infrastructure.repositories.reviews import WordReviewRepository
@@ -44,6 +47,13 @@ def _tz(name: str | None) -> ZoneInfo:
 
 def _minutes(a: int, b: int) -> float:
     return random.randint(a, b) * 60.0
+
+
+def _progress_line(uw) -> str:
+    """Small progress hint shown under the word on a push card."""
+    if uw.status == WordStatus.MASTERED.value:
+        return f"⭐ {uw.mastery_score:.1f} / 5"
+    return f"🌱 {uw.repetitions_count} / 10"
 
 
 class PushService:
@@ -176,8 +186,8 @@ class PushService:
             card = await self._build_card(user.id, uw.id)
             if card is None:
                 continue
-            text, options, correct = card
-            msg_id = await self._raw_send(user.telegram_id, text, options, uw.id)
+            text, options, correct, status = card
+            msg_id = await self._raw_send(user.telegram_id, text, options, uw.id, status)
             if msg_id:
                 state["inflight"] = self._inflight(uw.id, options, correct, now_ts, msg_id)
                 sent = True
@@ -200,16 +210,19 @@ class PushService:
     async def _send(self, user: User, uw_id: int, options: list[str]) -> int | None:
         card = await self._build_card(user.id, uw_id)
         text = card[0] if card else PUSH_CARD.format(word="…")
-        return await self._raw_send(user.telegram_id, text, options, uw_id)
+        status = card[3] if card else WordStatus.NEW.value
+        return await self._raw_send(user.telegram_id, text, options, uw_id, status)
 
-    async def _raw_send(self, telegram_id: int, text: str, options: list[str], uw_id: int) -> int | None:
+    async def _raw_send(
+        self, telegram_id: int, text: str, options: list[str], uw_id: int, status: str
+    ) -> int | None:
         """Send a push card; return the new message_id (so retries can delete the
         previous one), or None on failure."""
         if self._bot is None:
             return None
         try:
             msg = await self._bot.send_message(
-                telegram_id, text, reply_markup=push_card_kb(options, uw_id), parse_mode="HTML"
+                telegram_id, text, reply_markup=push_card_kb(options, uw_id, status), parse_mode="HTML"
             )
             return msg.message_id
         except Exception:  # noqa: BLE001 — user may have blocked the bot
@@ -224,7 +237,9 @@ class PushService:
         except Exception:  # noqa: BLE001 — message may already be gone / too old
             pass
 
-    async def _build_card(self, user_id: int, uw_id: int) -> tuple[str, list[str], str] | None:
+    async def _build_card(
+        self, user_id: int, uw_id: int
+    ) -> tuple[str, list[str], str, str] | None:
         pair = await self._uw.get_with_word(uw_id)
         if pair is None:
             return None
@@ -237,7 +252,43 @@ class PushService:
         )
         options = [correct, *distractors[:3]]
         random.shuffle(options)
-        return PUSH_CARD.format(word=word.writing), options, correct
+        text = f"{PUSH_CARD.format(word=word.writing)}\n<i>{_progress_line(uw)}</i>"
+        return text, options, correct, uw.status
+
+    # ---- card controls (handler path): я знаю / перестать показывать / отложить ----
+
+    async def handle_remove(self, user: User, uw_id: int, query: CallbackQuery, *, known: bool) -> None:
+        uw = await self._uw.get(uw_id)
+        if uw is not None:
+            uw.archived = True
+            await self._session.flush()
+        await self._advance_after_card(user.id, uw_id)
+        await self._finish_card(query, PUSH_KNOWN if known else PUSH_HIDDEN)
+
+    async def handle_snooze(self, user: User, uw_id: int, days: int, query: CallbackQuery) -> None:
+        uw = await self._uw.get(uw_id)
+        if uw is not None:
+            uw.snooze_until = datetime.now(timezone.utc) + timedelta(days=days)
+            await self._session.flush()
+        await self._advance_after_card(user.id, uw_id)
+        await self._finish_card(query, PUSH_SNOOZED.format(label=SNOOZE_LABELS.get(days, f"{days} дн.")))
+
+    async def _advance_after_card(self, user_id: int, uw_id: int) -> None:
+        """Drop the current card and let the next one come on the next worker tick."""
+        state = await self._load(user_id)
+        inflight = state.get("inflight")
+        if inflight and int(inflight.get("uw_id", 0)) == uw_id:
+            state["inflight"] = None
+        state["next_ts"] = datetime.now(timezone.utc).timestamp()
+        await self._save(user_id, state)
+
+    async def _finish_card(self, query: CallbackQuery, text: str) -> None:
+        if query.message:
+            try:
+                await query.message.edit_text(text)
+            except Exception:  # noqa: BLE001
+                pass
+        await query.answer(text)
 
     # ---- answer (handler path) ----
 
