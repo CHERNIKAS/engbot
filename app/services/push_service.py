@@ -25,6 +25,7 @@ from app.config import get_settings
 from app.domain.enums import LearningPace, LearningTrack, ReviewResult, WordStatus
 from app.domain.models import User, UserTrack
 from app.domain.push import in_window, normalize_window
+from app.domain.push_nudges import nudge_line
 from app.infrastructure.repositories.reviews import WordReviewRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
 from app.logging_setup import get_logger
@@ -140,10 +141,15 @@ class PushService:
 
         # ---- a card is waiting for an answer: keep nudging the SAME word until
         #      the user replies (the "force"); replace the old message each time.
+        #      Each re-push carries an escalating "stop ignoring me" line.
         if inflight is not None:
             sent = False
             if win and now_ts >= inflight.get("retry_ts", 0):
-                new_msg_id = await self._send(user, inflight["uw_id"], inflight["options"])
+                attempts = int(inflight.get("attempts", 0)) + 1
+                inflight["attempts"] = attempts
+                new_msg_id = await self._send(
+                    user, inflight["uw_id"], inflight["options"], prefix=nudge_line(attempts)
+                )
                 if new_msg_id:
                     old_msg_id = inflight.get("msg_id")
                     if old_msg_id:
@@ -204,12 +210,15 @@ class PushService:
             "options": options,
             "correct": correct,
             "msg_id": msg_id,
+            "attempts": 0,
             "retry_ts": now_ts + _minutes(self._s.push_retry_min_minutes, self._s.push_retry_max_minutes),
         }
 
-    async def _send(self, user: User, uw_id: int, options: list[str]) -> int | None:
+    async def _send(self, user: User, uw_id: int, options: list[str], prefix: str = "") -> int | None:
         card = await self._build_card(user.id, uw_id)
         text = card[0] if card else PUSH_CARD.format(word="…")
+        if prefix:
+            text = f"{prefix}\n\n{text}"
         status = card[3] if card else WordStatus.NEW.value
         return await self._raw_send(user.telegram_id, text, options, uw_id, status)
 

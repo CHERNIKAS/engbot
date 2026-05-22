@@ -3,8 +3,12 @@ from __future__ import annotations
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from app.bot.callbacks.schema import SettingsCB
-from app.bot.keyboards.common import cancel_button, home_button
+from app.bot.keyboards.common import home_button
 from app.bot.texts import PACE_LABELS
+
+
+def _back_to_settings_button() -> InlineKeyboardButton:
+    return InlineKeyboardButton(text="↩️ Назад", callback_data=SettingsCB(action="open").pack())
 
 
 def settings_kb() -> InlineKeyboardMarkup:
@@ -72,7 +76,7 @@ def push_settings_kb(ws: int, we: int) -> InlineKeyboardMarkup:
                     callback_data=SettingsCB(action="push_win").pack(),
                 )
             ],
-            [home_button()],
+            [_back_to_settings_button(), home_button()],
         ]
     )
 
@@ -121,7 +125,7 @@ def goal_values_kb(version: str = "") -> InlineKeyboardMarkup:
                     callback_data=SettingsCB(action="goal_value", value="custom", v=version).pack(),
                 )
             ],
-            [cancel_button(), home_button()],
+            [_back_to_settings_button(), home_button()],
         ]
     )
 
@@ -138,5 +142,5 @@ def pace_kb(current: str, version: str = "") -> InlineKeyboardMarkup:
                 )
             ]
         )
-    rows.append([cancel_button(), home_button()])
+    rows.append([_back_to_settings_button(), home_button()])
     return InlineKeyboardMarkup(inline_keyboard=rows)

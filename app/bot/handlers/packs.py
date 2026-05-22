@@ -2,10 +2,12 @@ from __future__ import annotations
 
 from aiogram import F, Router
 from aiogram.types import CallbackQuery, InlineKeyboardMarkup, Message
+from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.bot.callbacks.schema import PacksCB
 from app.bot.keyboards.packs import PACK_PAGE_SIZE, pack_browser_kb, pack_groups_kb
+from app.bot.menu_nav import send_menu_card
 from app.bot.states import InteractionState
 from app.bot.texts import (
     PACKS_ADDED_SUMMARY,
@@ -68,10 +70,15 @@ async def open_packs(
     current_track: LearningTrack,
     session: AsyncSession,
     state_service: InteractionStateService,
+    redis: Redis,
 ) -> None:
     await state_service.clear(user.id)
-    await message.answer(
-        PACKS_GROUPS_TITLE, reply_markup=pack_groups_kb(await _groups(user.id, current_track, session))
+    await send_menu_card(
+        message,
+        redis,
+        user.id,
+        PACKS_GROUPS_TITLE,
+        reply_markup=pack_groups_kb(await _groups(user.id, current_track, session)),
     )
 
 
@@ -220,7 +227,11 @@ async def on_add(
         )
 
     await state_service.clear(user.id)
+    # Back to the groups list (with the summary on top) so the user can keep
+    # browsing other sections instead of being dropped out of the flow.
     if query.message:
+        summary = PACKS_ADDED_SUMMARY.format(added=total_added, packs=packs_done)
         await query.message.edit_text(
-            PACKS_ADDED_SUMMARY.format(added=total_added, packs=packs_done), reply_markup=None
+            f"{summary}\n\n{PACKS_GROUPS_TITLE}",
+            reply_markup=pack_groups_kb(await _groups(user.id, current_track, session)),
         )

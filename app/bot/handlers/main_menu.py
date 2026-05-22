@@ -2,11 +2,13 @@ from __future__ import annotations
 
 from aiogram import F, Router
 from aiogram.types import CallbackQuery, Message
+from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.bot.callbacks.schema import NavCB
 from app.bot.keyboards.common import cancel_only_kb
 from app.bot.keyboards.main_menu import main_menu_reply_kb
+from app.bot.menu_nav import clear_menu_card, send_menu_card
 from app.bot.keyboards.my_words import categories_overview_kb
 from app.bot.keyboards.progress import progress_kb
 from app.bot.keyboards.settings import settings_kb
@@ -58,15 +60,19 @@ async def msg_my_words(
     current_track: LearningTrack,
     session: AsyncSession,
     state_service: InteractionStateService,
+    redis: Redis,
 ) -> None:
     await state_service.clear(user.id)
     service = CategoryService(CategoryRepository(session))
     categories = await service.list_user_categories(user.id, current_track)
     counts = await service.counts(user.id, current_track)
     if sum(counts.values()) == 0 and not categories:
-        await message.answer(MY_WORDS_EMPTY)
+        await send_menu_card(message, redis, user.id, MY_WORDS_EMPTY)
         return
-    await message.answer(
+    await send_menu_card(
+        message,
+        redis,
+        user.id,
         "📚 Мои слова",
         reply_markup=categories_overview_kb(categories, counts, flow="mw"),
     )
@@ -77,9 +83,10 @@ async def msg_study(
     message: Message,
     user: User,
     state_service: InteractionStateService,
+    redis: Redis,
 ) -> None:
     await state_service.clear(user.id)
-    await message.answer("🔥 Учить", reply_markup=study_menu_kb())
+    await send_menu_card(message, redis, user.id, "🔥 Учить", reply_markup=study_menu_kb())
 
 
 @router.message(F.text == BTN_ADD)
@@ -87,9 +94,12 @@ async def msg_add(
     message: Message,
     user: User,
     state_service: InteractionStateService,
+    redis: Redis,
 ) -> None:
     await state_service.set(user.id, InteractionState.WAITING_MANUAL_WORDS)
-    await message.answer(ADD_WORDS_PROMPT, reply_markup=cancel_only_kb(), parse_mode="HTML")
+    await send_menu_card(
+        message, redis, user.id, ADD_WORDS_PROMPT, reply_markup=cancel_only_kb(), parse_mode="HTML"
+    )
 
 
 @router.message(F.text == BTN_IMPORT)
@@ -97,9 +107,12 @@ async def msg_import(
     message: Message,
     user: User,
     state_service: InteractionStateService,
+    redis: Redis,
 ) -> None:
     await state_service.set(user.id, InteractionState.WAITING_TXT_FILE)
-    await message.answer(TXT_PROMPT, reply_markup=cancel_only_kb(), parse_mode="HTML")
+    await send_menu_card(
+        message, redis, user.id, TXT_PROMPT, reply_markup=cancel_only_kb(), parse_mode="HTML"
+    )
 
 
 @router.message(F.text == BTN_PACKS)
@@ -109,10 +122,11 @@ async def msg_packs(
     current_track: LearningTrack,
     session: AsyncSession,
     state_service: InteractionStateService,
+    redis: Redis,
 ) -> None:
     from app.bot.handlers.packs import open_packs
 
-    await open_packs(message, user, current_track, session, state_service)
+    await open_packs(message, user, current_track, session, state_service, redis)
 
 
 @router.message(F.text == BTN_PROGRESS)
@@ -122,6 +136,7 @@ async def msg_progress(
     session: AsyncSession,
     user_track_service: UserTrackService,
     state_service: InteractionStateService,
+    redis: Redis,
 ) -> None:
     await state_service.clear(user.id)
     progress = ProgressService(session)
@@ -138,7 +153,9 @@ async def msg_progress(
         )
     text = PROGRESS_TITLE.format(streak=user.streak_days, per_track="\n".join(lines) or "—")
     has_managed = await UserWordRepository(session).has_managed(user.id, LearningTrack.ENGLISH)
-    await message.answer(text, parse_mode="HTML", reply_markup=progress_kb(has_managed))
+    await send_menu_card(
+        message, redis, user.id, text, parse_mode="HTML", reply_markup=progress_kb(has_managed)
+    )
 
 
 @router.message(F.text == BTN_SETTINGS)
@@ -148,6 +165,7 @@ async def msg_settings(
     user_track: UserTrack,
     current_track: LearningTrack,
     state_service: InteractionStateService,
+    redis: Redis,
 ) -> None:
     await state_service.clear(user.id)
     text = SETTINGS_TITLE.format(
@@ -155,7 +173,7 @@ async def msg_settings(
         goal=user_track.daily_goal_words,
         pace=PACE_LABELS.get(user_track.learning_pace, user_track.learning_pace),
     )
-    await message.answer(text, reply_markup=settings_kb(), parse_mode="HTML")
+    await send_menu_card(message, redis, user.id, text, reply_markup=settings_kb(), parse_mode="HTML")
 
 
 # --------------------------------------------------------------------------- #
@@ -170,11 +188,15 @@ async def on_nav(
     callback_data: NavCB,
     user: User,
     state_service: InteractionStateService,
+    redis: Redis,
 ) -> None:
     await state_service.clear(user.id)
+    # Delete the card outright instead of leaving a "Главное меню" stub — the
+    # bottom reply-keyboard stays, so navigation is still one tap away.
     if query.message:
-        try:
-            await query.message.edit_text(MAIN_MENU)
-        except Exception:  # noqa: BLE001 — message may be too old to edit
-            pass
+        await clear_menu_card(
+            query.message.bot, redis, user.id, query.message.chat.id, query.message.message_id
+        )
+    else:
+        await clear_menu_card(query.bot, redis, user.id, query.from_user.id)
     await query.answer("Отменено." if callback_data.action == "cancel" else None)
