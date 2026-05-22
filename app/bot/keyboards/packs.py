@@ -21,7 +21,7 @@ def pack_browser_kb(
     Takes pre-computed rows (cached) so toggling never re-hits the DB."""
     rows: list[list[InlineKeyboardButton]] = []
     for pid, title, wc, pct in rows_in:
-        mark = "✅" if pid in selected else "☑️"
+        mark = "✅" if pid in selected else "⬜"
         rows.append(
             [
                 InlineKeyboardButton(
