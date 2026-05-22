@@ -169,7 +169,7 @@ class PushService:
             elif stream == "repeat":
                 pick = await self._uw.pick_active_random(user.id, _TRACK)
             else:
-                pick = await self._uw.pick_due_mastered(user.id, _TRACK)
+                pick = await self._uw.pick_review_mastered(user.id, _TRACK)
             if pick is None:
                 continue
             uw, _w = pick

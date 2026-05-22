@@ -134,6 +134,12 @@ class UserWord(Base):
     repetitions_count: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     mistakes_count: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     interval_days: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
+    # Push v2: 0–5 health score for mastered words (5.0 = fully learned).
+    mastery_score: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
+    # Archived ("я знаю" / "перестать показывать") — out of all push rotation,
+    # restorable from the management menu. Snoozed words hide until snooze_until.
+    archived: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False, index=True)
+    snooze_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     last_reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     next_review_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False

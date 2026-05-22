@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections.abc import Iterable
 from datetime import datetime, timezone
 
-from sqlalchemy import and_, func, select
+from sqlalchemy import and_, func, or_, select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -231,11 +231,13 @@ class UserWordRepository:
         return None
 
     async def count_active(self, user_id: int, track: LearningTrack) -> int:
-        """Words the user is currently learning (started, not yet mastered).
-        This is the 'active set' the push engine keeps at daily_goal size."""
+        """Words the user is currently learning (started, not yet mastered,
+        not archived). This is the 'active set' the push engine keeps at
+        daily_goal size."""
         q = select(func.count(UserWord.id)).where(
             UserWord.user_id == user_id,
             UserWord.track == track.value,
+            UserWord.archived.is_(False),
             UserWord.status.in_([WordStatus.LEARNING.value, WordStatus.REVIEW.value]),
         )
         return (await self.session.execute(q)).scalar_one()
@@ -251,6 +253,7 @@ class UserWordRepository:
             .where(
                 UserWord.user_id == user_id,
                 UserWord.track == track.value,
+                UserWord.archived.is_(False),
                 UserWord.status == WordStatus.NEW.value,
                 Word.translation.isnot(None),
             )
@@ -270,6 +273,7 @@ class UserWordRepository:
             .where(
                 UserWord.user_id == user_id,
                 UserWord.track == track.value,
+                UserWord.archived.is_(False),
                 UserWord.status.in_([WordStatus.LEARNING.value, WordStatus.REVIEW.value]),
                 Word.translation.isnot(None),
             )
@@ -279,22 +283,28 @@ class UserWordRepository:
         row = (await self.session.execute(q)).first()
         return (row[0], row[1]) if row is not None else None
 
-    async def pick_due_mastered(
+    async def pick_review_mastered(
         self, user_id: int, track: LearningTrack, now: datetime | None = None
     ) -> tuple[UserWord, Word] | None:
-        """A mastered ('learned') word whose spaced-repetition review is due."""
+        """A mastered ('learned') word for review — not archived, not snoozed.
+        Weighted random so a LOWER score is shown more often, 5.0 rarely."""
         now = now or datetime.now(timezone.utc)
+        # weight = 5.2 - score (low score -> big weight). A-Res weighted sampling:
+        # order by random()^(1/weight) desc, take the top one.
+        weight = 5.2 - UserWord.mastery_score
+        key = func.power(func.random(), 1.0 / weight)
         q = (
             select(UserWord, Word)
             .join(Word, Word.id == UserWord.word_id)
             .where(
                 UserWord.user_id == user_id,
                 UserWord.track == track.value,
+                UserWord.archived.is_(False),
                 UserWord.status == WordStatus.MASTERED.value,
-                UserWord.next_review_at <= now,
+                or_(UserWord.snooze_until.is_(None), UserWord.snooze_until <= now),
                 Word.translation.isnot(None),
             )
-            .order_by(UserWord.next_review_at.asc())
+            .order_by(key.desc())
             .limit(1)
         )
         row = (await self.session.execute(q)).first()
