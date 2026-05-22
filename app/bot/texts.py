@@ -201,6 +201,11 @@ PACKS_TITLE = (
 )
 PACKS_ADDED_SUMMARY = "🌱 Добавлено: {added} новых слов из {packs} паков!"
 PACKS_NONE_SELECTED = "🤷 Ничего не выбрано."
+PACK_TOGGLE_ADDED = "🌱 Добавлено: {count} слов"
+PACK_TOGGLE_NONE_NEW = "👌 Все слова этого пака уже у тебя"
+PACK_REMOVE_CONFIRM = "🗑 Убрать пак «{title}»?\n{count} слов уйдут из обучения, прогресс по ним сотрётся."
+PACK_REMOVED = "🗑 Убрано слов: {count}"
+PACK_COURSE_MANAGED = "🎓 Уровни ведёт курс — управляй ими в «🎓 Курс»."
 
 PACKS_PICK_CATEGORIES = "Выбери категории паков:"
 PACKS_LIST_TITLE = "Доступные паки"

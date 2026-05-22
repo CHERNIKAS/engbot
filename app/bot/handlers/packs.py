@@ -1,37 +1,43 @@
 from __future__ import annotations
 
 from aiogram import F, Router
-from aiogram.types import CallbackQuery, InlineKeyboardMarkup, Message
+from aiogram.types import CallbackQuery, Message
 from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.bot.callbacks.schema import PacksCB
-from app.bot.keyboards.packs import PACK_PAGE_SIZE, pack_browser_kb, pack_groups_kb
+from app.bot.keyboards.packs import (
+    PACK_PAGE_SIZE,
+    pack_browser_kb,
+    pack_groups_kb,
+    pack_remove_confirm_kb,
+)
 from app.bot.menu_nav import send_menu_card
 from app.bot.states import InteractionState
 from app.bot.texts import (
-    PACKS_ADDED_SUMMARY,
+    PACK_COURSE_MANAGED,
+    PACK_REMOVE_CONFIRM,
+    PACK_REMOVED,
+    PACK_TOGGLE_ADDED,
+    PACK_TOGGLE_NONE_NEW,
     PACKS_GROUPS_TITLE,
-    PACKS_NONE_SELECTED,
     PACKS_TITLE,
 )
 from app.domain.enums import LearningTrack
-from app.domain.models import User
+from app.domain.models import User, UserTrack
 from app.infrastructure.repositories.categories import CategoryRepository
 from app.infrastructure.repositories.packs import PackRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
 from app.services.analytics import EVENT_PACK_ADDED, Analytics
 from app.services.category_service import CategoryService, CategoryServiceError
+from app.services.course_service import CourseService
 from app.services.interaction_state_service import InteractionStateService
 from app.services.pack_service import PackService
 
 router = Router(name="packs")
 
 _GROUP_ORDER = {"Уровни": 0, "Грамматика": 1, "Темы": 2, "Фразы": 3, "Экзамены": 4}
-
-
-def _selected(payload) -> set[int]:
-    return {int(x) for x in (payload.data or {}).get("selected") or []}
+_LEVELS_GROUP = "Уровни"
 
 
 async def _groups(user_id: int, track: LearningTrack, session: AsyncSession) -> list[tuple[str, int]]:
@@ -39,26 +45,45 @@ async def _groups(user_id: int, track: LearningTrack, session: AsyncSession) -> 
     return sorted(counts, key=lambda c: (_GROUP_ORDER.get(c[0], 99), c[0]))
 
 
-async def _build_cache(category: str, track: LearningTrack, user_id: int, session: AsyncSession) -> list[list]:
+async def _cache(category: str, track: LearningTrack, user_id: int, session: AsyncSession) -> list[list]:
+    """Rows: [pack_id, title, words_count, learned_pct, owned]. `owned` drives the
+    ✅/⬜ mark (added vs not)."""
     repo = PackRepository(session)
     packs = await repo.list_by_category(track, category)
     stats = await repo.stats_for_user(user_id, track)
-    cache: list[list] = []
+    out: list[list] = []
     for p in packs:
-        _owned, mastered = stats.get(p.id, (0, 0))
+        owned, mastered = stats.get(p.id, (0, 0))
         pct = round(100 * mastered / p.words_count) if p.words_count else 0
-        cache.append([p.id, p.title, p.words_count, pct])
-    return cache
+        out.append([p.id, p.title, p.words_count, pct, owned])
+    return out
 
 
-def _kb(cache: list[list], selected: set[int], page: int) -> InlineKeyboardMarkup:
+async def _render_list(
+    query: CallbackQuery,
+    user: User,
+    user_track: UserTrack,
+    track: LearningTrack,
+    session: AsyncSession,
+    category: str,
+    page: int,
+) -> None:
+    cache = await _cache(category, track, user.id, session)
+    course_managed = category == _LEVELS_GROUP and CourseService.is_enrolled(user_track)
     total_pages = max(1, (len(cache) + PACK_PAGE_SIZE - 1) // PACK_PAGE_SIZE)
     page = max(0, min(page, total_pages - 1))
-    page_rows = [
-        (int(r[0]), str(r[1]), int(r[2]), int(r[3]))
+    rows = [
+        (int(r[0]), str(r[1]), int(r[2]), int(r[3]), int(r[4]))
         for r in cache[page * PACK_PAGE_SIZE : (page + 1) * PACK_PAGE_SIZE]
     ]
-    return pack_browser_kb(page_rows, selected, page, total_pages)
+    if query.message:
+        await query.message.edit_text(
+            PACKS_TITLE, reply_markup=pack_browser_kb(rows, page, total_pages, course_managed)
+        )
+
+
+def _pack_row(cache: list[list], pid: int) -> list | None:
+    return next((r for r in cache if int(r[0]) == pid), None)
 
 
 # ---- groups (top level) ----
@@ -104,51 +129,18 @@ async def on_group(
     query: CallbackQuery,
     callback_data: PacksCB,
     user: User,
+    user_track: UserTrack,
     current_track: LearningTrack,
     session: AsyncSession,
     state_service: InteractionStateService,
 ) -> None:
     await query.answer()
     category = callback_data.category
-    cache = await _build_cache(category, current_track, user.id, session)
-    await state_service.set(
-        user.id,
-        InteractionState.PACK_SELECTION,
-        {"selected": [], "cache": cache, "category": category},
-    )
-    if query.message:
-        await query.message.edit_text(PACKS_TITLE, reply_markup=_kb(cache, set(), 0))
+    await state_service.set(user.id, InteractionState.PACK_SELECTION, {"category": category})
+    await _render_list(query, user, user_track, current_track, session, category, 0)
 
 
-# ---- checklist (within a group) ----
-
-
-async def _cached(query, user, current_track, session, state_service) -> tuple[list, set[int]]:
-    payload = await state_service.get(user.id)
-    data = payload.data or {}
-    cache = data.get("cache")
-    if not cache and data.get("category"):
-        cache = await _build_cache(data["category"], current_track, user.id, session)
-        await state_service.update_data(user.id, cache=cache)
-    return cache or [], _selected(payload)
-
-
-@router.callback_query(PacksCB.filter(F.action == "toggle"))
-async def on_toggle(
-    query: CallbackQuery,
-    callback_data: PacksCB,
-    user: User,
-    current_track: LearningTrack,
-    session: AsyncSession,
-    state_service: InteractionStateService,
-) -> None:
-    await query.answer()
-    cache, selected = await _cached(query, user, current_track, session, state_service)
-    pid = callback_data.pack_id
-    selected.discard(pid) if pid in selected else selected.add(pid)
-    await state_service.update_data(user.id, selected=list(selected))
-    if query.message:
-        await query.message.edit_reply_markup(reply_markup=_kb(cache, selected, callback_data.page))
+# ---- checklist (within a group): tap = add / ask-remove, applied immediately ----
 
 
 @router.callback_query(PacksCB.filter(F.action == "page"))
@@ -156,82 +148,105 @@ async def on_page(
     query: CallbackQuery,
     callback_data: PacksCB,
     user: User,
+    user_track: UserTrack,
     current_track: LearningTrack,
     session: AsyncSession,
     state_service: InteractionStateService,
 ) -> None:
     await query.answer()
-    cache, selected = await _cached(query, user, current_track, session, state_service)
-    if query.message:
-        await query.message.edit_reply_markup(reply_markup=_kb(cache, selected, callback_data.page))
+    category = (await state_service.get(user.id)).data.get("category")
+    if category:
+        await _render_list(query, user, user_track, current_track, session, category, callback_data.page)
 
 
-@router.callback_query(PacksCB.filter(F.action == "reset"))
-async def on_reset(
+@router.callback_query(PacksCB.filter(F.action == "course_info"))
+async def on_course_info(query: CallbackQuery) -> None:
+    await query.answer(PACK_COURSE_MANAGED, show_alert=False)
+
+
+@router.callback_query(PacksCB.filter(F.action == "toggle"))
+async def on_toggle(
     query: CallbackQuery,
+    callback_data: PacksCB,
     user: User,
-    current_track: LearningTrack,
-    session: AsyncSession,
-    state_service: InteractionStateService,
-) -> None:
-    await query.answer()
-    cache, _ = await _cached(query, user, current_track, session, state_service)
-    await state_service.update_data(user.id, selected=[])
-    if query.message:
-        await query.message.edit_reply_markup(reply_markup=_kb(cache, set(), 0))
-
-
-@router.callback_query(PacksCB.filter(F.action == "add"))
-async def on_add(
-    query: CallbackQuery,
-    user: User,
+    user_track: UserTrack,
     current_track: LearningTrack,
     session: AsyncSession,
     state_service: InteractionStateService,
     analytics: Analytics,
 ) -> None:
-    payload = await state_service.get(user.id)
-    selected = _selected(payload)
-    if not selected:
-        await query.answer(PACKS_NONE_SELECTED, show_alert=True)
+    category = (await state_service.get(user.id)).data.get("category")
+    if not category:
+        await query.answer()
         return
-    await query.answer()
+    cache = await _cache(category, current_track, user.id, session)
+    row = _pack_row(cache, callback_data.pack_id)
+    if row is None:
+        await query.answer()
+        return
+    _pid, title, wc, _pct, owned = int(row[0]), str(row[1]), int(row[2]), int(row[3]), int(row[4])
 
+    # Already fully added → ask before removing (it drops progress).
+    if wc > 0 and owned >= wc:
+        await query.answer()
+        if query.message:
+            await query.message.edit_text(
+                PACK_REMOVE_CONFIRM.format(title=title, count=owned),
+                reply_markup=pack_remove_confirm_kb(callback_data.pack_id, callback_data.page),
+            )
+        return
+
+    # Otherwise add the pack (creates a folder named after it).
     pack_repo = PackRepository(session)
     cat_repo = CategoryRepository(session)
-    cat_service = CategoryService(cat_repo)
-    pack_service = PackService(pack_repo, UserWordRepository(session))
+    pack = await pack_repo.get(callback_data.pack_id)
+    if pack is None:
+        await query.answer()
+        return
+    try:
+        track = LearningTrack(pack.track)
+    except ValueError:
+        track = current_track
+    folder = await cat_repo.get_by_name(user.id, track, pack.title)
+    if folder is None:
+        try:
+            folder = await CategoryService(cat_repo).create(user.id, track, pack.title)
+        except CategoryServiceError:
+            folder = await cat_repo.get_by_name(user.id, track, pack.title)
+    result = await PackService(pack_repo, UserWordRepository(session)).add_pack(
+        user.id, track, callback_data.pack_id, folder.id if folder else None
+    )
+    await analytics.emit(
+        EVENT_PACK_ADDED, user_id=user.id, track=track.value, pack_id=callback_data.pack_id, added=result.added
+    )
+    await query.answer(
+        PACK_TOGGLE_ADDED.format(count=result.added) if result.added else PACK_TOGGLE_NONE_NEW
+    )
+    await _render_list(query, user, user_track, current_track, session, category, callback_data.page)
 
-    total_added = 0
-    packs_done = 0
-    for pid in selected:
-        pack = await pack_repo.get(pid)
-        if pack is None:
-            continue
+
+@router.callback_query(PacksCB.filter(F.action == "rem_ok"))
+async def on_remove_confirm(
+    query: CallbackQuery,
+    callback_data: PacksCB,
+    user: User,
+    user_track: UserTrack,
+    current_track: LearningTrack,
+    session: AsyncSession,
+    state_service: InteractionStateService,
+) -> None:
+    category = (await state_service.get(user.id)).data.get("category")
+    pack_repo = PackRepository(session)
+    pack = await pack_repo.get(callback_data.pack_id)
+    track = current_track
+    if pack is not None:
         try:
             track = LearningTrack(pack.track)
         except ValueError:
             track = current_track
-        category = await cat_repo.get_by_name(user.id, track, pack.title)
-        if category is None:
-            try:
-                category = await cat_service.create(user.id, track, pack.title)
-            except CategoryServiceError:
-                category = await cat_repo.get_by_name(user.id, track, pack.title)
-        category_id = category.id if category else None
-        result = await pack_service.add_pack(user.id, track, pid, category_id)
-        total_added += result.added
-        packs_done += 1
-        await analytics.emit(
-            EVENT_PACK_ADDED, user_id=user.id, track=track.value, pack_id=pid, added=result.added
-        )
-
-    await state_service.clear(user.id)
-    # Back to the groups list (with the summary on top) so the user can keep
-    # browsing other sections instead of being dropped out of the flow.
-    if query.message:
-        summary = PACKS_ADDED_SUMMARY.format(added=total_added, packs=packs_done)
-        await query.message.edit_text(
-            f"{summary}\n\n{PACKS_GROUPS_TITLE}",
-            reply_markup=pack_groups_kb(await _groups(user.id, current_track, session)),
-        )
+    removed = await PackService(pack_repo, UserWordRepository(session)).remove_pack(
+        user.id, track, callback_data.pack_id
+    )
+    await query.answer(PACK_REMOVED.format(count=removed))
+    if category:
+        await _render_list(query, user, user_track, current_track, session, category, callback_data.page)

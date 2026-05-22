@@ -49,3 +49,9 @@ class PackService:
             source=WordSource.PACK,
         )
         return PackAddResult(added=added)
+
+    async def remove_pack(self, user_id: int, track: LearningTrack, pack_id: int) -> int:
+        """Remove a pack's words from the user's vocabulary (drops their
+        progress). Returns how many were removed."""
+        word_ids = await self._packs.get_pack_word_ids(pack_id)
+        return await self._user_words.remove_by_word_ids(user_id, track, word_ids)

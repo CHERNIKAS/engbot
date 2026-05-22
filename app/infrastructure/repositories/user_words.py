@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections.abc import Iterable
 from datetime import datetime, timezone
 
-from sqlalchemy import and_, func, or_, select
+from sqlalchemy import and_, delete, func, or_, select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -389,6 +389,23 @@ class UserWordRepository:
             .limit(limit)
         )
         return [(r[0], r[1]) for r in (await self.session.execute(q)).all()]
+
+    async def remove_by_word_ids(
+        self, user_id: int, track: LearningTrack, word_ids: list[int]
+    ) -> int:
+        """Delete the user's records for these words (removes them from learning,
+        dropping their progress). Returns how many were removed."""
+        if not word_ids:
+            return 0
+        result = await self.session.execute(
+            delete(UserWord).where(
+                UserWord.user_id == user_id,
+                UserWord.track == track.value,
+                UserWord.word_id.in_(word_ids),
+            )
+        )
+        await self.session.flush()
+        return int(result.rowcount or 0)
 
     async def status_map(
         self, user_id: int, track: LearningTrack, word_ids: list[int]
