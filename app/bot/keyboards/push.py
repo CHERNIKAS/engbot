@@ -42,13 +42,17 @@ def push_card_kb(options: list[str], uw_id: int, status: str) -> InlineKeyboardM
 
 
 def push_grammar_card_kb(options: list[str], ugi_id: int) -> InlineKeyboardMarkup:
-    """A grammar exercise card: answer buttons only (no archive/snooze). The
-    answer callback reuses the universal 'ans' action; uw_id carries the
-    user_grammar_item id and the handler routes by the inflight 'kind'."""
+    """A grammar exercise card: answer buttons + a "📖 Правило" button so the
+    user can read the rule instead of guessing. The answer callback reuses the
+    universal 'ans' action; uw_id carries the user_grammar_item id and the
+    handler routes by the inflight 'kind'."""
     rows = [
         [InlineKeyboardButton(text=opt[:60], callback_data=PushCB(action="ans", uw_id=ugi_id, idx=i).pack())]
         for i, opt in enumerate(options)
     ]
+    rows.append(
+        [InlineKeyboardButton(text="📖 Правило", callback_data=PushCB(action="rule", uw_id=ugi_id).pack())]
+    )
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 

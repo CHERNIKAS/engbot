@@ -116,6 +116,17 @@ class GrammarRepository:
         row = (await self.session.execute(q)).first()
         return (row[0], row[1]) if row is not None else None
 
+    async def topic_for_user_item(self, ugi_id: int) -> GrammarTopic | None:
+        """The grammar topic (with its rule) behind a user's exercise — for the
+        "📖 Правило" button on a grammar card."""
+        q = (
+            select(GrammarTopic)
+            .join(GrammarItem, GrammarItem.topic_id == GrammarTopic.id)
+            .join(UserGrammarItem, UserGrammarItem.grammar_item_id == GrammarItem.id)
+            .where(UserGrammarItem.id == ugi_id)
+        )
+        return (await self.session.execute(q)).scalars().first()
+
     async def item_with_progress(
         self, ugi_id: int
     ) -> tuple[UserGrammarItem, GrammarItem] | None:

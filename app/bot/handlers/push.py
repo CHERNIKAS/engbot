@@ -51,6 +51,13 @@ async def on_push_snooze(
     await PushService(session, redis).handle_snooze(user, callback_data.uw_id, callback_data.days, query)
 
 
+@router.callback_query(PushCB.filter(F.action == "rule"))
+async def on_push_rule(
+    query: CallbackQuery, callback_data: PushCB, user: User, session: AsyncSession, redis: Redis
+) -> None:
+    await PushService(session, redis).show_rule(user, callback_data.uw_id, query)
+
+
 @router.callback_query(PushCB.filter(F.action == "rule_ok"))
 async def on_push_rule_ok(query: CallbackQuery) -> None:
     if query.message:

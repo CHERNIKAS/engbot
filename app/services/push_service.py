@@ -327,6 +327,29 @@ class PushService:
         text = f"{PUSH_CARD.format(word=html.escape(word.writing))}\n<i>{_progress_line(uw)}</i>"
         return text, options, correct, uw.status
 
+    async def show_rule(self, user: User, ugi_id: int, query: CallbackQuery) -> None:
+        """Show the rule behind a grammar exercise (the "📖 Правило" button), as a
+        separate message tied to the current card so it's cleaned up on answer."""
+        topic = await self._grammar.topic_for_user_item(ugi_id)
+        if topic is None:
+            await query.answer()
+            return
+        state = await self._load(user.id)
+        inflight = state.get("inflight")
+        # Don't stack rule messages — drop a previously-opened one first.
+        if inflight and inflight.get("rule_msg_id"):
+            await self._delete(user.telegram_id, int(inflight["rule_msg_id"]))
+            inflight["rule_msg_id"] = None
+        msg_id = await self._raw_send(
+            user.telegram_id,
+            PUSH_RULE_CARD.format(title=html.escape(topic.title), rule=topic.rule),
+            push_rule_kb(),
+        )
+        if msg_id and inflight is not None:
+            inflight["rule_msg_id"] = msg_id
+            await self._save(user.id, state)
+        await query.answer()
+
     # ---- card controls (handler path): я знаю / перестать показывать / отложить ----
 
     async def handle_remove(self, user: User, uw_id: int, query: CallbackQuery, *, known: bool) -> None:
@@ -378,6 +401,7 @@ class PushService:
             await query.answer()
             return
         correct = options[idx] == inflight.get("correct")
+        rule_msg_id = inflight.get("rule_msg_id")
 
         if inflight.get("kind") == "grammar":
             await self._apply_grammar_answer(user, ut, iid, correct)
@@ -388,6 +412,10 @@ class PushService:
         state["inflight"] = None
         state["next_ts"] = now_ts + _minutes(self._s.push_gap_min_minutes, self._s.push_gap_max_minutes)
         await self._save(user.id, state)
+
+        # Clean up the rule message the user may have opened for this card.
+        if rule_msg_id:
+            await self._delete(user.telegram_id, int(rule_msg_id))
 
         feedback = (
             PUSH_ANSWER_CORRECT
