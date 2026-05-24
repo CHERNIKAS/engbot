@@ -329,24 +329,35 @@ class PushService:
 
     async def show_rule(self, user: User, ugi_id: int, query: CallbackQuery) -> None:
         """Show the rule behind a grammar exercise (the "📖 Правило" button), as a
-        separate message tied to the current card so it's cleaned up on answer."""
+        separate message tied to the current card so it's cleaned up on answer.
+        Sends via the callback's message (handler path has no self._bot)."""
+        if query.message is None:
+            await query.answer()
+            return
         topic = await self._grammar.topic_for_user_item(ugi_id)
         if topic is None:
             await query.answer()
             return
+        bot, chat_id = query.message.bot, query.message.chat.id
         state = await self._load(user.id)
         inflight = state.get("inflight")
         # Don't stack rule messages — drop a previously-opened one first.
         if inflight and inflight.get("rule_msg_id"):
-            await self._delete(user.telegram_id, int(inflight["rule_msg_id"]))
+            try:
+                await bot.delete_message(chat_id, int(inflight["rule_msg_id"]))
+            except Exception:  # noqa: BLE001
+                pass
             inflight["rule_msg_id"] = None
-        msg_id = await self._raw_send(
-            user.telegram_id,
-            PUSH_RULE_CARD.format(title=html.escape(topic.title), rule=topic.rule),
-            push_rule_kb(),
-        )
-        if msg_id and inflight is not None:
-            inflight["rule_msg_id"] = msg_id
+        try:
+            sent = await query.message.answer(
+                PUSH_RULE_CARD.format(title=html.escape(topic.title), rule=topic.rule),
+                reply_markup=push_rule_kb(),
+                parse_mode="HTML",
+            )
+        except Exception:  # noqa: BLE001
+            sent = None
+        if sent is not None and inflight is not None:
+            inflight["rule_msg_id"] = sent.message_id
             await self._save(user.id, state)
         await query.answer()
 
@@ -413,9 +424,13 @@ class PushService:
         state["next_ts"] = now_ts + _minutes(self._s.push_gap_min_minutes, self._s.push_gap_max_minutes)
         await self._save(user.id, state)
 
-        # Clean up the rule message the user may have opened for this card.
-        if rule_msg_id:
-            await self._delete(user.telegram_id, int(rule_msg_id))
+        # Clean up the rule message the user may have opened for this card
+        # (handler path has no self._bot, so use the callback's message bot).
+        if rule_msg_id and query.message is not None:
+            try:
+                await query.message.bot.delete_message(query.message.chat.id, int(rule_msg_id))
+            except Exception:  # noqa: BLE001
+                pass
 
         feedback = (
             PUSH_ANSWER_CORRECT
