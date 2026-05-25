@@ -36,6 +36,14 @@ def _meaning_tokens_of(translations: list[str]) -> set[str]:
     return out
 
 
+def _is_negation(translation: str) -> bool:
+    """A Russian negation gloss («не имею», «ни один»). Used to keep distractors
+    the same SHAPE as the answer — a negation is quizzed against other negations
+    (don't/can't/isn't) instead of a random noun the user can pick by elimination."""
+    n = _norm(translation)
+    return n.startswith("не ") or n.startswith("ни ")
+
+
 class UserWordRepository:
     def __init__(self, session: AsyncSession) -> None:
         self.session = session
@@ -478,27 +486,25 @@ class UserWordRepository:
         top up from pack words in the same track. Never mix in other users' data.
 
         Quality:
-        - candidates are ranked so that the same part of speech / level as the
-          answer come first (a verb is quizzed against verbs, not random nouns);
+        - SHAPE first: a negation answer («не имею») is quizzed against other
+          negations («не делаю», «не могу»), not a random noun — otherwise the
+          user picks "the only one with «не»" by elimination, learning nothing;
+        - then the same part of speech / level (a verb against verbs);
         - a candidate that shares a meaning word with the correct answer is
           dropped, so we never offer a translation that's actually also correct
           (e.g. «держать» as a distractor when the answer is «хранить / держать»).
         """
         protected = _meaning_tokens_of(exclude_translations or [])
         seen: set[str] = {_norm(t) for t in (exclude_translations or []) if t}
+        correct_neg = any(_is_negation(t) for t in (exclude_translations or []) if t)
 
-        def tier(pos: str | None, level: str | None) -> int:
+        def tier(translation: str, pos: str | None, level: str | None) -> tuple[int, int, int]:
+            shape_match = _is_negation(translation) == correct_neg
             pos_match = correct_pos is not None and pos == correct_pos
             level_match = correct_level is not None and level == correct_level
-            if pos_match and level_match:
-                return 0
-            if pos_match:
-                return 1
-            if level_match:
-                return 2
-            return 3
+            return (0 if shape_match else 1, 0 if pos_match else 1, 0 if level_match else 1)
 
-        candidates: list[tuple[int, str]] = []
+        candidates: list[tuple[tuple[int, int, int], str]] = []
 
         def consider(rows: list) -> None:
             for translation, pos, level in rows:
@@ -510,7 +516,7 @@ class UserWordRepository:
                 if _meaning_tokens(translation) & protected:
                     continue  # shares a meaning with the answer -> would be valid
                 seen.add(n)
-                candidates.append((tier(pos, level), translation))
+                candidates.append((tier(translation, pos, level), translation))
 
         own_q = (
             select(Word.translation, Word.part_of_speech, Word.level)
@@ -526,8 +532,11 @@ class UserWordRepository:
         )
         consider(list((await self.session.execute(own_q)).all()))
 
-        # Only reach for pack words when the user's own vocab can't fill the card.
-        if len(candidates) < limit:
+        # Reach for pack words when the user's own vocab can't fill the card with
+        # enough SAME-SHAPE candidates (e.g. a negation answer but few owned
+        # negations) — so a "не …" answer still gets "не …" distractors.
+        shape_matched = sum(1 for (t, _) in candidates if t[0] == 0)
+        if shape_matched < limit:
             pack_q = (
                 select(Word.translation, Word.part_of_speech, Word.level)
                 .join(PackWord, PackWord.word_id == Word.id)

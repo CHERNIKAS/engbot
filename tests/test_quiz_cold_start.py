@@ -179,6 +179,46 @@ async def test_quiz_distractors_drops_overlapping_meaning():
     assert len(distractors) == 3
 
 
+async def test_negation_answer_prefers_negation_distractors():
+    """A "не …" answer should be quizzed against other "не …" options, not nouns."""
+    session = QuizDistractorsFakeSession(
+        own=[
+            ("не делаю", "verb", "A1"),
+            ("не могу", "verb", "A1"),
+            ("большой", "adj", "A1"),
+            ("стол", "noun", "A1"),
+            ("не буду", "verb", "A1"),
+        ],
+        pack=[],
+    )
+    repo = UserWordRepository(session)  # type: ignore[arg-type]
+    distractors = await repo.quiz_distractors(
+        user_id=1, track=LearningTrack.ENGLISH, exclude_user_word_id=42,
+        limit=3, exclude_translations=["не имею"],
+    )
+    assert all(d.startswith("не ") for d in distractors), distractors
+    assert "большой" not in distractors and "стол" not in distractors
+
+
+async def test_non_negation_answer_avoids_negation_distractor():
+    """A normal answer shouldn't get a lone "не …" option (also a giveaway)."""
+    session = QuizDistractorsFakeSession(
+        own=[
+            ("большой", "adj", "A1"),
+            ("маленький", "adj", "A1"),
+            ("новый", "adj", "A1"),
+            ("не имею", "verb", "A1"),
+        ],
+        pack=[],
+    )
+    repo = UserWordRepository(session)  # type: ignore[arg-type]
+    distractors = await repo.quiz_distractors(
+        user_id=1, track=LearningTrack.ENGLISH, exclude_user_word_id=42,
+        limit=3, exclude_translations=["красный"],
+    )
+    assert "не имею" not in distractors, distractors
+
+
 async def test_quiz_distractors_meaning_guard_does_not_over_exclude():
     """Sharing letters but not a whole word must NOT be filtered (есть vs шесть)."""
     session = QuizDistractorsFakeSession(
