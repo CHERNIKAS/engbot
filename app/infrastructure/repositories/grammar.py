@@ -123,6 +123,63 @@ class GrammarRepository:
                 return ugi, item
         return rows[0][0], rows[0][1]
 
+    async def progress_counts(self, user_id: int, track: LearningTrack) -> dict[str, int]:
+        """Grammar stats for the progress screen:
+        - topics_total: all topics in the track
+        - topics_done: topics where every exercise is mastered by the user
+        - items_mastered / items_in_progress: the user's exercise counts
+        """
+        topics_total = (
+            await self.session.execute(
+                select(func.count(GrammarTopic.id)).where(GrammarTopic.track == track.value)
+            )
+        ).scalar_one()
+
+        # Per-topic: how many exercises exist vs how many this user has mastered.
+        per_topic = (
+            select(
+                GrammarTopic.id.label("topic_id"),
+                func.count(GrammarItem.id).label("n_items"),
+                func.count(UserGrammarItem.id)
+                .filter(UserGrammarItem.status == WordStatus.MASTERED.value)
+                .label("n_mastered"),
+            )
+            .join(GrammarItem, GrammarItem.topic_id == GrammarTopic.id)
+            .outerjoin(
+                UserGrammarItem,
+                (UserGrammarItem.grammar_item_id == GrammarItem.id)
+                & (UserGrammarItem.user_id == user_id),
+            )
+            .where(GrammarTopic.track == track.value)
+            .group_by(GrammarTopic.id)
+        ).subquery()
+        rows = (
+            await self.session.execute(
+                select(per_topic.c.n_items, per_topic.c.n_mastered)
+            )
+        ).all()
+        topics_done = sum(1 for n_items, n_mastered in rows if n_items > 0 and n_items == n_mastered)
+
+        item_counts = (
+            await self.session.execute(
+                select(UserGrammarItem.status, func.count(UserGrammarItem.id))
+                .join(GrammarItem, GrammarItem.id == UserGrammarItem.grammar_item_id)
+                .join(GrammarTopic, GrammarTopic.id == GrammarItem.topic_id)
+                .where(UserGrammarItem.user_id == user_id, GrammarTopic.track == track.value)
+                .group_by(UserGrammarItem.status)
+            )
+        ).all()
+        by_status = {str(s): int(c) for s, c in item_counts}
+        items_mastered = by_status.get(WordStatus.MASTERED.value, 0)
+        items_in_progress = sum(c for s, c in by_status.items() if s != WordStatus.MASTERED.value)
+
+        return {
+            "topics_total": int(topics_total),
+            "topics_done": int(topics_done),
+            "items_mastered": int(items_mastered),
+            "items_in_progress": int(items_in_progress),
+        }
+
     async def topic_for_user_item(self, ugi_id: int) -> GrammarTopic | None:
         """The grammar topic (with its rule) behind a user's exercise — for the
         "📖 Правило" button on a grammar card."""

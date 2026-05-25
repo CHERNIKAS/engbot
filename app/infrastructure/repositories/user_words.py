@@ -447,6 +447,24 @@ class UserWordRepository:
         )
         return {int(r[0]): str(r[1]) for r in (await self.session.execute(q)).all()}
 
+    async def count_new(self, user_id: int, track: LearningTrack) -> int:
+        """Not-yet-started words still in rotation (status NEW, not archived)."""
+        q = select(func.count(UserWord.id)).where(
+            UserWord.user_id == user_id,
+            UserWord.track == track.value,
+            UserWord.archived.is_(False),
+            UserWord.status == WordStatus.NEW.value,
+        )
+        return (await self.session.execute(q)).scalar_one()
+
+    async def count_archived(self, user_id: int, track: LearningTrack) -> int:
+        q = select(func.count(UserWord.id)).where(
+            UserWord.user_id == user_id,
+            UserWord.track == track.value,
+            UserWord.archived.is_(True),
+        )
+        return (await self.session.execute(q)).scalar_one()
+
     async def count_weak(self, user_id: int, track: LearningTrack) -> int:
         q = select(func.count(UserWord.id)).where(
             UserWord.user_id == user_id,

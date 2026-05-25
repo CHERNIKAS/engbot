@@ -231,6 +231,29 @@ class WordReview(Base):
     )
 
 
+class GrammarReview(Base):
+    """One grammar answer, logged like WordReview so daily-activity counts
+    include grammar (word_reviews FK is word-only, so grammar needs its own log)."""
+    __tablename__ = "grammar_reviews"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False
+    )
+    user_grammar_item_id: Mapped[int] = mapped_column(
+        Integer, ForeignKey("user_grammar_items.id", ondelete="CASCADE"), nullable=False
+    )
+    track: Mapped[str] = mapped_column(String(8), default="en", nullable=False, index=True)
+    result: Mapped[str] = mapped_column(String(16), nullable=False)
+    reviewed_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+
+    __table_args__ = (
+        Index("ix_grammar_reviews_user_track_date", "user_id", "track", "reviewed_at"),
+    )
+
+
 class AnalyticsEvent(Base):
     __tablename__ = "analytics_events"
 

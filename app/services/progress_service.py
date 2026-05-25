@@ -7,25 +7,87 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 from sqlalchemy import and_, func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.domain.enums import LearningTrack, WordStatus
-from app.domain.models import User, WordReview
+from app.domain.enums import TRACK_LABELS, LearningTrack, WordStatus
+from app.domain.models import GrammarReview, User, WordReview
+from app.infrastructure.repositories.grammar import GrammarRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
 
 
 @dataclass
 class TrackProgress:
     track: LearningTrack
-    studied_today: int
+    studied_today: int          # answers today: words + grammar
+    studied_today_words: int
+    studied_today_grammar: int
     daily_goal: int
     total_words: int
+    new_words: int              # not started, in rotation
+    learning_words: int         # actively learning (learning + review)
     mastered_words: int
-    weak_words: int
+    weak_words: int             # answered wrong at least once
+    archived_words: int
+    grammar_topics_total: int
+    grammar_topics_done: int
+    grammar_items_mastered: int
+    grammar_items_in_progress: int
 
 
 @dataclass
 class ProgressView:
     streak_days: int
     tracks: list[TrackProgress]
+
+
+def _bar(done: int, goal: int, width: int = 10) -> str:
+    """A 10-cell ▓/░ progress bar, capped at 100%."""
+    if goal <= 0:
+        filled = width
+    else:
+        filled = max(0, min(width, round(width * done / goal)))
+    return "▓" * filled + "░" * (width - filled)
+
+
+def _plural(n: int, one: str, few: str, many: str) -> str:
+    """Russian plural: 1 день / 2 дня / 5 дней."""
+    n = abs(n)
+    if n % 10 == 1 and n % 100 != 11:
+        return one
+    if 2 <= n % 10 <= 4 and not 12 <= n % 100 <= 14:
+        return few
+    return many
+
+
+def format_progress(streak_days: int, tracks: list[TrackProgress]) -> str:
+    """Render the 📊 Прогресс card (pure, so it's unit-testable)."""
+    head = (
+        "🌸 <b>Твой прогресс</b>\n"
+        f"🔥 Серия: <b>{streak_days}</b> {_plural(streak_days, 'день', 'дня', 'дней')} подряд"
+    )
+    if not tracks:
+        return head + "\n\nПока пусто — начни учить, и тут появится статистика 🌱"
+
+    blocks: list[str] = []
+    for t in tracks:
+        pct = 0 if t.daily_goal <= 0 else min(100, round(100 * t.studied_today / t.daily_goal))
+        today_detail = f"🔤 слова: {t.studied_today_words} · 📖 грамматика: {t.studied_today_grammar}"
+        block = (
+            f"{TRACK_LABELS[t.track]}\n"
+            f"🎯 Сегодня: <b>{t.studied_today}</b> / {t.daily_goal}  ({pct}%)\n"
+            f"{_bar(t.studied_today, t.daily_goal)}\n"
+            f"   {today_detail}\n\n"
+            f"📚 Словарь — всего <b>{t.total_words}</b>\n"
+            f"   🌱 учу: {t.learning_words} · ⭐ выучено: {t.mastered_words}\n"
+            f"   🆕 новые: {t.new_words} · 🩹 с ошибками: {t.weak_words}"
+        )
+        if t.archived_words:
+            block += f" · 💤 архив: {t.archived_words}"
+        block += (
+            f"\n\n📖 Грамматика — <b>{t.grammar_topics_done}</b> / {t.grammar_topics_total} "
+            f"{_plural(t.grammar_topics_total, 'тема', 'темы', 'тем')}\n"
+            f"   ⭐ упражнений: {t.grammar_items_mastered} · 🌱 в работе: {t.grammar_items_in_progress}"
+        )
+        blocks.append(block)
+    return head + "\n\n" + "\n\n".join(blocks)
 
 
 def _resolve_tz(tz_name: str | None) -> ZoneInfo:
@@ -52,6 +114,7 @@ class ProgressService:
     def __init__(self, session: AsyncSession) -> None:
         self._session = session
         self._user_words = UserWordRepository(session)
+        self._grammar = GrammarRepository(session)
 
     async def track_view(
         self,
@@ -61,17 +124,31 @@ class ProgressService:
         *,
         tz_name: str = "UTC",
     ) -> TrackProgress:
-        studied_today = await self.studied_today_count(user_id, track, tz_name=tz_name)
+        words_today = await self.studied_today_count(user_id, track, tz_name=tz_name)
+        grammar_today = await self.grammar_studied_today_count(user_id, track, tz_name=tz_name)
         total = await self._user_words.total_for_user(user_id, track)
+        new = await self._user_words.count_new(user_id, track)
+        learning = await self._user_words.count_active(user_id, track)
         mastered = await self._user_words.count_status(user_id, track, WordStatus.MASTERED)
         weak = await self._user_words.count_weak(user_id, track)
+        archived = await self._user_words.count_archived(user_id, track)
+        g = await self._grammar.progress_counts(user_id, track)
         return TrackProgress(
             track=track,
-            studied_today=studied_today,
+            studied_today=words_today + grammar_today,
+            studied_today_words=words_today,
+            studied_today_grammar=grammar_today,
             daily_goal=daily_goal,
             total_words=total,
+            new_words=new,
+            learning_words=learning,
             mastered_words=mastered,
             weak_words=weak,
+            archived_words=archived,
+            grammar_topics_total=g["topics_total"],
+            grammar_topics_done=g["topics_done"],
+            grammar_items_mastered=g["items_mastered"],
+            grammar_items_in_progress=g["items_in_progress"],
         )
 
     async def studied_today_count(
@@ -89,6 +166,25 @@ class ProgressService:
                 WordReview.track == track.value,
                 WordReview.reviewed_at >= start_utc,
                 WordReview.reviewed_at < end_utc,
+            )
+        )
+        return (await self._session.execute(q)).scalar_one() or 0
+
+    async def grammar_studied_today_count(
+        self,
+        user_id: int,
+        track: LearningTrack,
+        *,
+        tz_name: str = "UTC",
+    ) -> int:
+        today_local = _local_today(tz_name)
+        start_utc, end_utc = _day_utc_bounds(today_local, tz_name)
+        q = select(func.count(GrammarReview.id)).where(
+            and_(
+                GrammarReview.user_id == user_id,
+                GrammarReview.track == track.value,
+                GrammarReview.reviewed_at >= start_utc,
+                GrammarReview.reviewed_at < end_utc,
             )
         )
         return (await self._session.execute(q)).scalar_one() or 0

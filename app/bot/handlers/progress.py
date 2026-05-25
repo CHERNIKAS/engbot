@@ -11,12 +11,11 @@ from app.bot.texts import (
     MANAGED_RESTORED,
     MANAGED_TITLE,
     MANAGED_UNSNOOZED,
-    PROGRESS_TITLE,
 )
-from app.domain.enums import LearningTrack, TRACK_LABELS, WordStatus
+from app.domain.enums import LearningTrack, WordStatus
 from app.domain.models import User
 from app.infrastructure.repositories.user_words import UserWordRepository
-from app.services.progress_service import ProgressService
+from app.services.progress_service import ProgressService, format_progress
 from app.services.user_track_service import UserTrackService
 
 router = Router(name="progress")
@@ -26,15 +25,11 @@ _TRACK = LearningTrack.ENGLISH
 async def _progress_text(session: AsyncSession, user: User, uts: UserTrackService) -> str:
     progress = ProgressService(session)
     active = await uts.list_active(user.id)
-    lines = []
-    for ut in active:
-        track = LearningTrack(ut.track)
-        view = await progress.track_view(user.id, track, ut.daily_goal_words, tz_name=user.timezone)
-        lines.append(
-            f"{TRACK_LABELS[track]}: <b>{view.studied_today}</b> / {view.daily_goal} | "
-            f"📚 {view.total_words} • ✅ {view.mastered_words} • 🔥 {view.weak_words}"
-        )
-    return PROGRESS_TITLE.format(streak=user.streak_days, per_track="\n".join(lines) or "—")
+    views = [
+        await progress.track_view(user.id, LearningTrack(ut.track), ut.daily_goal_words, tz_name=user.timezone)
+        for ut in active
+    ]
+    return format_progress(user.streak_days, views)
 
 
 @router.callback_query(ProgressCB.filter(F.action == "open"))

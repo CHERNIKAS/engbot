@@ -29,7 +29,6 @@ from app.bot.texts import (
     MAIN_MENU,
     MY_WORDS_EMPTY,
     PACE_LABELS,
-    PROGRESS_TITLE,
     SETTINGS_TITLE,
     TXT_PROMPT,
 )
@@ -39,7 +38,7 @@ from app.infrastructure.repositories.categories import CategoryRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
 from app.services.category_service import CategoryService
 from app.services.interaction_state_service import InteractionStateService
-from app.services.progress_service import ProgressService
+from app.services.progress_service import ProgressService, format_progress
 from app.services.user_track_service import UserTrackService
 
 router = Router(name="main_menu")
@@ -144,17 +143,13 @@ async def msg_progress(
     await state_service.clear(user.id)
     progress = ProgressService(session)
     active = await user_track_service.list_active(user.id)
-    lines = []
-    for ut in active:
-        track = LearningTrack(ut.track)
-        view = await progress.track_view(
-            user.id, track, ut.daily_goal_words, tz_name=user.timezone
+    views = [
+        await progress.track_view(
+            user.id, LearningTrack(ut.track), ut.daily_goal_words, tz_name=user.timezone
         )
-        lines.append(
-            f"{TRACK_LABELS[track]}: <b>{view.studied_today}</b> / {view.daily_goal} | "
-            f"📚 {view.total_words} • ✅ {view.mastered_words} • 🔥 {view.weak_words}"
-        )
-    text = PROGRESS_TITLE.format(streak=user.streak_days, per_track="\n".join(lines) or "—")
+        for ut in active
+    ]
+    text = format_progress(user.streak_days, views)
     has_managed = await UserWordRepository(session).has_managed(user.id, LearningTrack.ENGLISH)
     await send_menu_card(
         message, redis, user.id, text, parse_mode="HTML", reply_markup=progress_kb(has_managed)

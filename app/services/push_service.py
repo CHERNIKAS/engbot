@@ -36,7 +36,7 @@ from app.domain.models import User, UserTrack
 from app.domain.push import in_window, normalize_window
 from app.domain.push_nudges import nudge_line
 from app.infrastructure.repositories.grammar import GrammarRepository
-from app.infrastructure.repositories.reviews import WordReviewRepository
+from app.infrastructure.repositories.reviews import GrammarReviewRepository, WordReviewRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
 from app.logging_setup import get_logger
 from app.services.progress_service import ProgressService
@@ -75,6 +75,7 @@ class PushService:
         self._uw = UserWordRepository(session)
         self._grammar = GrammarRepository(session)
         self._reviews = WordReviewRepository(session)
+        self._grammar_reviews = GrammarReviewRepository(session)
         self._s = get_settings()
 
     # ---- state ----
@@ -476,6 +477,10 @@ class PushService:
             return
         was_mastered = ugi.status == WordStatus.MASTERED.value
         apply_review(ugi, ReviewResult.CORRECT if correct else ReviewResult.WRONG, LearningPace(ut.learning_pace))
+        await self._grammar_reviews.create(
+            user_id=user.id, track=_TRACK, user_grammar_item_id=ugi_id,
+            result=(ReviewResult.CORRECT if correct else ReviewResult.WRONG).value,
+        )
         await self._session.flush()
         await ProgressService(self._session).update_streak(user)
         # Grammar item mastered → advance the course (next topic + word top-up).
