@@ -98,9 +98,11 @@ class GrammarRepository:
             await self.session.flush()
 
     async def pick_for_push(
-        self, user_id: int, track: LearningTrack
+        self, user_id: int, track: LearningTrack, exclude_id: int = 0
     ) -> tuple[UserGrammarItem, GrammarItem] | None:
-        """A random non-mastered grammar exercise for the user (new or learning)."""
+        """A random non-mastered grammar exercise for the user (new or learning).
+        Over-fetches a few so we can skip `exclude_id` (the exercise just answered)
+        and avoid serving the same one twice in a row."""
         q = (
             select(UserGrammarItem, GrammarItem)
             .join(GrammarItem, GrammarItem.id == UserGrammarItem.grammar_item_id)
@@ -111,10 +113,15 @@ class GrammarRepository:
                 GrammarTopic.track == track.value,
             )
             .order_by(func.random())
-            .limit(1)
+            .limit(5)
         )
-        row = (await self.session.execute(q)).first()
-        return (row[0], row[1]) if row is not None else None
+        rows = (await self.session.execute(q)).all()
+        if not rows:
+            return None
+        for ugi, item in rows:
+            if ugi.id != exclude_id:
+                return ugi, item
+        return rows[0][0], rows[0][1]
 
     async def topic_for_user_item(self, ugi_id: int) -> GrammarTopic | None:
         """The grammar topic (with its rule) behind a user's exercise — for the

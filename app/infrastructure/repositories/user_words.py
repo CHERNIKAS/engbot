@@ -44,6 +44,20 @@ def _is_negation(translation: str) -> bool:
     return n.startswith("не ") or n.startswith("ни ")
 
 
+def _pick_avoiding(
+    rows: list[tuple[UserWord, Word]], exclude_uw_id: int
+) -> tuple[UserWord, Word] | None:
+    """From a small over-fetched candidate list, return one that isn't the
+    just-shown card (`exclude_uw_id`) so the same word doesn't come back-to-back.
+    Falls back to the excluded one only when it's the sole candidate."""
+    if not rows:
+        return None
+    for uw, word in rows:
+        if uw.id != exclude_uw_id:
+            return uw, word
+    return rows[0]
+
+
 class UserWordRepository:
     def __init__(self, session: AsyncSession) -> None:
         self.session = session
@@ -297,9 +311,11 @@ class UserWordRepository:
         return (row[0], row[1]) if row is not None else None
 
     async def pick_active_random(
-        self, user_id: int, track: LearningTrack
+        self, user_id: int, track: LearningTrack, exclude_uw_id: int = 0
     ) -> tuple[UserWord, Word] | None:
-        """A random word from the active set (being learned) — for reinforcement."""
+        """A random word from the active set (being learned) — for reinforcement.
+        Over-fetches a few so we can skip `exclude_uw_id` (the card just answered)
+        and avoid showing the same word twice in a row."""
         q = (
             select(UserWord, Word)
             .join(Word, Word.id == UserWord.word_id)
@@ -311,19 +327,21 @@ class UserWordRepository:
                 Word.translation.isnot(None),
             )
             .order_by(func.random())
-            .limit(1)
+            .limit(5)
         )
-        row = (await self.session.execute(q)).first()
-        return (row[0], row[1]) if row is not None else None
+        rows = [(r[0], r[1]) for r in (await self.session.execute(q)).all()]
+        return _pick_avoiding(rows, exclude_uw_id)
 
     async def pick_review_mastered(
-        self, user_id: int, track: LearningTrack, now: datetime | None = None
+        self, user_id: int, track: LearningTrack, now: datetime | None = None, exclude_uw_id: int = 0
     ) -> tuple[UserWord, Word] | None:
         """A mastered ('learned') word for review — not archived, not snoozed.
-        Weighted random so a LOWER score is shown more often, 5.0 rarely."""
+        Weighted random so a LOWER score is shown more often, 5.0 rarely.
+        Takes the top few by weight so we can skip `exclude_uw_id` (the card just
+        answered) without losing the low-score bias."""
         now = now or datetime.now(timezone.utc)
         # weight = 5.2 - score (low score -> big weight). A-Res weighted sampling:
-        # order by random()^(1/weight) desc, take the top one.
+        # order by random()^(1/weight) desc, take from the top.
         weight = 5.2 - UserWord.mastery_score
         key = func.power(func.random(), 1.0 / weight)
         q = (
@@ -338,10 +356,10 @@ class UserWordRepository:
                 Word.translation.isnot(None),
             )
             .order_by(key.desc())
-            .limit(1)
+            .limit(3)
         )
-        row = (await self.session.execute(q)).first()
-        return (row[0], row[1]) if row is not None else None
+        rows = [(r[0], r[1]) for r in (await self.session.execute(q)).all()]
+        return _pick_avoiding(rows, exclude_uw_id)
 
     async def has_managed(
         self, user_id: int, track: LearningTrack, now: datetime | None = None

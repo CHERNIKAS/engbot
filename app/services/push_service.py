@@ -205,11 +205,17 @@ class PushService:
         #   "repeat" — reinforce a random word being learned
         #   "review" — a mastered word due for review
         #   "grammar" — a non-mastered grammar exercise
+        # Don't serve the same card twice in a row — skip whatever was answered
+        # last (a small active set + ORDER BY random() otherwise repeats a word).
+        last = state.get("last") or {}
+        last_word = int(last.get("id", 0)) if last.get("kind") == "word" else 0
+        last_grammar = int(last.get("id", 0)) if last.get("kind") == "grammar" else 0
+
         active_count = await self._uw.count_active(user.id, _TRACK)
         streams: list[str] = ["repeat", "review"]
         if active_count < ut.daily_goal_words:
             streams.append("new")
-        grammar_pick = await self._grammar.pick_for_push(user.id, _TRACK)
+        grammar_pick = await self._grammar.pick_for_push(user.id, _TRACK, exclude_id=last_grammar)
         if grammar_pick is not None:
             streams.append("grammar")
         random.shuffle(streams)
@@ -226,9 +232,9 @@ class PushService:
             if stream == "new":
                 pick = await self._uw.pick_new_for_push(user.id, _TRACK)
             elif stream == "repeat":
-                pick = await self._uw.pick_active_random(user.id, _TRACK)
+                pick = await self._uw.pick_active_random(user.id, _TRACK, exclude_uw_id=last_word)
             else:
-                pick = await self._uw.pick_review_mastered(user.id, _TRACK)
+                pick = await self._uw.pick_review_mastered(user.id, _TRACK, exclude_uw_id=last_word)
             if pick is None:
                 continue
             uw, _w = pick
@@ -421,6 +427,8 @@ class PushService:
 
         now_ts = datetime.now(timezone.utc).timestamp()
         state["inflight"] = None
+        # Remember this card so the next pick skips it (no back-to-back repeats).
+        state["last"] = {"kind": inflight.get("kind", "word"), "id": iid}
         state["next_ts"] = now_ts + _minutes(self._s.push_gap_min_minutes, self._s.push_gap_max_minutes)
         await self._save(user.id, state)
 
