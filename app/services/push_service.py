@@ -16,7 +16,6 @@ from app.bot.keyboards.push import (
     push_card_kb,
     push_grammar_card_kb,
     push_rule_kb,
-    push_schedule_prompt_kb,
 )
 from app.bot.texts import (
     PUSH_ANSWER_CORRECT,
@@ -26,7 +25,6 @@ from app.bot.texts import (
     PUSH_HIDDEN,
     PUSH_KNOWN,
     PUSH_RULE_CARD,
-    PUSH_SCHEDULE_PROMPT,
     PUSH_SNOOZED,
     PUSH_STALE,
 )
@@ -144,23 +142,9 @@ class PushService:
                 mid = prev.get(k)
                 if mid:
                     await self._delete(user.telegram_id, int(mid))
-            state = {"day": today, "next_ts": 0.0, "inflight": None, "sched_asked": state.get("sched_asked", "")}
+            state = {"day": today, "next_ts": 0.0, "inflight": None}
 
         win = in_window(local.hour, ws, we)
-
-        # Daily "keep / change schedule?" prompt — once per day, in window.
-        if win and state.get("sched_asked") != today and self._bot is not None:
-            try:
-                await self._bot.send_message(
-                    user.telegram_id,
-                    PUSH_SCHEDULE_PROMPT.format(ws=ws, we=we),
-                    reply_markup=push_schedule_prompt_kb(),
-                    parse_mode="HTML",
-                )
-                state["sched_asked"] = today
-            except Exception:  # noqa: BLE001
-                log.warning("push_prompt_failed", uid=user.id)
-
         inflight = state.get("inflight")
 
         # ---- a card is waiting for an answer: keep nudging the SAME card until

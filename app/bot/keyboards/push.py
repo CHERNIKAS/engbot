@@ -63,12 +63,3 @@ def push_rule_kb() -> InlineKeyboardMarkup:
     )
 
 
-def push_schedule_prompt_kb() -> InlineKeyboardMarkup:
-    """Daily 'keep or change schedule?' prompt. Both buttons use the universal
-    'pu' prefix so they work in any interaction state."""
-    return InlineKeyboardMarkup(
-        inline_keyboard=[
-            [InlineKeyboardButton(text="✅ Оставить", callback_data=PushCB(action="keep_schedule").pack())],
-            [InlineKeyboardButton(text="✏️ Изменить", callback_data=PushCB(action="open_window").pack())],
-        ]
-    )
