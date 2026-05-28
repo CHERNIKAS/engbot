@@ -3,6 +3,7 @@ from __future__ import annotations
 import html
 import json
 import random
+import re
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
@@ -63,6 +64,47 @@ def _progress_line(uw) -> str:
     if uw.status == WordStatus.MASTERED.value:
         return f"⭐ {uw.mastery_score:.1f} / 5"
     return f"🌱 {uw.repetitions_count} / 10"
+
+
+# Post-answer recap blocks ----------------------------------------------------
+#
+# After the user taps a button the card text is replaced with feedback. We
+# append a "recap" block — context the user couldn't see during the quiz
+# (showing it earlier would have spoiled the answer):
+#   • for a word card:   writing — translation + example with the word bolded
+#   • for a grammar card: the prompt with the gap filled in and the answer bold
+#
+# Pure functions so the formatting is unit-testable.
+
+def _highlight_target(sentence: str, target: str) -> str:
+    """HTML-escape `sentence` and bold the first case-insensitive match of
+    `target` inside it. Falls back to the plain escaped sentence when the target
+    isn't there (e.g. example uses a conjugated form the heuristic misses)."""
+    safe = html.escape(sentence)
+    if not target:
+        return safe
+    safe_target = html.escape(target)
+    pattern = re.compile(re.escape(safe_target), re.IGNORECASE)
+    return pattern.sub(lambda m: f"<b>{m.group(0)}</b>", safe, count=1)
+
+
+def _word_recap(word, correct_translation: str) -> str:
+    """Post-answer block under a word card: `writing — translation` + example
+    sentence with the target word bolded. Skips the example line if missing."""
+    head = f"<b>{html.escape(word.writing)}</b> — {html.escape(correct_translation)}"
+    if not word.example_sentence:
+        return f"\n\n{head}"
+    body = _highlight_target(word.example_sentence, word.writing)
+    return f"\n\n{head}\n📝 <i>{body}</i>"
+
+
+def _grammar_recap(prompt: str, correct: str) -> str:
+    """Post-answer block under a grammar card: the prompt with the `___` gap
+    filled in by the bolded correct form, so the user sees the full sentence."""
+    safe_prompt = html.escape(prompt)
+    bold_answer = f"<b>{html.escape(correct)}</b>"
+    filled = safe_prompt.replace("___", bold_answer, 1)
+    return f"\n\n📝 <i>{filled}</i>"
 
 
 class PushService:
@@ -444,12 +486,24 @@ class PushService:
             await query.answer()
             return
         correct = options[idx] == inflight.get("correct")
+        correct_answer_text = str(inflight.get("correct") or "")
         rule_msg_id = inflight.get("rule_msg_id")
 
+        # Build the post-answer recap block (example for words, filled prompt for
+        # grammar) — fetched here, used after we save state.
+        recap = ""
         if inflight.get("kind") == "grammar":
             await self._apply_grammar_answer(user, ut, iid, correct)
+            pair = await self._grammar.item_with_progress(iid)
+            if pair is not None:
+                _ugi, item = pair
+                recap = _grammar_recap(item.prompt, item.correct)
         else:
             await self._apply_word_answer(user, ut, iid, correct)
+            pair = await self._uw.get_with_word(iid)
+            if pair is not None:
+                _uw, word = pair
+                recap = _word_recap(word, correct_answer_text)
 
         now_ts = datetime.now(timezone.utc).timestamp()
         state["inflight"] = None
@@ -469,8 +523,8 @@ class PushService:
         feedback = (
             PUSH_ANSWER_CORRECT
             if correct
-            else PUSH_ANSWER_WRONG.format(answer=html.escape(str(inflight.get("correct") or "")))
-        )
+            else PUSH_ANSWER_WRONG.format(answer=html.escape(correct_answer_text))
+        ) + recap
         if query.message:
             try:
                 await query.message.edit_text(feedback, parse_mode="HTML")

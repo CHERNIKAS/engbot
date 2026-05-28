@@ -38,3 +38,11 @@ def test_nudge_is_deterministic_with_seed():
     a = nudge_line(4, rng=random.Random(42))
     b = nudge_line(4, rng=random.Random(42))
     assert a == b
+
+
+def test_nudge_pools_total_one_hundred_with_no_duplicates():
+    """User asked for ~100 nudges so even a heavy ignorer doesn't see the same
+    line twice in a day. Guard against accidental dupes / sub-100 drift."""
+    all_lines = (*GENTLE, *CHEEKY, *DRAMATIC)
+    assert len(all_lines) == 100, f"expected 100 nudges, got {len(all_lines)}"
+    assert len(set(all_lines)) == len(all_lines), "duplicate nudge phrase"
