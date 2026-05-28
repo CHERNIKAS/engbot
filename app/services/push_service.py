@@ -76,26 +76,31 @@ def _progress_line(uw) -> str:
 #
 # Pure functions so the formatting is unit-testable.
 
-def _highlight_target(sentence: str, target: str) -> str:
-    """HTML-escape `sentence` and bold the first case-insensitive match of
-    `target` inside it. Falls back to the plain escaped sentence when the target
-    isn't there (e.g. example uses a conjugated form the heuristic misses)."""
-    safe = html.escape(sentence)
-    if not target:
-        return safe
-    safe_target = html.escape(target)
-    pattern = re.compile(re.escape(safe_target), re.IGNORECASE)
-    return pattern.sub(lambda m: f"<b>{m.group(0)}</b>", safe, count=1)
+# Common English inflections we can strip when looking for the target word in
+# its example sentence. Irregulars (went, took, was…) aren't covered — better to
+# skip the example than leak the answer.
+_INFLECT = r"(?:s|es|ed|d|ing|ly|er|est)?"
+
+
+def _mask_target(sentence: str, target: str) -> str | None:
+    """Replace the target word (and its basic inflections) inside `sentence`
+    with `___`, so the example can ride on the quiz card as a context CLUE
+    without giving away the answer. Returns None when no occurrence is found
+    (e.g. the example uses an irregular form) — in that case we'd rather show
+    no example than a spoilery one."""
+    if not sentence or not target:
+        return None
+    pattern = re.compile(rf"\b{re.escape(target)}{_INFLECT}\b", re.IGNORECASE)
+    masked, n = pattern.subn("___", sentence)
+    return masked if n > 0 else None
 
 
 def _word_recap(word, correct_translation: str) -> str:
-    """Post-answer block under a word card: `writing — translation` + example
-    sentence with the target word bolded. Skips the example line if missing."""
+    """Tiny confirmation under the feedback — just `writing — translation`. The
+    example sentence was already shown (masked) on the quiz card, no need to
+    repeat it here."""
     head = f"<b>{html.escape(word.writing)}</b> — {html.escape(correct_translation)}"
-    if not word.example_sentence:
-        return f"\n\n{head}"
-    body = _highlight_target(word.example_sentence, word.writing)
-    return f"\n\n{head}\n📝 <i>{body}</i>"
+    return f"\n\n{head}"
 
 
 def _grammar_recap(prompt: str, correct: str) -> str:
@@ -375,7 +380,15 @@ class PushService:
         )
         options = [correct, *distractors[:3]]
         random.shuffle(options)
-        text = f"{PUSH_CARD.format(word=html.escape(word.writing))}\n<i>{_progress_line(uw)}</i>"
+        parts = [PUSH_CARD.format(word=html.escape(word.writing))]
+        # Example sits on the card itself as a context CLUE — the target word
+        # (and basic inflections) are masked with ___ so we don't reveal the
+        # answer. If we can't mask it cleanly, skip — better no hint than spoiler.
+        masked = _mask_target(word.example_sentence or "", word.writing)
+        if masked:
+            parts.append(f"📝 <i>{html.escape(masked)}</i>")
+        parts.append(f"<i>{_progress_line(uw)}</i>")
+        text = "\n".join(parts)
         return text, options, correct, uw.status
 
     async def show_rule(self, user: User, ugi_id: int, query: CallbackQuery) -> None:
