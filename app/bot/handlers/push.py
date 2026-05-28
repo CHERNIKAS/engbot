@@ -64,7 +64,10 @@ async def on_push_rule_ok(query: CallbackQuery) -> None:
         try:
             await query.message.delete()
         except Exception:  # noqa: BLE001 — message gone / too old
-            pass
+            try:
+                await query.message.edit_reply_markup(reply_markup=None)
+            except Exception:  # noqa: BLE001
+                pass
     await query.answer("👍")
 
 

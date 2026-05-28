@@ -136,6 +136,14 @@ class PushService:
 
         state = await self._load(user.id)
         if state.get("day") != today:
+            # Yesterday's card (+ any rule message) stays in chat with live
+            # buttons after the day rolls over — tidy it so the user doesn't tap
+            # a ghost card the next morning and get a stale-callback.
+            prev = state.get("inflight") or {}
+            for k in ("msg_id", "rule_msg_id"):
+                mid = prev.get(k)
+                if mid:
+                    await self._delete(user.telegram_id, int(mid))
             state = {"day": today, "next_ts": 0.0, "inflight": None, "sched_asked": state.get("sched_asked", "")}
 
         win = in_window(local.hour, ws, we)
@@ -308,11 +316,21 @@ class PushService:
         return text, options, item.correct
 
     async def _delete(self, chat_id: int, message_id: int) -> None:
+        """Drop a stale push message from chat. If Telegram refuses (too old to
+        delete — >48h), at least strip the buttons so the user can't tap a ghost
+        card and trigger a stale-callback."""
         if self._bot is None:
             return
         try:
             await self._bot.delete_message(chat_id, message_id)
+            return
         except Exception:  # noqa: BLE001 — message may already be gone / too old
+            pass
+        try:
+            await self._bot.edit_message_reply_markup(
+                chat_id=chat_id, message_id=message_id, reply_markup=None
+            )
+        except Exception:  # noqa: BLE001 — already stripped / gone
             pass
 
     async def _build_card(
@@ -341,13 +359,26 @@ class PushService:
         if query.message is None:
             await query.answer()
             return
+        state = await self._load(user.id)
+        inflight = state.get("inflight")
+        # Stale rule tap: the card is no longer the active inflight (day rolled
+        # over, or the user is fishing in old cards). Clean it up instead of
+        # opening a rule message for nothing.
+        if not inflight or int(inflight.get("id", 0)) != ugi_id or inflight.get("kind") != "grammar":
+            try:
+                await query.message.delete()
+            except Exception:  # noqa: BLE001 — too old / already gone
+                try:
+                    await query.message.edit_reply_markup(reply_markup=None)
+                except Exception:  # noqa: BLE001
+                    pass
+            await query.answer()
+            return
         topic = await self._grammar.topic_for_user_item(ugi_id)
         if topic is None:
             await query.answer()
             return
         bot, chat_id = query.message.bot, query.message.chat.id
-        state = await self._load(user.id)
-        inflight = state.get("inflight")
         # Don't stack rule messages — drop a previously-opened one first.
         if inflight and inflight.get("rule_msg_id"):
             try:
@@ -412,6 +443,16 @@ class PushService:
         inflight = state.get("inflight")
         iid = int(inflight.get("id", inflight.get("uw_id", 0))) if inflight else 0
         if not inflight or iid != uw_id:
+            # Tapped on an old card whose inflight is gone. Don't just toast —
+            # remove the ghost from chat so it stops accumulating.
+            if query.message is not None:
+                try:
+                    await query.message.delete()
+                except Exception:  # noqa: BLE001 — too old / already gone
+                    try:
+                        await query.message.edit_reply_markup(reply_markup=None)
+                    except Exception:  # noqa: BLE001
+                        pass
             await query.answer(PUSH_STALE, show_alert=False)
             return
         options = inflight.get("options") or []
