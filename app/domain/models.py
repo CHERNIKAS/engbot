@@ -97,6 +97,13 @@ class Word(Base):
     translation: Mapped[str | None] = mapped_column(String(256), nullable=True)
     transcription: Mapped[str | None] = mapped_column(String(128), nullable=True)
     example_sentence: Mapped[str | None] = mapped_column(Text, nullable=True)
+    # Abstract context example shown ON the push card as a hint. Uses a synonym
+    # / paraphrase so the target word itself isn't in the sentence — visible
+    # context without spoiling the answer. Paired Russian translation rides
+    # under it. Both nullable: when an abstract version can't be authored
+    # cleanly we just skip the example on that word's card.
+    abstract_example_en: Mapped[str | None] = mapped_column(Text, nullable=True)
+    abstract_example_ru: Mapped[str | None] = mapped_column(Text, nullable=True)
 
     # Japanese-specific (nullable for English rows).
     kana: Mapped[str | None] = mapped_column(String(128), nullable=True)

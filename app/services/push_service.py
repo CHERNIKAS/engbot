@@ -3,7 +3,6 @@ from __future__ import annotations
 import html
 import json
 import random
-import re
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
@@ -76,23 +75,18 @@ def _progress_line(uw) -> str:
 #
 # Pure functions so the formatting is unit-testable.
 
-# Common English inflections we can strip when looking for the target word in
-# its example sentence. Irregulars (went, took, was…) aren't covered — better to
-# skip the example than leak the answer.
-_INFLECT = r"(?:s|es|ed|d|ing|ly|er|est)?"
-
-
-def _mask_target(sentence: str, target: str) -> str | None:
-    """Replace the target word (and its basic inflections) inside `sentence`
-    with `___`, so the example can ride on the quiz card as a context CLUE
-    without giving away the answer. Returns None when no occurrence is found
-    (e.g. the example uses an irregular form) — in that case we'd rather show
-    no example than a spoilery one."""
-    if not sentence or not target:
-        return None
-    pattern = re.compile(rf"\b{re.escape(target)}{_INFLECT}\b", re.IGNORECASE)
-    masked, n = pattern.subn("___", sentence)
-    return masked if n > 0 else None
+def _format_word_card(writing: str, abstract_en: str | None, abstract_ru: str | None, progress: str) -> str:
+    """Render the word push card. Includes a paired EN/RU abstract example
+    underneath the question when both are present — these use synonyms /
+    paraphrase so the target word isn't in the sentence (no spoilers). If
+    either side is missing the example is skipped: better no hint than a
+    half-baked one."""
+    parts = [PUSH_CARD.format(word=html.escape(writing))]
+    if abstract_en and abstract_ru:
+        parts.append(f"📝 <i>{html.escape(abstract_en)}</i>")
+        parts.append(f"<i>↳ {html.escape(abstract_ru)}</i>")
+    parts.append(f"<i>{progress}</i>")
+    return "\n".join(parts)
 
 
 class PushService:
@@ -363,15 +357,12 @@ class PushService:
         )
         options = [correct, *distractors[:3]]
         random.shuffle(options)
-        parts = [PUSH_CARD.format(word=html.escape(word.writing))]
-        # Example sits on the card itself as a context CLUE — the target word
-        # (and basic inflections) are masked with ___ so we don't reveal the
-        # answer. If we can't mask it cleanly, skip — better no hint than spoiler.
-        masked = _mask_target(word.example_sentence or "", word.writing)
-        if masked:
-            parts.append(f"📝 <i>{html.escape(masked)}</i>")
-        parts.append(f"<i>{_progress_line(uw)}</i>")
-        text = "\n".join(parts)
+        text = _format_word_card(
+            writing=word.writing,
+            abstract_en=word.abstract_example_en,
+            abstract_ru=word.abstract_example_ru,
+            progress=_progress_line(uw),
+        )
         return text, options, correct, uw.status
 
     async def show_rule(self, user: User, ugi_id: int, query: CallbackQuery) -> None:
