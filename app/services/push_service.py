@@ -95,23 +95,6 @@ def _mask_target(sentence: str, target: str) -> str | None:
     return masked if n > 0 else None
 
 
-def _word_recap(word, correct_translation: str) -> str:
-    """Tiny confirmation under the feedback — just `writing — translation`. The
-    example sentence was already shown (masked) on the quiz card, no need to
-    repeat it here."""
-    head = f"<b>{html.escape(word.writing)}</b> — {html.escape(correct_translation)}"
-    return f"\n\n{head}"
-
-
-def _grammar_recap(prompt: str, correct: str) -> str:
-    """Post-answer block under a grammar card: the prompt with the `___` gap
-    filled in by the bolded correct form, so the user sees the full sentence."""
-    safe_prompt = html.escape(prompt)
-    bold_answer = f"<b>{html.escape(correct)}</b>"
-    filled = safe_prompt.replace("___", bold_answer, 1)
-    return f"\n\n📝 <i>{filled}</i>"
-
-
 class PushService:
     def __init__(self, session: AsyncSession, redis: Redis, bot: Bot | None = None) -> None:
         self._session = session
@@ -502,21 +485,10 @@ class PushService:
         correct_answer_text = str(inflight.get("correct") or "")
         rule_msg_id = inflight.get("rule_msg_id")
 
-        # Build the post-answer recap block (example for words, filled prompt for
-        # grammar) — fetched here, used after we save state.
-        recap = ""
         if inflight.get("kind") == "grammar":
             await self._apply_grammar_answer(user, ut, iid, correct)
-            pair = await self._grammar.item_with_progress(iid)
-            if pair is not None:
-                _ugi, item = pair
-                recap = _grammar_recap(item.prompt, item.correct)
         else:
             await self._apply_word_answer(user, ut, iid, correct)
-            pair = await self._uw.get_with_word(iid)
-            if pair is not None:
-                _uw, word = pair
-                recap = _word_recap(word, correct_answer_text)
 
         now_ts = datetime.now(timezone.utc).timestamp()
         state["inflight"] = None
@@ -537,7 +509,7 @@ class PushService:
             PUSH_ANSWER_CORRECT
             if correct
             else PUSH_ANSWER_WRONG.format(answer=html.escape(correct_answer_text))
-        ) + recap
+        )
         if query.message:
             try:
                 await query.message.edit_text(feedback, parse_mode="HTML")
