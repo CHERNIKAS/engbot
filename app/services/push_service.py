@@ -22,6 +22,7 @@ from app.bot.texts import (
     PUSH_ANSWER_CORRECT,
     PUSH_ANSWER_WRONG,
     PUSH_CARD,
+    PUSH_CARD_REVERSE,
     PUSH_GRAMMAR_CARD,
     PUSH_HIDDEN,
     PUSH_KNOWN,
@@ -55,6 +56,12 @@ _TRACK = LearningTrack.ENGLISH
 # detection — one impossible word shouldn't clog a slot in the active pool).
 LEECH_THRESHOLD = 6
 LEECH_PARK_DAYS = 7
+
+# Chance a word already in learning is quizzed in the REVERSE direction (RU
+# prompt → pick the English word). Brand-new words always go forward first, so
+# production practice is gated behind successful recognition (testing-effect
+# boundary condition: retrieval must succeed for the benefit to stick).
+REVERSE_PROB = 0.4
 
 
 def _leech_after(consecutive_wrong_before: int, correct: bool, was_mastered: bool) -> tuple[int, bool]:
@@ -205,6 +212,7 @@ class PushService:
                     int(inflight.get("id", inflight.get("uw_id", 0))),
                     options_override=inflight.get("options"),
                     prefix=nudge_line(attempts),
+                    reverse=bool(inflight.get("reverse", False)),
                 )
                 if new_msg_id:
                     old_msg_id = inflight.get("msg_id")
@@ -283,9 +291,12 @@ class PushService:
             if pick is None:
                 continue
             uw, _w = pick
-            msg_id, options, correct = await self._send_card(user, "word", uw.id)
+            # A word that's been seen (not brand-new) sometimes flips to the
+            # reverse direction (RU → pick English) for production practice.
+            reverse = uw.status != WordStatus.NEW.value and random.random() < REVERSE_PROB
+            msg_id, options, correct = await self._send_card(user, "word", uw.id, reverse=reverse)
             if msg_id:
-                state["inflight"] = self._inflight("word", uw.id, options, correct, now_ts, msg_id)
+                state["inflight"] = self._inflight("word", uw.id, options, correct, now_ts, msg_id, reverse=reverse)
                 if stream == "new":
                     state["new_today"] = new_today + 1  # count an introduction
                 sent = True
@@ -295,7 +306,14 @@ class PushService:
         return sent
 
     def _inflight(
-        self, kind: str, item_id: int, options: list[str], correct: str, now_ts: float, msg_id: int | None = None
+        self,
+        kind: str,
+        item_id: int,
+        options: list[str],
+        correct: str,
+        now_ts: float,
+        msg_id: int | None = None,
+        reverse: bool = False,
     ) -> dict:
         return {
             "kind": kind,
@@ -304,17 +322,29 @@ class PushService:
             "options": options,
             "correct": correct,
             "msg_id": msg_id,
+            "reverse": reverse,
             "attempts": 0,
             "retry_ts": now_ts + _minutes(self._s.push_retry_min_minutes, self._s.push_retry_max_minutes),
         }
 
     async def _send_card(
-        self, user: User, kind: str, item_id: int, options_override: list[str] | None = None, prefix: str = ""
+        self,
+        user: User,
+        kind: str,
+        item_id: int,
+        options_override: list[str] | None = None,
+        prefix: str = "",
+        reverse: bool = False,
     ) -> tuple[int | None, list[str] | None, str | None]:
         """Build and send a card (word or grammar). Returns (msg_id, options,
         correct). On a re-push pass options_override so the button order matches
-        the stored inflight (otherwise a re-shuffle would break answer checking)."""
-        built = await self._build_grammar(item_id) if kind == "grammar" else await self._build_card(user.id, item_id)
+        the stored inflight (otherwise a re-shuffle would break answer checking);
+        `reverse` is likewise carried over so the prompt direction stays stable."""
+        built = (
+            await self._build_grammar(item_id)
+            if kind == "grammar"
+            else await self._build_card(user.id, item_id, reverse=reverse)
+        )
         if built is None:
             return None, None, None
         text = built[0]
@@ -372,20 +402,37 @@ class PushService:
             pass
 
     async def _build_card(
-        self, user_id: int, uw_id: int
+        self, user_id: int, uw_id: int, reverse: bool = False
     ) -> tuple[str, list[str], str, str] | None:
         pair = await self._uw.get_with_word(uw_id)
         if pair is None:
             return None
         uw, word = pair
-        correct = uw.custom_translation or word.translation
-        if not correct:
+        ru = uw.custom_translation or word.translation
+        if not ru:
             return None
+
+        if reverse:
+            # RU prompt → pick the English word. Answer is the writing; distractors
+            # are other English words. Closes the recognition→production gap.
+            distractors = await self._uw.reverse_distractors(
+                user_id, track=_TRACK, exclude_word_id=word.id, limit=3,
+                correct_pos=word.part_of_speech, correct_level=word.level,
+            )
+            answer = word.writing
+            options = [answer, *distractors[:3]]
+            random.shuffle(options)
+            text = (
+                f"{PUSH_CARD_REVERSE.format(translation=html.escape(ru))}"
+                f"\n<i>{_progress_line(uw)}</i>"
+            )
+            return text, options, answer, uw.status
+
         distractors = await self._uw.quiz_distractors(
-            user_id, track=_TRACK, exclude_user_word_id=uw_id, limit=3, exclude_translations=[correct],
+            user_id, track=_TRACK, exclude_user_word_id=uw_id, limit=3, exclude_translations=[ru],
             correct_pos=word.part_of_speech, correct_level=word.level,
         )
-        options = [correct, *distractors[:3]]
+        options = [ru, *distractors[:3]]
         random.shuffle(options)
         text = _format_word_card(
             writing=word.writing,
@@ -393,7 +440,7 @@ class PushService:
             abstract_ru=word.abstract_example_ru,
             progress=_progress_line(uw),
         )
-        return text, options, correct, uw.status
+        return text, options, ru, uw.status
 
     async def show_rule(self, user: User, ugi_id: int, query: CallbackQuery) -> None:
         """Show the rule behind a grammar exercise (the "📖 Правило" button), as a

@@ -597,3 +597,66 @@ class UserWordRepository:
         # Stable sort keeps own-before-pack and random order within a tier.
         candidates.sort(key=lambda c: c[0])
         return [translation for _, translation in candidates[:limit]]
+
+    async def reverse_distractors(
+        self,
+        user_id: int,
+        track: LearningTrack,
+        exclude_word_id: int,
+        limit: int = 3,
+        correct_pos: str | None = None,
+        correct_level: str | None = None,
+    ) -> list[str]:
+        """English writings to use as distractors on a REVERSE card (RU prompt →
+        pick the English word). Mirror of quiz_distractors but returns the
+        surface word, not the translation; own vocab first, then pack words on a
+        cold start. Same part-of-speech / level rank so the options are plausible
+        (a verb against verbs)."""
+        seen: set[str] = set()
+        candidates: list[tuple[tuple[int, int], str]] = []
+
+        def tier(pos: str | None, level: str | None) -> tuple[int, int]:
+            pos_match = correct_pos is not None and pos == correct_pos
+            level_match = correct_level is not None and level == correct_level
+            return (0 if pos_match else 1, 0 if level_match else 1)
+
+        def consider(rows: list) -> None:
+            for writing, pos, level in rows:
+                if not writing:
+                    continue
+                n = _norm(writing)
+                if n in seen:
+                    continue
+                seen.add(n)
+                candidates.append((tier(pos, level), writing))
+
+        own_q = (
+            select(Word.writing, Word.part_of_speech, Word.level)
+            .join(UserWord, UserWord.word_id == Word.id)
+            .where(
+                UserWord.user_id == user_id,
+                UserWord.track == track.value,
+                Word.id != exclude_word_id,
+            )
+            .order_by(func.random())
+            .limit(limit * 4)
+        )
+        consider(list((await self.session.execute(own_q)).all()))
+
+        if len(candidates) < limit:
+            pack_q = (
+                select(Word.writing, Word.part_of_speech, Word.level)
+                .join(PackWord, PackWord.word_id == Word.id)
+                .join(Pack, Pack.id == PackWord.pack_id)
+                .where(
+                    Pack.track == track.value,
+                    Pack.is_active.is_(True),
+                    Word.id != exclude_word_id,
+                )
+                .order_by(func.random())
+                .limit(limit * 8)
+            )
+            consider(list((await self.session.execute(pack_q)).all()))
+
+        candidates.sort(key=lambda c: c[0])
+        return [writing for _, writing in candidates[:limit]]
