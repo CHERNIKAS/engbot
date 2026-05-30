@@ -2,41 +2,37 @@ from __future__ import annotations
 
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from app.bot.callbacks.schema import CourseCB, DeleteCB, StudyCB
+from app.bot.callbacks.schema import DeleteCB, StudyCB
 from app.bot.keyboards.common import home_button
 
 
 def study_menu_kb() -> InlineKeyboardMarkup:
+    """On-demand manual drill (separate from the always-on push). Labels say
+    WHICH set each button trains, so it's clear at a glance."""
     rows = [
         [
             InlineKeyboardButton(
-                text="🎓 Курс — учись по плану",
-                callback_data=CourseCB(action="open").pack(),
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                text="🎯 Сегодняшняя цель",
+                text="🎯 Цель на сегодня",
                 callback_data=StudyCB(action="start", scope="goal").pack(),
             )
         ],
         [
             InlineKeyboardButton(
-                text="📚 Все слова",
+                text="📚 Повторить всё",
                 callback_data=StudyCB(action="start", scope="all").pack(),
             ),
             InlineKeyboardButton(
-                text="🔥 Слабые",
+                text="🩹 Работа над ошибками",
                 callback_data=StudyCB(action="start", scope="weak").pack(),
             ),
         ],
         [
             InlineKeyboardButton(
-                text="🆕 Новые",
+                text="🆕 Новые слова",
                 callback_data=StudyCB(action="start", scope="new").pack(),
             ),
             InlineKeyboardButton(
-                text="⚡ Быстрая",
+                text="⚡ Быстро — 5 слов",
                 callback_data=StudyCB(action="start", scope="quick").pack(),
             ),
         ],

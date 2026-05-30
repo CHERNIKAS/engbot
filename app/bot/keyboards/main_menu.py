@@ -7,7 +7,7 @@ from aiogram.types import (
     ReplyKeyboardMarkup,
 )
 
-from app.bot.callbacks.schema import MainMenuCB
+from app.bot.callbacks.schema import CourseCB, MainMenuCB
 from app.bot.keyboards.common import home_button
 from app.bot.texts import (
     BTN_HELP,
@@ -41,16 +41,17 @@ def main_menu_reply_kb() -> ReplyKeyboardMarkup:
 
 
 def words_menu_kb() -> InlineKeyboardMarkup:
-    """The "🗂 Настройки слов" submenu — the word-management actions that used to
-    each have their own bottom-keyboard button (my words / add / import / packs)."""
+    """The "🗂 Настройки слов" submenu — everything about building your vocabulary:
+    the guided course, your words, adding/importing, and ready-made packs."""
     return InlineKeyboardMarkup(
         inline_keyboard=[
+            [InlineKeyboardButton(text="🎓 Курс — учись по плану", callback_data=CourseCB(action="open").pack())],
             [InlineKeyboardButton(text="📚 Мои слова", callback_data=MainMenuCB(section="words").pack())],
             [
                 InlineKeyboardButton(text="➕ Добавить слова", callback_data=MainMenuCB(section="add").pack()),
                 InlineKeyboardButton(text="📂 Импорт TXT", callback_data=MainMenuCB(section="import").pack()),
             ],
-            [InlineKeyboardButton(text="📦 Паки", callback_data=MainMenuCB(section="packs").pack())],
+            [InlineKeyboardButton(text="📦 Готовые паки", callback_data=MainMenuCB(section="packs").pack())],
             [home_button()],
         ]
     )

@@ -31,6 +31,7 @@ from app.bot.texts import (
     MY_WORDS_EMPTY,
     PACE_LABELS,
     SETTINGS_TITLE,
+    STUDY_MENU_TITLE,
     TXT_PROMPT,
     WORDS_MENU_TITLE,
 )
@@ -127,7 +128,9 @@ async def msg_study(
     redis: Redis,
 ) -> None:
     await state_service.clear(user.id)
-    await send_menu_card(message, redis, user.id, "🔥 Учить", reply_markup=study_menu_kb())
+    await send_menu_card(
+        message, redis, user.id, STUDY_MENU_TITLE, reply_markup=study_menu_kb(), parse_mode="HTML"
+    )
 
 
 @router.message(F.text.in_({BTN_MY_WORDS, BTN_ADD, BTN_IMPORT, BTN_PACKS}))
@@ -185,7 +188,9 @@ async def on_words_section(
         await open_packs(msg, user, current_track, session, state_service, redis)
     elif section == "study":
         await state_service.clear(user.id)
-        await send_menu_card(msg, redis, user.id, "🔥 Учить", reply_markup=study_menu_kb())
+        await send_menu_card(
+            msg, redis, user.id, STUDY_MENU_TITLE, reply_markup=study_menu_kb(), parse_mode="HTML"
+        )
     await query.answer()
 
 
