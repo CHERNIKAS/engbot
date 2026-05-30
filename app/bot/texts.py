@@ -25,6 +25,7 @@ ONBOARDING_DONE = "🎉 Всё настроено! Удачной учёбы �
 MAIN_MENU = "Главное меню 🌸"
 
 # Persistent bottom reply-keyboard buttons (main navigation).
+BTN_WORDS = "🗂 Слова"  # opens the "Настройки слов" submenu (my words / add / import / packs)
 BTN_MY_WORDS = "📚 Мои слова"
 BTN_STUDY = "🔥 Учить"
 BTN_ADD = "➕ Добавить слова"
@@ -33,10 +34,17 @@ BTN_PACKS = "📦 Паки"
 BTN_PROGRESS = "📊 Прогресс"
 BTN_SETTINGS = "⚙️ Настройки"
 BTN_HELP = "❓ Справка"
+# Bottom-menu taps allowed in any state (treated as a reset). Includes the
+# legacy single-action labels so older messages / deep links still navigate.
 MENU_BUTTON_TEXTS: frozenset[str] = frozenset(
-    {BTN_MY_WORDS, BTN_STUDY, BTN_ADD, BTN_IMPORT, BTN_PACKS, BTN_PROGRESS, BTN_SETTINGS, BTN_HELP}
+    {BTN_WORDS, BTN_MY_WORDS, BTN_STUDY, BTN_ADD, BTN_IMPORT, BTN_PACKS, BTN_PROGRESS, BTN_SETTINGS, BTN_HELP}
 )
 MENU_PLACEHOLDER = "Выбери действие 🌸"
+
+WORDS_MENU_TITLE = (
+    "🗂 <b>Настройки слов</b>\n"
+    "Всё про твой словарь в одном месте 🌸"
+)
 
 HELP_TEXT = (
     "❓ <b>Справка — что какая кнопка делает</b>\n\n"

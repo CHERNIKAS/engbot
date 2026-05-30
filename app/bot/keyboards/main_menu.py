@@ -8,15 +8,13 @@ from aiogram.types import (
 )
 
 from app.bot.callbacks.schema import MainMenuCB
+from app.bot.keyboards.common import home_button
 from app.bot.texts import (
-    BTN_ADD,
     BTN_HELP,
-    BTN_IMPORT,
-    BTN_MY_WORDS,
-    BTN_PACKS,
     BTN_PROGRESS,
     BTN_SETTINGS,
     BTN_STUDY,
+    BTN_WORDS,
     MENU_PLACEHOLDER,
 )
 from app.config import get_settings
@@ -33,13 +31,28 @@ def main_menu_reply_kb() -> ReplyKeyboardMarkup:
     """
     return ReplyKeyboardMarkup(
         keyboard=[
-            [KeyboardButton(text=BTN_MY_WORDS), KeyboardButton(text=BTN_STUDY)],
-            [KeyboardButton(text=BTN_ADD), KeyboardButton(text=BTN_IMPORT)],
-            [KeyboardButton(text=BTN_PACKS), KeyboardButton(text=BTN_PROGRESS)],
-            [KeyboardButton(text=BTN_SETTINGS), KeyboardButton(text=BTN_HELP)],
+            [KeyboardButton(text=BTN_WORDS), KeyboardButton(text=BTN_STUDY)],
+            [KeyboardButton(text=BTN_PROGRESS), KeyboardButton(text=BTN_SETTINGS)],
+            [KeyboardButton(text=BTN_HELP)],
         ],
         resize_keyboard=True,
         input_field_placeholder=MENU_PLACEHOLDER,
+    )
+
+
+def words_menu_kb() -> InlineKeyboardMarkup:
+    """The "🗂 Настройки слов" submenu — the word-management actions that used to
+    each have their own bottom-keyboard button (my words / add / import / packs)."""
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="📚 Мои слова", callback_data=MainMenuCB(section="words").pack())],
+            [
+                InlineKeyboardButton(text="➕ Добавить слова", callback_data=MainMenuCB(section="add").pack()),
+                InlineKeyboardButton(text="📂 Импорт TXT", callback_data=MainMenuCB(section="import").pack()),
+            ],
+            [InlineKeyboardButton(text="📦 Паки", callback_data=MainMenuCB(section="packs").pack())],
+            [home_button()],
+        ]
     )
 
 
