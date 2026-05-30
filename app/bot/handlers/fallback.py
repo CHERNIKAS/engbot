@@ -22,7 +22,7 @@ from app.bot.texts import (
     STALE_CALLBACK,
 )
 from app.domain.enums import LearningTrack, WordSource
-from app.domain.models import User
+from app.domain.models import User, UserTrack
 from app.infrastructure.example_provider.local_json import LocalJsonExampleProvider
 from app.infrastructure.repositories.categories import CategoryRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
@@ -55,9 +55,18 @@ async def on_idle_text(
     message: Message,
     user: User,
     current_track: LearningTrack,
+    user_track: UserTrack,
     user_track_service: UserTrackService,
+    session: AsyncSession,
     redis: Redis,
 ) -> None:
+    # A typed message while a cloze push card is in flight is the answer to it —
+    # let the push service consume it before treating text as a quick-add.
+    from app.services.push_service import PushService
+
+    if await PushService(session, redis).handle_typed_answer(user, user_track, message):
+        return
+
     result = parse_input(message.text or "", max_lines=200, max_words=200)
     if not result.words:
         await message.answer(QUICK_ADD_NONE)

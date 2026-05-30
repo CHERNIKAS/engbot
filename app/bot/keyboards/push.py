@@ -41,6 +41,26 @@ def push_card_kb(options: list[str], uw_id: int, status: str) -> InlineKeyboardM
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
+def push_cloze_card_kb(uw_id: int, status: str) -> InlineKeyboardMarkup:
+    """A cloze card is answered by TYPING the word, so no answer buttons — just
+    a give-up button + the same per-status controls as a normal word card."""
+    rows: list[list[InlineKeyboardButton]] = [
+        [InlineKeyboardButton(text="🤷 Не помню", callback_data=PushCB(action="giveup", uw_id=uw_id).pack())]
+    ]
+    if status == WordStatus.MASTERED.value:
+        rows.append(
+            [
+                InlineKeyboardButton(text="😴 3 дня", callback_data=PushCB(action="snooze", uw_id=uw_id, days=3).pack()),
+                InlineKeyboardButton(text="😴 неделя", callback_data=PushCB(action="snooze", uw_id=uw_id, days=7).pack()),
+                InlineKeyboardButton(text="😴 месяц", callback_data=PushCB(action="snooze", uw_id=uw_id, days=30).pack()),
+            ]
+        )
+    rows.append(
+        [InlineKeyboardButton(text="🙈 Перестать показывать", callback_data=PushCB(action="hide", uw_id=uw_id).pack())]
+    )
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
 def push_grammar_card_kb(options: list[str], ugi_id: int) -> InlineKeyboardMarkup:
     """A grammar exercise card: answer buttons + a "📖 Правило" button so the
     user can read the rule instead of guessing. The answer callback reuses the

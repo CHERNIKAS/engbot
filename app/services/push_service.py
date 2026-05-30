@@ -15,6 +15,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.bot.keyboards.push import (
     SNOOZE_LABELS,
     push_card_kb,
+    push_cloze_card_kb,
     push_grammar_card_kb,
     push_leech_kb,
     push_rule_kb,
@@ -23,6 +24,7 @@ from app.bot.texts import (
     PUSH_ANSWER_CORRECT,
     PUSH_ANSWER_WRONG,
     PUSH_CARD,
+    PUSH_CARD_CLOZE,
     PUSH_CARD_REVERSE,
     PUSH_GRAMMAR_CARD,
     PUSH_HIDDEN,
@@ -36,6 +38,7 @@ from app.bot.texts import (
 )
 from app.config import get_settings
 from app.domain.enums import LearningPace, LearningTrack, ReviewResult, WordStatus
+from app.domain.study_drill import is_typing_correct
 from app.domain.models import User, UserTrack
 from app.domain.pacing import ceiling_of, pace_of
 from app.domain.push import in_window, normalize_window
@@ -375,6 +378,9 @@ class PushService:
             text = f"{prefix}\n\n{text}"
         if kind == "grammar":
             kb = push_grammar_card_kb(options, item_id)
+        elif card_type == CARD_CLOZE and not options:
+            # Cloze is answered by typing — no answer buttons (options is empty).
+            kb = push_cloze_card_kb(item_id, built[3])
         else:
             kb = push_card_kb(options, item_id, built[3])
         msg_id = await self._raw_send(user.telegram_id, text, kb)
@@ -455,10 +461,22 @@ class PushService:
         if not ru:
             return None
 
-        if card_type in (CARD_REVERSE, CARD_CLOZE):
+        if card_type == CARD_CLOZE:
+            masked = _mask_target(word.example_sentence or "", word.writing)
+            if masked:
+                # Type the missing word into the English sentence (real recall).
+                text = (
+                    f"{PUSH_CARD_CLOZE.format(translation=html.escape(ru), sentence=html.escape(masked))}"
+                    f"\n<i>{_progress_line(uw)}</i>"
+                )
+                # options=[] — answered by typing, not buttons.
+                return text, [], word.writing, uw.status
+            # Not maskable (irregular form) → fall back to a reverse card.
+            card_type = CARD_REVERSE
+
+        if card_type == CARD_REVERSE:
             # RU prompt → pick the English word. Answer is the writing; distractors
             # are other English words. Closes the recognition→production gap.
-            # (CARD_CLOZE renders as reverse until the typing rung lands.)
             distractors = await self._uw.reverse_distractors(
                 user_id, track=_TRACK, exclude_word_id=word.id, limit=3,
                 correct_pos=word.part_of_speech, correct_level=word.level,
@@ -639,6 +657,82 @@ class PushService:
             try:
                 await query.message.answer(
                     PUSH_LEECH_PROMPT.format(word=html.escape(leech_writing)),
+                    reply_markup=push_leech_kb(iid),
+                    parse_mode="HTML",
+                )
+            except Exception:  # noqa: BLE001
+                pass
+
+    async def _settle_cloze(self, user: User, ut: UserTrack, iid: int, correct: bool, state: dict, inflight: dict) -> str | None:
+        """Apply a cloze answer's SR result and advance the push state. Returns
+        the leech writing if this answer crossed the leech threshold."""
+        leech = await self._apply_word_answer(user, ut, iid, correct)
+        now_ts = datetime.now(timezone.utc).timestamp()
+        state["inflight"] = None
+        state["last"] = {"kind": "word", "id": iid}
+        state["next_ts"] = now_ts + _minutes(self._s.push_gap_min_minutes, self._s.push_gap_max_minutes)
+        await self._save(user.id, state)
+        return leech
+
+    async def handle_typed_answer(self, user: User, ut: UserTrack, message) -> bool:
+        """A free-text message while a cloze card is in flight = the typed answer.
+        Returns True if it consumed the message (so the caller skips quick-add)."""
+        state = await self._load(user.id)
+        inflight = state.get("inflight")
+        if not inflight or inflight.get("kind") != "word" or inflight.get("ctype") != CARD_CLOZE:
+            return False
+        iid = int(inflight.get("id", inflight.get("uw_id", 0)))
+        answer = str(inflight.get("correct") or "")
+        correct = is_typing_correct(message.text or "", answer)
+        leech = await self._settle_cloze(user, ut, iid, correct, state, inflight)
+
+        feedback = PUSH_ANSWER_CORRECT if correct else PUSH_ANSWER_WRONG.format(answer=html.escape(answer))
+        msg_id = inflight.get("msg_id")
+        if msg_id:
+            try:
+                await message.bot.edit_message_text(
+                    feedback, chat_id=message.chat.id, message_id=int(msg_id), parse_mode="HTML"
+                )
+            except Exception:  # noqa: BLE001
+                pass
+        # Tidy the user's typed answer out of the chat.
+        try:
+            await message.delete()
+        except Exception:  # noqa: BLE001
+            pass
+        if leech:
+            try:
+                await message.answer(
+                    PUSH_LEECH_PROMPT.format(word=html.escape(leech)),
+                    reply_markup=push_leech_kb(iid),
+                    parse_mode="HTML",
+                )
+            except Exception:  # noqa: BLE001
+                pass
+        return True
+
+    async def handle_giveup(self, user: User, ut: UserTrack, uw_id: int, query: CallbackQuery) -> None:
+        """The "🤷 Не помню" button on a cloze card — count it wrong and reveal."""
+        state = await self._load(user.id)
+        inflight = state.get("inflight")
+        iid = int(inflight.get("id", inflight.get("uw_id", 0))) if inflight else 0
+        if not inflight or iid != uw_id or inflight.get("ctype") != CARD_CLOZE:
+            await query.answer(PUSH_STALE, show_alert=False)
+            return
+        answer = str(inflight.get("correct") or "")
+        leech = await self._settle_cloze(user, ut, iid, False, state, inflight)
+        if query.message:
+            try:
+                await query.message.edit_text(
+                    PUSH_ANSWER_WRONG.format(answer=html.escape(answer)), parse_mode="HTML"
+                )
+            except Exception:  # noqa: BLE001
+                pass
+        await query.answer("💡")
+        if leech and query.message is not None:
+            try:
+                await query.message.answer(
+                    PUSH_LEECH_PROMPT.format(word=html.escape(leech)),
                     reply_markup=push_leech_kb(iid),
                     parse_mode="HTML",
                 )

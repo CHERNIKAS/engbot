@@ -177,6 +177,11 @@ REMINDER_INACTIVE = "👋 Давно не виделись. Вернись и п
 
 PUSH_CARD = "🔔 Что значит <b>{word}</b>?"
 PUSH_CARD_REVERSE = "🔤 Как сказать по-английски «<b>{translation}</b>»?"
+PUSH_CARD_CLOZE = (
+    "✍️ Впиши пропущенное слово (<b>{translation}</b>):\n\n"
+    "{sentence}\n\n"
+    "<i>Ответь сообщением 👇</i>"
+)
 PUSH_GRAMMAR_CARD = "📖 Выбери верную форму:\n\n{prompt}"
 PUSH_RULE_CARD = "📖 <b>{title}</b>\n\n{rule}"
 PUSH_RULE_OK = "👍 Поехали — лови упражнения."
