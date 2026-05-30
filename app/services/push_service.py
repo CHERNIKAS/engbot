@@ -3,6 +3,7 @@ from __future__ import annotations
 import html
 import json
 import random
+import re
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
@@ -57,11 +58,18 @@ _TRACK = LearningTrack.ENGLISH
 LEECH_THRESHOLD = 6
 LEECH_PARK_DAYS = 7
 
-# Chance a word already in learning is quizzed in the REVERSE direction (RU
-# prompt → pick the English word). Brand-new words always go forward first, so
-# production practice is gated behind successful recognition (testing-effect
-# boundary condition: retrieval must succeed for the benefit to stick).
-REVERSE_PROB = 0.4
+# Production ladder: a word climbs card types as it's answered correctly, so
+# production is gated behind successful recognition (testing-effect boundary
+# condition — retrieval must succeed for the benefit to stick). The "stage" is
+# derived from repetitions_count (consecutive correct, reset to 0 on a miss) —
+# no extra column needed; a miss naturally drops the word back to recognition.
+#   reps 0-2 → recognition (EN→RU choice)
+#   reps 3-5 → reverse     (RU→EN choice)
+#   reps 6+  → cloze        (type the word into an English sentence)
+STAGE_STEP = 3  # correct-in-a-row per rung
+CARD_RECOGNITION = "recognition"
+CARD_REVERSE = "reverse"
+CARD_CLOZE = "cloze"
 
 
 def _leech_after(consecutive_wrong_before: int, correct: bool, was_mastered: bool) -> tuple[int, bool]:
@@ -101,6 +109,20 @@ def _progress_line(uw) -> str:
 #   • for a grammar card: the prompt with the gap filled in and the answer bold
 #
 # Pure functions so the formatting is unit-testable.
+
+_CLOZE_INFLECT = r"(?:s|es|ed|d|ing|ly|er|est)?"
+
+
+def _mask_target(sentence: str, target: str) -> str | None:
+    """Replace the target word (+ basic inflections) in `sentence` with ___ for a
+    cloze card. Returns None when the word isn't found in a maskable form (e.g.
+    an irregular like 'went' for 'go') — those words skip the cloze rung."""
+    if not sentence or not target:
+        return None
+    pattern = re.compile(rf"\b{re.escape(target)}{_CLOZE_INFLECT}\b", re.IGNORECASE)
+    masked, n = pattern.subn("___", sentence)
+    return masked if n > 0 else None
+
 
 def _format_word_card(writing: str, abstract_en: str | None, abstract_ru: str | None, progress: str) -> str:
     """Render the word push card. Includes a paired EN/RU abstract example
@@ -212,7 +234,7 @@ class PushService:
                     int(inflight.get("id", inflight.get("uw_id", 0))),
                     options_override=inflight.get("options"),
                     prefix=nudge_line(attempts),
-                    reverse=bool(inflight.get("reverse", False)),
+                    card_type=inflight.get("ctype", CARD_RECOGNITION),
                 )
                 if new_msg_id:
                     old_msg_id = inflight.get("msg_id")
@@ -291,12 +313,11 @@ class PushService:
             if pick is None:
                 continue
             uw, _w = pick
-            # A word that's been seen (not brand-new) sometimes flips to the
-            # reverse direction (RU → pick English) for production practice.
-            reverse = uw.status != WordStatus.NEW.value and random.random() < REVERSE_PROB
-            msg_id, options, correct = await self._send_card(user, "word", uw.id, reverse=reverse)
+            # Card type by production-ladder stage (recognition → reverse → cloze).
+            ctype = self._card_type(uw, _w)
+            msg_id, options, correct = await self._send_card(user, "word", uw.id, card_type=ctype)
             if msg_id:
-                state["inflight"] = self._inflight("word", uw.id, options, correct, now_ts, msg_id, reverse=reverse)
+                state["inflight"] = self._inflight("word", uw.id, options, correct, now_ts, msg_id, ctype=ctype)
                 if stream == "new":
                     state["new_today"] = new_today + 1  # count an introduction
                 sent = True
@@ -313,7 +334,7 @@ class PushService:
         correct: str,
         now_ts: float,
         msg_id: int | None = None,
-        reverse: bool = False,
+        ctype: str = CARD_RECOGNITION,
     ) -> dict:
         return {
             "kind": kind,
@@ -322,7 +343,7 @@ class PushService:
             "options": options,
             "correct": correct,
             "msg_id": msg_id,
-            "reverse": reverse,
+            "ctype": ctype,
             "attempts": 0,
             "retry_ts": now_ts + _minutes(self._s.push_retry_min_minutes, self._s.push_retry_max_minutes),
         }
@@ -334,16 +355,16 @@ class PushService:
         item_id: int,
         options_override: list[str] | None = None,
         prefix: str = "",
-        reverse: bool = False,
+        card_type: str = CARD_RECOGNITION,
     ) -> tuple[int | None, list[str] | None, str | None]:
         """Build and send a card (word or grammar). Returns (msg_id, options,
         correct). On a re-push pass options_override so the button order matches
         the stored inflight (otherwise a re-shuffle would break answer checking);
-        `reverse` is likewise carried over so the prompt direction stays stable."""
+        `card_type` is likewise carried over so the prompt stays stable."""
         built = (
             await self._build_grammar(item_id)
             if kind == "grammar"
-            else await self._build_card(user.id, item_id, reverse=reverse)
+            else await self._build_card(user.id, item_id, card_type=card_type)
         )
         if built is None:
             return None, None, None
@@ -401,8 +422,30 @@ class PushService:
         except Exception:  # noqa: BLE001 — already stripped / gone
             pass
 
+    def _cloze_possible(self, word: Word) -> bool:
+        """Cloze needs an example whose target word can be masked (regular form)."""
+        return _mask_target(word.example_sentence or "", word.writing) is not None
+
+    def _card_type(self, uw: UserWord, word: Word) -> str:
+        """Which card type to show, by the word's production-ladder stage.
+        New words always start on recognition; mastered words rotate types for
+        review variety. Stage = consecutive-correct // STAGE_STEP."""
+        if uw.status == WordStatus.NEW.value:
+            return CARD_RECOGNITION
+        if uw.status == WordStatus.MASTERED.value:
+            choices = [CARD_RECOGNITION, CARD_REVERSE]
+            if self._cloze_possible(word):
+                choices.append(CARD_CLOZE)
+            return random.choice(choices)
+        stage = (uw.repetitions_count or 0) // STAGE_STEP
+        if stage <= 0:
+            return CARD_RECOGNITION
+        if stage == 1:
+            return CARD_REVERSE
+        return CARD_CLOZE if self._cloze_possible(word) else CARD_REVERSE
+
     async def _build_card(
-        self, user_id: int, uw_id: int, reverse: bool = False
+        self, user_id: int, uw_id: int, card_type: str = CARD_RECOGNITION
     ) -> tuple[str, list[str], str, str] | None:
         pair = await self._uw.get_with_word(uw_id)
         if pair is None:
@@ -412,9 +455,10 @@ class PushService:
         if not ru:
             return None
 
-        if reverse:
+        if card_type in (CARD_REVERSE, CARD_CLOZE):
             # RU prompt → pick the English word. Answer is the writing; distractors
             # are other English words. Closes the recognition→production gap.
+            # (CARD_CLOZE renders as reverse until the typing rung lands.)
             distractors = await self._uw.reverse_distractors(
                 user_id, track=_TRACK, exclude_word_id=word.id, limit=3,
                 correct_pos=word.part_of_speech, correct_level=word.level,
@@ -428,6 +472,8 @@ class PushService:
             )
             return text, options, answer, uw.status
 
+        # Recognition (default): EN→RU, pick the translation. Carries the abstract
+        # example as a context hint.
         distractors = await self._uw.quiz_distractors(
             user_id, track=_TRACK, exclude_user_word_id=uw_id, limit=3, exclude_translations=[ru],
             correct_pos=word.part_of_speech, correct_level=word.level,
