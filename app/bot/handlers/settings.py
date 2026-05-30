@@ -11,6 +11,7 @@ from app.bot.keyboards.main_menu import main_menu_kb
 from app.bot.keyboards.settings import (
     TZ_ZONES,
     goal_values_kb,
+    new_pace_kb,
     pace_kb,
     push_settings_kb,
     push_window_kb,
@@ -24,6 +25,8 @@ from app.bot.texts import (
     ERROR_GOAL_TOO_SMALL,
     PACE_LABELS,
     PACE_TITLE,
+    PUSH_PACE_SET,
+    PUSH_PACE_TITLE,
     PUSH_TITLE,
     PUSH_WINDOW_TITLE,
     PUSH_WINDOW_TOO_SHORT,
@@ -34,6 +37,7 @@ from app.bot.texts import (
 )
 from app.config import get_settings
 from app.domain.enums import LearningPace, LearningTrack, TRACK_LABELS
+from app.domain.pacing import PACE_VALUES, label_for, pace_of
 from app.domain.models import User, UserTrack
 from app.services.interaction_state_service import InteractionStateService
 from app.services.user_service import UserService
@@ -225,9 +229,47 @@ async def on_push_open(
     ws, we = _window(user_track)
     if query.message:
         await query.message.edit_text(
-            PUSH_TITLE, reply_markup=push_settings_kb(ws, we), parse_mode="HTML"
+            PUSH_TITLE,
+            reply_markup=push_settings_kb(ws, we, pace_of(user_track.settings)),
+            parse_mode="HTML",
         )
     await query.answer()
+
+
+@router.callback_query(SettingsCB.filter(F.action == "newpace"))
+async def on_newpace_open(query: CallbackQuery, user_track: UserTrack) -> None:
+    pace = pace_of(user_track.settings)
+    if query.message:
+        await query.message.edit_text(
+            PUSH_PACE_TITLE.format(current=label_for(pace)),
+            reply_markup=new_pace_kb(pace),
+            parse_mode="HTML",
+        )
+    await query.answer()
+
+
+@router.callback_query(SettingsCB.filter(F.action == "newpace_set"))
+async def on_newpace_set(
+    query: CallbackQuery,
+    callback_data: SettingsCB,
+    user: User,
+    current_track: LearningTrack,
+    user_track: UserTrack,
+    user_track_service: UserTrackService,
+) -> None:
+    try:
+        value = int(callback_data.value or "")
+    except ValueError:
+        await query.answer()
+        return
+    if value not in PACE_VALUES:
+        await query.answer()
+        return
+    await user_track_service.update_settings(user.id, current_track, {"new_pace": value})
+    user_track.settings = {**(user_track.settings or {}), "new_pace": value}
+    if query.message:
+        await query.message.edit_reply_markup(reply_markup=new_pace_kb(value))
+    await query.answer(PUSH_PACE_SET.format(label=label_for(value)))
 
 
 @router.callback_query(SettingsCB.filter(F.action == "push_win"))

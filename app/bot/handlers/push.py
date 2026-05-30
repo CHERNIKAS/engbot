@@ -47,6 +47,20 @@ async def on_push_snooze(
     await PushService(session, redis).handle_snooze(user, callback_data.uw_id, callback_data.days, query)
 
 
+@router.callback_query(PushCB.filter(F.action == "leech_park"))
+async def on_push_leech_park(
+    query: CallbackQuery, callback_data: PushCB, user: User, session: AsyncSession, redis: Redis
+) -> None:
+    await PushService(session, redis).handle_leech_park(user, callback_data.uw_id, query)
+
+
+@router.callback_query(PushCB.filter(F.action == "leech_keep"))
+async def on_push_leech_keep(
+    query: CallbackQuery, callback_data: PushCB, user: User, session: AsyncSession, redis: Redis
+) -> None:
+    await PushService(session, redis).handle_leech_keep(user, callback_data.uw_id, query)
+
+
 @router.callback_query(PushCB.filter(F.action == "rule"))
 async def on_push_rule(
     query: CallbackQuery, callback_data: PushCB, user: User, session: AsyncSession, redis: Redis

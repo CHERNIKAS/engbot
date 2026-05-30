@@ -146,6 +146,10 @@ class UserWord(Base):
     interval_days: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
     # Push v2: 0–5 health score for mastered words (5.0 = fully learned).
     mastery_score: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
+    # Consecutive wrong answers (reset to 0 on any correct). Powers leech
+    # detection: when it hits the threshold the bot offers to postpone the word
+    # so one impossible word can't permanently clog the active pool.
+    consecutive_wrong: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     # Archived ("я знаю" / "перестать показывать") — out of all push rotation,
     # restorable from the management menu. Snoozed words hide until snooze_until.
     archived: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False, index=True)

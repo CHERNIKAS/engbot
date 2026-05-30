@@ -8,6 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.course import current_lesson, total_lessons, words_to_add
 from app.domain.enums import LearningTrack, WordSource, WordStatus
+from app.domain.pacing import ceiling_of, pace_of
 from app.domain.models import User, UserTrack
 from app.infrastructure.repositories.categories import CategoryRepository
 from app.infrastructure.repositories.grammar import GrammarRepository
@@ -100,8 +101,9 @@ class CourseService:
         await self._set_enrolled(user, user_track, track, False)
 
     async def refill(self, user: User, user_track: UserTrack, track: LearningTrack) -> int:
-        """Top the user's vocab up to `daily_goal` in-progress course words by
-        adding the next words from the spine. Idempotent / self-correcting."""
+        """Keep a buffer of in-progress course words by pulling the next spine
+        words, up to the active-pool ceiling (pace × 3). The push then introduces
+        them at `pace`/day. Idempotent / self-correcting."""
         if not self.is_enrolled(user_track):
             return 0
         spine = await self._spine(track)
@@ -109,7 +111,8 @@ class CourseService:
             return 0
         ids = [w for w, _ in spine]
         owned = await self._uw.status_map(user.id, track, ids)
-        to_add = words_to_add(ids, owned, user_track.daily_goal_words)
+        buffer_target = ceiling_of(pace_of(user_track.settings))
+        to_add = words_to_add(ids, owned, buffer_target)
         added = 0
         if to_add:
             cat_id = await self._ensure_category(user.id, track)

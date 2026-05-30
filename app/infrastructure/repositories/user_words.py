@@ -277,15 +277,19 @@ class UserWordRepository:
                 return row[0], row[1], True
         return None
 
-    async def count_active(self, user_id: int, track: LearningTrack) -> int:
-        """Words the user is currently learning (started, not yet mastered,
-        not archived). This is the 'active set' the push engine keeps at
-        daily_goal size."""
+    async def count_active(
+        self, user_id: int, track: LearningTrack, now: datetime | None = None
+    ) -> int:
+        """Words the user is currently learning (started, not yet mastered, not
+        archived, not snoozed). This is the 'active pool' the push engine keeps
+        under the intake ceiling — a snoozed leech frees its slot."""
+        now = now or datetime.now(timezone.utc)
         q = select(func.count(UserWord.id)).where(
             UserWord.user_id == user_id,
             UserWord.track == track.value,
             UserWord.archived.is_(False),
             UserWord.status.in_([WordStatus.LEARNING.value, WordStatus.REVIEW.value]),
+            or_(UserWord.snooze_until.is_(None), UserWord.snooze_until <= now),
         )
         return (await self.session.execute(q)).scalar_one()
 
@@ -311,11 +315,13 @@ class UserWordRepository:
         return (row[0], row[1]) if row is not None else None
 
     async def pick_active_random(
-        self, user_id: int, track: LearningTrack, exclude_uw_id: int = 0
+        self, user_id: int, track: LearningTrack, exclude_uw_id: int = 0, now: datetime | None = None
     ) -> tuple[UserWord, Word] | None:
         """A random word from the active set (being learned) — for reinforcement.
-        Over-fetches a few so we can skip `exclude_uw_id` (the card just answered)
-        and avoid showing the same word twice in a row."""
+        Skips snoozed (parked-leech) words. Over-fetches a few so we can skip
+        `exclude_uw_id` (the card just answered) and avoid showing the same word
+        twice in a row."""
+        now = now or datetime.now(timezone.utc)
         q = (
             select(UserWord, Word)
             .join(Word, Word.id == UserWord.word_id)
@@ -324,6 +330,7 @@ class UserWordRepository:
                 UserWord.track == track.value,
                 UserWord.archived.is_(False),
                 UserWord.status.in_([WordStatus.LEARNING.value, WordStatus.REVIEW.value]),
+                or_(UserWord.snooze_until.is_(None), UserWord.snooze_until <= now),
                 Word.translation.isnot(None),
             )
             .order_by(func.random())

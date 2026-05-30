@@ -15,6 +15,7 @@ from app.bot.keyboards.push import (
     SNOOZE_LABELS,
     push_card_kb,
     push_grammar_card_kb,
+    push_leech_kb,
     push_rule_kb,
 )
 from app.bot.texts import (
@@ -24,6 +25,9 @@ from app.bot.texts import (
     PUSH_GRAMMAR_CARD,
     PUSH_HIDDEN,
     PUSH_KNOWN,
+    PUSH_LEECH_KEPT,
+    PUSH_LEECH_PARKED,
+    PUSH_LEECH_PROMPT,
     PUSH_RULE_CARD,
     PUSH_SNOOZED,
     PUSH_STALE,
@@ -31,6 +35,7 @@ from app.bot.texts import (
 from app.config import get_settings
 from app.domain.enums import LearningPace, LearningTrack, ReviewResult, WordStatus
 from app.domain.models import User, UserTrack
+from app.domain.pacing import ceiling_of, pace_of
 from app.domain.push import in_window, normalize_window
 from app.domain.push_nudges import nudge_line
 from app.infrastructure.repositories.grammar import GrammarRepository
@@ -45,6 +50,21 @@ log = get_logger("push")
 _KEY = "push:{user_id}"
 _TTL = 172_800  # 2 days
 _TRACK = LearningTrack.ENGLISH
+
+# Consecutive wrong answers before the bot offers to postpone a word (leech
+# detection — one impossible word shouldn't clog a slot in the active pool).
+LEECH_THRESHOLD = 6
+LEECH_PARK_DAYS = 7
+
+
+def _leech_after(consecutive_wrong_before: int, correct: bool, was_mastered: bool) -> tuple[int, bool]:
+    """Update the consecutive-miss counter for a word and decide whether it just
+    became a leech. Mastered words never become leeches (they ride a 0–5 score,
+    not the active-learning track). Returns (new_counter, offer_to_postpone)."""
+    if correct or was_mastered:
+        return 0, False
+    n = (consecutive_wrong_before or 0) + 1
+    return n, n >= LEECH_THRESHOLD
 
 
 def _tz(name: str | None) -> ZoneInfo:
@@ -166,7 +186,7 @@ class PushService:
                 mid = prev.get(k)
                 if mid:
                     await self._delete(user.telegram_id, int(mid))
-            state = {"day": today, "next_ts": 0.0, "inflight": None}
+            state = {"day": today, "next_ts": 0.0, "inflight": None, "new_today": 0}
 
         win = in_window(local.hour, ws, we)
         inflight = state.get("inflight")
@@ -218,7 +238,7 @@ class PushService:
             return msg_id is not None
 
         # ---- pick the next card: random among streams (words + grammar) ----
-        #   "new" — introduce a new word (only if the active set has room)
+        #   "new" — introduce a new word (gated by today's intake + pool ceiling)
         #   "repeat" — reinforce a random word being learned
         #   "review" — a mastered word due for review
         #   "grammar" — a non-mastered grammar exercise
@@ -228,9 +248,17 @@ class PushService:
         last_word = int(last.get("id", 0)) if last.get("kind") == "word" else 0
         last_grammar = int(last.get("id", 0)) if last.get("kind") == "grammar" else 0
 
+        # New-word intake is decoupled from mastering old words: introduce up to
+        # `pace` new words per day, but only while the active pool stays under
+        # `ceiling` (pace × 3) — so growth is steady, not a flood that turns the
+        # push into mush. (Old rule gated new on a word hitting 10-in-a-row.)
+        pace = pace_of(ut.settings)
+        ceiling = ceiling_of(pace)
+        new_today = int(state.get("new_today", 0))
         active_count = await self._uw.count_active(user.id, _TRACK)
+
         streams: list[str] = ["repeat", "review"]
-        if active_count < ut.daily_goal_words:
+        if new_today < pace and active_count < ceiling:
             streams.append("new")
         grammar_pick = await self._grammar.pick_for_push(user.id, _TRACK, exclude_id=last_grammar)
         if grammar_pick is not None:
@@ -258,6 +286,8 @@ class PushService:
             msg_id, options, correct = await self._send_card(user, "word", uw.id)
             if msg_id:
                 state["inflight"] = self._inflight("word", uw.id, options, correct, now_ts, msg_id)
+                if stream == "new":
+                    state["new_today"] = new_today + 1  # count an introduction
                 sent = True
             break
 
@@ -476,10 +506,11 @@ class PushService:
         correct_answer_text = str(inflight.get("correct") or "")
         rule_msg_id = inflight.get("rule_msg_id")
 
+        leech_writing: str | None = None
         if inflight.get("kind") == "grammar":
             await self._apply_grammar_answer(user, ut, iid, correct)
         else:
-            await self._apply_word_answer(user, ut, iid, correct)
+            leech_writing = await self._apply_word_answer(user, ut, iid, correct)
 
         now_ts = datetime.now(timezone.utc).timestamp()
         state["inflight"] = None
@@ -508,12 +539,53 @@ class PushService:
                 pass
         await query.answer("✅" if correct else "❌")
 
-    async def _apply_word_answer(self, user: User, ut: UserTrack, uw_id: int, correct: bool) -> None:
+        # This word has been missed LEECH_THRESHOLD times in a row — offer to
+        # postpone it so it stops blocking a slot. A separate message with its
+        # own buttons (the card itself is already edited to feedback).
+        if leech_writing and query.message is not None:
+            try:
+                await query.message.answer(
+                    PUSH_LEECH_PROMPT.format(word=html.escape(leech_writing)),
+                    reply_markup=push_leech_kb(iid),
+                    parse_mode="HTML",
+                )
+            except Exception:  # noqa: BLE001
+                pass
+
+    async def handle_leech_park(self, user: User, uw_id: int, query: CallbackQuery) -> None:
+        """Postpone a stuck word: snooze it for LEECH_PARK_DAYS (out of rotation,
+        frees its slot, auto-returns) and clear the miss streak."""
         uw = await self._uw.get(uw_id)
-        if uw is None:
-            return
+        if uw is not None and uw.user_id == user.id:
+            uw.snooze_until = datetime.now(timezone.utc) + timedelta(days=LEECH_PARK_DAYS)
+            uw.consecutive_wrong = 0
+            await self._session.flush()
+        await self._finish_card(query, PUSH_LEECH_PARKED)
+
+    async def handle_leech_keep(self, user: User, uw_id: int, query: CallbackQuery) -> None:
+        """Keep drilling a stuck word — just reset the miss streak so we don't
+        nag again on the very next miss."""
+        uw = await self._uw.get(uw_id)
+        if uw is not None and uw.user_id == user.id:
+            uw.consecutive_wrong = 0
+            await self._session.flush()
+        await self._finish_card(query, PUSH_LEECH_KEPT)
+
+    async def _apply_word_answer(self, user: User, ut: UserTrack, uw_id: int, correct: bool) -> str | None:
+        """Apply the SR result and leech tracking. Returns the word's writing
+        when this wrong answer just crossed the leech threshold (so the caller
+        can offer to postpone it), else None."""
+        pair = await self._uw.get_with_word(uw_id)
+        if pair is None:
+            return None
+        uw, word = pair
         was_mastered = uw.status == WordStatus.MASTERED.value
         apply_review(uw, ReviewResult.CORRECT if correct else ReviewResult.WRONG, LearningPace(ut.learning_pace))
+
+        # Leech tracking: count consecutive misses on words still being learned.
+        uw.consecutive_wrong, is_leech = _leech_after(uw.consecutive_wrong, correct, was_mastered)
+        leech_writing = word.writing if is_leech else None
+
         await self._reviews.create(
             user_id=user.id, track=_TRACK, user_word_id=uw_id,
             session_id=None, result=(ReviewResult.CORRECT if correct else ReviewResult.WRONG).value,
@@ -525,6 +597,7 @@ class PushService:
             from app.services.course_service import CourseService
 
             await CourseService(self._session, self._redis).refill(user, ut, _TRACK)
+        return leech_writing
 
     async def _apply_grammar_answer(self, user: User, ut: UserTrack, ugi_id: int, correct: bool) -> None:
         ugi = await self._grammar.get_user_item(ugi_id)

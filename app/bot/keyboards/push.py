@@ -63,3 +63,14 @@ def push_rule_kb() -> InlineKeyboardMarkup:
     )
 
 
+def push_leech_kb(uw_id: int) -> InlineKeyboardMarkup:
+    """Offered after a word is missed too many times in a row: postpone it for a
+    week (frees its slot, auto-returns) or keep drilling it."""
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="😴 Отложить на неделю", callback_data=PushCB(action="leech_park", uw_id=uw_id).pack())],
+            [InlineKeyboardButton(text="💪 Оставить — дожму", callback_data=PushCB(action="leech_keep", uw_id=uw_id).pack())],
+        ]
+    )
+
+
