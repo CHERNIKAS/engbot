@@ -38,6 +38,7 @@ from app.bot.texts import (
 from app.config import get_settings
 from app.domain.enums import LearningPace, LearningTrack, TRACK_LABELS
 from app.domain.pacing import PACE_VALUES, label_for, pace_of
+from app.domain.push import window_hours
 from app.domain.models import User, UserTrack
 from app.services.interaction_state_service import InteractionStateService
 from app.services.user_service import UserService
@@ -275,8 +276,9 @@ async def on_newpace_set(
 @router.callback_query(SettingsCB.filter(F.action == "push_win"))
 async def on_push_win(query: CallbackQuery, user_track: UserTrack) -> None:
     ws, we = _window(user_track)
+    mh = get_settings().push_min_window_hours
     if query.message:
-        await query.message.edit_text(PUSH_WINDOW_TITLE, reply_markup=push_window_kb(ws, we))
+        await query.message.edit_text(PUSH_WINDOW_TITLE, reply_markup=push_window_kb(ws, we, mh), parse_mode="HTML")
     await query.answer()
 
 
@@ -290,23 +292,41 @@ async def on_push_win_set(
     user_track_service: UserTrackService,
 ) -> None:
     cfg = get_settings()
-    ws, we = _window(user_track)
-    val = callback_data.value or ""
+    mh = cfg.push_min_window_hours
+    # value = "<op>_<ws>_<we>" — the pending pair rides in the callback so the
+    # stepper can move freely without persisting an intermediate (maybe <min) window.
+    parts = (callback_data.value or "").split("_")
     try:
-        kind, hour = val[0], int(val[1:])
+        op, ws, we = parts[0], int(parts[1]), int(parts[2])
     except (IndexError, ValueError):
         await query.answer()
         return
-    new_ws, new_we = (hour, we) if kind == "s" else (ws, hour)
-    if new_we - new_ws < cfg.push_min_window_hours:
-        await query.answer(PUSH_WINDOW_TOO_SHORT, show_alert=True)
+
+    if op == "su":
+        ws = (ws + 1) % 24
+    elif op == "sd":
+        ws = (ws - 1) % 24
+    elif op == "eu":
+        we = we + 1 if we < 24 else 1
+    elif op == "ed":
+        we = we - 1 if we > 1 else 24
+    elif op == "sv":
+        if not (mh <= window_hours(ws, we) < 24):
+            await query.answer(PUSH_WINDOW_TOO_SHORT, show_alert=True)
+            return
+        await user_track_service.update_settings(user.id, current_track, {"push_ws": ws, "push_we": we})
+        if query.message:
+            await query.message.edit_reply_markup(reply_markup=push_window_kb(ws, we, mh))
+        await query.answer(f"✅ {ws:02d}:00–{we:02d}:00")
         return
-    await user_track_service.update_settings(
-        user.id, current_track, {"push_ws": new_ws, "push_we": new_we}
-    )
+    else:
+        await query.answer()
+        return
+
+    # A stepper nudge: re-render with the new pending pair (not yet saved).
     if query.message:
-        await query.message.edit_reply_markup(reply_markup=push_window_kb(new_ws, new_we))
-    await query.answer(f"{new_ws:02d}:00–{new_we:02d}:00")
+        await query.message.edit_reply_markup(reply_markup=push_window_kb(ws, we, mh))
+    await query.answer()
 
 
 # --------------------------------------------------------------------------- #

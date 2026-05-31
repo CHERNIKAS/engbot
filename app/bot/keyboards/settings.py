@@ -2,10 +2,11 @@ from __future__ import annotations
 
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from app.bot.callbacks.schema import SettingsCB
+from app.bot.callbacks.schema import NoopCB, SettingsCB
 from app.bot.keyboards.common import home_button
 from app.bot.texts import PACE_LABELS
 from app.domain.pacing import PACE_OPTIONS, label_for
+from app.domain.push import window_hours
 
 
 def _back_to_settings_button() -> InlineKeyboardButton:
@@ -105,27 +106,37 @@ def new_pace_kb(current: int) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
-def push_window_kb(ws: int, we: int) -> InlineKeyboardMarkup:
-    starts = [6, 7, 8, 9, 10, 11, 12]
-    ends = [18, 19, 20, 21, 22, 23, 24]
-    row_s = [
-        InlineKeyboardButton(
-            text=(f"·{h}·" if h == ws else str(h)),
-            callback_data=SettingsCB(action="push_win_set", value=f"s{h}").pack(),
-        )
-        for h in starts
-    ]
-    row_e = [
-        InlineKeyboardButton(
-            text=(f"·{h}·" if h == we else str(h)),
-            callback_data=SettingsCB(action="push_win_set", value=f"e{h}").pack(),
-        )
-        for h in ends
-    ]
+def push_window_kb(ws: int, we: int, min_hours: int = 10) -> InlineKeyboardMarkup:
+    """Stepper for the daily push window — any hours, overnight allowed (e.g.
+    22→08). ◀/▶ nudge start and end by an hour; the pending pair rides in the
+    callback data so nothing persists until '✅ Сохранить'. Shows live duration."""
+
+    def cb(op: str) -> str:
+        return SettingsCB(action="push_win_set", value=f"{op}_{ws}_{we}").pack()
+
+    hours = window_hours(ws, we)
+    overnight = 0 < we <= ws
+    if hours < min_hours:
+        info = f"⚠️ {hours} ч — нужно ≥ {min_hours} ч"
+    else:
+        info = f"ℹ️ Окно: {hours} ч" + (" · через ночь 🌙" if overnight else "")
+
     return InlineKeyboardMarkup(
         inline_keyboard=[
-            row_s,
-            row_e,
+            [InlineKeyboardButton(text="🌅 Начало дня", callback_data=NoopCB(tag="ws").pack())],
+            [
+                InlineKeyboardButton(text="◀️", callback_data=cb("sd")),
+                InlineKeyboardButton(text=f"{ws:02d}:00", callback_data=NoopCB(tag="s").pack()),
+                InlineKeyboardButton(text="▶️", callback_data=cb("su")),
+            ],
+            [InlineKeyboardButton(text="🌙 Конец дня", callback_data=NoopCB(tag="we").pack())],
+            [
+                InlineKeyboardButton(text="◀️", callback_data=cb("ed")),
+                InlineKeyboardButton(text=f"{we:02d}:00", callback_data=NoopCB(tag="e").pack()),
+                InlineKeyboardButton(text="▶️", callback_data=cb("eu")),
+            ],
+            [InlineKeyboardButton(text=info, callback_data=NoopCB(tag="i").pack())],
+            [InlineKeyboardButton(text="✅ Сохранить", callback_data=cb("sv"))],
             [InlineKeyboardButton(text="↩️ Назад", callback_data=SettingsCB(action="push_open").pack())],
         ]
     )

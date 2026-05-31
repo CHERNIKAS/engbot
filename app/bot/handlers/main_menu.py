@@ -6,7 +6,7 @@ from aiogram.types import CallbackQuery, Message
 from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.bot.callbacks.schema import MainMenuCB, NavCB
+from app.bot.callbacks.schema import MainMenuCB, NavCB, NoopCB
 from app.bot.keyboards.common import cancel_only_kb
 from app.bot.keyboards.main_menu import main_menu_reply_kb, words_menu_kb
 from app.bot.menu_nav import clear_menu_card, send_menu_card
@@ -253,6 +253,12 @@ async def msg_help(
 # In-flow inline navigation (Назад / Отмена / В меню). These end the current
 # inline scenario; the persistent bottom menu stays available underneath.
 # --------------------------------------------------------------------------- #
+
+
+@router.callback_query(NoopCB.filter())
+async def on_noop(query: CallbackQuery) -> None:
+    """Non-interactive label buttons (e.g. the window-picker group headers)."""
+    await query.answer()
 
 
 @router.callback_query(NavCB.filter(F.action.in_({"home", "cancel", "back"})))
