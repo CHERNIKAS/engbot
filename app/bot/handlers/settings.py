@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from aiogram import F, Router
+from aiogram.exceptions import TelegramBadRequest
 from aiogram.types import CallbackQuery, Message
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -302,19 +303,26 @@ async def on_push_win_set(
         await query.answer()
         return
 
+    async def _rerender() -> None:
+        # Re-tapping the already-selected hour yields an identical keyboard →
+        # Telegram raises "message is not modified". That's benign for a picker.
+        if query.message:
+            try:
+                await query.message.edit_reply_markup(reply_markup=push_window_kb(ws, we, mh))
+            except TelegramBadRequest:
+                pass
+
     if op == "sv":
         if not (mh <= window_hours(ws, we) < 24):
             await query.answer(PUSH_WINDOW_TOO_SHORT, show_alert=True)
             return
         await user_track_service.update_settings(user.id, current_track, {"push_ws": ws, "push_we": we})
-        if query.message:
-            await query.message.edit_reply_markup(reply_markup=push_window_kb(ws, we, mh))
+        await _rerender()
         await query.answer(f"✅ {ws:02d}:00–{we:02d}:00")
         return
 
     # A cell tap: re-render with the new pending pair (not yet saved).
-    if query.message:
-        await query.message.edit_reply_markup(reply_markup=push_window_kb(ws, we, mh))
+    await _rerender()
     await query.answer()
 
 
