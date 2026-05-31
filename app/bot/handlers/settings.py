@@ -317,7 +317,16 @@ async def on_push_win_set(
             await query.answer(PUSH_WINDOW_TOO_SHORT, show_alert=True)
             return
         await user_track_service.update_settings(user.id, current_track, {"push_ws": ws, "push_we": we})
-        await _rerender()
+        # Saved → return to the push-settings screen (shows the new window).
+        if query.message:
+            try:
+                await query.message.edit_text(
+                    PUSH_TITLE,
+                    reply_markup=push_settings_kb(ws, we, pace_of(user_track.settings)),
+                    parse_mode="HTML",
+                )
+            except TelegramBadRequest:
+                pass
         await query.answer(f"✅ {ws:02d}:00–{we:02d}:00")
         return
 
