@@ -291,10 +291,10 @@ async def on_push_win_set(
     user_track: UserTrack,
     user_track_service: UserTrackService,
 ) -> None:
-    cfg = get_settings()
-    mh = cfg.push_min_window_hours
+    mh = get_settings().push_min_window_hours
     # value = "<op>_<ws>_<we>" — the pending pair rides in the callback so the
-    # stepper can move freely without persisting an intermediate (maybe <min) window.
+    # grid can be navigated without persisting an intermediate (maybe <min) window.
+    # op "w" = a cell was tapped (re-render pending), "sv" = save.
     parts = (callback_data.value or "").split("_")
     try:
         op, ws, we = parts[0], int(parts[1]), int(parts[2])
@@ -302,15 +302,7 @@ async def on_push_win_set(
         await query.answer()
         return
 
-    if op == "su":
-        ws = (ws + 1) % 24
-    elif op == "sd":
-        ws = (ws - 1) % 24
-    elif op == "eu":
-        we = we + 1 if we < 24 else 1
-    elif op == "ed":
-        we = we - 1 if we > 1 else 24
-    elif op == "sv":
+    if op == "sv":
         if not (mh <= window_hours(ws, we) < 24):
             await query.answer(PUSH_WINDOW_TOO_SHORT, show_alert=True)
             return
@@ -319,11 +311,8 @@ async def on_push_win_set(
             await query.message.edit_reply_markup(reply_markup=push_window_kb(ws, we, mh))
         await query.answer(f"✅ {ws:02d}:00–{we:02d}:00")
         return
-    else:
-        await query.answer()
-        return
 
-    # A stepper nudge: re-render with the new pending pair (not yet saved).
+    # A cell tap: re-render with the new pending pair (not yet saved).
     if query.message:
         await query.message.edit_reply_markup(reply_markup=push_window_kb(ws, we, mh))
     await query.answer()

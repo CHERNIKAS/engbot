@@ -107,12 +107,27 @@ def new_pace_kb(current: int) -> InlineKeyboardMarkup:
 
 
 def push_window_kb(ws: int, we: int, min_hours: int = 10) -> InlineKeyboardMarkup:
-    """Stepper for the daily push window — any hours, overnight allowed (e.g.
-    22→08). ◀/▶ nudge start and end by an hour; the pending pair rides in the
-    callback data so nothing persists until '✅ Сохранить'. Shows live duration."""
+    """Direct-pick grid for the daily push window — tap a start hour, tap an end
+    hour, save. Any hours, overnight allowed (e.g. 22→08). The pending pair rides
+    in the callback data, so nothing persists until '✅ Сохранить' (which enforces
+    the minimum). 3 taps total — no slow stepping."""
 
-    def cb(op: str) -> str:
-        return SettingsCB(action="push_win_set", value=f"{op}_{ws}_{we}").pack()
+    def grid(values: range, selected: int, pair) -> list[list[InlineKeyboardButton]]:
+        rows: list[list[InlineKeyboardButton]] = []
+        cells = list(values)
+        for i in range(0, len(cells), 6):
+            row = []
+            for h in cells[i : i + 6]:
+                a, b = pair(h)
+                label = f"·{h:02d}·" if h == selected else f"{h:02d}"
+                row.append(
+                    InlineKeyboardButton(
+                        text=label,
+                        callback_data=SettingsCB(action="push_win_set", value=f"w_{a}_{b}").pack(),
+                    )
+                )
+            rows.append(row)
+        return rows
 
     hours = window_hours(ws, we)
     overnight = 0 < we <= ws
@@ -121,25 +136,18 @@ def push_window_kb(ws: int, we: int, min_hours: int = 10) -> InlineKeyboardMarku
     else:
         info = f"ℹ️ Окно: {hours} ч" + (" · через ночь 🌙" if overnight else "")
 
-    return InlineKeyboardMarkup(
-        inline_keyboard=[
-            [InlineKeyboardButton(text="🌅 Начало дня", callback_data=NoopCB(tag="ws").pack())],
-            [
-                InlineKeyboardButton(text="◀️", callback_data=cb("sd")),
-                InlineKeyboardButton(text=f"{ws:02d}:00", callback_data=NoopCB(tag="s").pack()),
-                InlineKeyboardButton(text="▶️", callback_data=cb("su")),
-            ],
-            [InlineKeyboardButton(text="🌙 Конец дня", callback_data=NoopCB(tag="we").pack())],
-            [
-                InlineKeyboardButton(text="◀️", callback_data=cb("ed")),
-                InlineKeyboardButton(text=f"{we:02d}:00", callback_data=NoopCB(tag="e").pack()),
-                InlineKeyboardButton(text="▶️", callback_data=cb("eu")),
-            ],
-            [InlineKeyboardButton(text=info, callback_data=NoopCB(tag="i").pack())],
-            [InlineKeyboardButton(text="✅ Сохранить", callback_data=cb("sv"))],
-            [InlineKeyboardButton(text="↩️ Назад", callback_data=SettingsCB(action="push_open").pack())],
-        ]
+    rows: list[list[InlineKeyboardButton]] = [
+        [InlineKeyboardButton(text="🌅 Начало (час)", callback_data=NoopCB(tag="ws").pack())]
+    ]
+    rows += grid(range(0, 24), ws, lambda h: (h, we))
+    rows.append([InlineKeyboardButton(text="🌙 Конец (час)", callback_data=NoopCB(tag="we").pack())])
+    rows += grid(range(1, 25), we, lambda h: (ws, h))
+    rows.append([InlineKeyboardButton(text=info, callback_data=NoopCB(tag="i").pack())])
+    rows.append(
+        [InlineKeyboardButton(text="✅ Сохранить", callback_data=SettingsCB(action="push_win_set", value=f"sv_{ws}_{we}").pack())]
     )
+    rows.append([InlineKeyboardButton(text="↩️ Назад", callback_data=SettingsCB(action="push_open").pack())])
+    return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
 def goal_values_kb(version: str = "") -> InlineKeyboardMarkup:
