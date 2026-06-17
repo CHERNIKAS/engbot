@@ -472,6 +472,23 @@ class UserWordRepository:
         )
         return (await self.session.execute(q)).scalar_one()
 
+    async def count_snoozed(
+        self, user_id: int, track: LearningTrack, now: datetime | None = None
+    ) -> int:
+        """Active words temporarily parked (snoozed leeches) — out of rotation
+        but not archived. Counted separately so the progress breakdown
+        (new + learning + mastered + snoozed + archived) sums to the total."""
+        now = now or datetime.now(timezone.utc)
+        q = select(func.count(UserWord.id)).where(
+            UserWord.user_id == user_id,
+            UserWord.track == track.value,
+            UserWord.archived.is_(False),
+            UserWord.status.in_([WordStatus.LEARNING.value, WordStatus.REVIEW.value]),
+            UserWord.snooze_until.isnot(None),
+            UserWord.snooze_until > now,
+        )
+        return (await self.session.execute(q)).scalar_one()
+
     async def count_weak(self, user_id: int, track: LearningTrack) -> int:
         q = select(func.count(UserWord.id)).where(
             UserWord.user_id == user_id,
@@ -481,9 +498,12 @@ class UserWordRepository:
         return (await self.session.execute(q)).scalar_one()
 
     async def count_status(self, user_id: int, track: LearningTrack, status: WordStatus) -> int:
+        """Count words in a status, excluding archived (archived words are shown
+        only under their own bucket, so the progress breakdown doesn't double-count)."""
         q = select(func.count(UserWord.id)).where(
             UserWord.user_id == user_id,
             UserWord.track == track.value,
+            UserWord.archived.is_(False),
             UserWord.status == status.value,
         )
         return (await self.session.execute(q)).scalar_one()

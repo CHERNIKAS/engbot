@@ -25,6 +25,7 @@ class TrackProgress:
     learning_words: int         # actively learning (learning + review)
     mastered_words: int
     weak_words: int             # answered wrong at least once
+    snoozed_words: int          # active but temporarily parked (snoozed leech)
     archived_words: int
     grammar_topics_total: int
     grammar_topics_done: int
@@ -79,6 +80,8 @@ def format_progress(streak_days: int, tracks: list[TrackProgress]) -> str:
             f"   🌱 учу: {t.learning_words} · ⭐ выучено: {t.mastered_words}\n"
             f"   🆕 новые: {t.new_words} · 🩹 с ошибками: {t.weak_words}"
         )
+        if t.snoozed_words:
+            block += f" · 😴 отложено: {t.snoozed_words}"
         if t.archived_words:
             block += f" · 💤 архив: {t.archived_words}"
         block += (
@@ -131,6 +134,7 @@ class ProgressService:
         learning = await self._user_words.count_active(user_id, track)
         mastered = await self._user_words.count_status(user_id, track, WordStatus.MASTERED)
         weak = await self._user_words.count_weak(user_id, track)
+        snoozed = await self._user_words.count_snoozed(user_id, track)
         archived = await self._user_words.count_archived(user_id, track)
         g = await self._grammar.progress_counts(user_id, track)
         return TrackProgress(
@@ -144,6 +148,7 @@ class ProgressService:
             learning_words=learning,
             mastered_words=mastered,
             weak_words=weak,
+            snoozed_words=snoozed,
             archived_words=archived,
             grammar_topics_total=g["topics_total"],
             grammar_topics_done=g["topics_done"],

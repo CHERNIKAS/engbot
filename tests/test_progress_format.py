@@ -16,6 +16,7 @@ def _track(**over) -> TrackProgress:
         learning_words=120,
         mastered_words=0,
         weak_words=9,
+        snoozed_words=0,
         archived_words=0,
         grammar_topics_total=17,
         grammar_topics_done=3,
@@ -61,6 +62,21 @@ def test_format_progress_shows_grammar_block():
 def test_format_progress_hides_archive_when_zero():
     assert "архив" not in format_progress(4, [_track(archived_words=0)])
     assert "💤 архив: 7" in format_progress(4, [_track(archived_words=7)])
+
+
+def test_format_progress_shows_snoozed_only_when_present():
+    assert "отложено" not in format_progress(4, [_track(snoozed_words=0)])
+    assert "😴 отложено: 2" in format_progress(4, [_track(snoozed_words=2)])
+
+
+def test_format_progress_breakdown_sums_to_total():
+    """The vocab buckets must partition the total (the bug: archived was
+    double-counted, so new+learning+mastered+snoozed+archived > total)."""
+    t = _track(
+        total_words=100, new_words=70, learning_words=20, mastered_words=5,
+        snoozed_words=2, archived_words=3,
+    )
+    assert t.new_words + t.learning_words + t.mastered_words + t.snoozed_words + t.archived_words == t.total_words
 
 
 def test_format_progress_streak_plural_and_empty():
