@@ -14,7 +14,7 @@ from app.domain.models import UserWord
 MIN_EASE = 1.3
 MAX_EASE = 3.0
 MASTERED_REPS_EASY = 4
-MASTERED_REPS_NORMAL = 10  # push v2: 10 correct in a row to learn a word
+MASTERED_REPS_NORMAL = 8  # correct answers (net) to learn a word — see LAPSE_DROP
 # A wrong answer drops the streak by one rung instead of wiping it to zero.
 # Why: the push "production ladder" makes cards harder as reps climb
 # (recognition→reverse→cloze at reps 0/3/6), so a full reset-to-0 made the

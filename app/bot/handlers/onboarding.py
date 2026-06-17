@@ -88,6 +88,8 @@ async def cmd_start(
 ) -> None:
     # /start always resets state.
     await state_service.clear(user.id)
+    # They're back — if push was auto-disabled (they'd blocked the bot), re-enable.
+    await user_track_service.update_settings(user.id, current_track, {"push_blocked": False})
 
     if get_settings().access_password and not user.is_authorized:
         await state_service.set(user.id, InteractionState.WAITING_PASSWORD)

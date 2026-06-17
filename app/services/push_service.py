@@ -8,6 +8,7 @@ from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from aiogram import Bot
+from aiogram.exceptions import TelegramForbiddenError
 from aiogram.types import CallbackQuery
 from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -48,7 +49,7 @@ from app.infrastructure.repositories.reviews import GrammarReviewRepository, Wor
 from app.infrastructure.repositories.user_words import UserWordRepository
 from app.logging_setup import get_logger
 from app.services.progress_service import ProgressService
-from app.services.repetition_service import apply_review
+from app.services.repetition_service import MASTERED_REPS_NORMAL, apply_review
 
 log = get_logger("push")
 
@@ -100,7 +101,7 @@ def _progress_line(uw) -> str:
     """Small progress hint shown under the word on a push card."""
     if uw.status == WordStatus.MASTERED.value:
         return f"⭐ {uw.mastery_score:.1f} / 5"
-    return f"🌱 {uw.repetitions_count} / 10"
+    return f"🌱 {uw.repetitions_count} / {MASTERED_REPS_NORMAL}"
 
 
 # Post-answer recap blocks ----------------------------------------------------
@@ -190,12 +191,22 @@ class PushService:
             ut = await ut_repo.get(user.id, _TRACK)
             if ut is None:
                 continue
+            if (ut.settings or {}).get("push_blocked"):
+                continue  # user blocked the bot — stop trying (cleared on /start)
             # Commit per user: a tick can write (e.g. marking a grammar rule
             # seen), so one user's failure must not poison the shared transaction.
             try:
                 if await self.run_tick(user, ut):
                     pushed += 1
                 await self._session.commit()
+            except TelegramForbiddenError:
+                # Blocked mid-send — flag the user so we don't spam the worker.
+                await self._session.rollback()
+                fresh = await ut_repo.get(user.id, _TRACK)
+                if fresh is not None:
+                    fresh.settings = {**(fresh.settings or {}), "push_blocked": True}
+                    await self._session.commit()
+                log.info("push_disabled_blocked", uid=user.id)
             except Exception:  # noqa: BLE001
                 await self._session.rollback()
                 log.warning("push_tick_failed", uid=user.id)
@@ -396,7 +407,11 @@ class PushService:
                 telegram_id, text, reply_markup=reply_markup, parse_mode="HTML"
             )
             return msg.message_id
-        except Exception:  # noqa: BLE001 — user may have blocked the bot
+        except TelegramForbiddenError:
+            # User blocked the bot (or deleted the chat) — bubble up so run_all
+            # disables push for them instead of retrying every tick forever.
+            raise
+        except Exception:  # noqa: BLE001
             log.warning("push_send_failed", tg=telegram_id)
             return None
 
