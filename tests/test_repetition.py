@@ -45,13 +45,34 @@ def test_hard_shrinks_interval_and_increments_mistakes():
     assert uw.interval_days < 8.0
 
 
-def test_wrong_resets_progress():
-    uw = _make_uw(repetitions_count=4, interval_days=20.0, status=WordStatus.REVIEW.value)
+def test_wrong_drops_one_rung_not_to_zero():
+    """A miss drops the streak by LAPSE_DROP (3), not all the way to 0 — so the
+    production ladder doesn't make 10-in-a-row unreachable (prod regression)."""
+    uw = _make_uw(repetitions_count=8, interval_days=20.0, status=WordStatus.REVIEW.value)
     apply_review(uw, ReviewResult.WRONG, LearningPace.NORMAL)
-    assert uw.repetitions_count == 0
+    assert uw.repetitions_count == 5  # 8 - 3
     assert uw.mistakes_count == 1
     assert uw.interval_days < 1.0
     assert uw.status == WordStatus.LEARNING.value
+
+
+def test_wrong_floors_at_zero():
+    uw = _make_uw(repetitions_count=2, status=WordStatus.LEARNING.value)
+    apply_review(uw, ReviewResult.WRONG, LearningPace.NORMAL)
+    assert uw.repetitions_count == 0  # max(0, 2-3)
+
+
+def test_mastery_reachable_with_occasional_misses():
+    """Sim: ~83% accuracy (5 correct, 1 wrong, repeating) must eventually reach
+    MASTERED — the whole point of softening the reset."""
+    uw = _make_uw()
+    pattern = [True, True, True, True, True, False]  # 5 right, 1 wrong
+    for i in range(120):
+        if uw.status == WordStatus.MASTERED.value:
+            break
+        ok = pattern[i % len(pattern)]
+        apply_review(uw, ReviewResult.CORRECT if ok else ReviewResult.WRONG, LearningPace.NORMAL)
+    assert uw.status == WordStatus.MASTERED.value
 
 
 def test_pace_modifies_final_interval():

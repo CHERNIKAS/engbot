@@ -15,6 +15,13 @@ MIN_EASE = 1.3
 MAX_EASE = 3.0
 MASTERED_REPS_EASY = 4
 MASTERED_REPS_NORMAL = 10  # push v2: 10 correct in a row to learn a word
+# A wrong answer drops the streak by one rung instead of wiping it to zero.
+# Why: the push "production ladder" makes cards harder as reps climb
+# (recognition→reverse→cloze at reps 0/3/6), so a full reset-to-0 made the
+# 10-in-a-row bar unreachable in practice — prod showed engaged users capping
+# at reps 7–8 with 0 words ever mastered. Dropping one rung (3) keeps a positive
+# drift toward mastery for words answered ≳75% correctly, while still penalising.
+LAPSE_DROP = 3
 MASTERY_SCORE_MAX = 5.0
 MASTERY_SCORE_STEP = 0.1  # mastered word: +0.1 correct / -0.1 wrong
 
@@ -78,7 +85,7 @@ def apply_review(
     elif result == ReviewResult.WRONG:
         ease = _clamp(ease - 0.25, MIN_EASE, MAX_EASE)
         interval = 0.25  # ~6 hours
-        reps = 0
+        reps = max(0, reps - LAPSE_DROP)  # drop one rung, don't wipe all progress
         mistakes += 1
         user_word.status = WordStatus.LEARNING.value
 
