@@ -59,6 +59,6 @@ class UserRepository:
         users can't reach onboarding anyway, so onboarding_completed is the right
         and sufficient filter in both cases."""
         result = await self.session.execute(
-            select(User).where(User.onboarding_completed.is_(True))
+            select(User).where(User.onboarding_completed.is_(True)).order_by(User.id)
         )
         return list(result.scalars().all())

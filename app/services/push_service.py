@@ -215,11 +215,21 @@ class PushService:
 
         if self._bot is None:
             return 0
+        user_repo = UserRepository(self._session)
         ut_repo = UserTrackRepository(self._session)
+        # Capture ids up front as plain ints, and re-fetch each user FRESH per
+        # iteration. A per-user rollback (e.g. on a blocked user) expires every
+        # ORM object in the session; touching an expired attribute (user.id)
+        # then triggers a SYNC lazy-load → sqlalchemy MissingGreenlet, which is
+        # NOT a TelegramForbiddenError, so it escapes the handler and aborts the
+        # WHOLE worker tick. That silently broke delivery for everyone after the
+        # first blocked user. Fresh fetch by plain id avoids the expired access.
+        user_ids = [u.id for u in await user_repo.list_for_push()]
         pushed = 0
-        for user in await UserRepository(self._session).list_for_push():
-            ut = await ut_repo.get(user.id, _TRACK)
-            if ut is None:
+        for uid in user_ids:
+            user = await user_repo.get(uid)
+            ut = await ut_repo.get(uid, _TRACK)
+            if user is None or ut is None:
                 continue
             if (ut.settings or {}).get("push_blocked"):
                 continue  # user blocked the bot — stop trying (cleared on /start)
@@ -232,14 +242,14 @@ class PushService:
             except TelegramForbiddenError:
                 # Blocked mid-send — flag the user so we don't spam the worker.
                 await self._session.rollback()
-                fresh = await ut_repo.get(user.id, _TRACK)
+                fresh = await ut_repo.get(uid, _TRACK)
                 if fresh is not None:
                     fresh.settings = {**(fresh.settings or {}), "push_blocked": True}
                     await self._session.commit()
-                log.info("push_disabled_blocked", uid=user.id)
+                log.info("push_disabled_blocked", uid=uid)
             except Exception:  # noqa: BLE001
                 await self._session.rollback()
-                log.warning("push_tick_failed", uid=user.id)
+                log.warning("push_tick_failed", uid=uid)
         return pushed
 
     async def run_tick(self, user: User, ut: UserTrack) -> bool:
