@@ -62,6 +62,36 @@ _TRACK = LearningTrack.ENGLISH
 LEECH_THRESHOLD = 6
 LEECH_PARK_DAYS = 7
 
+# Ignored-card policy: a card not answered is re-pushed a few times, then DROPPED
+# (an ignore is "not now", not a wrong answer — SR state untouched). Intervals
+# back off so one card can't monopolise the window.
+PUSH_MAX_ATTEMPTS = 3  # nudges before giving up (then move on)
+
+
+def _retry_after(attempts: int) -> float:
+    """Seconds until the next nudge — backs off 10, 20, 40 min (±20% jitter)."""
+    base_min = min(10 * (2 ** (max(1, attempts) - 1)), 40)
+    return base_min * 60.0 * random.uniform(0.8, 1.2)
+
+
+# Stream weights so grammar is a deliberate MINORITY (~1 in 6), not a coin flip
+# that wins whenever the word streams are momentarily empty. We draw a weighted
+# order and take the first stream that yields a card (so a dead stream doesn't
+# waste the tick, and can't hand its share to grammar).
+STREAM_WEIGHTS = {"repeat": 60, "review": 22, "new": 18, "grammar": 15}
+
+
+def _weighted_order(streams: list[str]) -> list[str]:
+    """A weighted-random permutation of the eligible streams."""
+    pool = list(streams)
+    out: list[str] = []
+    while pool:
+        weights = [STREAM_WEIGHTS.get(s, 1) for s in pool]
+        pick = random.choices(pool, weights=weights, k=1)[0]
+        out.append(pick)
+        pool.remove(pick)
+    return out
+
 # Production ladder: a word climbs card types as it's answered correctly, so
 # production is gated behind successful recognition (testing-effect boundary
 # condition — retrieval must succeed for the benefit to stick). The "stage" is
@@ -241,6 +271,17 @@ class PushService:
             sent = False
             if win and now_ts >= inflight.get("retry_ts", 0):
                 attempts = int(inflight.get("attempts", 0)) + 1
+                if attempts > PUSH_MAX_ATTEMPTS:
+                    # Given up nagging this card — drop it and move on. An ignore
+                    # is "not now", NOT a wrong answer, so SR state is untouched.
+                    old_msg_id = inflight.get("msg_id")
+                    if old_msg_id:
+                        await self._delete(user.telegram_id, old_msg_id)
+                    state["last"] = {"kind": inflight.get("kind", "word"), "id": int(inflight.get("id", 0))}
+                    state["inflight"] = None
+                    state["next_ts"] = now_ts + _minutes(self._s.push_gap_min_minutes, self._s.push_gap_max_minutes)
+                    await self._save(user.id, state)
+                    return False
                 inflight["attempts"] = attempts
                 new_msg_id, _o, _c = await self._send_card(
                     user,
@@ -255,9 +296,7 @@ class PushService:
                     if old_msg_id:
                         await self._delete(user.telegram_id, old_msg_id)
                     inflight["msg_id"] = new_msg_id
-                    inflight["retry_ts"] = now_ts + _minutes(
-                        self._s.push_retry_min_minutes, self._s.push_retry_max_minutes
-                    )
+                    inflight["retry_ts"] = now_ts + _retry_after(attempts)
                     sent = True
             await self._save(user.id, state)
             return sent
@@ -301,16 +340,18 @@ class PushService:
         new_today = int(state.get("new_today", 0))
         active_count = await self._uw.count_active(user.id, _TRACK)
 
-        streams: list[str] = ["repeat", "review"]
-        if new_today < pace and active_count < ceiling:
-            streams.append("new")
+        # Words are the bulk; grammar is a deliberate ~1-in-6 minority (STREAM_WEIGHTS),
+        # never two grammar cards in a row, and never grabs an empty word stream's share.
         grammar_pick = await self._grammar.pick_for_push(user.id, _TRACK, exclude_id=last_grammar)
-        if grammar_pick is not None:
-            streams.append("grammar")
-        random.shuffle(streams)
+        eligible: list[str] = ["repeat", "review"]
+        if new_today < pace and active_count < ceiling:
+            eligible.append("new")
+        allow_grammar = grammar_pick is not None and last.get("kind") != "grammar"
+        if allow_grammar:
+            eligible.append("grammar")
 
         sent = False
-        for stream in streams:
+        for stream in _weighted_order(eligible):
             if stream == "grammar":
                 ugi, _gi = grammar_pick
                 msg_id, options, correct = await self._send_card(user, "grammar", ugi.id)
@@ -337,6 +378,15 @@ class PushService:
                 sent = True
             break
 
+        # Fallback: words couldn't fill the tick and we'd held grammar back only
+        # to avoid two-in-a-row — use it rather than send nothing.
+        if not sent and grammar_pick is not None and not allow_grammar:
+            ugi, _gi = grammar_pick
+            msg_id, options, correct = await self._send_card(user, "grammar", ugi.id)
+            if msg_id:
+                state["inflight"] = self._inflight("grammar", ugi.id, options, correct, now_ts, msg_id)
+                sent = True
+
         await self._save(user.id, state)
         return sent
 
@@ -359,7 +409,7 @@ class PushService:
             "msg_id": msg_id,
             "ctype": ctype,
             "attempts": 0,
-            "retry_ts": now_ts + _minutes(self._s.push_retry_min_minutes, self._s.push_retry_max_minutes),
+            "retry_ts": now_ts + _retry_after(1),
         }
 
     async def _send_card(

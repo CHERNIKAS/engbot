@@ -4,24 +4,29 @@ import random
 
 import pytest
 
-from app.domain.push_nudges import CHEEKY, DRAMATIC, GENTLE, nudge_line
+from app.domain.push_nudges import CHEEKY, GENTLE, nudge_line
 
 
 @pytest.mark.parametrize(
     "attempts,pool",
     [
         (1, GENTLE),
-        (2, GENTLE),
+        (2, CHEEKY),
         (3, CHEEKY),
-        (5, CHEEKY),
-        (6, DRAMATIC),
-        (12, DRAMATIC),
     ],
 )
 def test_nudge_tier_by_attempts(attempts: int, pool: tuple[str, ...]):
     line = nudge_line(attempts, rng=random.Random(0))
     phrase = line.split("\n", 1)[0]
     assert phrase in pool
+
+
+def test_no_threatening_nudges():
+    """The 'dramatic' guilt-trip pool (могу заблокировать / приходить во снах)
+    is gone — it trained users to block the bot."""
+    joined = " ".join((*GENTLE, *CHEEKY))
+    for banned in ("заблокир", "во снах", "преследует", "Сопротивление"):
+        assert banned not in joined
 
 
 def test_nudge_includes_repeat_count():
@@ -40,9 +45,6 @@ def test_nudge_is_deterministic_with_seed():
     assert a == b
 
 
-def test_nudge_pools_total_one_hundred_with_no_duplicates():
-    """User asked for ~100 nudges so even a heavy ignorer doesn't see the same
-    line twice in a day. Guard against accidental dupes / sub-100 drift."""
-    all_lines = (*GENTLE, *CHEEKY, *DRAMATIC)
-    assert len(all_lines) == 100, f"expected 100 nudges, got {len(all_lines)}"
+def test_nudge_pools_no_duplicates():
+    all_lines = (*GENTLE, *CHEEKY)
     assert len(set(all_lines)) == len(all_lines), "duplicate nudge phrase"
