@@ -94,13 +94,15 @@ def _weighted_order(streams: list[str]) -> list[str]:
 
 # Production ladder: a word climbs card types as it's answered correctly, so
 # production is gated behind successful recognition (testing-effect boundary
-# condition — retrieval must succeed for the benefit to stick). The "stage" is
-# derived from repetitions_count (consecutive correct, reset to 0 on a miss) —
-# no extra column needed; a miss naturally drops the word back to recognition.
+# condition — retrieval must succeed for the benefit to stick). The stage is
+# derived from repetitions_count (net correct, LAPSE_DROP on a miss) — no extra
+# column needed; a miss naturally drops the word down the ladder. Mastery is at
+# 10: the first 5 reps are choice cards, the last 5 are typed production.
 #   reps 0-2 → recognition (EN→RU choice)
-#   reps 3-5 → reverse     (RU→EN choice)
-#   reps 6+  → cloze        (type the word into an English sentence)
-STAGE_STEP = 3  # correct-in-a-row per rung
+#   reps 3-4 → reverse     (RU→EN choice)
+#   reps 5-9 → cloze        (type the word into an English sentence)
+REVERSE_AT = 3  # reps where choice flips to the RU→EN direction
+CLOZE_AT = 5    # reps where typed production starts
 CARD_RECOGNITION = "recognition"
 CARD_REVERSE = "reverse"
 CARD_CLOZE = "cloze"
@@ -372,7 +374,7 @@ class PushService:
             if stream == "new":
                 pick = await self._uw.pick_new_for_push(user.id, _TRACK)
             elif stream == "repeat":
-                pick = await self._uw.pick_active_random(user.id, _TRACK, exclude_uw_id=last_word)
+                pick = await self._uw.pick_active_due(user.id, _TRACK, exclude_uw_id=last_word)
             else:
                 pick = await self._uw.pick_review_mastered(user.id, _TRACK, exclude_uw_id=last_word)
             if pick is None:
@@ -510,7 +512,7 @@ class PushService:
     def _card_type(self, uw: UserWord, word: Word) -> str:
         """Which card type to show, by the word's production-ladder stage.
         New words always start on recognition; mastered words rotate types for
-        review variety. Stage = consecutive-correct // STAGE_STEP."""
+        review variety. Choice cards up to CLOZE_AT, typed production after."""
         if uw.status == WordStatus.NEW.value:
             return CARD_RECOGNITION
         if uw.status == WordStatus.MASTERED.value:
@@ -518,10 +520,10 @@ class PushService:
             if self._cloze_possible(word):
                 choices.append(CARD_CLOZE)
             return random.choice(choices)
-        stage = (uw.repetitions_count or 0) // STAGE_STEP
-        if stage <= 0:
+        reps = uw.repetitions_count or 0
+        if reps < REVERSE_AT:
             return CARD_RECOGNITION
-        if stage == 1:
+        if reps < CLOZE_AT:
             return CARD_REVERSE
         return CARD_CLOZE if self._cloze_possible(word) else CARD_REVERSE
 

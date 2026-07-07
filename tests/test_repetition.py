@@ -45,21 +45,21 @@ def test_hard_shrinks_interval_and_increments_mistakes():
     assert uw.interval_days < 8.0
 
 
-def test_wrong_drops_one_rung_not_to_zero():
-    """A miss drops the streak by LAPSE_DROP (3), not all the way to 0 — so the
+def test_wrong_drops_a_couple_steps_not_to_zero():
+    """A miss drops the streak by LAPSE_DROP (2), not all the way to 0 — so the
     production ladder doesn't make 10-in-a-row unreachable (prod regression)."""
     uw = _make_uw(repetitions_count=8, interval_days=20.0, status=WordStatus.REVIEW.value)
     apply_review(uw, ReviewResult.WRONG, LearningPace.NORMAL)
-    assert uw.repetitions_count == 5  # 8 - 3
+    assert uw.repetitions_count == 6  # 8 - 2
     assert uw.mistakes_count == 1
     assert uw.interval_days < 1.0
     assert uw.status == WordStatus.LEARNING.value
 
 
 def test_wrong_floors_at_zero():
-    uw = _make_uw(repetitions_count=2, status=WordStatus.LEARNING.value)
+    uw = _make_uw(repetitions_count=1, status=WordStatus.LEARNING.value)
     apply_review(uw, ReviewResult.WRONG, LearningPace.NORMAL)
-    assert uw.repetitions_count == 0  # max(0, 2-3)
+    assert uw.repetitions_count == 0  # max(0, 1-2)
 
 
 def test_mastery_reachable_with_occasional_misses():

@@ -14,14 +14,16 @@ from app.domain.models import UserWord
 MIN_EASE = 1.3
 MAX_EASE = 3.0
 MASTERED_REPS_EASY = 4
-MASTERED_REPS_NORMAL = 8  # correct answers (net) to learn a word — see LAPSE_DROP
-# A wrong answer drops the streak by one rung instead of wiping it to zero.
-# Why: the push "production ladder" makes cards harder as reps climb
-# (recognition→reverse→cloze at reps 0/3/6), so a full reset-to-0 made the
-# 10-in-a-row bar unreachable in practice — prod showed engaged users capping
-# at reps 7–8 with 0 words ever mastered. Dropping one rung (3) keeps a positive
-# drift toward mastery for words answered ≳75% correctly, while still penalising.
-LAPSE_DROP = 3
+MASTERED_REPS_NORMAL = 10  # correct answers (net) to learn a word — see LAPSE_DROP
+# A wrong answer drops the streak by a couple of steps instead of wiping it to
+# zero. Why: the push "production ladder" makes cards harder as reps climb
+# (recognition→reverse choice at 0/3, cloze typing at 5), so a harsh drop made
+# the mastery bar unreachable in practice — prod showed engaged users capping
+# below the bar with 0 words ever mastered. -2 keeps a positive drift toward
+# mastery for words answered ≳70% correctly, while still penalising; with the
+# due-first picker a lapsed word returns within hours, so the loss is quickly
+# recoverable.
+LAPSE_DROP = 2
 MASTERY_SCORE_MAX = 5.0
 MASTERY_SCORE_STEP = 0.1  # mastered word: +0.1 correct / -0.1 wrong
 

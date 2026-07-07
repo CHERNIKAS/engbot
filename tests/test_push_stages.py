@@ -1,6 +1,6 @@
-"""Production ladder: the card type is derived from the word's stage
-(consecutive-correct // STAGE_STEP). New → recognition; a miss (reps=0) drops
-back to recognition; mastered words rotate types."""
+"""Production ladder: the card type is derived from the word's reps — choice
+cards (recognition 0-2, reverse 3-4) until CLOZE_AT=5, typed cloze 5-9, mastery
+at 10. New → recognition; a miss drops down the ladder; mastered rotate."""
 from __future__ import annotations
 
 import random
@@ -39,33 +39,33 @@ def test_stage_zero_is_recognition():
         assert svc._card_type(_uw(WordStatus.LEARNING.value, reps), _word()) == CARD_RECOGNITION
 
 
-def test_stage_one_is_reverse():
+def test_reverse_rung_is_reps_3_and_4():
     svc = _svc()
-    for reps in (3, 4, 5):
+    for reps in (3, 4):
         assert svc._card_type(_uw(WordStatus.REVIEW.value, reps), _word()) == CARD_REVERSE
 
 
-def test_stage_two_is_cloze_when_maskable():
+def test_typing_rung_is_reps_5_through_9():
     svc = _svc()
-    assert svc._card_type(_uw(WordStatus.REVIEW.value, 6), _word()) == CARD_CLOZE
-    assert svc._card_type(_uw(WordStatus.REVIEW.value, 9), _word()) == CARD_CLOZE
+    for reps in (5, 6, 7, 8, 9):
+        assert svc._card_type(_uw(WordStatus.REVIEW.value, reps), _word()) == CARD_CLOZE
 
 
-def test_stage_two_falls_back_to_reverse_when_not_maskable():
-    """Irregular form (no maskable example) → stage 2 shows reverse, not cloze."""
+def test_typing_rung_falls_back_to_reverse_when_not_maskable():
+    """Irregular form (no maskable example) → typing rung shows reverse, not cloze."""
     svc = _svc()
     w = _word(example="She went home.", writing="go")  # 'go' not literally present
     assert svc._card_type(_uw(WordStatus.REVIEW.value, 6), w) == CARD_REVERSE
 
 
-def test_stage_two_falls_back_when_no_example():
+def test_typing_rung_falls_back_when_no_example():
     svc = _svc()
     w = _word(example=None)
-    assert svc._card_type(_uw(WordStatus.REVIEW.value, 6), w) == CARD_REVERSE
+    assert svc._card_type(_uw(WordStatus.REVIEW.value, 5), w) == CARD_REVERSE
 
 
 def test_miss_drops_back_to_recognition():
-    """A wrong answer zeroes reps → stage 0 → recognition (gentle restart)."""
+    """Lapses walk reps back down → low reps land on recognition again."""
     svc = _svc()
     assert svc._card_type(_uw(WordStatus.LEARNING.value, 0), _word()) == CARD_RECOGNITION
 

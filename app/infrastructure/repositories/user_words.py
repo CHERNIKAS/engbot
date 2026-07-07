@@ -314,13 +314,16 @@ class UserWordRepository:
         row = (await self.session.execute(q)).first()
         return (row[0], row[1]) if row is not None else None
 
-    async def pick_active_random(
+    async def pick_active_due(
         self, user_id: int, track: LearningTrack, exclude_uw_id: int = 0, now: datetime | None = None
     ) -> tuple[UserWord, Word] | None:
-        """A random word from the active set (being learned) — for reinforcement.
-        Skips snoozed (parked-leech) words. Over-fetches a few so we can skip
-        `exclude_uw_id` (the card just answered) and avoid showing the same word
-        twice in a row."""
+        """The active word most overdue for review (earliest next_review_at) —
+        for reinforcement. Uniform random starved big pools (a word could go
+        unseen for weeks while just-seen ones repeated); due-first makes the SR
+        intervals real: a lapsed word comes back within hours, a solid one waits
+        its turn. Skips snoozed (parked-leech) words. Over-fetches a few so we
+        can skip `exclude_uw_id` (the card just answered) — answering pushes
+        next_review_at forward, so this can't lock onto one word."""
         now = now or datetime.now(timezone.utc)
         q = (
             select(UserWord, Word)
@@ -333,7 +336,7 @@ class UserWordRepository:
                 or_(UserWord.snooze_until.is_(None), UserWord.snooze_until <= now),
                 Word.translation.isnot(None),
             )
-            .order_by(func.random())
+            .order_by(UserWord.next_review_at.asc())
             .limit(5)
         )
         rows = [(r[0], r[1]) for r in (await self.session.execute(q)).all()]
