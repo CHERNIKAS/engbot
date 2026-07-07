@@ -16,6 +16,7 @@ from app.domain.enums import (
     StudyScope,
 )
 from app.domain.models import User, UserTrack
+from app.domain.quiz_text import strip_latin_hints
 from app.domain.study_drill import STAGE_QUIZ, DrillState
 from app.infrastructure.repositories.reviews import WordReviewRepository
 from app.infrastructure.repositories.sessions import StudySessionRepository
@@ -118,7 +119,10 @@ class StudySessionService:
         cards: dict[str, dict] = {}
         quiz_options: dict[str, list[str]] = {}
         for uw, w in rows:
-            correct = uw.custom_translation or w.translation
+            # The gloss doubles as the quiz option and the typing-stage prompt —
+            # both shown BEFORE the answer, so Latin hints inside it must go
+            # («стал (прошедшее от become)» would hand over the answer).
+            correct = strip_latin_hints(uw.custom_translation or w.translation)
             cards[str(uw.id)] = {
                 "writing": w.writing,
                 "translation": correct,

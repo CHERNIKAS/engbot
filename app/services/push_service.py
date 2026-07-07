@@ -43,6 +43,7 @@ from app.domain.study_drill import is_typing_correct
 from app.domain.models import User, UserTrack
 from app.domain.pacing import ceiling_of, pace_of
 from app.domain.push import in_window, normalize_window
+from app.domain.quiz_text import strip_latin_hints
 from app.domain.push_nudges import nudge_line
 from app.infrastructure.repositories.grammar import GrammarRepository
 from app.infrastructure.repositories.reviews import GrammarReviewRepository, WordReviewRepository
@@ -537,6 +538,9 @@ class PushService:
         ru = uw.custom_translation or word.translation
         if not ru:
             return None
+        # Pre-answer surfaces must not leak English inside the RU gloss
+        # («не могу (сокращение от cannot)» on a can't card = free answer).
+        ru = strip_latin_hints(ru)
 
         if card_type == CARD_CLOZE:
             masked = _mask_target(word.example_sentence or "", word.writing)

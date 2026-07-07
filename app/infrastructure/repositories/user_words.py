@@ -9,6 +9,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.enums import LearningTrack, WordSource, WordStatus
 from app.domain.models import Pack, PackWord, UserWord, Word
+from app.domain.quiz_text import strip_latin_hints
 
 _TOKEN_SEPARATORS = "/,;()"
 
@@ -591,14 +592,20 @@ class UserWordRepository:
         protected = _meaning_tokens_of(exclude_translations or [])
         seen: set[str] = {_norm(t) for t in (exclude_translations or []) if t}
         correct_neg = any(_is_negation(t) for t in (exclude_translations or []) if t)
+        correct_wc = min(
+            len(next((t for t in (exclude_translations or []) if t), "").split()) or 1, 3
+        )
 
-        def tier(translation: str, pos: str | None, level: str | None) -> tuple[int, int, int]:
+        def tier(translation: str, pos: str | None, level: str | None) -> tuple[int, int, int, int]:
             shape_match = _is_negation(translation) == correct_neg
             pos_match = correct_pos is not None and pos == correct_pos
             level_match = correct_level is not None and level == correct_level
-            return (0 if shape_match else 1, 0 if pos_match else 1, 0 if level_match else 1)
+            # Least significant: similar word count — a lone multi-word option
+            # among single words (or vice versa) is pickable by eye.
+            wc_diff = abs(min(len(translation.split()), 3) - correct_wc)
+            return (0 if shape_match else 1, 0 if pos_match else 1, 0 if level_match else 1, wc_diff)
 
-        candidates: list[tuple[tuple[int, int, int], str]] = []
+        candidates: list[tuple[tuple[int, int, int, int], str]] = []
 
         def consider(rows: list) -> None:
             for translation, pos, level in rows:
@@ -609,8 +616,14 @@ class UserWordRepository:
                     continue
                 if _meaning_tokens(translation) & protected:
                     continue  # shares a meaning with the answer -> would be valid
+                # Options must not leak English (e.g. «стал (прошедшее от become)»)
+                # — and dedup on the cleaned form too.
+                shown = strip_latin_hints(translation)
+                if _norm(shown) in seen:
+                    continue
                 seen.add(n)
-                candidates.append((tier(translation, pos, level), translation))
+                seen.add(_norm(shown))
+                candidates.append((tier(translation, pos, level), shown))
 
         own_q = (
             select(Word.translation, Word.part_of_speech, Word.level)
@@ -630,6 +643,24 @@ class UserWordRepository:
         # enough SAME-SHAPE candidates (e.g. a negation answer but few owned
         # negations) — so a "не …" answer still gets "не …" distractors.
         shape_matched = sum(1 for (t, _) in candidates if t[0] == 0)
+        if shape_matched < limit and correct_neg:
+            # Negations are a handful in the whole corpus — a random sample
+            # below almost never contains one (that WAS the bug: an «aren't»
+            # card quizzed against «утюг»). Fetch them directly instead.
+            neg_q = (
+                select(Word.translation, Word.part_of_speech, Word.level)
+                .join(PackWord, PackWord.word_id == Word.id)
+                .join(Pack, Pack.id == PackWord.pack_id)
+                .where(
+                    Pack.track == track.value,
+                    Pack.is_active.is_(True),
+                    or_(Word.translation.ilike("не %"), Word.translation.ilike("ни %")),
+                )
+                .order_by(func.random())
+                .limit(limit * 4)
+            )
+            consider(list((await self.session.execute(neg_q)).all()))
+            shape_matched = sum(1 for (t, _) in candidates if t[0] == 0)
         if shape_matched < limit:
             pack_q = (
                 select(Word.translation, Word.part_of_speech, Word.level)
