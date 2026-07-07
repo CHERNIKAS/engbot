@@ -35,6 +35,19 @@ class CourseProgress:
     finished: bool
 
 
+async def course_progress_or_none(
+    session: AsyncSession, redis: Redis, user: User, active_tracks: list[UserTrack]
+) -> CourseProgress | None:
+    """CourseProgress for the 📊 card — None unless the user has an English
+    track and is enrolled (the course is EN-only)."""
+    en = next(
+        (ut for ut in active_tracks if ut.track == LearningTrack.ENGLISH.value), None
+    )
+    if en is None or not CourseService.is_enrolled(en):
+        return None
+    return await CourseService(session, redis).progress(user, en, LearningTrack.ENGLISH)
+
+
 class CourseService:
     """The guided course: an ordered A1→A2→B1→B2 spine the bot auto-feeds into
     the user's vocabulary so the all-day push delivers it in order, choice-only.
@@ -130,6 +143,28 @@ class CourseService:
         nxt = await gr.next_unstarted_topic(user_id, track)
         if nxt is not None:
             await gr.introduce_topic(user_id, nxt.id)
+
+    async def level_map(
+        self, user: User, track: LearningTrack
+    ) -> list[tuple[str, int, int, int]]:
+        """Per-level breakdown for the course map: (label, total, mastered,
+        in_progress) in spine order."""
+        spine = await self._spine(track)
+        owned = await self._uw.status_map(user.id, track, [w for w, _ in spine])
+        acc: dict[str, list[int]] = {}
+        for wid, label in spine:
+            total, mastered, in_progress = acc.setdefault(label, [0, 0, 0])
+            status = owned.get(wid)
+            acc[label][0] = total + 1
+            if status == WordStatus.MASTERED.value:
+                acc[label][1] = mastered + 1
+            elif status is not None:
+                acc[label][2] = in_progress + 1
+        return [
+            (label, *acc[label])
+            for _, label in self.LEVELS
+            if label in acc
+        ]
 
     async def progress(self, user: User, user_track: UserTrack, track: LearningTrack) -> CourseProgress:
         spine = await self._spine(track)

@@ -24,6 +24,8 @@ class InteractionState(StrEnum):
 
     PACK_SELECTION = "pack_selection"
 
+    WAITING_SEARCH_QUERY = "waiting_search_query"
+
     SETTINGS_GOAL_INPUT = "settings_goal_input"
     SETTINGS_PACE_INPUT = "settings_pace_input"
 
@@ -35,7 +37,7 @@ UNIVERSAL_PREFIXES: frozenset[str] = frozenset({"nav", "noop", "pu"})
 # Per-state allowlist of callback prefixes (in addition to UNIVERSAL_PREFIXES).
 STATE_CALLBACK_PREFIXES: dict[InteractionState, frozenset[str]] = {
     InteractionState.IDLE: frozenset(
-        {"mm", "mw", "cat", "add", "imp", "pk", "st", "pg", "set", "ob", "qa", "del", "cr"}
+        {"mm", "mw", "cat", "add", "imp", "pk", "st", "pg", "set", "ob", "qa", "del", "cr", "sr"}
     ),
     InteractionState.WAITING_PASSWORD: frozenset(),
     InteractionState.ONBOARDING_TRACKS: frozenset({"ob"}),
@@ -50,6 +52,9 @@ STATE_CALLBACK_PREFIXES: dict[InteractionState, frozenset[str]] = {
     InteractionState.WAITING_DELETE_CONFIRMATION: frozenset({"del", "mw", "st"}),
     InteractionState.STUDY_ACTIVE: frozenset({"st", "del"}),
     InteractionState.PACK_SELECTION: frozenset({"pk", "cat"}),
+    # Search results mix own words (word cards open via "mw", delete via "del")
+    # with catalog words (added via "sr").
+    InteractionState.WAITING_SEARCH_QUERY: frozenset({"sr", "mw", "del", "mm"}),
     InteractionState.SETTINGS_GOAL_INPUT: frozenset({"set"}),
     InteractionState.SETTINGS_PACE_INPUT: frozenset({"set"}),
 }
@@ -66,6 +71,7 @@ TEXT_ACCEPTING_STATES: frozenset[InteractionState] = frozenset(
         InteractionState.WAITING_CATEGORY_RENAME,
         InteractionState.SETTINGS_GOAL_INPUT,
         InteractionState.STUDY_ACTIVE,  # typing-stage answers
+        InteractionState.WAITING_SEARCH_QUERY,
     }
 )
 

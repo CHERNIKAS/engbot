@@ -41,6 +41,7 @@ from app.infrastructure.repositories.categories import CategoryRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
 from app.services.category_service import CategoryService
 from app.services.interaction_state_service import InteractionStateService
+from app.services.course_service import course_progress_or_none
 from app.services.progress_service import ProgressService, format_progress
 from app.services.user_track_service import UserTrackService
 
@@ -212,7 +213,8 @@ async def msg_progress(
         )
         for ut in active
     ]
-    text = format_progress(user.streak_days, views)
+    course = await course_progress_or_none(session, redis, user, active)
+    text = format_progress(user.streak_days, views, course=course)
     has_managed = await UserWordRepository(session).has_managed(user.id, LearningTrack.ENGLISH)
     await send_menu_card(
         message, redis, user.id, text, parse_mode="HTML", reply_markup=progress_kb(has_managed)

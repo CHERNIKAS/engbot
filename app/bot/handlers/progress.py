@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from aiogram import F, Router
 from aiogram.types import CallbackQuery
+from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.bot.callbacks.schema import ProgressCB, PushCB
@@ -15,6 +16,7 @@ from app.bot.texts import (
 from app.domain.enums import LearningTrack, WordStatus
 from app.domain.models import User
 from app.infrastructure.repositories.user_words import UserWordRepository
+from app.services.course_service import course_progress_or_none
 from app.services.progress_service import ProgressService, format_progress
 from app.services.user_track_service import UserTrackService
 
@@ -22,14 +24,17 @@ router = Router(name="progress")
 _TRACK = LearningTrack.ENGLISH
 
 
-async def _progress_text(session: AsyncSession, user: User, uts: UserTrackService) -> str:
+async def _progress_text(
+    session: AsyncSession, redis: Redis, user: User, uts: UserTrackService
+) -> str:
     progress = ProgressService(session)
     active = await uts.list_active(user.id)
     views = [
         await progress.track_view(user.id, LearningTrack(ut.track), ut.daily_goal_words, tz_name=user.timezone)
         for ut in active
     ]
-    return format_progress(user.streak_days, views)
+    course = await course_progress_or_none(session, redis, user, active)
+    return format_progress(user.streak_days, views, course=course)
 
 
 @router.callback_query(ProgressCB.filter(F.action == "open"))
@@ -37,9 +42,10 @@ async def on_progress_open(
     query: CallbackQuery,
     user: User,
     session: AsyncSession,
+    redis: Redis,
     user_track_service: UserTrackService,
 ) -> None:
-    text = await _progress_text(session, user, user_track_service)
+    text = await _progress_text(session, redis, user, user_track_service)
     has_managed = await UserWordRepository(session).has_managed(user.id, _TRACK)
     if query.message:
         await query.message.edit_text(text, reply_markup=progress_kb(has_managed), parse_mode="HTML")

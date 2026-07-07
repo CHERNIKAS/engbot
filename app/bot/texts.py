@@ -171,6 +171,18 @@ MANAGED_EMPTY = "🗂 Пусто. Ты пока ничего не убирал �
 MANAGED_RESTORED = "↩️ Вернул в изучение."
 MANAGED_UNSNOOZED = "⏰ Снова в показе."
 
+DIGEST_TITLE = "🗞 <b>Итоги недели</b>\n"
+DIGEST_ACCURACY = (
+    "💬 <b>{answers}</b> {answers_word} за неделю "
+    "(🔤 слова: {words} · 📖 грамматика: {grammar})\n"
+    "🎯 Точность: <b>{accuracy}%</b>"
+)
+DIGEST_MASTERED_DELTA = "⭐ Выучено за неделю: <b>+{delta}</b> (всего {total})"
+DIGEST_MASTERED = "⭐ Выучено всего: <b>{total}</b>"
+DIGEST_STREAK = "🔥 Серия: <b>{streak}</b> {days_word} подряд"
+DIGEST_HARDEST = "🥊 Крепкий орешек: <b>{word}</b> — {wrongs} {wrongs_word} за неделю. Дожмём!"
+DIGEST_OUTRO = "Так держать! Новая неделя — новые слова 🌱"
+
 REMINDER_STREAK = "🔥 Streak {streak} дн. под угрозой! Позанимайся сегодня — хватит пары минут."
 REMINDER_DAILY = "🎯 Сегодня {studied}/{goal}. Закроем цель? Осталось {left}."
 REMINDER_INACTIVE = "👋 Давно не виделись. Вернись и повтори слова — даже 5 минут в день работают."
@@ -270,6 +282,27 @@ COURSE_PROGRESS = (
 )
 COURSE_FINISHED = "🎉 Курс пройден — все {total} слов выучены! Теперь повторяю их, чтобы не забывались."
 COURSE_PAUSED = "⏸ Курс на паузе. Новые слова больше не подкидываю — но повторение продолжается. Включить можно тут же."
+COURSE_MAP_TITLE = (
+    "🗺 <b>Карта курса</b>\n"
+    "Урок <b>{lesson}</b> из {total_lessons} · сейчас уровень <b>{level}</b>\n"
+)
+COURSE_MAP_TITLE_FINISHED = "🗺 <b>Карта курса</b>\n🎉 Курс пройден целиком!\n"
+
+SEARCH_PROMPT = (
+    "🔎 <b>Поиск</b>\n\n"
+    "Напиши слово или перевод — поищу и в твоём словаре, и в каталоге.\n"
+    "<i>Например: forget или «забывать»</i>"
+)
+SEARCH_RESULTS = (
+    "🔎 По запросу «<b>{query}</b>»:\n"
+    "📗 в твоём словаре: {own} · ➕ можно добавить: {catalog}\n\n"
+    "<i>Можно сразу написать новый запрос 👇</i>"
+)
+SEARCH_EMPTY = (
+    "🔎 По запросу «<b>{query}</b>» ничего не нашлось 🤷\n\n"
+    "Попробуй иначе — или напиши «{query} — перевод», и я добавлю это как новое слово."
+)
+SEARCH_ADDED = "🌱 Добавил в «Мои слова»!"
 
 PACKS_GROUPS_TITLE = "📦 Паки — выбери раздел 🌸"
 PACKS_TITLE = (

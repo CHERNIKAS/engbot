@@ -6,10 +6,17 @@ from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.bot.callbacks.schema import CourseCB
-from app.bot.keyboards.course import course_paused_kb, course_progress_kb, course_start_kb
+from app.bot.keyboards.course import (
+    course_map_kb,
+    course_paused_kb,
+    course_progress_kb,
+    course_start_kb,
+)
 from app.bot.texts import (
     COURSE_FINISHED,
     COURSE_INTRO,
+    COURSE_MAP_TITLE,
+    COURSE_MAP_TITLE_FINISHED,
     COURSE_PAUSED,
     COURSE_PROGRESS,
     COURSE_STARTED,
@@ -87,6 +94,38 @@ async def on_start(
             parse_mode="HTML",
         )
     await query.answer("🚀")
+
+
+@router.callback_query(CourseCB.filter(F.action == "map"))
+async def on_map(
+    query: CallbackQuery,
+    user: User,
+    user_track: UserTrack,
+    current_track: LearningTrack,
+    session: AsyncSession,
+    redis: Redis,
+) -> None:
+    svc = CourseService(session, redis)
+    prog = await svc.progress(user, user_track, current_track)
+    levels = await svc.level_map(user, current_track)
+    head = (
+        COURSE_MAP_TITLE_FINISHED
+        if prog.finished
+        else COURSE_MAP_TITLE.format(
+            lesson=prog.current_lesson, total_lessons=prog.total_lessons, level=prog.level
+        )
+    )
+    lines = [head]
+    for label, total, mastered, in_progress in levels:
+        line = f"<b>{label}</b> {_bar(mastered, total)} ⭐ {mastered}/{total}"
+        if in_progress:
+            line += f" · 🌱 {in_progress}"
+        lines.append(line)
+    if query.message:
+        await query.message.edit_text(
+            "\n".join(lines), reply_markup=course_map_kb(), parse_mode="HTML"
+        )
+    await query.answer()
 
 
 @router.callback_query(CourseCB.filter(F.action == "pause"))

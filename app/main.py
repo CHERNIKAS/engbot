@@ -19,6 +19,7 @@ from app.infrastructure.db.engine import build_engine, build_sessionmaker
 from app.infrastructure.example_provider.local_json import LocalJsonExampleProvider
 from app.infrastructure.redis_client import build_redis
 from app.logging_setup import get_logger, setup_logging
+from app.services.digest_service import DigestService
 from app.services.interaction_state_service import InteractionStateService
 from app.services.push_service import PushService
 from app.services.reminder_service import ReminderService
@@ -56,6 +57,23 @@ async def _push_worker(sessionmaker, redis, bot) -> None:
             raise
         except Exception:  # noqa: BLE001 — never let the worker die
             log.exception("push_worker_error")
+
+
+async def _digest_worker(sessionmaker, redis, bot) -> None:
+    settings = get_settings()
+    log = get_logger("digest")
+    while True:
+        await asyncio.sleep(settings.digest_interval_seconds)
+        try:
+            async with sessionmaker() as session:
+                sent = await DigestService(session, redis, bot).run()
+                await session.commit()
+            if sent:
+                log.info("digests_sent", count=sent)
+        except asyncio.CancelledError:
+            raise
+        except Exception:  # noqa: BLE001 — never let the worker die
+            log.exception("digest_worker_error")
 
 
 async def run() -> None:
@@ -112,6 +130,8 @@ async def run() -> None:
     if settings.reminders_enabled:
         background.append(asyncio.create_task(_reminder_worker(sessionmaker, redis, bot)))
     background.append(asyncio.create_task(_push_worker(sessionmaker, redis, bot)))
+    if settings.digest_enabled:
+        background.append(asyncio.create_task(_digest_worker(sessionmaker, redis, bot)))
 
     log.info("bot_starting")
     try:

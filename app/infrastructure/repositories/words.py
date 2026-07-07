@@ -2,17 +2,56 @@ from __future__ import annotations
 
 from collections.abc import Iterable
 
-from sqlalchemy import select
+from sqlalchemy import case, func, or_, select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.enums import LearningTrack
-from app.domain.models import Word
+from app.domain.models import UserWord, Word
+
+
+def like_pattern(query: str) -> str:
+    """A %query% ILIKE pattern with the LIKE metacharacters escaped, so a user
+    typing '100%' searches for a literal percent sign."""
+    escaped = (
+        query.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+    )
+    return f"%{escaped}%"
 
 
 class WordRepository:
     def __init__(self, session: AsyncSession) -> None:
         self.session = session
+
+    async def search_catalog(
+        self, track: LearningTrack, query: str, exclude_user_id: int, limit: int = 5
+    ) -> list[Word]:
+        """Catalog words matching the query (by writing or translation) that the
+        user does NOT own yet — candidates to add from search. Exact writing
+        match ranks first, then shorter writings (closest matches)."""
+        pattern = like_pattern(query)
+        owned = select(UserWord.word_id).where(
+            UserWord.user_id == exclude_user_id, UserWord.track == track.value
+        )
+        exact_first = case(
+            (func.lower(Word.writing) == query.lower(), 0), else_=1
+        )
+        q = (
+            select(Word)
+            .where(
+                Word.track == track.value,
+                Word.translation.isnot(None),
+                Word.id.not_in(owned),
+                or_(
+                    Word.writing.ilike(pattern),
+                    Word.normalized_word.ilike(pattern),
+                    Word.translation.ilike(pattern),
+                ),
+            )
+            .order_by(exact_first, func.length(Word.writing), Word.writing)
+            .limit(limit)
+        )
+        return list((await self.session.execute(q)).scalars().all())
 
     async def get(self, word_id: int) -> Word | None:
         return await self.session.get(Word, word_id)

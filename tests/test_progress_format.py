@@ -82,3 +82,35 @@ def test_format_progress_breakdown_sums_to_total():
 def test_format_progress_streak_plural_and_empty():
     assert "1</b> день подряд" in format_progress(1, [_track()])
     assert "пусто" in format_progress(0, []).lower()
+
+
+def _course(**over):
+    from app.services.course_service import CourseProgress
+
+    base = dict(
+        enrolled=True,
+        total_words=914,
+        mastered_words=37,
+        in_progress=21,
+        current_lesson=4,
+        total_lessons=92,
+        level="A1",
+        finished=False,
+    )
+    base.update(over)
+    return CourseProgress(**base)
+
+
+def test_format_progress_course_line_when_enrolled():
+    text = format_progress(4, [_track()], course=_course())
+    assert "🎓 Курс: урок <b>4</b> / 92 · A1 · ⭐ 37/914" in text
+
+
+def test_format_progress_course_line_absent_by_default():
+    assert "Курс" not in format_progress(4, [_track()])
+    assert "Курс" not in format_progress(4, [_track()], course=_course(enrolled=False))
+
+
+def test_format_progress_course_finished():
+    text = format_progress(4, [_track()], course=_course(finished=True))
+    assert "Курс: <b>пройден</b>" in text

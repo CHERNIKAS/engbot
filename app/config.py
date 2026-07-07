@@ -48,6 +48,15 @@ class Settings(BaseSettings):
     push_retry_min_minutes: int = Field(7, alias="PUSH_RETRY_MIN_MINUTES")  # ignored → re-push same word
     push_retry_max_minutes: int = Field(7, alias="PUSH_RETRY_MAX_MINUTES")
 
+    # Weekly digest — the bot's once-a-week recap (answers, accuracy, mastered
+    # delta, toughest word). Sent inside the local-time window on digest_weekday
+    # (Python convention: 0 = Monday … 6 = Sunday). Dedup per ISO week in Redis.
+    digest_enabled: bool = Field(True, alias="DIGEST_ENABLED")
+    digest_weekday: int = Field(6, alias="DIGEST_WEEKDAY")
+    digest_window_start: int = Field(19, alias="DIGEST_WINDOW_START")  # local hour
+    digest_window_end: int = Field(22, alias="DIGEST_WINDOW_END")  # exclusive
+    digest_interval_seconds: int = Field(1800, alias="DIGEST_INTERVAL_SECONDS")
+
     # Pre-shared password required to use the bot. Empty string disables gating.
     access_password: str = Field("", alias="ACCESS_PASSWORD")
 

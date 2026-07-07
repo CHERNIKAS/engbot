@@ -100,7 +100,13 @@ class QuickAddCB(CallbackData, prefix="qa"):
 
 # Guided course ("🎓 Курс").
 class CourseCB(CallbackData, prefix="cr"):
-    action: str  # open | start | pause
+    action: str  # open | start | pause | map
+
+
+# Search across my words + catalog.
+class SearchCB(CallbackData, prefix="sr"):
+    action: str  # open | add
+    word_id: int = 0  # for action == "add" (catalog word → my vocabulary)
 
 
 # Push-learning card answer.

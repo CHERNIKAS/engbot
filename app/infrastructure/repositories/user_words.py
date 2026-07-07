@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections.abc import Iterable
 from datetime import datetime, timezone
 
-from sqlalchemy import and_, delete, func, or_, select
+from sqlalchemy import and_, case, delete, func, or_, select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -341,6 +341,34 @@ class UserWordRepository:
         )
         rows = [(r[0], r[1]) for r in (await self.session.execute(q)).all()]
         return _pick_avoiding(rows, exclude_uw_id)
+
+    async def search_own(
+        self, user_id: int, track: LearningTrack, query: str, limit: int = 5
+    ) -> list[tuple[UserWord, Word]]:
+        """The user's own words matching the query — by English writing, the
+        pack translation or their custom one. Exact writing match first, then
+        shorter (closer) matches."""
+        from app.infrastructure.repositories.words import like_pattern
+
+        pattern = like_pattern(query)
+        exact_first = case((func.lower(Word.writing) == query.lower(), 0), else_=1)
+        q = (
+            select(UserWord, Word)
+            .join(Word, Word.id == UserWord.word_id)
+            .where(
+                UserWord.user_id == user_id,
+                UserWord.track == track.value,
+                or_(
+                    Word.writing.ilike(pattern),
+                    Word.normalized_word.ilike(pattern),
+                    Word.translation.ilike(pattern),
+                    UserWord.custom_translation.ilike(pattern),
+                ),
+            )
+            .order_by(exact_first, func.length(Word.writing), Word.writing)
+            .limit(limit)
+        )
+        return [(r[0], r[1]) for r in (await self.session.execute(q)).all()]
 
     async def pick_review_mastered(
         self, user_id: int, track: LearningTrack, now: datetime | None = None, exclude_uw_id: int = 0

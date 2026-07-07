@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import date, datetime, time, timedelta, timezone
+from typing import TYPE_CHECKING
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from sqlalchemy import and_, func, select
@@ -11,6 +12,9 @@ from app.domain.enums import TRACK_LABELS, LearningTrack, WordStatus
 from app.domain.models import GrammarReview, User, WordReview
 from app.infrastructure.repositories.grammar import GrammarRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
+
+if TYPE_CHECKING:
+    from app.services.course_service import CourseProgress
 
 
 @dataclass
@@ -58,8 +62,13 @@ def _plural(n: int, one: str, few: str, many: str) -> str:
     return many
 
 
-def format_progress(streak_days: int, tracks: list[TrackProgress]) -> str:
-    """Render the 📊 Прогресс card (pure, so it's unit-testable)."""
+def format_progress(
+    streak_days: int,
+    tracks: list[TrackProgress],
+    course: "CourseProgress | None" = None,
+) -> str:
+    """Render the 📊 Прогресс card (pure, so it's unit-testable). `course` adds
+    a course line to the English block when the user is enrolled."""
     head = (
         "🌸 <b>Твой прогресс</b>\n"
         f"🔥 Серия: <b>{streak_days}</b> {_plural(streak_days, 'день', 'дня', 'дней')} подряд"
@@ -89,6 +98,14 @@ def format_progress(streak_days: int, tracks: list[TrackProgress]) -> str:
             f"{_plural(t.grammar_topics_total, 'тема', 'темы', 'тем')}\n"
             f"   ⭐ упражнений: {t.grammar_items_mastered} · 🌱 в работе: {t.grammar_items_in_progress}"
         )
+        if course is not None and course.enrolled and t.track == LearningTrack.ENGLISH:
+            if course.finished:
+                block += "\n\n🎓 Курс: <b>пройден</b> 🎉"
+            else:
+                block += (
+                    f"\n\n🎓 Курс: урок <b>{course.current_lesson}</b> / {course.total_lessons}"
+                    f" · {course.level} · ⭐ {course.mastered_words}/{course.total_words}"
+                )
         blocks.append(block)
     return head + "\n\n" + "\n\n".join(blocks)
 
