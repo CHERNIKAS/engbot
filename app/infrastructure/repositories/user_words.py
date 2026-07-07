@@ -45,6 +45,36 @@ def _is_negation(translation: str) -> bool:
     return n.startswith("не ") or n.startswith("ни ")
 
 
+def _first_token(translation: str) -> str:
+    s = translation.lower()
+    for sep in _TOKEN_SEPARATORS:
+        s = s.replace(sep, " ")
+    tokens = s.split()
+    return tokens[0] if tokens else ""
+
+
+def _shape_signature(shown: str) -> tuple[bool, ...]:
+    """The option's features VISIBLE without knowing any English. A corpus audit
+    showed 18% of cards were solvable by eye: the correct option was the only
+    one with a slash («вопрос / проблема» vs three plain nouns), the only
+    multi-word one, the only infinitive, etc. Distractors are ranked by how
+    many of these bits they share with the answer, so the correct option
+    doesn't stand out."""
+    first = _first_token(shown)
+    return (
+        "/" in shown,
+        len(shown.split()) > 1,
+        len(first) > 3 and first.endswith(("ть", "ться", "ти", "чь")),
+        len(first) > 3 and first.endswith(("ый", "ий", "ой", "ая", "яя", "ое", "ее")),
+        "(" in shown,
+        bool(shown) and shown[0].isupper(),
+    )
+
+
+def _shape_distance(a: tuple[bool, ...], b: tuple[bool, ...]) -> int:
+    return sum(1 for x, y in zip(a, b) if x != y)
+
+
 def _pick_avoiding(
     rows: list[tuple[UserWord, Word]], exclude_uw_id: int
 ) -> tuple[UserWord, Word] | None:
@@ -592,20 +622,32 @@ class UserWordRepository:
         protected = _meaning_tokens_of(exclude_translations or [])
         seen: set[str] = {_norm(t) for t in (exclude_translations or []) if t}
         correct_neg = any(_is_negation(t) for t in (exclude_translations or []) if t)
-        correct_wc = min(
-            len(next((t for t in (exclude_translations or []) if t), "").split()) or 1, 3
+        correct_shown = strip_latin_hints(
+            next((t for t in (exclude_translations or []) if t), "")
         )
+        correct_sig = _shape_signature(correct_shown)
+        correct_len_bucket = min(len(correct_shown) // 8, 4)
 
-        def tier(translation: str, pos: str | None, level: str | None) -> tuple[int, int, int, int]:
-            shape_match = _is_negation(translation) == correct_neg
+        def tier(shown: str, pos: str | None, level: str | None) -> tuple[int, int, int, int, int]:
+            neg_match = _is_negation(shown) == correct_neg
             pos_match = correct_pos is not None and pos == correct_pos
             level_match = correct_level is not None and level == correct_level
-            # Least significant: similar word count — a lone multi-word option
-            # among single words (or vice versa) is pickable by eye.
-            wc_diff = abs(min(len(translation.split()), 3) - correct_wc)
-            return (0 if shape_match else 1, 0 if pos_match else 1, 0 if level_match else 1, wc_diff)
+            # Without a known answer there is no shape to blend into — keep the
+            # visual dimensions neutral so own-vocab candidates stay first.
+            if correct_shown:
+                shape_diff = _shape_distance(_shape_signature(shown), correct_sig)
+                len_diff = abs(min(len(shown) // 8, 4) - correct_len_bucket)
+            else:
+                shape_diff = len_diff = 0
+            return (
+                0 if neg_match else 1,
+                shape_diff,
+                0 if pos_match else 1,
+                0 if level_match else 1,
+                len_diff,
+            )
 
-        candidates: list[tuple[tuple[int, int, int, int], str]] = []
+        candidates: list[tuple[tuple[int, int, int, int, int], str]] = []
 
         def consider(rows: list) -> None:
             for translation, pos, level in rows:
@@ -623,7 +665,7 @@ class UserWordRepository:
                     continue
                 seen.add(n)
                 seen.add(_norm(shown))
-                candidates.append((tier(translation, pos, level), shown))
+                candidates.append((tier(shown, pos, level), shown))
 
         own_q = (
             select(Word.translation, Word.part_of_speech, Word.level)
@@ -635,14 +677,18 @@ class UserWordRepository:
                 Word.translation.isnot(None),
             )
             .order_by(func.random())
-            .limit(limit * 4)  # over-fetch for dedup + tier variety
+            .limit(limit * 10)  # over-fetch: shape-ranking needs a real pool to pick from
         )
         consider(list((await self.session.execute(own_q)).all()))
 
         # Reach for pack words when the user's own vocab can't fill the card with
         # enough SAME-SHAPE candidates (e.g. a negation answer but few owned
         # negations) — so a "не …" answer still gets "не …" distractors.
-        shape_matched = sum(1 for (t, _) in candidates if t[0] == 0)
+        def well_matched() -> int:
+            # Negation agrees AND no visible-shape bit sets the answer apart.
+            return sum(1 for (t, _) in candidates if t[0] == 0 and t[1] == 0)
+
+        shape_matched = well_matched()
         if shape_matched < limit and correct_neg:
             # Negations are a handful in the whole corpus — a random sample
             # below almost never contains one (that WAS the bug: an «aren't»
@@ -660,7 +706,7 @@ class UserWordRepository:
                 .limit(limit * 4)
             )
             consider(list((await self.session.execute(neg_q)).all()))
-            shape_matched = sum(1 for (t, _) in candidates if t[0] == 0)
+            shape_matched = well_matched()
         if shape_matched < limit:
             pack_q = (
                 select(Word.translation, Word.part_of_speech, Word.level)
@@ -672,7 +718,7 @@ class UserWordRepository:
                     Word.translation.isnot(None),
                 )
                 .order_by(func.random())
-                .limit(limit * 8)
+                .limit(limit * 16)
             )
             consider(list((await self.session.execute(pack_q)).all()))
 

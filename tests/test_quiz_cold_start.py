@@ -219,6 +219,48 @@ async def test_non_negation_answer_avoids_negation_distractor():
     assert "не имею" not in distractors, distractors
 
 
+async def test_slash_answer_prefers_slash_shaped_distractors():
+    """«вопрос / проблема» must not be the only slashed option on the card —
+    the audit showed the lone-slash answer was pickable by eye (prod bug)."""
+    session = QuizDistractorsFakeSession(
+        own=[
+            ("день", "noun", "A1"),
+            ("рост / развитие", "noun", "A1"),
+            ("кошелёк", "noun", "A1"),
+            ("сдвиг / смена", "noun", "A1"),
+            ("выбор / вариант", "noun", "A1"),
+            ("стол", "noun", "A1"),
+        ],
+        pack=[],
+    )
+    repo = UserWordRepository(session)  # type: ignore[arg-type]
+    distractors = await repo.quiz_distractors(
+        user_id=1, track=LearningTrack.ENGLISH, exclude_user_word_id=42,
+        limit=3, exclude_translations=["вопрос / проблема"],
+        correct_pos="noun", correct_level="A1",
+    )
+    assert sorted(distractors) == ["выбор / вариант", "рост / развитие", "сдвиг / смена"]
+
+
+async def test_latin_hint_stripped_from_distractors():
+    """A candidate gloss with a Latin hint is offered in its cleaned form."""
+    session = QuizDistractorsFakeSession(
+        own=[
+            ("стал (прошедшее от become)", "verb", "A1"),
+            ("бежать", "verb", "A1"),
+            ("прыгать", "verb", "A1"),
+        ],
+        pack=[],
+    )
+    repo = UserWordRepository(session)  # type: ignore[arg-type]
+    distractors = await repo.quiz_distractors(
+        user_id=1, track=LearningTrack.ENGLISH, exclude_user_word_id=42,
+        limit=3, exclude_translations=["думать"], correct_pos="verb",
+    )
+    assert "стал" in distractors
+    assert not any("become" in d for d in distractors)
+
+
 async def test_quiz_distractors_meaning_guard_does_not_over_exclude():
     """Sharing letters but not a whole word must NOT be filtered (есть vs шесть)."""
     session = QuizDistractorsFakeSession(
