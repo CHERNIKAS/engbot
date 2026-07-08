@@ -221,6 +221,12 @@ class UserWordRepository:
             UserWord.user_id == user_id,
             UserWord.track == track.value,
             UserWord.status != WordStatus.MASTERED.value,
+            # Words the user hid («перестать показывать») or parked as leeches
+            # must stay out of drills too — otherwise a hidden word keeps being
+            # quizzed and can even reach MASTERED while archived (invisible to
+            # the ⭐ counter).
+            UserWord.archived.is_(False),
+            or_(UserWord.snooze_until.is_(None), UserWord.snooze_until <= now),
         ]
         if category_id is not None:
             base_conditions.append(UserWord.category_id == category_id)
@@ -570,10 +576,15 @@ class UserWordRepository:
         return (await self.session.execute(q)).scalar_one()
 
     async def count_weak(self, user_id: int, track: LearningTrack) -> int:
+        """Words with mistakes still in active rotation — matches what the «weak»
+        drill scope actually serves (not mastered, not archived), so the 🩹
+        counter can't promise more than the drill can show."""
         q = select(func.count(UserWord.id)).where(
             UserWord.user_id == user_id,
             UserWord.track == track.value,
             UserWord.mistakes_count > 0,
+            UserWord.status != WordStatus.MASTERED.value,
+            UserWord.archived.is_(False),
         )
         return (await self.session.execute(q)).scalar_one()
 

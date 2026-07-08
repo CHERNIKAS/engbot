@@ -22,6 +22,7 @@ from app.bot.texts import (
     PACK_TOGGLE_NONE_NEW,
     PACKS_GROUPS_TITLE,
     PACKS_TITLE,
+    STALE_CALLBACK,
 )
 from app.domain.enums import LearningTrack
 from app.domain.models import User, UserTrack
@@ -36,6 +37,7 @@ from app.services.pack_service import PackService
 
 router = Router(name="packs")
 
+PACK_REMOVE_KIND = "pack_remove"  # screen-version guard for destructive removal
 _GROUP_ORDER = {"Уровни": 0, "Грамматика": 1, "Темы": 2, "Фразы": 3, "Экзамены": 4}
 _LEVELS_GROUP = "Уровни"
 
@@ -153,10 +155,18 @@ async def on_page(
     session: AsyncSession,
     state_service: InteractionStateService,
 ) -> None:
-    await query.answer()
     category = (await state_service.get(user.id)).data.get("category")
     if category:
+        await query.answer()
         await _render_list(query, user, user_track, current_track, session, category, callback_data.page)
+    else:
+        # State expired — the «Отмена» / pagination button would otherwise be a
+        # silent no-op. Tell the user and drop the stale card.
+        await query.answer(STALE_CALLBACK, show_alert=False)
+        try:
+            await query.message.delete()
+        except Exception:  # noqa: BLE001
+            pass
 
 
 @router.callback_query(PacksCB.filter(F.action == "course_info"))
@@ -174,6 +184,7 @@ async def on_toggle(
     session: AsyncSession,
     state_service: InteractionStateService,
     analytics: Analytics,
+    screen_service,
 ) -> None:
     category = (await state_service.get(user.id)).data.get("category")
     if not category:
@@ -189,10 +200,11 @@ async def on_toggle(
     # Already fully added → ask before removing (it drops progress).
     if wc > 0 and owned >= wc:
         await query.answer()
+        version = await screen_service.bump(user.id, PACK_REMOVE_KIND)
         if query.message:
             await query.message.edit_text(
                 PACK_REMOVE_CONFIRM.format(title=title, count=owned),
-                reply_markup=pack_remove_confirm_kb(callback_data.pack_id, callback_data.page),
+                reply_markup=pack_remove_confirm_kb(callback_data.pack_id, callback_data.page, version),
             )
         return
 
@@ -234,7 +246,13 @@ async def on_remove_confirm(
     current_track: LearningTrack,
     session: AsyncSession,
     state_service: InteractionStateService,
+    screen_service,
 ) -> None:
+    # Guard the destructive removal against a stale confirm card (after the
+    # screen version was bumped by any later action / the state TTL lapsed).
+    if not await screen_service.check(user.id, PACK_REMOVE_KIND, callback_data.v):
+        await query.answer(STALE_CALLBACK, show_alert=False)
+        return
     category = (await state_service.get(user.id)).data.get("category")
     pack_repo = PackRepository(session)
     pack = await pack_repo.get(callback_data.pack_id)

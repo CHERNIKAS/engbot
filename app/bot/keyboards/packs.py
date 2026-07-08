@@ -60,10 +60,10 @@ def pack_browser_kb(
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
-def pack_remove_confirm_kb(pack_id: int, page: int) -> InlineKeyboardMarkup:
+def pack_remove_confirm_kb(pack_id: int, page: int, version: str = "") -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="🗑 Да, убрать", callback_data=PacksCB(action="rem_ok", pack_id=pack_id, page=page).pack())],
+            [InlineKeyboardButton(text="🗑 Да, убрать", callback_data=PacksCB(action="rem_ok", pack_id=pack_id, page=page, v=version).pack())],
             [InlineKeyboardButton(text="↩️ Отмена", callback_data=PacksCB(action="page", page=page).pack())],
         ]
     )

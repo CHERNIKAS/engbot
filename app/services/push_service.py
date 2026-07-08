@@ -130,6 +130,27 @@ def _minutes(a: int, b: int) -> float:
     return random.randint(a, b) * 60.0
 
 
+_CLOZE_ANSWER_RE = re.compile(r"^[A-Za-z][A-Za-z'\-]*$")
+
+
+def _looks_like_cloze_answer(text: str) -> bool:
+    """A cloze answer is a single English word. Text that carries a translation
+    separator or extra words is a quick-add, not an answer — leave it alone."""
+    return bool(_CLOZE_ANSWER_RE.match(text.strip()))
+
+
+def _push_day(local: datetime, window_start: int) -> str:
+    """The 'push day' a moment belongs to — rolls at the window's start hour, not
+    calendar midnight. An overnight window (e.g. 16→02) runs past midnight, so a
+    plain date() reset at 00:00 would swap the in-flight card mid-answer and
+    re-zero new_today inside one evening session. Anchoring the day to the window
+    start keeps one session on one key."""
+    d = local.date()
+    if local.hour < window_start:
+        d = d - timedelta(days=1)
+    return d.isoformat()
+
+
 def _progress_line(uw) -> str:
     """Small progress hint shown under the word on a push card."""
     if uw.status == WordStatus.MASTERED.value:
@@ -200,6 +221,18 @@ class PushService:
     async def _save(self, user_id: int, state: dict) -> None:
         await self._redis.set(_KEY.format(user_id=user_id), json.dumps(state, ensure_ascii=False), ex=_TTL)
 
+    async def _claim_answer(self, user_id: int, msg_id: int | None) -> bool:
+        """Atomically claim a card's answer so a double-tap (or typed-answer +
+        give-up) can't apply SR twice. Keyed on the card's MESSAGE id — unique
+        per sent card, so a re-served word (new message) is never falsely
+        blocked, but two taps on the SAME card race for one SET NX and only the
+        first wins. TTL comfortably outlives the answer, well under the gap
+        before the same word could be re-served as a new message."""
+        if not msg_id:
+            return True  # nothing to key on — don't block (shouldn't happen)
+        key = f"pushans:{user_id}:{msg_id}"
+        return bool(await self._redis.set(key, "1", nx=True, ex=600))
+
     def _window(self, ut: UserTrack) -> tuple[int, int]:
         s = ut.settings or {}
         return normalize_window(
@@ -260,7 +293,7 @@ class PushService:
         now = datetime.now(timezone.utc)
         local = now.astimezone(_tz(user.timezone))
         now_ts = now.timestamp()
-        today = local.date().isoformat()
+        today = _push_day(local, ws)  # rolls at window start, not midnight
 
         state = await self._load(user.id)
         if state.get("day") != today:
@@ -653,10 +686,17 @@ class PushService:
         await self._finish_card(query, PUSH_SNOOZED.format(label=SNOOZE_LABELS.get(days, f"{days} дн.")))
 
     async def _advance_after_card(self, user_id: int, uw_id: int) -> None:
-        """Drop the current card and let the next one come on the next worker tick."""
+        """Drop the current WORD card and let the next one come on the next tick.
+        Only clears a word inflight of the same id — a hide/snooze (word-only
+        action) must never clear a grammar card that happens to share the id
+        (word and grammar ids are independent sequences)."""
         state = await self._load(user_id)
         inflight = state.get("inflight")
-        if inflight and int(inflight.get("uw_id", 0)) == uw_id:
+        if (
+            inflight
+            and inflight.get("kind", "word") == "word"
+            and int(inflight.get("uw_id", 0)) == uw_id
+        ):
             state["inflight"] = None
         state["next_ts"] = datetime.now(timezone.utc).timestamp()
         await self._save(user_id, state)
@@ -677,7 +717,13 @@ class PushService:
         state = await self._load(user.id)
         inflight = state.get("inflight")
         iid = int(inflight.get("id", inflight.get("uw_id", 0))) if inflight else 0
-        if not inflight or iid != uw_id:
+        tapped_msg = query.message.message_id if query.message else 0
+        # The tapped card must be the CURRENT inflight: same item id AND same
+        # message. The message check matters because word and grammar ids come
+        # from independent sequences and both pack into PushCB.uw_id — a ghost
+        # word card whose id collides with the live grammar card would otherwise
+        # be graded against the wrong exercise.
+        if not inflight or iid != uw_id or tapped_msg != int(inflight.get("msg_id") or 0):
             # Tapped on an old card whose inflight is gone. Don't just toast —
             # remove the ghost from chat so it stops accumulating.
             if query.message is not None:
@@ -692,6 +738,10 @@ class PushService:
             return
         options = inflight.get("options") or []
         if idx < 0 or idx >= len(options):
+            await query.answer()
+            return
+        # Claim the answer atomically — a double-tap must not apply SR twice.
+        if not await self._claim_answer(user.id, tapped_msg):
             await query.answer()
             return
         correct = options[idx] == inflight.get("correct")
@@ -762,6 +812,16 @@ class PushService:
         inflight = state.get("inflight")
         if not inflight or inflight.get("kind") != "word" or inflight.get("ctype") != CARD_CLOZE:
             return False
+        # A cloze answer is a single English word. Only consume text that LOOKS
+        # like one — otherwise a normal quick-add ("serendipity - прозорливость",
+        # or any multi-word / punctuated paste) would be eaten as a wrong answer
+        # and silently deleted while a stale cloze card sits in the chat.
+        if not _looks_like_cloze_answer(message.text or ""):
+            return False
+        # Claim atomically so a typed answer racing the «🤷 Не помню» tap can't
+        # both settle the same card.
+        if not await self._claim_answer(user.id, inflight.get("msg_id")):
+            return True  # already settled by the other path; just swallow the text
         iid = int(inflight.get("id", inflight.get("uw_id", 0)))
         answer = str(inflight.get("correct") or "")
         correct = is_typing_correct(message.text or "", answer)
@@ -799,6 +859,10 @@ class PushService:
         iid = int(inflight.get("id", inflight.get("uw_id", 0))) if inflight else 0
         if not inflight or iid != uw_id or inflight.get("ctype") != CARD_CLOZE:
             await query.answer(PUSH_STALE, show_alert=False)
+            return
+        # Claim atomically — give-up racing a typed answer must settle once.
+        if not await self._claim_answer(user.id, inflight.get("msg_id")):
+            await query.answer()
             return
         answer = str(inflight.get("correct") or "")
         leech = await self._settle_cloze(user, ut, iid, False, state, inflight)

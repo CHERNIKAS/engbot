@@ -56,10 +56,11 @@ class ImportCB(CallbackData, prefix="imp"):
 
 # Packs browser (ReWord-style checklist).
 class PacksCB(CallbackData, prefix="pk"):
-    action: str  # menu | toggle | page | reset | add
+    action: str  # menu | toggle | page | reset | add | rem_ok
     category: str = ""
     pack_id: int = 0
     page: int = 0
+    v: str = ""  # screen version — checked on rem_ok (destructive removal)
 
 
 # Study session.
