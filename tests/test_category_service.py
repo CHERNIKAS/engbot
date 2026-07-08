@@ -20,7 +20,7 @@ class FakeCatRepo:
     async def get_by_name(self, user_id, track, name):
         return self._existing.get(name)
 
-    async def rename(self, category_id, new_name):
+    async def rename(self, category_id, new_name, owner_id=None):
         self.renamed = (category_id, new_name)
         return SimpleNamespace(id=category_id, name=new_name)
 
@@ -28,7 +28,7 @@ class FakeCatRepo:
         self.move_calls.append((from_id, to_id))
         return 7
 
-    async def delete(self, category_id):
+    async def delete(self, category_id, owner_id=None):
         self.deleted.append(category_id)
 
 

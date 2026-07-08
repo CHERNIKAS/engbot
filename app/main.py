@@ -137,8 +137,12 @@ async def run() -> None:
     try:
         await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
     finally:
+        # Cancel workers and WAIT for them to unwind before tearing down the
+        # resources they use — otherwise a cancelled worker's `async with
+        # sessionmaker()` __aexit__ runs against an already-disposed engine.
         for task in background:
             task.cancel()
+        await asyncio.gather(*background, return_exceptions=True)
         await bot.session.close()
         await redis.aclose()
         await engine.dispose()

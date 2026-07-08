@@ -10,6 +10,13 @@ from app.domain.enums import WordStatus
 
 LESSON_SIZE = 10
 
+# A word the user dismissed with «я знаю» reports this sentinel from status_map
+# (see UserWordRepository.status_map). It's "done" for pipeline purposes: it
+# frees its buffer slot and counts toward course completion, but is never
+# re-added (it's still owned).
+ARCHIVED_STATUS = "archived"
+_DONE = frozenset({WordStatus.MASTERED.value, ARCHIVED_STATUS})
+
 
 def total_lessons(spine_len: int, size: int = LESSON_SIZE) -> int:
     if spine_len <= 0:
@@ -28,17 +35,17 @@ def current_lesson(mastered_count: int, spine_len: int, size: int = LESSON_SIZE)
 
 def words_to_add(spine: list[int], owned: dict[int, str], goal: int) -> list[int]:
     """Which spine words to pull into the user's vocab so they have up to `goal`
-    words actively in progress (owned but not yet mastered).
+    words actively in progress (owned, not yet mastered, not dismissed).
 
-    - counts owned, non-mastered spine words as "in progress";
+    - counts owned words that are neither mastered nor archived as "in progress";
     - tops up the deficit with the next not-yet-owned spine words, in order;
-    - never re-adds owned words; returns [] when the pipeline is already full or
-      the spine is exhausted.
+    - never re-adds owned words (archived included — they're owned, just parked),
+      so a dismissed word frees its slot and the next word flows in;
+    - returns [] when the pipeline is already full or the spine is exhausted.
     """
     if goal <= 0:
         return []
-    mastered = WordStatus.MASTERED.value
-    in_progress = sum(1 for w in spine if w in owned and owned[w] != mastered)
+    in_progress = sum(1 for w in spine if w in owned and owned[w] not in _DONE)
     need = goal - in_progress
     if need <= 0:
         return []

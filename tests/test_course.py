@@ -47,3 +47,17 @@ def test_words_to_add_spine_exhausted():
 
 def test_words_to_add_goal_zero():
     assert words_to_add([1, 2, 3], {}, 0) == []
+
+
+def test_words_to_add_archived_frees_slot():
+    """A word dismissed with «я знаю» (archived) must NOT occupy a buffer slot —
+    otherwise the pipeline starves. It's still owned, so it's never re-added."""
+    spine = [1, 2, 3, 4, 5]
+    # 1 archived (free), 2 learning (occupies) → need 2 → next not-owned = 3,4
+    assert words_to_add(spine, {1: "archived", 2: "learning"}, 3) == [3, 4]
+
+
+def test_words_to_add_all_archived_keeps_flowing():
+    spine = [1, 2, 3, 4, 5]
+    # everything owned so far is archived → no slots used → fill from not-owned
+    assert words_to_add(spine, {1: "archived", 2: "archived"}, 3) == [3, 4, 5]

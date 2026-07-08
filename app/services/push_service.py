@@ -637,7 +637,7 @@ class PushService:
     # ---- card controls (handler path): я знаю / перестать показывать / отложить ----
 
     async def handle_remove(self, user: User, uw_id: int, query: CallbackQuery, *, known: bool) -> None:
-        uw = await self._uw.get(uw_id)
+        uw = await self._uw.get(uw_id, owner_id=user.id)  # scope: forged id can't hit another user
         if uw is not None:
             uw.archived = True
             await self._session.flush()
@@ -645,7 +645,7 @@ class PushService:
         await self._finish_card(query, PUSH_KNOWN if known else PUSH_HIDDEN)
 
     async def handle_snooze(self, user: User, uw_id: int, days: int, query: CallbackQuery) -> None:
-        uw = await self._uw.get(uw_id)
+        uw = await self._uw.get(uw_id, owner_id=user.id)  # scope: forged id can't hit another user
         if uw is not None:
             uw.snooze_until = datetime.now(timezone.utc) + timedelta(days=days)
             await self._session.flush()

@@ -11,8 +11,14 @@ class CategoryRepository:
     def __init__(self, session: AsyncSession) -> None:
         self.session = session
 
-    async def get(self, category_id: int) -> Category | None:
-        return await self.session.get(Category, category_id)
+    async def get(self, category_id: int, owner_id: int | None = None) -> Category | None:
+        """Load a category by id. Pass `owner_id` to scope by owner — handlers
+        acting on a client-supplied id MUST, or a forged callback can read or
+        mutate another user's folder (returns None if it isn't theirs)."""
+        cat = await self.session.get(Category, category_id)
+        if cat is None or (owner_id is not None and cat.user_id != owner_id):
+            return None
+        return cat
 
     async def get_by_name(
         self, user_id: int, track: LearningTrack, name: str
@@ -51,16 +57,18 @@ class CategoryRepository:
         await self.session.flush()
         return category
 
-    async def rename(self, category_id: int, new_name: str) -> Category | None:
-        category = await self.get(category_id)
+    async def rename(
+        self, category_id: int, new_name: str, owner_id: int | None = None
+    ) -> Category | None:
+        category = await self.get(category_id, owner_id=owner_id)
         if category is None:
             return None
         category.name = new_name
         await self.session.flush()
         return category
 
-    async def delete(self, category_id: int) -> None:
-        category = await self.get(category_id)
+    async def delete(self, category_id: int, owner_id: int | None = None) -> None:
+        category = await self.get(category_id, owner_id=owner_id)
         if category is None:
             return
         await self.session.delete(category)

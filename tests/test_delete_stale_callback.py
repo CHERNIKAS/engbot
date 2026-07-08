@@ -114,7 +114,7 @@ async def test_fresh_delete_callback_proceeds_past_stale_guard():
         def __init__(self, _session) -> None:
             pass
 
-        async def delete(self, _id) -> None:
+        async def delete(self, _id, owner_id=None) -> None:
             deleted["v"] = True
 
     class _StubCatRepo:

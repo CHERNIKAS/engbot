@@ -34,7 +34,8 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-    command: ["sh", "-c", "alembic upgrade head && python -m app.main"]
+    command: ["sh", "-c", "alembic upgrade head && exec python -m app.main"]
+    stop_grace_period: 30s
     restart: unless-stopped
 
 volumes:

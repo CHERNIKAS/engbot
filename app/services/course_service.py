@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.domain.course import current_lesson, total_lessons, words_to_add
+from app.domain.course import _DONE, current_lesson, total_lessons, words_to_add
 from app.domain.enums import LearningTrack, WordSource, WordStatus
 from app.domain.pacing import ceiling_of, pace_of
 from app.domain.models import User, UserTrack
@@ -158,8 +158,8 @@ class CourseService:
             acc[label][0] = total + 1
             if status == WordStatus.MASTERED.value:
                 acc[label][1] = mastered + 1
-            elif status is not None:
-                acc[label][2] = in_progress + 1
+            elif status is not None and status not in _DONE:
+                acc[label][2] = in_progress + 1  # archived ("я знаю") counts as neither
         return [
             (label, *acc[label])
             for _, label in self.LEVELS
@@ -172,8 +172,10 @@ class CourseService:
         total = len(ids)
         owned = await self._uw.status_map(user.id, track, ids)
         mastered = sum(1 for w in ids if owned.get(w) == WordStatus.MASTERED.value)
+        # Archived ("я знаю") words are done for the pipeline but not "mastered".
+        done = sum(1 for w in ids if owned.get(w) in _DONE)
         in_progress = sum(
-            1 for w in ids if owned.get(w) and owned.get(w) != WordStatus.MASTERED.value
+            1 for w in ids if owned.get(w) is not None and owned.get(w) not in _DONE
         )
         pos = min(mastered, max(0, total - 1))
         return CourseProgress(
@@ -184,5 +186,5 @@ class CourseService:
             current_lesson=current_lesson(mastered, total),
             total_lessons=total_lessons(total),
             level=spine[pos][1] if spine else "—",
-            finished=total > 0 and mastered >= total,
+            finished=total > 0 and done >= total,  # mastered OR dismissed everything
         )

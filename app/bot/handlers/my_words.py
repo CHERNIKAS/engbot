@@ -65,7 +65,7 @@ async def _render_category(
     )
     cat_name = "Все слова" if category_id == 0 else "Без категории"
     if category_id > 0:
-        cat = await CategoryRepository(session).get(category_id)
+        cat = await CategoryRepository(session).get(category_id, owner_id=user.id)
         if cat is not None:
             cat_name = cat.name
     text = MY_WORDS_TITLE.format(category=cat_name, count=total)
@@ -97,7 +97,9 @@ async def on_word_detail(
     user: User,
     session: AsyncSession,
 ) -> None:
-    pair = await UserWordRepository(session).get_with_word(callback_data.user_word_id)
+    pair = await UserWordRepository(session).get_with_word(
+        callback_data.user_word_id, owner_id=user.id
+    )
     if pair is None:
         await query.answer("Не найдено.")
         return
@@ -161,7 +163,7 @@ async def on_delete_ask(
     screen_service,
 ) -> None:
     repo = UserWordRepository(session)
-    pair = await repo.get_with_word(callback_data.user_word_id)
+    pair = await repo.get_with_word(callback_data.user_word_id, owner_id=user.id)
     if pair is None:
         await query.answer("Не найдено.")
         return
@@ -212,7 +214,7 @@ async def on_delete_confirm(
         return
 
     repo = UserWordRepository(session)
-    await repo.delete(callback_data.user_word_id)
+    await repo.delete(callback_data.user_word_id, owner_id=user.id)
     await state_service.clear(user.id)
     await query.answer(DELETED)
     cat_service = CategoryService(CategoryRepository(session))

@@ -70,8 +70,12 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-    # Apply migrations, then start polling.
-    command: ["sh", "-c", "alembic upgrade head && python -m app.main"]
+    # Apply migrations, then start polling. `exec` replaces sh so python becomes
+    # PID 1 and receives SIGTERM directly — otherwise sh swallows it and every
+    # deploy/restart ends in a 10s SIGKILL that skips graceful shutdown (lost
+    # inflight/new_today saves, ghost cards).
+    command: ["sh", "-c", "alembic upgrade head && exec python -m app.main"]
+    stop_grace_period: 30s
     logging:
       driver: json-file
       options:

@@ -177,7 +177,7 @@ async def on_manage(
 ) -> None:
     await state_service.clear(user.id)
     service = CategoryService(CategoryRepository(session))
-    cat = await service.get(callback_data.category_id)
+    cat = await service.get(callback_data.category_id, user.id)
     if cat is None:
         await query.answer("Категория не найдена.")
         return
@@ -244,7 +244,7 @@ async def on_cat_delete_ask(
     screen_service,
 ) -> None:
     service = CategoryService(CategoryRepository(session))
-    cat = await service.get(callback_data.category_id)
+    cat = await service.get(callback_data.category_id, user.id)
     if cat is None:
         await query.answer("Категория не найдена.")
         return
@@ -269,7 +269,7 @@ async def on_cat_delete_confirm(
     if not await screen_service.check(user.id, CAT_DEL_KIND, callback_data.v):
         await query.answer(STALE_CALLBACK)
         return
-    await CategoryService(CategoryRepository(session)).delete(callback_data.category_id)
+    await CategoryService(CategoryRepository(session)).delete(callback_data.category_id, user.id)
     await query.answer(CATEGORY_DELETED)
     await _show_overview(query, user, current_track, session)
 
@@ -284,7 +284,7 @@ async def on_move(
     screen_service,
 ) -> None:
     service = CategoryService(CategoryRepository(session))
-    cat = await service.get(callback_data.category_id)
+    cat = await service.get(callback_data.category_id, user.id)
     if cat is None:
         await query.answer("Категория не найдена.")
         return
@@ -310,7 +310,7 @@ async def on_merge(
     screen_service,
 ) -> None:
     service = CategoryService(CategoryRepository(session))
-    cat = await service.get(callback_data.category_id)
+    cat = await service.get(callback_data.category_id, user.id)
     if cat is None:
         await query.answer("Категория не найдена.")
         return
@@ -341,8 +341,16 @@ async def on_move_to(
     if not await screen_service.check(user.id, CAT_MOVE_KIND, callback_data.v):
         await query.answer(STALE_CALLBACK)
         return
+    service = CategoryService(CategoryRepository(session))
     target = None if callback_data.target_id == -1 else callback_data.target_id
-    moved = await CategoryService(CategoryRepository(session)).move_words(
+    # Both source and destination come from callback data — verify the user owns
+    # them so a forged id can't reparent words onto another user's folder.
+    if await service.get(callback_data.category_id, user.id) is None or (
+        target is not None and await service.get(target, user.id) is None
+    ):
+        await query.answer("Категория не найдена.")
+        return
+    moved = await service.move_words(
         user.id, current_track, callback_data.category_id, target
     )
     await query.answer(CATEGORY_MOVED.format(count=moved))
@@ -364,7 +372,13 @@ async def on_merge_to(
     if callback_data.target_id <= 0:
         await query.answer()
         return
-    moved = await CategoryService(CategoryRepository(session)).merge(
+    service = CategoryService(CategoryRepository(session))
+    if await service.get(callback_data.category_id, user.id) is None or (
+        await service.get(callback_data.target_id, user.id) is None
+    ):
+        await query.answer("Категория не найдена.")
+        return
+    moved = await service.merge(
         user.id, current_track, callback_data.category_id, callback_data.target_id
     )
     await query.answer(CATEGORY_MERGED.format(count=moved))

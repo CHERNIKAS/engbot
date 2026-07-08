@@ -44,7 +44,11 @@ def apply_review(
     # Mastered words never leave the "learned" pool (no return to active study);
     # only their 0–5 score moves: +step on correct, -step on wrong.
     if user_word.status == WordStatus.MASTERED.value:
-        score = user_word.mastery_score or MASTERY_SCORE_MAX
+        # `or` would treat a legitimate 0.0 (a mastered word forgotten down to
+        # the floor — and pick_review_mastered shows those MOST) as "unset" and
+        # teleport it back to ~5.0 on the next review. Only a true None means
+        # "no score yet".
+        score = user_word.mastery_score if user_word.mastery_score is not None else MASTERY_SCORE_MAX
         if result in (ReviewResult.CORRECT, ReviewResult.NORMAL, ReviewResult.EASY):
             score = min(MASTERY_SCORE_MAX, score + MASTERY_SCORE_STEP)
         else:  # WRONG / HARD

@@ -93,12 +93,23 @@ class UserWordRepository:
     def __init__(self, session: AsyncSession) -> None:
         self.session = session
 
-    async def get(self, user_word_id: int) -> UserWord | None:
-        return await self.session.get(UserWord, user_word_id)
+    async def get(self, user_word_id: int, owner_id: int | None = None) -> UserWord | None:
+        """Load a UserWord by id. Pass `owner_id` to scope by owner — any handler
+        acting on a client-supplied id MUST, or a forged callback can touch
+        another user's row (returns None if the id isn't theirs)."""
+        uw = await self.session.get(UserWord, user_word_id)
+        if uw is None or (owner_id is not None and uw.user_id != owner_id):
+            return None
+        return uw
 
-    async def get_with_word(self, user_word_id: int) -> tuple[UserWord, Word] | None:
+    async def get_with_word(
+        self, user_word_id: int, owner_id: int | None = None
+    ) -> tuple[UserWord, Word] | None:
+        conds = [UserWord.id == user_word_id]
+        if owner_id is not None:
+            conds.append(UserWord.user_id == owner_id)
         result = await self.session.execute(
-            select(UserWord, Word).join(Word, Word.id == UserWord.word_id).where(UserWord.id == user_word_id)
+            select(UserWord, Word).join(Word, Word.id == UserWord.word_id).where(*conds)
         )
         row = result.first()
         if row is None:
@@ -188,8 +199,8 @@ class UserWordRepository:
         rows = (await self.session.execute(q)).all()
         return [(r[0], r[1]) for r in rows], total
 
-    async def delete(self, user_word_id: int) -> None:
-        uw = await self.get(user_word_id)
+    async def delete(self, user_word_id: int, owner_id: int | None = None) -> None:
+        uw = await self.get(user_word_id, owner_id=owner_id)
         if uw is None:
             return
         await self.session.delete(uw)
@@ -506,15 +517,22 @@ class UserWordRepository:
         self, user_id: int, track: LearningTrack, word_ids: list[int]
     ) -> dict[int, str]:
         """{word_id: status} for the user's owned words among `word_ids`. Words
-        the user doesn't own are absent. Used by the course to decide top-ups."""
+        the user doesn't own are absent. Archived words report the sentinel
+        status ``"archived"`` (not a real WordStatus) so the course counts them
+        as dealt-with — otherwise a word the user hid via «я знаю» stays owned +
+        non-mastered forever and permanently occupies a buffer slot, eventually
+        starving the whole pipeline. Used by the course to decide top-ups."""
         if not word_ids:
             return {}
-        q = select(UserWord.word_id, UserWord.status).where(
+        q = select(UserWord.word_id, UserWord.status, UserWord.archived).where(
             UserWord.user_id == user_id,
             UserWord.track == track.value,
             UserWord.word_id.in_(word_ids),
         )
-        return {int(r[0]): str(r[1]) for r in (await self.session.execute(q)).all()}
+        return {
+            int(r[0]): ("archived" if r[2] else str(r[1]))
+            for r in (await self.session.execute(q)).all()
+        }
 
     async def count_new(self, user_id: int, track: LearningTrack) -> int:
         """Not-yet-started words still in rotation (status NEW, not archived)."""

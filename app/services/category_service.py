@@ -31,8 +31,8 @@ class CategoryService:
             raise CategoryServiceError("exists")
         return await self._repo.create(user_id=user_id, track=track, name=clean)
 
-    async def get(self, category_id: int) -> Category | None:
-        return await self._repo.get(category_id)
+    async def get(self, category_id: int, user_id: int | None = None) -> Category | None:
+        return await self._repo.get(category_id, owner_id=user_id)
 
     async def rename(
         self, user_id: int, track: LearningTrack, category_id: int, name: str
@@ -45,13 +45,13 @@ class CategoryService:
         existing = await self._repo.get_by_name(user_id, track, clean)
         if existing is not None and existing.id != category_id:
             raise CategoryServiceError("exists")
-        category = await self._repo.rename(category_id, clean)
+        category = await self._repo.rename(category_id, clean, owner_id=user_id)
         if category is None:
             raise CategoryServiceError("not_found")
         return category
 
-    async def delete(self, category_id: int) -> None:
-        await self._repo.delete(category_id)
+    async def delete(self, category_id: int, user_id: int | None = None) -> None:
+        await self._repo.delete(category_id, owner_id=user_id)
 
     async def move_words(
         self,
@@ -67,7 +67,7 @@ class CategoryService:
     ) -> int:
         """Move all words from source into target, then delete the source."""
         moved = await self._repo.move_words(user_id, track, source_id, target_id)
-        await self._repo.delete(source_id)
+        await self._repo.delete(source_id, owner_id=user_id)
         return moved
 
     async def counts(

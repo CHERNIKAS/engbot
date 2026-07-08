@@ -132,16 +132,33 @@ docker compose -f docker-compose.prod.yml restart bot
 # Stop everything (data kept)
 docker compose -f docker-compose.prod.yml down
 
-# Database backup
-docker compose -f docker-compose.prod.yml exec postgres \
-  pg_dump -U englsh englsh | gzip > backup_$(date +%F).sql.gz
-
-# Database restore
-gunzip -c backup_YYYY-MM-DD.sql.gz | \
-  docker compose -f docker-compose.prod.yml exec -T postgres psql -U englsh englsh
-
 # One-off DB shell
 docker compose -f docker-compose.prod.yml exec postgres psql -U englsh englsh
+```
+
+### Automated backups
+
+A daily `pg_dump` runs via host cron (installed once):
+
+```bash
+bash /opt/englshbot/scripts/install-backup-cron.sh   # idempotent
+bash /opt/englshbot/scripts/backup.sh                # run one now
+```
+
+Dumps land in `/opt/englshbot/backups/englsh-YYYYmmdd-HHMMSS.sql.gz`, kept 14
+days (`RETENTION_DAYS`). Restore:
+
+```bash
+gunzip -c /opt/englshbot/backups/englsh-<stamp>.sql.gz \
+  | docker exec -i englshbot-postgres-1 psql -U englsh -d englsh
+```
+
+**Offsite:** the dumps live on the same VPS as the data. Periodically pull one
+to another machine, e.g. from a laptop:
+
+```bash
+scp root@95.217.98.125:/opt/englshbot/backups/$(ssh root@95.217.98.125 \
+  'ls -t /opt/englshbot/backups/englsh-*.sql.gz | head -1' | xargs basename) .
 ```
 
 ---

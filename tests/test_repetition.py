@@ -4,7 +4,7 @@ from datetime import datetime, timedelta, timezone
 from types import SimpleNamespace
 
 from app.domain.enums import LearningPace, ReviewResult, WordStatus
-from app.services.repetition_service import apply_review
+from app.services.repetition_service import MASTERY_SCORE_MAX, apply_review
 
 
 def _make_uw(**overrides) -> SimpleNamespace:
@@ -73,6 +73,26 @@ def test_mastery_reachable_with_occasional_misses():
         ok = pattern[i % len(pattern)]
         apply_review(uw, ReviewResult.CORRECT if ok else ReviewResult.WRONG, LearningPace.NORMAL)
     assert uw.status == WordStatus.MASTERED.value
+
+
+def test_mastered_zero_score_not_teleported_up():
+    """A mastered word at score 0.0 (forgotten to the floor) must stay near the
+    floor on a wrong answer, not jump back to ~5.0 (the `or` bug)."""
+    uw = _make_uw(status=WordStatus.MASTERED.value, mastery_score=0.0)
+    apply_review(uw, ReviewResult.WRONG, LearningPace.NORMAL)
+    assert uw.mastery_score == 0.0  # max(0, 0.0 - 0.1)
+
+
+def test_mastered_zero_score_correct_climbs_from_floor():
+    uw = _make_uw(status=WordStatus.MASTERED.value, mastery_score=0.0)
+    apply_review(uw, ReviewResult.CORRECT, LearningPace.NORMAL)
+    assert uw.mastery_score == 0.1  # not 5.0 + 0.1
+
+
+def test_mastered_none_score_defaults_to_max():
+    uw = _make_uw(status=WordStatus.MASTERED.value, mastery_score=None)
+    apply_review(uw, ReviewResult.CORRECT, LearningPace.NORMAL)
+    assert uw.mastery_score == MASTERY_SCORE_MAX  # None = "no score yet" → 5.0
 
 
 def test_pace_modifies_final_interval():
