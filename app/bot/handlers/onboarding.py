@@ -25,6 +25,7 @@ from app.bot.texts import (
     INTRO,
     MAIN_MENU,
     ONBOARDING_DONE,
+    ONBOARDING_EXPIRED,
     PASSWORD_OK,
     PASSWORD_PROMPT,
     PASSWORD_WRONG,
@@ -169,7 +170,7 @@ async def on_toggle_track(
 ) -> None:
     payload = await state_service.get(user.id)
     if payload.state != InteractionState.ONBOARDING_TRACKS:
-        await query.answer()
+        await query.answer(ONBOARDING_EXPIRED, show_alert=False)
         return
     allowed = enabled_tracks(get_settings().enable_japanese)
     selected = _selected_tracks(payload.data)
@@ -202,7 +203,7 @@ async def on_tracks_done(
 ) -> None:
     payload = await state_service.get(user.id)
     if payload.state != InteractionState.ONBOARDING_TRACKS:
-        await query.answer()
+        await query.answer(ONBOARDING_EXPIRED, show_alert=False)
         return
     selected = _selected_tracks(payload.data) or {LearningTrack.ENGLISH}
     await state_service.set(

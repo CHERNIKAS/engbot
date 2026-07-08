@@ -11,6 +11,7 @@ from app.bot.keyboards.common import cancel_only_kb
 from app.bot.states import InteractionState
 from app.bot.texts import (
     ADD_CHOOSE_CATEGORY,
+    LIST_EXPIRED,
     TXT_IMPORT_DONE,
     TXT_NOT_TEXT,
     TXT_PARSE_ERROR,
@@ -167,7 +168,7 @@ async def on_pick_category_for_import(
         return
     payload = await state_service.get(user.id)
     if payload.state != InteractionState.WAITING_TXT_CATEGORY:
-        await query.answer()
+        await query.answer(LIST_EXPIRED, show_alert=False)
         return
 
     words_data = payload.data.get("words") or []

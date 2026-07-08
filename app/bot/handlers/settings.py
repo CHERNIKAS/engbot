@@ -8,7 +8,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.bot.callbacks.schema import SettingsCB
 from app.bot.filters import InState
 from app.bot.keyboards.common import cancel_only_kb
-from app.bot.keyboards.main_menu import main_menu_kb
 from app.bot.keyboards.settings import (
     TZ_ZONES,
     goal_values_kb,

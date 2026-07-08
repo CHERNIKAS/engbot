@@ -14,6 +14,7 @@ from app.bot.texts import (
     ADD_NO_WORDS,
     ADD_SUCCESS,
     ADD_WORDS_PROMPT,
+    LIST_EXPIRED,
 )
 from app.config import get_settings
 from app.domain.enums import LearningTrack, WordSource
@@ -106,7 +107,7 @@ async def on_pick_category_for_add(
         return
     payload = await state_service.get(user.id)
     if payload.state != InteractionState.WAITING_CATEGORY_FOR_WORDS:
-        await query.answer()
+        await query.answer(LIST_EXPIRED, show_alert=False)
         return
 
     words_data = payload.data.get("words") or []

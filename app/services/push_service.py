@@ -285,7 +285,10 @@ class PushService:
                 log.info("push_disabled_blocked", uid=uid)
             except Exception:  # noqa: BLE001
                 await self._session.rollback()
-                log.warning("push_tick_failed", uid=uid)
+                # log.exception keeps the traceback — a per-user logic bug that
+                # silently disables one user's pushes every tick must be
+                # diagnosable (this blind spot hid the recent MissingGreenlet).
+                log.exception("push_tick_failed", uid=uid)
         return pushed
 
     async def run_tick(self, user: User, ut: UserTrack) -> bool:

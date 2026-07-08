@@ -7,7 +7,6 @@ from aiogram.types import CallbackQuery
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.bot.callbacks.schema import DeleteCB, MyWordsCB
-from app.bot.keyboards.main_menu import main_menu_kb
 from app.bot.keyboards.my_words import (
     categories_overview_kb,
     category_words_kb,

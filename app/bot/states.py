@@ -27,7 +27,6 @@ class InteractionState(StrEnum):
     WAITING_SEARCH_QUERY = "waiting_search_query"
 
     SETTINGS_GOAL_INPUT = "settings_goal_input"
-    SETTINGS_PACE_INPUT = "settings_pace_input"
 
 
 # Universal callback prefixes always allowed regardless of state.
@@ -56,7 +55,6 @@ STATE_CALLBACK_PREFIXES: dict[InteractionState, frozenset[str]] = {
     # with catalog words (added via "sr").
     InteractionState.WAITING_SEARCH_QUERY: frozenset({"sr", "mw", "del", "mm"}),
     InteractionState.SETTINGS_GOAL_INPUT: frozenset({"set"}),
-    InteractionState.SETTINGS_PACE_INPUT: frozenset({"set"}),
 }
 
 

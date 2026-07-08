@@ -146,8 +146,8 @@ class DigestService:
                 await self._bot.send_message(
                     user.telegram_id, format_digest(stats), parse_mode="HTML"
                 )
-            except Exception:  # noqa: BLE001 — blocked / deactivated; next week is fine
-                log.warning("digest_send_failed", uid=user.id)
+            except Exception as e:  # noqa: BLE001 — blocked / deactivated; next week is fine
+                log.warning("digest_send_failed", uid=user.id, error=repr(e))
                 await self._redis.set(key, "1", ex=_SENT_TTL)
                 continue
             await self._redis.set(key, "1", ex=_SENT_TTL)

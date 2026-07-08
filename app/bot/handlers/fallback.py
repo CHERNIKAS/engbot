@@ -10,12 +10,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.bot.callbacks.schema import QuickAddCB
 from app.bot.filters import InState
 from app.bot.keyboards.add_words import add_choose_category_kb, post_add_kb
-from app.bot.keyboards.main_menu import main_menu_kb
 from app.bot.states import InteractionState
 from app.bot.texts import (
     ADD_CHOOSE_CATEGORY,
     ADD_SUCCESS,
     MAIN_MENU,
+    NON_TEXT_HINT,
     QUICK_ADD_NONE,
     QUICK_ADD_PROMPT_MANY,
     QUICK_ADD_PROMPT_ONE,
@@ -214,6 +214,14 @@ async def on_quick_cancel(
     if query.message:
         await query.message.edit_text(MAIN_MENU)
     await query.answer()
+
+
+@router.message(InState(InteractionState.IDLE))
+async def on_idle_non_text(message: Message) -> None:
+    """A non-text message (photo / sticker / voice / video) in IDLE — every other
+    handler matches on F.text, so without this the user gets total silence.
+    Only fires in IDLE; other states route their own content via the guard."""
+    await message.answer(NON_TEXT_HINT)
 
 
 @router.callback_query()

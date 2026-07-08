@@ -89,8 +89,11 @@ class ReminderService:
                 )
                 await self._redis.set(day_key, "1", ex=_REMINDED_TTL)
                 sent += 1
-            except Exception:  # noqa: BLE001 — user may have blocked the bot
-                log.warning("reminder_send_failed", uid=user.id)
+            except Exception as e:  # noqa: BLE001 — user may have blocked the bot
+                # Mark the day done even on failure so a blocked user isn't
+                # retried every tick, all day (matches push/digest behaviour).
+                await self._redis.set(day_key, "1", ex=_REMINDED_TTL)
+                log.warning("reminder_send_failed", uid=user.id, error=repr(e))
 
         return sent
 
