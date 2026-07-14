@@ -47,6 +47,18 @@ async def on_push_snooze(
     await PushService(session, redis).handle_snooze(user, callback_data.uw_id, callback_data.days, query)
 
 
+@router.callback_query(PushCB.filter(F.action == "master"))
+async def on_push_master(
+    query: CallbackQuery,
+    callback_data: PushCB,
+    user: User,
+    user_track: UserTrack,
+    session: AsyncSession,
+    redis: Redis,
+) -> None:
+    await PushService(session, redis).handle_master(user, user_track, callback_data.uw_id, query)
+
+
 @router.callback_query(PushCB.filter(F.action == "giveup"))
 async def on_push_giveup(
     query: CallbackQuery,

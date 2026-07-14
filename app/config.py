@@ -45,6 +45,10 @@ class Settings(BaseSettings):
     push_min_window_hours: int = Field(10, ge=1, le=24, alias="PUSH_MIN_WINDOW_HOURS")
     push_gap_min_minutes: int = Field(2, ge=1, alias="PUSH_GAP_MIN_MINUTES")  # answered → next card (random)
     push_gap_max_minutes: int = Field(15, ge=1, alias="PUSH_GAP_MAX_MINUTES")
+    # Review-load brake: while this many active words are already overdue, stop
+    # introducing NEW words so the user drains the backlog (old words come back
+    # sooner and actually reach mastery instead of surfacing ~weekly).
+    push_review_backlog_ceiling: int = Field(25, ge=1, alias="PUSH_REVIEW_BACKLOG_CEILING")
 
     # Weekly digest — the bot's once-a-week recap (answers, accuracy, mastered
     # delta, toughest word). Sent inside the local-time window on digest_weekday

@@ -30,6 +30,7 @@ from app.bot.texts import (
     PUSH_GRAMMAR_CARD,
     PUSH_HIDDEN,
     PUSH_KNOWN,
+    PUSH_MASTERED_KNOWN,
     PUSH_LEECH_KEPT,
     PUSH_LEECH_PARKED,
     PUSH_LEECH_PROMPT,
@@ -151,11 +152,33 @@ def _push_day(local: datetime, window_start: int) -> str:
     return d.isoformat()
 
 
-def _progress_line(uw) -> str:
-    """Small progress hint shown under the word on a push card."""
+def _days_ago_phrase(last_reviewed_at, now: datetime | None = None) -> str | None:
+    """'сегодня' / 'вчера' / 'N дн назад' for a last-review time, or None."""
+    if not last_reviewed_at:
+        return None
+    now = now or datetime.now(timezone.utc)
+    days = (now.date() - last_reviewed_at.astimezone(timezone.utc).date()).days
+    if days <= 0:
+        return "сегодня"
+    if days == 1:
+        return "вчера"
+    return f"{days} дн назад"
+
+
+def _progress_line(uw, now: datetime | None = None) -> str:
+    """Small progress hint shown under the word on a push card. For a word being
+    learned we spell out WHY it sits where it does — the raw N/10 read as a lie
+    to users ('I know this, why 1/10?'); showing the miss count + last-seen makes
+    it honest ('2/10 because you missed it twice, last seen 9 days ago')."""
     if uw.status == WordStatus.MASTERED.value:
         return f"⭐ {uw.mastery_score:.1f} / 5"
-    return f"🌱 {uw.repetitions_count} / {MASTERED_REPS_NORMAL}"
+    parts = [f"🌱 {uw.repetitions_count} / {MASTERED_REPS_NORMAL}"]
+    if (uw.mistakes_count or 0) > 0:
+        parts.append(f"❌ {uw.mistakes_count}")
+    seen = _days_ago_phrase(uw.last_reviewed_at, now)
+    if seen:
+        parts.append(seen)
+    return "  ·  ".join(parts)
 
 
 # Post-answer recap blocks ----------------------------------------------------
@@ -388,12 +411,20 @@ class PushService:
         ceiling = ceiling_of(pace)
         new_today = int(state.get("new_today", 0))
         active_count = await self._uw.count_active(user.id, _TRACK)
+        overdue = await self._uw.count_overdue(user.id, _TRACK)
 
         # Words are the bulk; grammar is a deliberate ~1-in-6 minority (STREAM_WEIGHTS),
         # never two grammar cards in a row, and never grabs an empty word stream's share.
         grammar_pick = await self._grammar.pick_for_push(user.id, _TRACK, exclude_id=last_grammar)
         eligible: list[str] = ["repeat", "review"]
-        if new_today < pace and active_count < ceiling:
+        # Introduce a new word only if today's intake + pool ceiling allow AND the
+        # review backlog isn't already piled up — draining due words first is what
+        # lets them actually reach mastery instead of resurfacing once a week.
+        if (
+            new_today < pace
+            and active_count < ceiling
+            and overdue < self._s.push_review_backlog_ceiling
+        ):
             eligible.append("new")
         allow_grammar = grammar_pick is not None and last.get("kind") != "grammar"
         if allow_grammar:
@@ -687,6 +718,22 @@ class PushService:
             await self._session.flush()
         await self._advance_after_card(user.id, uw_id)
         await self._finish_card(query, PUSH_SNOOZED.format(label=SNOOZE_LABELS.get(days, f"{days} дн.")))
+
+    async def handle_master(self, user: User, ut: UserTrack, uw_id: int, query: CallbackQuery) -> None:
+        """«✅ Уже уверенно знаю» — graduate a word straight to mastered without
+        grinding out the remaining reps. For a word the user genuinely knows but
+        that sits at a low count because it surfaces rarely (or an old miss
+        dropped it). Stays in the light mastered-review rotation."""
+        uw = await self._uw.get(uw_id, owner_id=user.id)
+        if uw is not None and uw.status != WordStatus.MASTERED.value:
+            uw.status = WordStatus.MASTERED.value
+            uw.repetitions_count = MASTERED_REPS_NORMAL
+            uw.mastery_score = 5.0
+            uw.next_review_at = datetime.now(timezone.utc) + timedelta(days=7)
+            await self._session.flush()
+            await ProgressService(self._session).update_streak(user)
+        await self._advance_after_card(user.id, uw_id)
+        await self._finish_card(query, PUSH_MASTERED_KNOWN)
 
     async def _advance_after_card(self, user_id: int, uw_id: int) -> None:
         """Drop the current WORD card and let the next one come on the next tick.

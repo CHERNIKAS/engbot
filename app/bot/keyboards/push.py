@@ -36,6 +36,9 @@ def push_card_kb(options: list[str], uw_id: int, status: str) -> InlineKeyboardM
         )
     else:  # LEARNING / REVIEW
         rows.append(
+            [InlineKeyboardButton(text="✅ Уже уверенно знаю", callback_data=PushCB(action="master", uw_id=uw_id).pack())]
+        )
+        rows.append(
             [InlineKeyboardButton(text="🙈 Перестать показывать", callback_data=PushCB(action="hide", uw_id=uw_id).pack())]
         )
     return InlineKeyboardMarkup(inline_keyboard=rows)
@@ -54,6 +57,10 @@ def push_cloze_card_kb(uw_id: int, status: str) -> InlineKeyboardMarkup:
                 InlineKeyboardButton(text="😴 неделя", callback_data=PushCB(action="snooze", uw_id=uw_id, days=7).pack()),
                 InlineKeyboardButton(text="😴 месяц", callback_data=PushCB(action="snooze", uw_id=uw_id, days=30).pack()),
             ]
+        )
+    else:  # LEARNING / REVIEW
+        rows.append(
+            [InlineKeyboardButton(text="✅ Уже уверенно знаю", callback_data=PushCB(action="master", uw_id=uw_id).pack())]
         )
     rows.append(
         [InlineKeyboardButton(text="🙈 Перестать показывать", callback_data=PushCB(action="hide", uw_id=uw_id).pack())]

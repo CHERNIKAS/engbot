@@ -296,6 +296,24 @@ class UserWordRepository:
         )
         return (await self.session.execute(q)).scalar_one()
 
+    async def count_overdue(
+        self, user_id: int, track: LearningTrack, now: datetime | None = None
+    ) -> int:
+        """Active words already due for review (next_review_at in the past). When
+        this backlog is large the push should drain it before introducing new
+        words — otherwise new intake outruns review and every word surfaces only
+        once a week, so mastery crawls."""
+        now = now or datetime.now(timezone.utc)
+        q = select(func.count(UserWord.id)).where(
+            UserWord.user_id == user_id,
+            UserWord.track == track.value,
+            UserWord.archived.is_(False),
+            UserWord.status.in_([WordStatus.LEARNING.value, WordStatus.REVIEW.value]),
+            or_(UserWord.snooze_until.is_(None), UserWord.snooze_until <= now),
+            UserWord.next_review_at <= now,
+        )
+        return (await self.session.execute(q)).scalar_one()
+
     async def pick_new_for_push(
         self, user_id: int, track: LearningTrack
     ) -> tuple[UserWord, Word] | None:
