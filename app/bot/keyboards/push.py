@@ -5,7 +5,11 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from app.bot.callbacks.schema import PushCB
 from app.domain.enums import WordStatus
 
-SNOOZE_LABELS: dict[int, str] = {3: "3 дня", 7: "неделю", 30: "месяц"}
+SNOOZE_LABELS: dict[int, str] = {3: "3 дня", 7: "неделю", 30: "месяц", 45: "полтора месяца"}
+
+# «Не учить сейчас» parks a word being learned for a good while — it comes back
+# on its own, no archive, no progress lost.
+NOT_NOW_DAYS = 45
 
 
 def push_card_kb(options: list[str], uw_id: int, status: str) -> InlineKeyboardMarkup:
@@ -39,6 +43,9 @@ def push_card_kb(options: list[str], uw_id: int, status: str) -> InlineKeyboardM
             [InlineKeyboardButton(text="✅ Уже уверенно знаю", callback_data=PushCB(action="master", uw_id=uw_id).pack())]
         )
         rows.append(
+            [InlineKeyboardButton(text="⏸ Не учить сейчас", callback_data=PushCB(action="snooze", uw_id=uw_id, days=NOT_NOW_DAYS).pack())]
+        )
+        rows.append(
             [InlineKeyboardButton(text="🙈 Перестать показывать", callback_data=PushCB(action="hide", uw_id=uw_id).pack())]
         )
     return InlineKeyboardMarkup(inline_keyboard=rows)
@@ -61,6 +68,9 @@ def push_cloze_card_kb(uw_id: int, status: str) -> InlineKeyboardMarkup:
     else:  # LEARNING / REVIEW
         rows.append(
             [InlineKeyboardButton(text="✅ Уже уверенно знаю", callback_data=PushCB(action="master", uw_id=uw_id).pack())]
+        )
+        rows.append(
+            [InlineKeyboardButton(text="⏸ Не учить сейчас", callback_data=PushCB(action="snooze", uw_id=uw_id, days=NOT_NOW_DAYS).pack())]
         )
     rows.append(
         [InlineKeyboardButton(text="🙈 Перестать показывать", callback_data=PushCB(action="hide", uw_id=uw_id).pack())]
