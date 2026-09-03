@@ -196,6 +196,18 @@ STUDY_QUIZ_PROMPT = "Выбери перевод 👇"
 STUDY_TYPE_PROMPT = "✍️ Напиши по-английски:"
 STUDY_ANSWER_CORRECT = "✅ Верно! 🎉"
 STUDY_ANSWER_WRONG = "❌ Мимо. Правильно: {answer}"
+STUDY_ANSWER_ALMOST = "✅ Почти! Правильно: {answer}\n💡 {hint}"
+STUDY_ANSWER_WRONG_HINT = "❌ Мимо. Правильно: {answer}\n💡 {hint}"
+STUDY_ANSWER_DEGRADED = (
+    "❌ Мимо. Правильно: {answer}\n"
+    "⚠️ Умная проверка недоступна — засчитываю строго."
+)
+# Sent after a re-grade: the checker was down, the answer was scored strictly,
+# and the credit has now been applied after the fact.
+REGRADE_NOTICE = (
+    "🔄 Пересмотрел ответы, которые засчитал строго — умная проверка была недоступна.\n\n"
+    "Теперь засчитано:\n{lines}"
+)
 STUDY_USE_BUTTONS = "👆 Выбери вариант кнопкой"
 STUDY_CARD_NO_TRANSLATION = "(перевода нет)"
 STUDY_EXAMPLE_MISSING = "Примера пока нет 🤷"
@@ -246,6 +258,17 @@ PUSH_RULE_CARD = "📖 <b>{title}</b>\n\n{rule}"
 PUSH_RULE_OK = "👍 Поехали — лови упражнения."
 PUSH_ANSWER_CORRECT = "✅ Верно! 🎉"
 PUSH_ANSWER_WRONG = "❌ Мимо. Правильно: <b>{answer}</b>"
+# Near-miss feedback: the check understood WHAT went wrong, so the card says so
+# instead of a bare miss.
+PUSH_ANSWER_ALMOST = "✅ Почти! Правильно: <b>{answer}</b>\n💡 {hint}"
+PUSH_ANSWER_WRONG_HINT = "❌ Мимо. Правильно: <b>{answer}</b>\n💡 {hint}"
+# Shown when the check couldn't run. Says the bot got stricter and why, rather
+# than letting the user think it suddenly stopped understanding them.
+PUSH_ANSWER_DEGRADED = (
+    "❌ Мимо. Правильно: <b>{answer}</b>\n"
+    "<i>⚠️ Умная проверка сейчас недоступна — засчитываю строго. "
+    "Вернётся сама, ответ пересчитаю.</i>"
+)
 PUSH_STALE = "⌛ Эта карточка уже неактуальна."
 PUSH_KNOWN = "👌 Убрал — ты уже знаешь это слово."
 PUSH_HIDDEN = "🙈 Больше не показываю это слово."

@@ -11,6 +11,7 @@ from app.infrastructure.repositories.analytics import AnalyticsRepository
 from app.infrastructure.repositories.user_tracks import UserTrackRepository
 from app.infrastructure.repositories.words import WordRepository
 from app.services.analytics import Analytics
+from app.services.answer_check import AnswerCheckService
 from app.services.interaction_state_service import InteractionStateService
 from app.services.placement_service import PlacementService
 from app.services.study_session_service import StudySessionService
@@ -57,5 +58,6 @@ class ServicesMiddleware(BaseMiddleware):
             data["placement"] = PlacementService(
                 WordRepository(session), InteractionStateService(self._redis)
             )
+        data["answer_check"] = AnswerCheckService(self._redis)
 
         return await handler(event, data)

@@ -12,8 +12,11 @@ from app.bot.keyboards.study import finished_kb, quiz_card_kb, typing_card_kb
 from app.bot.states import InteractionState
 from app.bot.texts import (
     MAIN_MENU,
+    STUDY_ANSWER_ALMOST,
     STUDY_ANSWER_CORRECT,
+    STUDY_ANSWER_DEGRADED,
     STUDY_ANSWER_WRONG,
+    STUDY_ANSWER_WRONG_HINT,
     STUDY_FINISHED,
     STUDY_NO_WORDS,
     STUDY_QUIZ_PROMPT,
@@ -24,6 +27,7 @@ from app.domain.enums import LearningTrack, StudyScope
 from app.domain.models import User, UserTrack
 from app.domain.study_drill import STAGE_QUIZ, is_typing_correct
 from app.services.analytics import EVENT_STUDY_COMPLETED, EVENT_STUDY_STARTED, Analytics
+from app.services.answer_check import AnswerCheckService
 from app.services.interaction_state_service import InteractionStateService
 from app.services.progress_service import ProgressService
 from app.services.screen_service import ScreenVersionService
@@ -292,6 +296,23 @@ async def on_quiz_answer(
     await query.answer("✅" if correct else "❌")
 
 
+
+def _typed_prefix(correct: bool, writing: str, verdict) -> str:
+    """Feedback line for a typed drill answer. Mirrors the push card: forgiven
+    with the reason, refused with the reason, or an honest note that the check
+    itself couldn't run."""
+    answer = html.escape(writing)
+    if correct and verdict is not None and verdict.hint:
+        return STUDY_ANSWER_ALMOST.format(answer=answer, hint=html.escape(verdict.hint))
+    if correct:
+        return STUDY_ANSWER_CORRECT
+    if verdict is None:
+        return STUDY_ANSWER_DEGRADED.format(answer=answer)
+    if verdict.hint:
+        return STUDY_ANSWER_WRONG_HINT.format(answer=answer, hint=html.escape(verdict.hint))
+    return STUDY_ANSWER_WRONG.format(answer=answer)
+
+
 @router.message(InState(InteractionState.STUDY_ACTIVE), F.text)
 async def on_typing_answer(
     message: Message,
@@ -302,6 +323,7 @@ async def on_typing_answer(
     study_session: StudySessionService,
     screen_service: ScreenVersionService,
     analytics: Analytics,
+    answer_check: AnswerCheckService,
 ) -> None:
     view = await study_session.current_view(user.id)
     if view is None:
@@ -310,10 +332,15 @@ async def on_typing_answer(
         await message.answer(STUDY_USE_BUTTONS)
         return
 
-    correct = is_typing_correct(message.text or "", view.writing)
-    prefix = STUDY_ANSWER_CORRECT if correct else STUDY_ANSWER_WRONG.format(
-        answer=html.escape(view.writing or "")
-    )
+    typed = message.text or ""
+    correct = is_typing_correct(typed, view.writing)
+    verdict = None
+    if not correct:
+        # Only on a miss — a correct answer stays instant.
+        verdict = await answer_check.classify(view.writing or "", view.translation or "", typed)
+        if verdict is not None and verdict.credited:
+            correct = True
+    prefix = _typed_prefix(correct, view.writing or "", verdict)
     new_view = await study_session.answer(user.id, correct)
     # Capture the live card before finalize clears the session, then drop the
     # user's typed answer so the chat stays a single rolling card.

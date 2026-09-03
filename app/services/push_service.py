@@ -22,8 +22,11 @@ from app.bot.keyboards.push import (
     push_rule_kb,
 )
 from app.bot.texts import (
+    PUSH_ANSWER_ALMOST,
     PUSH_ANSWER_CORRECT,
+    PUSH_ANSWER_DEGRADED,
     PUSH_ANSWER_WRONG,
+    PUSH_ANSWER_WRONG_HINT,
     PUSH_CARD,
     PUSH_CARD_CLOZE,
     PUSH_CARD_REVERSE,
@@ -52,6 +55,8 @@ from app.infrastructure.repositories.grammar import GrammarRepository
 from app.infrastructure.repositories.reviews import GrammarReviewRepository, WordReviewRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
 from app.logging_setup import get_logger
+from app.services.answer_check import AnswerCheckService
+from app.services.regrade import ParkedAnswer, RegradeQueue
 from app.services.progress_service import ProgressService
 from app.services.repetition_service import MASTERED_REPS_NORMAL, apply_review
 
@@ -267,6 +272,8 @@ class PushService:
         self._grammar = GrammarRepository(session)
         self._reviews = WordReviewRepository(session)
         self._grammar_reviews = GrammarReviewRepository(session)
+        self._checker = AnswerCheckService(redis)
+        self._regrade = RegradeQueue(redis)
         self._s = get_settings()
 
     # ---- state ----
@@ -919,11 +926,41 @@ class PushService:
             except Exception:  # noqa: BLE001
                 pass
 
-    async def _settle_cloze(self, user: User, ut: UserTrack, iid: int, correct: bool, state: dict, inflight: dict) -> str | None:
+    @staticmethod
+    def _typed_feedback(correct: bool, answer: str, verdict) -> str:
+        """What the card says after a typed answer.
+
+        Three cases, deliberately distinct: understood and forgiven, understood
+        and refused (with the reason), and couldn't check — the last one says so
+        rather than letting the bot look like it stopped understanding.
+        """
+        safe = html.escape(answer)
+        if correct and verdict is not None and verdict.hint:
+            return PUSH_ANSWER_ALMOST.format(answer=safe, hint=html.escape(verdict.hint))
+        if correct:
+            return PUSH_ANSWER_CORRECT
+        if verdict is None:
+            return PUSH_ANSWER_DEGRADED.format(answer=safe)
+        if verdict.hint:
+            return PUSH_ANSWER_WRONG_HINT.format(answer=safe, hint=html.escape(verdict.hint))
+        return PUSH_ANSWER_WRONG.format(answer=safe)
+
+    async def _settle_cloze(
+        self,
+        user: User,
+        ut: UserTrack,
+        iid: int,
+        correct: bool,
+        state: dict,
+        inflight: dict,
+        verdict=None,
+    ) -> str | None:
         """Apply a cloze answer's SR result and advance the push state. Returns
         the leech writing if this answer crossed the leech threshold."""
         leech = await self._apply_word_answer(
-            user, ut, iid, correct, card_type=inflight.get("ctype") or CARD_CLOZE
+            user, ut, iid, correct,
+            card_type=inflight.get("ctype") or CARD_CLOZE,
+            kind_override=verdict.kind if verdict is not None else None,
         )
         now_ts = datetime.now(timezone.utc).timestamp()
         state["inflight"] = None
@@ -951,10 +988,42 @@ class PushService:
             return True  # already settled by the other path; just swallow the text
         iid = int(inflight.get("id", inflight.get("uw_id", 0)))
         answer = str(inflight.get("correct") or "")
-        correct = is_typing_correct(message.text or "", answer)
-        leech = await self._settle_cloze(user, ut, iid, correct, state, inflight)
+        typed = message.text or ""
+        correct = is_typing_correct(typed, answer)
 
-        feedback = PUSH_ANSWER_CORRECT if correct else PUSH_ANSWER_WRONG.format(answer=html.escape(answer))
+        # Only consult the checker when the strict rule already said no: a
+        # correct answer stays instant and costs nothing.
+        verdict = None
+        if not correct:
+            # One extra read, and only on a miss: the checker needs the meaning
+            # to tell a valid synonym from a different word.
+            pair = await self._uw.get_with_word(iid)
+            translation = ""
+            if pair is not None:
+                uw_row, word_row = pair
+                translation = uw_row.custom_translation or word_row.translation or ""
+            verdict = await self._checker.classify(answer, translation, typed)
+            if verdict is None:
+                # Scored strictly because the checker was unreachable. Park it so
+                # the credit is delayed, not lost.
+                await self._regrade.park(
+                    ParkedAnswer(
+                        user_id=user.id,
+                        telegram_id=user.telegram_id,
+                        user_word_id=iid,
+                        word=answer,
+                        translation=translation,
+                        answer=typed,
+                        at=datetime.now(timezone.utc).timestamp(),
+                    )
+                )
+            elif verdict.credited:
+                correct = True
+
+        leech = await self._settle_cloze(
+            user, ut, iid, correct, state, inflight, verdict=verdict
+        )
+        feedback = self._typed_feedback(correct, answer, verdict)
         msg_id = inflight.get("msg_id")
         if msg_id:
             try:
@@ -1037,6 +1106,7 @@ class PushService:
         uw_id: int,
         correct: bool,
         card_type: str | None = None,
+        kind_override: str | None = None,
     ) -> str | None:
         """Apply the SR result and leech tracking. Returns the word's writing
         when this wrong answer just crossed the leech threshold (so the caller
@@ -1050,7 +1120,7 @@ class PushService:
             uw,
             ReviewResult.CORRECT if correct else ReviewResult.WRONG,
             LearningPace(ut.learning_pace),
-            kind=_answer_kind(card_type, correct),
+            kind=kind_override or _answer_kind(card_type, correct),
             word_level=word.level,
             user_level=user.level,
             production_possible=self._cloze_possible(word),

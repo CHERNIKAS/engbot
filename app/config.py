@@ -69,6 +69,13 @@ class Settings(BaseSettings):
     ai_timeout_seconds: float = Field(30.0, gt=0, alias="AI_TIMEOUT_SECONDS")
     level_tagger_interval_seconds: int = Field(900, ge=60, alias="LEVEL_TAGGER_INTERVAL_SECONDS")
     level_tagger_batch: int = Field(40, ge=1, le=200, alias="LEVEL_TAGGER_BATCH")
+    # Understanding a wrong typed answer. Tighter than the tagger's timeout:
+    # a user is staring at the card while this runs, so a slow answer is worse
+    # than the strict verdict plus an honest notice.
+    answer_check_timeout_seconds: float = Field(5.0, gt=0, alias="ANSWER_CHECK_TIMEOUT_SECONDS")
+    # How often to retry answers that were scored strictly during an outage.
+    # Short enough that the correction still feels connected to the answer.
+    regrade_interval_seconds: int = Field(600, ge=60, alias="REGRADE_INTERVAL_SECONDS")
 
     # Pre-shared password required to use the bot. Empty string disables gating.
     access_password: str = Field("", alias="ACCESS_PASSWORD")

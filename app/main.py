@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import asyncio
+from datetime import datetime, timezone
 
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
+from aiogram.exceptions import TelegramForbiddenError
 
 from app.bot.errors import register_error_handler
 from app.bot.handlers import register_handlers
@@ -15,6 +17,7 @@ from app.bot.middlewares.logging_context import LoggingContextMiddleware
 from app.bot.middlewares.rate_limit import RateLimitMiddleware
 from app.bot.middlewares.services import ServicesMiddleware
 from app.bot.middlewares.user_loader import UserLoaderMiddleware
+from app.bot.texts import REGRADE_NOTICE
 from app.config import get_settings
 from app.infrastructure.db.engine import build_engine, build_sessionmaker
 from app.infrastructure.example_provider.local_json import LocalJsonExampleProvider
@@ -22,6 +25,7 @@ from app.infrastructure.redis_client import build_redis
 from app.logging_setup import get_logger, setup_logging
 from app.services.digest_service import DigestService
 from app.services.level_tagger import LevelTaggerService
+from app.services.regrade import RegradeService
 from app.services.interaction_state_service import InteractionStateService
 from app.services.push_service import PushService
 from app.services.reminder_service import ReminderService
@@ -97,6 +101,37 @@ async def _level_tagger_worker(sessionmaker) -> None:
             log.exception("level_tagger_worker_error")
 
 
+
+async def _regrade_worker(sessionmaker, redis, bot) -> None:
+    """Re-scores answers that were marked strictly while the checker was down,
+    and tells the user what changed. Off without a key — with no checker there
+    is nothing to have been degraded from."""
+    settings = get_settings()
+    log = get_logger("regrade")
+    while True:
+        await asyncio.sleep(settings.regrade_interval_seconds)
+        try:
+            async with sessionmaker() as session:
+                result = await RegradeService(session, redis).run(
+                    now=datetime.now(timezone.utc).timestamp()
+                )
+                await session.commit()
+            for telegram_id, lines in (result.per_user or {}).items():
+                try:
+                    await bot.send_message(
+                        telegram_id,
+                        REGRADE_NOTICE.format(
+                            lines="\n".join(f"• {ln}" for ln in lines[:10])
+                        ),
+                    )
+                except TelegramForbiddenError:
+                    pass  # blocked the bot; the score was applied regardless
+        except asyncio.CancelledError:
+            raise
+        except Exception:  # noqa: BLE001 — never let the worker die
+            log.exception("regrade_worker_error")
+
+
 async def run() -> None:
     settings = get_settings()
     setup_logging(settings.log_level, settings.log_format)
@@ -159,6 +194,7 @@ async def run() -> None:
         background.append(asyncio.create_task(_digest_worker(sessionmaker, redis, bot)))
     if settings.gemini_api_key:
         background.append(asyncio.create_task(_level_tagger_worker(sessionmaker)))
+        background.append(asyncio.create_task(_regrade_worker(sessionmaker, redis, bot)))
 
     log.info("bot_starting")
     try:
