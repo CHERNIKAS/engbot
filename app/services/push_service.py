@@ -40,6 +40,7 @@ from app.bot.texts import (
 )
 from app.config import get_settings
 from app.domain.enums import LearningPace, LearningTrack, ReviewResult, WordStatus
+from app.domain.levels import ladder_stages, mastery_reps
 from app.domain.study_drill import is_typing_correct
 from app.domain.models import User, UserTrack
 from app.domain.pacing import ceiling_of, pace_of
@@ -105,13 +106,13 @@ def _weighted_order(streams: list[str]) -> list[str]:
 # production is gated behind successful recognition (testing-effect boundary
 # condition — retrieval must succeed for the benefit to stick). The stage is
 # derived from repetitions_count (net correct, LAPSE_DROP on a miss) — no extra
-# column needed; a miss naturally drops the word down the ladder. Mastery is at
-# 10: the first 5 reps are choice cards, the last 5 are typed production.
+# column needed; a miss naturally drops the word down the ladder. The stage
+# boundaries are no longer fixed — they scale with the word's own mastery bar
+# (levels.ladder_stages), which now depends on how far the word sits from the
+# user's level. At the legacy bar of 10 they still land on 3 and 5:
 #   reps 0-2 → recognition (EN→RU choice)
 #   reps 3-4 → reverse     (RU→EN choice)
-#   reps 5-9 → cloze        (type the word into an English sentence)
-REVERSE_AT = 3  # reps where choice flips to the RU→EN direction
-CLOZE_AT = 5    # reps where typed production starts
+#   reps 5-9 → cloze       (type the word into an English sentence)
 CARD_RECOGNITION = "recognition"
 CARD_REVERSE = "reverse"
 CARD_CLOZE = "cloze"
@@ -172,14 +173,18 @@ def _days_ago_phrase(last_reviewed_at, now: datetime | None = None) -> str | Non
     return f"{days} дн назад"
 
 
-def _progress_line(uw, now: datetime | None = None) -> str:
+def _progress_line(uw, now: datetime | None = None, target: int | None = None) -> str:
     """Small progress hint shown under the word on a push card. For a word being
     learned we spell out WHY it sits where it does — the raw N/10 read as a lie
     to users ('I know this, why 1/10?'); showing the miss count + last-seen makes
-    it honest ('2/10 because you missed it twice, last seen 9 days ago')."""
+    it honest ('2/10 because you missed it twice, last seen 9 days ago').
+
+    `target` is the word's own bar, which now varies with its level relative to
+    the user — printing the flat 10 here would put the denominator out of step
+    with the rule that actually promotes the word."""
     if uw.status == WordStatus.MASTERED.value:
         return f"⭐ {uw.mastery_score:.1f} / 5"
-    parts = [f"🌱 {uw.repetitions_count} / {MASTERED_REPS_NORMAL}"]
+    parts = [f"🌱 {uw.repetitions_count} / {target or MASTERED_REPS_NORMAL}"]
     if (uw.mistakes_count or 0) > 0:
         parts.append(f"❌ {uw.mistakes_count}")
     seen = _days_ago_phrase(uw.last_reviewed_at, now)
@@ -454,7 +459,7 @@ class PushService:
                     sent = True
                 break
             if stream == "new":
-                pick = await self._uw.pick_new_for_push(user.id, _TRACK)
+                pick = await self._uw.pick_new_for_push(user.id, _TRACK, user.level)
             elif stream == "repeat":
                 pick = await self._uw.pick_active_due(user.id, _TRACK, exclude_uw_id=last_word)
             else:
@@ -463,7 +468,7 @@ class PushService:
                 continue
             uw, _w = pick
             # Card type by production-ladder stage (recognition → reverse → cloze).
-            ctype = self._card_type(uw, _w)
+            ctype = self._card_type(uw, _w, user.level)
             msg_id, options, correct = await self._send_card(user, "word", uw.id, card_type=ctype)
             if msg_id:
                 state["inflight"] = self._inflight("word", uw.id, options, correct, now_ts, msg_id, ctype=ctype)
@@ -522,7 +527,9 @@ class PushService:
         built = (
             await self._build_grammar(item_id)
             if kind == "grammar"
-            else await self._build_card(user.id, item_id, card_type=card_type)
+            else await self._build_card(
+                user.id, item_id, card_type=card_type, user_level=user.level
+            )
         )
         if built is None:
             return None, None, None
@@ -591,10 +598,12 @@ class PushService:
         """Cloze needs an example whose target word can be masked (regular form)."""
         return _mask_target(word.example_sentence or "", word.writing) is not None
 
-    def _card_type(self, uw: UserWord, word: Word) -> str:
+    def _card_type(self, uw: UserWord, word: Word, user_level: str | None = None) -> str:
         """Which card type to show, by the word's production-ladder stage.
         New words always start on recognition; mastered words rotate types for
-        review variety. Choice cards up to CLOZE_AT, typed production after."""
+        review variety. The stage boundaries scale with the word's own mastery
+        bar (see `levels.ladder_stages`), so a short bar still walks the whole
+        ladder instead of promoting the word before it's ever typed."""
         if uw.status == WordStatus.NEW.value:
             return CARD_RECOGNITION
         if uw.status == WordStatus.MASTERED.value:
@@ -602,15 +611,20 @@ class PushService:
             if self._cloze_possible(word):
                 choices.append(CARD_CLOZE)
             return random.choice(choices)
+        reverse_at, cloze_at = ladder_stages(mastery_reps(word.level, user_level))
         reps = uw.repetitions_count or 0
-        if reps < REVERSE_AT:
+        if reps < reverse_at:
             return CARD_RECOGNITION
-        if reps < CLOZE_AT:
+        if reps < cloze_at:
             return CARD_REVERSE
         return CARD_CLOZE if self._cloze_possible(word) else CARD_REVERSE
 
     async def _build_card(
-        self, user_id: int, uw_id: int, card_type: str = CARD_RECOGNITION
+        self,
+        user_id: int,
+        uw_id: int,
+        card_type: str = CARD_RECOGNITION,
+        user_level: str | None = None,
     ) -> tuple[str, list[str], str, str] | None:
         pair = await self._uw.get_with_word(uw_id)
         if pair is None:
@@ -619,6 +633,7 @@ class PushService:
         ru = uw.custom_translation or word.translation
         if not ru:
             return None
+        target = mastery_reps(word.level, user_level)
         # Pre-answer surfaces must not leak English inside the RU gloss
         # («не могу (сокращение от cannot)» on a can't card = free answer).
         ru = strip_latin_hints(ru)
@@ -629,7 +644,7 @@ class PushService:
                 # Type the missing word into the English sentence (real recall).
                 text = (
                     f"{PUSH_CARD_CLOZE.format(translation=html.escape(ru), sentence=html.escape(masked))}"
-                    f"\n<i>{_progress_line(uw)}</i>"
+                    f"\n<i>{_progress_line(uw, target=target)}</i>"
                 )
                 # options=[] — answered by typing, not buttons.
                 return text, [], word.writing, uw.status
@@ -648,7 +663,7 @@ class PushService:
             random.shuffle(options)
             text = (
                 f"{PUSH_CARD_REVERSE.format(translation=html.escape(ru))}"
-                f"\n<i>{_progress_line(uw)}</i>"
+                f"\n<i>{_progress_line(uw, target=target)}</i>"
             )
             return text, options, answer, uw.status
 
@@ -664,7 +679,7 @@ class PushService:
             writing=word.writing,
             abstract_en=word.abstract_example_en,
             abstract_ru=word.abstract_example_ru,
-            progress=_progress_line(uw),
+            progress=_progress_line(uw, target=target),
         )
         return text, options, ru, uw.status
 
@@ -738,10 +753,13 @@ class PushService:
         grinding out the remaining reps. For a word the user genuinely knows but
         that sits at a low count because it surfaces rarely (or an old miss
         dropped it). Stays in the light mastered-review rotation."""
-        uw = await self._uw.get(uw_id, owner_id=user.id)
+        pair = await self._uw.get_with_word(uw_id, owner_id=user.id)  # scope: forged id can't hit another user
+        uw, word = pair if pair else (None, None)
         if uw is not None and uw.status != WordStatus.MASTERED.value:
             uw.status = WordStatus.MASTERED.value
-            uw.repetitions_count = MASTERED_REPS_NORMAL
+            # Park the counter on this word's own bar, not the legacy flat 10 —
+            # otherwise an unarchive later shows a nonsense "10 / 6".
+            uw.repetitions_count = mastery_reps(word.level, user.level)
             uw.mastery_score = 5.0
             uw.next_review_at = datetime.now(timezone.utc) + timedelta(days=7)
             await self._session.flush()
@@ -976,7 +994,12 @@ class PushService:
             return None
         uw, word = pair
         was_mastered = uw.status == WordStatus.MASTERED.value
-        apply_review(uw, ReviewResult.CORRECT if correct else ReviewResult.WRONG, LearningPace(ut.learning_pace))
+        apply_review(
+            uw,
+            ReviewResult.CORRECT if correct else ReviewResult.WRONG,
+            LearningPace(ut.learning_pace),
+            mastered_reps=mastery_reps(word.level, user.level),
+        )
 
         # Leech tracking: count consecutive misses on words still being learned.
         uw.consecutive_wrong, is_leech = _leech_after(uw.consecutive_wrong, correct, was_mastered)

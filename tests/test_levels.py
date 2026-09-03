@@ -3,11 +3,16 @@ from __future__ import annotations
 from app.domain.levels import (
     DEFAULT_LEVEL,
     LEVELS,
+    MASTERY_REPS_MIN,
     estimate_level,
     gap,
     index,
+    ladder_stages,
+    mastery_reps,
     normalize,
+    selection_rank,
     shift,
+    source_rank,
 )
 
 
@@ -75,3 +80,71 @@ def test_estimate_caps_at_the_hardest_tested_level():
 def test_estimate_handles_a_missing_or_empty_level_block():
     assert estimate_level({}) == "A1"
     assert estimate_level({"A1": [True, True, True], "A2": []}) == "A1"
+
+
+# ---- selection ranking (what gets taught next) ----
+
+
+def test_at_level_words_are_picked_before_anything_else():
+    ranks = {lvl: selection_rank(lvl, "B1") for lvl in ("A1", "A2", "B1", "B2", "C1")}
+    assert ranks["B1"] == min(ranks.values())
+
+
+def test_one_step_down_beats_one_step_up():
+    """A winnable word keeps someone going; the stretch comes second."""
+    assert selection_rank("A2", "B1") < selection_rank("B2", "B1")
+
+
+def test_two_steps_away_is_worse_than_one_in_either_direction():
+    for near in ("A2", "B2"):
+        for far in ("A1", "C1"):
+            assert selection_rank(near, "B1") < selection_rank(far, "B1")
+
+
+def test_untagged_word_lands_between_one_down_and_one_up():
+    assert selection_rank("A2", "B1") <= selection_rank(None, "B1") <= selection_rank("B2", "B1")
+
+
+def test_user_additions_outrank_pack_filler():
+    assert source_rank("manual") < source_rank("pack")
+    assert source_rank("txt_import") < source_rank("pack")
+    assert source_rank("course") < source_rank("pack")
+    assert source_rank(None) == source_rank("pack")
+
+
+# ---- mastery bar ----
+
+
+def test_bar_grows_with_difficulty():
+    assert mastery_reps("A1", "B1") < mastery_reps("B1", "B1") < mastery_reps("B2", "B1")
+
+
+def test_bar_at_level_is_reachable_unlike_the_old_flat_ten():
+    # Prod peaked at 9 reps and never crossed the flat bar of 10.
+    assert mastery_reps("B1", "B1") < 10
+
+
+def test_bar_never_drops_below_the_floor():
+    assert mastery_reps("A1", "C2") >= MASTERY_REPS_MIN
+
+
+def test_untagged_word_is_treated_as_at_level_not_as_hard():
+    assert mastery_reps(None, "B1") == mastery_reps("B1", "B1")
+
+
+# ---- ladder stages ----
+
+
+def test_legacy_bar_keeps_its_original_rungs():
+    assert ladder_stages(10) == (3, 5)
+
+
+def test_rungs_stay_distinct_and_ordered_at_every_bar():
+    for target in range(MASTERY_REPS_MIN, 13):
+        reverse_at, cloze_at = ladder_stages(target)
+        assert 1 <= reverse_at < cloze_at
+
+
+def test_shortest_bar_still_leaves_room_to_produce_the_word():
+    _reverse_at, cloze_at = ladder_stages(MASTERY_REPS_MIN)
+    assert cloze_at < MASTERY_REPS_MIN

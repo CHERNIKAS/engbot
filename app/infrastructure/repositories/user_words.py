@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import random
 from collections.abc import Iterable
 from datetime import datetime, timezone
 
@@ -8,8 +9,20 @@ from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.enums import LearningTrack, WordSource, WordStatus
+from app.domain.levels import (
+    DEFAULT_SOURCE_PRIORITY,
+    LEVELS,
+    SOURCE_PRIORITY,
+    UNKNOWN_LEVEL_RANK,
+    selection_rank,
+)
 from app.domain.models import Pack, PackWord, UserWord, Word
 from app.domain.quiz_text import strip_latin_hints
+
+# How many best-fitting candidates to shuffle between when introducing a new
+# word. Wide enough that the head of the queue varies, narrow enough that every
+# pick still comes from the right difficulty band.
+NEW_PICK_WINDOW = 8
 
 _TOKEN_SEPARATORS = "/,;()"
 
@@ -315,10 +328,31 @@ class UserWordRepository:
         return (await self.session.execute(q)).scalar_one()
 
     async def pick_new_for_push(
-        self, user_id: int, track: LearningTrack
+        self, user_id: int, track: LearningTrack, user_level: str | None = None
     ) -> tuple[UserWord, Word] | None:
-        """One brand-new (unstudied) quizzable word, oldest first — to introduce
-        into the active set when a slot frees up."""
+        """One brand-new (unstudied) quizzable word to introduce when a slot
+        frees up — chosen by how well it fits the user, not by when it arrived.
+
+        This used to be `order_by(created_at)`, which handed words out in
+        whatever order they were imported: a TXT file's line order, or a pack's
+        migration order. With ~4k words sitting in NEW that meant the queue was
+        effectively arbitrary, and nothing ever looked at difficulty.
+
+        Ordering now: distance from the user's level first (see
+        `levels.selection_rank`), then common words before rare ones, then the
+        user's own additions ahead of catalogue filler, then age as a stable
+        tiebreak. The final pick is random inside a small head window so the
+        same word doesn't sit at the front of the queue forever — the ordering
+        decides the band, not the exact word.
+        """
+        level_rank = case(
+            {lv: selection_rank(lv, user_level) for lv in LEVELS},
+            value=Word.level,
+            else_=UNKNOWN_LEVEL_RANK,
+        )
+        source_priority = case(
+            SOURCE_PRIORITY, value=UserWord.source, else_=DEFAULT_SOURCE_PRIORITY
+        )
         q = (
             select(UserWord, Word)
             .join(Word, Word.id == UserWord.word_id)
@@ -329,11 +363,21 @@ class UserWordRepository:
                 UserWord.status == WordStatus.NEW.value,
                 Word.translation.isnot(None),
             )
-            .order_by(UserWord.created_at.asc())
-            .limit(1)
+            .order_by(
+                level_rank,
+                # NULLS LAST: an untagged word shouldn't read as "maximally
+                # common" just because its rank was never filled in.
+                Word.freq_rank.asc().nulls_last(),
+                source_priority,
+                UserWord.created_at.asc(),
+            )
+            .limit(NEW_PICK_WINDOW)
         )
-        row = (await self.session.execute(q)).first()
-        return (row[0], row[1]) if row is not None else None
+        rows = (await self.session.execute(q)).all()
+        if not rows:
+            return None
+        row = random.choice(rows)
+        return (row[0], row[1])
 
     async def pick_active_due(
         self, user_id: int, track: LearningTrack, exclude_uw_id: int = 0, now: datetime | None = None

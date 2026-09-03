@@ -8,6 +8,7 @@ from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import get_settings
+from app.domain.levels import mastery_reps
 from app.domain.enums import (
     PACE_NEW_WORDS_PER_SESSION,
     LearningPace,
@@ -268,9 +269,10 @@ class StudySessionService:
         track = LearningTrack(snap["track"])
 
         for uw_id in drill.learned:
-            uw = await self._user_words.get(uw_id)
-            if uw is None:
+            pair = await self._user_words.get_with_word(uw_id)
+            if pair is None:
                 continue
+            uw, word = pair
             m = drill.mistakes_for(uw_id)
             if m == 0:
                 result = ReviewResult.NORMAL
@@ -278,7 +280,7 @@ class StudySessionService:
                 result = ReviewResult.HARD
             else:
                 result = ReviewResult.WRONG
-            apply_review(uw, result, pace)
+            apply_review(uw, result, pace, mastered_reps=mastery_reps(word.level, user.level))
             await self._reviews.create(
                 user_id=user.id,
                 track=track,

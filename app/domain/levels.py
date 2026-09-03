@@ -51,6 +51,75 @@ def shift(level: str | None, steps: int) -> str:
     return LEVELS[max(0, min(len(LEVELS) - 1, pos))]
 
 
+# How a word's distance from the user orders the "what next?" queue. Lower
+# sorts first. At-level words dominate; one step down comes next (a win the
+# user can actually get keeps them going); one step up is the stretch that
+# moves them. Two steps either way is a last resort — trivia or a wall.
+_SELECTION_RANKS: dict[int, int] = {0: 0, -1: 1, 1: 2, -2: 4, 2: 5}
+# An untagged word sits between "one down" and "one up": it's usually something
+# the user typed in themselves, so it deserves a good slot, but its difficulty
+# is unknown and shouldn't outrank a word we've actually measured.
+UNKNOWN_LEVEL_RANK = 2
+_FAR_RANK = 6
+
+
+def selection_rank(word_level: str | None, user_level: str | None) -> int:
+    """Queue priority for one candidate word — lower is picked sooner."""
+    if not word_level:
+        return UNKNOWN_LEVEL_RANK
+    return _SELECTION_RANKS.get(gap(word_level, user_level), _FAR_RANK)
+
+
+# Words the user chose themselves are worth more than catalogue filler, but only
+# as a tiebreak inside the same difficulty band — letting a bulk TXT import jump
+# the queue wholesale is how the old date-ordered picker went wrong.
+SOURCE_PRIORITY: dict[str, int] = {"manual": 0, "txt_import": 0, "course": 1, "pack": 2}
+DEFAULT_SOURCE_PRIORITY = 2
+
+
+def source_rank(source: str | None) -> int:
+    return SOURCE_PRIORITY.get(source or "", DEFAULT_SOURCE_PRIORITY)
+
+
+# Correct answers needed to call a word learned, by how far above the user it
+# sits. A flat bar of 10 was the old rule, and prod showed it never fired once:
+# active words averaged 5.1 reps and peaked at 9, so the only words ever marked
+# learned came in through the easy path or the "I know this" button. A word well
+# below the user's level doesn't need ten passes to prove anything, and a word
+# above them earns the long haul.
+_MASTERY_REPS: dict[int, int] = {-2: 3, -1: 4, 0: 6, 1: 8}
+MASTERY_REPS_FAR = 10
+MASTERY_REPS_MIN = 3
+
+
+def mastery_reps(word_level: str | None, user_level: str | None) -> int:
+    """How many correct answers this word needs from this user to count as
+    learned. Unknown word level is treated as at-level, not as hard."""
+    if not word_level:
+        return _MASTERY_REPS[0]
+    return _MASTERY_REPS.get(gap(word_level, user_level), MASTERY_REPS_FAR)
+
+
+# The production ladder's stages as fractions of a word's mastery bar, taken
+# from the shape the flat bar of 10 had (reverse at 3, cloze at 5). They have to
+# scale with the bar: pinning them to 3 and 5 while an at-level word masters at 6
+# would leave exactly one typed rep before promotion, and a word below the user's
+# level would be promoted before ever being typed at all.
+_REVERSE_FRACTION = 0.3
+_CLOZE_FRACTION = 0.5
+
+
+def ladder_stages(mastery_target: int) -> tuple[int, int]:
+    """(reverse_at, cloze_at) rep counts for a word with this mastery bar.
+
+    Always leaves at least one rep in each stage, so even the shortest bar walks
+    recognition -> reverse -> production rather than skipping straight to typing.
+    """
+    reverse_at = max(1, round(mastery_target * _REVERSE_FRACTION))
+    cloze_at = max(reverse_at + 1, round(mastery_target * _CLOZE_FRACTION))
+    return reverse_at, cloze_at
+
+
 def estimate_level(answers: dict[str, list[bool]]) -> str:
     """Placement-test verdict.
 

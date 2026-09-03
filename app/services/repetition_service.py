@@ -37,9 +37,17 @@ def apply_review(
     result: ReviewResult,
     pace: LearningPace,
     now: datetime | None = None,
+    mastered_reps: int | None = None,
 ) -> UserWord:
-    """Mutates user_word in place with new ease/interval/status based on result+pace."""
+    """Mutates user_word in place with new ease/interval/status based on result+pace.
+
+    `mastered_reps` is the bar for this particular word — callers that know the
+    word's level and the user's pass `levels.mastery_reps(...)`, so an easy word
+    stops being drilled sooner than a hard one. Defaults to the flat legacy bar
+    for callers that don't (grammar items, which have no CEFR level).
+    """
     now = now or datetime.now(timezone.utc)
+    target_reps = MASTERED_REPS_NORMAL if mastered_reps is None else max(1, mastered_reps)
 
     # Mastered words never leave the "learned" pool (no return to active study);
     # only their 0–5 score moves: +step on correct, -step on wrong.
@@ -76,7 +84,7 @@ def apply_review(
     elif result in (ReviewResult.NORMAL, ReviewResult.CORRECT):
         interval = max(interval * ease, 1.0) if interval > 0 else 1.0
         reps += 1
-        if reps >= MASTERED_REPS_NORMAL:
+        if reps >= target_reps:
             user_word.status = WordStatus.MASTERED.value
             user_word.mastery_score = MASTERY_SCORE_MAX
         elif user_word.status == WordStatus.NEW.value:
