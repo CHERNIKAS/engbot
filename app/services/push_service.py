@@ -1053,6 +1053,7 @@ class PushService:
             kind=_answer_kind(card_type, correct),
             word_level=word.level,
             user_level=user.level,
+            production_possible=self._cloze_possible(word),
         )
 
         # Leech tracking: count consecutive misses on words still being learned.

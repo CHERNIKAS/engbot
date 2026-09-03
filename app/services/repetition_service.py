@@ -50,6 +50,7 @@ def apply_review(
     kind: str | None = None,
     word_level: str | None = None,
     user_level: str | None = None,
+    production_possible: bool = True,
 ) -> UserWord:
     """Mutates user_word in place with new ease/interval/status based on result+pace.
 
@@ -104,7 +105,11 @@ def apply_review(
             if is_production(kind):
                 user_word.production_count = (user_word.production_count or 0) + 1
             graduated = is_mastered(
-                user_word.learning_score, user_word.production_count, word_level, user_level
+                user_word.learning_score,
+                user_word.production_count,
+                word_level,
+                user_level,
+                production_possible=production_possible,
             )
         else:
             graduated = reps >= target_reps

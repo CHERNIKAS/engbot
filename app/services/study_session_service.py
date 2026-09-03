@@ -316,6 +316,9 @@ class StudySessionService:
                 kind=kind,
                 word_level=word.level,
                 user_level=user.level,
+                # Phrases clear the drill after the QUIZ stage by design, so
+                # they can never accumulate typed answers.
+                production_possible=uw_id not in drill.quiz_only,
             )
             await self._reviews.create(
                 user_id=user.id,

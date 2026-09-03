@@ -44,6 +44,10 @@ _CLOZE_INFLECT = r"(?:s|es|ed|d|ing|ly|er|est)?"
 
 MIN_WORDS = 4
 MAX_WORDS = 14
+# Words that must survive after the target is blanked out. A phrasebook entry
+# whose "example" is the phrase itself masks down to "___." — a cloze card with
+# nothing left to infer from.
+MIN_CONTEXT_WORDS = 3
 
 SYSTEM = """Ты составляешь примеры для карточек изучения английских слов.
 
@@ -112,19 +116,50 @@ def too_hard_words(sentence: str, level: str | None, lexicon: dict[str, str]) ->
     return sorted(set(out))
 
 
-def check(row: dict[str, Any], word: dict[str, Any], lexicon: dict[str, str]) -> list[str]:
-    """Every reason this candidate is unusable. Empty list means it's good."""
+def check(
+    row: dict[str, Any],
+    word: dict[str, Any],
+    lexicon: dict[str, str],
+    hints_only: bool = False,
+) -> list[str]:
+    """Every reason this candidate is unusable. Empty list means it's good.
+
+    `hints_only` is for words that already have a hand-written example and need
+    only the context hint: judging the throwaway sentence would reject good
+    hints for a field that is never written.
+    """
     problems: list[str] = []
     sentence = (row.get("sentence") or "").strip()
     hint_en = (row.get("hint_en") or "").strip()
     hint_ru = (row.get("hint_ru") or "").strip()
     target = word["w"]
 
+    if hints_only:
+        if hint_en and contains_word(hint_en, target):
+            problems.append(f"в hint_en есть само слово '{target}' — это спойлер")
+        if not hint_en or not hint_ru:
+            problems.append("пустая подсказка")
+        hard = too_hard_words(hint_en, word.get("lvl"), lexicon)
+        if hard:
+            problems.append(
+                f"в hint_en слова сложнее уровня {word.get('lvl')}: {', '.join(hard[:4])}"
+            )
+        return problems
+
     if not contains_word(sentence, target):
         problems.append(f"в sentence нет слова '{target}' в маскируемой форме")
     n = len(sentence.split())
     if not (MIN_WORDS <= n <= MAX_WORDS):
         problems.append(f"длина sentence {n} слов, нужно {MIN_WORDS}-{MAX_WORDS}")
+    else:
+        masked = re.sub(
+            rf"{re.escape(target)}{_CLOZE_INFLECT}", "___", sentence, flags=re.IGNORECASE
+        )
+        left = len(_TOKEN.findall(masked))
+        if left < MIN_CONTEXT_WORDS:
+            problems.append(
+                f"после скрытия слова остаётся {left} слов — восстановить не по чему"
+            )
     if hint_en and contains_word(hint_en, target):
         problems.append(f"в hint_en есть само слово '{target}' — это спойлер")
     if not hint_en or not hint_ru:
@@ -207,6 +242,11 @@ def main() -> None:
     ap.add_argument("--batch", type=int, default=20)
     ap.add_argument("--rounds", type=int, default=3, help="retry rounds for rejected rows")
     ap.add_argument("--model", default=DEFAULT_MODEL)
+    ap.add_argument(
+        "--hints-only",
+        action="store_true",
+        help="word already has an example; judge only the context hint",
+    )
     args = ap.parse_args()
 
     key = read_api_key()
@@ -239,7 +279,7 @@ def main() -> None:
                 if row is None:
                     still[wid] = word
                     continue
-                problems = check(row, word, lexicon)
+                problems = check(row, word, lexicon, hints_only=args.hints_only)
                 if problems:
                     rejected_total += 1
                     notes[wid] = problems
@@ -247,7 +287,7 @@ def main() -> None:
                     continue
                 done[str(wid)] = {
                     "id": wid,
-                    "sentence": row["sentence"].strip(),
+                    "sentence": (row.get("sentence") or "").strip(),
                     "hint_en": row["hint_en"].strip(),
                     "hint_ru": row["hint_ru"].strip(),
                 }

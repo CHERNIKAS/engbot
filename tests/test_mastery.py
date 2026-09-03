@@ -129,3 +129,23 @@ def test_a_word_below_the_user_graduates_sooner_than_one_above():
     assert is_mastered(easy_score, easy_prod, "A1", "B1")
     assert not is_mastered(easy_score, easy_prod, "C1", "B1")
     assert is_mastered(hard_score, hard_prod, "C1", "B1")
+
+
+# ---- words that can never be typed ----
+
+
+def test_a_phrase_that_cannot_be_typed_still_graduates_on_score():
+    """"Is it far from here?" is already a whole sentence — there is nowhere to
+    blank it out inside another one, so it can never earn a typed answer.
+    Holding it to the production floor would make it unlearnable."""
+    target_score, _needed = target_for("A2", "A2")
+    assert is_mastered(target_score, 0, "A2", "A2", production_possible=False)
+
+
+def test_waiving_production_does_not_waive_the_score():
+    assert not is_mastered(0.0, 0, "A2", "A2", production_possible=False)
+
+
+def test_the_floor_still_applies_wherever_typing_is_possible():
+    target_score, _needed = target_for("A2", "A2")
+    assert not is_mastered(target_score, 0, "A2", "A2", production_possible=True)

@@ -90,9 +90,22 @@ def apply_credit(score: float, kind: str) -> float:
 
 
 def is_mastered(
-    score: float, production_count: int, word_level: str | None, user_level: str | None
+    score: float,
+    production_count: int,
+    word_level: str | None,
+    user_level: str | None,
+    production_possible: bool = True,
 ) -> bool:
     """Both gates must pass. The score alone could be reached on choice cards;
-    the production floor is what stops a guessed word from graduating."""
+    the production floor is what stops a guessed word from graduating.
+
+    `production_possible` is False for a word the bot cannot ask anyone to type
+    — a phrase like "Is it far from here?" is already a whole sentence and has
+    nowhere to be blanked out inside another one. Holding those to a floor they
+    can never reach would make them unlearnable, so for them the score alone
+    decides. The floor stays exactly where it can actually be met.
+    """
     target_score, needed_production = target_for(word_level, user_level)
-    return score >= target_score and production_count >= needed_production
+    if score < target_score:
+        return False
+    return production_possible is False or production_count >= needed_production
