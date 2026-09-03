@@ -46,17 +46,20 @@ def ceiling_of(pace: int) -> int:
 
 # How big the active pool may get, derived from how much the user actually
 # answers instead of from a number they picked once. `pace × 3` ignored their
-# real throughput, and prod showed exactly what that costs:
+# real throughput, and prod showed exactly what that costs. Only ~52% of pushed
+# cards repeat an active word (the rest are new words, mastered-word refreshers
+# and grammar), so a pool of A words at T answers a day recurs every
+# A / (0.52 × T) days:
 #
-#   user  active  answers/day  days per word  mastered
-#     1      63       8.9          ~7            17
-#     3      22      13.9          ~1.6          37
-#     2      20       3.9          ~5             4
+#   user  active  answers/day  days between sightings  mastered
+#     1      63       8.9              ~13.6              17
+#     3      22      13.9               ~3.0              37
+#     2      20       3.9               ~9.9               4
 #
-# User 3 answers less in total than user 1 and has mastered twice as many words
-# — a word only sticks if it comes back before it's forgotten, and the pool size
-# is what decides that. 1.5 answers-per-day per active word is user 3's ratio,
-# the one shape in prod that demonstrably works.
+# User 3 answers less in total than user 1 and has mastered twice as many words:
+# a word only sticks if it comes back before it's forgotten, and pool size is
+# what decides that. User 3's ratio of active words to daily answers — the one
+# shape in prod that demonstrably works — is the calibration target.
 THROUGHPUT_TO_POOL = 1.5
 MIN_POOL = 5  # below this a beginner would run dry between cards
 MAX_POOL = 40  # above this even a heavy user can't cycle the pool

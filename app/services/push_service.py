@@ -461,9 +461,9 @@ class PushService:
         pace = pace_of(ut.settings)
         # The pool is sized by what the user actually answers, not by the pace
         # they picked once: `pace × 3` let user 1 sit on 63 active words at ~9
-        # answers a day, so each word came back only every week and almost
-        # nothing ever stuck. See pacing.pool_ceiling.
-        throughput = await self._reviews.answers_per_active_day(user.id, _TRACK)
+        # answers a day, so a word only came back every couple of weeks and
+        # almost nothing ever stuck. See pacing.pool_ceiling.
+        throughput = await self._reviews.typical_daily_answers(user.id, _TRACK)
         ceiling = pool_ceiling(throughput)
         new_today = int(state.get("new_today", 0))
         active_count = await self._uw.count_active(user.id, _TRACK)

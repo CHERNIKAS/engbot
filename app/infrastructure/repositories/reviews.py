@@ -32,15 +32,19 @@ class WordReviewRepository:
         await self.session.flush()
         return review
 
-    async def answers_per_active_day(
-        self, user_id: int, track: LearningTrack, days: int = 14
+    async def typical_daily_answers(
+        self, user_id: int, track: LearningTrack, days: int = 60
     ) -> float | None:
-        """Average answers on the days the user actually showed up, over the last
-        `days`. None when there's no history yet.
+        """A representative "good day" for this user, in answers. None with no history.
 
-        Averaged over *active* days rather than calendar days on purpose: this
-        number sizes the active word pool, and a week off shouldn't shrink
-        someone's pool to nothing and then starve them when they come back.
+        The 75th percentile of the days they actually showed up — not the mean,
+        and not a short window. Both of those read a lull as a loss of capacity:
+        over 14 days one prod user averaged 4.2 answers a day against 13.9
+        across their whole history, and sizing their word pool on 4.2 would have
+        starved them for as long as the slump lasted. Capacity is better
+        described by someone's good days than by their average one.
+
+        Days with no answers are excluded, so time off shrinks nothing.
         """
         since = datetime.now(timezone.utc) - timedelta(days=days)
         per_day = (
@@ -53,7 +57,11 @@ class WordReviewRepository:
             .group_by(func.date_trunc("day", WordReview.reviewed_at))
             .subquery()
         )
-        value = (await self.session.execute(select(func.avg(per_day.c.c)))).scalar()
+        value = (
+            await self.session.execute(
+                select(func.percentile_cont(0.75).within_group(per_day.c.c.asc()))
+            )
+        ).scalar()
         return float(value) if value is not None else None
 
 
