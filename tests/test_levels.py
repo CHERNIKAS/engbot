@@ -2,16 +2,19 @@ from __future__ import annotations
 
 from app.domain.levels import (
     DEFAULT_LEVEL,
-    LEVELS,
     DEMOTE_ACCURACY,
     DEMOTE_MIN_ATTEMPTS,
+    LEVELS,
     MASTERY_REPS_MIN,
     PROMOTE_MASTERED,
-    estimate_level,
+    TEST_LEVELS,
+    TEST_START_LEVEL,
+    block_passed,
     gap,
     index,
     ladder_stages,
     mastery_reps,
+    next_test_level,
     normalize,
     recalibrated_level,
     selection_rank,
@@ -48,42 +51,6 @@ def test_shift_clamps_at_both_ends():
     assert shift("A1", -5) == "A1"
     assert shift("C2", 5) == "C2"
     assert shift("A2", 1) == "B1"
-
-
-def test_estimate_takes_hardest_level_still_held():
-    answers = {
-        "A1": [True, True, True],
-        "A2": [True, True, False],  # 2/3 — still held
-        "B1": [False, False, True],  # 1/3 — fails here
-        "B2": [False, False, False],
-    }
-    assert estimate_level(answers) == "A2"
-
-
-def test_estimate_stops_at_first_failure_despite_a_lucky_guess_above():
-    # Failing B1 but passing B2 is luck, not ability — the walk must stop at B1.
-    answers = {
-        "A1": [True, True, True],
-        "A2": [True, True, True],
-        "B1": [False, True, False],
-        "B2": [True, True, True],
-    }
-    assert estimate_level(answers) == "A2"
-
-
-def test_estimate_floors_at_a1_when_nothing_is_held():
-    answers = {"A1": [False, False, False], "A2": [False, False, False]}
-    assert estimate_level(answers) == "A1"
-
-
-def test_estimate_caps_at_the_hardest_tested_level():
-    answers = {lvl: [True, True, True] for lvl in ("A1", "A2", "B1", "B2")}
-    assert estimate_level(answers) == "B2"
-
-
-def test_estimate_handles_a_missing_or_empty_level_block():
-    assert estimate_level({}) == "A1"
-    assert estimate_level({"A1": [True, True, True], "A2": []}) == "A1"
 
 
 # ---- selection ranking (what gets taught next) ----
@@ -198,3 +165,58 @@ def test_no_move_past_the_ends_of_the_scale():
 
 def test_unplaced_user_is_recalibrated_from_the_default():
     assert recalibrated_level(None, PROMOTE_MASTERED, 0, 0) == shift(DEFAULT_LEVEL, 1)
+
+
+# ---- adaptive staircase ----
+
+
+def _walk(can_pass: set[str]) -> tuple[str, list[str]]:
+    """Run the staircase for a learner who passes exactly `can_pass`."""
+    level, tested, verdict = TEST_START_LEVEL, set(), TEST_LEVELS[0]
+    order: list[str] = []
+    while level is not None:
+        order.append(level)
+        tested.add(level)
+        level, verdict = next_test_level(level, level in can_pass, tested)
+    return verdict, order
+
+
+def test_a_beginner_stops_after_two_blocks():
+    verdict, order = _walk(set())
+    assert verdict == "A1"
+    assert order == [TEST_START_LEVEL, "A1"]
+
+
+def test_an_advanced_learner_climbs_to_the_top():
+    verdict, order = _walk({"A1", "A2", "B1", "B2"})
+    assert verdict == "B2"
+    assert order == ["A2", "B1", "B2"]
+
+
+def test_the_staircase_stops_at_the_first_level_they_fail():
+    verdict, order = _walk({"A1", "A2", "B1"})
+    assert verdict == "B1"
+    assert order == ["A2", "B1", "B2"]
+
+
+def test_someone_who_only_holds_a1_lands_on_a1():
+    verdict, _order = _walk({"A1"})
+    assert verdict == "A1"
+
+
+def test_no_level_is_ever_asked_twice():
+    for can_pass in (set(), {"A1"}, {"A1", "A2"}, {"A1", "A2", "B1"}, {"A1", "A2", "B1", "B2"}):
+        _verdict, order = _walk(can_pass)
+        assert len(order) == len(set(order)), can_pass
+
+
+def test_reaching_the_top_requires_clearing_every_level_below():
+    """Which is what makes guessing expensive: one lucky block can't promote."""
+    _verdict, order = _walk({"A1", "A2", "B1", "B2"})
+    assert order.index("A2") < order.index("B1") < order.index("B2")
+
+
+def test_block_pass_needs_a_majority():
+    assert block_passed([True, True, False])
+    assert not block_passed([True, False, False])
+    assert not block_passed([])

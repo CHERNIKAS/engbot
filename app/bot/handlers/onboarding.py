@@ -42,7 +42,7 @@ from app.bot.texts import (
     LEVEL_UPDATED,
 )
 from app.domain.enums import LearningTrack, enabled_tracks
-from app.domain.levels import DEFAULT_LEVEL, TEST_LEVELS, TEST_PER_LEVEL
+from app.domain.levels import DEFAULT_LEVEL
 from app.domain.models import User
 from app.services.placement_service import (
     ORIGIN_GATE,
@@ -261,7 +261,7 @@ async def on_goal_picked(
     )
     if query.message:
         await query.message.edit_text(
-            PLACEMENT_INTRO.format(total=len(TEST_LEVELS) * TEST_PER_LEVEL),
+            PLACEMENT_INTRO,
             reply_markup=placement_intro_kb(),
         )
     await query.answer()
@@ -269,9 +269,7 @@ async def on_goal_picked(
 
 def _render_card(card: PlacementCard) -> tuple[str, object]:
     return (
-        PLACEMENT_CARD.format(
-            writing=html.escape(card.writing), position=card.position, total=card.total
-        ),
+        PLACEMENT_CARD.format(writing=html.escape(card.writing), position=card.position),
         placement_card_kb(card.options),
     )
 
@@ -435,6 +433,6 @@ async def on_custom_goal_text(
         daily_goal=value,
     )
     await message.answer(
-        PLACEMENT_INTRO.format(total=len(TEST_LEVELS) * TEST_PER_LEVEL),
+        PLACEMENT_INTRO,
         reply_markup=placement_intro_kb(),
     )

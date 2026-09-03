@@ -30,7 +30,6 @@ from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 from app.bot.keyboards.onboarding import placement_gate_kb
 from app.bot.texts import PLACEMENT_GATE
 from app.config import get_settings
-from app.domain.levels import TEST_LEVELS, TEST_PER_LEVEL
 from app.domain.models import User
 
 
@@ -64,7 +63,7 @@ async def main() -> None:
         token=settings.bot_token,
         default=DefaultBotProperties(parse_mode=ParseMode.HTML),
     )
-    text = PLACEMENT_GATE.format(total=len(TEST_LEVELS) * TEST_PER_LEVEL)
+    text = PLACEMENT_GATE
     sent = failed = 0
     try:
         for tid in rows:

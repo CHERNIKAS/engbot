@@ -155,24 +155,41 @@ def recalibrated_level(
     return None
 
 
-def estimate_level(answers: dict[str, list[bool]]) -> str:
-    """Placement-test verdict.
+# Where the adaptive test starts. Beginning in the middle means a beginner
+# finishes after two blocks (fail A2, fail A1) and an advanced learner after
+# three, instead of everyone answering every level.
+TEST_START_LEVEL = "A2"
 
-    `answers` maps a CEFR level to the per-word "did you know it?" flags shown
-    for that level. The result is the hardest level the user still holds, where
-    "holds" means recognising at least TEST_PASS_RATIO of its words.
 
-    Deliberately walks upward and stops at the first level the user fails,
-    rather than taking the hardest passed level anywhere in the test: someone
-    who guesses one B2 word right after failing B1 is a B1 learner who got
-    lucky, not a B2 one.
+def next_test_level(
+    current: str, passed: bool, tested: set[str]
+) -> tuple[str | None, str]:
+    """One step of the placement staircase.
+
+    Returns (level to test next, verdict so far). A `None` level means stop and
+    take the verdict.
+
+    Climbing while they pass and stopping at the first failure is what makes
+    guessing expensive: reaching B2 means clearing A2, B1 and B2 in turn, so a
+    lucky block no longer promotes anyone on its own.
     """
-    held = LEVELS[0]
-    for level in TEST_LEVELS:
-        flags = answers.get(level) or []
-        if not flags:
-            break
-        if sum(flags) / len(flags) < TEST_PASS_RATIO:
-            break
-        held = level
-    return held
+    pos = index(current)
+    if passed:
+        held = current
+        if pos + 1 >= len(TEST_LEVELS):
+            return None, held  # cleared the hardest level we test
+        nxt = TEST_LEVELS[pos + 1]
+        return (None, held) if nxt in tested else (nxt, held)
+    # Failed here. Anything below that we already cleared is the answer;
+    # otherwise step down and test that.
+    for lower in reversed(TEST_LEVELS[:pos]):
+        if lower in tested:
+            return None, lower
+    if pos == 0:
+        return None, TEST_LEVELS[0]
+    return TEST_LEVELS[pos - 1], TEST_LEVELS[0]
+
+
+def block_passed(flags: list[bool]) -> bool:
+    """Whether one level's block of questions counts as held."""
+    return bool(flags) and sum(flags) / len(flags) >= TEST_PASS_RATIO

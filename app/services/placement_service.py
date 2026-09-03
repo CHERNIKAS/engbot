@@ -17,7 +17,13 @@ from typing import Any
 
 from app.bot.states import InteractionState
 from app.domain.enums import LearningTrack
-from app.domain.levels import TEST_LEVELS, TEST_PER_LEVEL, estimate_level
+from app.domain.levels import (
+    TEST_LEVELS,
+    TEST_PER_LEVEL,
+    TEST_START_LEVEL,
+    block_passed,
+    next_test_level,
+)
 from app.domain.quiz_text import strip_latin_hints
 from app.infrastructure.repositories.words import WordRepository
 from app.services.interaction_state_service import InteractionStateService
@@ -42,16 +48,16 @@ class PlacementCard:
     total: int
 
 
-def _build_deck(
+def _build_decks(
     words_by_level: dict[str, list[Any]], pool_by_level: dict[str, list[str]]
-) -> list[dict[str, Any]]:
-    """Flatten the picked words into ordered quiz cards, easiest level first.
+) -> dict[str, list[dict[str, Any]]]:
+    """Quiz cards grouped by level, ready for the staircase to draw on.
 
     A card whose level has too few distinct translations to fill the options is
     dropped rather than padded from another level: a decoy from a different
     level is answerable by vibe, which would inflate the estimate.
     """
-    deck: list[dict[str, Any]] = []
+    decks: dict[str, list[dict[str, Any]]] = {}
     for level in TEST_LEVELS:
         words = words_by_level.get(level) or []
         pool = pool_by_level.get(level) or []
@@ -72,7 +78,7 @@ def _build_deck(
                 continue
             options = [correct, *decoys]
             random.shuffle(options)
-            deck.append(
+            decks.setdefault(level, []).append(
                 {
                     "level": level,
                     "writing": word.writing,
@@ -80,7 +86,7 @@ def _build_deck(
                     "correct": options.index(correct),
                 }
             )
-    return deck
+    return decks
 
 
 class PlacementService:
@@ -91,9 +97,8 @@ class PlacementService:
     async def start(
         self, user_id: int, track: LearningTrack, origin: str = ORIGIN_ONBOARDING
     ) -> PlacementCard | None:
-        """Build a deck and store it on the interaction state. None = the
-        catalogue can't fill a fair test, and the caller should skip placement
-        rather than show a broken one."""
+        """Build the card pool and serve the first question, or None when the
+        catalogue can't fill a fair test."""
         picked = await self._words.pick_placement_words(track, TEST_LEVELS, TEST_PER_LEVEL)
         pools: dict[str, list[str]] = {}
         for level, words in picked.items():
@@ -105,42 +110,61 @@ class PlacementService:
                 # or with each other and get dropped while filling a card.
                 limit=TEST_PER_LEVEL * OPTIONS_PER_CARD * 2,
             )
-        deck = _build_deck(picked, pools)
-        if not deck:
+        decks = _build_decks(picked, pools)
+        level = TEST_START_LEVEL if decks.get(TEST_START_LEVEL) else next(iter(decks), None)
+        if level is None:
             return None
-        await self._state.set(
-            user_id,
-            InteractionState.ONBOARDING_LEVEL,
-            {"deck": deck, "pos": 0, "answers": {}, "origin": origin},
-        )
-        return self._card(deck, 0)
+        state = {
+            "decks": decks,
+            "level": level,
+            "pos": 0,
+            "flags": [],
+            "tested": [],
+            "verdict": TEST_LEVELS[0],
+            "asked": 0,
+            "origin": origin,
+        }
+        await self._state.set(user_id, InteractionState.ONBOARDING_LEVEL, state)
+        return self._card(state)
 
     async def answer(self, user_id: int, chosen: int) -> tuple[PlacementCard | None, str | None]:
-        """Record one answer. Returns (next card, verdict level) — exactly one
-        of the two is set; a finished test returns (None, level)."""
+        """Record one answer and serve the next card, or finish.
+
+        Returns (next card, verdict) — exactly one is set. The test walks levels
+        rather than asking all of them: pass a block and it moves up, fail and
+        it settles on the hardest level already held. Reaching B2 therefore
+        means clearing A2 and B1 first, which is what stops a lucky block from
+        promoting anyone.
+        """
         payload = await self._state.get(user_id)
         if payload.state != InteractionState.ONBOARDING_LEVEL:
             return None, None
-        deck: list[dict[str, Any]] = payload.data.get("deck") or []
-        pos = int(payload.data.get("pos") or 0)
-        answers: dict[str, list[bool]] = payload.data.get("answers") or {}
-        origin = payload.data.get("origin") or ORIGIN_ONBOARDING
+        state = payload.data
+        decks: dict[str, list[dict[str, Any]]] = state.get("decks") or {}
+        level = str(state.get("level") or "")
+        deck = decks.get(level) or []
+        pos = int(state.get("pos") or 0)
         if not deck or pos >= len(deck):
             return None, None
 
-        card = deck[pos]
-        answers.setdefault(card["level"], []).append(chosen == card["correct"])
-        pos += 1
+        state["flags"] = [*(state.get("flags") or []), chosen == deck[pos]["correct"]]
+        state["pos"] = pos + 1
+        state["asked"] = int(state.get("asked") or 0) + 1
 
-        if pos >= len(deck):
-            return None, estimate_level(answers)
+        if state["pos"] < len(deck):
+            await self._state.set(user_id, InteractionState.ONBOARDING_LEVEL, state)
+            return self._card(state), None
 
-        await self._state.set(
-            user_id,
-            InteractionState.ONBOARDING_LEVEL,
-            {"deck": deck, "pos": pos, "answers": answers, "origin": origin},
-        )
-        return self._card(deck, pos), None
+        # Block finished — decide where the staircase goes next.
+        tested = {*(state.get("tested") or []), level}
+        nxt, verdict = next_test_level(level, block_passed(state["flags"]), tested)
+        state["tested"] = sorted(tested)
+        state["verdict"] = verdict
+        if nxt is None or not decks.get(nxt):
+            return None, verdict
+        state.update(level=nxt, pos=0, flags=[])
+        await self._state.set(user_id, InteractionState.ONBOARDING_LEVEL, state)
+        return self._card(state), None
 
     async def origin_of(self, user_id: int) -> str:
         """Where the running test was started from — read before clearing state,
@@ -149,12 +173,17 @@ class PlacementService:
         return payload.data.get("origin") or ORIGIN_ONBOARDING
 
     @staticmethod
-    def _card(deck: list[dict[str, Any]], pos: int) -> PlacementCard:
-        row = deck[pos]
+    def _card(state: dict[str, Any]) -> PlacementCard:
+        deck = state["decks"][state["level"]]
+        row = deck[int(state["pos"])]
+        asked = int(state.get("asked") or 0)
         return PlacementCard(
             writing=row["writing"],
             options=list(row["options"]),
             correct_index=int(row["correct"]),
-            position=pos + 1,
-            total=len(deck),
+            position=asked + 1,
+            # The total isn't known up front — the staircase stops as soon as
+            # the level is bracketed — so this is the worst case, and the card
+            # reads "3 of up to 12" rather than promising a fixed length.
+            total=len(TEST_LEVELS) * TEST_PER_LEVEL,
         )

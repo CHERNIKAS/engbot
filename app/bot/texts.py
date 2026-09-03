@@ -25,11 +25,14 @@ ONBOARDING_DONE = "🎉 Всё настроено! Удачной учёбы �
 # Placement test — gives the picker a level to aim at.
 PLACEMENT_INTRO = (
     "Давай прикинем твой уровень 📏\n\n"
-    "Покажу {total} слов от простых к сложным — выбирай перевод. "
-    "Не знаешь — жми «Не знаю», это тоже ответ, а не ошибка.\n\n"
-    "Займёт минуту."
+    "Буду показывать слова и подбирать сложность по ходу — справляешься, "
+    "даю сложнее; не идёт, беру попроще.\n\n"
+    "Не знаешь слово — жми «Не знаю», это тоже ответ, а не ошибка. "
+    "Обычно хватает 6–9 слов."
 )
-PLACEMENT_CARD = "<b>{writing}</b>\n\nЧто это значит?   ({position} из {total})"
+# No fixed length to promise: the staircase stops as soon as the level is
+# bracketed, so the card counts questions instead of pretending to know the end.
+PLACEMENT_CARD = "<b>{writing}</b>\n\nЧто это значит?   (вопрос {position})"
 PLACEMENT_RESULT = (
     "Готово! Твой уровень — <b>{level}</b> ✨\n\n"
     "Буду подбирать слова под него: в основном по уровню, "

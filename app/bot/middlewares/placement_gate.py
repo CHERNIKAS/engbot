@@ -19,7 +19,6 @@ from aiogram.types import CallbackQuery, Message, TelegramObject
 
 from app.bot.keyboards.onboarding import placement_gate_kb
 from app.bot.texts import PLACEMENT_GATE, PLACEMENT_GATE_HINT
-from app.domain.levels import TEST_LEVELS, TEST_PER_LEVEL
 
 # Callback prefixes the gate always lets through: taking the test, and answering
 # its cards. Everything else — menus, drills, push answers — waits.
@@ -53,7 +52,7 @@ class PlacementGateMiddleware(BaseMiddleware):
             # Any message — /start, a menu tap, a typed answer — gets the same
             # screen with the only button that moves them forward.
             await event.answer(
-                PLACEMENT_GATE.format(total=len(TEST_LEVELS) * TEST_PER_LEVEL),
+                PLACEMENT_GATE,
                 reply_markup=placement_gate_kb(),
             )
             return None

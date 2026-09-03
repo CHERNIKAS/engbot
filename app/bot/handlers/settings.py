@@ -415,9 +415,7 @@ async def on_level_test(
         return
     if query.message:
         await query.message.edit_text(
-            PLACEMENT_CARD.format(
-                writing=html.escape(card.writing), position=card.position, total=card.total
-            ),
+            PLACEMENT_CARD.format(writing=html.escape(card.writing), position=card.position),
             reply_markup=placement_card_kb(card.options),
             parse_mode="HTML",
         )
