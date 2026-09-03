@@ -30,7 +30,12 @@ async def _progress_text(
     progress = ProgressService(session)
     active = await uts.list_active(user.id)
     views = [
-        await progress.track_view(user.id, LearningTrack(ut.track), ut.daily_goal_words, tz_name=user.timezone)
+        await progress.track_view(
+            user.id,
+            LearningTrack(ut.track),
+            await progress.typical_goal(user.id, LearningTrack(ut.track)),
+            tz_name=user.timezone,
+        )
         for ut in active
     ]
     course = await course_progress_or_none(session, redis, user, active)

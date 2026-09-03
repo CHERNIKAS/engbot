@@ -28,7 +28,6 @@ def level_screen_kb() -> InlineKeyboardMarkup:
 
 def settings_kb() -> InlineKeyboardMarkup:
     rows = [
-        [InlineKeyboardButton(text="🎯 Дневная цель", callback_data=SettingsCB(action="goal").pack())],
         [InlineKeyboardButton(text="⚡ Темп обучения", callback_data=SettingsCB(action="pace").pack())],
         [InlineKeyboardButton(text="🔔 Пуш-обучение", callback_data=SettingsCB(action="push_open").pack())],
         [InlineKeyboardButton(text="🕐 Часовой пояс", callback_data=SettingsCB(action="tz_open").pack())],

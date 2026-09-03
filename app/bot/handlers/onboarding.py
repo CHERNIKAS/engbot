@@ -12,7 +12,6 @@ from app.config import get_settings
 from app.bot.keyboards.main_menu import main_menu_reply_kb
 from app.bot.keyboards.course import course_onboarding_offer_kb
 from app.bot.keyboards.onboarding import (
-    daily_goal_kb,
     onboarding_intro_kb,
     placement_card_kb,
     placement_intro_kb,
@@ -21,12 +20,7 @@ from app.bot.keyboards.onboarding import (
 from app.bot.keyboards.settings import level_screen_kb
 from app.bot.states import InteractionState
 from app.bot.texts import (
-    ASK_CUSTOM_GOAL,
-    ASK_DAILY_GOAL,
     ASK_TRACKS,
-    ERROR_GOAL_NOT_NUMBER,
-    ERROR_GOAL_TOO_BIG,
-    ERROR_GOAL_TOO_SMALL,
     INTRO,
     MAIN_MENU,
     ONBOARDING_DONE,
@@ -53,7 +47,6 @@ from app.services.placement_service import (
 from app.services.analytics import EVENT_ONBOARDING_COMPLETED, Analytics
 from app.services.interaction_state_service import InteractionStateService
 from app.services.track_context_service import TrackContextService
-from app.services.user_service import UserService
 from app.services.user_track_service import UserTrackService
 
 router = Router(name="onboarding")
@@ -147,24 +140,60 @@ async def on_password_text(
     await message.answer(INTRO, reply_markup=onboarding_intro_kb(), parse_mode="HTML")
 
 
+
+async def _finish_setup(
+    query: CallbackQuery,
+    *,
+    user: User,
+    state_service: InteractionStateService,
+    user_track_service: UserTrackService,
+    track_context: TrackContextService,
+    analytics: Analytics,
+    tracks: set[LearningTrack],
+) -> None:
+    """Close out setup and hand straight to the placement test.
+
+    The daily-goal question used to sit here. It set a number that now decides
+    nothing — the active pool is sized from measured throughput and the progress
+    bar compares each user against their own typical day — so asking for it was
+    friction that shaped nothing.
+    """
+    await _finalize_onboarding(
+        user=user,
+        state_service=state_service,
+        user_track_service=user_track_service,
+        track_context=track_context,
+        analytics=analytics,
+        tracks=tracks,
+        daily_goal=get_settings().default_daily_goal,
+    )
+    if query.message:
+        await query.message.edit_text(PLACEMENT_INTRO, reply_markup=placement_intro_kb())
+    await query.answer()
+
+
 @router.callback_query(OnboardingCB.filter(F.action == "start"))
 async def on_start_clicked(
     query: CallbackQuery,
     user: User,
     state_service: InteractionStateService,
+    user_track_service: UserTrackService,
+    track_context: TrackContextService,
+    analytics: Analytics,
 ) -> None:
     allowed = enabled_tracks(get_settings().enable_japanese)
     selected = {LearningTrack.ENGLISH}
     if len(allowed) == 1:
         # Only English available — skip the picker entirely.
-        await state_service.set(
-            user.id,
-            InteractionState.ONBOARDING_DAILY_GOAL,
-            {"tracks": [t.value for t in selected]},
+        await _finish_setup(
+            query,
+            user=user,
+            state_service=state_service,
+            user_track_service=user_track_service,
+            track_context=track_context,
+            analytics=analytics,
+            tracks=selected,
         )
-        if query.message:
-            await query.message.edit_text(ASK_DAILY_GOAL, reply_markup=daily_goal_kb())
-        await query.answer()
         return
 
     await state_service.set(
@@ -218,53 +247,23 @@ async def on_tracks_done(
     query: CallbackQuery,
     user: User,
     state_service: InteractionStateService,
+    user_track_service: UserTrackService,
+    track_context: TrackContextService,
+    analytics: Analytics,
 ) -> None:
     payload = await state_service.get(user.id)
     if payload.state != InteractionState.ONBOARDING_TRACKS:
         await query.answer(ONBOARDING_EXPIRED, show_alert=False)
         return
-    selected = _selected_tracks(payload.data) or {LearningTrack.ENGLISH}
-    await state_service.set(
-        user.id,
-        InteractionState.ONBOARDING_DAILY_GOAL,
-        {"tracks": [t.value for t in selected]},
-    )
-    if query.message:
-        await query.message.edit_text(ASK_DAILY_GOAL, reply_markup=daily_goal_kb())
-    await query.answer()
-
-
-@router.callback_query(OnboardingCB.filter(F.action == "goal"))
-async def on_goal_picked(
-    query: CallbackQuery,
-    callback_data: OnboardingCB,
-    user: User,
-    state_service: InteractionStateService,
-    user_track_service: UserTrackService,
-    track_context: TrackContextService,
-    analytics: Analytics,
-) -> None:
-    value = callback_data.value
-    if not UserService.is_valid_goal(value):
-        await query.answer(ERROR_GOAL_TOO_BIG, show_alert=True)
-        return
-    payload = await state_service.get(user.id)
-    tracks = _selected_tracks(payload.data) or {LearningTrack.ENGLISH}
-    await _finalize_onboarding(
+    await _finish_setup(
+        query,
         user=user,
         state_service=state_service,
         user_track_service=user_track_service,
         track_context=track_context,
         analytics=analytics,
-        tracks=tracks,
-        daily_goal=value,
+        tracks=_selected_tracks(payload.data) or {LearningTrack.ENGLISH},
     )
-    if query.message:
-        await query.message.edit_text(
-            PLACEMENT_INTRO,
-            reply_markup=placement_intro_kb(),
-        )
-    await query.answer()
 
 
 def _render_card(card: PlacementCard) -> tuple[str, object]:
@@ -370,24 +369,6 @@ async def on_placement_answer(
     await query.answer()
 
 
-@router.callback_query(OnboardingCB.filter(F.action == "custom"))
-async def on_custom_goal(
-    query: CallbackQuery,
-    user: User,
-    state_service: InteractionStateService,
-) -> None:
-    payload = await state_service.get(user.id)
-    tracks = list(_selected_tracks(payload.data) or {LearningTrack.ENGLISH})
-    await state_service.set(
-        user.id,
-        InteractionState.ONBOARDING_CUSTOM_GOAL,
-        {"tracks": [t.value for t in tracks]},
-    )
-    if query.message:
-        await query.message.edit_text(ASK_CUSTOM_GOAL)
-    await query.answer()
-
-
 @router.callback_query(OnboardingCB.filter(F.action == "done"))
 async def on_done(
     query: CallbackQuery,
@@ -400,39 +381,3 @@ async def on_done(
     await query.answer()
 
 
-@router.message(InState(InteractionState.ONBOARDING_CUSTOM_GOAL), F.text)
-async def on_custom_goal_text(
-    message: Message,
-    user: User,
-    state_service: InteractionStateService,
-    user_track_service: UserTrackService,
-    track_context: TrackContextService,
-    analytics: Analytics,
-    interaction_state,
-) -> None:
-    text = (message.text or "").strip()
-    if not text.isdigit():
-        await message.answer(ERROR_GOAL_NOT_NUMBER)
-        return
-    value = int(text)
-    if value < UserService.MIN_GOAL:
-        await message.answer(ERROR_GOAL_TOO_SMALL)
-        return
-    if value > UserService.MAX_GOAL:
-        await message.answer(ERROR_GOAL_TOO_BIG)
-        return
-
-    tracks = _selected_tracks(interaction_state.data) or {LearningTrack.ENGLISH}
-    await _finalize_onboarding(
-        user=user,
-        state_service=state_service,
-        user_track_service=user_track_service,
-        track_context=track_context,
-        analytics=analytics,
-        tracks=tracks,
-        daily_goal=value,
-    )
-    await message.answer(
-        PLACEMENT_INTRO,
-        reply_markup=placement_intro_kb(),
-    )

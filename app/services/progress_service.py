@@ -11,10 +11,16 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.domain.enums import TRACK_LABELS, LearningTrack, WordStatus
 from app.domain.models import GrammarReview, User, WordReview
 from app.infrastructure.repositories.grammar import GrammarRepository
+from app.infrastructure.repositories.reviews import WordReviewRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
 
 if TYPE_CHECKING:
     from app.services.course_service import CourseProgress
+
+
+# Floor and fallback for the self-referential daily bar.
+MIN_DAILY_GOAL = 3
+DEFAULT_DAILY_GOAL = 6
 
 
 @dataclass
@@ -135,6 +141,21 @@ class ProgressService:
         self._session = session
         self._user_words = UserWordRepository(session)
         self._grammar = GrammarRepository(session)
+        self._reviews = WordReviewRepository(session)
+
+    async def typical_goal(self, user_id: int, track: LearningTrack) -> int:
+        """The bar the progress line measures against: what this user manages on
+        a normal day.
+
+        Replaces the goal they picked once at signup. Prod showed that number
+        was aspiration, not plan — the two users who chose 50 averaged 8.9 and
+        3.9 answers a day and never came close, while everyone who chose 5
+        cleared it comfortably. A target nobody meets stops being a target.
+        Measuring someone against their own recent self is a bar they can
+        actually move.
+        """
+        typical = await self._reviews.typical_daily_answers(user_id, track)
+        return max(MIN_DAILY_GOAL, round(typical or DEFAULT_DAILY_GOAL))
 
     async def track_view(
         self,

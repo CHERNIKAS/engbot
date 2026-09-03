@@ -209,7 +209,10 @@ async def msg_progress(
     active = await user_track_service.list_active(user.id)
     views = [
         await progress.track_view(
-            user.id, LearningTrack(ut.track), ut.daily_goal_words, tz_name=user.timezone
+            user.id,
+            LearningTrack(ut.track),
+            await progress.typical_goal(user.id, LearningTrack(ut.track)),
+            tz_name=user.timezone,
         )
         for ut in active
     ]
