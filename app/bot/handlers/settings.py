@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import html
+
 from aiogram import F, Router
 from aiogram.exceptions import TelegramBadRequest
 from aiogram.types import CallbackQuery, Message
@@ -14,6 +16,7 @@ from app.bot.keyboards.settings import (
     new_pace_kb,
     pace_kb,
     push_settings_kb,
+    level_screen_kb,
     push_window_kb,
     settings_kb,
     timezone_kb,
@@ -21,10 +24,14 @@ from app.bot.keyboards.settings import (
 from app.bot.states import InteractionState
 from app.bot.texts import (
     ERROR_GOAL_NOT_NUMBER,
+    LEVEL_SCREEN,
+    LEVEL_SCREEN_UNSET,
     ERROR_GOAL_TOO_BIG,
     ERROR_GOAL_TOO_SMALL,
     PACE_LABELS,
     PACE_TITLE,
+    PLACEMENT_CARD,
+    PLACEMENT_UNAVAILABLE,
     PUSH_PACE_SET,
     PUSH_PACE_TITLE,
     PUSH_TITLE,
@@ -40,7 +47,9 @@ from app.domain.enums import LearningPace, LearningTrack, TRACK_LABELS
 from app.domain.pacing import PACE_VALUES, label_for, pace_of
 from app.domain.push import window_hours
 from app.domain.models import User, UserTrack
+from app.bot.keyboards.onboarding import placement_card_kb
 from app.services.interaction_state_service import InteractionStateService
+from app.services.placement_service import ORIGIN_SETTINGS, PlacementService
 from app.services.user_service import UserService
 from app.services.user_track_service import UserTrackService
 
@@ -375,3 +384,41 @@ async def on_tz_set(
             parse_mode="HTML",
         )
     await query.answer(f"🕐 {user.timezone}")
+
+
+
+@router.callback_query(SettingsCB.filter(F.action == "level"))
+async def on_level_open(
+    query: CallbackQuery,
+    user: User,
+    state_service: InteractionStateService,
+) -> None:
+    await state_service.clear(user.id)
+    text = LEVEL_SCREEN.format(level=user.level) if user.level else LEVEL_SCREEN_UNSET
+    if query.message:
+        await query.message.edit_text(text, reply_markup=level_screen_kb(), parse_mode="HTML")
+    await query.answer()
+
+
+@router.callback_query(SettingsCB.filter(F.action == "level_test"))
+async def on_level_test(
+    query: CallbackQuery,
+    user: User,
+    current_track: LearningTrack,
+    placement: PlacementService,
+) -> None:
+    """Retake the placement test from settings. The test itself is the same as
+    in onboarding — only the ending differs, which the stored origin decides."""
+    card = await placement.start(user.id, current_track, origin=ORIGIN_SETTINGS)
+    if card is None:
+        await query.answer(PLACEMENT_UNAVAILABLE, show_alert=True)
+        return
+    if query.message:
+        await query.message.edit_text(
+            PLACEMENT_CARD.format(
+                writing=html.escape(card.writing), position=card.position, total=card.total
+            ),
+            reply_markup=placement_card_kb(card.options),
+            parse_mode="HTML",
+        )
+    await query.answer()

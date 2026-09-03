@@ -59,6 +59,17 @@ class Settings(BaseSettings):
     digest_window_end: int = Field(22, ge=1, le=24, alias="DIGEST_WINDOW_END")  # exclusive
     digest_interval_seconds: int = Field(1800, ge=30, alias="DIGEST_INTERVAL_SECONDS")
 
+    # CEFR/frequency tagging of newly added words (Gemini, free tier). An empty
+    # key disables the worker entirely — new words then stay untagged, which the
+    # picker already handles by treating them as at-level. The batch is small on
+    # purpose: users add a handful of words a day, so this exists to keep up,
+    # not to backfill (migration 0037 did that).
+    gemini_api_key: str = Field("", alias="GEMINI_API_KEY")
+    ai_model: str = Field("gemini-3.1-flash-lite", alias="AI_MODEL")
+    ai_timeout_seconds: float = Field(30.0, gt=0, alias="AI_TIMEOUT_SECONDS")
+    level_tagger_interval_seconds: int = Field(900, ge=60, alias="LEVEL_TAGGER_INTERVAL_SECONDS")
+    level_tagger_batch: int = Field(40, ge=1, le=200, alias="LEVEL_TAGGER_BATCH")
+
     # Pre-shared password required to use the bot. Empty string disables gating.
     access_password: str = Field("", alias="ACCESS_PASSWORD")
 

@@ -4,7 +4,7 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from app.bot.callbacks.schema import NoopCB, SettingsCB
 from app.bot.keyboards.common import home_button
-from app.bot.texts import PACE_LABELS
+from app.bot.texts import LEVEL_RETAKE, PACE_LABELS
 from app.domain.pacing import PACE_OPTIONS, label_for
 from app.domain.push import window_hours
 
@@ -13,12 +13,26 @@ def _back_to_settings_button() -> InlineKeyboardButton:
     return InlineKeyboardButton(text="↩️ Назад", callback_data=SettingsCB(action="open").pack())
 
 
+def level_screen_kb() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text=LEVEL_RETAKE, callback_data=SettingsCB(action="level_test").pack()
+                )
+            ],
+            [_back_to_settings_button()],
+        ]
+    )
+
+
 def settings_kb() -> InlineKeyboardMarkup:
     rows = [
         [InlineKeyboardButton(text="🎯 Дневная цель", callback_data=SettingsCB(action="goal").pack())],
         [InlineKeyboardButton(text="⚡ Темп обучения", callback_data=SettingsCB(action="pace").pack())],
         [InlineKeyboardButton(text="🔔 Пуш-обучение", callback_data=SettingsCB(action="push_open").pack())],
         [InlineKeyboardButton(text="🕐 Часовой пояс", callback_data=SettingsCB(action="tz_open").pack())],
+        [InlineKeyboardButton(text="📏 Мой уровень", callback_data=SettingsCB(action="level").pack())],
         [home_button()],
     ]
     return InlineKeyboardMarkup(inline_keyboard=rows)

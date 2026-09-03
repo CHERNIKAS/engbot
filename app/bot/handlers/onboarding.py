@@ -18,6 +18,7 @@ from app.bot.keyboards.onboarding import (
     placement_intro_kb,
     tracks_picker_kb,
 )
+from app.bot.keyboards.settings import level_screen_kb
 from app.bot.states import InteractionState
 from app.bot.texts import (
     ASK_CUSTOM_GOAL,
@@ -38,11 +39,12 @@ from app.bot.texts import (
     PLACEMENT_RESULT,
     PLACEMENT_SKIPPED,
     PLACEMENT_UNAVAILABLE,
+    LEVEL_UPDATED,
 )
 from app.domain.enums import LearningTrack, enabled_tracks
 from app.domain.levels import DEFAULT_LEVEL, TEST_LEVELS, TEST_PER_LEVEL
 from app.domain.models import User
-from app.services.placement_service import PlacementCard, PlacementService
+from app.services.placement_service import ORIGIN_SETTINGS, PlacementCard, PlacementService
 from app.services.analytics import EVENT_ONBOARDING_COMPLETED, Analytics
 from app.services.interaction_state_service import InteractionStateService
 from app.services.track_context_service import TrackContextService
@@ -316,8 +318,20 @@ async def on_placement_answer(
         # State expired mid-test (Redis TTL) — nothing to score, don't guess.
         await query.answer(ONBOARDING_EXPIRED, show_alert=True)
         return
+    origin = await placement.origin_of(user.id)
     user.level = verdict
     await state_service.clear(user.id)
+    if origin == ORIGIN_SETTINGS:
+        # Retaken from settings: the user is mid-session, so land them back on
+        # the settings screen instead of replaying the end of onboarding.
+        if query.message:
+            await query.message.edit_text(
+                LEVEL_UPDATED.format(level=verdict),
+                reply_markup=level_screen_kb(),
+                parse_mode="HTML",
+            )
+        await query.answer()
+        return
     await _close_onboarding(query, PLACEMENT_RESULT.format(level=verdict))
     await query.answer()
 

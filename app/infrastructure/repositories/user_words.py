@@ -14,6 +14,8 @@ from app.domain.levels import (
     LEVELS,
     SOURCE_PRIORITY,
     UNKNOWN_LEVEL_RANK,
+    index,
+    normalize,
     selection_rank,
 )
 from app.domain.models import Pack, PackWord, UserWord, Word
@@ -378,6 +380,46 @@ class UserWordRepository:
             return None
         row = random.choice(rows)
         return (row[0], row[1])
+
+    async def level_evidence(
+        self, user_id: int, track: LearningTrack, user_level: str | None
+    ) -> tuple[int, int, int]:
+        """Evidence for recalibrating the user's level:
+        (mastered at or above their level, attempts at their level, of those correct).
+
+        Attempts are counted from `repetitions_count + mistakes_count` rather
+        than the review log, which is cheaper and covers the word's whole life
+        instead of one retention window — recalibration is about the long run.
+        Untagged words are left out entirely: counting them as at-level would
+        let a pile of unclassified imports promote someone on no evidence.
+        """
+        at_or_above = [lv for lv in LEVELS if index(lv) >= index(user_level)]
+        mastered_q = select(func.count(UserWord.id)).where(
+            UserWord.user_id == user_id,
+            UserWord.track == track.value,
+            UserWord.archived.is_(False),
+            UserWord.status == WordStatus.MASTERED.value,
+            UserWord.word_id.in_(
+                select(Word.id).where(Word.track == track.value, Word.level.in_(at_or_above))
+            ),
+        )
+        mastered = (await self.session.execute(mastered_q)).scalar_one() or 0
+
+        at_level_q = select(
+            func.coalesce(func.sum(UserWord.repetitions_count + UserWord.mistakes_count), 0),
+            func.coalesce(func.sum(UserWord.repetitions_count), 0),
+        ).where(
+            UserWord.user_id == user_id,
+            UserWord.track == track.value,
+            UserWord.archived.is_(False),
+            UserWord.word_id.in_(
+                select(Word.id).where(
+                    Word.track == track.value, Word.level == normalize(user_level)
+                )
+            ),
+        )
+        attempts, correct = (await self.session.execute(at_level_q)).one()
+        return int(mastered), int(attempts or 0), int(correct or 0)
 
     async def pick_active_due(
         self, user_id: int, track: LearningTrack, exclude_uw_id: int = 0, now: datetime | None = None

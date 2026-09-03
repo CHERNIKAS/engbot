@@ -24,54 +24,14 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 API = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
 DEFAULT_MODEL = "gemini-3.1-flash-lite"
 
-LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"]
-
-SYSTEM = """Ты лексикограф. Для каждого английского слова определи:
-
-1. level — уровень CEFR (A1, A2, B1, B2, C1, C2), на котором это слово обычно
-   вводят изучающим английский как иностранный.
-   A1 — базовые бытовые слова (cat, go, big).
-   A2 — расширенный быт (weather, decide, careful).
-   B1 — обиходно-абстрактное (achieve, opinion, reliable).
-   B2 — более книжное и точное (reluctant, thorough, allocate).
-   C1/C2 — редкое, узкоспециальное, книжное (ubiquitous, unwieldy).
-
-2. freq — насколько часто слово встречается в обычном английском:
-   1 = очень частое (входит в первую тысячу),
-   2 = частое, 3 = среднее, 4 = редкое, 5 = очень редкое / узкий термин.
-
-Термин из узкой области (крипта, медицина, юриспруденция) получает уровень по
-своей лексической сложности, а freq — 4 или 5.
-
-КАЛИБРОВКА. Ниже — эталонная шкала этого курса. Ориентируйся на неё, а не на
-собственное представление о сложности: шкала курса заметно мягче типичных
-учебных списков.
-
-A1: loud, worry, place, work, try, market, neighbour, word, ready, enter
-A2: daily, wipe, piece, mix, safe, rescue, whisper, breathe, list, fix
-B1: certain, aware, perfect, settle, relate, alone, purpose, honest, legal, replace
-B2: stability, variable, condemn, subsequent, abstract, phase, ambition, ambiguous, adequate, constraint
-
-Замечено, что модели завышают уровень примерно на один шаг. Если колеблешься
-между двумя соседними уровнями — выбирай МЛАДШИЙ.
-
-Отвечай строго JSON-массивом того же размера и в том же порядке, что и вход."""
-
-SCHEMA: dict[str, Any] = {
-    "type": "ARRAY",
-    "items": {
-        "type": "OBJECT",
-        "properties": {
-            "id": {"type": "INTEGER"},
-            "level": {"type": "STRING", "enum": LEVELS},
-            "freq": {"type": "INTEGER"},
-        },
-        "required": ["id", "level", "freq"],
-    },
-}
+from app.domain.levels import LEVELS  # noqa: E402
+from app.services.level_tagger import RESPONSE_SCHEMA as SCHEMA  # noqa: E402
+from app.services.level_tagger import SYSTEM_PROMPT as SYSTEM  # noqa: E402
 
 
 def read_api_key() -> str:

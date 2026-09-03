@@ -20,6 +20,7 @@ from app.infrastructure.example_provider.local_json import LocalJsonExampleProvi
 from app.infrastructure.redis_client import build_redis
 from app.logging_setup import get_logger, setup_logging
 from app.services.digest_service import DigestService
+from app.services.level_tagger import LevelTaggerService
 from app.services.interaction_state_service import InteractionStateService
 from app.services.push_service import PushService
 from app.services.reminder_service import ReminderService
@@ -74,6 +75,25 @@ async def _digest_worker(sessionmaker, redis, bot) -> None:
             raise
         except Exception:  # noqa: BLE001 — never let the worker die
             log.exception("digest_worker_error")
+
+
+
+async def _level_tagger_worker(sessionmaker) -> None:
+    """Fills level/freq_rank on words users added since the last backfill.
+    Off unless GEMINI_API_KEY is set; an untagged word still works everywhere,
+    it just can't be matched to a user's level until this catches up."""
+    settings = get_settings()
+    log = get_logger("level_tagger")
+    while True:
+        await asyncio.sleep(settings.level_tagger_interval_seconds)
+        try:
+            async with sessionmaker() as session:
+                await LevelTaggerService(session).run()
+                await session.commit()
+        except asyncio.CancelledError:
+            raise
+        except Exception:  # noqa: BLE001 — never let the worker die
+            log.exception("level_tagger_worker_error")
 
 
 async def run() -> None:
@@ -132,6 +152,8 @@ async def run() -> None:
     background.append(asyncio.create_task(_push_worker(sessionmaker, redis, bot)))
     if settings.digest_enabled:
         background.append(asyncio.create_task(_digest_worker(sessionmaker, redis, bot)))
+    if settings.gemini_api_key:
+        background.append(asyncio.create_task(_level_tagger_worker(sessionmaker)))
 
     log.info("bot_starting")
     try:

@@ -14,6 +14,9 @@ dependencies = [
   "orjson>=3.10",
   "python-dotenv>=1.0",
   "structlog>=24.1",
+  # Already present via aiogram; declared explicitly because level_tagger
+  # calls the Gemini API with it directly.
+  "aiohttp>=3.9",
 ]
 
 [project.optional-dependencies]

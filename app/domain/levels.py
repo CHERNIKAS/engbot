@@ -120,6 +120,41 @@ def ladder_stages(mastery_target: int) -> tuple[int, int]:
     return reverse_at, cloze_at
 
 
+# Recalibration — the placement test is a one-minute guess, and people move.
+# Promotion needs a body of evidence at the user's own level or harder; a
+# handful of easy wins shouldn't push someone into material they can't read.
+PROMOTE_MASTERED = 20
+# Demotion is deliberately harder to trigger than promotion, and needs a real
+# sample: being wrong is normal while learning, and yanking someone down after a
+# bad evening would be both wrong and demoralising.
+DEMOTE_MIN_ATTEMPTS = 40
+DEMOTE_ACCURACY = 0.35
+
+
+def recalibrated_level(
+    current: str | None,
+    mastered_at_or_above: int,
+    attempts_at_level: int,
+    correct_at_level: int,
+) -> str | None:
+    """The user's level revised from their actual record, or None to leave it.
+
+    Only ever moves one step at a time: the counters that justify a jump are the
+    same ones a single step will change, so stepping keeps the next decision
+    honest instead of overshooting on one burst of activity.
+    """
+    level = normalize(current)
+    if mastered_at_or_above >= PROMOTE_MASTERED:
+        promoted = shift(level, 1)
+        return promoted if promoted != level else None
+    if attempts_at_level >= DEMOTE_MIN_ATTEMPTS:
+        accuracy = correct_at_level / attempts_at_level
+        if accuracy < DEMOTE_ACCURACY:
+            demoted = shift(level, -1)
+            return demoted if demoted != level else None
+    return None
+
+
 def estimate_level(answers: dict[str, list[bool]]) -> str:
     """Placement-test verdict.
 

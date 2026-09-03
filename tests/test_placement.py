@@ -5,7 +5,13 @@ from dataclasses import dataclass
 from app.bot.states import InteractionState
 from app.domain.enums import LearningTrack
 from app.domain.levels import TEST_LEVELS, TEST_PER_LEVEL
-from app.services.placement_service import OPTIONS_PER_CARD, PlacementService, _build_deck
+from app.services.placement_service import (
+    OPTIONS_PER_CARD,
+    ORIGIN_ONBOARDING,
+    ORIGIN_SETTINGS,
+    PlacementService,
+    _build_deck,
+)
 
 
 @dataclass
@@ -148,3 +154,24 @@ async def test_position_counter_advances():
 async def test_answer_outside_the_test_state_is_ignored():
     svc = PlacementService(FakeWordRepo(), FakeState())
     assert await svc.answer(1, 0) == (None, None)
+
+
+# ---- where the test was started from ----
+
+
+async def test_origin_defaults_to_onboarding():
+    state = FakeState()
+    svc = PlacementService(FakeWordRepo(), state)
+    await svc.start(1, LearningTrack.ENGLISH)
+    assert await svc.origin_of(1) == ORIGIN_ONBOARDING
+
+
+async def test_origin_survives_every_answer():
+    """It's read only at the end, so it has to ride the whole test."""
+    state = FakeState()
+    svc = PlacementService(FakeWordRepo(), state)
+    card = await svc.start(1, LearningTrack.ENGLISH, origin=ORIGIN_SETTINGS)
+    while card is not None:
+        assert await svc.origin_of(1) == ORIGIN_SETTINGS
+        card, _ = await svc.answer(1, card.correct_index)
+    assert await svc.origin_of(1) == ORIGIN_SETTINGS

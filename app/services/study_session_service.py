@@ -8,7 +8,7 @@ from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import get_settings
-from app.domain.levels import mastery_reps
+from app.domain.levels import mastery_reps, recalibrated_level
 from app.domain.enums import (
     PACE_NEW_WORDS_PER_SESSION,
     LearningPace,
@@ -260,6 +260,24 @@ class StudySessionService:
             return True
         return DrillState.from_dict(snap["drill"]).is_complete()
 
+
+    async def _recalibrate_level(self, user, track: LearningTrack) -> None:
+        """Nudge the user's level from their actual record, one step at a time.
+
+        Run at the end of a drill rather than on a timer: it's the moment their
+        record just changed, and the counters are two cheap aggregates. The
+        placement test is a one-minute guess, and people move — without this the
+        level it produced would follow them forever.
+        """
+        mastered, attempts, correct = await self._user_words.level_evidence(
+            user.id, track, user.level
+        )
+        revised = recalibrated_level(user.level, mastered, attempts, correct)
+        if revised and revised != user.level:
+            user.level = revised
+            await self._session.flush()
+
+
     async def finish(self, user: User, user_track: UserTrack) -> FinishSummary | None:
         snap = await self._get_raw(user.id)
         if snap is None:
@@ -289,6 +307,7 @@ class StudySessionService:
                 result=result.value,
             )
         await self._session.flush()
+        await self._recalibrate_level(user, track)
 
         mistakes_total = sum(int(v) for v in drill.mistakes.values())
         await self._sessions.finish(

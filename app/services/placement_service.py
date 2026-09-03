@@ -24,6 +24,11 @@ from app.services.interaction_state_service import InteractionStateService
 
 OPTIONS_PER_CARD = 4
 
+# Where the test was started from — the two entry points end differently: one
+# closes onboarding, the other returns to settings.
+ORIGIN_ONBOARDING = "onboarding"
+ORIGIN_SETTINGS = "settings"
+
 
 @dataclass(frozen=True)
 class PlacementCard:
@@ -80,7 +85,9 @@ class PlacementService:
         self._words = words
         self._state = state
 
-    async def start(self, user_id: int, track: LearningTrack) -> PlacementCard | None:
+    async def start(
+        self, user_id: int, track: LearningTrack, origin: str = ORIGIN_ONBOARDING
+    ) -> PlacementCard | None:
         """Build a deck and store it on the interaction state. None = the
         catalogue can't fill a fair test, and the caller should skip placement
         rather than show a broken one."""
@@ -101,7 +108,7 @@ class PlacementService:
         await self._state.set(
             user_id,
             InteractionState.ONBOARDING_LEVEL,
-            {"deck": deck, "pos": 0, "answers": {}},
+            {"deck": deck, "pos": 0, "answers": {}, "origin": origin},
         )
         return self._card(deck, 0)
 
@@ -114,6 +121,7 @@ class PlacementService:
         deck: list[dict[str, Any]] = payload.data.get("deck") or []
         pos = int(payload.data.get("pos") or 0)
         answers: dict[str, list[bool]] = payload.data.get("answers") or {}
+        origin = payload.data.get("origin") or ORIGIN_ONBOARDING
         if not deck or pos >= len(deck):
             return None, None
 
@@ -127,9 +135,15 @@ class PlacementService:
         await self._state.set(
             user_id,
             InteractionState.ONBOARDING_LEVEL,
-            {"deck": deck, "pos": pos, "answers": answers},
+            {"deck": deck, "pos": pos, "answers": answers, "origin": origin},
         )
         return self._card(deck, pos), None
+
+    async def origin_of(self, user_id: int) -> str:
+        """Where the running test was started from — read before clearing state,
+        so the handler knows which screen to return the user to."""
+        payload = await self._state.get(user_id)
+        return payload.data.get("origin") or ORIGIN_ONBOARDING
 
     @staticmethod
     def _card(deck: list[dict[str, Any]], pos: int) -> PlacementCard:

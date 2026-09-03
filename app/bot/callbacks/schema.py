@@ -82,6 +82,7 @@ class ProgressCB(CallbackData, prefix="pg"):
 # Settings.
 class SettingsCB(CallbackData, prefix="set"):
     action: str  # open | goal | goal_value | pace | pace_value | push_open | push_win | push_win_set | newpace | newpace_set
+    #          | tz_open | tz_set | level | level_test  (level = show CEFR level, level_test = retake it)
     value: str = ""
     v: str = ""  # screen version — checked on goal_value / pace_value
 

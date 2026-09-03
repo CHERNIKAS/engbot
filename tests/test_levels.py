@@ -3,13 +3,17 @@ from __future__ import annotations
 from app.domain.levels import (
     DEFAULT_LEVEL,
     LEVELS,
+    DEMOTE_ACCURACY,
+    DEMOTE_MIN_ATTEMPTS,
     MASTERY_REPS_MIN,
+    PROMOTE_MASTERED,
     estimate_level,
     gap,
     index,
     ladder_stages,
     mastery_reps,
     normalize,
+    recalibrated_level,
     selection_rank,
     shift,
     source_rank,
@@ -148,3 +152,49 @@ def test_rungs_stay_distinct_and_ordered_at_every_bar():
 def test_shortest_bar_still_leaves_room_to_produce_the_word():
     _reverse_at, cloze_at = ladder_stages(MASTERY_REPS_MIN)
     assert cloze_at < MASTERY_REPS_MIN
+
+
+# ---- recalibration ----
+
+
+def test_enough_mastered_at_or_above_promotes_one_step():
+    assert recalibrated_level("A2", PROMOTE_MASTERED, 0, 0) == "B1"
+
+
+def test_promotion_moves_only_one_step_however_strong_the_evidence():
+    assert recalibrated_level("A1", PROMOTE_MASTERED * 10, 0, 0) == "A2"
+
+
+def test_just_short_of_the_evidence_bar_changes_nothing():
+    assert recalibrated_level("A2", PROMOTE_MASTERED - 1, 0, 0) is None
+
+
+def test_sustained_failure_at_level_demotes():
+    attempts = DEMOTE_MIN_ATTEMPTS
+    correct = int(attempts * (DEMOTE_ACCURACY - 0.1))
+    assert recalibrated_level("B1", 0, attempts, correct) == "A2"
+
+
+def test_a_bad_evening_is_not_enough_to_demote():
+    """Small samples must not move anyone — being wrong is how learning looks."""
+    assert recalibrated_level("B1", 0, DEMOTE_MIN_ATTEMPTS - 1, 0) is None
+
+
+def test_ordinary_accuracy_leaves_the_level_alone():
+    attempts = DEMOTE_MIN_ATTEMPTS * 2
+    assert recalibrated_level("B1", 0, attempts, int(attempts * 0.7)) is None
+
+
+def test_promotion_wins_when_both_signals_fire():
+    """Mastering a lot while also missing a lot means they're stretching, not drowning."""
+    attempts = DEMOTE_MIN_ATTEMPTS
+    assert recalibrated_level("A2", PROMOTE_MASTERED, attempts, 0) == "B1"
+
+
+def test_no_move_past_the_ends_of_the_scale():
+    assert recalibrated_level(LEVELS[-1], PROMOTE_MASTERED * 5, 0, 0) is None
+    assert recalibrated_level(LEVELS[0], 0, DEMOTE_MIN_ATTEMPTS, 0) is None
+
+
+def test_unplaced_user_is_recalibrated_from_the_default():
+    assert recalibrated_level(None, PROMOTE_MASTERED, 0, 0) == shift(DEFAULT_LEVEL, 1)
