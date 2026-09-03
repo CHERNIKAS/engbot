@@ -152,6 +152,12 @@ class UserWord(Base):
     repetitions_count: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     mistakes_count: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     interval_days: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
+    # Weighted credit toward "learned". Unlike repetitions_count it values a
+    # typed answer above a guessable four-option one — see app/domain/mastery.py.
+    learning_score: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
+    # Correct TYPED answers. The gate guessing can't pass: a word never reaches
+    # mastery on choice cards alone, however high its score climbs.
+    production_count: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     # Push v2: 0–5 health score for mastered words (5.0 = fully learned).
     mastery_score: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
     # Consecutive wrong answers (reset to 0 on any correct). Powers leech

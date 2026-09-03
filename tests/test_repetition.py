@@ -3,8 +3,14 @@ from __future__ import annotations
 from datetime import datetime, timedelta, timezone
 from types import SimpleNamespace
 
+from app.domain import mastery
 from app.domain.enums import LearningPace, ReviewResult, WordStatus
-from app.services.repetition_service import MASTERY_SCORE_MAX, apply_review
+from app.services.repetition_service import (
+    MASTERED_REPS_NORMAL,
+    MAX_INTERVAL_DAYS,
+    MASTERY_SCORE_MAX,
+    apply_review,
+)
 
 
 def _make_uw(**overrides) -> SimpleNamespace:
@@ -109,3 +115,70 @@ def test_next_review_at_uses_now():
     apply_review(uw, ReviewResult.NORMAL, LearningPace.NORMAL, now=now)
     assert uw.last_reviewed_at == now
     assert uw.next_review_at >= now + timedelta(days=uw.interval_days * 0.9)
+
+
+# ---- weighted score + production floor ----
+
+
+def _uw_fresh() -> SimpleNamespace:
+    return _make_uw(learning_score=0.0, production_count=0, mastery_score=0.0)
+
+
+def test_choice_cards_alone_never_graduate_a_word():
+    """The regression that mattered: 8% of four-option answers are guesses, and
+    the old rule let a word graduate on nothing else."""
+    uw = _uw_fresh()
+    for _ in range(40):
+        apply_review(
+            uw, ReviewResult.CORRECT, LearningPace.NORMAL,
+            kind=mastery.RECOGNITION, word_level="B1", user_level="B1",
+        )
+    assert uw.status != WordStatus.MASTERED.value
+    assert uw.production_count == 0
+
+
+def test_typed_answers_graduate_a_word():
+    uw = _uw_fresh()
+    for _ in range(12):
+        apply_review(
+            uw, ReviewResult.CORRECT, LearningPace.NORMAL,
+            kind=mastery.TYPED_EXACT, word_level="B1", user_level="B1",
+        )
+        if uw.status == WordStatus.MASTERED.value:
+            break
+    assert uw.status == WordStatus.MASTERED.value
+    assert uw.production_count >= 3
+
+
+def test_a_miss_costs_score():
+    uw = _uw_fresh()
+    apply_review(
+        uw, ReviewResult.CORRECT, LearningPace.NORMAL,
+        kind=mastery.TYPED_EXACT, word_level="B1", user_level="B1",
+    )
+    before = uw.learning_score
+    apply_review(
+        uw, ReviewResult.WRONG, LearningPace.NORMAL,
+        kind=mastery.WRONG, word_level="B1", user_level="B1",
+    )
+    assert uw.learning_score < before
+
+
+def test_grammar_items_keep_the_legacy_rule():
+    """No CEFR level and no typed stage — the score has nothing to weigh."""
+    uw = _uw_fresh()
+    for _ in range(MASTERED_REPS_NORMAL):
+        apply_review(uw, ReviewResult.CORRECT, LearningPace.NORMAL)
+    assert uw.status == WordStatus.MASTERED.value
+
+
+def test_interval_is_capped_so_it_cannot_overflow_a_date():
+    """A word answered forever without graduating used to compound its interval
+    until `now + timedelta(days=...)` raised OverflowError mid-answer."""
+    uw = _uw_fresh()
+    for _ in range(200):
+        apply_review(
+            uw, ReviewResult.CORRECT, LearningPace.NORMAL,
+            kind=mastery.RECOGNITION, word_level="B1", user_level="B1",
+        )
+    assert uw.interval_days <= MAX_INTERVAL_DAYS

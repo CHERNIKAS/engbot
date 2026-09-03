@@ -2,10 +2,13 @@ from __future__ import annotations
 
 from app.domain.pacing import (
     DEFAULT_PACE,
+    MAX_POOL,
+    MIN_POOL,
     PACE_VALUES,
     ceiling_of,
     label_for,
     pace_of,
+    pool_ceiling,
 )
 
 
@@ -50,3 +53,35 @@ def test_all_pace_values_have_labels():
 
 def test_label_for_unknown_falls_back_to_number():
     assert label_for(99) == "99"
+
+
+# ---- pool size derived from real throughput ----
+
+
+def test_pool_tracks_how_much_the_user_actually_answers():
+    assert pool_ceiling(4) < pool_ceiling(10) < pool_ceiling(20)
+
+
+def test_the_shape_that_works_in_prod_is_preserved():
+    """User 3 answers ~13.9/day with 22 active words and has mastered the most.
+    That ratio is the calibration target."""
+    assert 18 <= pool_ceiling(13.9) <= 24
+
+
+def test_the_broken_prod_case_is_cut_down():
+    """User 1 sat at 63 active words on 8.9 answers/day — a word every ~7 days."""
+    assert pool_ceiling(8.9) < 20
+
+
+def test_no_history_gets_a_modest_pool_not_a_huge_one():
+    for empty in (None, 0, -1):
+        assert MIN_POOL <= pool_ceiling(empty) <= 12
+
+
+def test_pool_stays_inside_its_bounds():
+    assert pool_ceiling(0.1) >= MIN_POOL
+    assert pool_ceiling(1000) == MAX_POOL
+
+
+def test_a_beginner_still_gets_something_to_learn():
+    assert pool_ceiling(1) >= MIN_POOL

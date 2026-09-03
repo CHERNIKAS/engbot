@@ -40,10 +40,11 @@ from app.bot.texts import (
 )
 from app.config import get_settings
 from app.domain.enums import LearningPace, LearningTrack, ReviewResult, WordStatus
+from app.domain import mastery
 from app.domain.levels import ladder_stages, mastery_reps
 from app.domain.study_drill import is_typing_correct
 from app.domain.models import User, UserTrack
-from app.domain.pacing import ceiling_of, pace_of
+from app.domain.pacing import pace_of, pool_ceiling
 from app.domain.push import in_window, normalize_window
 from app.domain.quiz_text import strip_latin_hints
 from app.domain.push_nudges import nudge_line
@@ -118,6 +119,22 @@ CARD_REVERSE = "reverse"
 CARD_CLOZE = "cloze"
 
 
+_CARD_ANSWER_KIND = {
+    CARD_RECOGNITION: mastery.RECOGNITION,
+    CARD_REVERSE: mastery.REVERSE,
+    CARD_CLOZE: mastery.TYPED_EXACT,
+}
+
+
+def _answer_kind(card_type: str | None, correct: bool) -> str:
+    """Translate "which card was it, and did they get it right" into the kind
+    the score table understands. Near-miss kinds (typo / synonym / grammar) come
+    from the AI check and are not produced here."""
+    if not correct:
+        return mastery.WRONG
+    return _CARD_ANSWER_KIND.get(card_type or "", mastery.RECOGNITION)
+
+
 def _leech_after(consecutive_wrong_before: int, correct: bool, was_mastered: bool) -> tuple[int, bool]:
     """Update the consecutive-miss counter for a word and decide whether it just
     became a leech. Mastered words never become leeches (they ride a 0–5 score,
@@ -173,18 +190,28 @@ def _days_ago_phrase(last_reviewed_at, now: datetime | None = None) -> str | Non
     return f"{days} дн назад"
 
 
-def _progress_line(uw, now: datetime | None = None, target: int | None = None) -> str:
-    """Small progress hint shown under the word on a push card. For a word being
-    learned we spell out WHY it sits where it does — the raw N/10 read as a lie
-    to users ('I know this, why 1/10?'); showing the miss count + last-seen makes
-    it honest ('2/10 because you missed it twice, last seen 9 days ago').
+def _progress_line(
+    uw,
+    now: datetime | None = None,
+    target: tuple[float, int] | None = None,
+) -> str:
+    """Small progress hint under the word on a push card.
 
-    `target` is the word's own bar, which now varies with its level relative to
-    the user — printing the flat 10 here would put the denominator out of step
-    with the rule that actually promotes the word."""
+    Shows BOTH gates, because a single number hid the one that matters: a user
+    could sit at "8 / 10" entirely on four-option cards and have no idea the
+    word would never graduate. The pen counter makes the typed requirement
+    visible from the first card.
+
+    The miss count and last-seen stay: the raw score read as a lie without them
+    ("I know this, why 2.5?"), and "you missed it twice, last seen 9 days ago"
+    explains the number instead of just asserting it.
+    """
     if uw.status == WordStatus.MASTERED.value:
         return f"⭐ {uw.mastery_score:.1f} / 5"
-    parts = [f"🌱 {uw.repetitions_count} / {target or MASTERED_REPS_NORMAL}"]
+    target_score, needed_production = target or (float(MASTERED_REPS_NORMAL), 0)
+    parts = [f"🌱 {uw.learning_score or 0:.1f} / {target_score:g}"]
+    if needed_production:
+        parts.append(f"✍️ {uw.production_count or 0} / {needed_production}")
     if (uw.mistakes_count or 0) > 0:
         parts.append(f"❌ {uw.mistakes_count}")
     seen = _days_ago_phrase(uw.last_reviewed_at, now)
@@ -432,7 +459,12 @@ class PushService:
         # `ceiling` (pace × 3) — so growth is steady, not a flood that turns the
         # push into mush. (Old rule gated new on a word hitting 10-in-a-row.)
         pace = pace_of(ut.settings)
-        ceiling = ceiling_of(pace)
+        # The pool is sized by what the user actually answers, not by the pace
+        # they picked once: `pace × 3` let user 1 sit on 63 active words at ~9
+        # answers a day, so each word came back only every week and almost
+        # nothing ever stuck. See pacing.pool_ceiling.
+        throughput = await self._reviews.answers_per_active_day(user.id, _TRACK)
+        ceiling = pool_ceiling(throughput)
         new_today = int(state.get("new_today", 0))
         active_count = await self._uw.count_active(user.id, _TRACK)
         overdue = await self._uw.count_overdue(user.id, _TRACK)
@@ -638,7 +670,7 @@ class PushService:
         ru = uw.custom_translation or word.translation
         if not ru:
             return None
-        target = mastery_reps(word.level, user_level)
+        target = mastery.target_for(word.level, user_level)
         # Pre-answer surfaces must not leak English inside the RU gloss
         # («не могу (сокращение от cannot)» on a can't card = free answer).
         ru = strip_latin_hints(ru)
@@ -762,8 +794,12 @@ class PushService:
         uw, word = pair if pair else (None, None)
         if uw is not None and uw.status != WordStatus.MASTERED.value:
             uw.status = WordStatus.MASTERED.value
-            # Park the counter on this word's own bar, not the legacy flat 10 —
-            # otherwise an unarchive later shows a nonsense "10 / 6".
+            # Park every counter on this word's own bar. Leaving them below it
+            # would show a graduated word sitting at "3.0 / 9.5" after an
+            # unarchive, as if it had regressed.
+            target_score, needed_production = mastery.target_for(word.level, user.level)
+            uw.learning_score = target_score
+            uw.production_count = max(uw.production_count or 0, needed_production)
             uw.repetitions_count = mastery_reps(word.level, user.level)
             uw.mastery_score = 5.0
             uw.next_review_at = datetime.now(timezone.utc) + timedelta(days=7)
@@ -839,7 +875,9 @@ class PushService:
         if inflight.get("kind") == "grammar":
             await self._apply_grammar_answer(user, ut, iid, correct)
         else:
-            leech_writing = await self._apply_word_answer(user, ut, iid, correct)
+            leech_writing = await self._apply_word_answer(
+                user, ut, iid, correct, card_type=inflight.get("ctype")
+            )
 
         now_ts = datetime.now(timezone.utc).timestamp()
         state["inflight"] = None
@@ -884,7 +922,9 @@ class PushService:
     async def _settle_cloze(self, user: User, ut: UserTrack, iid: int, correct: bool, state: dict, inflight: dict) -> str | None:
         """Apply a cloze answer's SR result and advance the push state. Returns
         the leech writing if this answer crossed the leech threshold."""
-        leech = await self._apply_word_answer(user, ut, iid, correct)
+        leech = await self._apply_word_answer(
+            user, ut, iid, correct, card_type=inflight.get("ctype") or CARD_CLOZE
+        )
         now_ts = datetime.now(timezone.utc).timestamp()
         state["inflight"] = None
         state["last"] = {"kind": "word", "id": iid}
@@ -990,7 +1030,14 @@ class PushService:
             await self._session.flush()
         await self._finish_card(query, PUSH_LEECH_KEPT)
 
-    async def _apply_word_answer(self, user: User, ut: UserTrack, uw_id: int, correct: bool) -> str | None:
+    async def _apply_word_answer(
+        self,
+        user: User,
+        ut: UserTrack,
+        uw_id: int,
+        correct: bool,
+        card_type: str | None = None,
+    ) -> str | None:
         """Apply the SR result and leech tracking. Returns the word's writing
         when this wrong answer just crossed the leech threshold (so the caller
         can offer to postpone it), else None."""
@@ -1003,7 +1050,9 @@ class PushService:
             uw,
             ReviewResult.CORRECT if correct else ReviewResult.WRONG,
             LearningPace(ut.learning_pace),
-            mastered_reps=mastery_reps(word.level, user.level),
+            kind=_answer_kind(card_type, correct),
+            word_level=word.level,
+            user_level=user.level,
         )
 
         # Leech tracking: count consecutive misses on words still being learned.

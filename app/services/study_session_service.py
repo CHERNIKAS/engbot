@@ -8,7 +8,8 @@ from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import get_settings
-from app.domain.levels import mastery_reps, recalibrated_level
+from app.domain import mastery
+from app.domain.levels import recalibrated_level
 from app.domain.enums import (
     PACE_NEW_WORDS_PER_SESSION,
     LearningPace,
@@ -298,7 +299,24 @@ class StudySessionService:
                 result = ReviewResult.HARD
             else:
                 result = ReviewResult.WRONG
-            apply_review(uw, result, pace, mastered_reps=mastery_reps(word.level, user.level))
+            # A drill word is only "learned" once it cleared the TYPE stage, so
+            # that counts as production; phrases are recognition-only by design
+            # and can't. Mistakes already downgraded `result` above.
+            kind = (
+                mastery.TYPED_EXACT
+                if uw_id not in drill.quiz_only and result != ReviewResult.WRONG
+                else mastery.RECOGNITION
+                if result != ReviewResult.WRONG
+                else mastery.WRONG
+            )
+            apply_review(
+                uw,
+                result,
+                pace,
+                kind=kind,
+                word_level=word.level,
+                user_level=user.level,
+            )
             await self._reviews.create(
                 user_id=user.id,
                 track=track,

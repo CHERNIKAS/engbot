@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+from datetime import datetime, timedelta, timezone
+
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.enums import LearningTrack
@@ -28,6 +31,30 @@ class WordReviewRepository:
         self.session.add(review)
         await self.session.flush()
         return review
+
+    async def answers_per_active_day(
+        self, user_id: int, track: LearningTrack, days: int = 14
+    ) -> float | None:
+        """Average answers on the days the user actually showed up, over the last
+        `days`. None when there's no history yet.
+
+        Averaged over *active* days rather than calendar days on purpose: this
+        number sizes the active word pool, and a week off shouldn't shrink
+        someone's pool to nothing and then starve them when they come back.
+        """
+        since = datetime.now(timezone.utc) - timedelta(days=days)
+        per_day = (
+            select(func.count(WordReview.id).label("c"))
+            .where(
+                WordReview.user_id == user_id,
+                WordReview.track == track.value,
+                WordReview.reviewed_at >= since,
+            )
+            .group_by(func.date_trunc("day", WordReview.reviewed_at))
+            .subquery()
+        )
+        value = (await self.session.execute(select(func.avg(per_day.c.c)))).scalar()
+        return float(value) if value is not None else None
 
 
 class GrammarReviewRepository:
