@@ -25,7 +25,7 @@ def push_card_kb(options: list[str], uw_id: int, status: str) -> InlineKeyboardM
 
     if status == WordStatus.NEW.value:
         rows.append(
-            [InlineKeyboardButton(text="🙅 Не показывать — я знаю", callback_data=PushCB(action="know", uw_id=uw_id).pack())]
+            [InlineKeyboardButton(text="✅ Я это знаю", callback_data=PushCB(action="know", uw_id=uw_id).pack())]
         )
     elif status == WordStatus.MASTERED.value:
         rows.append(
@@ -36,7 +36,7 @@ def push_card_kb(options: list[str], uw_id: int, status: str) -> InlineKeyboardM
             ]
         )
         rows.append(
-            [InlineKeyboardButton(text="🙈 Перестать показывать", callback_data=PushCB(action="hide", uw_id=uw_id).pack())]
+            [InlineKeyboardButton(text="🙈 Убрать из обучения", callback_data=PushCB(action="hide", uw_id=uw_id).pack())]
         )
     else:  # LEARNING / REVIEW
         rows.append(
@@ -46,7 +46,7 @@ def push_card_kb(options: list[str], uw_id: int, status: str) -> InlineKeyboardM
             [InlineKeyboardButton(text="⏸ Не учить сейчас", callback_data=PushCB(action="snooze", uw_id=uw_id, days=NOT_NOW_DAYS).pack())]
         )
         rows.append(
-            [InlineKeyboardButton(text="🙈 Перестать показывать", callback_data=PushCB(action="hide", uw_id=uw_id).pack())]
+            [InlineKeyboardButton(text="🙈 Убрать из обучения", callback_data=PushCB(action="hide", uw_id=uw_id).pack())]
         )
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
@@ -73,7 +73,7 @@ def push_cloze_card_kb(uw_id: int, status: str) -> InlineKeyboardMarkup:
             [InlineKeyboardButton(text="⏸ Не учить сейчас", callback_data=PushCB(action="snooze", uw_id=uw_id, days=NOT_NOW_DAYS).pack())]
         )
     rows.append(
-        [InlineKeyboardButton(text="🙈 Перестать показывать", callback_data=PushCB(action="hide", uw_id=uw_id).pack())]
+        [InlineKeyboardButton(text="🙈 Убрать из обучения", callback_data=PushCB(action="hide", uw_id=uw_id).pack())]
     )
     return InlineKeyboardMarkup(inline_keyboard=rows)
 

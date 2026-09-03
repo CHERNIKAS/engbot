@@ -28,16 +28,28 @@ async def on_push_answer(
 
 @router.callback_query(PushCB.filter(F.action == "know"))
 async def on_push_know(
-    query: CallbackQuery, callback_data: PushCB, user: User, session: AsyncSession, redis: Redis
+    query: CallbackQuery,
+    callback_data: PushCB,
+    user: User,
+    user_track: UserTrack,
+    session: AsyncSession,
+    redis: Redis,
 ) -> None:
-    await PushService(session, redis).handle_remove(user, callback_data.uw_id, query, known=True)
+    """«Я это знаю» — credit the word, don't bin it.
+
+    This used to archive, exactly like «убрать из обучения»: two buttons, two
+    very different meanings, one behaviour. Someone telling the bot they already
+    know a word was recorded the same as someone sick of seeing it, so the count
+    of learned words undercounted and the reason was lost.
+    """
+    await PushService(session, redis).handle_master(user, user_track, callback_data.uw_id, query)
 
 
 @router.callback_query(PushCB.filter(F.action == "hide"))
 async def on_push_hide(
     query: CallbackQuery, callback_data: PushCB, user: User, session: AsyncSession, redis: Redis
 ) -> None:
-    await PushService(session, redis).handle_remove(user, callback_data.uw_id, query, known=False)
+    await PushService(session, redis).handle_remove(user, callback_data.uw_id, query)
 
 
 @router.callback_query(PushCB.filter(F.action == "snooze"))

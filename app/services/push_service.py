@@ -32,7 +32,6 @@ from app.bot.texts import (
     PUSH_CARD_REVERSE,
     PUSH_GRAMMAR_CARD,
     PUSH_HIDDEN,
-    PUSH_KNOWN,
     PUSH_MASTERED_KNOWN,
     PUSH_LEECH_KEPT,
     PUSH_LEECH_PARKED,
@@ -776,13 +775,16 @@ class PushService:
 
     # ---- card controls (handler path): я знаю / перестать показывать / отложить ----
 
-    async def handle_remove(self, user: User, uw_id: int, query: CallbackQuery, *, known: bool) -> None:
+    async def handle_remove(self, user: User, uw_id: int, query: CallbackQuery) -> None:
+        """«Убрать из обучения» — out of rotation, no credit, recoverable from
+        the archive. Distinct from «Я это знаю», which credits the word: mixing
+        the two lost the reason a word left rotation."""
         uw = await self._uw.get(uw_id, owner_id=user.id)  # scope: forged id can't hit another user
         if uw is not None:
             uw.archived = True
             await self._session.flush()
         await self._advance_after_card(user.id, uw_id)
-        await self._finish_card(query, PUSH_KNOWN if known else PUSH_HIDDEN)
+        await self._finish_card(query, PUSH_HIDDEN)
 
     async def handle_snooze(self, user: User, uw_id: int, days: int, query: CallbackQuery) -> None:
         uw = await self._uw.get(uw_id, owner_id=user.id)  # scope: forged id can't hit another user
