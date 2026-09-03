@@ -14,3 +14,6 @@ venv/
 dist/
 build/
 *.sqlite
+
+# Local DB dumps written by scripts/backup.sh on the server.
+backups/
