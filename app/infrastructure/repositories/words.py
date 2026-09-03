@@ -118,6 +118,7 @@ class WordRepository:
                     Word.track == track.value,
                     Word.level == level,
                     Word.translation.isnot(None),
+                    Word.is_function_word.is_(False),
                     Word.writing.not_like("% %"),
                     or_(Word.freq_rank.is_(None), Word.freq_rank <= 3),
                 )

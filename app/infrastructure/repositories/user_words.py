@@ -364,6 +364,7 @@ class UserWordRepository:
                 UserWord.archived.is_(False),
                 UserWord.status == WordStatus.NEW.value,
                 Word.translation.isnot(None),
+                Word.is_function_word.is_(False),
             )
             .order_by(
                 level_rank,
@@ -442,6 +443,7 @@ class UserWordRepository:
                 UserWord.status.in_([WordStatus.LEARNING.value, WordStatus.REVIEW.value]),
                 or_(UserWord.snooze_until.is_(None), UserWord.snooze_until <= now),
                 Word.translation.isnot(None),
+                Word.is_function_word.is_(False),
             )
             .order_by(UserWord.next_review_at.asc())
             .limit(5)
@@ -499,6 +501,7 @@ class UserWordRepository:
                 UserWord.status == WordStatus.MASTERED.value,
                 or_(UserWord.snooze_until.is_(None), UserWord.snooze_until <= now),
                 Word.translation.isnot(None),
+                Word.is_function_word.is_(False),
             )
             .order_by(key.desc())
             .limit(3)

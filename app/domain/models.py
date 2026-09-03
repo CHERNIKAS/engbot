@@ -118,6 +118,10 @@ class Word(Base):
     # or a narrow term. Pairs with `level` to order what gets taught next —
     # level alone puts "plummet" and "often" in the same bucket too easily.
     freq_rank: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    # Articles and auxiliary contractions: real words, but unusable as a
+    # "pick the translation" card — every honest distractor differs only by
+    # tense or number. Excluded from word selection; grammar teaches them.
+    is_function_word: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
     # Coarse part of speech ('verb' | 'noun' | 'adj'), used to pick quiz
     # distractors of the same kind. Nullable: not every word can be tagged.
     part_of_speech: Mapped[str | None] = mapped_column(String(16), nullable=True)
