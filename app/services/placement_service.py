@@ -28,6 +28,9 @@ OPTIONS_PER_CARD = 4
 # closes onboarding, the other returns to settings.
 ORIGIN_ONBOARDING = "onboarding"
 ORIGIN_SETTINGS = "settings"
+# Forced retake: an existing user who predates the test and is blocked
+# until they take it. Ends by handing them the bot, not a settings screen.
+ORIGIN_GATE = "gate"
 
 
 @dataclass(frozen=True)

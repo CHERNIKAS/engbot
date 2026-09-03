@@ -311,6 +311,11 @@ class PushService:
                 continue
             if (ut.settings or {}).get("push_blocked"):
                 continue  # user blocked the bot — stop trying (cleared on /start)
+            if not user.level:
+                # Held by the placement gate. Cards picked without a level would
+                # be picked from a guess, which is what the gate is there to
+                # stop — and pushing them anyway would make the block look broken.
+                continue
             # Commit per user: a tick can write (e.g. marking a grammar rule
             # seen), so one user's failure must not poison the shared transaction.
             try:

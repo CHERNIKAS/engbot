@@ -3,7 +3,7 @@ from __future__ import annotations
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from app.bot.callbacks.schema import OnboardingCB
-from app.bot.texts import PLACEMENT_DONT_KNOW, PLACEMENT_SKIP
+from app.bot.texts import PLACEMENT_DONT_KNOW, PLACEMENT_GATE_START
 from app.domain.enums import LearningTrack, TRACK_LABELS
 
 
@@ -23,11 +23,22 @@ def placement_intro_kb() -> InlineKeyboardMarkup:
                     text="Поехали ▶️", callback_data=OnboardingCB(action="lvl_start").pack()
                 )
             ],
+        ]
+    )
+
+
+def placement_gate_kb() -> InlineKeyboardMarkup:
+    """The only way forward for a user blocked by the placement gate — no skip:
+    a skipped test would hand them the default level, which is exactly the
+    guess the gate exists to replace."""
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
             [
                 InlineKeyboardButton(
-                    text=PLACEMENT_SKIP, callback_data=OnboardingCB(action="lvl_skip").pack()
+                    text=PLACEMENT_GATE_START,
+                    callback_data=OnboardingCB(action="lvl_gate").pack(),
                 )
-            ],
+            ]
         ]
     )
 

@@ -37,14 +37,19 @@ from app.bot.texts import (
     PLACEMENT_CARD,
     PLACEMENT_INTRO,
     PLACEMENT_RESULT,
-    PLACEMENT_SKIPPED,
     PLACEMENT_UNAVAILABLE,
+    PLACEMENT_GATE_DONE,
     LEVEL_UPDATED,
 )
 from app.domain.enums import LearningTrack, enabled_tracks
 from app.domain.levels import DEFAULT_LEVEL, TEST_LEVELS, TEST_PER_LEVEL
 from app.domain.models import User
-from app.services.placement_service import ORIGIN_SETTINGS, PlacementCard, PlacementService
+from app.services.placement_service import (
+    ORIGIN_GATE,
+    ORIGIN_SETTINGS,
+    PlacementCard,
+    PlacementService,
+)
 from app.services.analytics import EVENT_ONBOARDING_COMPLETED, Analytics
 from app.services.interaction_state_service import InteractionStateService
 from app.services.track_context_service import TrackContextService
@@ -299,6 +304,28 @@ async def on_placement_start(
     await query.answer()
 
 
+@router.callback_query(OnboardingCB.filter(F.action == "lvl_gate"))
+async def on_placement_gate_start(
+    query: CallbackQuery,
+    user: User,
+    current_track: LearningTrack,
+    placement: PlacementService,
+) -> None:
+    """Entry point for a user held by the placement gate."""
+    card = await placement.start(user.id, current_track, origin=ORIGIN_GATE)
+    if card is None:
+        # A content gap must never lock someone out of their own bot.
+        user.level = DEFAULT_LEVEL
+        if query.message:
+            await query.message.edit_text(PLACEMENT_UNAVAILABLE)
+        await query.answer()
+        return
+    if query.message:
+        text, kb = _render_card(card)
+        await query.message.edit_text(text, reply_markup=kb)
+    await query.answer()
+
+
 @router.callback_query(OnboardingCB.filter(F.action == "lvl"))
 async def on_placement_answer(
     query: CallbackQuery,
@@ -321,6 +348,15 @@ async def on_placement_answer(
     origin = await placement.origin_of(user.id)
     user.level = verdict
     await state_service.clear(user.id)
+    if origin == ORIGIN_GATE:
+        # They were locked out; hand them the working bot, not a settings screen.
+        if query.message:
+            await query.message.edit_text(
+                PLACEMENT_GATE_DONE.format(level=verdict), parse_mode="HTML"
+            )
+            await query.message.answer(MAIN_MENU, reply_markup=main_menu_reply_kb())
+        await query.answer()
+        return
     if origin == ORIGIN_SETTINGS:
         # Retaken from settings: the user is mid-session, so land them back on
         # the settings screen instead of replaying the end of onboarding.
@@ -333,18 +369,6 @@ async def on_placement_answer(
         await query.answer()
         return
     await _close_onboarding(query, PLACEMENT_RESULT.format(level=verdict))
-    await query.answer()
-
-
-@router.callback_query(OnboardingCB.filter(F.action == "lvl_skip"))
-async def on_placement_skip(
-    query: CallbackQuery,
-    user: User,
-    state_service: InteractionStateService,
-) -> None:
-    user.level = DEFAULT_LEVEL
-    await state_service.clear(user.id)
-    await _close_onboarding(query, PLACEMENT_SKIPPED)
     await query.answer()
 
 

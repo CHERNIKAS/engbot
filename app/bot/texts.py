@@ -35,10 +35,8 @@ PLACEMENT_RESULT = (
     "Буду подбирать слова под него: в основном по уровню, "
     "иногда чуть проще, иногда на вырост."
 )
-PLACEMENT_SKIPPED = "Ок, без теста — поставлю средний уровень и подстроюсь по ходу 🌿"
 PLACEMENT_UNAVAILABLE = "Тест сейчас недоступен — поставлю средний уровень 🌿"
 PLACEMENT_DONT_KNOW = "🤷 Не знаю"
-PLACEMENT_SKIP = "Пропустить тест"
 
 # Settings → «📏 Мой уровень»
 LEVEL_SCREEN = (
@@ -53,6 +51,20 @@ LEVEL_SCREEN_UNSET = (
 )
 LEVEL_RETAKE = "🔄 Пройти тест заново"
 LEVEL_UPDATED = "Готово! Теперь твой уровень — <b>{level}</b> ✨"
+
+# Placement gate — shown to users who predate the test and haven't taken it.
+PLACEMENT_GATE = (
+    "📏 Появился тест на уровень\n\n"
+    "Раньше бот выдавал слова подряд, не глядя на то, что ты уже знаешь. "
+    "Теперь он подбирает их под уровень — но сначала нужно его узнать.\n\n"
+    "Минута, {total} слов. Без этого учёба на паузе."
+)
+PLACEMENT_GATE_HINT = "Сначала пройди тест на уровень 📏"
+PLACEMENT_GATE_START = "Пройти тест ▶️"
+PLACEMENT_GATE_DONE = (
+    "Готово! Твой уровень — <b>{level}</b> ✨\n\n"
+    "Теперь слова подбираются под него. Возвращаемся к учёбе 🌿"
+)
 
 MAIN_MENU = "Главное меню 🌸"
 

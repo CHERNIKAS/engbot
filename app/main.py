@@ -10,6 +10,7 @@ from app.bot.handlers import register_handlers
 from app.bot.middlewares.auth_gate import AuthGateMiddleware
 from app.bot.middlewares.db import DbSessionMiddleware
 from app.bot.middlewares.interaction_guard import InteractionGuardMiddleware
+from app.bot.middlewares.placement_gate import PlacementGateMiddleware
 from app.bot.middlewares.logging_context import LoggingContextMiddleware
 from app.bot.middlewares.rate_limit import RateLimitMiddleware
 from app.bot.middlewares.services import ServicesMiddleware
@@ -133,6 +134,7 @@ async def run() -> None:
         state_service=state_service,
     )
     guard_mw = InteractionGuardMiddleware(state_service)
+    placement_gate = PlacementGateMiddleware()
 
     for observer in (dp.message, dp.callback_query):
         observer.outer_middleware.register(logging_ctx)
@@ -141,6 +143,9 @@ async def run() -> None:
         observer.outer_middleware.register(user_mw)
         observer.outer_middleware.register(services_mw)
         observer.outer_middleware.register(auth_gate)
+        # After the password gate (an unauthorised user shouldn't even see
+        # the level prompt) and before the state guard.
+        observer.outer_middleware.register(placement_gate)
         observer.outer_middleware.register(guard_mw)
 
     register_handlers(dp)
