@@ -160,6 +160,9 @@ TXT_PREVIEW = (
     "Будет добавлено: <b>{will}</b>"
 )
 TXT_IMPORT_DONE = "🌱 Импортировано: {count}"
+IMPORT_ASK_PRIORITY = "⚡ Учить их в первую очередь?"
+IMPORT_PRIORITY_ON = "⚡ Учить в первую очередь"
+IMPORT_PRIORITY_SET = "⚡ Понял — эти слова пойдут вперёд остальных."
 
 QUICK_ADD_PROMPT_ONE = "Добавить «{word}»? 🌱"
 QUICK_ADD_PROMPT_MANY = "Добавить эти слова? ({count}) 🌱"

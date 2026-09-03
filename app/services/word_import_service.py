@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from app.domain.enums import LearningTrack, WordSource
 from app.infrastructure.example_provider.base import ExampleProvider
@@ -18,6 +18,9 @@ class ImportPreview:
 class ImportResult:
     added: int
     skipped_existing: int
+    # Catalogue ids touched by this import. Carried so the caller can offer
+    # "teach these first" against exactly this batch and nothing older.
+    word_ids: list[int] = field(default_factory=list)
 
 
 class WordImportService:
@@ -84,4 +87,8 @@ class WordImportService:
             category_id=category_id,
             source=source,
         )
-        return ImportResult(added=added, skipped_existing=len(word_ids) - added)
+        return ImportResult(
+            added=added,
+            skipped_existing=len(word_ids) - added,
+            word_ids=word_ids,
+        )

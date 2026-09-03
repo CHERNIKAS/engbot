@@ -6,12 +6,18 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.bot.callbacks.schema import CategoryCB, ImportCB
 from app.bot.filters import InState
-from app.bot.keyboards.add_words import add_choose_category_kb, post_add_kb
+from app.bot.keyboards.add_words import (
+    add_choose_category_kb,
+    import_priority_kb,
+    post_add_kb,
+)
 from app.bot.keyboards.common import cancel_only_kb
 from app.bot.states import InteractionState
 from app.bot.texts import (
     ADD_CHOOSE_CATEGORY,
     LIST_EXPIRED,
+    IMPORT_ASK_PRIORITY,
+    IMPORT_PRIORITY_SET,
     TXT_IMPORT_DONE,
     TXT_NOT_TEXT,
     TXT_PARSE_ERROR,
@@ -207,11 +213,45 @@ async def on_pick_category_for_import(
         count=result.added,
         category_id=category_id,
     )
-    await state_service.clear(user.id)
     skipped = len(words) - result.added
     done_text = TXT_IMPORT_DONE.format(count=result.added)
     if skipped > 0:
         done_text += f"\n({skipped} уже были у тебя)"
+
+    if result.added and result.word_ids:
+        # Offer this batch a place at the front of the queue. Ordering by level
+        # serves the majority who never import anything, but the two heaviest
+        # users keep 60-68% of their vocabulary as their own lists — and a list
+        # assembled for a deadline is about intent, not difficulty. The ids are
+        # held briefly so the flag lands on exactly this import and nothing older.
+        await state_service.set(
+            user.id,
+            InteractionState.IMPORT_PRIORITY,
+            {"word_ids": result.word_ids},
+        )
+        done_text += f"\n\n{IMPORT_ASK_PRIORITY}"
+        keyboard = import_priority_kb()
+    else:
+        await state_service.clear(user.id)
+        keyboard = post_add_kb()
+
     if query.message:
-        await query.message.edit_text(done_text, reply_markup=post_add_kb())
+        await query.message.edit_text(done_text, reply_markup=keyboard)
+    await query.answer()
+
+
+@router.callback_query(ImportCB.filter(F.action == "prioritise"))
+async def on_import_prioritise(
+    query: CallbackQuery,
+    user: User,
+    session: AsyncSession,
+    state_service: InteractionStateService,
+) -> None:
+    payload = await state_service.get(user.id)
+    word_ids = payload.data.get("word_ids") or []
+    if payload.state == InteractionState.IMPORT_PRIORITY and word_ids:
+        await UserWordRepository(session).set_priority(user.id, word_ids)
+    await state_service.clear(user.id)
+    if query.message:
+        await query.message.edit_text(IMPORT_PRIORITY_SET, reply_markup=post_add_kb())
     await query.answer()

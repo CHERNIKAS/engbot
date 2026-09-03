@@ -50,7 +50,7 @@ class AddWordsCB(CallbackData, prefix="add"):
 
 # TXT import flow.
 class ImportCB(CallbackData, prefix="imp"):
-    action: str  # start | confirm | choose_cat
+    action: str  # start | confirm | choose_cat | prioritise
     category_id: int = 0
     v: str = ""  # screen version
 

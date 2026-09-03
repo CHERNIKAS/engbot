@@ -4,7 +4,7 @@ import random
 from collections.abc import Iterable
 from datetime import datetime, timezone
 
-from sqlalchemy import and_, case, delete, func, or_, select
+from sqlalchemy import and_, case, delete, func, or_, select, update
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -329,6 +329,20 @@ class UserWordRepository:
         )
         return (await self.session.execute(q)).scalar_one()
 
+    async def set_priority(self, user_id: int, word_ids: Iterable[int], value: bool = True) -> int:
+        """Flag words as "teach first" for one user. Scoped by user_id so a
+        forged id list can't touch anyone else's rows."""
+        ids = [int(w) for w in word_ids]
+        if not ids:
+            return 0
+        result = await self.session.execute(
+            update(UserWord)
+            .where(UserWord.user_id == user_id, UserWord.word_id.in_(ids))
+            .values(priority=value)
+        )
+        await self.session.flush()
+        return result.rowcount or 0
+
     async def pick_new_for_push(
         self, user_id: int, track: LearningTrack, user_level: str | None = None
     ) -> tuple[UserWord, Word] | None:
@@ -367,6 +381,9 @@ class UserWordRepository:
                 Word.is_function_word.is_(False),
             )
             .order_by(
+                # The user's own "teach this first" beats every other signal —
+                # it's the one place they've told us directly what they want.
+                UserWord.priority.desc(),
                 level_rank,
                 # NULLS LAST: an untagged word shouldn't read as "maximally
                 # common" just because its rank was never filled in.

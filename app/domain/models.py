@@ -151,6 +151,10 @@ class UserWord(Base):
     )
     custom_translation: Mapped[str | None] = mapped_column(String(256), nullable=True)
     source: Mapped[str] = mapped_column(String(16), default="manual", nullable=False)
+    # "Teach this one first" — set by the user on their own imports. Ordered
+    # ahead of level fit, because a list someone assembled for a deadline is
+    # about their intent, not the catalogue's idea of difficulty.
+    priority: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
     status: Mapped[str] = mapped_column(String(16), default="new", nullable=False, index=True)
     ease_score: Mapped[float] = mapped_column(Float, default=2.5, nullable=False)
     repetitions_count: Mapped[int] = mapped_column(Integer, default=0, nullable=False)

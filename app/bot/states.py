@@ -18,6 +18,7 @@ class InteractionState(StrEnum):
 
     WAITING_TXT_FILE = "waiting_txt_file"
     WAITING_TXT_CATEGORY = "waiting_txt_category"
+    IMPORT_PRIORITY = "import_priority"
 
     WAITING_DELETE_CONFIRMATION = "waiting_delete_confirmation"
 
@@ -50,6 +51,7 @@ STATE_CALLBACK_PREFIXES: dict[InteractionState, frozenset[str]] = {
     InteractionState.WAITING_CATEGORY_RENAME: frozenset({"cat", "mw"}),
     InteractionState.WAITING_TXT_FILE: frozenset({"imp"}),
     InteractionState.WAITING_TXT_CATEGORY: frozenset({"imp", "cat"}),
+    InteractionState.IMPORT_PRIORITY: frozenset({"imp", "mm"}),
     InteractionState.WAITING_DELETE_CONFIRMATION: frozenset({"del", "mw", "st"}),
     InteractionState.STUDY_ACTIVE: frozenset({"st", "del"}),
     InteractionState.PACK_SELECTION: frozenset({"pk", "cat"}),
