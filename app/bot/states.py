@@ -9,6 +9,7 @@ class InteractionState(StrEnum):
     ONBOARDING_TRACKS = "onboarding_tracks"
     ONBOARDING_DAILY_GOAL = "onboarding_daily_goal"
     ONBOARDING_CUSTOM_GOAL = "onboarding_custom_goal"
+    ONBOARDING_LEVEL = "onboarding_level"
 
     WAITING_MANUAL_WORDS = "waiting_manual_words"
     WAITING_CATEGORY_FOR_WORDS = "waiting_category_for_words"
@@ -42,6 +43,7 @@ STATE_CALLBACK_PREFIXES: dict[InteractionState, frozenset[str]] = {
     InteractionState.ONBOARDING_TRACKS: frozenset({"ob"}),
     InteractionState.ONBOARDING_DAILY_GOAL: frozenset({"ob"}),
     InteractionState.ONBOARDING_CUSTOM_GOAL: frozenset({"ob"}),
+    InteractionState.ONBOARDING_LEVEL: frozenset({"ob"}),
     InteractionState.WAITING_MANUAL_WORDS: frozenset({"add"}),
     InteractionState.WAITING_CATEGORY_FOR_WORDS: frozenset({"add", "cat"}),
     InteractionState.WAITING_NEW_CATEGORY_NAME: frozenset({"cat", "add", "imp"}),

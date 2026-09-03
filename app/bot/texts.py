@@ -22,6 +22,24 @@ ERROR_GOAL_NOT_NUMBER = "🤔 Это не число. Введи целое от
 
 ONBOARDING_DONE = "🎉 Всё настроено! Удачной учёбы 🌸"
 
+# Placement test — gives the picker a level to aim at.
+PLACEMENT_INTRO = (
+    "Давай прикинем твой уровень 📏\n\n"
+    "Покажу {total} слов от простых к сложным — выбирай перевод. "
+    "Не знаешь — жми «Не знаю», это тоже ответ, а не ошибка.\n\n"
+    "Займёт минуту."
+)
+PLACEMENT_CARD = "<b>{writing}</b>\n\nЧто это значит?   ({position} из {total})"
+PLACEMENT_RESULT = (
+    "Готово! Твой уровень — <b>{level}</b> ✨\n\n"
+    "Буду подбирать слова под него: в основном по уровню, "
+    "иногда чуть проще, иногда на вырост."
+)
+PLACEMENT_SKIPPED = "Ок, без теста — поставлю средний уровень и подстроюсь по ходу 🌿"
+PLACEMENT_UNAVAILABLE = "Тест сейчас недоступен — поставлю средний уровень 🌿"
+PLACEMENT_DONT_KNOW = "🤷 Не знаю"
+PLACEMENT_SKIP = "Пропустить тест"
+
 MAIN_MENU = "Главное меню 🌸"
 
 # Persistent bottom reply-keyboard buttons (main navigation).

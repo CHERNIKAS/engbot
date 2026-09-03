@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import html
+
 from aiogram import F, Router
 from aiogram.filters import CommandStart
 from aiogram.types import CallbackQuery, Message
@@ -12,6 +14,8 @@ from app.bot.keyboards.course import course_onboarding_offer_kb
 from app.bot.keyboards.onboarding import (
     daily_goal_kb,
     onboarding_intro_kb,
+    placement_card_kb,
+    placement_intro_kb,
     tracks_picker_kb,
 )
 from app.bot.states import InteractionState
@@ -29,9 +33,16 @@ from app.bot.texts import (
     PASSWORD_OK,
     PASSWORD_PROMPT,
     PASSWORD_WRONG,
+    PLACEMENT_CARD,
+    PLACEMENT_INTRO,
+    PLACEMENT_RESULT,
+    PLACEMENT_SKIPPED,
+    PLACEMENT_UNAVAILABLE,
 )
 from app.domain.enums import LearningTrack, enabled_tracks
+from app.domain.levels import DEFAULT_LEVEL, TEST_LEVELS, TEST_PER_LEVEL
 from app.domain.models import User
+from app.services.placement_service import PlacementCard, PlacementService
 from app.services.analytics import EVENT_ONBOARDING_COMPLETED, Analytics
 from app.services.interaction_state_service import InteractionStateService
 from app.services.track_context_service import TrackContextService
@@ -242,8 +253,84 @@ async def on_goal_picked(
         daily_goal=value,
     )
     if query.message:
-        await query.message.edit_text(ONBOARDING_DONE, reply_markup=course_onboarding_offer_kb())
+        await query.message.edit_text(
+            PLACEMENT_INTRO.format(total=len(TEST_LEVELS) * TEST_PER_LEVEL),
+            reply_markup=placement_intro_kb(),
+        )
+    await query.answer()
+
+
+def _render_card(card: PlacementCard) -> tuple[str, object]:
+    return (
+        PLACEMENT_CARD.format(
+            writing=html.escape(card.writing), position=card.position, total=card.total
+        ),
+        placement_card_kb(card.options),
+    )
+
+
+async def _close_onboarding(query: CallbackQuery, text: str) -> None:
+    """Last screen of onboarding — same ending for every placement outcome."""
+    if query.message:
+        await query.message.edit_text(f"{text}\n\n{ONBOARDING_DONE}", reply_markup=course_onboarding_offer_kb())
         await query.message.answer(MAIN_MENU, reply_markup=main_menu_reply_kb())
+
+
+@router.callback_query(OnboardingCB.filter(F.action == "lvl_start"))
+async def on_placement_start(
+    query: CallbackQuery,
+    user: User,
+    current_track: LearningTrack,
+    placement: PlacementService,
+) -> None:
+    card = await placement.start(user.id, current_track)
+    if card is None:
+        # Not enough catalogue at some level to ask a fair question. Placing the
+        # user at the default beats blocking onboarding on a content gap.
+        user.level = DEFAULT_LEVEL
+        await _close_onboarding(query, PLACEMENT_UNAVAILABLE)
+        await query.answer()
+        return
+    if query.message:
+        text, kb = _render_card(card)
+        await query.message.edit_text(text, reply_markup=kb)
+    await query.answer()
+
+
+@router.callback_query(OnboardingCB.filter(F.action == "lvl"))
+async def on_placement_answer(
+    query: CallbackQuery,
+    callback_data: OnboardingCB,
+    user: User,
+    state_service: InteractionStateService,
+    placement: PlacementService,
+) -> None:
+    card, verdict = await placement.answer(user.id, callback_data.value)
+    if card is not None:
+        if query.message:
+            text, kb = _render_card(card)
+            await query.message.edit_text(text, reply_markup=kb)
+        await query.answer()
+        return
+    if verdict is None:
+        # State expired mid-test (Redis TTL) — nothing to score, don't guess.
+        await query.answer(ONBOARDING_EXPIRED, show_alert=True)
+        return
+    user.level = verdict
+    await state_service.clear(user.id)
+    await _close_onboarding(query, PLACEMENT_RESULT.format(level=verdict))
+    await query.answer()
+
+
+@router.callback_query(OnboardingCB.filter(F.action == "lvl_skip"))
+async def on_placement_skip(
+    query: CallbackQuery,
+    user: User,
+    state_service: InteractionStateService,
+) -> None:
+    user.level = DEFAULT_LEVEL
+    await state_service.clear(user.id)
+    await _close_onboarding(query, PLACEMENT_SKIPPED)
     await query.answer()
 
 
@@ -309,5 +396,7 @@ async def on_custom_goal_text(
         tracks=tracks,
         daily_goal=value,
     )
-    await message.answer(ONBOARDING_DONE, reply_markup=course_onboarding_offer_kb())
-    await message.answer(MAIN_MENU, reply_markup=main_menu_reply_kb())
+    await message.answer(
+        PLACEMENT_INTRO.format(total=len(TEST_LEVELS) * TEST_PER_LEVEL),
+        reply_markup=placement_intro_kb(),
+    )

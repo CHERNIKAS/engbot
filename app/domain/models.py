@@ -35,6 +35,10 @@ class User(Base):
     # the wrong default (push window/streak would be hours off). Users can pick
     # their own zone in Settings → 🕐 Часовой пояс.
     timezone: Mapped[str] = mapped_column(String(64), default="Europe/Moscow", nullable=False)
+    # CEFR level from the placement test. NULL = not placed yet, which is a real
+    # state, not a missing default: the picker falls back to a safe level while
+    # the test stays offerable. See app/domain/levels.py.
+    level: Mapped[str | None] = mapped_column(String(8), nullable=True)
     # Global streak — shared across all learning tracks.
     streak_days: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     last_study_date: Mapped[date | None] = mapped_column(Date, nullable=True)
@@ -110,6 +114,10 @@ class Word(Base):
     romaji: Mapped[str | None] = mapped_column(String(128), nullable=True)
     script_type: Mapped[str | None] = mapped_column(String(16), nullable=True)
     level: Mapped[str | None] = mapped_column(String(8), nullable=True)
+    # How common the word is in everyday English: 1 = top-thousand .. 5 = rare
+    # or a narrow term. Pairs with `level` to order what gets taught next —
+    # level alone puts "plummet" and "often" in the same bucket too easily.
+    freq_rank: Mapped[int | None] = mapped_column(Integer, nullable=True)
     # Coarse part of speech ('verb' | 'noun' | 'adj'), used to pick quiz
     # distractors of the same kind. Nullable: not every word can be tagged.
     part_of_speech: Mapped[str | None] = mapped_column(String(16), nullable=True)

@@ -15,6 +15,7 @@ class NoopCB(CallbackData, prefix="noop"):
 # Onboarding.
 class OnboardingCB(CallbackData, prefix="ob"):
     action: str  # start | toggle_track | tracks_done | goal | custom | seed_skip | done
+    #          | lvl_start | lvl | lvl_skip  (placement test; lvl value -1 = "не знаю")
     value: int = 0
     track: str = ""  # for action == "toggle_track"
 
