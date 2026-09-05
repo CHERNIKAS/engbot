@@ -77,6 +77,14 @@ class Settings(BaseSettings):
     # Short enough that the correction still feels connected to the answer.
     regrade_interval_seconds: int = Field(600, ge=60, alias="REGRADE_INTERVAL_SECONDS")
 
+    # Daily nudge for users the placement gate is holding. Checked often, sent
+    # at most once per user per local day (the service dedups) — the interval
+    # here only decides how soon after their window opens the nudge lands.
+    placement_reminder_enabled: bool = Field(True, alias="PLACEMENT_REMINDER_ENABLED")
+    placement_reminder_interval_seconds: int = Field(
+        3600, ge=300, alias="PLACEMENT_REMINDER_INTERVAL_SECONDS"
+    )
+
     # Pre-shared password required to use the bot. Empty string disables gating.
     access_password: str = Field("", alias="ACCESS_PASSWORD")
 
