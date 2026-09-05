@@ -399,6 +399,54 @@ class UserWordRepository:
         row = random.choice(rows)
         return (row[0], row[1])
 
+    async def pick_backlog_to_park(
+        self, user_id: int, track: LearningTrack, limit: int, now: datetime | None = None
+    ) -> list[tuple[UserWord, Word]]:
+        """The active words furthest from being learned, worst first.
+
+        When a pool is too big for its owner, the words to set aside are the
+        ones that have gone nowhere — lowest score, never typed, longest
+        untouched. Parking a word that is nearly finished would waste the work
+        already in it, which is the opposite of the point.
+
+        Snoozed words are excluded: they're already out of rotation.
+        """
+        now = now or datetime.now(timezone.utc)
+        q = (
+            select(UserWord, Word)
+            .join(Word, Word.id == UserWord.word_id)
+            .where(
+                UserWord.user_id == user_id,
+                UserWord.track == track.value,
+                UserWord.archived.is_(False),
+                UserWord.status.in_([WordStatus.LEARNING.value, WordStatus.REVIEW.value]),
+                or_(UserWord.snooze_until.is_(None), UserWord.snooze_until <= now),
+            )
+            .order_by(
+                UserWord.learning_score.asc(),
+                UserWord.production_count.asc(),
+                UserWord.last_reviewed_at.asc().nulls_first(),
+            )
+            .limit(limit)
+        )
+        return [(row[0], row[1]) for row in (await self.session.execute(q)).all()]
+
+    async def park_words(
+        self, user_id: int, user_word_ids: Iterable[int], until: datetime
+    ) -> int:
+        """Snooze, not archive: the user gets these back on their own, and
+        they're listed under «Архив и отложенные» in the meantime."""
+        ids = [int(i) for i in user_word_ids]
+        if not ids:
+            return 0
+        result = await self.session.execute(
+            update(UserWord)
+            .where(UserWord.user_id == user_id, UserWord.id.in_(ids))
+            .values(snooze_until=until)
+        )
+        await self.session.flush()
+        return result.rowcount or 0
+
     async def level_evidence(
         self, user_id: int, track: LearningTrack, user_level: str | None
     ) -> tuple[int, int, int]:

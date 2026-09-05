@@ -76,7 +76,7 @@ class StudyCB(CallbackData, prefix="st"):
 
 # Progress.
 class ProgressCB(CallbackData, prefix="pg"):
-    action: str = "open"
+    action: str = "open"  # open | managed | unarchive | unsnooze | backlog | park
 
 
 # Settings.

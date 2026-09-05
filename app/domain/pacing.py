@@ -74,6 +74,27 @@ def pool_ceiling(answers_per_day: float | None) -> int:
     return max(MIN_POOL, min(MAX_POOL, round(rate * THROUGHPUT_TO_POOL)))
 
 
+# Parking down to exactly the ceiling would leave the pool full, and a new word
+# only enters while the pool is *under* it — the user would clear the backlog
+# and still get nothing new. Aim a little below so there's room to move.
+POOL_TARGET_SHARE = 0.8
+# Don't offer to park a handful of words: the interruption costs more than the
+# few slots it frees.
+MIN_OVERFLOW_TO_OFFER = 5
+
+
+def overflow(active: int, ceiling: int) -> int:
+    """How many active words to park so the pool fits the user again.
+
+    Zero unless the excess is worth acting on. Nothing here parks anything —
+    this only says how big the offer should be; the user makes the call, because
+    these are words they chose to learn.
+    """
+    target = max(MIN_POOL, round(ceiling * POOL_TARGET_SHARE))
+    excess = active - target
+    return excess if excess >= MIN_OVERFLOW_TO_OFFER else 0
+
+
 def label_for(pace: int) -> str:
     """Human label like '🚶 Ровно' for the current pace (falls back to default)."""
     for value, emoji, name in PACE_OPTIONS:

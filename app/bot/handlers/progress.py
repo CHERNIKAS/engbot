@@ -6,8 +6,11 @@ from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.bot.callbacks.schema import ProgressCB, PushCB
-from app.bot.keyboards.progress import managed_words_kb, progress_kb
+from app.bot.keyboards.progress import backlog_confirm_kb, managed_words_kb, progress_kb
 from app.bot.texts import (
+    BACKLOG_DONE,
+    BACKLOG_NOTHING,
+    BACKLOG_OFFER,
     MANAGED_EMPTY,
     MANAGED_RESTORED,
     MANAGED_TITLE,
@@ -16,6 +19,7 @@ from app.bot.texts import (
 from app.domain.enums import LearningTrack, WordStatus
 from app.domain.models import User
 from app.infrastructure.repositories.user_words import UserWordRepository
+from app.services.backlog_service import BacklogService
 from app.services.course_service import course_progress_or_none
 from app.services.progress_service import ProgressService, format_progress
 from app.services.user_track_service import UserTrackService
@@ -52,8 +56,45 @@ async def on_progress_open(
 ) -> None:
     text = await _progress_text(session, redis, user, user_track_service)
     has_managed = await UserWordRepository(session).has_managed(user.id, _TRACK)
+    offer = await BacklogService(session).offer(user.id, _TRACK)
     if query.message:
-        await query.message.edit_text(text, reply_markup=progress_kb(has_managed), parse_mode="HTML")
+        await query.message.edit_text(
+            text,
+            reply_markup=progress_kb(has_managed, backlog=offer.count),
+            parse_mode="HTML",
+        )
+    await query.answer()
+
+
+@router.callback_query(ProgressCB.filter(F.action == "backlog"))
+async def on_backlog_offer(query: CallbackQuery, user: User, session: AsyncSession) -> None:
+    """Explain the oversized pool before touching anything."""
+    offer = await BacklogService(session).offer(user.id, _TRACK)
+    if not offer.worth_offering:
+        await query.answer(BACKLOG_NOTHING, show_alert=True)
+        return
+    if query.message:
+        await query.message.edit_text(
+            BACKLOG_OFFER.format(active=offer.active, target=offer.target, count=offer.count),
+            reply_markup=backlog_confirm_kb(offer.count),
+            parse_mode="HTML",
+        )
+    await query.answer()
+
+
+@router.callback_query(ProgressCB.filter(F.action == "park"))
+async def on_backlog_park(query: CallbackQuery, user: User, session: AsyncSession) -> None:
+    parked, left = await BacklogService(session).park(user.id, _TRACK)
+    if not parked:
+        await query.answer(BACKLOG_NOTHING, show_alert=True)
+        return
+    has_managed = await UserWordRepository(session).has_managed(user.id, _TRACK)
+    if query.message:
+        await query.message.edit_text(
+            BACKLOG_DONE.format(count=parked, left=left),
+            reply_markup=progress_kb(has_managed),
+            parse_mode="HTML",
+        )
     await query.answer()
 
 

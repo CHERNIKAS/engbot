@@ -8,6 +8,7 @@ from app.domain.pacing import (
     ceiling_of,
     label_for,
     pace_of,
+    overflow,
     pool_ceiling,
 )
 
@@ -85,3 +86,33 @@ def test_pool_stays_inside_its_bounds():
 
 def test_a_beginner_still_gets_something_to_learn():
     assert pool_ceiling(1) >= MIN_POOL
+
+
+# ---- offering to drain an oversized pool ----
+
+
+def test_a_pool_that_fits_is_left_alone():
+    assert overflow(active=10, ceiling=16) == 0
+
+
+def test_a_small_excess_is_not_worth_interrupting_for():
+    assert overflow(active=15, ceiling=16) == 0
+
+
+def test_the_prod_case_is_offered():
+    """User 1 sat on 63 active words against a ceiling of 16 and could not
+    receive a single new one until they drained it."""
+    assert overflow(active=63, ceiling=16) > 0
+
+
+def test_parking_leaves_room_for_new_words():
+    """A new word only enters while the pool is UNDER the ceiling, so parking
+    down to exactly the ceiling would free nothing."""
+    ceiling = 16
+    to_park = overflow(active=63, ceiling=ceiling)
+    assert 63 - to_park < ceiling
+
+
+def test_it_never_asks_to_park_below_the_floor():
+    to_park = overflow(active=40, ceiling=MIN_POOL)
+    assert 40 - to_park >= MIN_POOL
