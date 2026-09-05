@@ -163,27 +163,6 @@ def push_window_kb(ws: int, we: int, min_hours: int = 10) -> InlineKeyboardMarku
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
-def goal_values_kb(version: str = "") -> InlineKeyboardMarkup:
-    values = [5, 10, 20, 50]
-    row = [
-        InlineKeyboardButton(
-            text=str(v),
-            callback_data=SettingsCB(action="goal_value", value=str(v), v=version).pack(),
-        )
-        for v in values
-    ]
-    return InlineKeyboardMarkup(
-        inline_keyboard=[
-            row,
-            [
-                InlineKeyboardButton(
-                    text="✍️ Своё",
-                    callback_data=SettingsCB(action="goal_value", value="custom", v=version).pack(),
-                )
-            ],
-            [_back_to_settings_button(), home_button()],
-        ]
-    )
 
 
 def pace_kb(current: str, version: str = "") -> InlineKeyboardMarkup:

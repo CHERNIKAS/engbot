@@ -5,6 +5,7 @@ from types import SimpleNamespace
 
 from app.domain import mastery
 from app.services.answer_check import AnswerCheckService, AnswerVerdict
+from app.services.regrade import ParkedAnswer, RegradeQueue, RegradeService
 
 
 class FakeRedis:
@@ -141,8 +142,6 @@ async def test_a_broken_cache_does_not_break_the_answer():
 
 
 async def test_a_parked_answer_survives_the_round_trip():
-    from app.services.regrade import ParkedAnswer, RegradeQueue
-
     class ListRedis(FakeRedis):
         def __init__(self):
             super().__init__()
@@ -170,8 +169,6 @@ async def test_a_parked_answer_survives_the_round_trip():
 
 
 async def test_a_malformed_queue_entry_does_not_block_the_rest():
-    from app.services.regrade import ParkedAnswer, RegradeQueue
-
     class ListRedis(FakeRedis):
         def __init__(self, items):
             super().__init__()
@@ -188,10 +185,127 @@ async def test_a_malformed_queue_entry_does_not_block_the_rest():
 
 async def test_parking_never_raises_when_redis_is_down():
     """A failed park must not cost the user their answer."""
-    from app.services.regrade import ParkedAnswer, RegradeQueue
-
     class Broken(FakeRedis):
         async def lpush(self, key, value):
             raise RuntimeError("redis down")
 
     await RegradeQueue(Broken()).park(ParkedAnswer(1, 9, 4, "w", "п", "a", 1.0))
+
+
+# ---- the re-grade itself: it writes scores and messages real people ----
+
+
+class FakeQueueRedis(FakeRedis):
+    def __init__(self, items=None):
+        super().__init__()
+        self.items = list(items or [])
+
+    async def lpush(self, key, value):
+        self.items.insert(0, value)
+
+    async def ltrim(self, key, start, end):
+        self.items = self.items[start : end + 1]
+
+    async def rpop(self, key):
+        return self.items.pop() if self.items else None
+
+    async def llen(self, key):
+        return len(self.items)
+
+
+class FakeUserWord:
+    def __init__(self, uw_id=42, user_id=1):
+        self.id = uw_id
+        self.user_id = user_id
+        self.learning_score = 2.0
+        self.production_count = 0
+
+
+def _service(redis, verdict, uw=None, key="k"):
+    """A RegradeService with the checker and repository stubbed out."""
+    svc = RegradeService.__new__(RegradeService)
+    svc._session = SimpleNamespace(flush=_noop)
+    svc._queue = RegradeQueue(redis)
+
+    class Checker:
+        enabled = bool(key)
+
+        async def classify(self, word, translation, answer):
+            return verdict
+
+    class Repo:
+        async def get(self, uw_id, owner_id=None):
+            return uw
+
+    svc._checker = Checker()
+    svc._uw = Repo()
+    return svc
+
+
+async def _noop(*_a, **_kw):
+    return None
+
+
+def _parked(at=1000.0):
+    return ParkedAnswer(1, 999, 42, "reliable", "надёжный", "relaible", at)
+
+
+async def _queued(item):
+    redis = FakeQueueRedis()
+    await RegradeQueue(redis).park(item)
+    return redis
+
+
+async def test_a_credited_answer_gets_its_score_after_the_fact():
+    uw = FakeUserWord()
+    redis = await _queued(_parked())
+    svc = _service(redis, AnswerVerdict(mastery.TYPED_TYPO, "опечатка"), uw)
+    result = await svc.run(now=1001.0)
+    assert result.upgraded == 1
+    assert uw.learning_score > 2.0
+    assert uw.production_count == 1
+    assert 999 in result.per_user  # the user is told what changed
+
+
+async def test_a_genuine_miss_changes_nothing():
+    uw = FakeUserWord()
+    redis = await _queued(_parked())
+    svc = _service(redis, AnswerVerdict(mastery.WRONG, ""), uw)
+    result = await svc.run(now=1001.0)
+    assert result.checked == 1
+    assert result.upgraded == 0
+    assert uw.learning_score == 2.0
+    assert not result.per_user
+
+
+async def test_a_stale_answer_is_dropped_rather_than_resurrected():
+    """A surprise "your answer from Tuesday was fine" is noise, not a gift."""
+    uw = FakeUserWord()
+    redis = await _queued(_parked(at=0.0))
+    svc = _service(redis, AnswerVerdict(mastery.TYPED_TYPO, "x"), uw)
+    result = await svc.run(now=10_000_000.0)
+    assert result.checked == 0 and result.upgraded == 0
+
+
+async def test_a_still_dead_api_puts_the_answer_back():
+    """Otherwise an outage would drain the queue into nothing."""
+    redis = await _queued(_parked())
+    svc = _service(redis, None, FakeUserWord())
+    result = await svc.run(now=1001.0)
+    assert result.upgraded == 0
+    assert await svc._queue.pending() == 1
+
+
+async def test_nothing_runs_without_a_checker():
+    redis = await _queued(_parked())
+    svc = _service(redis, AnswerVerdict(mastery.TYPED_TYPO, "x"), FakeUserWord(), key="")
+    result = await svc.run(now=1001.0)
+    assert result.checked == 0
+    assert await svc._queue.pending() == 1  # untouched, retried when it returns
+
+
+async def test_a_word_that_vanished_is_skipped_without_crashing():
+    redis = await _queued(_parked())
+    svc = _service(redis, AnswerVerdict(mastery.TYPED_TYPO, "x"), uw=None)
+    result = await svc.run(now=1001.0)
+    assert result.upgraded == 0

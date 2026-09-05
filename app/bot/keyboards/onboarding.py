@@ -66,19 +66,6 @@ def placement_card_kb(options: list[str]) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
-def daily_goal_kb() -> InlineKeyboardMarkup:
-    rows = [
-        [
-            InlineKeyboardButton(text="5", callback_data=OnboardingCB(action="goal", value=5).pack()),
-            InlineKeyboardButton(text="10", callback_data=OnboardingCB(action="goal", value=10).pack()),
-            InlineKeyboardButton(text="20", callback_data=OnboardingCB(action="goal", value=20).pack()),
-            InlineKeyboardButton(text="50", callback_data=OnboardingCB(action="goal", value=50).pack()),
-        ],
-        [
-            InlineKeyboardButton(text="✍️ Ввести своё", callback_data=OnboardingCB(action="custom").pack())
-        ],
-    ]
-    return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
 def tracks_picker_kb(

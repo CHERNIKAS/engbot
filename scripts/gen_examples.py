@@ -87,12 +87,23 @@ SCHEMA: dict[str, Any] = {
 }
 
 
+def word_pattern(word: str) -> re.Pattern[str]:
+    """The bot's cloze-masking pattern for one word.
+
+    One definition, used by both the "is it there" check and the "what's left
+    after blanking" check. Writing the pattern out twice is what broke it the
+    first time: the second copy ended up with literal backspace characters
+    where `\\b` was meant, so it matched nothing, and the check it guarded
+    silently passed everything.
+    """
+    return re.compile(rf"\b{re.escape(word)}{_CLOZE_INFLECT}\b", re.IGNORECASE)
+
+
 def contains_word(sentence: str, word: str) -> bool:
     """Exactly the test the bot's cloze masker applies."""
     if not sentence or not word:
         return False
-    pattern = re.compile(rf"\b{re.escape(word)}{_CLOZE_INFLECT}\b", re.IGNORECASE)
-    return pattern.search(sentence) is not None
+    return word_pattern(word).search(sentence) is not None
 
 
 _TOKEN = re.compile(r"[A-Za-z']+")
@@ -152,9 +163,7 @@ def check(
     if not (MIN_WORDS <= n <= MAX_WORDS):
         problems.append(f"длина sentence {n} слов, нужно {MIN_WORDS}-{MAX_WORDS}")
     else:
-        masked = re.sub(
-            rf"{re.escape(target)}{_CLOZE_INFLECT}", "___", sentence, flags=re.IGNORECASE
-        )
+        masked = word_pattern(target).sub("___", sentence)
         left = len(_TOKEN.findall(masked))
         if left < MIN_CONTEXT_WORDS:
             problems.append(

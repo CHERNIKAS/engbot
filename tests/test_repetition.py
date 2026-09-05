@@ -6,6 +6,7 @@ from types import SimpleNamespace
 from app.domain import mastery
 from app.domain.enums import LearningPace, ReviewResult, WordStatus
 from app.services.repetition_service import (
+    MASTERED_REPS_EASY,
     MASTERED_REPS_NORMAL,
     MAX_INTERVAL_DAYS,
     MASTERY_SCORE_MAX,
@@ -182,3 +183,24 @@ def test_interval_is_capped_so_it_cannot_overflow_a_date():
             kind=mastery.RECOGNITION, word_level="B1", user_level="B1",
         )
     assert uw.interval_days <= MAX_INTERVAL_DAYS
+
+
+def test_the_easy_shortcut_still_needs_typed_answers():
+    """EASY skips reps, not the gates. Mastering here on choice cards alone
+    would reopen the hole the production floor exists to close."""
+    uw = _uw_fresh()
+    for _ in range(20):
+        apply_review(
+            uw, ReviewResult.EASY, LearningPace.NORMAL,
+            kind=mastery.RECOGNITION, word_level="B1", user_level="B1",
+        )
+    assert uw.status != WordStatus.MASTERED.value
+    assert uw.production_count == 0
+
+
+def test_the_easy_shortcut_keeps_the_legacy_rule_without_a_kind():
+    """Grammar items come through here with no answer kind and no CEFR level."""
+    uw = _uw_fresh()
+    for _ in range(MASTERED_REPS_EASY + 1):
+        apply_review(uw, ReviewResult.EASY, LearningPace.NORMAL)
+    assert uw.status == WordStatus.MASTERED.value

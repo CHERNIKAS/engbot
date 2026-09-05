@@ -92,7 +92,26 @@ def apply_review(
         ease = _clamp(ease + 0.15, MIN_EASE, MAX_EASE)
         interval = max(interval * ease, 4.0) if interval > 0 else 4.0
         reps += 1
-        if reps >= MASTERED_REPS_EASY and ease >= 2.6:
+        if kind is not None:
+            user_word.learning_score = apply_credit(user_word.learning_score or 0.0, kind)
+            if is_production(kind):
+                user_word.production_count = (user_word.production_count or 0) + 1
+        # The shortcut is only a shortcut on the rep count. It must still clear
+        # the same gates as the normal path: reaching "learned" here without a
+        # typed answer would reopen the exact hole the production floor closes,
+        # and this branch is unreachable today only because nothing emits EASY.
+        graduated = (
+            is_mastered(
+                user_word.learning_score,
+                user_word.production_count,
+                word_level,
+                user_level,
+                production_possible=production_possible,
+            )
+            if kind is not None
+            else (reps >= MASTERED_REPS_EASY and ease >= 2.6)
+        )
+        if graduated:
             user_word.status = WordStatus.MASTERED.value
             user_word.mastery_score = MASTERY_SCORE_MAX
         else:

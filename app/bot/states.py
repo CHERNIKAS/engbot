@@ -7,8 +7,6 @@ class InteractionState(StrEnum):
     IDLE = "idle"
     WAITING_PASSWORD = "waiting_password"
     ONBOARDING_TRACKS = "onboarding_tracks"
-    ONBOARDING_DAILY_GOAL = "onboarding_daily_goal"
-    ONBOARDING_CUSTOM_GOAL = "onboarding_custom_goal"
     ONBOARDING_LEVEL = "onboarding_level"
 
     WAITING_MANUAL_WORDS = "waiting_manual_words"
@@ -28,7 +26,6 @@ class InteractionState(StrEnum):
 
     WAITING_SEARCH_QUERY = "waiting_search_query"
 
-    SETTINGS_GOAL_INPUT = "settings_goal_input"
 
 
 # Universal callback prefixes always allowed regardless of state.
@@ -42,8 +39,6 @@ STATE_CALLBACK_PREFIXES: dict[InteractionState, frozenset[str]] = {
     ),
     InteractionState.WAITING_PASSWORD: frozenset(),
     InteractionState.ONBOARDING_TRACKS: frozenset({"ob"}),
-    InteractionState.ONBOARDING_DAILY_GOAL: frozenset({"ob"}),
-    InteractionState.ONBOARDING_CUSTOM_GOAL: frozenset({"ob"}),
     InteractionState.ONBOARDING_LEVEL: frozenset({"ob"}),
     InteractionState.WAITING_MANUAL_WORDS: frozenset({"add"}),
     InteractionState.WAITING_CATEGORY_FOR_WORDS: frozenset({"add", "cat"}),
@@ -58,7 +53,6 @@ STATE_CALLBACK_PREFIXES: dict[InteractionState, frozenset[str]] = {
     # Search results mix own words (word cards open via "mw", delete via "del")
     # with catalog words (added via "sr").
     InteractionState.WAITING_SEARCH_QUERY: frozenset({"sr", "mw", "del", "mm"}),
-    InteractionState.SETTINGS_GOAL_INPUT: frozenset({"set"}),
 }
 
 
@@ -67,11 +61,9 @@ TEXT_ACCEPTING_STATES: frozenset[InteractionState] = frozenset(
     {
         InteractionState.IDLE,  # quick add popup
         InteractionState.WAITING_PASSWORD,
-        InteractionState.ONBOARDING_CUSTOM_GOAL,
         InteractionState.WAITING_MANUAL_WORDS,
         InteractionState.WAITING_NEW_CATEGORY_NAME,
         InteractionState.WAITING_CATEGORY_RENAME,
-        InteractionState.SETTINGS_GOAL_INPUT,
         InteractionState.STUDY_ACTIVE,  # typing-stage answers
         InteractionState.WAITING_SEARCH_QUERY,
     }
