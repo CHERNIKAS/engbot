@@ -313,7 +313,10 @@ PUSH_ANSWER_DEGRADED = (
 # card had shown — which word it even was, and how close it is to being learned.
 # Now the answer reveals the pair, and the progress line comes back as a
 # before → after so the tap visibly moved something.
-PUSH_RECAP_WORD = "<b>{writing}</b> — {translation}"
+# On a hit the word is an anchor, not a lesson: the user just produced this
+# pairing themselves, so repeating the translation back tells them nothing.
+# The miss is the only place it teaches — there the pair comes out in full.
+PUSH_RECAP_WORD = "<b>{writing}</b>"
 PUSH_RECAP_TRANSLATION = "↳ {translation}"
 PUSH_RECAP_EXAMPLE = "📝 <i>{sentence}</i>"
 PUSH_RECAP_MASTERED_NOW = "⭐ Слово выучено! Дальше — редкие повторы для поддержки."

@@ -37,9 +37,12 @@ def _lines(text: str) -> list[str]:
 # ---- the pair comes back ----
 
 
-def test_a_correct_answer_names_the_word_and_its_translation():
+def test_a_correct_answer_names_the_word_but_not_its_translation():
+    """The user just produced this pairing themselves — handing it back teaches
+    nothing. The word alone stays as an anchor for the chat history."""
     out = _recap(_uw(), _word(), before_percent=42, was_mastered=False, correct=True, target=TARGET, now=NOW)
-    assert "<b>report</b> — отчёт" in out
+    assert "<b>report</b>" in out
+    assert "отчёт" not in out
 
 
 def test_a_miss_does_not_repeat_the_word_the_verdict_already_gave():
@@ -53,9 +56,14 @@ def test_a_miss_does_not_repeat_the_word_the_verdict_already_gave():
 def test_a_custom_translation_wins_over_the_catalogue_one():
     uw = _uw()
     uw.custom_translation = "докладная"
-    out = _recap(uw, _word(), before_percent=42, was_mastered=False, correct=True, target=TARGET, now=NOW)
+    out = _recap(uw, _word(), before_percent=42, was_mastered=False, correct=False, target=TARGET, now=NOW)
     assert "докладная" in out
     assert "отчёт" not in out
+
+
+def test_a_word_with_no_translation_still_gets_its_anchor():
+    out = _recap(_uw(), _word(translation=None), before_percent=42, was_mastered=False, correct=True, target=TARGET, now=NOW)
+    assert "<b>report</b>" in out
 
 
 # ---- the example is a consolation, not decoration ----

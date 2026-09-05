@@ -347,14 +347,10 @@ def _recap(
     """
     lines: list[str] = []
     translation = (uw.custom_translation or word.translation or "").strip()
-    if translation:
-        tpl = PUSH_RECAP_WORD if correct else PUSH_RECAP_TRANSLATION
-        lines.append(
-            tpl.format(
-                writing=html.escape(word.writing or ""),
-                translation=html.escape(translation),
-            )
-        )
+    if correct:
+        lines.append(PUSH_RECAP_WORD.format(writing=html.escape(word.writing or "")))
+    elif translation:
+        lines.append(PUSH_RECAP_TRANSLATION.format(translation=html.escape(translation)))
     if not correct and (word.example_sentence or "").strip():
         lines.append(PUSH_RECAP_EXAMPLE.format(sentence=html.escape(word.example_sentence.strip())))
 
