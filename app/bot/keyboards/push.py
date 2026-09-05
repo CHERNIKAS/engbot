@@ -12,11 +12,19 @@ SNOOZE_LABELS: dict[int, str] = {3: "3 дня", 7: "неделю", 30: "меся
 NOT_NOW_DAYS = 45
 
 
+# One name per action. "Я это знаю" and "Уже уверенно знаю" were two labels on
+# the same behaviour once the first one started crediting the word.
+KNOW_LABEL = "✅ Я это знаю"
+REMOVE_LABEL = "🙈 Убрать из обучения"
+
+
 def push_card_kb(options: list[str], uw_id: int, status: str) -> InlineKeyboardMarkup:
     """A quiz card delivered as a push: answer buttons + per-status controls.
-    - brand-new word: "не показывать, я знаю"
-    - word being learned: "перестать показывать"
-    - mastered word: snooze (3d/week/month) + "перестать показывать"
+
+    Every status offers the same two escapes under different names only where
+    they mean different things: "I know this" credits the word, "remove" drops
+    it with no credit. A mastered word has nothing left to claim, so it gets
+    snooze instead.
     """
     rows: list[list[InlineKeyboardButton]] = [
         [InlineKeyboardButton(text=opt[:60], callback_data=PushCB(action="ans", uw_id=uw_id, idx=i).pack())]
@@ -25,7 +33,13 @@ def push_card_kb(options: list[str], uw_id: int, status: str) -> InlineKeyboardM
 
     if status == WordStatus.NEW.value:
         rows.append(
-            [InlineKeyboardButton(text="✅ Я это знаю", callback_data=PushCB(action="know", uw_id=uw_id).pack())]
+            [InlineKeyboardButton(text=KNOW_LABEL, callback_data=PushCB(action="master", uw_id=uw_id).pack())]
+        )
+        # A new word can be unwanted without being known. Until "I know this"
+        # started crediting the word, it doubled as the remove button and this
+        # gap didn't exist.
+        rows.append(
+            [InlineKeyboardButton(text=REMOVE_LABEL, callback_data=PushCB(action="hide", uw_id=uw_id).pack())]
         )
     elif status == WordStatus.MASTERED.value:
         rows.append(
@@ -36,17 +50,17 @@ def push_card_kb(options: list[str], uw_id: int, status: str) -> InlineKeyboardM
             ]
         )
         rows.append(
-            [InlineKeyboardButton(text="🙈 Убрать из обучения", callback_data=PushCB(action="hide", uw_id=uw_id).pack())]
+            [InlineKeyboardButton(text=REMOVE_LABEL, callback_data=PushCB(action="hide", uw_id=uw_id).pack())]
         )
     else:  # LEARNING / REVIEW
         rows.append(
-            [InlineKeyboardButton(text="✅ Уже уверенно знаю", callback_data=PushCB(action="master", uw_id=uw_id).pack())]
+            [InlineKeyboardButton(text=KNOW_LABEL, callback_data=PushCB(action="master", uw_id=uw_id).pack())]
         )
         rows.append(
             [InlineKeyboardButton(text="⏸ Не учить сейчас", callback_data=PushCB(action="snooze", uw_id=uw_id, days=NOT_NOW_DAYS).pack())]
         )
         rows.append(
-            [InlineKeyboardButton(text="🙈 Убрать из обучения", callback_data=PushCB(action="hide", uw_id=uw_id).pack())]
+            [InlineKeyboardButton(text=REMOVE_LABEL, callback_data=PushCB(action="hide", uw_id=uw_id).pack())]
         )
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
@@ -67,13 +81,13 @@ def push_cloze_card_kb(uw_id: int, status: str) -> InlineKeyboardMarkup:
         )
     else:  # LEARNING / REVIEW
         rows.append(
-            [InlineKeyboardButton(text="✅ Уже уверенно знаю", callback_data=PushCB(action="master", uw_id=uw_id).pack())]
+            [InlineKeyboardButton(text=KNOW_LABEL, callback_data=PushCB(action="master", uw_id=uw_id).pack())]
         )
         rows.append(
             [InlineKeyboardButton(text="⏸ Не учить сейчас", callback_data=PushCB(action="snooze", uw_id=uw_id, days=NOT_NOW_DAYS).pack())]
         )
     rows.append(
-        [InlineKeyboardButton(text="🙈 Убрать из обучения", callback_data=PushCB(action="hide", uw_id=uw_id).pack())]
+        [InlineKeyboardButton(text=REMOVE_LABEL, callback_data=PushCB(action="hide", uw_id=uw_id).pack())]
     )
     return InlineKeyboardMarkup(inline_keyboard=rows)
 

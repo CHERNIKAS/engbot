@@ -35,12 +35,12 @@ async def on_push_know(
     session: AsyncSession,
     redis: Redis,
 ) -> None:
-    """«Я это знаю» — credit the word, don't bin it.
+    """Legacy callback for «Я это знаю».
 
-    This used to archive, exactly like «убрать из обучения»: two buttons, two
-    very different meanings, one behaviour. Someone telling the bot they already
-    know a word was recorded the same as someone sick of seeing it, so the count
-    of learned words undercounted and the reason was lost.
+    No keyboard emits `know` any more — it and `master` were two names for the
+    same behaviour once this one started crediting the word instead of archiving
+    it. Cards already sitting in people's chats still carry it, so it stays and
+    routes to the same place.
     """
     await PushService(session, redis).handle_master(user, user_track, callback_data.uw_id, query)
 
