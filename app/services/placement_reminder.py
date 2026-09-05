@@ -5,11 +5,11 @@ the bot answers everything with "take the test first". One announcement went
 out and three days later none of the eight had taken it — a message sent once,
 at one moment, is easy to miss.
 
-So it repeats, but not forever. A reminder that keeps arriving after someone
-has decided to ignore it stops being a reminder, so it stops on its own after
-a handful of tries; the gate screen still greets them whenever they come back.
-Sent inside the user's own daytime window — a nag at 4am is how a bot gets
-blocked rather than opened.
+So it repeats, but not forever, and it never piles up: yesterday's copy is
+deleted before today's is sent, so the chat holds one reminder rather than a
+stack of identical ones. It stops on its own after a few tries; the gate screen
+still greets them whenever they come back. Sent inside the user's own daytime
+window — a nag at 4am is how a bot gets blocked rather than opened.
 """
 
 from __future__ import annotations
@@ -41,6 +41,9 @@ _SENT_TTL = 172_800  # 2 days — long enough to cover any timezone's "today"
 _MAX_REMINDERS = 3
 _COUNT_KEY = "plreminder:count:{user_id}"
 _COUNT_TTL = 2_592_000  # 30 days
+# The message id of the reminder currently on screen, so the next one can
+# replace it instead of stacking on top.
+_MSG_KEY = "plreminder:msg:{user_id}"
 
 
 def _tz(name: str | None) -> ZoneInfo:
@@ -55,6 +58,24 @@ class PlacementReminderService:
         self._session = session
         self._redis = redis
         self._bot = bot
+
+    async def _drop_previous(self, user) -> None:
+        """Remove the reminder still sitting in the chat from last time.
+
+        Every reminder is the same text, so leaving them stacked reads as three
+        copies of one message rather than one message asked three times. A
+        delete that fails (too old, already gone) is not worth reporting — the
+        new one goes out either way.
+        """
+        key = _MSG_KEY.format(user_id=user.id)
+        raw = await self._redis.get(key)
+        if not raw:
+            return
+        try:
+            await self._bot.delete_message(user.telegram_id, int(raw))
+        except Exception:  # noqa: BLE001 — best effort, never blocks the send
+            pass
+        await self._redis.delete(key)
 
     async def run(self, now: datetime | None = None) -> int:
         """Nudge everyone the gate is holding, at most once per local day."""
@@ -89,8 +110,9 @@ class PlacementReminderService:
                 await self._redis.set(day_key, "1", ex=_SENT_TTL)
                 continue
 
+            await self._drop_previous(user)
             try:
-                await self._bot.send_message(
+                message = await self._bot.send_message(
                     user.telegram_id, PLACEMENT_GATE, reply_markup=placement_gate_kb()
                 )
                 sent += 1
@@ -102,6 +124,11 @@ class PlacementReminderService:
                 log.warning("placement_reminder_failed", uid=user.id, error=repr(exc))
             else:
                 await self._redis.set(count_key, str(already + 1), ex=_COUNT_TTL)
+                msg_id = getattr(message, "message_id", None)
+                if msg_id:
+                    await self._redis.set(
+                        _MSG_KEY.format(user_id=user.id), str(msg_id), ex=_COUNT_TTL
+                    )
             await self._redis.set(day_key, "1", ex=_SENT_TTL)
 
         if sent:

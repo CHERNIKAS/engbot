@@ -25,6 +25,9 @@ class FakeRedis:
     async def set(self, key, value, ex=None):
         self.store[key] = value
 
+    async def delete(self, key):
+        self.store.pop(key, None)
+
 
 def forbidden() -> TelegramForbiddenError:
     """aiogram's exception needs a method and a message; a bare class raises
@@ -35,12 +38,19 @@ def forbidden() -> TelegramForbiddenError:
 class FakeBot:
     def __init__(self, fail: Exception | None = None):
         self.sent: list[int] = []
+        self.deleted: list[tuple[int, int]] = []
+        self._next_id = 500
         self._fail = fail
 
     async def send_message(self, chat_id, text, reply_markup=None, **kw):
         if self._fail is not None:
             raise self._fail
         self.sent.append(chat_id)
+        self._next_id += 1
+        return SimpleNamespace(message_id=self._next_id)
+
+    async def delete_message(self, chat_id, message_id):
+        self.deleted.append((chat_id, message_id))
 
 
 def _user(uid=1, tg=100, level=None, onboarded=True, tz="UTC"):
@@ -135,3 +145,34 @@ async def test_one_failed_send_does_not_stop_the_others():
     bot = Flaky()
     await _service([_user(1, 100), _user(2, 200)], bot=bot).run(now=NOON)
     assert bot.sent == [200]
+
+
+async def test_the_previous_reminder_is_removed_before_the_next():
+    """Three identical messages stacked in a chat read as spam; one message
+    that keeps reappearing reads as a reminder."""
+    bot, redis = FakeBot(), FakeRedis()
+    svc = _service([_user()], redis=redis, bot=bot)
+    await svc.run(now=NOON)
+    first_id = bot._next_id
+    await svc.run(now=NOON + timedelta(days=1))
+    assert bot.deleted == [(100, first_id)]
+    assert len(bot.sent) == 2
+
+
+async def test_the_first_reminder_deletes_nothing():
+    bot, redis = FakeBot(), FakeRedis()
+    await _service([_user()], redis=redis, bot=bot).run(now=NOON)
+    assert bot.deleted == []
+
+
+async def test_a_failed_delete_does_not_stop_the_new_reminder():
+    """Telegram refuses to delete messages older than 48 hours."""
+    class Stubborn(FakeBot):
+        async def delete_message(self, chat_id, message_id):
+            raise RuntimeError("message to delete not found")
+
+    bot, redis = Stubborn(), FakeRedis()
+    svc = _service([_user()], redis=redis, bot=bot)
+    await svc.run(now=NOON)
+    await svc.run(now=NOON + timedelta(days=1))
+    assert len(bot.sent) == 2
