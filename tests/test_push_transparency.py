@@ -55,15 +55,6 @@ def test_progress_line_shows_misses_and_last_seen():
     assert "9 дн назад" in line
 
 
-def test_progress_line_shows_the_typed_requirement():
-    """The gate a user could otherwise never see: score alone never graduates
-    a word, so the pen counter has to be on the card from the first answer."""
-    line = _progress_line(
-        _uw(learning_score=8.0, production=2), now=NOW, target=(9.5, 5)
-    )
-    assert "напечатать ещё 3 раза" in line
-
-
 def test_mastered_word_shows_its_health_score_instead():
     line = _progress_line(
         _uw(status=WordStatus.MASTERED.value, score=4.2), now=NOW, target=(9.5, 5)
@@ -87,3 +78,25 @@ def test_the_typed_line_disappears_once_the_requirement_is_met():
 def test_the_percentage_never_exceeds_a_hundred():
     line = _progress_line(_uw(learning_score=99.0, production=5), now=NOW, target=(9.5, 5))
     assert "🌱 100%" in line
+
+
+def test_a_button_card_does_not_ask_for_typing():
+    """Under four buttons and no text field, "напечатать ещё 3 раза" asks for
+    something the user cannot do from where they're standing."""
+    line = _progress_line(_uw(learning_score=4.5, production=2), now=NOW, target=(9.5, 5))
+    assert "напечатать" not in line
+
+
+def test_the_typing_card_does_ask():
+    line = _progress_line(
+        _uw(learning_score=4.5, production=2), now=NOW, target=(9.5, 5), typing_now=True
+    )
+    assert "напечатать ещё 3 раза" in line
+
+
+def test_a_button_card_explains_a_stalled_hundred_percent():
+    """Score full, production short — without the line, "100%" that never
+    graduates looks broken."""
+    line = _progress_line(_uw(learning_score=9.5, production=2), now=NOW, target=(9.5, 5))
+    assert "🌱 100%" in line
+    assert "напечатать ещё 3 раза" in line

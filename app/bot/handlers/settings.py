@@ -24,7 +24,7 @@ from app.bot.texts import (
     PACE_LABELS,
     PACE_TITLE,
     PLACEMENT_CARD,
-    PLACEMENT_UNAVAILABLE,
+    PLACEMENT_UNAVAILABLE_SHORT,
     PUSH_PACE_SET,
     PUSH_PACE_TITLE,
     PUSH_TITLE,
@@ -320,7 +320,7 @@ async def on_level_test(
     in onboarding — only the ending differs, which the stored origin decides."""
     card = await placement.start(user.id, current_track, origin=ORIGIN_SETTINGS)
     if card is None:
-        await query.answer(PLACEMENT_UNAVAILABLE, show_alert=True)
+        await query.answer(PLACEMENT_UNAVAILABLE_SHORT, show_alert=True)
         return
     if query.message:
         await query.message.edit_text(

@@ -206,6 +206,7 @@ def _progress_line(
     uw,
     now: datetime | None = None,
     target: tuple[float, int] | None = None,
+    typing_now: bool = False,
 ) -> str:
     """Small progress hint under the word on a push card.
 
@@ -214,6 +215,11 @@ def _progress_line(
     table and to nobody else. A percentage answers "how close am I", and the
     typed requirement is only worth a line while it's still the thing in the
     way; once it's met, saying so is noise.
+
+    `typing_now` is True on the card where the user can actually type. Elsewhere
+    the requirement is only mentioned once it's the *sole* thing left — asking
+    someone to "напечатать ещё 3 раза" under a card with four buttons and no
+    text field is asking for something they can't do from where they're standing.
 
     The miss count and last-seen stay: a bare number reads as a lie without
     them ("I know this, why half?"), and "you missed it twice, last seen 9 days
@@ -228,7 +234,8 @@ def _progress_line(
     parts = [f"🌱 {percent}%"]
 
     typed = uw.production_count or 0
-    if needed_production and typed < needed_production:
+    blocking = needed_production and typed < needed_production
+    if blocking and (typing_now or score >= target_score):
         left = needed_production - typed
         parts.append(f"✍️ напечатать ещё {left} {_times(left)}")
 
@@ -703,7 +710,7 @@ class PushService:
                 # Type the missing word into the English sentence (real recall).
                 text = (
                     f"{PUSH_CARD_CLOZE.format(translation=html.escape(ru), sentence=html.escape(masked))}"
-                    f"\n<i>{_progress_line(uw, target=target)}</i>"
+                    f"\n<i>{_progress_line(uw, target=target, typing_now=True)}</i>"
                 )
                 # options=[] — answered by typing, not buttons.
                 return text, [], word.writing, uw.status

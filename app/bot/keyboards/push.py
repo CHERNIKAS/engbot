@@ -18,7 +18,10 @@ KNOW_LABEL = "✅ Я это знаю"
 # Every postponement is called the same thing and wears the same face. It used
 # to be "⏸ Не учить сейчас" next to "😴 3 дня" — one action, two vocabularies,
 # and the long one didn't say how long it actually was.
-SNOOZE_LONG_LABEL = f"😴 Отложить на {SNOOZE_LABELS[NOT_NOW_DAYS]}"
+# The duration lives in the confirmation, not the button: "Отложить на полтора
+# месяца" was the longest label on a card that already carries three ways to
+# put a word down.
+SNOOZE_LONG_LABEL = "😴 Отложить надолго"
 REMOVE_LABEL = "🙈 Убрать из обучения"
 
 
@@ -52,6 +55,9 @@ def push_card_kb(options: list[str], uw_id: int, status: str) -> InlineKeyboardM
                 InlineKeyboardButton(text="😴 На неделю", callback_data=PushCB(action="snooze", uw_id=uw_id, days=7).pack()),
                 InlineKeyboardButton(text="😴 На месяц", callback_data=PushCB(action="snooze", uw_id=uw_id, days=30).pack()),
             ]
+        )
+        rows.append(
+            [InlineKeyboardButton(text=SNOOZE_LONG_LABEL, callback_data=PushCB(action="snooze", uw_id=uw_id, days=NOT_NOW_DAYS).pack())]
         )
         rows.append(
             [InlineKeyboardButton(text=REMOVE_LABEL, callback_data=PushCB(action="hide", uw_id=uw_id).pack())]

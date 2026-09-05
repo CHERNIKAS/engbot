@@ -38,7 +38,15 @@ PLACEMENT_RESULT = (
     "Буду подбирать слова под него: в основном по уровню, "
     "иногда чуть проще, иногда на вырост."
 )
-PLACEMENT_UNAVAILABLE = "Тест сейчас недоступен — поставлю средний уровень 🌿"
+PLACEMENT_UNAVAILABLE = (
+    "🌿 Тест сейчас не собрать — не хватает слов в каталоге.\n\n"
+    "Это на моей стороне, не на твоей. Поставил средний уровень, чтобы не "
+    "задерживать: слова будут подбираться по нему.\n\n"
+    "Загляни в Настройки → «📏 Мой уровень» попозже — тест там появится."
+)
+# Telegram caps a callback alert at 200 characters, so the same explanation
+# can't be reused there — a silently truncated apology is worse than a short one.
+PLACEMENT_UNAVAILABLE_SHORT = "🌿 Тест сейчас не собрать — не хватает слов. Загляни попозже."
 PLACEMENT_DONT_KNOW = "🤷 Не знаю"
 
 # Settings → «📏 Мой уровень»
