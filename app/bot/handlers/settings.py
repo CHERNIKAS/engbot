@@ -196,7 +196,11 @@ async def on_push_win(query: CallbackQuery, user_track: UserTrack) -> None:
     ws, we = _window(user_track)
     mh = get_settings().push_min_window_hours
     if query.message:
-        await query.message.edit_text(PUSH_WINDOW_TITLE, reply_markup=push_window_kb(ws, we, mh), parse_mode="HTML")
+        await query.message.edit_text(
+            PUSH_WINDOW_TITLE.format(min_hours=mh),
+            reply_markup=push_window_kb(ws, we, mh),
+            parse_mode="HTML",
+        )
     await query.answer()
 
 
@@ -231,7 +235,7 @@ async def on_push_win_set(
 
     if op == "sv":
         if not (mh <= window_hours(ws, we) < 24):
-            await query.answer(PUSH_WINDOW_TOO_SHORT, show_alert=True)
+            await query.answer(PUSH_WINDOW_TOO_SHORT.format(min_hours=mh), show_alert=True)
             return
         await user_track_service.update_settings(user.id, current_track, {"push_ws": ws, "push_we": we})
         # Saved → return to the push-settings screen (shows the new window).

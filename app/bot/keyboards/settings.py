@@ -119,7 +119,7 @@ def new_pace_kb(current: int) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
-def push_window_kb(ws: int, we: int, min_hours: int = 10) -> InlineKeyboardMarkup:
+def push_window_kb(ws: int, we: int, min_hours: int) -> InlineKeyboardMarkup:
     """Direct-pick grid for the daily push window — tap a start hour, tap an end
     hour, save. Any hours, overnight allowed (e.g. 22→08). The pending pair rides
     in the callback data, so nothing persists until '✅ Сохранить' (which enforces

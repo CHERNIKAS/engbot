@@ -42,7 +42,11 @@ class Settings(BaseSettings):
     push_worker_interval_seconds: int = Field(300, ge=10, alias="PUSH_WORKER_INTERVAL_SECONDS")
     push_default_window_start: int = Field(10, ge=0, le=23, alias="PUSH_DEFAULT_WINDOW_START")
     push_default_window_end: int = Field(22, ge=1, le=24, alias="PUSH_DEFAULT_WINDOW_END")
-    push_min_window_hours: int = Field(10, ge=1, le=24, alias="PUSH_MIN_WINDOW_HOURS")
+    # Shortest push window a user may set. Ten hours suited the old cadence,
+    # where a big active pool needed most of the day to cycle; with the pool
+    # sized from real throughput a shorter day works, and someone who only
+    # wants cards over lunch shouldn't be told their day is too small.
+    push_min_window_hours: int = Field(5, ge=1, le=24, alias="PUSH_MIN_WINDOW_HOURS")
     push_gap_min_minutes: int = Field(2, ge=1, alias="PUSH_GAP_MIN_MINUTES")  # answered → next card (random)
     push_gap_max_minutes: int = Field(15, ge=1, alias="PUSH_GAP_MAX_MINUTES")
     # Review-load brake: while this many active words are already overdue, stop

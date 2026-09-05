@@ -51,3 +51,23 @@ def test_normalize_window_too_narrow_falls_back():
 def test_normalize_window_invalid_falls_back():
     assert normalize_window(-1, 10, min_hours=10, default=(10, 22)) == (10, 22)
     assert normalize_window(0, 24, min_hours=10, default=(10, 22)) == (10, 22)  # 24h not allowed
+
+
+def test_the_window_texts_follow_the_setting():
+    """The minimum used to be spelled out as "10 часов" in the copy while the
+    real limit lived in config. Lowering one and not the other would leave the
+    bot refusing windows it says it accepts."""
+    from app.bot.texts import PUSH_WINDOW_TITLE, PUSH_WINDOW_TOO_SHORT
+    from app.config import get_settings
+
+    minimum = get_settings().push_min_window_hours
+    for template in (PUSH_WINDOW_TITLE, PUSH_WINDOW_TOO_SHORT):
+        assert "{min_hours}" in template
+        rendered = template.format(min_hours=minimum)
+        assert f"{minimum} ч" in rendered
+
+
+def test_a_five_hour_window_is_now_allowed():
+    from app.config import get_settings
+
+    assert window_hours(12, 17) >= get_settings().push_min_window_hours
