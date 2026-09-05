@@ -5,8 +5,12 @@
 # ones. Install on the prod host and run from cron (see scripts/install-backup-cron.sh).
 #
 #   Manual run:   bash /opt/englshbot/scripts/backup.sh
-#   Restore:      gunzip -c <dump>.sql.gz | docker exec -i englshbot-postgres-1 \
-#                     psql -U englsh -d englsh
+#   Restore:      bash /opt/englshbot/scripts/restore.sh              # rehearse
+#                 bash /opt/englshbot/scripts/restore.sh --into-live <dump>
+#
+# The restore line here used to pipe a dump straight into the live database. It
+# works — and pasted in a hurry at the wrong moment it also destroys production.
+# restore.sh rehearses into a scratch database unless explicitly told otherwise.
 #
 # Env overrides: BACKUP_DIR, RETENTION_DAYS, PG_CONTAINER, PG_USER, PG_DB.
 set -euo pipefail
