@@ -30,6 +30,7 @@ from app.bot.texts import (
     PUSH_CARD,
     PUSH_CARD_CLOZE,
     PUSH_CARD_REVERSE,
+    PUSH_CARD_TYPE_IN,
     PUSH_GRAMMAR_CARD,
     PUSH_HIDDEN,
     PUSH_MASTERED_KNOWN,
@@ -127,12 +128,18 @@ def _weighted_order(streams: list[str]) -> list[str]:
 CARD_RECOGNITION = "recognition"
 CARD_REVERSE = "reverse"
 CARD_CLOZE = "cloze"
+# Typed production without a sentence to blank: write the whole thing from the
+# translation. Phrasebook entries are already whole sentences with nowhere to
+# hide a gap, and until this existed they fell back to a choice card — which
+# meant 106 phrases could never be produced at all, only recognised.
+CARD_TYPE_IN = "type_in"
 
 
 _CARD_ANSWER_KIND = {
     CARD_RECOGNITION: mastery.RECOGNITION,
     CARD_REVERSE: mastery.REVERSE,
     CARD_CLOZE: mastery.TYPED_EXACT,
+    CARD_TYPE_IN: mastery.TYPED_EXACT,
 }
 
 
@@ -173,6 +180,30 @@ def _looks_like_cloze_answer(text: str) -> bool:
     """A cloze answer is a single English word. Text that carries a translation
     separator or extra words is a quick-add, not an answer — leave it alone."""
     return bool(_CLOZE_ANSWER_RE.match(text.strip()))
+
+
+_TYPED_CARDS = (CARD_CLOZE, CARD_TYPE_IN)
+_QUICK_ADD_MARKS = ("|", " - ", " — ", " – ", "	")
+
+
+def _looks_like_typed_answer(text: str, card_type: str | None) -> bool:
+    """Whether this message is an answer to the card in flight.
+
+    A cloze answer is one English word, so the old single-word test still holds
+    there. A type-in answer can be a whole phrase — "Is it far from here?" — so
+    the test instead asks whether it looks like English and carries none of the
+    marks of a quick-add, which always pairs a word with a Russian translation.
+    """
+    body = (text or "").strip()
+    if not body:
+        return False
+    if card_type == CARD_CLOZE:
+        return _looks_like_cloze_answer(body)
+    if any(mark in body for mark in _QUICK_ADD_MARKS) or "\n" in body:
+        return False
+    if any("Ѐ" <= ch <= "ӿ" for ch in body):
+        return False  # Russian in the answer means they typed the translation
+    return any(ch.isalpha() for ch in body)
 
 
 def _push_day(local: datetime, window_start: int) -> str:
@@ -613,8 +644,8 @@ class PushService:
             text = f"{prefix}\n\n{text}"
         if kind == "grammar":
             kb = push_grammar_card_kb(options, item_id)
-        elif card_type == CARD_CLOZE and not options:
-            # Cloze is answered by typing — no answer buttons (options is empty).
+        elif card_type in (CARD_CLOZE, CARD_TYPE_IN) and not options:
+            # Answered by typing — no answer buttons (options is empty).
             kb = push_cloze_card_kb(item_id, built[3])
         else:
             kb = push_card_kb(options, item_id, built[3])
@@ -690,7 +721,7 @@ class PushService:
             return CARD_RECOGNITION
         if reps < cloze_at:
             return CARD_REVERSE
-        return CARD_CLOZE if self._cloze_possible(word) else CARD_REVERSE
+        return CARD_CLOZE if self._cloze_possible(word) else CARD_TYPE_IN
 
     async def _build_card(
         self,
@@ -723,6 +754,14 @@ class PushService:
                 return text, [], word.writing, uw.status
             # Not maskable (irregular form) → fall back to a reverse card.
             card_type = CARD_REVERSE
+
+        if card_type == CARD_TYPE_IN:
+            text = (
+                f"{PUSH_CARD_TYPE_IN.format(translation=html.escape(ru))}"
+                f"\n<i>{_progress_line(uw, target=target, typing_now=True)}</i>"
+            )
+            # options=[] — answered by typing, like a cloze.
+            return text, [], word.writing, uw.status
 
         if card_type == CARD_REVERSE:
             # RU prompt → pick the English word. Answer is the writing; distractors
@@ -1006,13 +1045,15 @@ class PushService:
         Returns True if it consumed the message (so the caller skips quick-add)."""
         state = await self._load(user.id)
         inflight = state.get("inflight")
-        if not inflight or inflight.get("kind") != "word" or inflight.get("ctype") != CARD_CLOZE:
+        if not inflight or inflight.get("kind") != "word":
             return False
-        # A cloze answer is a single English word. Only consume text that LOOKS
-        # like one — otherwise a normal quick-add ("serendipity - прозорливость",
-        # or any multi-word / punctuated paste) would be eaten as a wrong answer
-        # and silently deleted while a stale cloze card sits in the chat.
-        if not _looks_like_cloze_answer(message.text or ""):
+        ctype = inflight.get("ctype")
+        if ctype not in _TYPED_CARDS:
+            return False
+        # Only consume text that looks like an answer to THIS card — otherwise a
+        # normal quick-add ("serendipity - прозорливость") gets eaten as a wrong
+        # answer and silently deleted while a stale card sits in the chat.
+        if not _looks_like_typed_answer(message.text or "", ctype):
             return False
         # Claim atomically so a typed answer racing the «🤷 Не помню» tap can't
         # both settle the same card.
@@ -1181,7 +1222,9 @@ class PushService:
             kind=kind,
             word_level=word.level,
             user_level=user.level,
-            production_possible=self._cloze_possible(word),
+            # Every word with a translation can be typed now: a cloze where a
+            # sentence allows it, the whole thing written out where it doesn't.
+            production_possible=bool(uw.custom_translation or word.translation),
         )
         await self._record(user, uw, word, kind, card_type, was_mastered)
 

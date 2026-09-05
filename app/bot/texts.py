@@ -280,6 +280,14 @@ REMINDER_INACTIVE = "👋 Давно не виделись. Вернись и п
 
 PUSH_CARD = "🔔 Что значит <b>{word}</b>?"
 PUSH_CARD_REVERSE = "🔤 Как сказать по-английски «<b>{translation}</b>»?"
+# Typed production for words a cloze can't reach — phrasebook entries, and
+# anything still lacking a maskable example. Same question as the reverse card,
+# but written out instead of picked from four options.
+PUSH_CARD_TYPE_IN = (
+    "✍️ Напиши по-английски:\n"
+    "<b>{translation}</b>\n\n"
+    "Ответь сообщением 👇"
+)
 PUSH_CARD_CLOZE = (
     "✍️ Впиши пропущенное слово (<b>{translation}</b>):\n\n"
     "{sentence}\n\n"

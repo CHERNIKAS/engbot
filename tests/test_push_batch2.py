@@ -52,3 +52,39 @@ def test_cloze_rejects_quick_add_shapes():
     assert not _looks_like_cloze_answer("стать")               # cyrillic = a translation
     assert not _looks_like_cloze_answer("word\nword")
     assert not _looks_like_cloze_answer("")
+
+
+# ---- what counts as a typed answer to a type-in card ----
+
+from app.services.push_service import (  # noqa: E402
+    CARD_CLOZE,
+    CARD_TYPE_IN,
+    _looks_like_typed_answer,
+)
+
+
+def test_a_phrase_is_a_valid_type_in_answer():
+    """The cloze rule (one English word) would reject every phrase answer."""
+    assert _looks_like_typed_answer("Is it far from here?", CARD_TYPE_IN)
+    assert _looks_like_typed_answer("  see you later ", CARD_TYPE_IN)
+
+
+def test_a_quick_add_is_still_a_quick_add():
+    """Eating «serendipity - прозорливость» as a wrong answer would delete the
+    user's message and mark the card failed."""
+    for text in ("serendipity - прозорливость", "serendipity | прозорливость", "a\nb"):
+        assert not _looks_like_typed_answer(text, CARD_TYPE_IN)
+
+
+def test_russian_text_is_not_an_answer():
+    assert not _looks_like_typed_answer("далеко ли отсюда", CARD_TYPE_IN)
+
+
+def test_empty_and_punctuation_only_are_not_answers():
+    assert not _looks_like_typed_answer("   ", CARD_TYPE_IN)
+    assert not _looks_like_typed_answer("???", CARD_TYPE_IN)
+
+
+def test_cloze_keeps_the_stricter_single_word_rule():
+    assert not _looks_like_typed_answer("Is it far from here?", CARD_CLOZE)
+    assert _looks_like_typed_answer("become", CARD_CLOZE)

@@ -13,6 +13,7 @@ from app.services.push_service import (
     CARD_CLOZE,
     CARD_RECOGNITION,
     CARD_REVERSE,
+    CARD_TYPE_IN,
     PushService,
 )
 
@@ -62,17 +63,19 @@ def test_typing_rung_is_reps_5_through_9():
         assert svc._card_type(_uw(WordStatus.REVIEW.value, reps), _word(), USER_LEVEL) == CARD_CLOZE
 
 
-def test_typing_rung_falls_back_to_reverse_when_not_maskable():
-    """Irregular form (no maskable example) → typing rung shows reverse, not cloze."""
+def test_typing_rung_types_the_whole_word_when_not_maskable():
+    """Irregular form (no maskable example) → still the typing rung: write the
+    word out in full instead of filling a blank. Falling back to reverse here
+    meant a phrase like «Is it far from here?» was never once produced."""
     svc = _svc()
     w = _word(example="She went home.", writing="go")  # 'go' not literally present
-    assert svc._card_type(_uw(WordStatus.REVIEW.value, 6), w, USER_LEVEL) == CARD_REVERSE
+    assert svc._card_type(_uw(WordStatus.REVIEW.value, 6), w, USER_LEVEL) == CARD_TYPE_IN
 
 
-def test_typing_rung_falls_back_when_no_example():
+def test_typing_rung_types_it_out_when_there_is_no_example():
     svc = _svc()
     w = _word(example=None)
-    assert svc._card_type(_uw(WordStatus.REVIEW.value, 5), w, USER_LEVEL) == CARD_REVERSE
+    assert svc._card_type(_uw(WordStatus.REVIEW.value, 5), w, USER_LEVEL) == CARD_TYPE_IN
 
 
 def test_miss_drops_back_to_recognition():
@@ -131,3 +134,21 @@ def test_same_word_climbs_later_for_a_weaker_user():
     w = _word(level="B2")
     assert svc._card_type(_uw(WordStatus.REVIEW.value, 3), w, "B2") == CARD_CLOZE
     assert svc._card_type(_uw(WordStatus.REVIEW.value, 3), w, "A1") != CARD_CLOZE
+
+
+# ---- phrases: the top rung when a blank is impossible ----
+
+
+def test_a_phrase_reaches_production_by_being_written_out():
+    """106 phrasebook entries can never take a cloze — a whole sentence has no
+    single word to mask. Before this rung they graduated on recognition alone."""
+    svc = _svc()
+    phrase = _word(example=None, writing="Is it far from here?")
+    assert svc._card_type(_uw(WordStatus.REVIEW.value, 9), phrase, USER_LEVEL) == CARD_TYPE_IN
+
+
+def test_a_maskable_word_still_prefers_the_blank():
+    """Type-in is the fallback, not a replacement: a sentence with context left
+    is the better card, so cloze wins whenever it is possible."""
+    svc = _svc()
+    assert svc._card_type(_uw(WordStatus.REVIEW.value, 9), _word(), USER_LEVEL) == CARD_CLOZE
