@@ -194,6 +194,14 @@ def _days_ago_phrase(last_reviewed_at, now: datetime | None = None) -> str | Non
     return f"{days} дн назад"
 
 
+def _times(n: int) -> str:
+    """«раз» / «раза» — Russian picks the form from the last digit, except in
+    the teens, where everything takes the plural."""
+    if 11 <= n % 100 <= 14:
+        return "раз"
+    return "раза" if 2 <= n % 10 <= 4 else "раз"
+
+
 def _progress_line(
     uw,
     now: datetime | None = None,
@@ -201,23 +209,31 @@ def _progress_line(
 ) -> str:
     """Small progress hint under the word on a push card.
 
-    Shows BOTH gates, because a single number hid the one that matters: a user
-    could sit at "8 / 10" entirely on four-option cards and have no idea the
-    word would never graduate. The pen counter makes the typed requirement
-    visible from the first card.
+    Says how far along in words, not in fractions. The first cut printed
+    "4.5 / 9.5 · 2 / 5" — three raw numbers legible to whoever wrote the scoring
+    table and to nobody else. A percentage answers "how close am I", and the
+    typed requirement is only worth a line while it's still the thing in the
+    way; once it's met, saying so is noise.
 
-    The miss count and last-seen stay: the raw score read as a lie without them
-    ("I know this, why 2.5?"), and "you missed it twice, last seen 9 days ago"
-    explains the number instead of just asserting it.
+    The miss count and last-seen stay: a bare number reads as a lie without
+    them ("I know this, why half?"), and "you missed it twice, last seen 9 days
+    ago" explains it instead of just asserting it.
     """
     if uw.status == WordStatus.MASTERED.value:
-        return f"⭐ {uw.mastery_score:.1f} / 5"
+        return f"⭐ Выучено на {uw.mastery_score:.1f} из 5"
+
     target_score, needed_production = target or (float(MASTERED_REPS_NORMAL), 0)
-    parts = [f"🌱 {uw.learning_score or 0:.1f} / {target_score:g}"]
-    if needed_production:
-        parts.append(f"✍️ {uw.production_count or 0} / {needed_production}")
+    score = uw.learning_score or 0
+    percent = min(100, round(100 * score / target_score)) if target_score else 0
+    parts = [f"🌱 {percent}%"]
+
+    typed = uw.production_count or 0
+    if needed_production and typed < needed_production:
+        left = needed_production - typed
+        parts.append(f"✍️ напечатать ещё {left} {_times(left)}")
+
     if (uw.mistakes_count or 0) > 0:
-        parts.append(f"❌ {uw.mistakes_count}")
+        parts.append(f"❌ ошибок: {uw.mistakes_count}")
     seen = _days_ago_phrase(uw.last_reviewed_at, now)
     if seen:
         parts.append(seen)

@@ -15,6 +15,10 @@ NOT_NOW_DAYS = 45
 # One name per action. "Я это знаю" and "Уже уверенно знаю" were two labels on
 # the same behaviour once the first one started crediting the word.
 KNOW_LABEL = "✅ Я это знаю"
+# Every postponement is called the same thing and wears the same face. It used
+# to be "⏸ Не учить сейчас" next to "😴 3 дня" — one action, two vocabularies,
+# and the long one didn't say how long it actually was.
+SNOOZE_LONG_LABEL = f"😴 Отложить на {SNOOZE_LABELS[NOT_NOW_DAYS]}"
 REMOVE_LABEL = "🙈 Убрать из обучения"
 
 
@@ -44,9 +48,9 @@ def push_card_kb(options: list[str], uw_id: int, status: str) -> InlineKeyboardM
     elif status == WordStatus.MASTERED.value:
         rows.append(
             [
-                InlineKeyboardButton(text="😴 3 дня", callback_data=PushCB(action="snooze", uw_id=uw_id, days=3).pack()),
-                InlineKeyboardButton(text="😴 неделя", callback_data=PushCB(action="snooze", uw_id=uw_id, days=7).pack()),
-                InlineKeyboardButton(text="😴 месяц", callback_data=PushCB(action="snooze", uw_id=uw_id, days=30).pack()),
+                InlineKeyboardButton(text="😴 На 3 дня", callback_data=PushCB(action="snooze", uw_id=uw_id, days=3).pack()),
+                InlineKeyboardButton(text="😴 На неделю", callback_data=PushCB(action="snooze", uw_id=uw_id, days=7).pack()),
+                InlineKeyboardButton(text="😴 На месяц", callback_data=PushCB(action="snooze", uw_id=uw_id, days=30).pack()),
             ]
         )
         rows.append(
@@ -57,7 +61,7 @@ def push_card_kb(options: list[str], uw_id: int, status: str) -> InlineKeyboardM
             [InlineKeyboardButton(text=KNOW_LABEL, callback_data=PushCB(action="master", uw_id=uw_id).pack())]
         )
         rows.append(
-            [InlineKeyboardButton(text="⏸ Не учить сейчас", callback_data=PushCB(action="snooze", uw_id=uw_id, days=NOT_NOW_DAYS).pack())]
+            [InlineKeyboardButton(text=SNOOZE_LONG_LABEL, callback_data=PushCB(action="snooze", uw_id=uw_id, days=NOT_NOW_DAYS).pack())]
         )
         rows.append(
             [InlineKeyboardButton(text=REMOVE_LABEL, callback_data=PushCB(action="hide", uw_id=uw_id).pack())]
@@ -74,9 +78,9 @@ def push_cloze_card_kb(uw_id: int, status: str) -> InlineKeyboardMarkup:
     if status == WordStatus.MASTERED.value:
         rows.append(
             [
-                InlineKeyboardButton(text="😴 3 дня", callback_data=PushCB(action="snooze", uw_id=uw_id, days=3).pack()),
-                InlineKeyboardButton(text="😴 неделя", callback_data=PushCB(action="snooze", uw_id=uw_id, days=7).pack()),
-                InlineKeyboardButton(text="😴 месяц", callback_data=PushCB(action="snooze", uw_id=uw_id, days=30).pack()),
+                InlineKeyboardButton(text="😴 На 3 дня", callback_data=PushCB(action="snooze", uw_id=uw_id, days=3).pack()),
+                InlineKeyboardButton(text="😴 На неделю", callback_data=PushCB(action="snooze", uw_id=uw_id, days=7).pack()),
+                InlineKeyboardButton(text="😴 На месяц", callback_data=PushCB(action="snooze", uw_id=uw_id, days=30).pack()),
             ]
         )
     else:  # LEARNING / REVIEW
@@ -84,7 +88,7 @@ def push_cloze_card_kb(uw_id: int, status: str) -> InlineKeyboardMarkup:
             [InlineKeyboardButton(text=KNOW_LABEL, callback_data=PushCB(action="master", uw_id=uw_id).pack())]
         )
         rows.append(
-            [InlineKeyboardButton(text="⏸ Не учить сейчас", callback_data=PushCB(action="snooze", uw_id=uw_id, days=NOT_NOW_DAYS).pack())]
+            [InlineKeyboardButton(text=SNOOZE_LONG_LABEL, callback_data=PushCB(action="snooze", uw_id=uw_id, days=NOT_NOW_DAYS).pack())]
         )
     rows.append(
         [InlineKeyboardButton(text=REMOVE_LABEL, callback_data=PushCB(action="hide", uw_id=uw_id).pack())]

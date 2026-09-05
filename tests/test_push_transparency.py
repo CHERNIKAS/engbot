@@ -1,5 +1,6 @@
-"""Card transparency: the progress line spells out BOTH mastery gates plus the
-misses and last-seen that explain where the number came from."""
+"""Card transparency: the progress line says how far along in words rather than
+in fractions, names the gate still in the way, and keeps the misses and
+last-seen that explain where the number came from."""
 from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
@@ -38,7 +39,7 @@ def test_progress_line_plain_when_clean():
     line = _progress_line(
         _uw(learning_score=3.0, mistakes=0, last=None), now=NOW, target=(9.5, 5)
     )
-    assert "🌱 3.0 / 9.5" in line
+    assert "🌱 32%" in line
     assert "❌" not in line
 
 
@@ -49,8 +50,8 @@ def test_progress_line_shows_misses_and_last_seen():
         now=NOW,
         target=(9.5, 5),
     )
-    assert "🌱 2.0 / 9.5" in line
-    assert "❌ 2" in line
+    assert "🌱 21%" in line
+    assert "❌ ошибок: 2" in line
     assert "9 дн назад" in line
 
 
@@ -60,17 +61,29 @@ def test_progress_line_shows_the_typed_requirement():
     line = _progress_line(
         _uw(learning_score=8.0, production=2), now=NOW, target=(9.5, 5)
     )
-    assert "✍️ 2 / 5" in line
+    assert "напечатать ещё 3 раза" in line
 
 
 def test_mastered_word_shows_its_health_score_instead():
     line = _progress_line(
         _uw(status=WordStatus.MASTERED.value, score=4.2), now=NOW, target=(9.5, 5)
     )
-    assert "⭐ 4.2 / 5" in line
+    assert "⭐ Выучено на 4.2 из 5" in line
     assert "🌱" not in line
 
 
 def test_progress_line_mastered_unchanged():
     line = _progress_line(_uw(status=WordStatus.MASTERED.value, score=4.2), now=NOW)
-    assert line == "⭐ 4.2 / 5"
+    assert line == "⭐ Выучено на 4.2 из 5"
+
+
+def test_the_typed_line_disappears_once_the_requirement_is_met():
+    """It's the gate in the way, not a permanent score. Saying "5 из 5" after
+    the fact is noise on a card the user is trying to read quickly."""
+    line = _progress_line(_uw(learning_score=8.0, production=5), now=NOW, target=(9.5, 5))
+    assert "напечатать" not in line
+
+
+def test_the_percentage_never_exceeds_a_hundred():
+    line = _progress_line(_uw(learning_score=99.0, production=5), now=NOW, target=(9.5, 5))
+    assert "🌱 100%" in line
