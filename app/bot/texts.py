@@ -309,6 +309,20 @@ PUSH_ANSWER_DEGRADED = (
     "<i>⚠️ Умная проверка сейчас недоступна — засчитываю строго. "
     "Вернётся сама, ответ пересчитаю.</i>"
 )
+# Post-answer recap. The verdict alone ("✅ Верно!") threw away everything the
+# card had shown — which word it even was, and how close it is to being learned.
+# Now the answer reveals the pair, and the progress line comes back as a
+# before → after so the tap visibly moved something.
+PUSH_RECAP_WORD = "<b>{writing}</b> — {translation}"
+PUSH_RECAP_TRANSLATION = "↳ {translation}"
+PUSH_RECAP_EXAMPLE = "📝 <i>{sentence}</i>"
+PUSH_RECAP_MASTERED_NOW = "⭐ Слово выучено! Дальше — редкие повторы для поддержки."
+PUSH_RECAP_MASTERED = "⭐ Выучено на {score} из 5"
+PUSH_RECAP_PROGRESS = "🌱 {before}% → {after}%"
+PUSH_RECAP_PROGRESS_FLAT = "🌱 {after}%"
+PUSH_RECAP_TYPED_LEFT = "✍️ напечатать ещё {n} {times}"
+PUSH_RECAP_NEXT = "🔁 вернусь {when}"
+
 PUSH_STALE = "⌛ Эта карточка уже неактуальна."
 PUSH_HIDDEN = "🙈 Больше не показываю это слово."
 PUSH_MASTERED_KNOWN = "✅ Отметил как выученное — буду лишь изредка повторять."

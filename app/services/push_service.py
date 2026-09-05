@@ -4,6 +4,7 @@ import html
 import json
 import random
 import re
+from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
@@ -37,6 +38,15 @@ from app.bot.texts import (
     PUSH_LEECH_KEPT,
     PUSH_LEECH_PARKED,
     PUSH_LEECH_PROMPT,
+    PUSH_RECAP_EXAMPLE,
+    PUSH_RECAP_MASTERED,
+    PUSH_RECAP_MASTERED_NOW,
+    PUSH_RECAP_NEXT,
+    PUSH_RECAP_PROGRESS,
+    PUSH_RECAP_PROGRESS_FLAT,
+    PUSH_RECAP_TRANSLATION,
+    PUSH_RECAP_TYPED_LEFT,
+    PUSH_RECAP_WORD,
     PUSH_RULE_CARD,
     PUSH_SNOOZED,
     PUSH_STALE,
@@ -239,6 +249,27 @@ def _times(n: int) -> str:
     return "раза" if 2 <= n % 10 <= 4 else "раз"
 
 
+def _percent(uw, target: tuple[float, int] | None = None) -> int:
+    """How far along the word is toward its own mastery bar, 0-100."""
+    target_score = (target or (float(MASTERED_REPS_NORMAL), 0))[0]
+    if not target_score:
+        return 0
+    return min(100, round(100 * (uw.learning_score or 0) / target_score))
+
+
+def _in_days_phrase(next_review_at, now: datetime | None = None) -> str | None:
+    """'сегодня' / 'завтра' / 'через N дн' for the next scheduled sighting."""
+    if not next_review_at:
+        return None
+    now = now or datetime.now(timezone.utc)
+    days = (next_review_at.astimezone(timezone.utc).date() - now.date()).days
+    if days <= 0:
+        return "сегодня"
+    if days == 1:
+        return "завтра"
+    return f"через {days} дн"
+
+
 def _progress_line(
     uw,
     now: datetime | None = None,
@@ -266,10 +297,9 @@ def _progress_line(
         return f"⭐ Выучено на {uw.mastery_score:.1f} из 5"
 
     target_score, needed_production = target or (float(MASTERED_REPS_NORMAL), 0)
-    score = uw.learning_score or 0
-    percent = min(100, round(100 * score / target_score)) if target_score else 0
-    parts = [f"🌱 {percent}%"]
+    parts = [f"🌱 {_percent(uw, target)}%"]
 
+    score = uw.learning_score or 0
     typed = uw.production_count or 0
     blocking = needed_production and typed < needed_production
     if blocking and (typing_now or score >= target_score):
@@ -284,15 +314,82 @@ def _progress_line(
     return "  ·  ".join(parts)
 
 
-# Post-answer recap blocks ----------------------------------------------------
-#
-# After the user taps a button the card text is replaced with feedback. We
-# append a "recap" block — context the user couldn't see during the quiz
-# (showing it earlier would have spoiled the answer):
-#   • for a word card:   writing — translation + example with the word bolded
-#   • for a grammar card: the prompt with the gap filled in and the answer bold
-#
-# Pure functions so the formatting is unit-testable.
+@dataclass(frozen=True)
+class AnswerOutcome:
+    """What settling an answer produced, for the caller to render."""
+
+    leech_writing: str | None = None
+    recap: str = ""
+
+
+def _recap(
+    uw,
+    word,
+    *,
+    before_percent: int,
+    was_mastered: bool,
+    correct: bool,
+    target: tuple[float, int] | None = None,
+    now: datetime | None = None,
+) -> str:
+    """What the card shows under the verdict once the answer is out.
+
+    A bare "✅ Верно! 🎉" discards everything the card was carrying: which word
+    it even was, and how close it stands to being learned. The user answers a
+    dozen of these a day and cannot tell one from another afterwards.
+
+    So the reveal repeats the pair, moves the progress line to a before → after
+    (a tap that changes nothing on screen reads as a tap that did nothing), and
+    says when the word comes back. The example sentence appears only on a miss:
+    that is when the context is worth reading, and on a hit it is just length.
+
+    Pure so the formatting is testable without a bot or a session.
+    """
+    lines: list[str] = []
+    translation = (uw.custom_translation or word.translation or "").strip()
+    if translation:
+        tpl = PUSH_RECAP_WORD if correct else PUSH_RECAP_TRANSLATION
+        lines.append(
+            tpl.format(
+                writing=html.escape(word.writing or ""),
+                translation=html.escape(translation),
+            )
+        )
+    if not correct and (word.example_sentence or "").strip():
+        lines.append(PUSH_RECAP_EXAMPLE.format(sentence=html.escape(word.example_sentence.strip())))
+
+    mastered_now = uw.status == WordStatus.MASTERED.value
+    if mastered_now and not was_mastered:
+        lines.append(PUSH_RECAP_MASTERED_NOW)
+    elif mastered_now:
+        lines.append(PUSH_RECAP_MASTERED.format(score=f"{uw.mastery_score:.1f}"))
+    else:
+        after = _percent(uw, target)
+        progress = (
+            PUSH_RECAP_PROGRESS_FLAT.format(after=after)
+            if after == before_percent
+            else PUSH_RECAP_PROGRESS.format(before=before_percent, after=after)
+        )
+        # Same rule as the card's own progress line: the typed requirement is
+        # worth naming only once it is the sole thing left. Under a 53% bar it
+        # is just one more number nobody asked for.
+        target_score, needed = target or (0.0, 0)
+        typed = uw.production_count or 0
+        if needed and typed < needed and (uw.learning_score or 0) >= target_score:
+            left = needed - typed
+            progress += "  ·  " + PUSH_RECAP_TYPED_LEFT.format(n=left, times=_times(left))
+        lines.append(progress)
+
+    when = _in_days_phrase(uw.next_review_at, now)
+    if when:
+        lines.append(PUSH_RECAP_NEXT.format(when=when))
+    # Blank line between the verdict and the recap: the verdict can already
+    # carry a hint line of its own, and stacking everything unbroken reads as
+    # one wall of symbols.
+    return "\n\n" + "\n".join(lines) if lines else ""
+
+
+# Card rendering --------------------------------------------------------------
 
 _CLOZE_INFLECT = r"(?:s|es|ed|d|ing|ly|er|est)?"
 
@@ -950,12 +1047,14 @@ class PushService:
         rule_msg_id = inflight.get("rule_msg_id")
 
         leech_writing: str | None = None
+        recap = ""  # grammar cards have no word to recap
         if inflight.get("kind") == "grammar":
             await self._apply_grammar_answer(user, ut, iid, correct)
         else:
-            leech_writing = await self._apply_word_answer(
+            outcome = await self._apply_word_answer(
                 user, ut, iid, correct, card_type=inflight.get("ctype")
             )
+            leech_writing, recap = outcome.leech_writing, outcome.recap
 
         now_ts = datetime.now(timezone.utc).timestamp()
         state["inflight"] = None
@@ -976,7 +1075,7 @@ class PushService:
             PUSH_ANSWER_CORRECT
             if correct
             else PUSH_ANSWER_WRONG.format(answer=html.escape(correct_answer_text))
-        )
+        ) + recap
         if query.message:
             try:
                 await query.message.edit_text(feedback, parse_mode="HTML")
@@ -1025,10 +1124,9 @@ class PushService:
         state: dict,
         inflight: dict,
         verdict=None,
-    ) -> str | None:
-        """Apply a cloze answer's SR result and advance the push state. Returns
-        the leech writing if this answer crossed the leech threshold."""
-        leech = await self._apply_word_answer(
+    ) -> AnswerOutcome:
+        """Apply a typed answer's SR result and advance the push state."""
+        outcome = await self._apply_word_answer(
             user, ut, iid, correct,
             card_type=inflight.get("ctype") or CARD_CLOZE,
             kind_override=verdict.kind if verdict is not None else None,
@@ -1038,7 +1136,7 @@ class PushService:
         state["last"] = {"kind": "word", "id": iid}
         state["next_ts"] = now_ts + _minutes(self._s.push_gap_min_minutes, self._s.push_gap_max_minutes)
         await self._save(user.id, state)
-        return leech
+        return outcome
 
     async def handle_typed_answer(self, user: User, ut: UserTrack, message) -> bool:
         """A free-text message while a cloze card is in flight = the typed answer.
@@ -1093,10 +1191,11 @@ class PushService:
             elif verdict.credited:
                 correct = True
 
-        leech = await self._settle_cloze(
+        outcome = await self._settle_cloze(
             user, ut, iid, correct, state, inflight, verdict=verdict
         )
-        feedback = self._typed_feedback(correct, answer, verdict)
+        leech = outcome.leech_writing
+        feedback = self._typed_feedback(correct, answer, verdict) + outcome.recap
         msg_id = inflight.get("msg_id")
         if msg_id:
             try:
@@ -1134,11 +1233,13 @@ class PushService:
             await query.answer()
             return
         answer = str(inflight.get("correct") or "")
-        leech = await self._settle_cloze(user, ut, iid, False, state, inflight)
+        outcome = await self._settle_cloze(user, ut, iid, False, state, inflight)
+        leech = outcome.leech_writing
         if query.message:
             try:
                 await query.message.edit_text(
-                    PUSH_ANSWER_WRONG.format(answer=html.escape(answer)), parse_mode="HTML"
+                    PUSH_ANSWER_WRONG.format(answer=html.escape(answer)) + outcome.recap,
+                    parse_mode="HTML",
                 )
             except Exception:  # noqa: BLE001
                 pass
@@ -1205,15 +1306,21 @@ class PushService:
         correct: bool,
         card_type: str | None = None,
         kind_override: str | None = None,
-    ) -> str | None:
-        """Apply the SR result and leech tracking. Returns the word's writing
-        when this wrong answer just crossed the leech threshold (so the caller
-        can offer to postpone it), else None."""
+    ) -> AnswerOutcome:
+        """Apply the SR result and leech tracking.
+
+        Returns the leech writing (set only when this wrong answer just crossed
+        the threshold, so the caller can offer to postpone the word) together
+        with the recap block for the reveal — built here because this is the
+        only place holding the word both before and after the review.
+        """
         pair = await self._uw.get_with_word(uw_id)
         if pair is None:
-            return None
+            return AnswerOutcome()
         uw, word = pair
         was_mastered = uw.status == WordStatus.MASTERED.value
+        target = mastery.target_for(word.level, user.level)
+        before_percent = _percent(uw, target)
         kind = kind_override or _answer_kind(card_type, correct)
         apply_review(
             uw,
@@ -1243,7 +1350,16 @@ class PushService:
             from app.services.course_service import CourseService
 
             await CourseService(self._session, self._redis).refill(user, ut, _TRACK)
-        return leech_writing
+        return AnswerOutcome(
+            leech_writing=leech_writing,
+            recap=_recap(
+                uw, word,
+                before_percent=before_percent,
+                was_mastered=was_mastered,
+                correct=correct,
+                target=target,
+            ),
+        )
 
     async def _apply_grammar_answer(self, user: User, ut: UserTrack, ugi_id: int, correct: bool) -> None:
         ugi = await self._grammar.get_user_item(ugi_id)
