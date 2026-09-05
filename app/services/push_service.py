@@ -50,10 +50,16 @@ from app.domain.pacing import pace_of, pool_ceiling
 from app.domain.push import in_window, normalize_window
 from app.domain.quiz_text import strip_latin_hints
 from app.domain.push_nudges import nudge_line
+from app.infrastructure.repositories.analytics import AnalyticsRepository
 from app.infrastructure.repositories.grammar import GrammarRepository
 from app.infrastructure.repositories.reviews import GrammarReviewRepository, WordReviewRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
 from app.logging_setup import get_logger
+from app.services.analytics import (
+    EVENT_ANSWER_GRADED,
+    EVENT_WORD_MASTERED,
+    Analytics,
+)
 from app.services.answer_check import AnswerCheckService
 from app.services.regrade import ParkedAnswer, RegradeQueue
 from app.services.progress_service import ProgressService
@@ -295,6 +301,7 @@ class PushService:
         self._reviews = WordReviewRepository(session)
         self._grammar_reviews = GrammarReviewRepository(session)
         self._checker = AnswerCheckService(redis)
+        self._analytics = Analytics(AnalyticsRepository(session))
         self._regrade = RegradeQueue(redis)
         self._s = get_settings()
 
@@ -1124,6 +1131,31 @@ class PushService:
             await self._session.flush()
         await self._finish_card(query, PUSH_LEECH_KEPT)
 
+    async def _record(self, user, uw, word, kind: str, card_type: str | None, was_mastered: bool) -> None:
+        """Log what this answer proved, and whether it finished the word.
+
+        The tables show where every word stands; these show movement — which is
+        the only way to answer "did the rework help", a question that has been
+        unanswerable since the rework landed.
+        """
+        await self._analytics.emit(
+            EVENT_ANSWER_GRADED,
+            user_id=user.id,
+            kind=kind,
+            card=card_type or CARD_RECOGNITION,
+            word_level=word.level,
+            user_level=user.level,
+        )
+        if not was_mastered and uw.status == WordStatus.MASTERED.value:
+            await self._analytics.emit(
+                EVENT_WORD_MASTERED,
+                user_id=user.id,
+                word_level=word.level,
+                user_level=user.level,
+                typed=uw.production_count or 0,
+                mistakes=uw.mistakes_count or 0,
+            )
+
     async def _apply_word_answer(
         self,
         user: User,
@@ -1141,15 +1173,17 @@ class PushService:
             return None
         uw, word = pair
         was_mastered = uw.status == WordStatus.MASTERED.value
+        kind = kind_override or _answer_kind(card_type, correct)
         apply_review(
             uw,
             ReviewResult.CORRECT if correct else ReviewResult.WRONG,
             LearningPace(ut.learning_pace),
-            kind=kind_override or _answer_kind(card_type, correct),
+            kind=kind,
             word_level=word.level,
             user_level=user.level,
             production_possible=self._cloze_possible(word),
         )
+        await self._record(user, uw, word, kind, card_type, was_mastered)
 
         # Leech tracking: count consecutive misses on words still being learned.
         uw.consecutive_wrong, is_leech = _leech_after(uw.consecutive_wrong, correct, was_mastered)

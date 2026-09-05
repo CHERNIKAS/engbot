@@ -44,7 +44,11 @@ from app.services.placement_service import (
     PlacementCard,
     PlacementService,
 )
-from app.services.analytics import EVENT_ONBOARDING_COMPLETED, Analytics
+from app.services.analytics import (
+    EVENT_ONBOARDING_COMPLETED,
+    EVENT_PLACEMENT_COMPLETED,
+    Analytics,
+)
 from app.services.interaction_state_service import InteractionStateService
 from app.services.track_context_service import TrackContextService
 from app.services.user_track_service import UserTrackService
@@ -340,6 +344,7 @@ async def on_placement_answer(
     user: User,
     state_service: InteractionStateService,
     placement: PlacementService,
+    analytics: Analytics,
 ) -> None:
     card, verdict = await placement.answer(user.id, callback_data.value)
     if card is not None:
@@ -351,6 +356,15 @@ async def on_placement_answer(
         await query.answer(ONBOARDING_EXPIRED, show_alert=True)
         return
     origin = await placement.origin_of(user.id)
+    await analytics.emit(
+        EVENT_PLACEMENT_COMPLETED,
+        user_id=user.id,
+        level=verdict,
+        # Where they came from separates a first placement from a retake, and a
+        # retake is the only signal that the first verdict felt wrong to them.
+        origin=origin,
+        previous=user.level,
+    )
     user.level = verdict
     await state_service.clear(user.id)
     if origin == ORIGIN_GATE:

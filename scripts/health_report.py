@@ -4,11 +4,12 @@ Written because the level rework changed the core three times in one day and
 nothing could show the effect — every figure behind those decisions was pulled
 by hand in a psql session. This reports the same figures on demand.
 
-Four sections:
+Five sections:
   users      — who is placed, how much they answer, whether their pool fits it
   mastery    — does anything actually reach "learned", and what blocks it
   catalogue  — coverage of the content a card needs
   guessing   — how often a quiz card can be solved without knowing the word
+  trends     — what has MOVED; the others only ever show the present
 
 Read-only. Run inside the bot container:
     docker exec -w /app englshbot-bot-1 python scripts/health_report.py
@@ -232,6 +233,88 @@ async def guessing_section(session) -> None:
         print("    внешне. Это завышает 'выучено' на ровном месте.")
 
 
+async def trends_section(session) -> None:
+    """What has moved, as opposed to where things stand.
+
+    The other sections read the tables, which only ever show the present. These
+    read the event log, which is the only way to answer the question that kept
+    coming up during the rework and couldn't be: did it help?
+    """
+    print("\n=== ДВИЖЕНИЕ ЗА 14 ДНЕЙ ===")
+
+    answers = (
+        await session.execute(
+            text(
+                """
+                select props->>'kind' as kind, count(*)
+                from analytics_events
+                where name = 'answer_graded'
+                  and created_at >= now() - interval '14 days'
+                group by 1 order by 2 desc
+                """
+            )
+        )
+    ).all()
+    if not answers:
+        print("  событий пока нет — они пишутся только с этого деплоя")
+        return
+
+    total = sum(c for _, c in answers) or 1
+    print("  чем отвечают:")
+    for kind, count in answers:
+        print(f"    {kind or '—':<16} {count:>5}  {_bar(count / total)}")
+    typed = sum(c for k, c in answers if (k or "").startswith("typed_"))
+    print(f"\n  доля ответов печатью: {typed / total:.0%}")
+    if typed / total < 0.2:
+        print("    ⚠ почти всё — выбор из вариантов; до печати доходит мало слов")
+
+    mastered = (
+        await session.execute(
+            text(
+                """
+                select date_trunc('day', created_at)::date, count(*)
+                from analytics_events
+                where name = 'word_mastered'
+                  and created_at >= now() - interval '14 days'
+                group by 1 order by 1
+                """
+            )
+        )
+    ).all()
+    print(f"\n  выучено слов за 14 дней: {sum(c for _, c in mastered)}")
+    for day, count in mastered[-7:]:
+        print(f"    {day}  {count:>3}  {'▪' * min(count, 30)}")
+
+    placements = (
+        await session.execute(
+            text(
+                """
+                select props->>'level' as level, props->>'origin' as origin, count(*)
+                from analytics_events
+                where name = 'placement_completed'
+                group by 1, 2 order by 3 desc
+                """
+            )
+        )
+    ).all()
+    print(f"\n  тестов пройдено: {sum(c for _, _, c in placements)}")
+    for level, origin, count in placements:
+        print(f"    {level or '—':<4} {origin or '—':<10} {count}")
+
+    changes = (
+        await session.execute(
+            text(
+                "select props->>'old', props->>'new', count(*) from analytics_events "
+                "where name = 'level_changed' group by 1, 2 order by 3 desc limit 8"
+            )
+        )
+    ).all()
+    if changes:
+        print("\n  уровень пересчитан:")
+        for old, new, count in changes:
+            print(f"    {old or '—'} → {new or '—'}   {count}")
+
+
 async def main() -> None:
     settings = get_settings()
     engine = create_async_engine(settings.database_url, pool_pre_ping=True)
@@ -242,6 +325,7 @@ async def main() -> None:
             await mastery_section(session)
             await catalogue_section(session)
             await guessing_section(session)
+            await trends_section(session)
     finally:
         await engine.dispose()
     print()

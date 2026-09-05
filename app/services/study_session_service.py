@@ -16,6 +16,7 @@ from app.domain.enums import (
     LearningTrack,
     ReviewResult,
     StudyScope,
+    WordStatus,
 )
 from app.domain.models import User, UserTrack
 from app.domain.quiz_text import strip_latin_hints
@@ -23,6 +24,13 @@ from app.domain.study_drill import STAGE_QUIZ, DrillState
 from app.infrastructure.repositories.reviews import WordReviewRepository
 from app.infrastructure.repositories.sessions import StudySessionRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
+from app.infrastructure.repositories.analytics import AnalyticsRepository
+from app.services.analytics import (
+    EVENT_ANSWER_GRADED,
+    EVENT_LEVEL_CHANGED,
+    EVENT_WORD_MASTERED,
+    Analytics,
+)
 from app.services.repetition_service import apply_review
 
 SESSION_KEY = "session:{user_id}"
@@ -275,6 +283,16 @@ class StudySessionService:
         )
         revised = recalibrated_level(user.level, mastered, attempts, correct)
         if revised and revised != user.level:
+            await Analytics(AnalyticsRepository(self._session)).emit(
+                EVENT_LEVEL_CHANGED,
+                user_id=user.id,
+                # Whether the test's verdict survives contact with real answers
+                # is the one thing the placement test can't tell us about itself.
+                old=user.level,
+                new=revised,
+                reason="recalibration",
+                mastered_at_or_above=mastered,
+            )
             user.level = revised
             await self._session.flush()
 
@@ -309,6 +327,7 @@ class StudySessionService:
                 if result != ReviewResult.WRONG
                 else mastery.WRONG
             )
+            was_mastered = uw.status == WordStatus.MASTERED.value
             apply_review(
                 uw,
                 result,
@@ -320,6 +339,24 @@ class StudySessionService:
                 # they can never accumulate typed answers.
                 production_possible=uw_id not in drill.quiz_only,
             )
+            analytics = Analytics(AnalyticsRepository(self._session))
+            await analytics.emit(
+                EVENT_ANSWER_GRADED,
+                user_id=user.id,
+                kind=kind,
+                card="drill",
+                word_level=word.level,
+                user_level=user.level,
+            )
+            if not was_mastered and uw.status == WordStatus.MASTERED.value:
+                await analytics.emit(
+                    EVENT_WORD_MASTERED,
+                    user_id=user.id,
+                    word_level=word.level,
+                    user_level=user.level,
+                    typed=uw.production_count or 0,
+                    mistakes=uw.mistakes_count or 0,
+                )
             await self._reviews.create(
                 user_id=user.id,
                 track=track,

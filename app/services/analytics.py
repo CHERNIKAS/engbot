@@ -24,3 +24,12 @@ EVENT_STUDY_STARTED = "study_started"
 EVENT_STUDY_COMPLETED = "study_completed"
 EVENT_STREAK_UPDATED = "streak_updated"
 EVENT_PACK_ADDED = "pack_added"
+
+# Events for the level rework. State is already visible in the tables — what
+# these add is movement: whether anything reaches "learned" now, what kind of
+# answers people actually give, and whether the level we assign holds up. Each
+# one exists to answer a question that was asked and couldn't be.
+EVENT_ANSWER_GRADED = "answer_graded"  # every answer, with what it proved
+EVENT_WORD_MASTERED = "word_mastered"  # the outcome the rework was for
+EVENT_PLACEMENT_COMPLETED = "placement_completed"  # what the test decides
+EVENT_LEVEL_CHANGED = "level_changed"  # whether that decision survives contact
