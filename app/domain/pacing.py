@@ -81,6 +81,11 @@ POOL_TARGET_SHARE = 0.8
 # Don't offer to park a handful of words: the interruption costs more than the
 # few slots it frees.
 MIN_OVERFLOW_TO_OFFER = 5
+# No single offer takes more than half of what's in flight. The arithmetic said
+# 15 of one user's 20 words and 48 of another's 63 — correct, and a lot to hand
+# over in one tap even when every word comes back. Halving turns one cliff into
+# two or three visible steps, and the offer simply returns until the pool fits.
+MAX_OFFER_SHARE = 0.5
 
 
 def overflow(active: int, ceiling: int) -> int:
@@ -91,7 +96,15 @@ def overflow(active: int, ceiling: int) -> int:
     these are words they chose to learn.
     """
     target = max(MIN_POOL, round(ceiling * POOL_TARGET_SHARE))
-    excess = active - target
+    excess = min(active - target, int(active * MAX_OFFER_SHARE))
+    if excess <= 0:
+        return 0
+    # The "don't bother me over a few words" threshold must not apply while the
+    # pool is still blocking intake. Capping each offer at half left one user
+    # landing on exactly the ceiling, where a handful of words is the only thing
+    # between them and new material — and the threshold refused to mention it.
+    if active >= ceiling:
+        return excess
     return excess if excess >= MIN_OVERFLOW_TO_OFFER else 0
 
 

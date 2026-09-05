@@ -105,14 +105,33 @@ def test_the_prod_case_is_offered():
     assert overflow(active=63, ceiling=16) > 0
 
 
-def test_parking_leaves_room_for_new_words():
-    """A new word only enters while the pool is UNDER the ceiling, so parking
-    down to exactly the ceiling would free nothing."""
-    ceiling = 16
-    to_park = overflow(active=63, ceiling=ceiling)
-    assert 63 - to_park < ceiling
+def test_no_single_offer_takes_more_than_half():
+    """Correct arithmetic wanted 48 of one user's 63 words in one tap. Every
+    one comes back, and it is still a lot to hand over at once."""
+    assert overflow(active=63, ceiling=16) <= 63 // 2
+    assert overflow(active=20, ceiling=6) <= 20 // 2
+
+
+def test_repeated_offers_converge_below_the_ceiling():
+    """Capping each round means the pool needs a few, so what matters is that
+    they end — a new word only enters while the pool is UNDER the ceiling."""
+    ceiling, active, rounds = 16, 63, 0
+    while (to_park := overflow(active, ceiling)) and rounds < 20:
+        assert to_park > 0
+        active -= to_park
+        rounds += 1
+    assert active < ceiling
+    assert rounds <= 5  # a few visible steps, not a grind
 
 
 def test_it_never_asks_to_park_below_the_floor():
     to_park = overflow(active=40, ceiling=MIN_POOL)
     assert 40 - to_park >= MIN_POOL
+
+
+def test_the_floor_is_a_resting_place_not_a_trap():
+    """A very light user's ceiling equals MIN_POOL, so draining can't take them
+    below it. That's the designed floor, not a stall: at five words on two
+    answers a day each one comes back every few days and graduates, and intake
+    resumes as slots free up."""
+    assert overflow(active=MIN_POOL, ceiling=MIN_POOL) == 0

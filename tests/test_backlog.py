@@ -65,12 +65,11 @@ async def test_a_healthy_pool_is_left_alone():
     assert offer.count == 0
 
 
-async def test_parking_leaves_room_for_new_words():
-    """Parking down to exactly the ceiling would free no slots at all — a new
-    word only enters while the pool is under it."""
-    svc = _service(active=63, rate=12.0)
-    offer = await svc.offer(1, LearningTrack.ENGLISH)
-    assert offer.active - offer.count <= offer.target
+async def test_one_offer_never_takes_more_than_half():
+    """Handing over three quarters of someone's active words in a single tap
+    reads as loss, even when every one of them returns."""
+    offer = await _service(active=63, rate=12.0).offer(1, LearningTrack.ENGLISH)
+    assert offer.count <= offer.active // 2
 
 
 # ---- what it does ----
