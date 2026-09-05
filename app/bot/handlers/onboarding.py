@@ -266,17 +266,31 @@ async def on_tracks_done(
     )
 
 
-def _render_card(card: PlacementCard) -> tuple[str, object]:
-    return (
+async def _show_card(query: CallbackQuery, card: PlacementCard) -> None:
+    """Render one placement question onto the live card.
+
+    The three entry points into the test all draw the same card, and each used
+    to do it by hand. One of them forgot `parse_mode`, so the word came out as
+    a literal `<b>prove</b>` — a bug the user saw before any test did. Sending
+    it from one place is what stops that recurring.
+    """
+    if query.message is None:
+        return
+    await query.message.edit_text(
         PLACEMENT_CARD.format(writing=html.escape(card.writing), position=card.position),
-        placement_card_kb(card.options),
+        reply_markup=placement_card_kb(card.options),
+        parse_mode="HTML",
     )
 
 
 async def _close_onboarding(query: CallbackQuery, text: str) -> None:
     """Last screen of onboarding — same ending for every placement outcome."""
     if query.message:
-        await query.message.edit_text(f"{text}\n\n{ONBOARDING_DONE}", reply_markup=course_onboarding_offer_kb())
+        await query.message.edit_text(
+            f"{text}\n\n{ONBOARDING_DONE}",
+            reply_markup=course_onboarding_offer_kb(),
+            parse_mode="HTML",  # `text` carries the level in <b>…</b>
+        )
         await query.message.answer(MAIN_MENU, reply_markup=main_menu_reply_kb())
 
 
@@ -295,9 +309,7 @@ async def on_placement_start(
         await _close_onboarding(query, PLACEMENT_UNAVAILABLE)
         await query.answer()
         return
-    if query.message:
-        text, kb = _render_card(card)
-        await query.message.edit_text(text, reply_markup=kb)
+    await _show_card(query, card)
     await query.answer()
 
 
@@ -317,9 +329,7 @@ async def on_placement_gate_start(
             await query.message.edit_text(PLACEMENT_UNAVAILABLE)
         await query.answer()
         return
-    if query.message:
-        text, kb = _render_card(card)
-        await query.message.edit_text(text, reply_markup=kb)
+    await _show_card(query, card)
     await query.answer()
 
 
@@ -333,9 +343,7 @@ async def on_placement_answer(
 ) -> None:
     card, verdict = await placement.answer(user.id, callback_data.value)
     if card is not None:
-        if query.message:
-            text, kb = _render_card(card)
-            await query.message.edit_text(text, reply_markup=kb)
+        await _show_card(query, card)
         await query.answer()
         return
     if verdict is None:
