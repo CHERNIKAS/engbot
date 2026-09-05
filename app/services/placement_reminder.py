@@ -34,10 +34,11 @@ log = get_logger("placement_reminder")
 # One per user per local day.
 _SENT_KEY = "plreminder:{user_id}:{day}"
 _SENT_TTL = 172_800  # 2 days — long enough to cover any timezone's "today"
-# How many times in total we're willing to ask. After this the gate screen is
-# the only thing that mentions it: they've seen the message five times and
-# chosen not to act, and a sixth is just noise.
-_MAX_REMINDERS = 5
+# How many times in total we're willing to ask. Every one of them is the same
+# text, so the third adds nothing the first two didn't say — after that the
+# gate screen is the only thing that mentions it, and only when they open the
+# bot themselves.
+_MAX_REMINDERS = 3
 _COUNT_KEY = "plreminder:count:{user_id}"
 _COUNT_TTL = 2_592_000  # 30 days
 

@@ -105,8 +105,8 @@ async def test_the_window_follows_the_user_timezone():
 
 
 async def test_it_gives_up_after_a_handful_of_tries():
-    """A reminder that keeps arriving after someone has decided to ignore it
-    stops being a reminder."""
+    """Every reminder is the same text, so one that keeps arriving after
+    someone has read it twice and done nothing stops being a reminder."""
     bot, redis = FakeBot(), FakeRedis()
     svc = _service([_user()], redis=redis, bot=bot)
     for day in range(_MAX_REMINDERS + 3):
