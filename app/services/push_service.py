@@ -187,8 +187,7 @@ _CLOZE_ANSWER_RE = re.compile(r"^[A-Za-z][A-Za-z'\-]*$")
 
 
 def _looks_like_cloze_answer(text: str) -> bool:
-    """A cloze answer is a single English word. Text that carries a translation
-    separator or extra words is a quick-add, not an answer — leave it alone."""
+    """Whether this is the shape a cloze blank expects — a single English word."""
     return bool(_CLOZE_ANSWER_RE.match(text.strip()))
 
 
@@ -199,16 +198,21 @@ _QUICK_ADD_MARKS = ("|", " - ", " — ", " – ", "	")
 def _looks_like_typed_answer(text: str, card_type: str | None) -> bool:
     """Whether this message is an answer to the card in flight.
 
-    A cloze answer is one English word, so the old single-word test still holds
-    there. A type-in answer can be a whole phrase — "Is it far from here?" — so
-    the test instead asks whether it looks like English and carries none of the
-    marks of a quick-add, which always pairs a word with a Russian translation.
+    The test asks whether the text looks like English and carries none of the
+    marks of a quick-add — which always pairs a word with a Russian translation,
+    so it needs a separator or Cyrillic to be one.
+
+    Cloze used to demand a SINGLE English word here, reasoning that a blank
+    holds one token. But someone who types "might be" into a blank has plainly
+    answered the card, and the strict rule handed that to quick-add instead:
+    the card stayed in flight nudging them, and they got an unwanted
+    «Добавить "might be"?» prompt. A two-word answer to a one-word blank is a
+    WRONG answer, and it belongs in the grader — where the checker can still
+    credit a near miss — not in the word list.
     """
     body = (text or "").strip()
     if not body:
         return False
-    if card_type == CARD_CLOZE:
-        return _looks_like_cloze_answer(body)
     if any(mark in body for mark in _QUICK_ADD_MARKS) or "\n" in body:
         return False
     if any("Ѐ" <= ch <= "ӿ" for ch in body):

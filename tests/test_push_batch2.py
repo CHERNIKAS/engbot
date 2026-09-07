@@ -85,6 +85,14 @@ def test_empty_and_punctuation_only_are_not_answers():
     assert not _looks_like_typed_answer("???", CARD_TYPE_IN)
 
 
-def test_cloze_keeps_the_stricter_single_word_rule():
-    assert not _looks_like_typed_answer("Is it far from here?", CARD_CLOZE)
+def test_a_multi_word_answer_to_a_blank_is_graded_not_filed_away():
+    """A blank holds one token, so "might be" is a WRONG answer — but it is an
+    answer. Sending it to quick-add left the card in flight, still nudging,
+    and put an unwanted «Добавить "might be"?» prompt in the chat."""
+    assert _looks_like_typed_answer("might be", CARD_CLOZE)
     assert _looks_like_typed_answer("become", CARD_CLOZE)
+
+
+def test_a_quick_add_is_not_eaten_by_a_cloze_either():
+    assert not _looks_like_typed_answer("serendipity - прозорливость", CARD_CLOZE)
+    assert not _looks_like_typed_answer("стать", CARD_CLOZE)
