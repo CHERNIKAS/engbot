@@ -361,6 +361,7 @@ PUSH_WINDOW_TITLE = (
     "Выбери час начала и час конца, потом «Сохранить». Можно через ночь "
     "(например 22→08), но не меньше {min_hours} ч 🌙"
 )
+PUSH_WINDOW_PENDING = "🌅 {ws:02d}:00 → 🌙 {we:02d}:00  ·  {hours} ч"
 PUSH_WINDOW_TOO_SHORT = "🙅 Окно должно быть не меньше {min_hours} ч."
 
 SETTINGS_TITLE = (

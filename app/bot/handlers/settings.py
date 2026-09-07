@@ -29,11 +29,13 @@ from app.bot.texts import (
     PUSH_PACE_TITLE,
     PUSH_TITLE,
     PUSH_WINDOW_TITLE,
+    PUSH_WINDOW_PENDING,
     PUSH_WINDOW_TOO_SHORT,
     SETTINGS_TITLE,
     TZ_TITLE,
 )
 from app.config import get_settings
+from app.logging_setup import get_logger
 from app.domain.enums import LearningPace, LearningTrack, TRACK_LABELS
 from app.domain.pacing import PACE_VALUES, label_for, pace_of
 from app.domain.push import window_hours
@@ -42,6 +44,8 @@ from app.bot.keyboards.onboarding import placement_card_kb
 from app.services.interaction_state_service import InteractionStateService
 from app.services.placement_service import ORIGIN_SETTINGS, PlacementService
 from app.services.user_track_service import UserTrackService
+
+log = get_logger("settings")
 
 router = Router(name="settings")
 
@@ -227,11 +231,15 @@ async def on_push_win_set(
     async def _rerender() -> None:
         # Re-tapping the already-selected hour yields an identical keyboard →
         # Telegram raises "message is not modified". That's benign for a picker.
+        # Anything else is not: a swallowed failure here leaves the OLD grid on
+        # screen, so the next tap sends the OLD pending pair and the user's
+        # first choice is silently lost. Log it rather than lose it.
         if query.message:
             try:
                 await query.message.edit_reply_markup(reply_markup=push_window_kb(ws, we, mh))
-            except TelegramBadRequest:
-                pass
+            except TelegramBadRequest as exc:
+                if "not modified" not in str(exc).lower():
+                    log.warning("push_window_rerender_failed", error=str(exc), ws=ws, we=we)
 
     if op == "sv":
         if not (mh <= window_hours(ws, we) < 24):
@@ -251,9 +259,11 @@ async def on_push_win_set(
         await query.answer(f"✅ {ws:02d}:00–{we:02d}:00")
         return
 
-    # A cell tap: re-render with the new pending pair (not yet saved).
+    # A cell tap: re-render with the new pending pair (not yet saved). The toast
+    # repeats the pending window, so the user can see their tap landed even if
+    # the grid itself fails to redraw — and can tell us what it said.
     await _rerender()
-    await query.answer()
+    await query.answer(PUSH_WINDOW_PENDING.format(ws=ws, we=we, hours=window_hours(ws, we)))
 
 
 # --------------------------------------------------------------------------- #

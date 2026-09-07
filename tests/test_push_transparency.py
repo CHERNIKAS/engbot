@@ -100,3 +100,23 @@ def test_a_button_card_explains_a_stalled_hundred_percent():
     line = _progress_line(_uw(learning_score=9.5, production=2), now=NOW, target=(9.5, 5))
     assert "🌱 100%" in line
     assert "напечатать ещё 3 раза" in line
+
+
+# ---- grammar items ride the same progress line ----
+
+
+def test_a_grammar_item_gets_a_progress_line_without_a_learning_score():
+    """UserGrammarItem has no learning_score / production_count — it rides raw
+    repetitions. Reading the word columns off one raised AttributeError inside
+    card rendering, which aborted the whole push tick: grammar cards silently
+    stopped being delivered at all."""
+    ugi = SimpleNamespace(
+        status="review",
+        repetitions_count=3,
+        mistakes_count=1,
+        mastery_score=0.0,
+        last_reviewed_at=None,
+    )
+    line = _progress_line(ugi, now=NOW)
+    assert "🌱" in line
+    assert "ошибок: 1" in line

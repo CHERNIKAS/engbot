@@ -249,12 +249,26 @@ def _times(n: int) -> str:
     return "раза" if 2 <= n % 10 <= 4 else "раз"
 
 
+def _score_of(uw) -> float:
+    """Progress toward mastery, for whatever kind of item this is.
+
+    Words carry a weighted `learning_score` (a typed answer is worth more than
+    a four-option guess). Grammar items have no such column — they ride raw
+    repetitions — and reading the word field off one crashed every grammar card
+    before it could be sent.
+    """
+    score = getattr(uw, "learning_score", None)
+    if score is None:
+        return float(getattr(uw, "repetitions_count", 0) or 0)
+    return float(score)
+
+
 def _percent(uw, target: tuple[float, int] | None = None) -> int:
-    """How far along the word is toward its own mastery bar, 0-100."""
+    """How far along the item is toward its mastery bar, 0-100."""
     target_score = (target or (float(MASTERED_REPS_NORMAL), 0))[0]
     if not target_score:
         return 0
-    return min(100, round(100 * (uw.learning_score or 0) / target_score))
+    return min(100, round(100 * _score_of(uw) / target_score))
 
 
 def _in_days_phrase(next_review_at, now: datetime | None = None) -> str | None:
@@ -299,8 +313,8 @@ def _progress_line(
     target_score, needed_production = target or (float(MASTERED_REPS_NORMAL), 0)
     parts = [f"🌱 {_percent(uw, target)}%"]
 
-    score = uw.learning_score or 0
-    typed = uw.production_count or 0
+    score = _score_of(uw)
+    typed = getattr(uw, "production_count", 0) or 0
     blocking = needed_production and typed < needed_production
     if blocking and (typing_now or score >= target_score):
         left = needed_production - typed
