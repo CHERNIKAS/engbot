@@ -202,7 +202,7 @@ async def on_push_win(query: CallbackQuery, user_track: UserTrack) -> None:
     if query.message:
         await query.message.edit_text(
             PUSH_WINDOW_TITLE.format(min_hours=mh),
-            reply_markup=push_window_kb(ws, we, mh),
+            reply_markup=push_window_kb(ws, we, mh, step="ws"),
             parse_mode="HTML",
         )
     await query.answer()
@@ -219,14 +219,20 @@ async def on_push_win_set(
 ) -> None:
     mh = get_settings().push_min_window_hours
     # value = "<op>_<ws>_<we>" — the pending pair rides in the callback so the
-    # grid can be navigated without persisting an intermediate (maybe <min) window.
-    # op "w" = a cell was tapped (re-render pending), "sv" = save.
+    # grid can be navigated without persisting an intermediate (maybe <min)
+    # window. The op says which grid to show next:
+    #   "w"  a start hour was picked        → show the end grid
+    #   "e"  an end hour was picked         → stay on the end grid
+    #   "b"  «change the start» was tapped  → back to the start grid
+    #   "sv" save
     parts = (callback_data.value or "").split("_")
     try:
         op, ws, we = parts[0], int(parts[1]), int(parts[2])
     except (IndexError, ValueError):
         await query.answer()
         return
+
+    step = "ws" if op == "b" else "we"
 
     async def _rerender() -> None:
         # Re-tapping the already-selected hour yields an identical keyboard →
@@ -236,7 +242,9 @@ async def on_push_win_set(
         # first choice is silently lost. Log it rather than lose it.
         if query.message:
             try:
-                await query.message.edit_reply_markup(reply_markup=push_window_kb(ws, we, mh))
+                await query.message.edit_reply_markup(
+                    reply_markup=push_window_kb(ws, we, mh, step=step)
+                )
             except TelegramBadRequest as exc:
                 if "not modified" not in str(exc).lower():
                     log.warning("push_window_rerender_failed", error=str(exc), ws=ws, we=we)
@@ -257,6 +265,10 @@ async def on_push_win_set(
             except TelegramBadRequest:
                 pass
         await query.answer(f"✅ {ws:02d}:00–{we:02d}:00")
+        return
+
+    if op not in ("w", "e", "b"):
+        await query.answer()
         return
 
     # A cell tap: re-render with the new pending pair (not yet saved). The toast

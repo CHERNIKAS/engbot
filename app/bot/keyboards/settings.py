@@ -119,46 +119,82 @@ def new_pace_kb(current: int) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
-def push_window_kb(ws: int, we: int, min_hours: int) -> InlineKeyboardMarkup:
-    """Direct-pick grid for the daily push window — tap a start hour, tap an end
-    hour, save. Any hours, overnight allowed (e.g. 22→08). The pending pair rides
-    in the callback data, so nothing persists until '✅ Сохранить' (which enforces
-    the minimum). 3 taps total — no slow stepping."""
+def push_window_kb(ws: int, we: int, min_hours: int, step: str = "ws") -> InlineKeyboardMarkup:
+    """One grid at a time for the daily push window: pick the start hour, then
+    the end hour, then save. Overnight is allowed (e.g. 22->08); nothing is
+    persisted until 'Save', which enforces the minimum.
 
-    def grid(values: range, selected: int, pair) -> list[list[InlineKeyboardButton]]:
-        rows: list[list[InlineKeyboardButton]] = []
-        cells = list(values)
-        for i in range(0, len(cells), 6):
-            row = []
-            for h in cells[i : i + 6]:
-                a, b = pair(h)
-                label = f"·{h:02d}·" if h == selected else f"{h:02d}"
-                row.append(
-                    InlineKeyboardButton(
-                        text=label,
-                        callback_data=SettingsCB(action="push_win_set", value=f"w_{a}_{b}").pack(),
-                    )
+    It used to show BOTH grids stacked, and that was the bug users hit: the two
+    are visually identical and every hour appears in each of them, so "21" in
+    the start grid looks exactly like "21" in the end grid. People tapped their
+    start hour and then their end hour in the same grid, and watched their first
+    choice get replaced -- "it picks one or the other". Worse, the second grid's
+    last row sat below the fold behind the message box, so the hours most likely
+    wanted for an end (19-24) were the hardest to even reach.
+
+    One grid can only mean one thing, and it fits on screen.
+    """
+    on_end = step == "we"
+    values = range(1, 25) if on_end else range(0, 24)
+    selected = we if on_end else ws
+    # A tap on the end grid stays on the end grid ("e"); a tap on the start grid
+    # advances to it ("w"), so the common path is start -> end -> save.
+    op = "e" if on_end else "w"
+
+    rows: list[list[InlineKeyboardButton]] = [
+        [
+            InlineKeyboardButton(
+                text=("🌙 До скольки?" if on_end else "🌅 Во сколько начинать?"),
+                callback_data=NoopCB(tag="hdr").pack(),
+            )
+        ]
+    ]
+    cells = list(values)
+    for i in range(0, len(cells), 6):
+        row = []
+        for h in cells[i : i + 6]:
+            a, b = (ws, h) if on_end else (h, we)
+            row.append(
+                InlineKeyboardButton(
+                    text=(f"·{h:02d}·" if h == selected else f"{h:02d}"),
+                    callback_data=SettingsCB(action="push_win_set", value=f"{op}_{a}_{b}").pack(),
                 )
-            rows.append(row)
-        return rows
+            )
+        rows.append(row)
 
     hours = window_hours(ws, we)
     overnight = 0 < we <= ws
-    if hours < min_hours:
-        info = f"⚠️ {hours} ч — нужно ≥ {min_hours} ч"
+    if on_end:
+        if hours < min_hours:
+            info = f"⚠️ {ws:02d}:00 → {we:02d}:00 · {hours} ч — нужно ≥ {min_hours} ч"
+        else:
+            info = f"ℹ️ {ws:02d}:00 → {we:02d}:00 · {hours} ч" + (" · через ночь 🌙" if overnight else "")
+        rows.append([InlineKeyboardButton(text=info, callback_data=NoopCB(tag="i").pack())])
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    text="✅ Сохранить",
+                    callback_data=SettingsCB(action="push_win_set", value=f"sv_{ws}_{we}").pack(),
+                )
+            ]
+        )
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    text=f"⬅️ Начало: {ws:02d}:00",
+                    callback_data=SettingsCB(action="push_win_set", value=f"b_{ws}_{we}").pack(),
+                )
+            ]
+        )
     else:
-        info = f"ℹ️ Окно: {hours} ч" + (" · через ночь 🌙" if overnight else "")
-
-    rows: list[list[InlineKeyboardButton]] = [
-        [InlineKeyboardButton(text="🌅 Начало (час)", callback_data=NoopCB(tag="ws").pack())]
-    ]
-    rows += grid(range(0, 24), ws, lambda h: (h, we))
-    rows.append([InlineKeyboardButton(text="🌙 Конец (час)", callback_data=NoopCB(tag="we").pack())])
-    rows += grid(range(1, 25), we, lambda h: (ws, h))
-    rows.append([InlineKeyboardButton(text=info, callback_data=NoopCB(tag="i").pack())])
-    rows.append(
-        [InlineKeyboardButton(text="✅ Сохранить", callback_data=SettingsCB(action="push_win_set", value=f"sv_{ws}_{we}").pack())]
-    )
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    text=f"➡️ Дальше — конец ({we:02d}:00)",
+                    callback_data=SettingsCB(action="push_win_set", value=f"w_{ws}_{we}").pack(),
+                )
+            ]
+        )
     rows.append([InlineKeyboardButton(text="↩️ Назад", callback_data=SettingsCB(action="push_open").pack())])
     return InlineKeyboardMarkup(inline_keyboard=rows)
 

@@ -358,7 +358,7 @@ PUSH_TITLE = (
 # a number that quietly stops being true the moment the setting changes.
 PUSH_WINDOW_TITLE = (
     "🕐 <b>Окно пушей</b> — когда боту можно слать карточки.\n"
-    "Выбери час начала и час конца, потом «Сохранить». Можно через ночь "
+    "Сначала час начала, потом час конца. Можно через ночь "
     "(например 22→08), но не меньше {min_hours} ч 🌙"
 )
 PUSH_WINDOW_PENDING = "🌅 {ws:02d}:00 → 🌙 {we:02d}:00  ·  {hours} ч"
