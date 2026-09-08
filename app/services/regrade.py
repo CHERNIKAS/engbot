@@ -87,10 +87,17 @@ class RegradeResult:
     checked: int = 0
     upgraded: int = 0
     per_user: dict[int, list[str]] = None  # telegram_id -> lines to send
+    # Everyone whose parked answers were re-run, upgraded or not. The user was
+    # told "засчитываю строго, вернётся сама, ответ пересчитаю" — so the promise
+    # is owed an answer either way. Silence after that reads as a promise
+    # quietly dropped, even when the recheck agreed the miss was a miss.
+    rechecked: set[int] = None  # telegram_ids
 
     def __post_init__(self) -> None:
         if self.per_user is None:
             self.per_user = {}
+        if self.rechecked is None:
+            self.rechecked = set()
 
 
 class RegradeService:
@@ -114,6 +121,7 @@ class RegradeService:
                 await self._queue.park(item)
                 break
             result.checked += 1
+            result.rechecked.add(item.telegram_id)
             if not verdict.credited:
                 continue
             uw = await self._uw.get(item.user_word_id, owner_id=item.user_id)

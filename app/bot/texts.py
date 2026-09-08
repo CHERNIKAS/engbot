@@ -220,8 +220,17 @@ STUDY_ANSWER_DEGRADED = (
 # Sent after a re-grade: the checker was down, the answer was scored strictly,
 # and the credit has now been applied after the fact.
 REGRADE_NOTICE = (
-    "🔄 Пересмотрел ответы, которые засчитал строго — умная проверка была недоступна.\n\n"
+    "🔄 Умная проверка снова на связи — пересмотрел ответы, "
+    "которые засчитал строго.\n\n"
     "Теперь засчитано:\n{lines}"
+)
+# Sent when the recheck ran and changed nothing. The card promised «вернётся
+# сама, ответ пересчитаю» — staying silent because the answer really was a miss
+# leaves the user waiting on a promise they were never told was kept.
+REGRADE_NOTHING = (
+    "🔄 Умная проверка снова на связи — перепроверил ответы, "
+    "которые засчитал строго.\n\n"
+    "Всё сошлось, менять нечего 🌿"
 )
 STUDY_USE_BUTTONS = "👆 Выбери вариант кнопкой"
 STUDY_CARD_NO_TRANSLATION = "(перевода нет)"

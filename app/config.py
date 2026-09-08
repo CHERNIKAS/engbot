@@ -76,7 +76,14 @@ class Settings(BaseSettings):
     # Understanding a wrong typed answer. Tighter than the tagger's timeout:
     # a user is staring at the card while this runs, so a slow answer is worse
     # than the strict verdict plus an honest notice.
-    answer_check_timeout_seconds: float = Field(5.0, gt=0, alias="ANSWER_CHECK_TIMEOUT_SECONDS")
+    # A typical check comes back in under a second. Five seconds looked like
+    # plenty until prod showed misses caused purely by a slow round trip: the
+    # budget has to cover an occasional bad one, not the median.
+    answer_check_timeout_seconds: float = Field(8.0, gt=0, alias="ANSWER_CHECK_TIMEOUT_SECONDS")
+    # One extra go before giving up. A timeout is usually a single unlucky
+    # request, and the retry costs the user a moment where the alternative
+    # costs them credit they earned.
+    answer_check_retries: int = Field(1, ge=0, le=3, alias="ANSWER_CHECK_RETRIES")
     # How often to retry answers that were scored strictly during an outage.
     # Short enough that the correction still feels connected to the answer.
     regrade_interval_seconds: int = Field(600, ge=60, alias="REGRADE_INTERVAL_SECONDS")

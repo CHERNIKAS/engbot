@@ -25,7 +25,10 @@ def _svc(key: str = "k", redis: FakeRedis | None = None) -> AnswerCheckService:
     svc = AnswerCheckService.__new__(AnswerCheckService)
     svc._redis = redis or FakeRedis()
     svc._settings = SimpleNamespace(
-        gemini_api_key=key, ai_model="m", answer_check_timeout_seconds=5.0
+        gemini_api_key=key,
+        ai_model="m",
+        answer_check_timeout_seconds=8.0,
+        answer_check_retries=1,
     )
     return svc
 
@@ -309,3 +312,94 @@ async def test_a_word_that_vanished_is_skipped_without_crashing():
     svc = _service(redis, AnswerVerdict(mastery.TYPED_TYPO, "x"), uw=None)
     result = await svc.run(now=1001.0)
     assert result.upgraded == 0
+
+
+# ---- a slow round trip should not cost the user credit ----
+
+
+async def test_a_single_timeout_is_retried_before_giving_up():
+    """Prod misses came from one unlucky round trip, not from a dead API. The
+    fallback is not free — the user is told they missed and has to wait for the
+    regrade — so it is worth asking twice."""
+    svc = _svc()
+    calls = []
+
+    async def flaky(word, translation, answer):
+        calls.append(answer)
+        if len(calls) == 1:
+            raise TimeoutError
+        return AnswerVerdict(mastery.TYPED_TYPO, "опечатка")
+
+    svc._ask = flaky
+    verdict = await svc.classify("explain", "объяснять", "explane")
+    assert len(calls) == 2
+    assert verdict is not None
+    assert verdict.credited
+
+
+async def test_it_gives_up_once_the_retries_are_spent():
+    """Still None on a real outage — the degraded notice and the parked answer
+    depend on this staying distinct from a 'wrong' verdict."""
+    svc = _svc()
+    calls = []
+
+    async def always_slow(word, translation, answer):
+        calls.append(answer)
+        raise TimeoutError
+
+    svc._ask = always_slow
+    assert await svc.classify("explain", "объяснять", "explane") is None
+    assert len(calls) == 2  # the original try plus one retry
+
+
+async def test_a_retried_success_is_still_cached():
+    svc = _svc()
+    state = {"n": 0}
+
+    async def flaky(word, translation, answer):
+        state["n"] += 1
+        if state["n"] == 1:
+            raise TimeoutError
+        return AnswerVerdict(mastery.TYPED_TYPO, "опечатка")
+
+    svc._ask = flaky
+    await svc.classify("explain", "объяснять", "explane")
+    state["n"] = 5  # any further call would return the wrong thing
+    again = await svc.classify("explain", "объяснять", "explane")
+    assert again is not None and again.credited
+
+
+# ---- the promised recount is always reported back ----
+
+
+async def test_a_genuine_miss_still_reports_that_the_checker_returned():
+    """The card promised «вернётся сама, ответ пересчитаю». Going quiet because
+    the miss really was a miss leaves that promise looking dropped."""
+    redis = await _queued(_parked())
+    svc = _service(redis, AnswerVerdict(mastery.WRONG, ""), FakeUserWord())
+    result = await svc.run(now=1001.0)
+    assert result.rechecked == {999}
+    assert not result.per_user  # nothing to list, but the user is still told
+
+
+async def test_an_upgrade_reports_the_same_user_once():
+    redis = await _queued(_parked())
+    svc = _service(redis, AnswerVerdict(mastery.TYPED_TYPO, "опечатка"), FakeUserWord())
+    result = await svc.run(now=1001.0)
+    assert result.rechecked == {999}
+    assert 999 in result.per_user
+
+
+async def test_a_still_dead_api_tells_nobody_anything():
+    """Nothing was rechecked, so there is no news to deliver."""
+    redis = await _queued(_parked())
+    svc = _service(redis, None, FakeUserWord())
+    result = await svc.run(now=1001.0)
+    assert result.rechecked == set()
+
+
+async def test_a_stale_answer_produces_no_notice():
+    redis = await _queued(_parked(at=0.0))
+    svc = _service(redis, AnswerVerdict(mastery.TYPED_TYPO, "x"), FakeUserWord())
+    result = await svc.run(now=10_000_000.0)
+    assert result.rechecked == set()

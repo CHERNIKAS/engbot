@@ -17,7 +17,7 @@ from app.bot.middlewares.logging_context import LoggingContextMiddleware
 from app.bot.middlewares.rate_limit import RateLimitMiddleware
 from app.bot.middlewares.services import ServicesMiddleware
 from app.bot.middlewares.user_loader import UserLoaderMiddleware
-from app.bot.texts import REGRADE_NOTICE
+from app.bot.texts import REGRADE_NOTHING, REGRADE_NOTICE
 from app.config import get_settings
 from app.infrastructure.db.engine import build_engine, build_sessionmaker
 from app.infrastructure.example_provider.local_json import LocalJsonExampleProvider
@@ -117,14 +117,18 @@ async def _regrade_worker(sessionmaker, redis, bot) -> None:
                     now=datetime.now(timezone.utc).timestamp()
                 )
                 await session.commit()
-            for telegram_id, lines in (result.per_user or {}).items():
+            for telegram_id in result.rechecked or set():
+                lines = (result.per_user or {}).get(telegram_id)
+                # Upgraded → say what changed. Rechecked and unchanged → still
+                # say so: the card promised a recount, and a kept promise the
+                # user never hears about is indistinguishable from a dropped one.
+                text = (
+                    REGRADE_NOTICE.format(lines="\n".join(f"• {ln}" for ln in lines[:10]))
+                    if lines
+                    else REGRADE_NOTHING
+                )
                 try:
-                    await bot.send_message(
-                        telegram_id,
-                        REGRADE_NOTICE.format(
-                            lines="\n".join(f"• {ln}" for ln in lines[:10])
-                        ),
-                    )
+                    await bot.send_message(telegram_id, text)
                 except TelegramForbiddenError:
                     pass  # blocked the bot; the score was applied regardless
         except asyncio.CancelledError:

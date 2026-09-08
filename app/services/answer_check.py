@@ -131,13 +131,23 @@ class AnswerCheckService:
         cached = await self._cached(word, answer)
         if cached is not None:
             return cached
-        try:
-            verdict = await self._ask(word, translation, answer)
-        except (TimeoutError, aiohttp.ClientError, ValueError) as exc:
-            log.warning("answer_check_failed", error=type(exc).__name__)
-            return None
-        await self._remember(word, answer, verdict)
-        return verdict
+        # One retry before giving up. A timeout here is usually a single slow
+        # round trip, and the fallback is not free: the user is told their
+        # answer was a miss and has to wait for the regrade to give the credit
+        # back. Trying twice is cheaper than that for everyone.
+        attempts = 1 + max(0, self._settings.answer_check_retries)
+        for attempt in range(1, attempts + 1):
+            try:
+                verdict = await self._ask(word, translation, answer)
+            except (TimeoutError, aiohttp.ClientError, ValueError) as exc:
+                if attempt < attempts:
+                    log.info("answer_check_retry", error=type(exc).__name__, attempt=attempt)
+                    continue
+                log.warning("answer_check_failed", error=type(exc).__name__, attempts=attempt)
+                return None
+            await self._remember(word, answer, verdict)
+            return verdict
+        return None
 
     def _key(self, word: str, answer: str) -> str:
         return _CACHE_KEY.format(word=word.lower(), answer=answer.lower())
