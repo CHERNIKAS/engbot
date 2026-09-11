@@ -113,3 +113,22 @@ async def test_it_parks_no_more_than_the_pool_can_give():
     svc = _service(active=63, rate=12.0, candidates=4)
     parked, _left = await svc.park(1, LearningTrack.ENGLISH, now=NOW)
     assert parked == 4
+
+
+# ---- holes found by mutation testing ----
+
+
+async def test_parked_words_stay_away_long_enough_to_matter():
+    """The check above compares against PARK_DAYS itself, so PARK_DAYS = 0 —
+    parking that parks nothing — passed it. The pool only drains if the words
+    are gone for weeks, not hours."""
+    svc = _service(active=63, rate=12.0)
+    await svc.park(1, LearningTrack.ENGLISH, now=NOW)
+    assert (svc._uw.parked_until - NOW).days >= 14
+
+
+def test_a_single_word_is_still_worth_offering():
+    from app.services.backlog_service import BacklogOffer
+
+    assert BacklogOffer(active=10, target=8, count=1).worth_offering
+    assert not BacklogOffer(active=10, target=8, count=0).worth_offering

@@ -403,3 +403,75 @@ async def test_a_stale_answer_produces_no_notice():
     svc = _service(redis, AnswerVerdict(mastery.TYPED_TYPO, "x"), FakeUserWord())
     result = await svc.run(now=10_000_000.0)
     assert result.rechecked == set()
+
+
+# ---- holes found by mutation testing ----
+
+REAL_EPOCH = 1_757_600_000.0  # September 2025 — the scale prod actually runs at
+
+
+async def test_the_age_check_works_on_real_timestamps():
+    """`now + at` instead of `now - at` survived the suite: the tests used
+    at=1000, now=1001, where both are under a day. On a real epoch time the sum
+    is always past a day, so every parked answer would be dropped as stale and
+    the regrade would silently never run."""
+    uw = FakeUserWord()
+    redis = await _queued(_parked(at=REAL_EPOCH))
+    svc = _service(redis, AnswerVerdict(mastery.TYPED_TYPO, "опечатка"), uw)
+    result = await svc.run(now=REAL_EPOCH + 60)
+    assert result.upgraded == 1
+
+
+async def test_an_answer_is_rescued_up_to_exactly_a_day_old():
+    for age, expected in ((86_399, 1), (86_400, 1), (86_401, 0)):
+        redis = await _queued(_parked(at=REAL_EPOCH))
+        svc = _service(redis, AnswerVerdict(mastery.TYPED_TYPO, "x"), FakeUserWord())
+        result = await svc.run(now=REAL_EPOCH + age)
+        assert result.upgraded == expected, f"age {age}s"
+
+
+async def test_an_upgrade_adds_to_the_typed_count_rather_than_resetting_it():
+    """Every regrade test started from production_count=0, where resetting to
+    one and adding one look the same."""
+    uw = FakeUserWord()
+    uw.production_count = 2
+    redis = await _queued(_parked())
+    svc = _service(redis, AnswerVerdict(mastery.TYPED_TYPO, "опечатка"), uw)
+    await svc.run(now=1001.0)
+    assert uw.production_count == 3
+
+
+async def test_an_upgrade_on_a_word_with_no_score_yet_starts_from_zero():
+    uw = FakeUserWord()
+    uw.learning_score = None
+    redis = await _queued(_parked())
+    svc = _service(redis, AnswerVerdict(mastery.TYPED_TYPO, "опечатка"), uw)
+    await svc.run(now=1001.0)
+    assert uw.learning_score == mastery.CREDIT_TYPED_TYPO
+
+
+def test_the_models_hint_reaches_the_user():
+    """`hint or ""` → `hint and ""` survived: every verdict could lose its
+    «💡 опечатка — repot» line and no test would notice."""
+    verdict = _svc()._parse(_response("typo", "опечатка — repot"))
+    assert verdict.hint == "опечатка — repot"
+
+
+def test_a_missing_hint_is_empty_not_the_word_none():
+    payload = json.dumps({"verdict": "typo"})
+    verdict = _svc()._parse({"candidates": [{"content": {"parts": [{"text": payload}]}}]})
+    assert verdict.hint == ""
+
+
+async def test_zero_retries_means_exactly_one_attempt():
+    svc = _svc()
+    svc._settings.answer_check_retries = 0
+    calls = []
+
+    async def slow(word, translation, answer):
+        calls.append(answer)
+        raise TimeoutError
+
+    svc._ask = slow
+    assert await svc.classify("explain", "объяснять", "explane") is None
+    assert len(calls) == 1

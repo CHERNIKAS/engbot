@@ -80,7 +80,11 @@ def target_for(word_level: str | None, user_level: str | None) -> tuple[float, i
     if not word_level:
         # Untagged: treat as at-level rather than as hard, same as everywhere else.
         return _TARGETS[0]
-    return _TARGETS.get(gap(word_level, user_level), _TARGET_FAR)
+    # The table stops two levels down, and a lookup miss falls to _TARGET_FAR —
+    # the bar for words far ABOVE the user. So an A1 word for a B2 learner (gap
+    # -3) got the hardest bar there is, 12.5 and five typed answers, for "cat".
+    # Anything further below than two levels is at least that easy.
+    return _TARGETS.get(max(gap(word_level, user_level), -2), _TARGET_FAR)
 
 
 def apply_credit(score: float, kind: str) -> float:

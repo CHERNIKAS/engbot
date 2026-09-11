@@ -97,7 +97,10 @@ def mastery_reps(word_level: str | None, user_level: str | None) -> int:
     learned. Unknown word level is treated as at-level, not as hard."""
     if not word_level:
         return _MASTERY_REPS[0]
-    return _MASTERY_REPS.get(gap(word_level, user_level), MASTERY_REPS_FAR)
+    # Same trap as mastery.target_for: a miss on the table used to mean "far
+    # above", so a word three levels BELOW the user got the longest bar and sat
+    # on choice cards the longest. Clamp the easy side to the easiest entry.
+    return _MASTERY_REPS.get(max(gap(word_level, user_level), -2), MASTERY_REPS_FAR)
 
 
 # The production ladder's stages as fractions of a word's mastery bar, taken
