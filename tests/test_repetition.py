@@ -260,3 +260,63 @@ def test_a_mastered_word_with_no_interval_yet_still_gets_one():
     apply_review(uw, ReviewResult.CORRECT, LearningPace.NORMAL, now=now)
     assert uw.interval_days >= 1.0
     assert uw.next_review_at >= now + timedelta(days=1)
+
+
+# ---- holes found by mutation testing ----
+
+
+def test_a_miss_makes_the_word_harder_not_easier():
+    """`ease - 0.25` → `ease + 0.25` survived: a wrong answer that makes the
+    word grow faster from then on."""
+    for result in (ReviewResult.WRONG, ReviewResult.HARD):
+        uw = _make_uw(status=WordStatus.REVIEW.value, ease_score=2.5, interval_days=5.0)
+        apply_review(uw, result, LearningPace.NORMAL)
+        assert uw.ease_score < 2.5, result
+
+
+def test_a_correct_answer_spaces_the_word_further_than_last_time():
+    """`interval * ease` → `interval / ease` survived: every existing check
+    started from interval 0, where both land on the one-day floor."""
+    uw = _make_uw(status=WordStatus.REVIEW.value, interval_days=4.0, repetitions_count=3)
+    apply_review(uw, ReviewResult.CORRECT, LearningPace.NORMAL)
+    assert uw.interval_days > 4.0
+
+
+def test_a_typed_answer_counts_exactly_once_toward_the_floor():
+    """Counting +2 per typed answer would halve the production floor."""
+    uw = _make_uw(status=WordStatus.REVIEW.value, learning_score=1.0, production_count=1)
+    apply_review(uw, ReviewResult.CORRECT, LearningPace.NORMAL, kind=mastery.TYPED_EXACT)
+    assert uw.production_count == 2
+
+
+def test_a_choice_answer_does_not_count_as_typing():
+    uw = _make_uw(status=WordStatus.REVIEW.value, learning_score=1.0, production_count=1)
+    apply_review(uw, ReviewResult.CORRECT, LearningPace.NORMAL, kind=mastery.RECOGNITION)
+    assert uw.production_count == 1
+
+
+def test_a_lapse_brings_an_active_word_back_the_same_day():
+    now = datetime(2026, 9, 10, 9, 0, tzinfo=timezone.utc)
+    uw = _make_uw(status=WordStatus.REVIEW.value, interval_days=12.0)
+    apply_review(uw, ReviewResult.WRONG, LearningPace.NORMAL, now=now)
+    assert uw.next_review_at - now < timedelta(hours=12)
+
+
+def test_a_mastered_lapse_returns_within_a_day():
+    """The looser check above allowed two days, so `interval = 2.0` survived."""
+    now = datetime(2026, 9, 10, tzinfo=timezone.utc)
+    uw = _mastered(interval_days=40.0)
+    apply_review(uw, ReviewResult.WRONG, LearningPace.NORMAL, now=now)
+    assert uw.next_review_at - now <= timedelta(days=1)
+
+
+def test_a_mastered_miss_is_counted_as_a_mistake():
+    uw = _mastered(mistakes_count=2)
+    apply_review(uw, ReviewResult.WRONG, LearningPace.NORMAL)
+    assert uw.mistakes_count == 3
+
+
+def test_the_learned_ceiling_is_five():
+    """The card says «Выучено на X из 5» — the ceiling is copy, not a knob.
+    Every other check compared against the constant itself."""
+    assert MASTERY_SCORE_MAX == 5.0
