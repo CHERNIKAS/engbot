@@ -204,3 +204,59 @@ def test_the_easy_shortcut_keeps_the_legacy_rule_without_a_kind():
     for _ in range(MASTERED_REPS_EASY + 1):
         apply_review(uw, ReviewResult.EASY, LearningPace.NORMAL)
     assert uw.status == WordStatus.MASTERED.value
+
+
+# ---- a mastered word is rescheduled by its review, like any other ----
+
+
+def _mastered(**overrides) -> SimpleNamespace:
+    base = dict(status=WordStatus.MASTERED.value, mastery_score=5.0, interval_days=10.0)
+    base.update(overrides)
+    return _make_uw(**base)
+
+
+def test_a_correct_review_pushes_a_mastered_word_into_the_future():
+    """Prod: `never` answered four times in five days, next_review_at still on
+    17 July. A review that doesn't reschedule leaves the word due forever."""
+    now = datetime(2026, 9, 10, 18, 0, tzinfo=timezone.utc)
+    uw = _mastered(next_review_at=datetime(2026, 7, 17, tzinfo=timezone.utc))
+    apply_review(uw, ReviewResult.CORRECT, LearningPace.NORMAL, now=now)
+    assert uw.next_review_at > now + timedelta(days=1)
+    assert uw.last_reviewed_at == now
+
+
+def test_each_correct_review_spaces_a_mastered_word_further():
+    now = datetime(2026, 9, 10, tzinfo=timezone.utc)
+    uw = _mastered()
+    gaps = []
+    for _ in range(3):
+        apply_review(uw, ReviewResult.CORRECT, LearningPace.NORMAL, now=now)
+        gaps.append(uw.interval_days)
+    assert gaps[0] > 10.0
+    assert gaps[0] < gaps[1] < gaps[2]
+
+
+def test_a_mastered_interval_never_passes_the_cap():
+    uw = _mastered(interval_days=MAX_INTERVAL_DAYS)
+    apply_review(uw, ReviewResult.CORRECT, LearningPace.NORMAL)
+    assert uw.interval_days <= MAX_INTERVAL_DAYS
+
+
+def test_a_miss_on_a_mastered_word_brings_it_back_tomorrow():
+    """Still learned — but a slip means checking soon, not in a month."""
+    now = datetime(2026, 9, 10, tzinfo=timezone.utc)
+    uw = _mastered(interval_days=40.0)
+    apply_review(uw, ReviewResult.WRONG, LearningPace.NORMAL, now=now)
+    assert uw.status == WordStatus.MASTERED.value
+    assert timedelta(hours=20) <= uw.next_review_at - now <= timedelta(days=2)
+    assert uw.ease_score < 2.5
+    assert uw.mastery_score == 4.9
+
+
+def test_a_mastered_word_with_no_interval_yet_still_gets_one():
+    """Words that graduated through old code paths can carry 0.0."""
+    now = datetime(2026, 9, 10, tzinfo=timezone.utc)
+    uw = _mastered(interval_days=0.0)
+    apply_review(uw, ReviewResult.CORRECT, LearningPace.NORMAL, now=now)
+    assert uw.interval_days >= 1.0
+    assert uw.next_review_at >= now + timedelta(days=1)

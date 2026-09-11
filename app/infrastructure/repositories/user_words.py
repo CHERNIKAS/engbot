@@ -547,15 +547,24 @@ class UserWordRepository:
     async def pick_review_mastered(
         self, user_id: int, track: LearningTrack, now: datetime | None = None, exclude_uw_id: int = 0
     ) -> tuple[UserWord, Word] | None:
-        """A mastered ('learned') word for review — not archived, not snoozed.
-        Weighted random so a LOWER score is shown more often, 5.0 rarely.
-        Takes the top few by weight so we can skip `exclude_uw_id` (the card just
-        answered) without losing the low-score bias."""
+        """A mastered ('learned') word that is DUE for review — not archived, not
+        snoozed, and past its next_review_at. Most overdue first; among equally
+        due words, the weaker one (lower mastery_score) goes first.
+
+        This used to pick by weighted random over EVERY mastered word and never
+        looked at next_review_at at all. With every word sitting at 5.0 the
+        weights were equal, so the "review" stream (~1 card in 5) drew uniformly
+        from the whole mastered set — and a word answered minutes ago with a
+        23-day interval was as likely as one a month overdue. Prod: `desk`
+        (interval 23 d) came back three times inside 24 hours; `spend` twice in
+        six. The scheduler was computing intervals nobody read.
+
+        Due-first also carries the old "show weak words more" intent without the
+        randomness: a lapse shortens a word's interval, so it simply comes due
+        sooner. Nothing due → None, and the push moves on to another stream.
+        Takes a few rows so `exclude_uw_id` (the card just answered) can be
+        skipped."""
         now = now or datetime.now(timezone.utc)
-        # weight = 5.2 - score (low score -> big weight). A-Res weighted sampling:
-        # order by random()^(1/weight) desc, take from the top.
-        weight = 5.2 - UserWord.mastery_score
-        key = func.power(func.random(), 1.0 / weight)
         q = (
             select(UserWord, Word)
             .join(Word, Word.id == UserWord.word_id)
@@ -564,11 +573,12 @@ class UserWordRepository:
                 UserWord.track == track.value,
                 UserWord.archived.is_(False),
                 UserWord.status == WordStatus.MASTERED.value,
+                UserWord.next_review_at <= now,
                 or_(UserWord.snooze_until.is_(None), UserWord.snooze_until <= now),
                 Word.translation.isnot(None),
                 Word.is_function_word.is_(False),
             )
-            .order_by(key.desc())
+            .order_by(UserWord.next_review_at.asc(), UserWord.mastery_score.asc())
             .limit(3)
         )
         rows = [(r[0], r[1]) for r in (await self.session.execute(q)).all()]

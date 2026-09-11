@@ -65,21 +65,42 @@ def apply_review(
     now = now or datetime.now(timezone.utc)
     target_reps = MASTERED_REPS_NORMAL if mastered_reps is None else max(1, mastered_reps)
 
-    # Mastered words never leave the "learned" pool (no return to active study);
-    # only their 0–5 score moves: +step on correct, -step on wrong.
+    # Mastered words never leave the "learned" pool (no return to active study):
+    # their 0–5 score moves +step on correct, -step on wrong — and, like any
+    # other word, a review reschedules them.
+    #
+    # It used to stop at the score. interval_days and next_review_at were left
+    # exactly where graduation put them, so once a mastered word came due it
+    # stayed due forever: prod had `never` answered four times in five days with
+    # next_review_at still sitting on 17 July. Nothing noticed because the
+    # picker ignored the due date too — fixing only that would have made such a
+    # word the single "due" one and served it on every review draw.
     if user_word.status == WordStatus.MASTERED.value:
         # `or` would treat a legitimate 0.0 (a mastered word forgotten down to
-        # the floor — and pick_review_mastered shows those MOST) as "unset" and
-        # teleport it back to ~5.0 on the next review. Only a true None means
-        # "no score yet".
+        # the floor) as "unset" and teleport it back to ~5.0 on the next
+        # review. Only a true None means "no score yet".
         score = user_word.mastery_score if user_word.mastery_score is not None else MASTERY_SCORE_MAX
+        ease = user_word.ease_score or 2.5
         if result in (ReviewResult.CORRECT, ReviewResult.NORMAL, ReviewResult.EASY):
             score = min(MASTERY_SCORE_MAX, score + MASTERY_SCORE_STEP)
+            interval = max(user_word.interval_days or 0.0, 1.0) * ease
         else:  # WRONG / HARD
             score = max(0.0, score - MASTERY_SCORE_STEP)
             user_word.mistakes_count += 1
+            # A lapse on a learned word: back tomorrow to check it isn't really
+            # gone, and grow more cautiously from there. Standard SRS relearn —
+            # halving a two-month interval would leave a forgotten word unseen
+            # for another month.
+            ease = _clamp(ease - 0.2, MIN_EASE, MAX_EASE)
+            interval = 1.0
+        final_interval = _clamp(
+            interval * PACE_INTERVAL_MULTIPLIER.get(pace, 1.0), 1.0, MAX_INTERVAL_DAYS
+        )
         user_word.mastery_score = round(score, 2)
+        user_word.ease_score = ease
+        user_word.interval_days = final_interval
         user_word.last_reviewed_at = now
+        user_word.next_review_at = now + timedelta(days=final_interval)
         return user_word
 
     pace_mult = PACE_INTERVAL_MULTIPLIER.get(pace, 1.0)
