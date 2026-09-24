@@ -117,3 +117,93 @@ async def on_push_rule_ok(query: CallbackQuery) -> None:
     await query.answer("👍")
 
 
+
+
+@router.callback_query(PushCB.filter(F.action == "slot"))
+async def on_constructor_slot(
+    query: CallbackQuery,
+    callback_data: PushCB,
+    user: User,
+    session: AsyncSession,
+    redis: Redis,
+) -> None:
+    await PushService(session, redis).handle_slot(
+        user, callback_data.uw_id, callback_data.idx, query
+    )
+
+
+@router.callback_query(PushCB.filter(F.action == "pundo"))
+async def on_constructor_undo(
+    query: CallbackQuery,
+    callback_data: PushCB,
+    user: User,
+    session: AsyncSession,
+    redis: Redis,
+) -> None:
+    await PushService(session, redis).handle_constructor_undo(user, callback_data.uw_id, query)
+
+
+@router.callback_query(PushCB.filter(F.action == "phint"))
+async def on_constructor_hint(
+    query: CallbackQuery,
+    callback_data: PushCB,
+    user: User,
+    session: AsyncSession,
+    redis: Redis,
+) -> None:
+    await PushService(session, redis).handle_constructor_hint(user, callback_data.uw_id, query)
+
+
+@router.callback_query(PushCB.filter(F.action == "pgiveup"))
+async def on_constructor_giveup(
+    query: CallbackQuery,
+    callback_data: PushCB,
+    user: User,
+    session: AsyncSession,
+    redis: Redis,
+) -> None:
+    await PushService(session, redis).handle_constructor_giveup(user, callback_data.uw_id, query)
+
+
+@router.callback_query(PushCB.filter(F.action == "trg"))
+async def on_triage_toggle(
+    query: CallbackQuery,
+    callback_data: PushCB,
+    user: User,
+    session: AsyncSession,
+    redis: Redis,
+) -> None:
+    await PushService(session, redis).handle_triage_toggle(user, callback_data.uw_id, query)
+
+
+@router.callback_query(PushCB.filter(F.action == "trgok"))
+async def on_triage_done(
+    query: CallbackQuery,
+    user: User,
+    user_track: UserTrack,
+    session: AsyncSession,
+    redis: Redis,
+) -> None:
+    await PushService(session, redis).handle_triage_done(user, user_track, query)
+
+
+@router.callback_query(PushCB.filter(F.action == "tstart"))
+async def on_test_start(
+    query: CallbackQuery,
+    callback_data: PushCB,
+    user: User,
+    session: AsyncSession,
+    redis: Redis,
+) -> None:
+    await PushService(session, redis).handle_test_start(user, callback_data.uw_id, query)
+
+
+@router.callback_query(PushCB.filter(F.action == "tlater"))
+async def on_test_later(
+    query: CallbackQuery,
+    callback_data: PushCB,
+    user: User,
+    session: AsyncSession,
+    redis: Redis,
+) -> None:
+    await PushService(session, redis).handle_test_later(user, callback_data.uw_id, query)

@@ -462,3 +462,8 @@ PACKS_LIST_TITLE = "Доступные паки"
 PACK_PREVIEW = "<b>{title}</b>\n{description}\n\nСлов: {count}"
 PACK_ADDED = "🌱 Пак добавлен: {count} новых слов."
 PACK_ALREADY_ADDED = "👌 Все слова из этого пака уже у тебя есть."
+
+# Batch triage — the button that closes the screen. Named rather than inline so
+# the label stays identical between the first render and every toggle redraw;
+# a changing button text makes the keyboard look like it reset.
+TRIAGE_DONE = "Готово"

@@ -60,11 +60,24 @@ async def on_idle_text(
     session: AsyncSession,
     redis: Redis,
 ) -> None:
-    # A typed message while a cloze push card is in flight is the answer to it —
-    # let the push service consume it before treating text as a quick-add.
+    # A typed message while a push card is in flight is the answer to it — let
+    # the push service consume it before treating text as a quick-add.
+    #
+    # The constructor is asked first. Its answers are whole sentences, so the
+    # word path's "does this look like an answer" heuristic would let them
+    # through to quick-add, and a sentence typed at a grammar card would be
+    # silently filed as vocabulary.
     from app.services.push_service import PushService
 
-    if await PushService(session, redis).handle_typed_answer(user, user_track, message):
+    push = PushService(session, redis)
+    # The check comes first: it is a session, so every message during it is an
+    # answer to it, and letting any other path look first would let one slip
+    # through mid-test.
+    if await push.handle_test_typed(user, message):
+        return
+    if await push.handle_constructor_typed(user, message):
+        return
+    if await push.handle_typed_answer(user, user_track, message):
         return
 
     result = parse_input(message.text or "", max_lines=200, max_words=200)

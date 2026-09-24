@@ -135,3 +135,111 @@ def push_leech_kb(uw_id: int) -> InlineKeyboardMarkup:
     )
 
 
+
+
+def constructor_slots_kb(options: list[str], phrase_id: int, can_undo: bool) -> InlineKeyboardMarkup:
+    """The assisted mode: the current slot's choices, two to a row.
+
+    Only the slot index is missing from the callback, and deliberately — it is
+    already known from how many pieces the learner has chosen. Putting it in
+    would spend bytes from the 64-byte callback budget to re-state something
+    the server cannot disagree about.
+
+    «Ой, ошибся» appears only once there is something to take back; an inert
+    button teaches the learner to distrust the ones next to it.
+    """
+    rows: list[list[InlineKeyboardButton]] = []
+    for i in range(0, len(options), 2):
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    text=opt[:60],
+                    callback_data=PushCB(action="slot", uw_id=phrase_id, idx=i + j).pack(),
+                )
+                for j, opt in enumerate(options[i : i + 2])
+            ]
+        )
+    tail = [
+        InlineKeyboardButton(
+            text="💡 Подсказка", callback_data=PushCB(action="phint", uw_id=phrase_id).pack()
+        )
+    ]
+    if can_undo:
+        tail.insert(
+            0,
+            InlineKeyboardButton(
+                text="↩️ Ой, ошибся",
+                callback_data=PushCB(action="pundo", uw_id=phrase_id).pack(),
+            ),
+        )
+    rows.append(tail)
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+def constructor_typing_kb(phrase_id: int) -> InlineKeyboardMarkup:
+    """The typing mode: no answer buttons at all — that is the point of it.
+
+    «Не помню» is the honest way out. Without it the only exits are typing
+    something wrong on purpose or ignoring the card, and an ignored card is
+    the one thing the plan cannot tell apart from being busy.
+    """
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text="💡 Подсказка",
+                    callback_data=PushCB(action="phint", uw_id=phrase_id).pack(),
+                ),
+                InlineKeyboardButton(
+                    text="🤷 Не помню",
+                    callback_data=PushCB(action="pgiveup", uw_id=phrase_id).pack(),
+                ),
+            ]
+        ]
+    )
+
+
+def triage_kb(rows: list[tuple[int, str]], done_label: str) -> InlineKeyboardMarkup:
+    """The batch triage screen: one word per row, plus «Готово».
+
+    One per row rather than two because the label carries the translation, and
+    a two-column layout truncates it to the point where the learner is deciding
+    about a word they cannot read.
+
+    `rows` is (user_word_id, label) — the id is what the toggle addresses, so
+    a word whose label changes between renders still toggles the same row.
+    """
+    keyboard = [
+        [
+            InlineKeyboardButton(
+                text=label,
+                callback_data=PushCB(action="trg", uw_id=uw_id).pack(),
+            )
+        ]
+        for uw_id, label in rows
+    ]
+    keyboard.append(
+        [InlineKeyboardButton(text=done_label, callback_data=PushCB(action="trgok").pack())]
+    )
+    return InlineKeyboardMarkup(inline_keyboard=keyboard)
+
+
+def test_offer_kb(topic_id: int) -> InlineKeyboardMarkup:
+    """Start now or push it to tomorrow.
+
+    Deferring has to be one tap and cost nothing. A check that begins the
+    moment it lands is a trap when it lands mid-commute, and a trap gets
+    ignored rather than postponed — which loses the measurement entirely.
+    """
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text="▶️ Начать", callback_data=PushCB(action="tstart", uw_id=topic_id).pack()
+                ),
+                InlineKeyboardButton(
+                    text="🕐 Завтра", callback_data=PushCB(action="tlater", uw_id=topic_id).pack()
+                ),
+            ]
+        ]
+    )
