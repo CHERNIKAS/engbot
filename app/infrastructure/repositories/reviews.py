@@ -20,6 +20,8 @@ class WordReviewRepository:
         user_word_id: int,
         session_id: int | None,
         result: str,
+        response_ms: int | None = None,
+        attempts: int | None = None,
     ) -> WordReview:
         review = WordReview(
             user_id=user_id,
@@ -27,6 +29,8 @@ class WordReviewRepository:
             user_word_id=user_word_id,
             session_id=session_id,
             result=result,
+            response_ms=response_ms,
+            attempts=attempts,
         )
         self.session.add(review)
         await self.session.flush()
@@ -75,12 +79,16 @@ class GrammarReviewRepository:
         track: LearningTrack,
         user_grammar_item_id: int,
         result: str,
+        response_ms: int | None = None,
+        attempts: int | None = None,
     ) -> GrammarReview:
         review = GrammarReview(
             user_id=user_id,
             track=track.value,
             user_grammar_item_id=user_grammar_item_id,
             result=result,
+            response_ms=response_ms,
+            attempts=attempts,
         )
         self.session.add(review)
         await self.session.flush()

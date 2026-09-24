@@ -4,8 +4,8 @@ import html
 import json
 import random
 import re
-from dataclasses import dataclass
-from datetime import datetime, timedelta, timezone
+from dataclasses import dataclass, replace
+from datetime import date, datetime, timedelta, timezone
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from aiogram import Bot
@@ -16,6 +16,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.bot.keyboards.push import (
     SNOOZE_LABELS,
+    constructor_slots_kb,
+    constructor_typing_kb,
+    test_offer_kb,
+    triage_kb,
     push_card_kb,
     push_cloze_card_kb,
     push_grammar_card_kb,
@@ -50,6 +54,7 @@ from app.bot.texts import (
     PUSH_RULE_CARD,
     PUSH_SNOOZED,
     PUSH_STALE,
+    TRIAGE_DONE,
 )
 from app.config import get_settings
 from app.domain.enums import LearningPace, LearningTrack, ReviewResult, WordStatus
@@ -57,7 +62,6 @@ from app.domain import mastery
 from app.domain.levels import ladder_stages, mastery_reps
 from app.domain.study_drill import is_typing_correct
 from app.domain.models import User, UserTrack
-from app.domain.pacing import pace_of, pool_ceiling
 from app.domain.push import in_window, normalize_window
 from app.domain.quiz_text import strip_latin_hints
 from app.domain.push_nudges import nudge_line
@@ -74,6 +78,15 @@ from app.services.analytics import (
 from app.services.answer_check import AnswerCheckService
 from app.services.regrade import ParkedAnswer, RegradeQueue
 from app.services.progress_service import ProgressService
+from app.domain import constructor as ctor
+from app.domain import day_plan as plan_rules
+from app.domain import day_summary
+from app.domain import topic_test
+from app.domain import triage
+from app.domain.models import GrammarTopic
+from app.infrastructure.repositories.constructor import ConstructorRepository
+from app.services.constructor_service import ConstructorService
+from app.services.day_plan_service import DayPlanService
 from app.services.repetition_service import MASTERED_REPS_NORMAL, apply_review
 
 log = get_logger("push")
@@ -106,11 +119,40 @@ def _retry_after(attempts: int) -> float:
     return base_min * 60.0 * random.uniform(0.8, 1.2)
 
 
+# Past this a duration is not a measurement of anything — a card cannot be
+# answered six hours after it was sent under the nudge cycle, so such a value
+# means a clock jump, not a slow learner. Recorded as unknown instead.
+_MAX_RESPONSE_SECONDS = 6 * 3600
+
+
+def _timing(inflight: dict, now_ts: float) -> tuple[int | None, int]:
+    """(milliseconds taken to answer, which push it was answered on).
+
+    The clock restarts on every re-push: the card the user acted on is the one
+    they last saw, so timing a nudged card from its first send would measure
+    the phone lying face-down rather than the answer. `attempts` is what keeps
+    the sample honest — 1 means answered on the first push, and only those rows
+    say anything about how much attention a card actually costs.
+    """
+    attempts = int(inflight.get("attempts", 0)) + 1
+    sent = inflight.get("sent_ts")
+    if not sent:
+        return None, attempts
+    elapsed = now_ts - float(sent)
+    if elapsed < 0 or elapsed > _MAX_RESPONSE_SECONDS:
+        return None, attempts
+    return int(elapsed * 1000), attempts
+
+
 # Stream weights so grammar is a deliberate MINORITY (~1 in 6), not a coin flip
 # that wins whenever the word streams are momentarily empty. We draw a weighted
 # order and take the first stream that yields a card (so a dead stream doesn't
 # waste the tick, and can't hand its share to grammar).
-STREAM_WEIGHTS = {"repeat": 60, "review": 22, "new": 18, "grammar": 15}
+# `phrase` is small on purpose. A phrasebook entry is learned whole and cannot
+# be typed into a gap, so it proves less per card than a word does — but the
+# frequency ordering gives phrases no place at all (they have no corpus rank),
+# and a learner three days in should still be able to say hello.
+STREAM_WEIGHTS = {"repeat": 60, "review": 22, "new": 18, "grammar": 15, "phrase": 8}
 
 
 def _weighted_order(streams: list[str]) -> list[str]:
@@ -597,6 +639,9 @@ class PushService:
                     if old_msg_id:
                         await self._delete(user.telegram_id, old_msg_id)
                     inflight["msg_id"] = new_msg_id
+                    # Restart the answer clock: this re-push is the card the
+                    # user will actually act on (see _timing).
+                    inflight["sent_ts"] = now_ts
                     inflight["retry_ts"] = now_ts + _retry_after(attempts)
                     sent = True
             await self._save(user.id, state)
@@ -621,88 +666,182 @@ class PushService:
             await self._save(user.id, state)
             return msg_id is not None
 
-        # ---- pick the next card: random among streams (words + grammar) ----
-        #   "new" — introduce a new word (gated by today's intake + pool ceiling)
-        #   "repeat" — reinforce a random word being learned
-        #   "review" — a mastered word due for review
-        #   "grammar" — a non-mastered grammar exercise
-        # Don't serve the same card twice in a row — skip whatever was answered
-        # last (a small active set + ORDER BY random() otherwise repeats a word).
-        last = state.get("last") or {}
-        last_word = int(last.get("id", 0)) if last.get("kind") == "word" else 0
-        last_grammar = int(last.get("id", 0)) if last.get("kind") == "grammar" else 0
+        # ---- the day's plan decides what comes next ----
+        #
+        # This replaced a weighted lottery — repeat 60, review 22, new 18,
+        # grammar 15 — drawn afresh on every tick. Nothing about that was
+        # knowable from outside: the learner could not be told what today held,
+        # how much of it there was, or whether they were finished. Prod showed
+        # what it cost: the bot could push ~56 cards into an evening window
+        # against ten answers, nudging the rest three times and dropping them.
+        plan_service = DayPlanService(self._session)
+        plan, opened = await plan_service.ensure_plan(user, _TRACK, date.fromisoformat(today))
+        if plan is None:
+            await self._save(user.id, state)
+            return False
+        await self._session.commit()
 
-        # New-word intake is decoupled from mastering old words: introduce up to
-        # `pace` new words per day, but only while the active pool stays under
-        # `ceiling` (pace × 3) — so growth is steady, not a flood that turns the
-        # push into mush. (Old rule gated new on a word hitting 10-in-a-row.)
-        pace = pace_of(ut.settings)
-        # The pool is sized by what the user actually answers, not by the pace
-        # they picked once: `pace × 3` let user 1 sit on 63 active words at ~9
-        # answers a day, so a word only came back every couple of weeks and
-        # almost nothing ever stuck. See pacing.pool_ceiling.
-        throughput = await self._reviews.typical_daily_answers(user.id, _TRACK)
-        ceiling = pool_ceiling(throughput)
-        new_today = int(state.get("new_today", 0))
-        active_count = await self._uw.count_active(user.id, _TRACK)
-        overdue = await self._uw.count_overdue(user.id, _TRACK)
+        if opened:
+            # The plan card is the day's only announcement. It is sent before
+            # the first exercise so the learner agrees to a known amount of
+            # work rather than discovering its size by reaching the end.
+            await self._raw_send(user.telegram_id, self._plan_card(plan), None)
+            state["next_ts"] = now_ts + _minutes(
+                self._s.push_gap_min_minutes, self._s.push_gap_max_minutes
+            )
+            await self._save(user.id, state)
+            return True
 
-        # Words are the bulk; grammar is a deliberate ~1-in-6 minority (STREAM_WEIGHTS),
-        # never two grammar cards in a row, and never grabs an empty word stream's share.
-        grammar_pick = await self._grammar.pick_for_push(user.id, _TRACK, exclude_id=last_grammar)
-        eligible: list[str] = ["repeat", "review"]
-        # Introduce a new word only if today's intake + pool ceiling allow AND the
-        # review backlog isn't already piled up — draining due words first is what
-        # lets them actually reach mastery instead of resurfacing once a week.
-        if (
-            new_today < pace
-            and active_count < ceiling
-            and overdue < self._s.push_review_backlog_ceiling
-        ):
-            eligible.append("new")
-        allow_grammar = grammar_pick is not None and last.get("kind") != "grammar"
-        if allow_grammar:
-            eligible.append("grammar")
+        progress = plan_service.progress(plan)
+        if progress.closed:
+            await self._close_day(user, plan, plan_service)
+            await self._save(user.id, state)
+            return False
 
-        sent = False
-        for stream in _weighted_order(eligible):
-            if stream == "grammar":
-                ugi, _gi = grammar_pick
-                msg_id, options, correct = await self._send_card(user, "grammar", ugi.id)
-                if msg_id:
-                    state["inflight"] = self._inflight("grammar", ugi.id, options, correct, now_ts, msg_id)
-                    sent = True
-                break
-            if stream == "new":
-                pick = await self._uw.pick_new_for_push(user.id, _TRACK, user.level)
-            elif stream == "repeat":
-                pick = await self._uw.pick_active_due(user.id, _TRACK, exclude_uw_id=last_word)
-            else:
-                pick = await self._uw.pick_review_mastered(user.id, _TRACK, exclude_uw_id=last_word)
-            if pick is None:
-                continue
-            uw, _w = pick
-            # Card type by production-ladder stage (recognition → reverse → cloze).
-            ctype = self._card_type(uw, _w, user.level)
-            msg_id, options, correct = await self._send_card(user, "word", uw.id, card_type=ctype)
-            if msg_id:
-                state["inflight"] = self._inflight("word", uw.id, options, correct, now_ts, msg_id, ctype=ctype)
-                if stream == "new":
-                    state["new_today"] = new_today + 1  # count an introduction
-                sent = True
-            break
+        kind = plan_service.next_kind(plan)
+        if kind is None:
+            await self._save(user.id, state)
+            return False
 
-        # Fallback: words couldn't fill the tick and we'd held grammar back only
-        # to avoid two-in-a-row — use it rather than send nothing.
-        if not sent and grammar_pick is not None and not allow_grammar:
-            ugi, _gi = grammar_pick
-            msg_id, options, correct = await self._send_card(user, "grammar", ugi.id)
-            if msg_id:
-                state["inflight"] = self._inflight("grammar", ugi.id, options, correct, now_ts, msg_id)
-                sent = True
-
+        sent = await self._serve(user, ut, kind, progress.done, progress.total, state, now_ts)
+        if not sent:
+            # The slot cannot be filled — the theme ran out, every topic is
+            # passed, nothing is due. Tick it off rather than retrying forever:
+            # an unfillable slot holds the plan open, and an open plan is never
+            # replaced.
+            await plan_service.mark_done(plan, kind)
+            await self._session.commit()
         await self._save(user.id, state)
         return sent
+
+    async def _serve(
+        self,
+        user: User,
+        ut: UserTrack,
+        kind: str,
+        done: int,
+        total: int,
+        state: dict,
+        now_ts: float,
+    ) -> bool:
+        """Send the card this slot calls for. False when it cannot be filled."""
+        if kind == plan_rules.TRIAGE:
+            return await self._send_triage(user, state, now_ts)
+        if kind == plan_rules.TEST:
+            return await self._send_test(user, state, now_ts)
+        if kind == plan_rules.GRAMMAR:
+            return await self._send_constructor(
+                user, state, now_ts, plan_done=done, plan_total=total
+            )
+
+        last = state.get("last") or {}
+        last_word = int(last.get("id", 0)) if last.get("kind") == "word" else 0
+        if kind == plan_rules.REPEAT:
+            pick = await self._uw.pick_active_due(
+                user.id, _TRACK, exclude_uw_id=last_word, user_level=user.level
+            )
+            if pick is None:
+                # Nothing is due yet. A mastered word refreshed early is a
+                # better use of the slot than a hole in the day.
+                pick = await self._uw.pick_review_mastered(
+                    user.id, _TRACK, exclude_uw_id=last_word
+                )
+        elif kind == plan_rules.PHRASE:
+            pick = await self._uw.pick_new_phrase(user.id, _TRACK)
+        elif kind == plan_rules.NEW_THEME_WORD:
+            pick = await self._pick_theme_word(user)
+        elif kind == plan_rules.NEW_WORD:
+            pick = await self._uw.pick_new_for_push(user.id, _TRACK, user.level)
+        else:
+            # Every kind the plan can compose is named above. A catch-all here
+            # would turn a slot nobody taught this method about into a silent
+            # frequency word — the day would look right and teach the wrong
+            # thing. Refusing leaves the slot to be ticked off instead.
+            log.warning("push_unknown_plan_kind", kind=kind, uid=user.id)
+            return False
+
+        if pick is None:
+            return False
+        uw, word = pick
+        ctype = self._card_type(uw, word, user.level)
+        msg_id, options, correct = await self._send_card(user, "word", uw.id, card_type=ctype)
+        if not msg_id:
+            return False
+        inflight = self._inflight("word", uw.id, options, correct, now_ts, msg_id, ctype=ctype)
+        inflight["plan_kind"] = kind
+        state["inflight"] = inflight
+        return True
+
+    async def _pick_theme_word(self, user: User):
+        """A new word from the theme currently being worked through."""
+        theme = await self._uw.current_theme(user.id, _TRACK)
+        if theme is None:
+            return None
+        batch = await self._uw.theme_batch(user.id, _TRACK, theme.id, 1)
+        return batch[0] if batch else None
+
+    def _plan_card(self, plan) -> str:
+        counts = DayPlanService.counts_by_kind(plan)
+        total = sum(counts.values())
+        parts = [f"📅 <b>План на сегодня</b> · {total} карточек", ""]
+        for kind, label in (
+            (plan_rules.REPEAT, "🔁 Повторить"),
+            (plan_rules.GRAMMAR, "📖 Грамматика"),
+            (plan_rules.NEW_THEME_WORD, "🆕 Слова по теме"),
+            (plan_rules.NEW_WORD, "🆕 Новые слова"),
+            (plan_rules.PHRASE, "💬 Фразы"),
+            (plan_rules.TRIAGE, "🗂 Разбор темы"),
+            (plan_rules.TEST, "📝 Проверка темы"),
+        ):
+            if counts.get(kind):
+                parts.append(f"{label} — {counts[kind]}")
+        parts.append("")
+        parts.append("<i>Можно растянуть на весь день, можно закрыть за раз.</i>")
+        return "\n".join(parts)
+
+    async def _close_day(self, user: User, plan, plan_service: DayPlanService) -> None:
+        """Close the plan and say so, exactly once."""
+        if not await plan_service.close_if_complete(plan):
+            return
+        counts = {
+            k: sum(
+                1 for i in (plan.items or []) if i.get("kind") == k and i.get("done")
+            )
+            for k in DayPlanService.counts_by_kind(plan)
+        }
+        topic = await ConstructorRepository(self._session).active_topic(user.id)
+        row = (
+            await ConstructorRepository(self._session).state(user.id, topic.id)
+            if topic is not None
+            else None
+        )
+        await self._session.commit()
+        await self._raw_send(
+            user.telegram_id,
+            day_summary.render(
+                counts=counts,
+                streak_days=int(user.streak_days or 0),
+                topic_title=topic.title if topic else "",
+                score_after=float(row.score) if row else None,
+            ),
+            None,
+        )
+
+    async def _tick_plan(self, user: User, kind: str | None) -> None:
+        """Mark one slot done after a card settles.
+
+        Called from every settle path rather than inferred later: a card that
+        was answered but not ticked leaves the plan short by one forever, and
+        the plan would never close.
+        """
+        if not kind:
+            return
+        service = DayPlanService(self._session)
+        plan = await service._plans.open_plan(user.id, _TRACK)
+        if plan is None:
+            return
+        await service.mark_done(plan, kind)
+        await self._session.commit()
 
     def _inflight(
         self,
@@ -723,6 +862,7 @@ class PushService:
             "msg_id": msg_id,
             "ctype": ctype,
             "attempts": 0,
+            "sent_ts": now_ts,
             "retry_ts": now_ts + _retry_after(1),
         }
 
@@ -1060,17 +1200,23 @@ class PushService:
         correct_answer_text = str(inflight.get("correct") or "")
         rule_msg_id = inflight.get("rule_msg_id")
 
+        now_ts = datetime.now(timezone.utc).timestamp()
+        response_ms, attempts = _timing(inflight, now_ts)
+        await self._tick_plan(user, inflight.get("plan_kind"))
+
         leech_writing: str | None = None
         recap = ""  # grammar cards have no word to recap
         if inflight.get("kind") == "grammar":
-            await self._apply_grammar_answer(user, ut, iid, correct)
+            await self._apply_grammar_answer(
+                user, ut, iid, correct, response_ms=response_ms, attempts=attempts
+            )
         else:
             outcome = await self._apply_word_answer(
-                user, ut, iid, correct, card_type=inflight.get("ctype")
+                user, ut, iid, correct, card_type=inflight.get("ctype"),
+                response_ms=response_ms, attempts=attempts,
             )
             leech_writing, recap = outcome.leech_writing, outcome.recap
 
-        now_ts = datetime.now(timezone.utc).timestamp()
         state["inflight"] = None
         # Remember this card so the next pick skips it (no back-to-back repeats).
         state["last"] = {"kind": inflight.get("kind", "word"), "id": iid}
@@ -1138,14 +1284,23 @@ class PushService:
         state: dict,
         inflight: dict,
         verdict=None,
+        answered_ts: float | None = None,
     ) -> AnswerOutcome:
-        """Apply a typed answer's SR result and advance the push state."""
+        """Apply a typed answer's SR result and advance the push state.
+
+        `answered_ts` is when the user's answer actually arrived. It matters on
+        the typed path: a miss goes to the AI checker first, and timing from
+        after that call would bill the model's latency to the learner.
+        """
+        now_ts = datetime.now(timezone.utc).timestamp()
+        response_ms, attempts = _timing(inflight, answered_ts if answered_ts else now_ts)
+        await self._tick_plan(user, inflight.get("plan_kind"))
         outcome = await self._apply_word_answer(
             user, ut, iid, correct,
             card_type=inflight.get("ctype") or CARD_CLOZE,
             kind_override=verdict.kind if verdict is not None else None,
+            response_ms=response_ms, attempts=attempts,
         )
-        now_ts = datetime.now(timezone.utc).timestamp()
         state["inflight"] = None
         state["last"] = {"kind": "word", "id": iid}
         state["next_ts"] = now_ts + _minutes(self._s.push_gap_min_minutes, self._s.push_gap_max_minutes)
@@ -1171,6 +1326,8 @@ class PushService:
         # both settle the same card.
         if not await self._claim_answer(user.id, inflight.get("msg_id")):
             return True  # already settled by the other path; just swallow the text
+        # Stamped before the checker runs, so a miss isn't charged its latency.
+        answered_ts = datetime.now(timezone.utc).timestamp()
         iid = int(inflight.get("id", inflight.get("uw_id", 0)))
         answer = str(inflight.get("correct") or "")
         typed = message.text or ""
@@ -1206,7 +1363,8 @@ class PushService:
                 correct = True
 
         outcome = await self._settle_cloze(
-            user, ut, iid, correct, state, inflight, verdict=verdict
+            user, ut, iid, correct, state, inflight, verdict=verdict,
+            answered_ts=answered_ts,
         )
         leech = outcome.leech_writing
         feedback = self._typed_feedback(correct, answer, verdict) + outcome.recap
@@ -1320,6 +1478,8 @@ class PushService:
         correct: bool,
         card_type: str | None = None,
         kind_override: str | None = None,
+        response_ms: int | None = None,
+        attempts: int | None = None,
     ) -> AnswerOutcome:
         """Apply the SR result and leech tracking.
 
@@ -1356,6 +1516,7 @@ class PushService:
         await self._reviews.create(
             user_id=user.id, track=_TRACK, user_word_id=uw_id,
             session_id=None, result=(ReviewResult.CORRECT if correct else ReviewResult.WRONG).value,
+            response_ms=response_ms, attempts=attempts,
         )
         await self._session.flush()
         await ProgressService(self._session).update_streak(user)
@@ -1375,7 +1536,15 @@ class PushService:
             ),
         )
 
-    async def _apply_grammar_answer(self, user: User, ut: UserTrack, ugi_id: int, correct: bool) -> None:
+    async def _apply_grammar_answer(
+        self,
+        user: User,
+        ut: UserTrack,
+        ugi_id: int,
+        correct: bool,
+        response_ms: int | None = None,
+        attempts: int | None = None,
+    ) -> None:
         ugi = await self._grammar.get_user_item(ugi_id)
         if ugi is None:
             return
@@ -1384,6 +1553,7 @@ class PushService:
         await self._grammar_reviews.create(
             user_id=user.id, track=_TRACK, user_grammar_item_id=ugi_id,
             result=(ReviewResult.CORRECT if correct else ReviewResult.WRONG).value,
+            response_ms=response_ms, attempts=attempts,
         )
         await self._session.flush()
         await ProgressService(self._session).update_streak(user)
@@ -1392,3 +1562,604 @@ class PushService:
             from app.services.course_service import CourseService
 
             await CourseService(self._session, self._redis).refill(user, ut, _TRACK)
+
+    # ---- batch triage ------------------------------------------------------
+    #
+    # One screen per theme instead of the same judgement forty times across six
+    # weeks. Marked words graduate rather than disappear — the same outcome as
+    # «уже уверенно знаю» on a card — so they stay in the occasional refresh.
+    # Claiming to know a word is not proof, and being asked about it in a month
+    # is the cheapest way to find out otherwise.
+
+    async def _send_triage(self, user: User, state: dict, now_ts: float) -> bool:
+        """Offer the next screenful of the current theme. False if there is
+        nothing to offer — the caller ticks the slot rather than holding the
+        day open for a screen that will never come.
+
+        Writes into the caller's `state`; see `_send_constructor` for why
+        loading a private copy here silently wipes the card."""
+        theme = await self._uw.current_theme(user.id, _TRACK)
+        if theme is None:
+            return False
+        batch = await self._uw.theme_batch(user.id, _TRACK, theme.id, triage.BATCH_SIZE)
+        if not batch:
+            return False
+
+        state = triage.TriageState()
+        rows = [
+            (uw.id, triage.button_label(word.writing, word.translation or "", False))
+            for uw, word in batch
+        ]
+        msg_id = await self._raw_send(
+            user.telegram_id,
+            triage.render(theme.title, offered=len(rows), known=0),
+            triage_kb(rows, TRIAGE_DONE),
+        )
+        if msg_id is None:
+            return False
+
+        state["inflight"] = {
+            "kind": "triage",
+            "id": theme.id,
+            "title": theme.title,
+            "rows": [[uw.id, word.writing, word.translation or ""] for uw, word in batch],
+            "state": state.to_dict(),
+            "msg_id": msg_id,
+            "attempts": 0,
+            "sent_ts": now_ts,
+            "retry_ts": now_ts + _retry_after(1),
+        }
+        return True
+
+    async def _triage_context(self, user: User, query: CallbackQuery):
+        push_state = await self._load(user.id)
+        inflight = push_state.get("inflight") or {}
+        tapped = query.message.message_id if query.message else 0
+        if inflight.get("kind") != "triage" or tapped != int(inflight.get("msg_id") or 0):
+            await query.answer(PUSH_STALE, show_alert=False)
+            return None
+        return push_state, inflight, triage.TriageState.from_dict(inflight.get("state"))
+
+    async def handle_triage_toggle(self, user: User, uw_id: int, query: CallbackQuery) -> None:
+        ctx = await self._triage_context(user, query)
+        if ctx is None:
+            return
+        push_state, inflight, state = ctx
+        rows = inflight.get("rows") or []
+        # Only ids from this screen: a forged callback must not graduate a word
+        # the learner was never shown.
+        if not any(int(r[0]) == uw_id for r in rows):
+            await query.answer()
+            return
+
+        state = state.toggle(uw_id)
+        inflight["state"] = state.to_dict()
+        push_state["inflight"] = inflight
+        await self._save(user.id, push_state)
+
+        labelled = [
+            (int(r[0]), triage.button_label(r[1], r[2], state.marked(int(r[0])))) for r in rows
+        ]
+        try:
+            await query.message.edit_text(
+                triage.render(
+                    str(inflight.get("title") or ""),
+                    offered=len(rows),
+                    known=len(state.known),
+                ),
+                parse_mode="HTML",
+                reply_markup=triage_kb(labelled, TRIAGE_DONE),
+            )
+        except Exception:  # noqa: BLE001 — card gone or text unchanged
+            pass
+        await query.answer()
+
+    async def handle_triage_done(self, user: User, ut: UserTrack, query: CallbackQuery) -> None:
+        ctx = await self._triage_context(user, query)
+        if ctx is None:
+            return
+        push_state, inflight, state = ctx
+        rows = inflight.get("rows") or []
+        offered = {int(r[0]) for r in rows}
+
+        for uw_id in state.known:
+            if int(uw_id) in offered:
+                await self._graduate_known(user, int(uw_id))
+        await self._session.commit()
+
+        try:
+            await query.message.edit_text(
+                triage.render_summary(
+                    str(inflight.get("title") or ""),
+                    known=len(state.known),
+                    learning=len(offered) - len(state.known),
+                ),
+                parse_mode="HTML",
+            )
+        except Exception:  # noqa: BLE001
+            pass
+
+        now_ts = datetime.now(timezone.utc).timestamp()
+        await self._tick_plan(user, plan_rules.TRIAGE)
+        push_state["inflight"] = None
+        push_state["next_ts"] = now_ts + _minutes(
+            self._s.push_gap_min_minutes, self._s.push_gap_max_minutes
+        )
+        await self._save(user.id, push_state)
+        await query.answer()
+
+    async def _graduate_known(self, user: User, uw_id: int) -> None:
+        """Mark one word as already known — the same outcome as the per-card
+        «уже уверенно знаю», so the two routes cannot drift into meaning
+        different things."""
+        pair = await self._uw.get_with_word(uw_id, owner_id=user.id)
+        if pair is None:
+            return
+        uw, word = pair
+        if uw.status == WordStatus.MASTERED.value:
+            return
+        uw.status = WordStatus.MASTERED.value
+        target_score, needed_production = mastery.target_for(word.level, user.level)
+        uw.learning_score = target_score
+        uw.production_count = max(uw.production_count or 0, needed_production)
+        uw.mastery_score = 5.0
+        uw.next_review_at = datetime.now(timezone.utc) + timedelta(days=7)
+        await self._session.flush()
+
+    # ---- topic check -------------------------------------------------------
+    #
+    # Ten sentences in a row, one attempt each, no hints. The only place a
+    # session format is used, because "in a row, unaided" is the property being
+    # measured — spreading these across a day restores the context the check
+    # exists to remove.
+    #
+    # One message for the whole thing: the offer becomes question one, each
+    # answer replaces it with the next, and the last becomes the report.
+
+    async def _send_test(self, user: User, state: dict, now_ts: float) -> bool:
+        """Offer a due check. False when none is due.
+
+        Writes into the caller's `state`; see `_send_constructor`."""
+        repo = ConstructorRepository(self._session)
+        topic = await repo.due_test_topic(user.id)
+        if topic is None:
+            return False
+        row = await repo.state(user.id, topic.id)
+        phrases = await repo.test_phrases(
+            topic.id, topic_test.TEST_SIZE, exclude=[int(i) for i in (row.recent if row else []) or []]
+        )
+        if not phrases:
+            return False
+
+        msg_id = await self._raw_send(
+            user.telegram_id,
+            topic_test.render_offer(topic.title),
+            test_offer_kb(topic.id),
+        )
+        if msg_id is None:
+            return False
+        state["inflight"] = {
+            "kind": "test",
+            "id": topic.id,
+            "title": topic.title,
+            "phrases": [p.id for p in phrases],
+            "idx": 0,
+            "started": False,
+            "results": [],
+            "msg_id": msg_id,
+            "attempts": 0,
+            "sent_ts": now_ts,
+            "retry_ts": now_ts + _retry_after(1),
+        }
+        return True
+
+    async def _test_context(self, user: User, topic_id: int, query: CallbackQuery):
+        push_state = await self._load(user.id)
+        inflight = push_state.get("inflight") or {}
+        tapped = query.message.message_id if query.message else 0
+        if (
+            inflight.get("kind") != "test"
+            or int(inflight.get("id", 0)) != topic_id
+            or tapped != int(inflight.get("msg_id") or 0)
+        ):
+            await query.answer(PUSH_STALE, show_alert=False)
+            return None
+        return push_state, inflight
+
+    async def handle_test_start(self, user: User, topic_id: int, query: CallbackQuery) -> None:
+        ctx = await self._test_context(user, topic_id, query)
+        if ctx is None:
+            return
+        push_state, inflight = ctx
+        inflight["started"] = True
+        push_state["inflight"] = inflight
+        await self._save(user.id, push_state)
+        await self._show_test_question(user, inflight, query.message)
+        await query.answer()
+
+    async def handle_test_later(self, user: User, topic_id: int, query: CallbackQuery) -> None:
+        """Defer without penalty. A check that starts the moment it arrives is
+        a trap when it lands mid-commute, and a trap gets ignored rather than
+        deferred — which costs the measurement entirely."""
+        ctx = await self._test_context(user, topic_id, query)
+        if ctx is None:
+            return
+        push_state, inflight = ctx
+        repo = ConstructorRepository(self._session)
+        row = await repo.ensure_state(user.id, topic_id)
+        row.test_due_at = datetime.now(timezone.utc) + timedelta(days=1)
+        await self._session.commit()
+
+        try:
+            await query.message.edit_text(
+                f"📝 <b>{html.escape(str(inflight.get('title') or ''))}</b> — проверим завтра.",
+                parse_mode="HTML",
+            )
+        except Exception:  # noqa: BLE001
+            pass
+        now_ts = datetime.now(timezone.utc).timestamp()
+        push_state["inflight"] = None
+        push_state["next_ts"] = now_ts + _minutes(
+            self._s.push_gap_min_minutes, self._s.push_gap_max_minutes
+        )
+        await self._save(user.id, push_state)
+        await query.answer()
+
+    async def _show_test_question(self, user: User, inflight: dict, message) -> None:
+        repo = ConstructorRepository(self._session)
+        idx = int(inflight.get("idx", 0))
+        phrase_ids = inflight.get("phrases") or []
+        phrase = await repo.get_phrase(int(phrase_ids[idx]))
+        if phrase is None:
+            return
+        correct = sum(1 for r in (inflight.get("results") or []) if r.get("ok"))
+        try:
+            await message.edit_text(
+                topic_test.render_question(
+                    str(inflight.get("title") or ""), phrase.ru, idx, correct
+                ),
+                parse_mode="HTML",
+            )
+        except Exception:  # noqa: BLE001
+            pass
+
+    async def handle_test_typed(self, user: User, message) -> bool:
+        """A typed message while a check is running."""
+        push_state = await self._load(user.id)
+        inflight = push_state.get("inflight") or {}
+        if inflight.get("kind") != "test" or not inflight.get("started"):
+            return False
+
+        repo = ConstructorRepository(self._session)
+        idx = int(inflight.get("idx", 0))
+        phrase_ids = inflight.get("phrases") or []
+        if idx >= len(phrase_ids):
+            return True
+        phrase = await repo.get_phrase(int(phrase_ids[idx]))
+        if phrase is None:
+            return True
+
+        typed = message.text or ""
+        ok = ctor.matches(typed, phrase.en, list(phrase.alternatives or []))
+        results = list(inflight.get("results") or [])
+        results.append({"id": phrase.id, "ok": ok, "given": typed, "ru": phrase.ru, "en": phrase.en})
+        inflight["results"] = results
+        inflight["idx"] = idx + 1
+        push_state["inflight"] = inflight
+        await self._save(user.id, push_state)
+
+        try:
+            await message.delete()
+        except Exception:  # noqa: BLE001
+            pass
+
+        target = _EditTarget(message.bot, message.chat.id, int(inflight.get("msg_id") or 0))
+        if inflight["idx"] < len(phrase_ids):
+            await self._show_test_question(user, inflight, target)
+            return True
+        await self._finish_test(user, push_state, inflight, target)
+        return True
+
+    async def _finish_test(self, user: User, push_state: dict, inflight: dict, message) -> None:
+        results = inflight.get("results") or []
+        correct = sum(1 for r in results if r.get("ok"))
+        held = topic_test.passed(correct)
+        topic_id = int(inflight.get("id", 0))
+
+        repo = ConstructorRepository(self._session)
+        row = await repo.state(user.id, topic_id)
+        streak = int(row.held_streak or 0) if row else 0
+        next_days = topic_test.next_interval_days(streak + 1 if held else 0)
+        await repo.record_test(user.id, topic_id, correct, held, next_days)
+        await self._session.commit()
+
+        mistakes = [
+            (r.get("ru", ""), r.get("given", ""), r.get("en", ""))
+            for r in results
+            if not r.get("ok")
+        ]
+        try:
+            await message.edit_text(
+                topic_test.render_result(
+                    str(inflight.get("title") or ""), correct, mistakes, next_days
+                ),
+                parse_mode="HTML",
+            )
+        except Exception:  # noqa: BLE001
+            pass
+
+        now_ts = datetime.now(timezone.utc).timestamp()
+        await self._tick_plan(user, plan_rules.TEST)
+        push_state["inflight"] = None
+        push_state["next_ts"] = now_ts + _minutes(
+            self._s.push_gap_min_minutes, self._s.push_gap_max_minutes
+        )
+        await self._save(user.id, push_state)
+
+    # ---- sentence constructor --------------------------------------------
+    #
+    # A constructor card is one message for its whole life. It is sent once —
+    # that is the notification — and every tap edits it in place. The pieces
+    # the learner has chosen live in the inflight blob beside the rest of the
+    # push state; nothing else is persisted until the card settles.
+    #
+    # Note the two unrelated meanings of "attempt" on this path. The inflight's
+    # `attempts` counts how many times the bot re-pushed an ignored card, and
+    # `state.attempt` counts the learner's tries at the sentence. They are kept
+    # in separate places on purpose: conflating them would let a nudge look
+    # like a wrong answer.
+
+    async def _send_constructor(
+        self, user: User, state: dict, now_ts: float, plan_done: int = 0, plan_total: int = 0
+    ) -> bool:
+        """Open a construction card. False when there is nothing to serve.
+
+        Writes the inflight into the caller's `state` rather than loading its
+        own copy. Loading one here means the caller's save — which happens
+        after this returns — writes a snapshot taken before the card existed,
+        wiping the inflight the moment it is created. The next tick then finds
+        no card in flight and sends another, every tick, forever.
+        """
+        opened = await ConstructorService(self._session).open_card(
+            user.id, plan_done=plan_done, plan_total=plan_total
+        )
+        if opened is None:
+            return False
+        view, phrase, topic = opened
+        kb = (
+            constructor_typing_kb(view.phrase_id)
+            if view.typing
+            else constructor_slots_kb(view.options, view.phrase_id, view.can_undo)
+        )
+        msg_id = await self._raw_send(user.telegram_id, view.text, kb)
+        if msg_id is None:
+            return False
+
+        state["inflight"] = {
+            "kind": "phrase",
+            "id": view.phrase_id,
+            "topic_id": topic.id,
+            "state": ctor.CardState(typing=view.typing).to_dict(),
+            "msg_id": msg_id,
+            "attempts": 0,
+            "sent_ts": now_ts,
+            "retry_ts": now_ts + _retry_after(1),
+        }
+        return True
+
+    async def _constructor_context(self, user: User, phrase_id: int, query: CallbackQuery):
+        """Validate a tap and load what it needs, or None if the card is stale.
+
+        The message id has to match as well as the phrase id: a ghost card from
+        an earlier day carries a real phrase id, and grading a tap against the
+        live card's state would apply it to a sentence the learner is not
+        looking at.
+        """
+        state = await self._load(user.id)
+        inflight = state.get("inflight") or {}
+        tapped = query.message.message_id if query.message else 0
+        if (
+            inflight.get("kind") != "phrase"
+            or int(inflight.get("id", 0)) != phrase_id
+            or tapped != int(inflight.get("msg_id") or 0)
+        ):
+            await query.answer(PUSH_STALE, show_alert=False)
+            return None
+        repo = ConstructorRepository(self._session)
+        phrase = await repo.get_phrase(phrase_id)
+        topic = await self._session.get(GrammarTopic, int(inflight.get("topic_id", 0)))
+        if phrase is None or topic is None:
+            await query.answer(PUSH_STALE, show_alert=False)
+            return None
+        return state, inflight, phrase, topic, ctor.CardState.from_dict(inflight.get("state"))
+
+    async def _edit_constructor(self, query: CallbackQuery, view) -> None:
+        kb = (
+            constructor_typing_kb(view.phrase_id)
+            if view.typing
+            else constructor_slots_kb(view.options, view.phrase_id, view.can_undo)
+        )
+        try:
+            await query.message.edit_text(view.text, parse_mode="HTML", reply_markup=kb)
+        except Exception:  # noqa: BLE001 — unchanged text, or the card is gone
+            pass
+
+    async def _store_card_state(self, user: User, state: dict, inflight: dict, card: ctor.CardState) -> None:
+        inflight["state"] = card.to_dict()
+        state["inflight"] = inflight
+        await self._save(user.id, state)
+
+    async def _settle_constructor(
+        self,
+        user: User,
+        state: dict,
+        inflight: dict,
+        phrase,
+        topic,
+        card: ctor.CardState,
+        answer: str | None,
+        message,
+    ) -> None:
+        """Grade the finished sentence, show it, and free the card."""
+        result = await ConstructorService(self._session).settle(
+            user.id, phrase, topic, card, answer=answer
+        )
+        await self._session.commit()
+
+        text = ctor.render_result(
+            ru=phrase.ru,
+            en=result.expected,
+            correct=result.correct,
+            answer_credit=result.answer_credit,
+        )
+        if result.switched_to_typing:
+            text += "\n\n<i>Дальше без подсказок — пишешь сам.</i>"
+        if result.passed:
+            text += f"\n\n🎓 <b>{html.escape(topic.title)}</b> — тема сдана."
+        try:
+            await message.edit_text(text, parse_mode="HTML")
+        except Exception:  # noqa: BLE001
+            pass
+
+        now_ts = datetime.now(timezone.utc).timestamp()
+        await self._tick_plan(user, plan_rules.GRAMMAR)
+        state["inflight"] = None
+        state["last"] = {"kind": "phrase", "id": phrase.id}
+        state["next_ts"] = now_ts + _minutes(
+            self._s.push_gap_min_minutes, self._s.push_gap_max_minutes
+        )
+        await self._save(user.id, state)
+
+    async def handle_slot(self, user: User, phrase_id: int, idx: int, query: CallbackQuery) -> None:
+        ctx = await self._constructor_context(user, phrase_id, query)
+        if ctx is None:
+            return
+        state, inflight, phrase, topic, card = ctx
+        if not await self._claim_answer(user.id, inflight.get("msg_id")):
+            await query.answer()
+            return
+
+        service = ConstructorService(self._session)
+        card, view = await service.tap_slot(user.id, phrase, topic, card, idx)
+        if view is not None:
+            await self._store_card_state(user, state, inflight, card)
+            await self._edit_constructor(query, view)
+            await query.answer()
+            return
+        await self._settle_constructor(
+            user, state, inflight, phrase, topic, card, None, query.message
+        )
+        await query.answer()
+
+    async def handle_constructor_undo(self, user: User, phrase_id: int, query: CallbackQuery) -> None:
+        ctx = await self._constructor_context(user, phrase_id, query)
+        if ctx is None:
+            return
+        state, inflight, phrase, topic, card = ctx
+        card, view = await ConstructorService(self._session).undo(user.id, phrase, topic, card)
+        await self._store_card_state(user, state, inflight, card)
+        await self._edit_constructor(query, view)
+        await query.answer()
+
+    async def handle_constructor_hint(self, user: User, phrase_id: int, query: CallbackQuery) -> None:
+        ctx = await self._constructor_context(user, phrase_id, query)
+        if ctx is None:
+            return
+        state, inflight, phrase, topic, card = ctx
+        service = ConstructorService(self._session)
+        card, view = await service.hint(user.id, phrase, topic, card)
+        # A hint on the last slot finishes the sentence, so the card has to
+        # settle rather than re-render with nothing left to tap.
+        if ctor.is_complete(list(phrase.slots or []), list(card.chosen)):
+            await self._settle_constructor(
+                user, state, inflight, phrase, topic, card, None, query.message
+            )
+            await query.answer()
+            return
+        await self._store_card_state(user, state, inflight, card)
+        await self._edit_constructor(query, view)
+        await query.answer()
+
+    async def handle_constructor_giveup(self, user: User, phrase_id: int, query: CallbackQuery) -> None:
+        ctx = await self._constructor_context(user, phrase_id, query)
+        if ctx is None:
+            return
+        state, inflight, phrase, topic, card = ctx
+        if not await self._claim_answer(user.id, inflight.get("msg_id")):
+            await query.answer()
+            return
+        # Spend every attempt: giving up is not a near miss, and scoring it as
+        # one would make «не помню» the cheapest way through a hard sentence.
+        card = replace(card, attempt=ctor.MAX_ATTEMPTS + 1)
+        await self._settle_constructor(
+            user, state, inflight, phrase, topic, card, "", query.message
+        )
+        await query.answer()
+
+    async def handle_constructor_typed(self, user: User, message) -> bool:
+        """A free-text message while a constructor card is in flight.
+
+        Returns True when it consumed the message, so the caller does not treat
+        the sentence as a word to quick-add.
+        """
+        state = await self._load(user.id)
+        inflight = state.get("inflight") or {}
+        if inflight.get("kind") != "phrase":
+            return False
+        card = ctor.CardState.from_dict(inflight.get("state"))
+        if not card.typing:
+            return False
+        if not await self._claim_answer(user.id, inflight.get("msg_id")):
+            return True
+
+        repo = ConstructorRepository(self._session)
+        phrase = await repo.get_phrase(int(inflight.get("id", 0)))
+        topic = await self._session.get(GrammarTopic, int(inflight.get("topic_id", 0)))
+        if phrase is None or topic is None:
+            return True
+
+        typed = message.text or ""
+        correct = ctor.matches(typed, phrase.en, list(phrase.alternatives or []))
+        # The learner's own message is removed either way: the card carries the
+        # verdict, and leaving the attempt behind turns the chat into a log of
+        # half-remembered sentences.
+        try:
+            await message.delete()
+        except Exception:  # noqa: BLE001
+            pass
+
+        bot_message = _EditTarget(message.bot, message.chat.id, int(inflight.get("msg_id") or 0))
+        if correct or card.attempt >= ctor.MAX_ATTEMPTS:
+            await self._settle_constructor(
+                user, state, inflight, phrase, topic, card, typed, bot_message
+            )
+            return True
+
+        card = ctor.miss(card)
+        await self._store_card_state(user, state, inflight, card)
+        view = await ConstructorService(self._session)._rerender(
+            user.id, topic, phrase, card, 0, 0
+        )
+        try:
+            await bot_message.edit_text(
+                view.text, parse_mode="HTML", reply_markup=constructor_typing_kb(phrase.id)
+            )
+        except Exception:  # noqa: BLE001
+            pass
+        return True
+
+
+class _EditTarget:
+    """Adapts a raw (bot, chat, message) triple to the `.edit_text` interface
+    the settle path expects, so typed answers and taps share one code path
+    instead of each growing its own copy of the finishing logic."""
+
+    def __init__(self, bot, chat_id: int, message_id: int) -> None:
+        self._bot = bot
+        self._chat_id = chat_id
+        self._message_id = message_id
+
+    async def edit_text(self, text: str, **kwargs):
+        return await self._bot.edit_message_text(
+            text=text, chat_id=self._chat_id, message_id=self._message_id, **kwargs
+        )

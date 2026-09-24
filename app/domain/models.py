@@ -12,8 +12,10 @@ from sqlalchemy import (
     ForeignKey,
     Index,
     Integer,
+    SmallInteger,
     String,
     Text,
+    text,
     UniqueConstraint,
     func,
 )
@@ -122,6 +124,23 @@ class Word(Base):
     # "pick the translation" card — every honest distractor differs only by
     # tense or number. Excluded from word selection; grammar teaches them.
     is_function_word: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    # Corpus rank, 1 = most common. NULL means off-list, which is not the same
+    # as "rare" — see app/domain/ngsl.py. Order with NULLS LAST.
+    ngsl_rank: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    # Senses unrelated enough that one translation teaches one of them as if it
+    # were the whole word (`charge`, `stock`, `firm`). Still worth teaching —
+    # they are frequent — but the queue prefers unambiguous words of the same
+    # band first, so the learner meets them with more context behind them.
+    polysemous: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    # A form of some other entry — `drove` for `drive`, `better` for `good`.
+    # Real knowledge, but the form itself is the lesson, so the irregular-verb
+    # and comparatives topics teach it and the word rotation skips it.
+    is_inflection: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    # A phrasebook entry, learned whole. Has no corpus rank, so leaving it in
+    # the word queue sorts it behind every ranked word there is; it gets its own
+    # stream instead. Not the same as "spelled with a space" — `post office` is
+    # an ordinary word.
+    is_phrase: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
     # Coarse part of speech ('verb' | 'noun' | 'adj'), used to pick quiz
     # distractors of the same kind. Nullable: not every word can be tagged.
     part_of_speech: Mapped[str | None] = mapped_column(String(16), nullable=True)
@@ -200,6 +219,10 @@ class Pack(Base):
     title: Mapped[str] = mapped_column(String(128), nullable=False)
     description: Mapped[str | None] = mapped_column(Text, nullable=True)
     category: Mapped[str] = mapped_column(String(32), nullable=False, index=True)
+    # Teaching order within a category. Insertion order used to stand in for
+    # this, which silently put the phrasal-verbs pack ahead of «How are you?»
+    # purely because it was created first.
+    position: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     words_count: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
     created_at: Mapped[datetime] = mapped_column(
@@ -254,6 +277,10 @@ class WordReview(Base):
     )
     track: Mapped[str] = mapped_column(String(8), default="en", nullable=False, index=True)
     result: Mapped[str] = mapped_column(String(16), nullable=False)
+    # How long the card took, and how many pushes it took to get answered. Only
+    # attempts == 1 rows time actual attention — see migration 0044.
+    response_ms: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    attempts: Mapped[int | None] = mapped_column(SmallInteger, nullable=True)
     reviewed_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False
     )
@@ -278,12 +305,56 @@ class GrammarReview(Base):
     )
     track: Mapped[str] = mapped_column(String(8), default="en", nullable=False, index=True)
     result: Mapped[str] = mapped_column(String(16), nullable=False)
+    response_ms: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    attempts: Mapped[int | None] = mapped_column(SmallInteger, nullable=True)
     reviewed_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False
     )
 
     __table_args__ = (
         Index("ix_grammar_reviews_user_track_date", "user_id", "track", "reviewed_at"),
+    )
+
+
+class DayPlan(Base):
+    """Today's list of cards — composed once, then held until it is closed.
+
+    Not in Redis with the rest of the push state, because a plan is explicitly
+    allowed to outlive its day: an unfinished one is not replaced tomorrow, it
+    is the same plan until closed. An eviction mid-way would hand the learner a
+    different day, which is the unpredictability this replaces.
+
+    `items` is `[{"kind": ..., "ref": int, "done": bool}]`. Kinds are the
+    constants in `app.domain.day_plan`. Storing the composition instead of
+    recomputing it is the point: recomputation would let the plan shift
+    underneath whenever the review queue moved.
+    """
+    __tablename__ = "day_plans"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False
+    )
+    track: Mapped[str] = mapped_column(String(8), default="en", nullable=False)
+    size: Mapped[int] = mapped_column(Integer, nullable=False)
+    items: Mapped[list] = mapped_column(JSONB, default=list, nullable=False)
+    # The push day it was opened for — rolls at the start of the user's window,
+    # not at midnight, so it is not always the calendar date.
+    opened_on: Mapped[date] = mapped_column(Date, nullable=False)
+    closed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+
+    __table_args__ = (
+        Index("ix_day_plans_user_open", "user_id", "track", "closed_at"),
+        Index(
+            "uq_day_plans_one_open",
+            "user_id",
+            "track",
+            unique=True,
+            postgresql_where=text("closed_at IS NULL"),
+        ),
     )
 
 
@@ -333,6 +404,35 @@ class GrammarItem(Base):
     position: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
 
 
+class GrammarPhrase(Base):
+    """One sentence to construct: the Russian, the English, and the English cut
+    into decision points.
+
+    Gap-fill cards cannot prove a tense is known — four options give a 25% floor
+    from guessing alone. Here there is nothing to pick from in the typing mode,
+    and in the assisted mode `slots` supports without giving away: after «She»
+    the learner still has to know it takes «doesn't», and elimination will not
+    tell them.
+
+    `alternatives` holds the other correct renderings, so writing «does not»
+    instead of «doesn't» is never marked wrong.
+    """
+    __tablename__ = "grammar_phrases"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    topic_id: Mapped[int] = mapped_column(
+        Integer, ForeignKey("grammar_topics.id", ondelete="CASCADE"), nullable=False, index=True
+    )
+    ru: Mapped[str] = mapped_column(Text, nullable=False)
+    en: Mapped[str] = mapped_column(Text, nullable=False)
+    alternatives: Mapped[list] = mapped_column(JSONB, default=list, nullable=False)
+    # [{"correct": "She", "options": ["She", "They", "I"]}, ...] — concatenating
+    # every `correct` reproduces `en` exactly; migration 0055 verifies it.
+    slots: Mapped[list] = mapped_column(JSONB, default=list, nullable=False)
+    position: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
+
+
+
 class UserGrammarItem(Base):
     """Per-user spaced-repetition progress on a grammar exercise — mirrors the
     UserWord fields so apply_review() works on it unchanged."""
@@ -366,8 +466,20 @@ class UserGrammarItem(Base):
 
 
 class UserGrammarTopic(Base):
-    """Tracks that the user has been shown a topic's rule card (so we show it
-    once, before its exercises)."""
+    """A learner's standing in one grammar topic.
+
+    `score` decays toward recent answers rather than accumulating, so it can
+    fall — an average over per-exercise progress only ever climbs, which is how
+    a topic passed months ago would still show full marks today.
+
+    `typing` is a ratchet, not a toggle. The mode switches from tapping pieces
+    to free typing once the score is high enough, and must not switch back: the
+    harder mode drops the score, which would otherwise push it under the
+    threshold and bounce the learner between modes indefinitely.
+
+    `recent` is the last handful of phrase ids, so the same few sentences are
+    not what gets memorised in place of the rule.
+    """
     __tablename__ = "user_grammar_topics"
 
     user_id: Mapped[int] = mapped_column(
@@ -376,4 +488,24 @@ class UserGrammarTopic(Base):
     topic_id: Mapped[int] = mapped_column(
         Integer, ForeignKey("grammar_topics.id", ondelete="CASCADE"), primary_key=True
     )
+    # Shown once, before the topic's exercises.
     rule_seen_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    # 0..1; the card shows it as 0..5. Starts at zero and climbs, which is
+    # honest — nothing has been demonstrated yet.
+    score: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
+    typing: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    recent: Mapped[list] = mapped_column(JSONB, default=list, nullable=False)
+    # The score alone cannot tell "bad at this" from "has answered twice".
+    answered: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
+    passed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    # Consecutive passed checks, driving the expanding interval between them.
+    held_streak: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
+    tested_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    # Stored rather than derived: the interval depends on the streak at the
+    # time, so recomputing later would move a date already promised.
+    test_due_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+    __table_args__ = (
+        Index("ix_user_grammar_topics_active", "user_id", "passed_at"),
+        Index("ix_user_grammar_topics_test_due", "user_id", "test_due_at"),
+    )
