@@ -7,6 +7,7 @@ from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.enums import LearningTrack
+from app.domain.function_words import is_function_word
 from app.domain.models import UserWord, Word
 
 
@@ -78,7 +79,20 @@ class WordRepository:
         if not items:
             return {}
 
-        rows = [{**item, "track": track.value} for item in items]
+        # Flag on the way in. Migration 0040 set this once and nothing has
+        # maintained it since, so every word added afterwards — quick-add, TXT
+        # import, a catalogue top-up — arrived unflagged and could be served as
+        # a "pick the translation" card for `of`.
+        rows = [
+            {
+                **item,
+                "track": track.value,
+                "is_function_word": item.get(
+                    "is_function_word", is_function_word(item.get("writing"))
+                ),
+            }
+            for item in items
+        ]
         stmt = (
             pg_insert(Word)
             .values(rows)
