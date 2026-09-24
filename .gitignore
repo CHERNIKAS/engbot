@@ -17,3 +17,7 @@ build/
 
 # Local DB dumps written by scripts/backup.sh on the server.
 backups/
+
+# mutmut working copy
+mutants/
+mutants.db
