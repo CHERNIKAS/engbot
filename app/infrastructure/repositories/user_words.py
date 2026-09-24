@@ -379,14 +379,29 @@ class UserWordRepository:
                 UserWord.status == WordStatus.NEW.value,
                 Word.translation.isnot(None),
                 Word.is_function_word.is_(False),
+                # `drove` teaches nothing `drive` does not; the irregular-verb
+                # collection drills the form as a table instead.
+                Word.is_inflection.is_(False),
+                Word.is_phrase.is_(False),
             )
             .order_by(
                 # The user's own "teach this first" beats every other signal —
                 # it's the one place they've told us directly what they want.
                 UserWord.priority.desc(),
                 level_rank,
-                # NULLS LAST: an untagged word shouldn't read as "maximally
-                # common" just because its rank was never filled in.
+                # Corpus rank decides usefulness now. `freq_rank` was a 1-to-5
+                # guess from a language model, and five buckets cannot order two
+                # thousand words: prod had `salad` and `Friday` sharing a bucket
+                # with `you` and `not`, so inside a level the queue was random.
+                # NULLS LAST twice over: an off-list word is not "maximally
+                # common", and it is not necessarily rare either — the corpus
+                # simply never saw it, which is why `freq_rank` still breaks the
+                # tie underneath for the ~900 words NGSL does not cover.
+                Word.ngsl_rank.asc().nulls_last(),
+                # Unrelated senses under one spelling (`charge`, `stock`). Worth
+                # teaching, but after the unambiguous words of the same band, so
+                # the learner meets them with more context behind them.
+                Word.polysemous.asc(),
                 Word.freq_rank.asc().nulls_last(),
                 source_priority,
                 UserWord.created_at.asc(),
@@ -398,6 +413,42 @@ class UserWordRepository:
             return None
         row = random.choice(rows)
         return (row[0], row[1])
+
+    async def pick_new_phrase(
+        self, user_id: int, track: LearningTrack
+    ) -> tuple[UserWord, Word] | None:
+        """The next unstarted phrasebook entry, in the order the packs teach.
+
+        Deliberately not the word picker with a filter flipped. Phrases have no
+        corpus rank, so sharing that queue puts every one of them behind two
+        thousand ranked words; and there is nothing to randomise among, because
+        the phrasebook order is already the teaching order — greetings before
+        the airport, the airport before the doctor.
+
+        Taken strictly in that order, so a learner three days in can say hello
+        rather than order a coffee. Pack order is explicit rather than the id
+        it was created with: the phrasal-verbs pack predates the phrasebook, so
+        insertion order would have led with «look forward to».
+        """
+        q = (
+            select(UserWord, Word)
+            .join(Word, Word.id == UserWord.word_id)
+            .join(PackWord, PackWord.word_id == Word.id)
+            .join(Pack, Pack.id == PackWord.pack_id)
+            .where(
+                UserWord.user_id == user_id,
+                UserWord.track == track.value,
+                UserWord.archived.is_(False),
+                UserWord.status == WordStatus.NEW.value,
+                Word.translation.isnot(None),
+                Word.is_phrase.is_(True),
+                Pack.is_active.is_(True),
+            )
+            .order_by(Pack.position.asc(), Pack.id.asc(), PackWord.position.asc())
+            .limit(1)
+        )
+        row = (await self.session.execute(q)).first()
+        return (row[0], row[1]) if row else None
 
     async def pick_backlog_to_park(
         self, user_id: int, track: LearningTrack, limit: int, now: datetime | None = None
@@ -488,7 +539,12 @@ class UserWordRepository:
         return int(mastered), int(attempts or 0), int(correct or 0)
 
     async def pick_active_due(
-        self, user_id: int, track: LearningTrack, exclude_uw_id: int = 0, now: datetime | None = None
+        self,
+        user_id: int,
+        track: LearningTrack,
+        exclude_uw_id: int = 0,
+        now: datetime | None = None,
+        user_level: str | None = None,
     ) -> tuple[UserWord, Word] | None:
         """The active word most overdue for review (earliest next_review_at) —
         for reinforcement. Uniform random starved big pools (a word could go
@@ -496,8 +552,25 @@ class UserWordRepository:
         intervals real: a lapsed word comes back within hours, a solid one waits
         its turn. Skips snoozed (parked-leech) words. Over-fetches a few so we
         can skip `exclude_uw_id` (the card just answered) — answering pushes
-        next_review_at forward, so this can't lock onto one word."""
+        next_review_at forward, so this can't lock onto one word.
+
+        Due date leads and always will: a word repeated late is a word
+        forgotten, and no amount of usefulness makes up for that. But it used
+        to be the *only* thing here, and this stream is ~60% of everything
+        pushed — which is how an A1 learner spent weeks on `frown`, `gaze` and
+        `giggle` while 687 A1 words sat untouched. The intake query filtered by
+        level; this one never did, so anything that got in stayed in forever.
+
+        Usefulness now breaks ties. Words rarely come due at the same instant,
+        so this changes little day to day — but after a gap, when dozens fall
+        due together, it decides what the learner sees first.
+        """
         now = now or datetime.now(timezone.utc)
+        level_rank = case(
+            {lv: selection_rank(lv, user_level) for lv in LEVELS},
+            value=Word.level,
+            else_=UNKNOWN_LEVEL_RANK,
+        )
         q = (
             select(UserWord, Word)
             .join(Word, Word.id == UserWord.word_id)
@@ -509,8 +582,16 @@ class UserWordRepository:
                 or_(UserWord.snooze_until.is_(None), UserWord.snooze_until <= now),
                 Word.translation.isnot(None),
                 Word.is_function_word.is_(False),
+                # `drove` teaches nothing `drive` does not; the irregular-verb
+                # collection drills the form as a table instead.
+                Word.is_inflection.is_(False),
+                Word.is_phrase.is_(False),
             )
-            .order_by(UserWord.next_review_at.asc())
+            .order_by(
+                UserWord.next_review_at.asc(),
+                level_rank,
+                Word.ngsl_rank.asc().nulls_last(),
+            )
             .limit(5)
         )
         rows = [(r[0], r[1]) for r in (await self.session.execute(q)).all()]
@@ -577,6 +658,10 @@ class UserWordRepository:
                 or_(UserWord.snooze_until.is_(None), UserWord.snooze_until <= now),
                 Word.translation.isnot(None),
                 Word.is_function_word.is_(False),
+                # `drove` teaches nothing `drive` does not; the irregular-verb
+                # collection drills the form as a table instead.
+                Word.is_inflection.is_(False),
+                Word.is_phrase.is_(False),
             )
             .order_by(UserWord.next_review_at.asc(), UserWord.mastery_score.asc())
             .limit(3)
@@ -684,6 +769,35 @@ class UserWordRepository:
             UserWord.track == track.value,
             UserWord.archived.is_(False),
             UserWord.status == WordStatus.NEW.value,
+        )
+        return (await self.session.execute(q)).scalar_one()
+
+    async def count_new_startable(
+        self, user_id: int, track: LearningTrack, phrases: bool = False
+    ) -> int:
+        """Not-yet-started entries the pickers would actually serve.
+
+        `count_new` answers a different question — it counts everything sitting
+        in NEW, including what the pickers skip. Composing a plan from that
+        number asks for cards the bot cannot produce, and a plan that cannot be
+        finished blocks every day after it.
+
+        `phrases` selects which stream is being counted: the two are drawn from
+        separate slots and must be sized separately.
+        """
+        q = (
+            select(func.count(UserWord.id))
+            .join(Word, Word.id == UserWord.word_id)
+            .where(
+                UserWord.user_id == user_id,
+                UserWord.track == track.value,
+                UserWord.archived.is_(False),
+                UserWord.status == WordStatus.NEW.value,
+                Word.translation.isnot(None),
+                Word.is_function_word.is_(False),
+                Word.is_inflection.is_(False),
+                Word.is_phrase.is_(phrases),
+            )
         )
         return (await self.session.execute(q)).scalar_one()
 
@@ -954,3 +1068,140 @@ class UserWordRepository:
 
         candidates.sort(key=lambda c: c[0])
         return [writing for _, writing in candidates[:limit]]
+
+    async def current_theme(self, user_id: int, track: LearningTrack) -> Pack | None:
+        """The theme being worked through: the earliest in teaching order that
+        still has something unstarted in it.
+
+        Order comes from `packs.position`, which is the sequence in
+        `app.domain.themes` — from what a learner can say about themselves
+        today outward. A theme holds until it is finished rather than rotating
+        daily, because switching every morning completes nothing.
+        """
+        q = (
+            select(Pack)
+            .join(PackWord, PackWord.pack_id == Pack.id)
+            .join(Word, Word.id == PackWord.word_id)
+            .join(
+                UserWord,
+                (UserWord.word_id == Word.id) & (UserWord.user_id == user_id),
+            )
+            .where(
+                Pack.track == track.value,
+                Pack.category == "Темы",
+                Pack.is_active.is_(True),
+                UserWord.track == track.value,
+                UserWord.archived.is_(False),
+                UserWord.status == WordStatus.NEW.value,
+                Word.translation.isnot(None),
+                Word.is_function_word.is_(False),
+                Word.is_inflection.is_(False),
+                Word.is_phrase.is_(False),
+            )
+            .order_by(Pack.position.asc(), Pack.id.asc())
+            .limit(1)
+        )
+        return (await self.session.execute(q)).scalars().first()
+
+    async def theme_batch(
+        self, user_id: int, track: LearningTrack, pack_id: int, limit: int
+    ) -> list[tuple[UserWord, Word]]:
+        """The next unstarted words of a theme, in the theme's own order.
+
+        Used by the triage screen. Ordered by `pack_words.position` rather than
+        by frequency because a closed set has a sequence of its own — numbers
+        run one, two, three, and a frequency sort turns that into «eight,
+        eighteen, eighty».
+        """
+        q = (
+            select(UserWord, Word)
+            .join(Word, Word.id == UserWord.word_id)
+            .join(PackWord, (PackWord.word_id == Word.id) & (PackWord.pack_id == pack_id))
+            .where(
+                UserWord.user_id == user_id,
+                UserWord.track == track.value,
+                UserWord.archived.is_(False),
+                UserWord.status == WordStatus.NEW.value,
+                Word.translation.isnot(None),
+                Word.is_function_word.is_(False),
+                Word.is_inflection.is_(False),
+                Word.is_phrase.is_(False),
+            )
+            .order_by(PackWord.position.asc())
+            .limit(limit)
+        )
+        return [(r[0], r[1]) for r in (await self.session.execute(q)).all()]
+
+    async def catalogue_top_up(
+        self, user_id: int, track: LearningTrack, user_level: str | None, limit: int
+    ) -> list[int]:
+        """Catalogue word ids to pull into a learner's vocabulary next.
+
+        The pickers only ever look at words the learner already owns, so
+        something has to put them there — the old course did it from a fixed
+        spine of level packs, and switching the queue to corpus rank left
+        nothing doing the job at all. A plan composed against an empty pool is
+        four grammar cards and nothing else.
+
+        Same ordering as the intake picker, so what arrives in the vocabulary is
+        what would have been taught next anyway: level distance first, then
+        corpus rank, unambiguous words before polysemous ones.
+        """
+        owned = select(UserWord.word_id).where(
+            UserWord.user_id == user_id, UserWord.track == track.value
+        )
+        level_rank = case(
+            {lv: selection_rank(lv, user_level) for lv in LEVELS},
+            value=Word.level,
+            else_=UNKNOWN_LEVEL_RANK,
+        )
+        q = (
+            select(Word.id)
+            .where(
+                Word.track == track.value,
+                Word.id.notin_(owned),
+                Word.translation.isnot(None),
+                Word.is_function_word.is_(False),
+                Word.is_inflection.is_(False),
+                Word.is_phrase.is_(False),
+            )
+            .order_by(
+                level_rank,
+                Word.ngsl_rank.asc().nulls_last(),
+                Word.polysemous.asc(),
+                Word.freq_rank.asc().nulls_last(),
+            )
+            .limit(limit)
+        )
+        return list((await self.session.execute(q)).scalars().all())
+
+    async def pack_top_up(
+        self, user_id: int, track: LearningTrack, category: str, limit: int
+    ) -> list[int]:
+        """Word ids from the next pack of a category the learner does not own.
+
+        Used for the themes and the phrasebook, which are taught in their own
+        declared order rather than by frequency — `packs.position` then
+        `pack_words.position`, so numbers arrive one, two, three and greetings
+        come before the airport.
+        """
+        owned = select(UserWord.word_id).where(
+            UserWord.user_id == user_id, UserWord.track == track.value
+        )
+        q = (
+            select(Word.id)
+            .join(PackWord, PackWord.word_id == Word.id)
+            .join(Pack, Pack.id == PackWord.pack_id)
+            .where(
+                Pack.track == track.value,
+                Pack.category == category,
+                Pack.is_active.is_(True),
+                Word.id.notin_(owned),
+                Word.translation.isnot(None),
+                Word.is_function_word.is_(False),
+                Word.is_inflection.is_(False),
+            )
+            .order_by(Pack.position.asc(), Pack.id.asc(), PackWord.position.asc())
+            .limit(limit)
+        )
+        return list((await self.session.execute(q)).scalars().all())
