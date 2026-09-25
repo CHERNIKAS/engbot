@@ -1,0 +1,3592 @@
+[
+ {
+  "topic": "present_perfect",
+  "ru": "Я уже прочитал эту книгу.",
+  "en": "I have already read this book.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "have already read",
+    "options": [
+     "have already read",
+     "already read",
+     "has already read",
+     "had already read"
+    ]
+   },
+   {
+    "correct": "this book.",
+    "options": [
+     "this book.",
+     "this books."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она только что ушла.",
+  "en": "She has just gone.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "has just gone.",
+    "options": [
+     "has just gone.",
+     "have just gone.",
+     "just went.",
+     "has just go."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он еще не позвонил мне.",
+  "en": "He hasn't called me yet.",
+  "alternatives": [
+   "He has not called me yet."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "You"
+    ]
+   },
+   {
+    "correct": "hasn't called",
+    "options": [
+     "hasn't called",
+     "haven't called",
+     "didn't call",
+     "hasn't call"
+    ]
+   },
+   {
+    "correct": "me yet.",
+    "options": [
+     "me yet.",
+     "me already."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Ты когда-нибудь видел этот фильм?",
+  "en": "Have you ever seen this film?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have you",
+    "options": [
+     "Have you",
+     "Has you",
+     "Did you"
+    ]
+   },
+   {
+    "correct": "ever seen",
+    "options": [
+     "ever seen",
+     "ever saw",
+     "ever see"
+    ]
+   },
+   {
+    "correct": "this film?",
+    "options": [
+     "this film?",
+     "this films?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Я никогда не ел это блюдо.",
+  "en": "I have never eaten this dish.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have never",
+    "options": [
+     "I have never",
+     "I has never",
+     "I never"
+    ]
+   },
+   {
+    "correct": "eaten",
+    "options": [
+     "eaten",
+     "ate",
+     "eat"
+    ]
+   },
+   {
+    "correct": "this dish.",
+    "options": [
+     "this dish.",
+     "this dishes."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она купила новую машину вчера.",
+  "en": "She bought a new car yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "She has"
+    ]
+   },
+   {
+    "correct": "bought",
+    "options": [
+     "bought",
+     "buys",
+     "has bought"
+    ]
+   },
+   {
+    "correct": "a new car yesterday.",
+    "options": [
+     "a new car yesterday.",
+     "a new car yet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Мы закончили работу вчера.",
+  "en": "We finished the work yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "We have"
+    ]
+   },
+   {
+    "correct": "finished",
+    "options": [
+     "finished",
+     "have finished"
+    ]
+   },
+   {
+    "correct": "the work yesterday.",
+    "options": [
+     "the work yesterday.",
+     "the work just now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Они потеряли ключи вчера.",
+  "en": "They lost their keys yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "They have"
+    ]
+   },
+   {
+    "correct": "lost",
+    "options": [
+     "lost",
+     "have lost",
+     "lose"
+    ]
+   },
+   {
+    "correct": "their keys yesterday.",
+    "options": [
+     "their keys yesterday.",
+     "their keys already."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она разбила вазу вчера.",
+  "en": "She broke the vase yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "She has"
+    ]
+   },
+   {
+    "correct": "broke",
+    "options": [
+     "broke",
+     "has broken",
+     "broken"
+    ]
+   },
+   {
+    "correct": "the vase yesterday.",
+    "options": [
+     "the vase yesterday.",
+     "the vase just now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Я забыл письмо вчера.",
+  "en": "I forgot the letter yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "I have"
+    ]
+   },
+   {
+    "correct": "forgot",
+    "options": [
+     "forgot",
+     "have forgotten",
+     "forgotten"
+    ]
+   },
+   {
+    "correct": "the letter yesterday.",
+    "options": [
+     "the letter yesterday.",
+     "the letter already."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он написал отчет вчера.",
+  "en": "He wrote the report yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "He has"
+    ]
+   },
+   {
+    "correct": "wrote",
+    "options": [
+     "wrote",
+     "has written",
+     "written"
+    ]
+   },
+   {
+    "correct": "the report yesterday.",
+    "options": [
+     "the report yesterday.",
+     "the report already."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она уже сделала домашнюю работу.",
+  "en": "She has already done her homework.",
+  "alternatives": [
+   "She has done her homework already."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "has already done",
+    "options": [
+     "has already done",
+     "have already done",
+     "already did"
+    ]
+   },
+   {
+    "correct": "her homework.",
+    "options": [
+     "her homework.",
+     "my homework."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Я уже закончил эту работу.",
+  "en": "I have already finished this work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "have already finished",
+    "options": [
+     "have already finished",
+     "did already finish",
+     "has already finished"
+    ]
+   },
+   {
+    "correct": "this work.",
+    "options": [
+     "this work.",
+     "my work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она еще не видела этот фильм.",
+  "en": "She hasn't seen this film yet.",
+  "alternatives": [
+   "She has not seen this film yet."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "hasn't seen",
+    "options": [
+     "hasn't seen",
+     "haven't seen",
+     "didn't see"
+    ]
+   },
+   {
+    "correct": "this film yet.",
+    "options": [
+     "this film yet.",
+     "that film yet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Ты когда-нибудь был в Лондоне?",
+  "en": "Have you ever been to London?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have you",
+    "options": [
+     "Have you",
+     "Has you",
+     "Did you"
+    ]
+   },
+   {
+    "correct": "ever been",
+    "options": [
+     "ever been",
+     "never been",
+     "already been"
+    ]
+   },
+   {
+    "correct": "to London?",
+    "options": [
+     "to London?",
+     "in London?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он только что купил новый компьютер.",
+  "en": "He has just bought a new computer.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "has just bought",
+    "options": [
+     "has just bought",
+     "have just bought",
+     "just bought"
+    ]
+   },
+   {
+    "correct": "a new computer.",
+    "options": [
+     "a new computer.",
+     "this computer."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Они еще не написали письмо.",
+  "en": "They haven't written the letter yet.",
+  "alternatives": [
+   "They have not written the letter yet."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "haven't written",
+    "options": [
+     "haven't written",
+     "hasn't written",
+     "didn't write"
+    ]
+   },
+   {
+    "correct": "the letter yet.",
+    "options": [
+     "the letter yet.",
+     "a letter yet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Мы съели завтрак вчера.",
+  "en": "We ate breakfast yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "Have we",
+     "Has we"
+    ]
+   },
+   {
+    "correct": "ate",
+    "options": [
+     "ate",
+     "have eaten",
+     "has eaten"
+    ]
+   },
+   {
+    "correct": "breakfast yesterday.",
+    "options": [
+     "breakfast yesterday.",
+     "the breakfast yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Ты забыл ключи вчера?",
+  "en": "Did you forget the keys yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did you",
+    "options": [
+     "Did you",
+     "Have you",
+     "Has you"
+    ]
+   },
+   {
+    "correct": "forget",
+    "options": [
+     "forget",
+     "forgot",
+     "forgotten"
+    ]
+   },
+   {
+    "correct": "the keys yesterday?",
+    "options": [
+     "the keys yesterday?",
+     "your keys yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она видела его вчера.",
+  "en": "She saw him yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "Has she",
+     "Have she"
+    ]
+   },
+   {
+    "correct": "saw",
+    "options": [
+     "saw",
+     "has seen",
+     "seen"
+    ]
+   },
+   {
+    "correct": "him yesterday.",
+    "options": [
+     "him yesterday.",
+     "he yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он уже разбил тарелку.",
+  "en": "He has already broken the plate.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "has already broken",
+    "options": [
+     "has already broken",
+     "have already broken",
+     "already broke"
+    ]
+   },
+   {
+    "correct": "the plate.",
+    "options": [
+     "the plate.",
+     "a plate."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Мы купили продукты вчера.",
+  "en": "We bought groceries yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "Have we",
+     "Has we"
+    ]
+   },
+   {
+    "correct": "bought",
+    "options": [
+     "bought",
+     "have bought",
+     "has bought"
+    ]
+   },
+   {
+    "correct": "groceries yesterday.",
+    "options": [
+     "groceries yesterday.",
+     "some groceries yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она потеряла телефон вчера.",
+  "en": "She lost her phone yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "Has she",
+     "Have she"
+    ]
+   },
+   {
+    "correct": "lost",
+    "options": [
+     "lost",
+     "has lost",
+     "have lost"
+    ]
+   },
+   {
+    "correct": "her phone yesterday.",
+    "options": [
+     "her phone yesterday.",
+     "the phone yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Ты уже позвонил ему?",
+  "en": "Have you already called him?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have you",
+    "options": [
+     "Have you",
+     "Has you",
+     "Did you"
+    ]
+   },
+   {
+    "correct": "already called",
+    "options": [
+     "already called",
+     "called already",
+     "just called"
+    ]
+   },
+   {
+    "correct": "him?",
+    "options": [
+     "him?",
+     "her?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Я уже написал письмо.",
+  "en": "I have already written the letter.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "had",
+     "did"
+    ]
+   },
+   {
+    "correct": "already written",
+    "options": [
+     "already written",
+     "just write",
+     "already wrote",
+     "yet write"
+    ]
+   },
+   {
+    "correct": "the letter.",
+    "options": [
+     "the letter.",
+     "a letter.",
+     "the book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она только что сделала это.",
+  "en": "She has just done it.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "had",
+     "did"
+    ]
+   },
+   {
+    "correct": "just done",
+    "options": [
+     "just done",
+     "already did",
+     "just did",
+     "already done"
+    ]
+   },
+   {
+    "correct": "it.",
+    "options": [
+     "it.",
+     "this."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он еще не видел её.",
+  "en": "He hasn't seen her yet.",
+  "alternatives": [
+   "He has not seen her yet."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "hasn't",
+    "options": [
+     "hasn't",
+     "haven't",
+     "didn't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "seen her",
+    "options": [
+     "seen her",
+     "saw her",
+     "see her",
+     "seeing her"
+    ]
+   },
+   {
+    "correct": "yet.",
+    "options": [
+     "yet.",
+     "already."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Ты когда-нибудь ел здесь?",
+  "en": "Have you ever eaten here?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have",
+    "options": [
+     "Have",
+     "Has",
+     "Did",
+     "Do"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he",
+     "it"
+    ]
+   },
+   {
+    "correct": "ever eaten",
+    "options": [
+     "ever eaten",
+     "never eat",
+     "ever eat",
+     "already eaten"
+    ]
+   },
+   {
+    "correct": "here?",
+    "options": [
+     "here?",
+     "there?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Я никогда не терял ключи.",
+  "en": "I have never lost my keys.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "did",
+     "had"
+    ]
+   },
+   {
+    "correct": "never lost",
+    "options": [
+     "never lost",
+     "ever lose",
+     "never lose",
+     "just lost"
+    ]
+   },
+   {
+    "correct": "my keys.",
+    "options": [
+     "my keys.",
+     "the keys."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она разбила чашку вчера.",
+  "en": "She broke the cup yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "broke",
+    "options": [
+     "broke",
+     "has broken",
+     "break",
+     "had broken"
+    ]
+   },
+   {
+    "correct": "the cup",
+    "options": [
+     "the cup",
+     "a cup"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "just now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Мы прочитали это вчера.",
+  "en": "We read it yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "read",
+    "options": [
+     "read",
+     "have read",
+     "have readed",
+     "did read"
+    ]
+   },
+   {
+    "correct": "it",
+    "options": [
+     "it",
+     "this"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "already."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он забыл книгу вчера.",
+  "en": "He forgot the book yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "forgot",
+    "options": [
+     "forgot",
+     "has forgotten",
+     "forget",
+     "have forgotten"
+    ]
+   },
+   {
+    "correct": "the book",
+    "options": [
+     "the book",
+     "a book"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "yet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Я купил машину вчера.",
+  "en": "I bought a car yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "bought",
+    "options": [
+     "bought",
+     "have bought",
+     "buy",
+     "had bought"
+    ]
+   },
+   {
+    "correct": "a car",
+    "options": [
+     "a car",
+     "the car"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "already."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она съела завтрак вчера.",
+  "en": "She ate breakfast yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "ate",
+    "options": [
+     "ate",
+     "has eaten",
+     "eat",
+     "have eaten"
+    ]
+   },
+   {
+    "correct": "breakfast",
+    "options": [
+     "breakfast",
+     "the breakfast"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "just."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Они пошли туда вчера.",
+  "en": "They went there yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "She",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "went",
+    "options": [
+     "went",
+     "have gone",
+     "go",
+     "has gone"
+    ]
+   },
+   {
+    "correct": "there",
+    "options": [
+     "there",
+     "here"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "already."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он уже позвонил им?",
+  "en": "Has he already called them?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Has",
+    "options": [
+     "Has",
+     "Have",
+     "Did",
+     "Does"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "they",
+     "you",
+     "we"
+    ]
+   },
+   {
+    "correct": "already called",
+    "options": [
+     "already called",
+     "just call",
+     "ever called",
+     "already call"
+    ]
+   },
+   {
+    "correct": "them?",
+    "options": [
+     "them?",
+     "him?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он только что написал отчет.",
+  "en": "He has just written the report.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "You",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "did",
+     "was"
+    ]
+   },
+   {
+    "correct": "just written",
+    "options": [
+     "just written",
+     "just wrote",
+     "already written",
+     "ever written"
+    ]
+   },
+   {
+    "correct": "the report.",
+    "options": [
+     "the report.",
+     "a report.",
+     "the reports."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Я потерял ключи вчера.",
+  "en": "I lost the keys yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "lost",
+    "options": [
+     "lost",
+     "have lost",
+     "did lose"
+    ]
+   },
+   {
+    "correct": "the keys yesterday.",
+    "options": [
+     "the keys yesterday.",
+     "the keys yet.",
+     "the keys already."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Ты когда-нибудь читал эту книгу?",
+  "en": "Have you ever read this book?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have",
+    "options": [
+     "Have",
+     "Has",
+     "Did",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "ever read",
+    "options": [
+     "ever read",
+     "never read",
+     "just read",
+     "already read"
+    ]
+   },
+   {
+    "correct": "this book?",
+    "options": [
+     "this book?",
+     "this book.",
+     "that book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она купила продукты вчера.",
+  "en": "She bought groceries yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "bought",
+    "options": [
+     "bought",
+     "has bought",
+     "did buy"
+    ]
+   },
+   {
+    "correct": "groceries yesterday.",
+    "options": [
+     "groceries yesterday.",
+     "groceries already.",
+     "groceries yet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Они еще не съели завтрак.",
+  "en": "They haven't eaten breakfast yet.",
+  "alternatives": [
+   "They have not eaten breakfast yet."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "haven't",
+    "options": [
+     "haven't",
+     "hasn't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "eaten",
+    "options": [
+     "eaten",
+     "ate",
+     "eat"
+    ]
+   },
+   {
+    "correct": "breakfast yet.",
+    "options": [
+     "breakfast yet.",
+     "breakfast already.",
+     "breakfast just."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он забыл письмо вчера.",
+  "en": "He forgot the letter yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "forgot",
+    "options": [
+     "forgot",
+     "has forgotten",
+     "did forget"
+    ]
+   },
+   {
+    "correct": "the letter yesterday.",
+    "options": [
+     "the letter yesterday.",
+     "the letter yet.",
+     "the letter already."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она уже разбила тарелку.",
+  "en": "She has already broken the plate.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "has already broken",
+    "options": [
+     "has already broken",
+     "has broken",
+     "broke",
+     "did break"
+    ]
+   },
+   {
+    "correct": "the plate.",
+    "options": [
+     "the plate.",
+     "a plate."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Ты видел его вчера?",
+  "en": "Did you see him yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Have",
+     "Has"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "saw",
+     "seen"
+    ]
+   },
+   {
+    "correct": "him yesterday?",
+    "options": [
+     "him yesterday?",
+     "him yet?",
+     "him already?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Я никогда не забывал ключи.",
+  "en": "I have never forgotten the keys.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have never forgotten",
+    "options": [
+     "have never forgotten",
+     "forgot",
+     "have forgotten"
+    ]
+   },
+   {
+    "correct": "the keys.",
+    "options": [
+     "the keys.",
+     "my keys."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он прочитал эту книгу вчера.",
+  "en": "He read this book yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "read",
+    "options": [
+     "read",
+     "has read",
+     "did read"
+    ]
+   },
+   {
+    "correct": "this book yesterday.",
+    "options": [
+     "this book yesterday.",
+     "this book already.",
+     "this book yet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она только что позвонила мне.",
+  "en": "She has just called me.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has just called",
+    "options": [
+     "has just called",
+     "called",
+     "did call"
+    ]
+   },
+   {
+    "correct": "me.",
+    "options": [
+     "me.",
+     "him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Я только что закончил работу.",
+  "en": "I have just finished work.",
+  "alternatives": [
+   "I've just finished work."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "had"
+    ]
+   },
+   {
+    "correct": "just",
+    "options": [
+     "just",
+     "already",
+     "yet"
+    ]
+   },
+   {
+    "correct": "finished work.",
+    "options": [
+     "finished work.",
+     "finish work.",
+     "finishing work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он уже написал письмо.",
+  "en": "He has already written the letter.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "had"
+    ]
+   },
+   {
+    "correct": "already",
+    "options": [
+     "already",
+     "just",
+     "ever"
+    ]
+   },
+   {
+    "correct": "written the letter.",
+    "options": [
+     "written the letter.",
+     "wrote the letter.",
+     "write the letter."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Они еще не пошли домой.",
+  "en": "They haven't gone home yet.",
+  "alternatives": [
+   "They have not gone home yet."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "haven't",
+    "options": [
+     "haven't",
+     "hasn't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "gone",
+    "options": [
+     "gone",
+     "go",
+     "went"
+    ]
+   },
+   {
+    "correct": "home yet.",
+    "options": [
+     "home yet.",
+     "home already.",
+     "home just."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он купил продукты вчера.",
+  "en": "He bought groceries yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "bought",
+    "options": [
+     "bought",
+     "has bought",
+     "have bought"
+    ]
+   },
+   {
+    "correct": "groceries yesterday.",
+    "options": [
+     "groceries yesterday.",
+     "groceries already.",
+     "groceries yet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Я никогда не забывал свои ключи.",
+  "en": "I have never forgotten my keys.",
+  "alternatives": [
+   "I've never forgotten my keys."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "had"
+    ]
+   },
+   {
+    "correct": "never",
+    "options": [
+     "never",
+     "ever",
+     "already"
+    ]
+   },
+   {
+    "correct": "forgotten my keys.",
+    "options": [
+     "forgotten my keys.",
+     "forgot my keys.",
+     "forget my keys."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он потерял телефон вчера.",
+  "en": "He lost his phone yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "lost",
+    "options": [
+     "lost",
+     "has lost",
+     "have lost"
+    ]
+   },
+   {
+    "correct": "his phone yesterday.",
+    "options": [
+     "his phone yesterday.",
+     "his phone already.",
+     "his phone just."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она уже купила новую машину.",
+  "en": "She has already bought a new car.",
+  "alternatives": [
+   "She's already bought a new car."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "had"
+    ]
+   },
+   {
+    "correct": "already",
+    "options": [
+     "already",
+     "just",
+     "yet"
+    ]
+   },
+   {
+    "correct": "bought a new car.",
+    "options": [
+     "bought a new car.",
+     "buy a new car.",
+     "buys a new car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Мы сделали это вчера.",
+  "en": "We did it yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "did",
+    "options": [
+     "did",
+     "have done",
+     "has done"
+    ]
+   },
+   {
+    "correct": "it yesterday.",
+    "options": [
+     "it yesterday.",
+     "it already.",
+     "it just."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она еще не приготовила завтрак.",
+  "en": "She hasn't cooked breakfast yet.",
+  "alternatives": [
+   "She has not cooked breakfast yet."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "hasn't",
+    "options": [
+     "hasn't",
+     "haven't",
+     "did"
+    ]
+   },
+   {
+    "correct": "cooked",
+    "options": [
+     "cooked",
+     "cook",
+     "cooking"
+    ]
+   },
+   {
+    "correct": "breakfast yet.",
+    "options": [
+     "breakfast yet.",
+     "breakfast."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Вы уже видели этот фильм?",
+  "en": "Have you already seen this movie?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have",
+    "options": [
+     "Have",
+     "Has",
+     "Did"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "already",
+    "options": [
+     "already",
+     "just",
+     "ever"
+    ]
+   },
+   {
+    "correct": "seen this movie?",
+    "options": [
+     "seen this movie?",
+     "saw this movie?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он только что сломал мою ручку.",
+  "en": "He has just broken my pen.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "did"
+    ]
+   },
+   {
+    "correct": "just",
+    "options": [
+     "just",
+     "already",
+     "never"
+    ]
+   },
+   {
+    "correct": "broken my pen.",
+    "options": [
+     "broken my pen.",
+     "broke my pen."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Я никогда не забывал свои вещи.",
+  "en": "I have never forgotten my things.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "did"
+    ]
+   },
+   {
+    "correct": "never",
+    "options": [
+     "never",
+     "just",
+     "already"
+    ]
+   },
+   {
+    "correct": "forgotten my things.",
+    "options": [
+     "forgotten my things.",
+     "forgot my things."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она ушла домой вчера.",
+  "en": "She went home yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "has"
+    ]
+   },
+   {
+    "correct": "went",
+    "options": [
+     "went",
+     "has gone"
+    ]
+   },
+   {
+    "correct": "home yesterday.",
+    "options": [
+     "home yesterday.",
+     "home yet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Мы съели яблоко вчера.",
+  "en": "We ate an apple yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "have"
+    ]
+   },
+   {
+    "correct": "ate",
+    "options": [
+     "ate",
+     "have eaten"
+    ]
+   },
+   {
+    "correct": "an apple yesterday.",
+    "options": [
+     "an apple yesterday.",
+     "an apple already."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он закончил работу в понедельник.",
+  "en": "He finished work on Monday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "has"
+    ]
+   },
+   {
+    "correct": "finished",
+    "options": [
+     "finished",
+     "has finished"
+    ]
+   },
+   {
+    "correct": "work on Monday.",
+    "options": [
+     "work on Monday.",
+     "work already."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Ты когда-нибудь был в парке?",
+  "en": "Have you ever been to the park?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have",
+    "options": [
+     "Have",
+     "Did"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he"
+    ]
+   },
+   {
+    "correct": "ever",
+    "options": [
+     "ever",
+     "just"
+    ]
+   },
+   {
+    "correct": "been to the park?",
+    "options": [
+     "been to the park?",
+     "gone to the park?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он прочитал эту книгу в прошлом году.",
+  "en": "He read this book last year.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "has"
+    ]
+   },
+   {
+    "correct": "read",
+    "options": [
+     "read",
+     "has read"
+    ]
+   },
+   {
+    "correct": "this book last year.",
+    "options": [
+     "this book last year.",
+     "this book already."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она еще не написала ответ.",
+  "en": "She hasn't written the answer yet.",
+  "alternatives": [
+   "She has not written the answer yet."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "hasn't",
+    "options": [
+     "hasn't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "written",
+    "options": [
+     "written",
+     "wrote"
+    ]
+   },
+   {
+    "correct": "the answer yet.",
+    "options": [
+     "the answer yet.",
+     "the answer."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Я купил молоко вчера.",
+  "en": "I bought milk yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "have"
+    ]
+   },
+   {
+    "correct": "bought",
+    "options": [
+     "bought",
+     "have bought"
+    ]
+   },
+   {
+    "correct": "milk yesterday.",
+    "options": [
+     "milk yesterday.",
+     "milk just."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Они позвонили мне вчера.",
+  "en": "They called me yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "have"
+    ]
+   },
+   {
+    "correct": "called",
+    "options": [
+     "called",
+     "have called"
+    ]
+   },
+   {
+    "correct": "me yesterday.",
+    "options": [
+     "me yesterday.",
+     "me already."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он еще не закончил работу.",
+  "en": "He hasn't finished the work yet.",
+  "alternatives": [
+   "He has not finished the work yet."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "hasn't",
+    "options": [
+     "hasn't",
+     "haven't"
+    ]
+   },
+   {
+    "correct": "finished",
+    "options": [
+     "finished",
+     "finish"
+    ]
+   },
+   {
+    "correct": "the work yet.",
+    "options": [
+     "the work yet.",
+     "the job yet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она только что ушла домой.",
+  "en": "She has just gone home.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have"
+    ]
+   },
+   {
+    "correct": "just gone",
+    "options": [
+     "just gone",
+     "already gone",
+     "never gone"
+    ]
+   },
+   {
+    "correct": "home.",
+    "options": [
+     "home.",
+     "away."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Они не видели его вчера.",
+  "en": "They did not see him yesterday.",
+  "alternatives": [
+   "They didn't see him yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "have not",
+     "has not"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "seen"
+    ]
+   },
+   {
+    "correct": "him yesterday.",
+    "options": [
+     "him yesterday.",
+     "him today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Я никогда не ел здесь.",
+  "en": "I have never eaten here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has"
+    ]
+   },
+   {
+    "correct": "never eaten",
+    "options": [
+     "never eaten",
+     "just eaten",
+     "already eaten"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он съел яблоко вчера.",
+  "en": "He ate an apple yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "He has"
+    ]
+   },
+   {
+    "correct": "ate",
+    "options": [
+     "ate",
+     "eaten"
+    ]
+   },
+   {
+    "correct": "an apple",
+    "options": [
+     "an apple",
+     "the apple"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она уже написала отчет.",
+  "en": "She has already written the report.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have"
+    ]
+   },
+   {
+    "correct": "already written",
+    "options": [
+     "already written",
+     "just written",
+     "never written"
+    ]
+   },
+   {
+    "correct": "the report.",
+    "options": [
+     "the report.",
+     "the letter."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она еще не видела его.",
+  "en": "She hasn't seen him yet.",
+  "alternatives": [
+   "She has not seen him yet."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "hasn't",
+    "options": [
+     "hasn't",
+     "haven't"
+    ]
+   },
+   {
+    "correct": "seen",
+    "options": [
+     "seen",
+     "saw"
+    ]
+   },
+   {
+    "correct": "him yet.",
+    "options": [
+     "him yet.",
+     "him today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он сломал ручку вчера.",
+  "en": "He broke the pen yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "He has"
+    ]
+   },
+   {
+    "correct": "broke",
+    "options": [
+     "broke",
+     "broken"
+    ]
+   },
+   {
+    "correct": "the pen",
+    "options": [
+     "the pen",
+     "my pen"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "just."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Ты уже позвонил маме?",
+  "en": "Have you already called mom?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have",
+    "options": [
+     "Have",
+     "Has"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she"
+    ]
+   },
+   {
+    "correct": "already called",
+    "options": [
+     "already called",
+     "just called",
+     "ever called"
+    ]
+   },
+   {
+    "correct": "mom?",
+    "options": [
+     "mom?",
+     "her?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она только что прочитала книгу.",
+  "en": "She has just read the book.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "had"
+    ]
+   },
+   {
+    "correct": "just read",
+    "options": [
+     "just read",
+     "just reads",
+     "just reading"
+    ]
+   },
+   {
+    "correct": "the book.",
+    "options": [
+     "the book.",
+     "a book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Я никогда не видел этот фильм.",
+  "en": "I have never seen this movie.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have never",
+    "options": [
+     "have never",
+     "has never",
+     "did never"
+    ]
+   },
+   {
+    "correct": "seen",
+    "options": [
+     "seen",
+     "saw",
+     "see"
+    ]
+   },
+   {
+    "correct": "this movie.",
+    "options": [
+     "this movie.",
+     "that movie."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Они еще не купили еду.",
+  "en": "They haven't bought food yet.",
+  "alternatives": [
+   "They have not bought food yet."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "haven't",
+    "options": [
+     "haven't",
+     "hasn't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "bought",
+    "options": [
+     "bought",
+     "buy",
+     "buys"
+    ]
+   },
+   {
+    "correct": "food yet.",
+    "options": [
+     "food yet.",
+     "the food yet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он уже сделал домашнюю работу.",
+  "en": "He has already done his homework.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "has already",
+    "options": [
+     "has already",
+     "have already",
+     "did already"
+    ]
+   },
+   {
+    "correct": "done",
+    "options": [
+     "done",
+     "did",
+     "do"
+    ]
+   },
+   {
+    "correct": "his homework.",
+    "options": [
+     "his homework.",
+     "the homework."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он забыл ключи в понедельник.",
+  "en": "He forgot the keys on Monday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "He has"
+    ]
+   },
+   {
+    "correct": "forgot",
+    "options": [
+     "forgot",
+     "has forgotten"
+    ]
+   },
+   {
+    "correct": "the keys on Monday.",
+    "options": [
+     "the keys on Monday.",
+     "the keys yet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Мы купили продукты в субботу.",
+  "en": "We bought food on Saturday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "We have"
+    ]
+   },
+   {
+    "correct": "bought",
+    "options": [
+     "bought",
+     "have bought"
+    ]
+   },
+   {
+    "correct": "food on Saturday.",
+    "options": [
+     "food on Saturday.",
+     "food already."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она потеряла кошелек вчера.",
+  "en": "She lost her wallet yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "She has"
+    ]
+   },
+   {
+    "correct": "lost",
+    "options": [
+     "lost",
+     "has lost"
+    ]
+   },
+   {
+    "correct": "her wallet yesterday.",
+    "options": [
+     "her wallet yesterday.",
+     "her wallet just now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Ты видел этот фильм вчера?",
+  "en": "Did you see that movie yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Have"
+    ]
+   },
+   {
+    "correct": "you see",
+    "options": [
+     "you see",
+     "you seen"
+    ]
+   },
+   {
+    "correct": "that movie yesterday?",
+    "options": [
+     "that movie yesterday?",
+     "that movie ever?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она разбила вазу в среду.",
+  "en": "She broke the vase on Wednesday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "She has"
+    ]
+   },
+   {
+    "correct": "broke",
+    "options": [
+     "broke",
+     "has broken"
+    ]
+   },
+   {
+    "correct": "the vase on Wednesday.",
+    "options": [
+     "the vase on Wednesday.",
+     "the vase already."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Я прочитал эту книгу в прошлом месяце.",
+  "en": "I read this book last month.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "I have"
+    ]
+   },
+   {
+    "correct": "read",
+    "options": [
+     "read",
+     "have read"
+    ]
+   },
+   {
+    "correct": "this book last month.",
+    "options": [
+     "this book last month.",
+     "this book already."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Я уже закончил работу.",
+  "en": "I have already finished work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "had",
+     "do"
+    ]
+   },
+   {
+    "correct": "already finished",
+    "options": [
+     "already finished",
+     "just finished",
+     "never finished",
+     "finished"
+    ]
+   },
+   {
+    "correct": "work.",
+    "options": [
+     "work.",
+     "the work.",
+     "my work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он только что купил молоко.",
+  "en": "He has just bought milk.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "had",
+     "is"
+    ]
+   },
+   {
+    "correct": "just bought",
+    "options": [
+     "just bought",
+     "already bought",
+     "never bought",
+     "bought"
+    ]
+   },
+   {
+    "correct": "milk.",
+    "options": [
+     "milk.",
+     "the milk.",
+     "some milk."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Я потерял телефон вчера.",
+  "en": "I lost my phone yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "lost",
+    "options": [
+     "lost",
+     "have lost",
+     "did lose",
+     "had lost"
+    ]
+   },
+   {
+    "correct": "my phone",
+    "options": [
+     "my phone",
+     "the phone",
+     "a phone"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "just now.",
+     "already."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она видела этот фильм вчера.",
+  "en": "She saw this film yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "saw",
+    "options": [
+     "saw",
+     "has seen",
+     "seen",
+     "did see"
+    ]
+   },
+   {
+    "correct": "this film",
+    "options": [
+     "this film",
+     "the film",
+     "a film"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "already.",
+     "just.",
+     "ever."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он уже прочитал эту книгу.",
+  "en": "He has already read this book.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "did",
+     "was"
+    ]
+   },
+   {
+    "correct": "already read",
+    "options": [
+     "already read",
+     "just read",
+     "never read",
+     "read"
+    ]
+   },
+   {
+    "correct": "this book.",
+    "options": [
+     "this book.",
+     "the book.",
+     "a book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Они никогда не делали это.",
+  "en": "They have never done it.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "do",
+     "did"
+    ]
+   },
+   {
+    "correct": "never done",
+    "options": [
+     "never done",
+     "ever done",
+     "just done",
+     "already done"
+    ]
+   },
+   {
+    "correct": "it.",
+    "options": [
+     "it.",
+     "that.",
+     "this."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Вы купили продукты в субботу?",
+  "en": "Did you buy food on Saturday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Have",
+     "Has",
+     "Do"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "buy food",
+    "options": [
+     "buy food",
+     "bought food",
+     "have bought food"
+    ]
+   },
+   {
+    "correct": "on Saturday?",
+    "options": [
+     "on Saturday?",
+     "already?",
+     "just now?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Я съел яблоко вчера.",
+  "en": "I ate an apple yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "ate",
+    "options": [
+     "ate",
+     "have eaten",
+     "eat",
+     "eaten"
+    ]
+   },
+   {
+    "correct": "an apple",
+    "options": [
+     "an apple",
+     "the apple",
+     "some apple"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "just now.",
+     "already."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Она еще не написала письмо.",
+  "en": "She has not written the letter yet.",
+  "alternatives": [
+   "She hasn't written the letter yet."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "has not",
+    "options": [
+     "has not",
+     "have not",
+     "did not",
+     "was not"
+    ]
+   },
+   {
+    "correct": "written the letter",
+    "options": [
+     "written the letter",
+     "wrote the letter",
+     "write the letter"
+    ]
+   },
+   {
+    "correct": "yet.",
+    "options": [
+     "yet.",
+     "already.",
+     "just.",
+     "ever."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он забыл книгу в понедельник.",
+  "en": "He forgot the book on Monday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "forgot",
+    "options": [
+     "forgot",
+     "has forgotten",
+     "have forgotten",
+     "forget"
+    ]
+   },
+   {
+    "correct": "the book",
+    "options": [
+     "the book",
+     "a book",
+     "my book"
+    ]
+   },
+   {
+    "correct": "on Monday.",
+    "options": [
+     "on Monday.",
+     "already.",
+     "just now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Он съел завтрак в восемь утра.",
+  "en": "He ate breakfast at eight a.m.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "He has"
+    ]
+   },
+   {
+    "correct": "ate",
+    "options": [
+     "ate",
+     "has eaten",
+     "eaten"
+    ]
+   },
+   {
+    "correct": "breakfast at eight a.m.",
+    "options": [
+     "breakfast at eight a.m.",
+     "breakfast yet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Ты когда-нибудь разбивал тарелку?",
+  "en": "Have you ever broken a plate?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have",
+    "options": [
+     "Have",
+     "Has",
+     "Did"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "ever",
+    "options": [
+     "ever",
+     "never",
+     "just"
+    ]
+   },
+   {
+    "correct": "broken a plate?",
+    "options": [
+     "broken a plate?",
+     "broke a plate?",
+     "break a plate?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Они только что купили машину.",
+  "en": "They have just bought a car.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has"
+    ]
+   },
+   {
+    "correct": "just",
+    "options": [
+     "just",
+     "already",
+     "yet"
+    ]
+   },
+   {
+    "correct": "bought a car.",
+    "options": [
+     "bought a car.",
+     "buy a car.",
+     "bought car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect",
+  "ru": "Вы когда-нибудь видели этот фильм?",
+  "en": "Have you ever seen this movie?",
+  "alternatives": [
+   "Have you ever seen this film?"
+  ],
+  "slots": [
+   {
+    "correct": "Have",
+    "options": [
+     "Have",
+     "Has",
+     "Do",
+     "Did"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "ever",
+    "options": [
+     "ever",
+     "never",
+     "just",
+     "already"
+    ]
+   },
+   {
+    "correct": "seen",
+    "options": [
+     "seen",
+     "see",
+     "saw",
+     "seeing"
+    ]
+   },
+   {
+    "correct": "this movie?",
+    "options": [
+     "this movie?",
+     "that movie?"
+    ]
+   }
+  ]
+ }
+]

@@ -1,0 +1,3260 @@
+[
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты нагреешь лед, он тает.",
+  "en": "If you heat ice, it melts.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If he",
+     "If they"
+    ]
+   },
+   {
+    "correct": "heat",
+    "options": [
+     "heat",
+     "heats",
+     "will heat"
+    ]
+   },
+   {
+    "correct": "ice, it",
+    "options": [
+     "ice, it",
+     "ice, they",
+     "ice, we"
+    ]
+   },
+   {
+    "correct": "melts.",
+    "options": [
+     "melts.",
+     "melt.",
+     "will melt."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если идет дождь, трава становится мокрой.",
+  "en": "If it rains, the grass becomes wet.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If it",
+    "options": [
+     "If it",
+     "If you",
+     "If they"
+    ]
+   },
+   {
+    "correct": "rains,",
+    "options": [
+     "rains,",
+     "rain,",
+     "will rain,"
+    ]
+   },
+   {
+    "correct": "the grass",
+    "options": [
+     "the grass",
+     "it",
+     "they"
+    ]
+   },
+   {
+    "correct": "becomes wet.",
+    "options": [
+     "becomes wet.",
+     "become wet.",
+     "will become wet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Вода закипает, если ты нагреваешь её.",
+  "en": "Water boils if you heat it.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Water",
+    "options": [
+     "Water",
+     "The water",
+     "It"
+    ]
+   },
+   {
+    "correct": "boils",
+    "options": [
+     "boils",
+     "boil",
+     "will boil"
+    ]
+   },
+   {
+    "correct": "if you heat it.",
+    "options": [
+     "if you heat it.",
+     "if you will heat it.",
+     "if you heats it."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Ты устаешь, если много работаешь.",
+  "en": "You get tired if you work a lot.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You get tired",
+    "options": [
+     "You get tired",
+     "You will get tired",
+     "You got tired"
+    ]
+   },
+   {
+    "correct": "if you",
+    "options": [
+     "if you",
+     "if he",
+     "if they"
+    ]
+   },
+   {
+    "correct": "work a lot.",
+    "options": [
+     "work a lot.",
+     "works a lot.",
+     "will work a lot."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Свет гаснет, если ты выключаешь кнопку.",
+  "en": "The light goes out if you switch it off.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The light",
+    "options": [
+     "The light",
+     "Light",
+     "It"
+    ]
+   },
+   {
+    "correct": "goes out",
+    "options": [
+     "goes out",
+     "go out",
+     "will go out"
+    ]
+   },
+   {
+    "correct": "if you switch it off.",
+    "options": [
+     "if you switch it off.",
+     "if you switches it off.",
+     "if you will switch it off."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если пойдет дождь, я останусь дома.",
+  "en": "If it rains, I will stay at home.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If it",
+    "options": [
+     "If it",
+     "If you",
+     "If we"
+    ]
+   },
+   {
+    "correct": "rains,",
+    "options": [
+     "rains,",
+     "rain,",
+     "will rain,"
+    ]
+   },
+   {
+    "correct": "I will stay at home.",
+    "options": [
+     "I will stay at home.",
+     "I stay at home.",
+     "I stayed at home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты придешь, мы поможем тебе.",
+  "en": "If you come, we will help you.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If he",
+     "If they"
+    ]
+   },
+   {
+    "correct": "come,",
+    "options": [
+     "come,",
+     "comes,",
+     "will come,"
+    ]
+   },
+   {
+    "correct": "we will help you.",
+    "options": [
+     "we will help you.",
+     "we help you.",
+     "we helped you."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если я закончу работу, я куплю еду.",
+  "en": "If I finish work, I will buy food.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If he",
+     "If she"
+    ]
+   },
+   {
+    "correct": "finish",
+    "options": [
+     "finish",
+     "finishes",
+     "will finish"
+    ]
+   },
+   {
+    "correct": "work, I will buy food.",
+    "options": [
+     "work, I will buy food.",
+     "work, I buy food.",
+     "work, I bought food."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Я позвоню тебе, если увижу его.",
+  "en": "I will call you if I see him.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will call you",
+    "options": [
+     "I will call you",
+     "I call you",
+     "I am calling you"
+    ]
+   },
+   {
+    "correct": "if I",
+    "options": [
+     "if I",
+     "if he",
+     "if she"
+    ]
+   },
+   {
+    "correct": "see him.",
+    "options": [
+     "see him.",
+     "will see him.",
+     "sees him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Мы пойдем гулять, если ты попросишь.",
+  "en": "We will go for a walk if you ask.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We will go for a walk",
+    "options": [
+     "We will go for a walk",
+     "We go for a walk",
+     "We went for a walk"
+    ]
+   },
+   {
+    "correct": "if you",
+    "options": [
+     "if you",
+     "if he",
+     "if she"
+    ]
+   },
+   {
+    "correct": "ask.",
+    "options": [
+     "ask.",
+     "asks.",
+     "will ask."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты придешь, мы пойдем в кино.",
+  "en": "If you come, we will go to the cinema.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If he",
+     "If she"
+    ]
+   },
+   {
+    "correct": "come,",
+    "options": [
+     "come,",
+     "comes,",
+     "will come,"
+    ]
+   },
+   {
+    "correct": "we will go to the cinema.",
+    "options": [
+     "we will go to the cinema.",
+     "we go to the cinema.",
+     "we went to the cinema."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Я помогу тебе, если ты попросишь.",
+  "en": "I will help you if you ask.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will help you",
+    "options": [
+     "I will help you",
+     "I help you"
+    ]
+   },
+   {
+    "correct": "if you ask.",
+    "options": [
+     "if you ask.",
+     "if you will ask."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Ты покупаешь еду, если идешь в магазин.",
+  "en": "You buy food if you go to the store.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You buy food",
+    "options": [
+     "You buy food",
+     "You will buy food"
+    ]
+   },
+   {
+    "correct": "if you go",
+    "options": [
+     "if you go",
+     "if you will go"
+    ]
+   },
+   {
+    "correct": "to the store.",
+    "options": [
+     "to the store.",
+     "to the shop."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты закончишь работу, ты пойдешь домой.",
+  "en": "If you finish work, you will go home.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you finish",
+    "options": [
+     "If you finish",
+     "If you will finish"
+    ]
+   },
+   {
+    "correct": "work, you will go home.",
+    "options": [
+     "work, you will go home.",
+     "work, you go home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Мы пойдем в кино, если ты придешь.",
+  "en": "We will go to the cinema if you come.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We will go to the cinema",
+    "options": [
+     "We will go to the cinema",
+     "We go to the cinema"
+    ]
+   },
+   {
+    "correct": "if you come.",
+    "options": [
+     "if you come.",
+     "if you will come."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты работаешь много, ты устаешь.",
+  "en": "If you work a lot, you get tired.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you work",
+    "options": [
+     "If you work",
+     "If you will work"
+    ]
+   },
+   {
+    "correct": "a lot, you get tired.",
+    "options": [
+     "a lot, you get tired.",
+     "a lot, you will get tired."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Я куплю это, если ты попросишь.",
+  "en": "I will buy it if you ask.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will buy it",
+    "options": [
+     "I will buy it",
+     "I buy it"
+    ]
+   },
+   {
+    "correct": "if you ask.",
+    "options": [
+     "if you ask.",
+     "if you will ask."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты придешь, я буду рад.",
+  "en": "If you come, I will be happy.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If you will"
+    ]
+   },
+   {
+    "correct": "come,",
+    "options": [
+     "come,",
+     "will come,"
+    ]
+   },
+   {
+    "correct": "I will be",
+    "options": [
+     "I will be",
+     "I am",
+     "I be"
+    ]
+   },
+   {
+    "correct": "happy.",
+    "options": [
+     "happy.",
+     "glad."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Я позвоню тебе, если буду дома.",
+  "en": "I will call you if I am home.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will call you",
+    "options": [
+     "I will call you",
+     "I call you"
+    ]
+   },
+   {
+    "correct": "if I",
+    "options": [
+     "if I",
+     "if I will"
+    ]
+   },
+   {
+    "correct": "am",
+    "options": [
+     "am",
+     "will be"
+    ]
+   },
+   {
+    "correct": "home.",
+    "options": [
+     "home.",
+     "at home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты увидишь ее, скажи мне.",
+  "en": "If you see her, tell me.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If you will"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "will see"
+    ]
+   },
+   {
+    "correct": "her, tell me.",
+    "options": [
+     "her, tell me.",
+     "her, call me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты работаешь усердно, ты получаешь деньги.",
+  "en": "If you work hard, you get money.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If you will"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "will work"
+    ]
+   },
+   {
+    "correct": "hard, you",
+    "options": [
+     "hard, you",
+     "hard, you will"
+    ]
+   },
+   {
+    "correct": "get money.",
+    "options": [
+     "get money.",
+     "earn money."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты идешь в магазин, ты покупаешь хлеб.",
+  "en": "If you go to the shop, you buy bread.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If you will"
+    ]
+   },
+   {
+    "correct": "go",
+    "options": [
+     "go",
+     "will go"
+    ]
+   },
+   {
+    "correct": "to the shop, you",
+    "options": [
+     "to the shop, you",
+     "to the shop, you will"
+    ]
+   },
+   {
+    "correct": "buy bread.",
+    "options": [
+     "buy bread.",
+     "get bread."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если я увижу его, я спрошу.",
+  "en": "If I see him, I will ask.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If I will"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "will see"
+    ]
+   },
+   {
+    "correct": "him, I will",
+    "options": [
+     "him, I will",
+     "him, I"
+    ]
+   },
+   {
+    "correct": "ask.",
+    "options": [
+     "ask.",
+     "call."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Мы пойдем домой, если закончим работу.",
+  "en": "We will go home if we finish work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We will go",
+    "options": [
+     "We will go",
+     "We go"
+    ]
+   },
+   {
+    "correct": "home if we",
+    "options": [
+     "home if we",
+     "home if we will"
+    ]
+   },
+   {
+    "correct": "finish",
+    "options": [
+     "finish",
+     "will finish"
+    ]
+   },
+   {
+    "correct": "work.",
+    "options": [
+     "work.",
+     "the work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Я буду рад, если ты придешь.",
+  "en": "I will be happy if you come.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will be happy",
+    "options": [
+     "I will be happy",
+     "I am happy"
+    ]
+   },
+   {
+    "correct": "if you",
+    "options": [
+     "if you",
+     "if you will"
+    ]
+   },
+   {
+    "correct": "come.",
+    "options": [
+     "come.",
+     "will come."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты спросишь, я помогу.",
+  "en": "If you ask, I will help.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If you will"
+    ]
+   },
+   {
+    "correct": "ask,",
+    "options": [
+     "ask,",
+     "will ask,"
+    ]
+   },
+   {
+    "correct": "I will",
+    "options": [
+     "I will",
+     "I"
+    ]
+   },
+   {
+    "correct": "help.",
+    "options": [
+     "help.",
+     "help you."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если идет дождь, цветы растут.",
+  "en": "If it rains, flowers grow.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If it",
+    "options": [
+     "If it",
+     "If they",
+     "If she",
+     "If we"
+    ]
+   },
+   {
+    "correct": "rains,",
+    "options": [
+     "rains,",
+     "rain,",
+     "rained,",
+     "will rain,"
+    ]
+   },
+   {
+    "correct": "flowers",
+    "options": [
+     "flowers",
+     "the flower",
+     "it",
+     "they"
+    ]
+   },
+   {
+    "correct": "grow.",
+    "options": [
+     "grow.",
+     "grows.",
+     "grew.",
+     "will grow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты не придешь, я позвоню.",
+  "en": "If you do not come, I will call.",
+  "alternatives": [
+   "If you don't come, I'll call."
+  ],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If he",
+     "If she",
+     "If they"
+    ]
+   },
+   {
+    "correct": "do not",
+    "options": [
+     "do not",
+     "does not",
+     "will not",
+     "did not"
+    ]
+   },
+   {
+    "correct": "come,",
+    "options": [
+     "come,",
+     "comes,",
+     "came,",
+     "will come,"
+    ]
+   },
+   {
+    "correct": "I will",
+    "options": [
+     "I will",
+     "I do",
+     "I did",
+     "I can"
+    ]
+   },
+   {
+    "correct": "call.",
+    "options": [
+     "call.",
+     "calls.",
+     "called.",
+     "calling."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты покупаешь хлеб, ты идешь домой.",
+  "en": "If you buy bread, you go home.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If he",
+     "If she",
+     "If they"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buys",
+     "bought",
+     "will buy"
+    ]
+   },
+   {
+    "correct": "bread,",
+    "options": [
+     "bread,",
+     "the bread,",
+     "a bread,",
+     "some bread,"
+    ]
+   },
+   {
+    "correct": "you go",
+    "options": [
+     "you go",
+     "you goes",
+     "you went",
+     "you will go"
+    ]
+   },
+   {
+    "correct": "home.",
+    "options": [
+     "home.",
+     "to home.",
+     "at home.",
+     "in home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если я увижу его, я помогу.",
+  "en": "If I see him, I will help.",
+  "alternatives": [
+   "If I see him, I'll help."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If he",
+     "If she",
+     "If we"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "sees",
+     "saw",
+     "will see"
+    ]
+   },
+   {
+    "correct": "him,",
+    "options": [
+     "him,",
+     "her,",
+     "them,",
+     "it,"
+    ]
+   },
+   {
+    "correct": "I will",
+    "options": [
+     "I will",
+     "I do",
+     "I am",
+     "I can"
+    ]
+   },
+   {
+    "correct": "help.",
+    "options": [
+     "help.",
+     "helps.",
+     "helped.",
+     "helping."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Ты останешься дома, если пойдет дождь.",
+  "en": "You will stay home if it rains.",
+  "alternatives": [
+   "You'll stay home if it rains."
+  ],
+  "slots": [
+   {
+    "correct": "You will",
+    "options": [
+     "You will",
+     "You do",
+     "You are",
+     "You can"
+    ]
+   },
+   {
+    "correct": "stay",
+    "options": [
+     "stay",
+     "stays",
+     "stayed",
+     "staying"
+    ]
+   },
+   {
+    "correct": "home if it",
+    "options": [
+     "home if it",
+     "at home if it",
+     "home if they",
+     "home if we"
+    ]
+   },
+   {
+    "correct": "rains.",
+    "options": [
+     "rains.",
+     "rain.",
+     "rained.",
+     "will rain."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты работаешь усердно, ты закончишь работу.",
+  "en": "If you work hard, you finish work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If he",
+     "If she",
+     "If they"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "works",
+     "worked",
+     "will work"
+    ]
+   },
+   {
+    "correct": "hard,",
+    "options": [
+     "hard,",
+     "well,",
+     "fast,",
+     "slow,"
+    ]
+   },
+   {
+    "correct": "you finish",
+    "options": [
+     "you finish",
+     "you finishes",
+     "you finished",
+     "you will finish"
+    ]
+   },
+   {
+    "correct": "work.",
+    "options": [
+     "work.",
+     "the work.",
+     "a work.",
+     "some work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты позвонишь, я буду дома.",
+  "en": "If you call, I will be home.",
+  "alternatives": [
+   "If you call, I'll be home."
+  ],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If he",
+     "If she",
+     "If they"
+    ]
+   },
+   {
+    "correct": "call,",
+    "options": [
+     "call,",
+     "calls,",
+     "called,",
+     "will call,"
+    ]
+   },
+   {
+    "correct": "I will",
+    "options": [
+     "I will",
+     "I do",
+     "I am",
+     "I can"
+    ]
+   },
+   {
+    "correct": "be home.",
+    "options": [
+     "be home.",
+     "am home.",
+     "was home.",
+     "is home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты спросишь, я помогу тебе.",
+  "en": "If you ask, I will help you.",
+  "alternatives": [
+   "If you ask, I'll help you."
+  ],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If he",
+     "If she",
+     "If they"
+    ]
+   },
+   {
+    "correct": "ask,",
+    "options": [
+     "ask,",
+     "asks,",
+     "asked,",
+     "will ask,"
+    ]
+   },
+   {
+    "correct": "I will",
+    "options": [
+     "I will",
+     "I do",
+     "I am",
+     "I can"
+    ]
+   },
+   {
+    "correct": "help you.",
+    "options": [
+     "help you.",
+     "helps you.",
+     "helped you.",
+     "helping you."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты придешь, я помогу тебе.",
+  "en": "If you come, I will help you.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If he"
+    ]
+   },
+   {
+    "correct": "come,",
+    "options": [
+     "come,",
+     "comes,",
+     "will come,"
+    ]
+   },
+   {
+    "correct": "I will help",
+    "options": [
+     "I will help",
+     "I help",
+     "I would help"
+    ]
+   },
+   {
+    "correct": "you.",
+    "options": [
+     "you.",
+     "him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Я останусь дома, если пойдет дождь.",
+  "en": "I will stay at home if it rains.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will stay",
+    "options": [
+     "I will stay",
+     "I stay",
+     "I would stay"
+    ]
+   },
+   {
+    "correct": "at home",
+    "options": [
+     "at home",
+     "in home"
+    ]
+   },
+   {
+    "correct": "if it",
+    "options": [
+     "if it",
+     "if he"
+    ]
+   },
+   {
+    "correct": "rains.",
+    "options": [
+     "rains.",
+     "rain.",
+     "will rain."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты работаешь, ты получаешь деньги.",
+  "en": "If you work, you get money.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If he"
+    ]
+   },
+   {
+    "correct": "work,",
+    "options": [
+     "work,",
+     "works,",
+     "will work,"
+    ]
+   },
+   {
+    "correct": "you get",
+    "options": [
+     "you get",
+     "you will get",
+     "you getting"
+    ]
+   },
+   {
+    "correct": "money.",
+    "options": [
+     "money.",
+     "food."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты звонишь, я отвечаю.",
+  "en": "If you call, I answer.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If he"
+    ]
+   },
+   {
+    "correct": "call,",
+    "options": [
+     "call,",
+     "calls,",
+     "called,"
+    ]
+   },
+   {
+    "correct": "I answer.",
+    "options": [
+     "I answer.",
+     "I will answer.",
+     "I answered."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты видишь его, спроси меня.",
+  "en": "If you see him, ask me.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If he"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "sees",
+     "will see"
+    ]
+   },
+   {
+    "correct": "him,",
+    "options": [
+     "him,",
+     "her,"
+    ]
+   },
+   {
+    "correct": "ask me.",
+    "options": [
+     "ask me.",
+     "will ask me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Они помогут тебе, если ты попросишь.",
+  "en": "They will help you if you ask.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They will help",
+    "options": [
+     "They will help",
+     "They help",
+     "They helped"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "me"
+    ]
+   },
+   {
+    "correct": "if you",
+    "options": [
+     "if you",
+     "if they"
+    ]
+   },
+   {
+    "correct": "ask.",
+    "options": [
+     "ask.",
+     "asks.",
+     "will ask."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если вода горячая, она кипит.",
+  "en": "If the water is hot, it boils.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If the water",
+    "options": [
+     "If the water",
+     "If you"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "will be"
+    ]
+   },
+   {
+    "correct": "hot,",
+    "options": [
+     "hot,",
+     "cold,"
+    ]
+   },
+   {
+    "correct": "it boils.",
+    "options": [
+     "it boils.",
+     "it will boil."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Ты придешь, если я позвоню?",
+  "en": "Will you come if I call?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will you",
+    "options": [
+     "Will you",
+     "Do you"
+    ]
+   },
+   {
+    "correct": "come",
+    "options": [
+     "come",
+     "comes"
+    ]
+   },
+   {
+    "correct": "if I",
+    "options": [
+     "if I",
+     "if you"
+    ]
+   },
+   {
+    "correct": "call?",
+    "options": [
+     "call?",
+     "will call?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если я закончу, я пойду гулять.",
+  "en": "If I finish, I will go for a walk.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If you"
+    ]
+   },
+   {
+    "correct": "finish,",
+    "options": [
+     "finish,",
+     "finishes,",
+     "will finish,"
+    ]
+   },
+   {
+    "correct": "I will go",
+    "options": [
+     "I will go",
+     "I go"
+    ]
+   },
+   {
+    "correct": "for a walk.",
+    "options": [
+     "for a walk.",
+     "home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты нагреваешь воду, она кипит.",
+  "en": "If you heat water, it boils.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If he",
+     "If they"
+    ]
+   },
+   {
+    "correct": "heat",
+    "options": [
+     "heat",
+     "heats",
+     "will heat"
+    ]
+   },
+   {
+    "correct": "water, it",
+    "options": [
+     "water, it",
+     "water, they"
+    ]
+   },
+   {
+    "correct": "boils.",
+    "options": [
+     "boils.",
+     "boil.",
+     "will boil."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Цветы растут, если идет дождь.",
+  "en": "Flowers grow if it rains.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Flowers",
+    "options": [
+     "Flowers",
+     "The flower"
+    ]
+   },
+   {
+    "correct": "grow",
+    "options": [
+     "grow",
+     "grows",
+     "will grow"
+    ]
+   },
+   {
+    "correct": "if it",
+    "options": [
+     "if it",
+     "if they"
+    ]
+   },
+   {
+    "correct": "rains.",
+    "options": [
+     "rains.",
+     "rain.",
+     "will rain."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если пойдет дождь, я не пойду гулять.",
+  "en": "If it rains, I will not go out.",
+  "alternatives": [
+   "If it rains, I won't go out."
+  ],
+  "slots": [
+   {
+    "correct": "If it",
+    "options": [
+     "If it",
+     "If they"
+    ]
+   },
+   {
+    "correct": "rains,",
+    "options": [
+     "rains,",
+     "rain,",
+     "will rain,"
+    ]
+   },
+   {
+    "correct": "I will not",
+    "options": [
+     "I will not",
+     "I won't",
+     "I do not"
+    ]
+   },
+   {
+    "correct": "go out.",
+    "options": [
+     "go out.",
+     "goes out."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Я помогу тебе, если ты придешь.",
+  "en": "I will help you if you come.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will",
+    "options": [
+     "I will",
+     "I do"
+    ]
+   },
+   {
+    "correct": "help you",
+    "options": [
+     "help you",
+     "helps you"
+    ]
+   },
+   {
+    "correct": "if you",
+    "options": [
+     "if you",
+     "if he"
+    ]
+   },
+   {
+    "correct": "come.",
+    "options": [
+     "come.",
+     "comes.",
+     "will come."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты купишь хлеб, мы поедим.",
+  "en": "If you buy bread, we will eat.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If he"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buys",
+     "will buy"
+    ]
+   },
+   {
+    "correct": "bread, we",
+    "options": [
+     "bread, we",
+     "bread, they"
+    ]
+   },
+   {
+    "correct": "will eat.",
+    "options": [
+     "will eat.",
+     "eat."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты видишь его, позвони ему.",
+  "en": "If you see him, call him.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If he"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "sees",
+     "will see"
+    ]
+   },
+   {
+    "correct": "him, call",
+    "options": [
+     "him, call",
+     "him, calls"
+    ]
+   },
+   {
+    "correct": "him.",
+    "options": [
+     "him.",
+     "me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если я увижу её, я спрошу её.",
+  "en": "If I see her, I will ask her.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If she"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "sees",
+     "will see"
+    ]
+   },
+   {
+    "correct": "her, I",
+    "options": [
+     "her, I",
+     "her, she"
+    ]
+   },
+   {
+    "correct": "will ask",
+    "options": [
+     "will ask",
+     "ask"
+    ]
+   },
+   {
+    "correct": "her.",
+    "options": [
+     "her.",
+     "him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если он работает усердно, он заканчивает вовремя.",
+  "en": "If he works hard, he finishes on time.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If he",
+    "options": [
+     "If he",
+     "If you"
+    ]
+   },
+   {
+    "correct": "works",
+    "options": [
+     "works",
+     "work"
+    ]
+   },
+   {
+    "correct": "hard, he",
+    "options": [
+     "hard, he",
+     "hard, you"
+    ]
+   },
+   {
+    "correct": "finishes",
+    "options": [
+     "finishes",
+     "finish"
+    ]
+   },
+   {
+    "correct": "on time.",
+    "options": [
+     "on time.",
+     "at time."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Я куплю эту вещь, если ты попросишь.",
+  "en": "I will buy this thing if you ask.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will",
+    "options": [
+     "I will",
+     "I do"
+    ]
+   },
+   {
+    "correct": "buy this",
+    "options": [
+     "buy this",
+     "buy that"
+    ]
+   },
+   {
+    "correct": "thing if",
+    "options": [
+     "thing if",
+     "things if"
+    ]
+   },
+   {
+    "correct": "you ask.",
+    "options": [
+     "you ask.",
+     "you asks."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты нагреваешь металл, он становится горячим.",
+  "en": "If you heat metal, it becomes hot.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you heat",
+    "options": [
+     "If you heat",
+     "If you will heat",
+     "If you heated"
+    ]
+   },
+   {
+    "correct": "metal,",
+    "options": [
+     "metal,",
+     "the metal,",
+     "a metal,"
+    ]
+   },
+   {
+    "correct": "it becomes hot.",
+    "options": [
+     "it becomes hot.",
+     "it will become hot.",
+     "it became hot."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Масло тает, если ты нагреваешь его.",
+  "en": "Butter melts if you heat it.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Butter melts",
+    "options": [
+     "Butter melts",
+     "Butter will melt",
+     "Butter melted"
+    ]
+   },
+   {
+    "correct": "if you heat it.",
+    "options": [
+     "if you heat it.",
+     "if you will heat it.",
+     "if you heated it."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты не придешь, я не помогу.",
+  "en": "If you do not come, I will not help.",
+  "alternatives": [
+   "If you don't come, I won't help."
+  ],
+  "slots": [
+   {
+    "correct": "If you do not come,",
+    "options": [
+     "If you do not come,",
+     "If you will not come,",
+     "If you did not come,"
+    ]
+   },
+   {
+    "correct": "I will not help.",
+    "options": [
+     "I will not help.",
+     "I do not help.",
+     "I would not help."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты звонишь мне, я всегда отвечаю.",
+  "en": "If you call me, I always answer.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you call",
+    "options": [
+     "If you call",
+     "If you will call",
+     "If you called"
+    ]
+   },
+   {
+    "correct": "me,",
+    "options": [
+     "me,",
+     "him,",
+     "them,"
+    ]
+   },
+   {
+    "correct": "I always answer.",
+    "options": [
+     "I always answer.",
+     "I will always answer.",
+     "I always answered."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты увидишь его, позвони мне.",
+  "en": "If you see him, call me.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you see him,",
+    "options": [
+     "If you see him,",
+     "If you will see him,",
+     "If you saw him,"
+    ]
+   },
+   {
+    "correct": "call me.",
+    "options": [
+     "call me.",
+     "will call me.",
+     "called me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Мы останемся дома, если пойдет дождь.",
+  "en": "We will stay at home if it rains.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We will stay at home",
+    "options": [
+     "We will stay at home",
+     "We stay at home",
+     "We would stay at home"
+    ]
+   },
+   {
+    "correct": "if it rains.",
+    "options": [
+     "if it rains.",
+     "if it will rain.",
+     "if it rained."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты покупаешь одежду, ты тратишь деньги.",
+  "en": "If you buy clothes, you spend money.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you buy clothes,",
+    "options": [
+     "If you buy clothes,",
+     "If you will buy clothes,",
+     "If you bought clothes,"
+    ]
+   },
+   {
+    "correct": "you spend money.",
+    "options": [
+     "you spend money.",
+     "you will spend money.",
+     "you spent money."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты попросишь, я помогу тебе.",
+  "en": "If you ask, I will help you.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you ask,",
+    "options": [
+     "If you ask,",
+     "If you will ask,",
+     "If you asked,"
+    ]
+   },
+   {
+    "correct": "I will help you.",
+    "options": [
+     "I will help you.",
+     "I help you.",
+     "I would help you."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Я куплю это, если ты придешь.",
+  "en": "I will buy this if you come.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will buy this",
+    "options": [
+     "I will buy this",
+     "I buy this",
+     "I would buy this"
+    ]
+   },
+   {
+    "correct": "if you come.",
+    "options": [
+     "if you come.",
+     "if you will come.",
+     "if you came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты идешь быстро, ты устаешь.",
+  "en": "If you walk fast, you get tired.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you walk fast,",
+    "options": [
+     "If you walk fast,",
+     "If you will walk fast,",
+     "If you walked fast,"
+    ]
+   },
+   {
+    "correct": "you get tired.",
+    "options": [
+     "you get tired.",
+     "you will get tired.",
+     "you got tired."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Ты получишь это, если придешь вовремя.",
+  "en": "You will get it if you come on time.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You will get it",
+    "options": [
+     "You will get it",
+     "You get it",
+     "You would get it"
+    ]
+   },
+   {
+    "correct": "if you come on time.",
+    "options": [
+     "if you come on time.",
+     "if you will come on time.",
+     "if you came on time."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты пойдешь в магазин, купи хлеб.",
+  "en": "If you go to the shop, buy bread.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you go",
+    "options": [
+     "If you go",
+     "If you will go",
+     "If you went"
+    ]
+   },
+   {
+    "correct": "to the shop,",
+    "options": [
+     "to the shop,",
+     "to shop,"
+    ]
+   },
+   {
+    "correct": "buy bread.",
+    "options": [
+     "buy bread.",
+     "will buy bread."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Мы закончим работу, если ты поможешь.",
+  "en": "We will finish work if you help.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We will finish",
+    "options": [
+     "We will finish",
+     "We finish"
+    ]
+   },
+   {
+    "correct": "work if you help.",
+    "options": [
+     "work if you help.",
+     "work if you will help."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты увидишь ее, спроси ее.",
+  "en": "If you see her, ask her.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you see",
+    "options": [
+     "If you see",
+     "If you will see"
+    ]
+   },
+   {
+    "correct": "her, ask her.",
+    "options": [
+     "her, ask her.",
+     "her, will ask her."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Я буду дома, если ты позвонишь.",
+  "en": "I will be home if you call.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will be",
+    "options": [
+     "I will be",
+     "I am"
+    ]
+   },
+   {
+    "correct": "home if you call.",
+    "options": [
+     "home if you call.",
+     "home if you will call."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если идет дождь, я остаюсь дома.",
+  "en": "If it rains, I stay at home.",
+  "alternatives": [
+   "If it rains, I stay home."
+  ],
+  "slots": [
+   {
+    "correct": "If it rains,",
+    "options": [
+     "If it rains,",
+     "If it will rain,"
+    ]
+   },
+   {
+    "correct": "I stay at home.",
+    "options": [
+     "I stay at home.",
+     "I will stay at home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты придешь, я куплю это.",
+  "en": "If you come, I will buy it.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you come,",
+    "options": [
+     "If you come,",
+     "If you will come,"
+    ]
+   },
+   {
+    "correct": "I will buy it.",
+    "options": [
+     "I will buy it.",
+     "I buy it."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Ты устанешь, если будешь много работать.",
+  "en": "You will get tired if you work a lot.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You will get",
+    "options": [
+     "You will get",
+     "You get"
+    ]
+   },
+   {
+    "correct": "tired if you work a lot.",
+    "options": [
+     "tired if you work a lot.",
+     "tired if you will work a lot."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты увидишь его, я буду рад.",
+  "en": "If you see him, I will be glad.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you see him,",
+    "options": [
+     "If you see him,",
+     "If you will see him,"
+    ]
+   },
+   {
+    "correct": "I will be glad.",
+    "options": [
+     "I will be glad.",
+     "I am glad."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты закончишь, я пойду домой.",
+  "en": "If you finish, I will go home.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you finish,",
+    "options": [
+     "If you finish,",
+     "If you will finish,"
+    ]
+   },
+   {
+    "correct": "I will go home.",
+    "options": [
+     "I will go home.",
+     "I go home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Я пойду в кино, если ты попросишь.",
+  "en": "I will go to the cinema if you ask.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will go",
+    "options": [
+     "I will go",
+     "I go"
+    ]
+   },
+   {
+    "correct": "to the cinema if you ask.",
+    "options": [
+     "to the cinema if you ask.",
+     "to the cinema if you will ask."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Я помогу, если ты попросишь.",
+  "en": "I will help if you ask.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will",
+    "options": [
+     "I will",
+     "I"
+    ]
+   },
+   {
+    "correct": "help",
+    "options": [
+     "help",
+     "helped",
+     "helps"
+    ]
+   },
+   {
+    "correct": "if you",
+    "options": [
+     "if you",
+     "if he"
+    ]
+   },
+   {
+    "correct": "ask.",
+    "options": [
+     "ask.",
+     "asks.",
+     "asked."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Мы закончим, если ты поможешь.",
+  "en": "We will finish if you help.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We will",
+    "options": [
+     "We will",
+     "We"
+    ]
+   },
+   {
+    "correct": "finish",
+    "options": [
+     "finish",
+     "finished"
+    ]
+   },
+   {
+    "correct": "if you",
+    "options": [
+     "if you",
+     "if he"
+    ]
+   },
+   {
+    "correct": "help.",
+    "options": [
+     "help.",
+     "helps.",
+     "helped."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты купишь яблоки, я буду рад.",
+  "en": "If you buy apples, I will be happy.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If he"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buys",
+     "bought"
+    ]
+   },
+   {
+    "correct": "apples, I",
+    "options": [
+     "apples, I",
+     "apples, I will"
+    ]
+   },
+   {
+    "correct": "will be happy.",
+    "options": [
+     "will be happy.",
+     "am happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Я пойду гулять, если ты придешь.",
+  "en": "I will go for a walk if you come.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will",
+    "options": [
+     "I will",
+     "I"
+    ]
+   },
+   {
+    "correct": "go for a walk",
+    "options": [
+     "go for a walk",
+     "went for a walk"
+    ]
+   },
+   {
+    "correct": "if you",
+    "options": [
+     "if you",
+     "if he"
+    ]
+   },
+   {
+    "correct": "come.",
+    "options": [
+     "come.",
+     "comes.",
+     "came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты видишь их, скажи мне.",
+  "en": "If you see them, tell me.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If he"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "sees"
+    ]
+   },
+   {
+    "correct": "them, tell me.",
+    "options": [
+     "them, tell me.",
+     "them, will tell me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Я буду дома, если придешь.",
+  "en": "I will stay if you come.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will stay",
+    "options": [
+     "I will stay",
+     "I stay",
+     "I would stay"
+    ]
+   },
+   {
+    "correct": "if you",
+    "options": [
+     "if you",
+     "if he",
+     "if they"
+    ]
+   },
+   {
+    "correct": "come",
+    "options": [
+     "come",
+     "will come",
+     "came"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Ты устанешь, если будешь работать.",
+  "en": "You will be tired if you work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You will be tired",
+    "options": [
+     "You will be tired",
+     "You are tired",
+     "You were tired"
+    ]
+   },
+   {
+    "correct": "if you",
+    "options": [
+     "if you",
+     "if he",
+     "if they"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "will work",
+     "worked"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Мы будем работать, если поможешь.",
+  "en": "We will work if you help.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We will work",
+    "options": [
+     "We will work",
+     "We work",
+     "We would work"
+    ]
+   },
+   {
+    "correct": "if you",
+    "options": [
+     "if you",
+     "if he",
+     "if they"
+    ]
+   },
+   {
+    "correct": "help",
+    "options": [
+     "help",
+     "will help",
+     "helped"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты пойдешь, я буду ждать.",
+  "en": "If you go, I will wait.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If he"
+    ]
+   },
+   {
+    "correct": "go,",
+    "options": [
+     "go,",
+     "will go,"
+    ]
+   },
+   {
+    "correct": "I will",
+    "options": [
+     "I will",
+     "I"
+    ]
+   },
+   {
+    "correct": "wait.",
+    "options": [
+     "wait.",
+     "waited."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Я буду помогать, если ты попросишь.",
+  "en": "I will help if you ask.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will",
+    "options": [
+     "I will",
+     "I"
+    ]
+   },
+   {
+    "correct": "help",
+    "options": [
+     "help",
+     "helps"
+    ]
+   },
+   {
+    "correct": "if you",
+    "options": [
+     "if you",
+     "if you will"
+    ]
+   },
+   {
+    "correct": "ask.",
+    "options": [
+     "ask.",
+     "asked."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты увидишь её, позвони мне.",
+  "en": "If you see her, call me.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If you will"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "will see"
+    ]
+   },
+   {
+    "correct": "her, call",
+    "options": [
+     "her, call",
+     "her, will call"
+    ]
+   },
+   {
+    "correct": "me.",
+    "options": [
+     "me.",
+     "to me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты купишь хлеб, я буду рад.",
+  "en": "If you buy bread, I will be happy.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If you will"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "will buy"
+    ]
+   },
+   {
+    "correct": "bread, I",
+    "options": [
+     "bread, I",
+     "bread, I will"
+    ]
+   },
+   {
+    "correct": "will be happy.",
+    "options": [
+     "will be happy.",
+     "am happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Я буду работать, если ты поможешь.",
+  "en": "I will work if you help.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will",
+    "options": [
+     "I will",
+     "I"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "works"
+    ]
+   },
+   {
+    "correct": "if you",
+    "options": [
+     "if you",
+     "if you will"
+    ]
+   },
+   {
+    "correct": "help.",
+    "options": [
+     "help.",
+     "helped."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты увидишь его, я буду знать.",
+  "en": "If you see him, I will know.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If you will"
+    ]
+   },
+   {
+    "correct": "see him,",
+    "options": [
+     "see him,",
+     "will see him,"
+    ]
+   },
+   {
+    "correct": "I will",
+    "options": [
+     "I will",
+     "I"
+    ]
+   },
+   {
+    "correct": "know.",
+    "options": [
+     "know.",
+     "knew."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты позвонишь, я отвечу.",
+  "en": "If you call, I will answer.",
+  "alternatives": [
+   "If you call, I'll answer."
+  ],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If you will"
+    ]
+   },
+   {
+    "correct": "call,",
+    "options": [
+     "call,",
+     "called,"
+    ]
+   },
+   {
+    "correct": "I will",
+    "options": [
+     "I will",
+     "I"
+    ]
+   },
+   {
+    "correct": "answer.",
+    "options": [
+     "answer.",
+     "answered."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Я куплю это, если ты придешь вовремя.",
+  "en": "I will buy it if you come on time.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will",
+    "options": [
+     "I will",
+     "I"
+    ]
+   },
+   {
+    "correct": "buy it",
+    "options": [
+     "buy it",
+     "will buy it"
+    ]
+   },
+   {
+    "correct": "if you",
+    "options": [
+     "if you",
+     "if you will"
+    ]
+   },
+   {
+    "correct": "come on time.",
+    "options": [
+     "come on time.",
+     "came on time."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты нагреваешь лед, он тает.",
+  "en": "If you heat ice, it melts.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you heat ice,",
+    "options": [
+     "If you heat ice,",
+     "If you heats ice,",
+     "If you will heat ice,"
+    ]
+   },
+   {
+    "correct": "it melts.",
+    "options": [
+     "it melts.",
+     "it melt.",
+     "it will melt."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты пойдешь туда, я буду ждать.",
+  "en": "If you go there, I will wait.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you go there,",
+    "options": [
+     "If you go there,",
+     "If you will go there,",
+     "If you goes there,"
+    ]
+   },
+   {
+    "correct": "I will wait.",
+    "options": [
+     "I will wait.",
+     "I wait.",
+     "I am wait."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты не придешь, я не поеду.",
+  "en": "If you do not come, I will not go.",
+  "alternatives": [
+   "If you don't come, I won't go."
+  ],
+  "slots": [
+   {
+    "correct": "If you do not come,",
+    "options": [
+     "If you do not come,",
+     "If you will not come,",
+     "If you not come,"
+    ]
+   },
+   {
+    "correct": "I will not go.",
+    "options": [
+     "I will not go.",
+     "I do not go.",
+     "I go not."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты закончишь рано, я приду.",
+  "en": "If you finish early, I will come.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you finish early,",
+    "options": [
+     "If you finish early,",
+     "If you will finish early,",
+     "If you finishes early,"
+    ]
+   },
+   {
+    "correct": "I will come.",
+    "options": [
+     "I will come.",
+     "I come.",
+     "I am come."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Растения умирают, если ты не поливаешь их.",
+  "en": "Plants die if you do not water them.",
+  "alternatives": [
+   "Plants die if you don't water them."
+  ],
+  "slots": [
+   {
+    "correct": "Plants die",
+    "options": [
+     "Plants die",
+     "Plants will die",
+     "Plants dies"
+    ]
+   },
+   {
+    "correct": "if you do not water them.",
+    "options": [
+     "if you do not water them.",
+     "if you will not water them.",
+     "if you not water them."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты купишь молоко, я буду счастлив.",
+  "en": "If you buy milk, I will be happy.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you buy milk,",
+    "options": [
+     "If you buy milk,",
+     "If you will buy milk,",
+     "If you buys milk,"
+    ]
+   },
+   {
+    "correct": "I will be happy.",
+    "options": [
+     "I will be happy.",
+     "I am happy.",
+     "I be happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Я позвоню тебе, если ты останешься дома.",
+  "en": "I will call you if you stay home.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will call you",
+    "options": [
+     "I will call you",
+     "I call you",
+     "I am call you"
+    ]
+   },
+   {
+    "correct": "if you stay home.",
+    "options": [
+     "if you stay home.",
+     "if you will stay home.",
+     "if you stays home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если она пойдет, я помогу.",
+  "en": "If she goes, I will help.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If she goes,",
+    "options": [
+     "If she goes,",
+     "If she go,",
+     "If she will go,"
+    ]
+   },
+   {
+    "correct": "I will help.",
+    "options": [
+     "I will help.",
+     "I help.",
+     "I am help."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Я не пойду, если ты не придешь.",
+  "en": "I will not go if you do not come.",
+  "alternatives": [
+   "I won't go if you don't come."
+  ],
+  "slots": [
+   {
+    "correct": "I will not go",
+    "options": [
+     "I will not go",
+     "I do not go",
+     "I go not"
+    ]
+   },
+   {
+    "correct": "if you do not come.",
+    "options": [
+     "if you do not come.",
+     "if you will not come.",
+     "if you not come."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты придешь, я буду ждать.",
+  "en": "If you come, I will wait.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If you",
+    "options": [
+     "If you",
+     "If he"
+    ]
+   },
+   {
+    "correct": "come,",
+    "options": [
+     "come,",
+     "will come,"
+    ]
+   },
+   {
+    "correct": "I will wait.",
+    "options": [
+     "I will wait.",
+     "I wait."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditionals_01",
+  "ru": "Если ты придешь, я позвоню тебе.",
+  "en": "If you come, I will call you.",
+  "alternatives": [
+   "If you come, I'll call you."
+  ],
+  "slots": [
+   {
+    "correct": "If you come,",
+    "options": [
+     "If you come,",
+     "If you will come,",
+     "If you came,",
+     "If you are coming,"
+    ]
+   },
+   {
+    "correct": "I will call",
+    "options": [
+     "I will call",
+     "I call",
+     "I would call",
+     "I am calling"
+    ]
+   },
+   {
+    "correct": "you.",
+    "options": [
+     "you.",
+     "me."
+    ]
+   }
+  ]
+ }
+]

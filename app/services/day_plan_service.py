@@ -28,8 +28,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.domain import day_plan as plan_rules
 from app.domain.enums import LearningTrack, WordSource
 from app.domain.models import DayPlan, User
+from app.infrastructure.repositories.constructor import ConstructorRepository
 from app.infrastructure.repositories.day_plans import DayPlanRepository
-from app.infrastructure.repositories.grammar import GrammarRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
 
 
@@ -52,7 +52,7 @@ class DayPlanService:
         self._session = session
         self._plans = DayPlanRepository(session)
         self._words = UserWordRepository(session)
-        self._grammar = GrammarRepository(session)
+        self._constructor = ConstructorRepository(session)
 
     # ---- keeping the pool stocked ----
     #
@@ -136,11 +136,14 @@ class DayPlanService:
         due = await self._words.count_overdue(user.id, track)
         new_words = await self._words.count_new_startable(user.id, track, phrases=False)
         phrases = await self._words.count_new_startable(user.id, track, phrases=True)
-        topic = await self._grammar.active_topic(user.id, track)
-        # A topic in progress means grammar cards exist to draw; without one the
-        # slot is left empty rather than filled from somewhere else, because
-        # grammar is a sequence and borrowing from the next topic would teach
-        # it out of order.
+        # Ask the repository that will actually serve the card. Booking slots
+        # off one notion of "active topic" while the card comes from another
+        # lets the plan promise grammar the constructor cannot deliver, and the
+        # slots then tick off empty all day.
+        topic = await self._constructor.active_topic(user.id)
+        # Without a topic the slot is left empty rather than filled from
+        # somewhere else, because grammar is a sequence and borrowing from the
+        # next topic would teach it out of order.
         grammar = plan_rules.GRAMMAR_PER_DAY if topic is not None else 0
         return plan_rules.compose(
             size=size,

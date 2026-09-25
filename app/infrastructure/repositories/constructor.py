@@ -104,9 +104,14 @@ class ConstructorRepository:
             UserGrammarTopic.user_id == user_id,
             UserGrammarTopic.passed_at.isnot(None),
         )
+        # A topic with no phrases is skipped rather than blocking the ones
+        # behind it. Without this, the first topic awaiting content stops the
+        # curriculum dead: the plan keeps booking grammar slots, every card
+        # comes back empty, and grammar disappears with nothing in the log.
+        has_phrases = select(GrammarPhrase.id).where(GrammarPhrase.topic_id == GrammarTopic.id)
         q = (
             select(GrammarTopic)
-            .where(GrammarTopic.id.notin_(passed))
+            .where(GrammarTopic.id.notin_(passed), has_phrases.exists())
             .order_by(GrammarTopic.position.asc(), GrammarTopic.id.asc())
             .limit(1)
         )

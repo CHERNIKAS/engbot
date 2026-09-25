@@ -1,0 +1,3064 @@
+[
+ {
+  "topic": "prepositions_basic",
+  "ru": "Я буду дома в пять часов",
+  "en": "I am at home at five o'clock",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I am",
+    "options": [
+     "I am",
+     "He is",
+     "They are"
+    ]
+   },
+   {
+    "correct": "at home",
+    "options": [
+     "at home",
+     "in home",
+     "to home"
+    ]
+   },
+   {
+    "correct": "at five o'clock",
+    "options": [
+     "at five o'clock",
+     "in five o'clock",
+     "on five o'clock"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Она родилась в мае",
+  "en": "She was born in May",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She was born",
+    "options": [
+     "She was born",
+     "She is born",
+     "She born"
+    ]
+   },
+   {
+    "correct": "in May",
+    "options": [
+     "in May",
+     "on May",
+     "at May"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Встретимся в понедельник",
+  "en": "Let's meet on Monday",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Let's meet",
+    "options": [
+     "Let's meet",
+     "We meet",
+     "Meet us"
+    ]
+   },
+   {
+    "correct": "on Monday",
+    "options": [
+     "on Monday",
+     "in Monday",
+     "at Monday"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Книга лежит на столе",
+  "en": "The book is on the table",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The book is",
+    "options": [
+     "The book is",
+     "The book are",
+     "The book be"
+    ]
+   },
+   {
+    "correct": "on the table",
+    "options": [
+     "on the table",
+     "in the table",
+     "at the table"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Он работает в школе",
+  "en": "He works at school",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He works",
+    "options": [
+     "He works",
+     "He work",
+     "He working"
+    ]
+   },
+   {
+    "correct": "at school",
+    "options": [
+     "at school",
+     "in school",
+     "on school"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Я нашел это в коробке",
+  "en": "I found it in the box",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I found it",
+    "options": [
+     "I found it",
+     "I find it",
+     "I finding it"
+    ]
+   },
+   {
+    "correct": "in the box",
+    "options": [
+     "in the box",
+     "on the box",
+     "at the box"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мы идем домой",
+  "en": "We are going home",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We are going",
+    "options": [
+     "We are going",
+     "We go",
+     "We goes"
+    ]
+   },
+   {
+    "correct": "home",
+    "options": [
+     "home",
+     "to home",
+     "at home"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Они приехали из Лондона",
+  "en": "They came from London",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They came",
+    "options": [
+     "They came",
+     "They come",
+     "They are coming"
+    ]
+   },
+   {
+    "correct": "from London",
+    "options": [
+     "from London",
+     "to London",
+     "in London"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Он спит ночью",
+  "en": "He sleeps at night",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He sleeps",
+    "options": [
+     "He sleeps",
+     "He sleep",
+     "He sleeping"
+    ]
+   },
+   {
+    "correct": "at night",
+    "options": [
+     "at night",
+     "in night",
+     "on night"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Она была на работе в понедельник",
+  "en": "She was at work on Monday",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She was",
+    "options": [
+     "She was",
+     "She is",
+     "She were"
+    ]
+   },
+   {
+    "correct": "at work",
+    "options": [
+     "at work",
+     "in work",
+     "to work"
+    ]
+   },
+   {
+    "correct": "on Monday",
+    "options": [
+     "on Monday",
+     "in Monday",
+     "at Monday"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мы поехали в школу на автобусе",
+  "en": "We went to school by bus",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We went",
+    "options": [
+     "We went",
+     "We go",
+     "We are going"
+    ]
+   },
+   {
+    "correct": "to school",
+    "options": [
+     "to school",
+     "at school",
+     "in school"
+    ]
+   },
+   {
+    "correct": "by bus",
+    "options": [
+     "by bus",
+     "on bus",
+     "in bus"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Он работает в комнате",
+  "en": "He works in the room",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He works",
+    "options": [
+     "He works",
+     "He work",
+     "He working"
+    ]
+   },
+   {
+    "correct": "in the room",
+    "options": [
+     "in the room",
+     "at the room",
+     "on the room"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мой день рождения в мае.",
+  "en": "My birthday is in May.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My birthday is",
+    "options": [
+     "My birthday is",
+     "My birthday are",
+     "My birthday were"
+    ]
+   },
+   {
+    "correct": "in",
+    "options": [
+     "in",
+     "on",
+     "at",
+     "to"
+    ]
+   },
+   {
+    "correct": "May.",
+    "options": [
+     "May.",
+     "Monday.",
+     "night."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Увидимся в понедельник.",
+  "en": "See you on Monday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "See you",
+    "options": [
+     "See you",
+     "I see",
+     "We is"
+    ]
+   },
+   {
+    "correct": "on",
+    "options": [
+     "on",
+     "in",
+     "at",
+     "from"
+    ]
+   },
+   {
+    "correct": "Monday.",
+    "options": [
+     "Monday.",
+     "May.",
+     "five."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Встреча в пять часов.",
+  "en": "The meeting is at five.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The meeting is",
+    "options": [
+     "The meeting is",
+     "The meeting are",
+     "The meeting was"
+    ]
+   },
+   {
+    "correct": "at",
+    "options": [
+     "at",
+     "on",
+     "in",
+     "to"
+    ]
+   },
+   {
+    "correct": "five.",
+    "options": [
+     "five.",
+     "Monday.",
+     "May."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Кот спит на столе.",
+  "en": "The cat is on the table.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The cat is",
+    "options": [
+     "The cat is",
+     "The cat are",
+     "The cat be"
+    ]
+   },
+   {
+    "correct": "on",
+    "options": [
+     "on",
+     "in",
+     "at",
+     "to"
+    ]
+   },
+   {
+    "correct": "the table.",
+    "options": [
+     "the table.",
+     "the room.",
+     "home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Он сейчас в комнате.",
+  "en": "He is in the room.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He is",
+    "options": [
+     "He is",
+     "He are",
+     "He were"
+    ]
+   },
+   {
+    "correct": "in",
+    "options": [
+     "in",
+     "on",
+     "at",
+     "to"
+    ]
+   },
+   {
+    "correct": "the room.",
+    "options": [
+     "the room.",
+     "the table.",
+     "school."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Я буду дома ночью.",
+  "en": "I will be at home at night.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will be",
+    "options": [
+     "I will be",
+     "I am",
+     "I was"
+    ]
+   },
+   {
+    "correct": "at",
+    "options": [
+     "at",
+     "in",
+     "on",
+     "to"
+    ]
+   },
+   {
+    "correct": "home at",
+    "options": [
+     "home at",
+     "home in",
+     "home on"
+    ]
+   },
+   {
+    "correct": "night.",
+    "options": [
+     "night.",
+     "May.",
+     "Monday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мы едем в школу.",
+  "en": "We are going to school.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We are going",
+    "options": [
+     "We are going",
+     "We go",
+     "We is going"
+    ]
+   },
+   {
+    "correct": "to",
+    "options": [
+     "to",
+     "in",
+     "on",
+     "at"
+    ]
+   },
+   {
+    "correct": "school.",
+    "options": [
+     "school.",
+     "home.",
+     "the room."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Письмо лежит в коробке.",
+  "en": "The letter is in the box.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The letter is",
+    "options": [
+     "The letter is",
+     "The letter are",
+     "The letter was"
+    ]
+   },
+   {
+    "correct": "in",
+    "options": [
+     "in",
+     "on",
+     "at",
+     "to"
+    ]
+   },
+   {
+    "correct": "the box.",
+    "options": [
+     "the box.",
+     "the table.",
+     "school."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Я еду на работу на машине.",
+  "en": "I am going to work in a car.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I am going",
+    "options": [
+     "I am going",
+     "I go",
+     "I went"
+    ]
+   },
+   {
+    "correct": "to",
+    "options": [
+     "to",
+     "at",
+     "in",
+     "on"
+    ]
+   },
+   {
+    "correct": "work in a",
+    "options": [
+     "work in a",
+     "work on a",
+     "work at a"
+    ]
+   },
+   {
+    "correct": "car.",
+    "options": [
+     "car.",
+     "bus.",
+     "table."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Дети в школе в выходные.",
+  "en": "Children are at school at the weekend.",
+  "alternatives": [
+   "Kids are at school at the weekend."
+  ],
+  "slots": [
+   {
+    "correct": "Children are",
+    "options": [
+     "Children are",
+     "Children is",
+     "Children be"
+    ]
+   },
+   {
+    "correct": "at",
+    "options": [
+     "at",
+     "in",
+     "on",
+     "to"
+    ]
+   },
+   {
+    "correct": "school at the",
+    "options": [
+     "school at the",
+     "school in the",
+     "school on the"
+    ]
+   },
+   {
+    "correct": "weekend.",
+    "options": [
+     "weekend.",
+     "Monday.",
+     "May."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Он пришел из школы.",
+  "en": "He came from school.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He came",
+    "options": [
+     "He came",
+     "He comes",
+     "He is coming"
+    ]
+   },
+   {
+    "correct": "from",
+    "options": [
+     "from",
+     "to",
+     "in",
+     "at"
+    ]
+   },
+   {
+    "correct": "school.",
+    "options": [
+     "school.",
+     "the room.",
+     "the box."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Я работаю по утрам.",
+  "en": "I work in the morning.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I work",
+    "options": [
+     "I work",
+     "I works",
+     "I am work"
+    ]
+   },
+   {
+    "correct": "in the",
+    "options": [
+     "in the",
+     "on the",
+     "at the"
+    ]
+   },
+   {
+    "correct": "morning.",
+    "options": [
+     "morning.",
+     "night.",
+     "weekend."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Урок начинается в пять часов",
+  "en": "The lesson starts at five o'clock",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The lesson starts",
+    "options": [
+     "The lesson start",
+     "The lesson starts",
+     "The lesson started"
+    ]
+   },
+   {
+    "correct": "at",
+    "options": [
+     "at",
+     "in",
+     "on",
+     "to"
+    ]
+   },
+   {
+    "correct": "five o'clock",
+    "options": [
+     "five o'clock",
+     "five morning",
+     "five Monday"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мой друг приедет в мае",
+  "en": "My friend arrives in May",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friend arrives",
+    "options": [
+     "My friend arrive",
+     "My friend arrives",
+     "My friend arrived"
+    ]
+   },
+   {
+    "correct": "in",
+    "options": [
+     "in",
+     "at",
+     "on",
+     "from"
+    ]
+   },
+   {
+    "correct": "May",
+    "options": [
+     "May",
+     "Monday",
+     "night"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Я пойду в парк в понедельник",
+  "en": "I will go on Monday",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will go",
+    "options": [
+     "I go",
+     "I will go",
+     "I went"
+    ]
+   },
+   {
+    "correct": "on",
+    "options": [
+     "on",
+     "in",
+     "at",
+     "to"
+    ]
+   },
+   {
+    "correct": "Monday",
+    "options": [
+     "Monday",
+     "May",
+     "night"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Ключи лежат на столе",
+  "en": "The keys are on the table",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The keys are",
+    "options": [
+     "The keys is",
+     "The keys are",
+     "The keys be"
+    ]
+   },
+   {
+    "correct": "on",
+    "options": [
+     "on",
+     "in",
+     "at",
+     "to"
+    ]
+   },
+   {
+    "correct": "the table",
+    "options": [
+     "the table",
+     "the box",
+     "the room"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Они встретились в комнате",
+  "en": "They met in the room",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They met",
+    "options": [
+     "They meet",
+     "They met",
+     "They meets"
+    ]
+   },
+   {
+    "correct": "in",
+    "options": [
+     "in",
+     "on",
+     "at",
+     "to"
+    ]
+   },
+   {
+    "correct": "the room",
+    "options": [
+     "the room",
+     "the table",
+     "the school"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Я буду дома в выходные",
+  "en": "I will be at home at the weekend",
+  "alternatives": [
+   "I will be at home on the weekend"
+  ],
+  "slots": [
+   {
+    "correct": "I will be",
+    "options": [
+     "I am",
+     "I will be",
+     "I was"
+    ]
+   },
+   {
+    "correct": "at",
+    "options": [
+     "at",
+     "in",
+     "on"
+    ]
+   },
+   {
+    "correct": "home",
+    "options": [
+     "home",
+     "school",
+     "work"
+    ]
+   },
+   {
+    "correct": "at the weekend",
+    "options": [
+     "at the weekend",
+     "in the weekend",
+     "on the weekend"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Она идет в школу",
+  "en": "She is going to school",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She is going",
+    "options": [
+     "She go",
+     "She is going",
+     "She went"
+    ]
+   },
+   {
+    "correct": "to",
+    "options": [
+     "to",
+     "in",
+     "at",
+     "on"
+    ]
+   },
+   {
+    "correct": "school",
+    "options": [
+     "school",
+     "home",
+     "the room"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Он вернулся из школы",
+  "en": "He returned from school",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He returned",
+    "options": [
+     "He return",
+     "He returned",
+     "He returns"
+    ]
+   },
+   {
+    "correct": "from",
+    "options": [
+     "from",
+     "to",
+     "in",
+     "at"
+    ]
+   },
+   {
+    "correct": "school",
+    "options": [
+     "school",
+     "the room",
+     "the box"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мы сидим в машине",
+  "en": "We are sitting in the car",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We are sitting",
+    "options": [
+     "We sit",
+     "We are sitting",
+     "We sitted"
+    ]
+   },
+   {
+    "correct": "in",
+    "options": [
+     "in",
+     "on",
+     "at"
+    ]
+   },
+   {
+    "correct": "the car",
+    "options": [
+     "the car",
+     "the table",
+     "the school"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Я родился в 2020 году",
+  "en": "I was born in 2020",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I was born",
+    "options": [
+     "I was born",
+     "I am born",
+     "I born"
+    ]
+   },
+   {
+    "correct": "in 2020",
+    "options": [
+     "in 2020",
+     "on 2020",
+     "at 2020"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Встретимся в пять часов",
+  "en": "Let's meet at five o'clock",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Let's meet",
+    "options": [
+     "Let's meet",
+     "We meet",
+     "Meet"
+    ]
+   },
+   {
+    "correct": "at five o'clock",
+    "options": [
+     "at five o'clock",
+     "in five o'clock",
+     "on five o'clock"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Он читает книгу в комнате",
+  "en": "He reads a book in the room",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He reads a book",
+    "options": [
+     "He reads a book",
+     "He read a book",
+     "He is book"
+    ]
+   },
+   {
+    "correct": "in the room",
+    "options": [
+     "in the room",
+     "on the room",
+     "at the room"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мы встретимся в понедельник утром",
+  "en": "We will meet on Monday morning",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We will meet",
+    "options": [
+     "We will meet",
+     "We meet",
+     "We are meet"
+    ]
+   },
+   {
+    "correct": "on Monday morning",
+    "options": [
+     "on Monday morning",
+     "in Monday morning",
+     "at Monday morning"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Положи ручку на стол",
+  "en": "Put the pen on the table",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Put the pen",
+    "options": [
+     "Put the pen",
+     "Get the pen",
+     "Take the pen"
+    ]
+   },
+   {
+    "correct": "on the table",
+    "options": [
+     "on the table",
+     "in the table",
+     "at the table"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Они не дома в выходные",
+  "en": "They are not at home at the weekend",
+  "alternatives": [
+   "They aren't at home at the weekend"
+  ],
+  "slots": [
+   {
+    "correct": "They are not",
+    "options": [
+     "They are not",
+     "They do not",
+     "They have not"
+    ]
+   },
+   {
+    "correct": "at home",
+    "options": [
+     "at home",
+     "in home",
+     "on home"
+    ]
+   },
+   {
+    "correct": "at the weekend",
+    "options": [
+     "at the weekend",
+     "on the weekend",
+     "in the weekend"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Я еду в школу на автобусе",
+  "en": "I go to school by bus",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I go",
+    "options": [
+     "I go",
+     "I come",
+     "I am"
+    ]
+   },
+   {
+    "correct": "to school",
+    "options": [
+     "to school",
+     "at school",
+     "in school"
+    ]
+   },
+   {
+    "correct": "by bus",
+    "options": [
+     "by bus",
+     "on bus",
+     "in bus"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Он пришел домой из школы",
+  "en": "He came home from school",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He came home",
+    "options": [
+     "He came home",
+     "He go home",
+     "He is home"
+    ]
+   },
+   {
+    "correct": "from school",
+    "options": [
+     "from school",
+     "to school",
+     "at school"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Она работает в мае",
+  "en": "She works in May",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She works",
+    "options": [
+     "She works",
+     "She work",
+     "She working"
+    ]
+   },
+   {
+    "correct": "in May",
+    "options": [
+     "in May",
+     "on May",
+     "at May"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Кот спит в коробке ночью",
+  "en": "The cat sleeps in the box at night",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The cat sleeps",
+    "options": [
+     "The cat sleeps",
+     "The cat sleep",
+     "The cat is sleep"
+    ]
+   },
+   {
+    "correct": "in the box",
+    "options": [
+     "in the box",
+     "on the box",
+     "at the box"
+    ]
+   },
+   {
+    "correct": "at night",
+    "options": [
+     "at night",
+     "in night",
+     "on night"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мой друг на работе",
+  "en": "My friend is at work",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friend is",
+    "options": [
+     "My friend is",
+     "My friend are",
+     "My friend be"
+    ]
+   },
+   {
+    "correct": "at work",
+    "options": [
+     "at work",
+     "in work",
+     "on work"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Он приехал из машины в пять",
+  "en": "He came from the car at five",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He came",
+    "options": [
+     "He came",
+     "He go",
+     "He walk"
+    ]
+   },
+   {
+    "correct": "from the car",
+    "options": [
+     "from the car",
+     "to the car",
+     "in the car"
+    ]
+   },
+   {
+    "correct": "at five",
+    "options": [
+     "at five",
+     "in five",
+     "on five"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Я буду дома в мае",
+  "en": "I will be home in May",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I will be home",
+    "options": [
+     "I will be home",
+     "I am at home",
+     "I stay home"
+    ]
+   },
+   {
+    "correct": "in May",
+    "options": [
+     "in May",
+     "on May",
+     "at May",
+     "to May"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Встретимся в понедельник в пять",
+  "en": "Meet on Monday at five",
+  "alternatives": [
+   "Let us meet on Monday at five"
+  ],
+  "slots": [
+   {
+    "correct": "Meet",
+    "options": [
+     "Meet",
+     "Meets",
+     "Meeting"
+    ]
+   },
+   {
+    "correct": "on Monday",
+    "options": [
+     "on Monday",
+     "in Monday",
+     "at Monday"
+    ]
+   },
+   {
+    "correct": "at five",
+    "options": [
+     "at five",
+     "in five",
+     "on five",
+     "to five"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Кот в коробке утром",
+  "en": "The cat is in the box in the morning",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The cat is",
+    "options": [
+     "The cat is",
+     "The cat was",
+     "The cat be"
+    ]
+   },
+   {
+    "correct": "in the box",
+    "options": [
+     "in the box",
+     "on the box",
+     "at the box"
+    ]
+   },
+   {
+    "correct": "in the morning",
+    "options": [
+     "in the morning",
+     "on the morning",
+     "at the morning"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Они в школе в выходные",
+  "en": "They are at school at the weekend",
+  "alternatives": [
+   "They are at school on the weekend"
+  ],
+  "slots": [
+   {
+    "correct": "They are",
+    "options": [
+     "They are",
+     "They is",
+     "They be"
+    ]
+   },
+   {
+    "correct": "at school",
+    "options": [
+     "at school",
+     "in school",
+     "on school"
+    ]
+   },
+   {
+    "correct": "at the weekend",
+    "options": [
+     "at the weekend",
+     "in the weekend",
+     "on the weekend"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Он идет из школы домой",
+  "en": "He is going from school home",
+  "alternatives": [
+   "He goes from school home"
+  ],
+  "slots": [
+   {
+    "correct": "He is going",
+    "options": [
+     "He is going",
+     "He goes",
+     "He gone"
+    ]
+   },
+   {
+    "correct": "from school",
+    "options": [
+     "from school",
+     "to school",
+     "at school"
+    ]
+   },
+   {
+    "correct": "home",
+    "options": [
+     "home",
+     "to home",
+     "in home"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мы были дома в 2020",
+  "en": "We were at home in 2020",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We were at home",
+    "options": [
+     "We were at home",
+     "We was at home",
+     "We are at home"
+    ]
+   },
+   {
+    "correct": "in 2020",
+    "options": [
+     "in 2020",
+     "on 2020",
+     "at 2020",
+     "to 2020"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Она в машине в пять",
+  "en": "She is in the car at five",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She is",
+    "options": [
+     "She is",
+     "She are",
+     "She be"
+    ]
+   },
+   {
+    "correct": "in the car",
+    "options": [
+     "in the car",
+     "on the car",
+     "at the car"
+    ]
+   },
+   {
+    "correct": "at five",
+    "options": [
+     "at five",
+     "in five",
+     "on five"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Положи книгу на стол в понедельник",
+  "en": "Put the book on the table on Monday",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Put the book",
+    "options": [
+     "Put the book",
+     "Place the book",
+     "Sets the book"
+    ]
+   },
+   {
+    "correct": "on the table",
+    "options": [
+     "on the table",
+     "in the table",
+     "at the table"
+    ]
+   },
+   {
+    "correct": "on Monday",
+    "options": [
+     "on Monday",
+     "in Monday",
+     "at Monday"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Он едет на работу на автобусе",
+  "en": "He goes to work by bus",
+  "alternatives": [
+   "He is going to work by bus"
+  ],
+  "slots": [
+   {
+    "correct": "He goes",
+    "options": [
+     "He goes",
+     "He is go",
+     "He go"
+    ]
+   },
+   {
+    "correct": "to work",
+    "options": [
+     "to work",
+     "at work",
+     "in work"
+    ]
+   },
+   {
+    "correct": "by bus",
+    "options": [
+     "by bus",
+     "on bus",
+     "in bus"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Я работаю по ночам",
+  "en": "I work at night",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I work",
+    "options": [
+     "I work",
+     "I am work",
+     "I works"
+    ]
+   },
+   {
+    "correct": "at night",
+    "options": [
+     "at night",
+     "in night",
+     "on night"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мой друг приехал из школы",
+  "en": "My friend came from school",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friend came",
+    "options": [
+     "My friend came",
+     "My friend comes",
+     "My friend is come"
+    ]
+   },
+   {
+    "correct": "from school",
+    "options": [
+     "from school",
+     "to school",
+     "at school"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Они в школе в понедельник",
+  "en": "They are at school on Monday",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They are at school",
+    "options": [
+     "They are at school",
+     "They is at school",
+     "They be at school"
+    ]
+   },
+   {
+    "correct": "on Monday",
+    "options": [
+     "on Monday",
+     "in Monday",
+     "at Monday"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Я завтракаю в восемь часов",
+  "en": "I have breakfast at eight o'clock",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have breakfast",
+    "options": [
+     "I have breakfast",
+     "I eat breakfast"
+    ]
+   },
+   {
+    "correct": "at",
+    "options": [
+     "at",
+     "in",
+     "on",
+     "to"
+    ]
+   },
+   {
+    "correct": "eight o'clock",
+    "options": [
+     "eight o'clock",
+     "the eight",
+     "eight"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Твой день рождения в мае?",
+  "en": "Is your birthday in May?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is your birthday",
+    "options": [
+     "Is your birthday",
+     "Are your birthday"
+    ]
+   },
+   {
+    "correct": "in",
+    "options": [
+     "in",
+     "on",
+     "at",
+     "to"
+    ]
+   },
+   {
+    "correct": "May?",
+    "options": [
+     "May?",
+     "a May?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Увидимся в эту пятницу",
+  "en": "See you on Friday",
+  "alternatives": [
+   "We will see you on Friday"
+  ],
+  "slots": [
+   {
+    "correct": "See you",
+    "options": [
+     "See you",
+     "We see you"
+    ]
+   },
+   {
+    "correct": "on",
+    "options": [
+     "on",
+     "in",
+     "at",
+     "to"
+    ]
+   },
+   {
+    "correct": "Friday",
+    "options": [
+     "Friday",
+     "a Friday"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Они играют в комнате",
+  "en": "They play in the room",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They play",
+    "options": [
+     "They play",
+     "They are play"
+    ]
+   },
+   {
+    "correct": "in",
+    "options": [
+     "in",
+     "on",
+     "at",
+     "from"
+    ]
+   },
+   {
+    "correct": "the room",
+    "options": [
+     "the room",
+     "a room"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Положи телефон на стол",
+  "en": "Put the phone on the table",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Put the phone",
+    "options": [
+     "Put the phone",
+     "Put a phone"
+    ]
+   },
+   {
+    "correct": "on",
+    "options": [
+     "on",
+     "in",
+     "at",
+     "to"
+    ]
+   },
+   {
+    "correct": "the table",
+    "options": [
+     "the table",
+     "a table"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Он работает в 2020 году",
+  "en": "He works in 2020",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He works",
+    "options": [
+     "He works",
+     "He work"
+    ]
+   },
+   {
+    "correct": "in",
+    "options": [
+     "in",
+     "on",
+     "at",
+     "to"
+    ]
+   },
+   {
+    "correct": "2020",
+    "options": [
+     "2020",
+     "year 2020"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мы идем из школы",
+  "en": "We are coming from school",
+  "alternatives": [
+   "We come from school"
+  ],
+  "slots": [
+   {
+    "correct": "We are coming",
+    "options": [
+     "We are coming",
+     "We come"
+    ]
+   },
+   {
+    "correct": "from",
+    "options": [
+     "from",
+     "to",
+     "in",
+     "at"
+    ]
+   },
+   {
+    "correct": "school",
+    "options": [
+     "school",
+     "the school"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Он едет на работу на машине",
+  "en": "He goes to work by car",
+  "alternatives": [
+   "He goes to work in a car"
+  ],
+  "slots": [
+   {
+    "correct": "He goes",
+    "options": [
+     "He goes",
+     "He go"
+    ]
+   },
+   {
+    "correct": "to",
+    "options": [
+     "to",
+     "in",
+     "on",
+     "at"
+    ]
+   },
+   {
+    "correct": "work by car",
+    "options": [
+     "work by car",
+     "work in a car"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Я не дома в выходные",
+  "en": "I am not at home on weekends",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I am not",
+    "options": [
+     "I am not",
+     "I not"
+    ]
+   },
+   {
+    "correct": "at",
+    "options": [
+     "at",
+     "in",
+     "on"
+    ]
+   },
+   {
+    "correct": "home on weekends",
+    "options": [
+     "home on weekends",
+     "home in weekends"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Она в машине утром",
+  "en": "She is in the car in the morning",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She is",
+    "options": [
+     "She is",
+     "She in"
+    ]
+   },
+   {
+    "correct": "in the car",
+    "options": [
+     "in the car",
+     "on the car"
+    ]
+   },
+   {
+    "correct": "in the morning",
+    "options": [
+     "in the morning",
+     "at the morning",
+     "on the morning"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мы учимся в школе",
+  "en": "We study at school",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We study",
+    "options": [
+     "We study",
+     "We are study"
+    ]
+   },
+   {
+    "correct": "at",
+    "options": [
+     "at",
+     "in",
+     "on"
+    ]
+   },
+   {
+    "correct": "school",
+    "options": [
+     "school",
+     "the school"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Встреча в понедельник.",
+  "en": "The meeting is on Monday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The meeting is",
+    "options": [
+     "The meeting is",
+     "The meeting at",
+     "The meeting in"
+    ]
+   },
+   {
+    "correct": "on Monday.",
+    "options": [
+     "on Monday.",
+     "at Monday.",
+     "in Monday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мы учимся в школе в мае.",
+  "en": "We study at school in May.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We study",
+    "options": [
+     "We study",
+     "We are study",
+     "We studying"
+    ]
+   },
+   {
+    "correct": "at school",
+    "options": [
+     "at school",
+     "in school",
+     "on school"
+    ]
+   },
+   {
+    "correct": "in May.",
+    "options": [
+     "in May.",
+     "at May.",
+     "on May."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мой друг в машине.",
+  "en": "My friend is in the car.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friend is",
+    "options": [
+     "My friend is",
+     "My friend are",
+     "My friend be"
+    ]
+   },
+   {
+    "correct": "in the car.",
+    "options": [
+     "in the car.",
+     "at the car.",
+     "on the car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Я еду в школу.",
+  "en": "I go to school.",
+  "alternatives": [
+   "I am going to school."
+  ],
+  "slots": [
+   {
+    "correct": "I go",
+    "options": [
+     "I go",
+     "I am go",
+     "I going"
+    ]
+   },
+   {
+    "correct": "to school.",
+    "options": [
+     "to school.",
+     "in school.",
+     "at school."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мы были там в 2020 году.",
+  "en": "We were there in 2020.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We were",
+    "options": [
+     "We were",
+     "We was",
+     "We are"
+    ]
+   },
+   {
+    "correct": "there in 2020.",
+    "options": [
+     "there in 2020.",
+     "there at 2020.",
+     "there on 2020."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Ты будешь дома в выходные?",
+  "en": "Will you be at home at the weekend?",
+  "alternatives": [
+   "Will you be at home on the weekend?"
+  ],
+  "slots": [
+   {
+    "correct": "Will you be",
+    "options": [
+     "Will you be",
+     "Are you",
+     "Do you be"
+    ]
+   },
+   {
+    "correct": "at home",
+    "options": [
+     "at home",
+     "in home",
+     "on home"
+    ]
+   },
+   {
+    "correct": "at the weekend?",
+    "options": [
+     "at the weekend?",
+     "in the weekend?",
+     "on the weekend?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Положи это в коробку.",
+  "en": "Put it in the box.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Put it",
+    "options": [
+     "Put it",
+     "Put they",
+     "Put he"
+    ]
+   },
+   {
+    "correct": "in the box.",
+    "options": [
+     "in the box.",
+     "at the box.",
+     "on the box."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Урок начинается в пять.",
+  "en": "The lesson starts at five.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The lesson starts",
+    "options": [
+     "The lesson starts",
+     "The lesson start",
+     "The lesson starting"
+    ]
+   },
+   {
+    "correct": "at five.",
+    "options": [
+     "at five.",
+     "in five.",
+     "on five."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мы работаем в понедельник.",
+  "en": "We work on Monday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We work",
+    "options": [
+     "We work",
+     "We works",
+     "We working"
+    ]
+   },
+   {
+    "correct": "on Monday.",
+    "options": [
+     "on Monday.",
+     "in Monday.",
+     "at Monday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Урок закончится в мае.",
+  "en": "The lesson will end in May.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The lesson will end",
+    "options": [
+     "The lesson will end",
+     "The lesson ends",
+     "The lesson ended"
+    ]
+   },
+   {
+    "correct": "in",
+    "options": [
+     "in",
+     "on",
+     "at"
+    ]
+   },
+   {
+    "correct": "May.",
+    "options": [
+     "May.",
+     "Monday.",
+     "night."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Я буду там в пять часов.",
+  "en": "I will be there at five o'clock.",
+  "alternatives": [
+   "I'll be there at five o'clock."
+  ],
+  "slots": [
+   {
+    "correct": "I will be there",
+    "options": [
+     "I will be there",
+     "I am there",
+     "I was there"
+    ]
+   },
+   {
+    "correct": "at",
+    "options": [
+     "at",
+     "in",
+     "on"
+    ]
+   },
+   {
+    "correct": "five o'clock.",
+    "options": [
+     "five o'clock.",
+     "Monday.",
+     "May."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Моя мама сейчас на работе.",
+  "en": "My mom is at work now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My mom is",
+    "options": [
+     "My mom is",
+     "My mom works",
+     "My mom goes"
+    ]
+   },
+   {
+    "correct": "at",
+    "options": [
+     "at",
+     "in",
+     "on"
+    ]
+   },
+   {
+    "correct": "work now.",
+    "options": [
+     "work now.",
+     "school now.",
+     "home now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Я иду из школы домой.",
+  "en": "I am walking from school home.",
+  "alternatives": [
+   "I'm walking from school home."
+  ],
+  "slots": [
+   {
+    "correct": "I am walking",
+    "options": [
+     "I am walking",
+     "I go",
+     "I came"
+    ]
+   },
+   {
+    "correct": "from",
+    "options": [
+     "from",
+     "to",
+     "at"
+    ]
+   },
+   {
+    "correct": "school home.",
+    "options": [
+     "school home.",
+     "the box home.",
+     "the table home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Они сидят в машине.",
+  "en": "They are sitting in the car.",
+  "alternatives": [
+   "They're sitting in the car."
+  ],
+  "slots": [
+   {
+    "correct": "They are sitting",
+    "options": [
+     "They are sitting",
+     "They sit",
+     "They were sitting"
+    ]
+   },
+   {
+    "correct": "in",
+    "options": [
+     "in",
+     "on",
+     "at"
+    ]
+   },
+   {
+    "correct": "the car.",
+    "options": [
+     "the car.",
+     "the table.",
+     "school."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Ты будешь дома ночью?",
+  "en": "Will you be at home at night?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will you be",
+    "options": [
+     "Will you be",
+     "Are you",
+     "Do you be"
+    ]
+   },
+   {
+    "correct": "at",
+    "options": [
+     "at",
+     "in",
+     "on"
+    ]
+   },
+   {
+    "correct": "home at night?",
+    "options": [
+     "home at night?",
+     "home in night?",
+     "home on night?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мы едем в школу на автобусе.",
+  "en": "We go to school by bus.",
+  "alternatives": [
+   "We are going to school by bus."
+  ],
+  "slots": [
+   {
+    "correct": "We go",
+    "options": [
+     "We go",
+     "We are",
+     "We went"
+    ]
+   },
+   {
+    "correct": "to",
+    "options": [
+     "to",
+     "at",
+     "in"
+    ]
+   },
+   {
+    "correct": "school by bus.",
+    "options": [
+     "school by bus.",
+     "school on bus.",
+     "school in bus."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Она родилась в 2020 году.",
+  "en": "She was born in 2020.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She was born",
+    "options": [
+     "She was born",
+     "She is born",
+     "She born"
+    ]
+   },
+   {
+    "correct": "in",
+    "options": [
+     "in",
+     "on",
+     "at"
+    ]
+   },
+   {
+    "correct": "2020.",
+    "options": [
+     "2020.",
+     "Monday.",
+     "five o'clock."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Увидимся в выходные.",
+  "en": "See you at the weekend.",
+  "alternatives": [
+   "Let's see each other at the weekend."
+  ],
+  "slots": [
+   {
+    "correct": "See you",
+    "options": [
+     "See you",
+     "We see",
+     "Meet you"
+    ]
+   },
+   {
+    "correct": "at",
+    "options": [
+     "at",
+     "on",
+     "in"
+    ]
+   },
+   {
+    "correct": "the weekend.",
+    "options": [
+     "the weekend.",
+     "the morning.",
+     "the May."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Я родился в мае",
+  "en": "I was born in May",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I was born",
+    "options": [
+     "I was born",
+     "I am born",
+     "I will born"
+    ]
+   },
+   {
+    "correct": "in",
+    "options": [
+     "in",
+     "on",
+     "at"
+    ]
+   },
+   {
+    "correct": "May",
+    "options": [
+     "May",
+     "Monday",
+     "five o'clock"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мы встретимся в понедельник",
+  "en": "We will meet on Monday",
+  "alternatives": [
+   "We'll meet on Monday"
+  ],
+  "slots": [
+   {
+    "correct": "We will meet",
+    "options": [
+     "We will meet",
+     "We meet",
+     "We are meeting"
+    ]
+   },
+   {
+    "correct": "on",
+    "options": [
+     "on",
+     "in",
+     "at"
+    ]
+   },
+   {
+    "correct": "Monday",
+    "options": [
+     "Monday",
+     "May",
+     "the morning"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Кот спит в коробке",
+  "en": "The cat sleeps in the box",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The cat sleeps",
+    "options": [
+     "The cat sleeps",
+     "The cat sleep",
+     "The cat is sleep"
+    ]
+   },
+   {
+    "correct": "in",
+    "options": [
+     "in",
+     "on",
+     "at"
+    ]
+   },
+   {
+    "correct": "the box",
+    "options": [
+     "the box",
+     "the table",
+     "school"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Моя книга лежит на столе",
+  "en": "My book is on the table",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My book is",
+    "options": [
+     "My book is",
+     "My book are",
+     "My book be"
+    ]
+   },
+   {
+    "correct": "on",
+    "options": [
+     "on",
+     "in",
+     "at"
+    ]
+   },
+   {
+    "correct": "the table",
+    "options": [
+     "the table",
+     "the room",
+     "the box"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Он сейчас на работе",
+  "en": "He is at work now",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He is",
+    "options": [
+     "He is",
+     "He are",
+     "He am"
+    ]
+   },
+   {
+    "correct": "at",
+    "options": [
+     "at",
+     "in",
+     "on"
+    ]
+   },
+   {
+    "correct": "work now",
+    "options": [
+     "work now",
+     "the room now",
+     "the car now"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Я еду из дома в школу",
+  "en": "I go from home to school",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I go",
+    "options": [
+     "I go",
+     "I am go",
+     "I will go"
+    ]
+   },
+   {
+    "correct": "from",
+    "options": [
+     "from",
+     "to",
+     "in"
+    ]
+   },
+   {
+    "correct": "home",
+    "options": [
+     "home",
+     "the box",
+     "the car"
+    ]
+   },
+   {
+    "correct": "to school",
+    "options": [
+     "to school",
+     "from school",
+     "at school"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мы учимся в школе в 2020",
+  "en": "We studied in school in 2020",
+  "alternatives": [
+   "We were in school in 2020"
+  ],
+  "slots": [
+   {
+    "correct": "We studied",
+    "options": [
+     "We studied",
+     "We study",
+     "We will study"
+    ]
+   },
+   {
+    "correct": "in",
+    "options": [
+     "in",
+     "at",
+     "on"
+    ]
+   },
+   {
+    "correct": "school in 2020",
+    "options": [
+     "school in 2020",
+     "school at 2020",
+     "school on 2020"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Она в машине в пять утра",
+  "en": "She is in the car at five",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She is",
+    "options": [
+     "She is",
+     "She are",
+     "She be"
+    ]
+   },
+   {
+    "correct": "in",
+    "options": [
+     "in",
+     "on",
+     "at"
+    ]
+   },
+   {
+    "correct": "the car",
+    "options": [
+     "the car",
+     "the table",
+     "the room"
+    ]
+   },
+   {
+    "correct": "at five",
+    "options": [
+     "at five",
+     "in five",
+     "on five"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Положи это на стол",
+  "en": "Put it on the table",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Put it",
+    "options": [
+     "Put it",
+     "Puts it",
+     "To put it"
+    ]
+   },
+   {
+    "correct": "on",
+    "options": [
+     "on",
+     "in",
+     "at"
+    ]
+   },
+   {
+    "correct": "the table",
+    "options": [
+     "the table",
+     "the room",
+     "the box"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Он пришел из школы в понедельник",
+  "en": "He came from school on Monday",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He came",
+    "options": [
+     "He came",
+     "He come",
+     "He comes"
+    ]
+   },
+   {
+    "correct": "from school",
+    "options": [
+     "from school",
+     "to school",
+     "at school"
+    ]
+   },
+   {
+    "correct": "on Monday",
+    "options": [
+     "on Monday",
+     "in Monday",
+     "at Monday"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Я был дома в пять.",
+  "en": "I was at home at five.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I was",
+    "options": [
+     "I was",
+     "I am",
+     "I will be"
+    ]
+   },
+   {
+    "correct": "at home",
+    "options": [
+     "at home",
+     "in home",
+     "on home"
+    ]
+   },
+   {
+    "correct": "at five",
+    "options": [
+     "at five",
+     "in five",
+     "on five"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Книга в коробке в мае.",
+  "en": "The book is in the box in May.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The book is",
+    "options": [
+     "The book is",
+     "The book was",
+     "The book are"
+    ]
+   },
+   {
+    "correct": "in the box",
+    "options": [
+     "in the box",
+     "at the box",
+     "on the box"
+    ]
+   },
+   {
+    "correct": "in May",
+    "options": [
+     "in May",
+     "at May",
+     "on May"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Он идет на работу в понедельник.",
+  "en": "He goes to work on Monday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He goes",
+    "options": [
+     "He goes",
+     "He go",
+     "He is go"
+    ]
+   },
+   {
+    "correct": "to work",
+    "options": [
+     "to work",
+     "in work",
+     "at work"
+    ]
+   },
+   {
+    "correct": "on Monday",
+    "options": [
+     "on Monday",
+     "in Monday",
+     "at Monday"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "prepositions_basic",
+  "ru": "Мы приехали из школы в 2020.",
+  "en": "We came from school in 2020.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We came",
+    "options": [
+     "We came",
+     "We come",
+     "We are come"
+    ]
+   },
+   {
+    "correct": "from school",
+    "options": [
+     "from school",
+     "to school",
+     "at school"
+    ]
+   },
+   {
+    "correct": "in 2020",
+    "options": [
+     "in 2020",
+     "at 2020",
+     "on 2020"
+    ]
+   }
+  ]
+ }
+]

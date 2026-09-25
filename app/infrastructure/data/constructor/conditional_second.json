@@ -1,0 +1,3675 @@
+[
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был тобой, я бы купил это.",
+  "en": "If I were you, I would buy it.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I were you,",
+    "options": [
+     "If I were you,",
+     "If I was you,",
+     "If I am you,",
+     "If I be you,"
+    ]
+   },
+   {
+    "correct": "I would buy",
+    "options": [
+     "I would buy",
+     "I will buy",
+     "I bought",
+     "I would bought"
+    ]
+   },
+   {
+    "correct": "it.",
+    "options": [
+     "it.",
+     "that."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы у меня были деньги, я бы поехал в Лондон.",
+  "en": "If I had money, I would go to London.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I had money,",
+    "options": [
+     "If I had money,",
+     "If I have money,",
+     "If I would have money,",
+     "If I did have money,"
+    ]
+   },
+   {
+    "correct": "I would go",
+    "options": [
+     "I would go",
+     "I will go",
+     "I went",
+     "I would went"
+    ]
+   },
+   {
+    "correct": "to London.",
+    "options": [
+     "to London.",
+     "in London."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не работал, я бы не был уставшим.",
+  "en": "If I didn't work, I wouldn't be tired.",
+  "alternatives": [
+   "If I did not work, I would not be tired."
+  ],
+  "slots": [
+   {
+    "correct": "If I didn't work,",
+    "options": [
+     "If I didn't work,",
+     "If I don't work,",
+     "If I wouldn't work,",
+     "If I didn't worked,"
+    ]
+   },
+   {
+    "correct": "I wouldn't be",
+    "options": [
+     "I wouldn't be",
+     "I won't be",
+     "I didn't be",
+     "I would not be"
+    ]
+   },
+   {
+    "correct": "tired.",
+    "options": [
+     "tired.",
+     "sad."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы она была здесь, она бы нам помогла.",
+  "en": "If she were here, she would help us.",
+  "alternatives": [
+   "If she was here, she would help us."
+  ],
+  "slots": [
+   {
+    "correct": "If she were here,",
+    "options": [
+     "If she were here,",
+     "If she was here,",
+     "If she is here,",
+     "If she would be here,"
+    ]
+   },
+   {
+    "correct": "she would help",
+    "options": [
+     "she would help",
+     "she will help",
+     "she helped",
+     "she would helped"
+    ]
+   },
+   {
+    "correct": "us.",
+    "options": [
+     "us.",
+     "me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я выиграл, я бы путешествовал по миру.",
+  "en": "If I won, I would travel the world.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I won,",
+    "options": [
+     "If I won,",
+     "If I win,",
+     "If I would win,",
+     "If I did win,"
+    ]
+   },
+   {
+    "correct": "I would travel",
+    "options": [
+     "I would travel",
+     "I will travel",
+     "I traveled",
+     "I would traveled"
+    ]
+   },
+   {
+    "correct": "the world.",
+    "options": [
+     "the world.",
+     "everywhere."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я знал ответ, я бы тебе сказал.",
+  "en": "If I knew the answer, I would tell you.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I knew",
+    "options": [
+     "If I knew",
+     "If I know",
+     "If I would know",
+     "If I did know"
+    ]
+   },
+   {
+    "correct": "the answer,",
+    "options": [
+     "the answer,",
+     "the truth,"
+    ]
+   },
+   {
+    "correct": "I would tell you.",
+    "options": [
+     "I would tell you.",
+     "I will tell you.",
+     "I told you.",
+     "I would told you."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не был занят, я бы пришел.",
+  "en": "If I weren't busy, I would come.",
+  "alternatives": [
+   "If I wasn't busy, I would come.",
+   "If I were not busy, I would come."
+  ],
+  "slots": [
+   {
+    "correct": "If I weren't busy,",
+    "options": [
+     "If I weren't busy,",
+     "If I wasn't busy,",
+     "If I don't busy,",
+     "If I am not busy,"
+    ]
+   },
+   {
+    "correct": "I would come.",
+    "options": [
+     "I would come.",
+     "I will come.",
+     "I came.",
+     "I would came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы они жили здесь, они бы нам помогли.",
+  "en": "If they lived here, they would help us.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If they lived",
+    "options": [
+     "If they lived",
+     "If they live",
+     "If they would live",
+     "If they did live"
+    ]
+   },
+   {
+    "correct": "here,",
+    "options": [
+     "here,",
+     "there,"
+    ]
+   },
+   {
+    "correct": "they would help",
+    "options": [
+     "they would help",
+     "they will help",
+     "they helped",
+     "they would helped"
+    ]
+   },
+   {
+    "correct": "us.",
+    "options": [
+     "us.",
+     "me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не был тобой, я бы уехал.",
+  "en": "If I weren't you, I would leave.",
+  "alternatives": [
+   "If I wasn't you, I would leave.",
+   "If I were not you, I would leave."
+  ],
+  "slots": [
+   {
+    "correct": "If I weren't you,",
+    "options": [
+     "If I weren't you,",
+     "If I wasn't you,",
+     "If I don't you,",
+     "If I am not you,"
+    ]
+   },
+   {
+    "correct": "I would leave.",
+    "options": [
+     "I would leave.",
+     "I will leave.",
+     "I left.",
+     "I would left."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я купил машину, я бы путешествовал.",
+  "en": "If I bought a car, I would travel.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I bought",
+    "options": [
+     "If I bought",
+     "If I buy",
+     "If I would buy",
+     "If I did buy"
+    ]
+   },
+   {
+    "correct": "a car,",
+    "options": [
+     "a car,",
+     "a house,"
+    ]
+   },
+   {
+    "correct": "I would travel.",
+    "options": [
+     "I would travel.",
+     "I will travel.",
+     "I traveled.",
+     "I would traveled."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не был голоден, я бы не ел.",
+  "en": "If I weren't hungry, I wouldn't eat.",
+  "alternatives": [
+   "If I wasn't hungry, I wouldn't eat.",
+   "If I were not hungry, I would not eat."
+  ],
+  "slots": [
+   {
+    "correct": "If I weren't hungry,",
+    "options": [
+     "If I weren't hungry,",
+     "If I wasn't hungry,",
+     "If I don't hungry,",
+     "If I am not hungry,"
+    ]
+   },
+   {
+    "correct": "I wouldn't eat.",
+    "options": [
+     "I wouldn't eat.",
+     "I won't eat.",
+     "I didn't eat.",
+     "I would not ate."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы они пришли, я бы обрадовался.",
+  "en": "If they came, I would be happy.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If they came,",
+    "options": [
+     "If they came,",
+     "If they come,",
+     "If they would come,",
+     "If they did come,"
+    ]
+   },
+   {
+    "correct": "I would be",
+    "options": [
+     "I would be",
+     "I will be",
+     "I was",
+     "I would been"
+    ]
+   },
+   {
+    "correct": "happy.",
+    "options": [
+     "happy.",
+     "glad."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был на твоем месте, я бы не пошел туда.",
+  "en": "If I were you, I wouldn't go there.",
+  "alternatives": [
+   "If I were you, I would not go there."
+  ],
+  "slots": [
+   {
+    "correct": "If I were",
+    "options": [
+     "If I were",
+     "If I was",
+     "If I am"
+    ]
+   },
+   {
+    "correct": "you,",
+    "options": [
+     "you,",
+     "he,"
+    ]
+   },
+   {
+    "correct": "I wouldn't",
+    "options": [
+     "I wouldn't",
+     "I would",
+     "I didn't"
+    ]
+   },
+   {
+    "correct": "go there.",
+    "options": [
+     "go there.",
+     "went there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы у меня было время, я бы помог тебе.",
+  "en": "If I had time, I would help you.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I had",
+    "options": [
+     "If I had",
+     "If I have",
+     "If I would have"
+    ]
+   },
+   {
+    "correct": "time,",
+    "options": [
+     "time,",
+     "money,"
+    ]
+   },
+   {
+    "correct": "I would",
+    "options": [
+     "I would",
+     "I will",
+     "I did"
+    ]
+   },
+   {
+    "correct": "help you.",
+    "options": [
+     "help you.",
+     "helped you."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не был занят, я бы не работал.",
+  "en": "If I weren't busy, I wouldn't work.",
+  "alternatives": [
+   "If I was not busy, I would not work."
+  ],
+  "slots": [
+   {
+    "correct": "If I weren't",
+    "options": [
+     "If I weren't",
+     "If I wouldn't be",
+     "If I didn't"
+    ]
+   },
+   {
+    "correct": "busy,",
+    "options": [
+     "busy,",
+     "tired,"
+    ]
+   },
+   {
+    "correct": "I wouldn't",
+    "options": [
+     "I wouldn't",
+     "I would",
+     "I didn't"
+    ]
+   },
+   {
+    "correct": "work.",
+    "options": [
+     "work.",
+     "worked."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я выиграл, я бы купил дом.",
+  "en": "If I won, I would buy a house.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I won,",
+    "options": [
+     "If I won,",
+     "If I would win,",
+     "If I win,"
+    ]
+   },
+   {
+    "correct": "I would",
+    "options": [
+     "I would",
+     "I will"
+    ]
+   },
+   {
+    "correct": "buy a house.",
+    "options": [
+     "buy a house.",
+     "bought a house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы она была здесь, она бы не ушла.",
+  "en": "If she were here, she wouldn't go.",
+  "alternatives": [
+   "If she was here, she wouldn't go."
+  ],
+  "slots": [
+   {
+    "correct": "If she were",
+    "options": [
+     "If she were",
+     "If she was",
+     "If she would be"
+    ]
+   },
+   {
+    "correct": "here,",
+    "options": [
+     "here,",
+     "there,"
+    ]
+   },
+   {
+    "correct": "she wouldn't",
+    "options": [
+     "she wouldn't",
+     "she would"
+    ]
+   },
+   {
+    "correct": "go.",
+    "options": [
+     "go.",
+     "went."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не знал правду, я бы не пришел.",
+  "en": "If I didn't know the truth, I wouldn't come.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I didn't",
+    "options": [
+     "If I didn't",
+     "If I wouldn't",
+     "If I don't"
+    ]
+   },
+   {
+    "correct": "know the truth,",
+    "options": [
+     "know the truth,",
+     "knew the truth,"
+    ]
+   },
+   {
+    "correct": "I wouldn't",
+    "options": [
+     "I wouldn't",
+     "I would"
+    ]
+   },
+   {
+    "correct": "come.",
+    "options": [
+     "come.",
+     "came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы они жили в Лондоне, они бы путешествовали.",
+  "en": "If they lived in London, they would travel.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If they lived",
+    "options": [
+     "If they lived",
+     "If they would live",
+     "If they live"
+    ]
+   },
+   {
+    "correct": "in London,",
+    "options": [
+     "in London,",
+     "here,"
+    ]
+   },
+   {
+    "correct": "they would",
+    "options": [
+     "they would",
+     "they will"
+    ]
+   },
+   {
+    "correct": "travel.",
+    "options": [
+     "travel.",
+     "traveled."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не был тобой, я бы работал здесь.",
+  "en": "If I weren't you, I would work here.",
+  "alternatives": [
+   "If I was not you, I would work here."
+  ],
+  "slots": [
+   {
+    "correct": "If I weren't",
+    "options": [
+     "If I weren't",
+     "If I wouldn't be"
+    ]
+   },
+   {
+    "correct": "you,",
+    "options": [
+     "you,",
+     "there,"
+    ]
+   },
+   {
+    "correct": "I would",
+    "options": [
+     "I would",
+     "I will"
+    ]
+   },
+   {
+    "correct": "work here.",
+    "options": [
+     "work here.",
+     "worked here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не был голоден, я бы не пришел.",
+  "en": "If I weren't hungry, I wouldn't come.",
+  "alternatives": [
+   "If I was not hungry, I would not come."
+  ],
+  "slots": [
+   {
+    "correct": "If I weren't",
+    "options": [
+     "If I weren't",
+     "If I wouldn't be",
+     "If I didn't"
+    ]
+   },
+   {
+    "correct": "hungry,",
+    "options": [
+     "hungry,",
+     "busy,"
+    ]
+   },
+   {
+    "correct": "I wouldn't",
+    "options": [
+     "I wouldn't",
+     "I would"
+    ]
+   },
+   {
+    "correct": "come.",
+    "options": [
+     "come.",
+     "came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы они пришли, я бы знал.",
+  "en": "If they came, I would know.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If they came,",
+    "options": [
+     "If they came,",
+     "If they would come,",
+     "If they come,"
+    ]
+   },
+   {
+    "correct": "I would",
+    "options": [
+     "I would",
+     "I will"
+    ]
+   },
+   {
+    "correct": "know.",
+    "options": [
+     "know.",
+     "knew."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я знал ответ, я бы помог тебе.",
+  "en": "If I knew the answer, I would help you.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I knew",
+    "options": [
+     "If I knew",
+     "If I would know",
+     "If I know"
+    ]
+   },
+   {
+    "correct": "the answer,",
+    "options": [
+     "the answer,",
+     "the truth,"
+    ]
+   },
+   {
+    "correct": "I would",
+    "options": [
+     "I would",
+     "I will"
+    ]
+   },
+   {
+    "correct": "help you.",
+    "options": [
+     "help you.",
+     "helped you."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был тобой, я бы не пошел туда.",
+  "en": "If I were you, I would not go there.",
+  "alternatives": [
+   "If I were you, I wouldn't go there."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If he",
+     "If you"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was",
+     "am"
+    ]
+   },
+   {
+    "correct": "you, I",
+    "options": [
+     "you, I",
+     "him, I",
+     "them, I"
+    ]
+   },
+   {
+    "correct": "would not",
+    "options": [
+     "would not",
+     "will not",
+     "did not"
+    ]
+   },
+   {
+    "correct": "go there.",
+    "options": [
+     "go there.",
+     "went there.",
+     "going there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы она жила здесь, она бы не работала.",
+  "en": "If she lived here, she would not work.",
+  "alternatives": [
+   "If she lived here, she wouldn't work."
+  ],
+  "slots": [
+   {
+    "correct": "If she",
+    "options": [
+     "If she",
+     "If I",
+     "If they"
+    ]
+   },
+   {
+    "correct": "lived",
+    "options": [
+     "lived",
+     "lives",
+     "would live"
+    ]
+   },
+   {
+    "correct": "here, she",
+    "options": [
+     "here, she",
+     "there, she",
+     "here, I"
+    ]
+   },
+   {
+    "correct": "would not",
+    "options": [
+     "would not",
+     "will not",
+     "did not"
+    ]
+   },
+   {
+    "correct": "work.",
+    "options": [
+     "work.",
+     "worked.",
+     "works."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не был занят, я бы купил еду.",
+  "en": "If I were not busy, I would buy food.",
+  "alternatives": [
+   "If I wasn't busy, I would buy food."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If she",
+     "If we"
+    ]
+   },
+   {
+    "correct": "were not",
+    "options": [
+     "were not",
+     "was not",
+     "did not"
+    ]
+   },
+   {
+    "correct": "busy, I",
+    "options": [
+     "busy, I",
+     "happy, I",
+     "tired, I"
+    ]
+   },
+   {
+    "correct": "would",
+    "options": [
+     "would",
+     "will",
+     "can"
+    ]
+   },
+   {
+    "correct": "buy food.",
+    "options": [
+     "buy food.",
+     "bought food.",
+     "buying food."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы у меня были деньги, я бы не работал.",
+  "en": "If I had money, I would not work.",
+  "alternatives": [
+   "If I had money, I wouldn't work."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If they",
+     "If she"
+    ]
+   },
+   {
+    "correct": "had",
+    "options": [
+     "had",
+     "have",
+     "would have"
+    ]
+   },
+   {
+    "correct": "money, I",
+    "options": [
+     "money, I",
+     "time, I",
+     "cars, I"
+    ]
+   },
+   {
+    "correct": "would not",
+    "options": [
+     "would not",
+     "will not",
+     "did not"
+    ]
+   },
+   {
+    "correct": "work.",
+    "options": [
+     "work.",
+     "worked.",
+     "working."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был в Лондоне, я бы путешествовал.",
+  "en": "If I were in London, I would travel.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If he",
+     "If she"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was",
+     "am"
+    ]
+   },
+   {
+    "correct": "in London, I",
+    "options": [
+     "in London, I",
+     "at home, I",
+     "in Paris, I"
+    ]
+   },
+   {
+    "correct": "would",
+    "options": [
+     "would",
+     "will",
+     "did"
+    ]
+   },
+   {
+    "correct": "travel.",
+    "options": [
+     "travel.",
+     "traveled.",
+     "traveling."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был тобой, я бы не путешествовал.",
+  "en": "If I were you, I would not travel.",
+  "alternatives": [
+   "If I were you, I wouldn't travel."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If she",
+     "If we"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was",
+     "am"
+    ]
+   },
+   {
+    "correct": "you, I",
+    "options": [
+     "you, I",
+     "him, I",
+     "her, I"
+    ]
+   },
+   {
+    "correct": "would not",
+    "options": [
+     "would not",
+     "will not",
+     "did not"
+    ]
+   },
+   {
+    "correct": "travel.",
+    "options": [
+     "travel.",
+     "traveled.",
+     "travels."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы они выиграли, они бы купили дом.",
+  "en": "If they won, they would buy a house.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If we",
+     "If she"
+    ]
+   },
+   {
+    "correct": "won,",
+    "options": [
+     "won,",
+     "win,",
+     "would win,"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "we",
+     "he"
+    ]
+   },
+   {
+    "correct": "would",
+    "options": [
+     "would",
+     "will",
+     "did"
+    ]
+   },
+   {
+    "correct": "buy a house.",
+    "options": [
+     "buy a house.",
+     "bought a house.",
+     "buying a house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы она пришла, она бы помогла нам.",
+  "en": "If she came, she would help us.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If she",
+    "options": [
+     "If she",
+     "If they",
+     "If I"
+    ]
+   },
+   {
+    "correct": "came,",
+    "options": [
+     "came,",
+     "come,",
+     "would come,"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "they",
+     "he"
+    ]
+   },
+   {
+    "correct": "would",
+    "options": [
+     "would",
+     "will",
+     "did"
+    ]
+   },
+   {
+    "correct": "help us.",
+    "options": [
+     "help us.",
+     "helped us.",
+     "helping us."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был в офисе, я бы работал.",
+  "en": "If I were in the office, I would work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If he",
+     "If they"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was",
+     "be"
+    ]
+   },
+   {
+    "correct": "in the office, I",
+    "options": [
+     "in the office, I",
+     "at home, I"
+    ]
+   },
+   {
+    "correct": "would work.",
+    "options": [
+     "would work.",
+     "would not work.",
+     "worked."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не знал её, я бы не пришел.",
+  "en": "If I didn't know her, I wouldn't come.",
+  "alternatives": [
+   "If I did not know her, I would not come."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If they"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "wouldn't"
+    ]
+   },
+   {
+    "correct": "know her, I",
+    "options": [
+     "know her, I",
+     "know him, I"
+    ]
+   },
+   {
+    "correct": "wouldn't come.",
+    "options": [
+     "wouldn't come.",
+     "would come.",
+     "didn't come."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я выиграл, я бы не работал.",
+  "en": "If I won, I wouldn't work.",
+  "alternatives": [
+   "If I won, I would not work."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If they"
+    ]
+   },
+   {
+    "correct": "won,",
+    "options": [
+     "won,",
+     "win,",
+     "would win,"
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "they"
+    ]
+   },
+   {
+    "correct": "wouldn't work.",
+    "options": [
+     "wouldn't work.",
+     "would work.",
+     "worked."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не был тобой, я бы путешествовал.",
+  "en": "If I were not you, I would travel.",
+  "alternatives": [
+   "If I weren't you, I would travel."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If she"
+    ]
+   },
+   {
+    "correct": "were not",
+    "options": [
+     "were not",
+     "was not",
+     "did not"
+    ]
+   },
+   {
+    "correct": "you, I",
+    "options": [
+     "you, I",
+     "happy, I"
+    ]
+   },
+   {
+    "correct": "would travel.",
+    "options": [
+     "would travel.",
+     "would not travel.",
+     "traveled."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не знал ответ, я бы не пришел.",
+  "en": "If I didn't know the answer, I wouldn't come.",
+  "alternatives": [
+   "If I did not know the answer, I would not come."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If we"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "wouldn't"
+    ]
+   },
+   {
+    "correct": "know the answer, I",
+    "options": [
+     "know the answer, I",
+     "know the truth, I"
+    ]
+   },
+   {
+    "correct": "wouldn't come.",
+    "options": [
+     "wouldn't come.",
+     "would come.",
+     "came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не был голоден, я бы купил еду.",
+  "en": "If I were not hungry, I would buy food.",
+  "alternatives": [
+   "If I weren't hungry, I would buy food."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If he"
+    ]
+   },
+   {
+    "correct": "were not",
+    "options": [
+     "were not",
+     "was not",
+     "would not"
+    ]
+   },
+   {
+    "correct": "hungry, I",
+    "options": [
+     "hungry, I",
+     "tired, I"
+    ]
+   },
+   {
+    "correct": "would buy food.",
+    "options": [
+     "would buy food.",
+     "would not buy food.",
+     "bought food."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы она не была занята, она бы пришла.",
+  "en": "If she were not busy, she would come.",
+  "alternatives": [
+   "If she weren't busy, she would come."
+  ],
+  "slots": [
+   {
+    "correct": "If she",
+    "options": [
+     "If she",
+     "If I"
+    ]
+   },
+   {
+    "correct": "were not",
+    "options": [
+     "were not",
+     "was not",
+     "did not"
+    ]
+   },
+   {
+    "correct": "busy, she",
+    "options": [
+     "busy, she",
+     "happy, she"
+    ]
+   },
+   {
+    "correct": "would come.",
+    "options": [
+     "would come.",
+     "would not come.",
+     "came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы они не жили здесь, они бы помогли.",
+  "en": "If they didn't live here, they would help.",
+  "alternatives": [
+   "If they did not live here, they would help."
+  ],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If he"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "wouldn't"
+    ]
+   },
+   {
+    "correct": "live here, they",
+    "options": [
+     "live here, they",
+     "live in London, they"
+    ]
+   },
+   {
+    "correct": "would help.",
+    "options": [
+     "would help.",
+     "would not help.",
+     "helped."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не был тобой, я бы не работал здесь.",
+  "en": "If I were not you, I wouldn't work here.",
+  "alternatives": [
+   "If I weren't you, I would not work here."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If he"
+    ]
+   },
+   {
+    "correct": "were not",
+    "options": [
+     "were not",
+     "was not",
+     "would not"
+    ]
+   },
+   {
+    "correct": "you, I",
+    "options": [
+     "you, I",
+     "happy, I"
+    ]
+   },
+   {
+    "correct": "wouldn't work here.",
+    "options": [
+     "wouldn't work here.",
+     "would work here.",
+     "worked here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был тобой, я бы не ел.",
+  "en": "If I were you, I wouldn't eat.",
+  "alternatives": [
+   "If I were you, I would not eat."
+  ],
+  "slots": [
+   {
+    "correct": "If I were you,",
+    "options": [
+     "If I were you,",
+     "If I was you,",
+     "If I am you,",
+     "If I would be you,"
+    ]
+   },
+   {
+    "correct": "I wouldn't",
+    "options": [
+     "I wouldn't",
+     "I would",
+     "I didn't",
+     "I don't"
+    ]
+   },
+   {
+    "correct": "eat.",
+    "options": [
+     "eat.",
+     "ate.",
+     "eats.",
+     "eating."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не был тобой, я бы купил дом.",
+  "en": "If I weren't you, I would buy a house.",
+  "alternatives": [
+   "If I were not you, I would buy a house."
+  ],
+  "slots": [
+   {
+    "correct": "If I weren't you,",
+    "options": [
+     "If I weren't you,",
+     "If I wasn't you,",
+     "If I don't you,",
+     "If I didn't you,"
+    ]
+   },
+   {
+    "correct": "I would",
+    "options": [
+     "I would",
+     "I wouldn't",
+     "I will",
+     "I do"
+    ]
+   },
+   {
+    "correct": "buy a house.",
+    "options": [
+     "buy a house.",
+     "bought a house.",
+     "buys a house.",
+     "buying a house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я работал, я бы не пришел.",
+  "en": "If I worked, I wouldn't come.",
+  "alternatives": [
+   "If I worked, I would not come."
+  ],
+  "slots": [
+   {
+    "correct": "If I worked,",
+    "options": [
+     "If I worked,",
+     "If I would work,",
+     "If I work,",
+     "If I had work,"
+    ]
+   },
+   {
+    "correct": "I wouldn't",
+    "options": [
+     "I wouldn't",
+     "I would",
+     "I didn't",
+     "I don't"
+    ]
+   },
+   {
+    "correct": "come.",
+    "options": [
+     "come.",
+     "came.",
+     "comes.",
+     "coming."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не пришел, я бы не знал.",
+  "en": "If I didn't come, I wouldn't know.",
+  "alternatives": [
+   "If I did not come, I would not know."
+  ],
+  "slots": [
+   {
+    "correct": "If I didn't come,",
+    "options": [
+     "If I didn't come,",
+     "If I wouldn't come,",
+     "If I don't come,",
+     "If I come,"
+    ]
+   },
+   {
+    "correct": "I wouldn't",
+    "options": [
+     "I wouldn't",
+     "I would",
+     "I didn't",
+     "I don't"
+    ]
+   },
+   {
+    "correct": "know.",
+    "options": [
+     "know.",
+     "knew.",
+     "known.",
+     "knowing."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был в Лондоне, я бы не работал.",
+  "en": "If I were in London, I wouldn't work.",
+  "alternatives": [
+   "If I were in London, I would not work."
+  ],
+  "slots": [
+   {
+    "correct": "If I were in London,",
+    "options": [
+     "If I were in London,",
+     "If I was in London,",
+     "If I am in London,",
+     "If I would be in London,"
+    ]
+   },
+   {
+    "correct": "I wouldn't",
+    "options": [
+     "I wouldn't",
+     "I would",
+     "I didn't",
+     "I don't"
+    ]
+   },
+   {
+    "correct": "work.",
+    "options": [
+     "work.",
+     "worked.",
+     "works.",
+     "working."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я знал правду, я бы пришел.",
+  "en": "If I knew the truth, I would come.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I knew the truth,",
+    "options": [
+     "If I knew the truth,",
+     "If I know the truth,",
+     "If I would know the truth,",
+     "If I have known the truth,"
+    ]
+   },
+   {
+    "correct": "I would",
+    "options": [
+     "I would",
+     "I wouldn't",
+     "I did",
+     "I didn't"
+    ]
+   },
+   {
+    "correct": "come.",
+    "options": [
+     "come.",
+     "came.",
+     "comes.",
+     "coming."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы она не работала, она бы путешествовала.",
+  "en": "If she didn't work, she would travel.",
+  "alternatives": [
+   "If she did not work, she would travel."
+  ],
+  "slots": [
+   {
+    "correct": "If she didn't work,",
+    "options": [
+     "If she didn't work,",
+     "If she wouldn't work,",
+     "If she doesn't work,",
+     "If she worked,"
+    ]
+   },
+   {
+    "correct": "she would",
+    "options": [
+     "she would",
+     "she wouldn't",
+     "she did",
+     "she didn't"
+    ]
+   },
+   {
+    "correct": "travel.",
+    "options": [
+     "travel.",
+     "traveled.",
+     "travels.",
+     "traveling."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был тобой, я бы не выиграл.",
+  "en": "If I were you, I wouldn't win.",
+  "alternatives": [
+   "If I were you, I would not win."
+  ],
+  "slots": [
+   {
+    "correct": "If I were you,",
+    "options": [
+     "If I were you,",
+     "If I was you,",
+     "If I am you,",
+     "If I would be you,"
+    ]
+   },
+   {
+    "correct": "I wouldn't",
+    "options": [
+     "I wouldn't",
+     "I would",
+     "I didn't",
+     "I don't"
+    ]
+   },
+   {
+    "correct": "win.",
+    "options": [
+     "win.",
+     "won.",
+     "wins.",
+     "winning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я купил еду, я бы не был голоден.",
+  "en": "If I bought food, I wouldn't be hungry.",
+  "alternatives": [
+   "If I bought food, I would not be hungry."
+  ],
+  "slots": [
+   {
+    "correct": "If I bought food,",
+    "options": [
+     "If I bought food,",
+     "If I buy food,",
+     "If I would buy food,",
+     "If I had bought food,"
+    ]
+   },
+   {
+    "correct": "I wouldn't",
+    "options": [
+     "I wouldn't",
+     "I would",
+     "I didn't",
+     "I don't"
+    ]
+   },
+   {
+    "correct": "be hungry.",
+    "options": [
+     "be hungry.",
+     "was hungry.",
+     "am hungry.",
+     "been hungry."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не был занят, я бы купил машину.",
+  "en": "If I weren't busy, I would buy a car.",
+  "alternatives": [
+   "If I were not busy, I would buy a car."
+  ],
+  "slots": [
+   {
+    "correct": "If I weren't busy,",
+    "options": [
+     "If I weren't busy,",
+     "If I wasn't busy,",
+     "If I don't busy,",
+     "If I didn't busy,"
+    ]
+   },
+   {
+    "correct": "I would",
+    "options": [
+     "I would",
+     "I wouldn't",
+     "I did",
+     "I didn't"
+    ]
+   },
+   {
+    "correct": "buy a car.",
+    "options": [
+     "buy a car.",
+     "bought a car.",
+     "buys a car.",
+     "buying a car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не был тобой, я бы помог ей.",
+  "en": "If I weren't you, I would help her.",
+  "alternatives": [
+   "If I were not you, I would help her."
+  ],
+  "slots": [
+   {
+    "correct": "If I weren't you,",
+    "options": [
+     "If I weren't you,",
+     "If I wasn't you,",
+     "If I don't you,",
+     "If I didn't you,"
+    ]
+   },
+   {
+    "correct": "I would",
+    "options": [
+     "I would",
+     "I wouldn't",
+     "I did",
+     "I didn't"
+    ]
+   },
+   {
+    "correct": "help her.",
+    "options": [
+     "help her.",
+     "helped her.",
+     "helps her.",
+     "helping her."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был тобой, я бы не жил здесь.",
+  "en": "If I were you, I wouldn't live here.",
+  "alternatives": [
+   "If I were you, I would not live here."
+  ],
+  "slots": [
+   {
+    "correct": "If I were you,",
+    "options": [
+     "If I were you,",
+     "If I was you,",
+     "If I am you,",
+     "If I would be you,"
+    ]
+   },
+   {
+    "correct": "I wouldn't",
+    "options": [
+     "I wouldn't",
+     "I would",
+     "I didn't",
+     "I don't"
+    ]
+   },
+   {
+    "correct": "live here.",
+    "options": [
+     "live here.",
+     "lived here.",
+     "lives here.",
+     "living here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был тобой, я бы не поехал.",
+  "en": "If I were you, I wouldn't go.",
+  "alternatives": [
+   "If I were you, I would not go."
+  ],
+  "slots": [
+   {
+    "correct": "If I were you,",
+    "options": [
+     "If I were you,",
+     "If I was you,",
+     "If I am you,",
+     "If I would be you,"
+    ]
+   },
+   {
+    "correct": "I wouldn't",
+    "options": [
+     "I wouldn't",
+     "I would",
+     "I didn't",
+     "I don't"
+    ]
+   },
+   {
+    "correct": "go.",
+    "options": [
+     "go.",
+     "went.",
+     "going.",
+     "goes."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы он не был занят, он бы пришел.",
+  "en": "If he weren't busy, he would come.",
+  "alternatives": [
+   "If he wasn't busy, he would come."
+  ],
+  "slots": [
+   {
+    "correct": "If he weren't",
+    "options": [
+     "If he weren't",
+     "If he didn't",
+     "If he wouldn't",
+     "If he wasn't"
+    ]
+   },
+   {
+    "correct": "busy,",
+    "options": [
+     "busy,",
+     "work,",
+     "win,",
+     "help,"
+    ]
+   },
+   {
+    "correct": "he would come.",
+    "options": [
+     "he would come.",
+     "he would not come.",
+     "he came.",
+     "he will come."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не был тобой, я бы купил машину.",
+  "en": "If I weren't you, I would buy a car.",
+  "alternatives": [
+   "If I wasn't you, I would buy a car."
+  ],
+  "slots": [
+   {
+    "correct": "If I weren't",
+    "options": [
+     "If I weren't",
+     "If I didn't",
+     "If I wouldn't",
+     "If I was"
+    ]
+   },
+   {
+    "correct": "you,",
+    "options": [
+     "you,",
+     "busy,",
+     "here,",
+     "happy,"
+    ]
+   },
+   {
+    "correct": "I would buy a car.",
+    "options": [
+     "I would buy a car.",
+     "I bought a car.",
+     "I would not buy a car.",
+     "I will buy a car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы они не выиграли, они бы не путешествовали.",
+  "en": "If they didn't win, they wouldn't travel.",
+  "alternatives": [
+   "If they did not win, they would not travel."
+  ],
+  "slots": [
+   {
+    "correct": "If they didn't",
+    "options": [
+     "If they didn't",
+     "If they weren't",
+     "If they wouldn't",
+     "If they don't"
+    ]
+   },
+   {
+    "correct": "win,",
+    "options": [
+     "win,",
+     "won,",
+     "winning,",
+     "wins,"
+    ]
+   },
+   {
+    "correct": "they wouldn't travel.",
+    "options": [
+     "they wouldn't travel.",
+     "they would travel.",
+     "they didn't travel.",
+     "they traveled."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы она не работала, она бы пришла.",
+  "en": "If she didn't work, she would come.",
+  "alternatives": [
+   "If she did not work, she would come."
+  ],
+  "slots": [
+   {
+    "correct": "If she didn't",
+    "options": [
+     "If she didn't",
+     "If she weren't",
+     "If she wouldn't",
+     "If she doesn't"
+    ]
+   },
+   {
+    "correct": "work,",
+    "options": [
+     "work,",
+     "worked,",
+     "working,",
+     "works,"
+    ]
+   },
+   {
+    "correct": "she would come.",
+    "options": [
+     "she would come.",
+     "she would not come.",
+     "she came.",
+     "she will come."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был тобой, я бы помог ей.",
+  "en": "If I were you, I would help her.",
+  "alternatives": [
+   "If I was you, I would help her."
+  ],
+  "slots": [
+   {
+    "correct": "If I were",
+    "options": [
+     "If I were",
+     "If I was",
+     "If I am",
+     "If I would be"
+    ]
+   },
+   {
+    "correct": "you,",
+    "options": [
+     "you,",
+     "busy,",
+     "here,",
+     "happy,"
+    ]
+   },
+   {
+    "correct": "I would help her.",
+    "options": [
+     "I would help her.",
+     "I helped her.",
+     "I would not help her.",
+     "I will help her."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы они не жили здесь, они бы уехали.",
+  "en": "If they didn't live here, they would go.",
+  "alternatives": [
+   "If they did not live here, they would go."
+  ],
+  "slots": [
+   {
+    "correct": "If they didn't",
+    "options": [
+     "If they didn't",
+     "If they weren't",
+     "If they wouldn't",
+     "If they don't"
+    ]
+   },
+   {
+    "correct": "live here,",
+    "options": [
+     "live here,",
+     "work here,",
+     "come here,",
+     "be here,"
+    ]
+   },
+   {
+    "correct": "they would go.",
+    "options": [
+     "they would go.",
+     "they would not go.",
+     "they went.",
+     "they will go."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был занят, я бы не пришел.",
+  "en": "If I were busy, I wouldn't come.",
+  "alternatives": [
+   "If I was busy, I would not come.",
+   "If I were busy, I would not come.",
+   "If I was busy, I wouldn't come."
+  ],
+  "slots": [
+   {
+    "correct": "If I were",
+    "options": [
+     "If I were",
+     "If I was",
+     "If I am",
+     "If I would be"
+    ]
+   },
+   {
+    "correct": "busy,",
+    "options": [
+     "busy,",
+     "here,",
+     "happy,",
+     "tired,"
+    ]
+   },
+   {
+    "correct": "I wouldn't come.",
+    "options": [
+     "I wouldn't come.",
+     "I would come.",
+     "I didn't come.",
+     "I will come."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не был тобой, я бы не работал.",
+  "en": "If I weren't you, I wouldn't work.",
+  "alternatives": [
+   "If I wasn't you, I wouldn't work.",
+   "If I weren't you, I would not work.",
+   "If I wasn't you, I would not work."
+  ],
+  "slots": [
+   {
+    "correct": "If I weren't",
+    "options": [
+     "If I weren't",
+     "If I wasn't",
+     "If I didn't",
+     "If I wouldn't"
+    ]
+   },
+   {
+    "correct": "you,",
+    "options": [
+     "you,",
+     "busy,",
+     "here,",
+     "tired,"
+    ]
+   },
+   {
+    "correct": "I wouldn't work.",
+    "options": [
+     "I wouldn't work.",
+     "I would work.",
+     "I didn't work.",
+     "I will work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы она не была здесь, она бы не помогла.",
+  "en": "If she weren't here, she wouldn't help.",
+  "alternatives": [
+   "If she wasn't here, she wouldn't help.",
+   "If she weren't here, she would not help.",
+   "If she wasn't here, she would not help."
+  ],
+  "slots": [
+   {
+    "correct": "If she weren't",
+    "options": [
+     "If she weren't",
+     "If she wasn't",
+     "If she didn't",
+     "If she wouldn't"
+    ]
+   },
+   {
+    "correct": "here,",
+    "options": [
+     "here,",
+     "busy,",
+     "there,",
+     "tired,"
+    ]
+   },
+   {
+    "correct": "she wouldn't help.",
+    "options": [
+     "she wouldn't help.",
+     "she would help.",
+     "she didn't help.",
+     "she will help."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не был тобой, я бы ушел.",
+  "en": "If I were not you, I would leave.",
+  "alternatives": [
+   "If I weren't you, I would leave."
+  ],
+  "slots": [
+   {
+    "correct": "If I were not you,",
+    "options": [
+     "If I were not you,",
+     "If I was not you,",
+     "If I am not you,",
+     "If I would not be you,"
+    ]
+   },
+   {
+    "correct": "I would leave.",
+    "options": [
+     "I would leave.",
+     "I left.",
+     "I will leave.",
+     "I would left."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы она знала ответ, она бы пришла.",
+  "en": "If she knew the answer, she would come.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If she knew the answer,",
+    "options": [
+     "If she knew the answer,",
+     "If she knows the answer,",
+     "If she would know the answer,",
+     "If she did know the answer,"
+    ]
+   },
+   {
+    "correct": "she would come.",
+    "options": [
+     "she would come.",
+     "she came.",
+     "she will come.",
+     "she would came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы они жили здесь, они бы работали.",
+  "en": "If they lived here, they would work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If they lived here,",
+    "options": [
+     "If they lived here,",
+     "If they live here,",
+     "If they would live here,",
+     "If they did live here,"
+    ]
+   },
+   {
+    "correct": "they would work.",
+    "options": [
+     "they would work.",
+     "they worked.",
+     "they will work.",
+     "they would worked."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не был тобой, я бы не пришел.",
+  "en": "If I were not you, I would not come.",
+  "alternatives": [
+   "If I weren't you, I wouldn't come."
+  ],
+  "slots": [
+   {
+    "correct": "If I were not you,",
+    "options": [
+     "If I were not you,",
+     "If I was not you,",
+     "If I am not you,",
+     "If I would not be you,"
+    ]
+   },
+   {
+    "correct": "I would not come.",
+    "options": [
+     "I would not come.",
+     "I would come.",
+     "I did not come.",
+     "I will not come."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был тобой, я бы не ел это.",
+  "en": "If I were you, I would not eat it.",
+  "alternatives": [
+   "If I were you, I wouldn't eat it."
+  ],
+  "slots": [
+   {
+    "correct": "If I were you,",
+    "options": [
+     "If I were you,",
+     "If I was you,",
+     "If I am you,",
+     "If I would be you,"
+    ]
+   },
+   {
+    "correct": "I would not eat",
+    "options": [
+     "I would not eat",
+     "I would eat",
+     "I did not eat",
+     "I will not eat"
+    ]
+   },
+   {
+    "correct": "it.",
+    "options": [
+     "it.",
+     "that.",
+     "this."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был тобой, я бы ушел.",
+  "en": "If I were you, I would leave.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I were you,",
+    "options": [
+     "If I were you,",
+     "If I was you,",
+     "If I would be you,",
+     "If I am you,"
+    ]
+   },
+   {
+    "correct": "I would leave.",
+    "options": [
+     "I would leave.",
+     "I will leave.",
+     "I would left.",
+     "I leave."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я знал правду, я бы не ушел.",
+  "en": "If I knew the truth, I wouldn't leave.",
+  "alternatives": [
+   "If I knew the truth, I would not leave."
+  ],
+  "slots": [
+   {
+    "correct": "If I knew the truth,",
+    "options": [
+     "If I knew the truth,",
+     "If I would know the truth,",
+     "If I know the truth,",
+     "If I did know the truth,"
+    ]
+   },
+   {
+    "correct": "I wouldn't leave.",
+    "options": [
+     "I wouldn't leave.",
+     "I won't leave.",
+     "I didn't leave.",
+     "I would leave."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы они работали, они бы не путешествовали.",
+  "en": "If they worked, they wouldn't travel.",
+  "alternatives": [
+   "If they worked, they would not travel."
+  ],
+  "slots": [
+   {
+    "correct": "If they worked,",
+    "options": [
+     "If they worked,",
+     "If they would work,",
+     "If they work,",
+     "If they did work,"
+    ]
+   },
+   {
+    "correct": "they wouldn't travel.",
+    "options": [
+     "they wouldn't travel.",
+     "they won't travel.",
+     "they didn't travel.",
+     "they would travel."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был тобой, я бы купил машину.",
+  "en": "If I were you, I would buy a car.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I were you,",
+    "options": [
+     "If I were you,",
+     "If I was you,",
+     "If I would be you,",
+     "If I am you,"
+    ]
+   },
+   {
+    "correct": "I would buy a car.",
+    "options": [
+     "I would buy a car.",
+     "I will buy a car.",
+     "I would bought a car.",
+     "I buy a car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не работал, я бы не был занят.",
+  "en": "If I didn't work, I wouldn't be busy.",
+  "alternatives": [
+   "If I did not work, I would not be busy."
+  ],
+  "slots": [
+   {
+    "correct": "If I didn't work,",
+    "options": [
+     "If I didn't work,",
+     "If I weren't work,",
+     "If I wouldn't work,",
+     "If I don't work,"
+    ]
+   },
+   {
+    "correct": "I wouldn't be busy.",
+    "options": [
+     "I wouldn't be busy.",
+     "I won't be busy.",
+     "I didn't be busy.",
+     "I would be busy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы она была здесь, она бы знала.",
+  "en": "If she were here, she would know.",
+  "alternatives": [
+   "If she was here, she would know."
+  ],
+  "slots": [
+   {
+    "correct": "If she were here,",
+    "options": [
+     "If she were here,",
+     "If she would be here,",
+     "If she is here,",
+     "If she was here,"
+    ]
+   },
+   {
+    "correct": "she would know.",
+    "options": [
+     "she would know.",
+     "she will know.",
+     "she would knew.",
+     "she knows."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не выиграл, я бы не купил дом.",
+  "en": "If I didn't win, I wouldn't buy a house.",
+  "alternatives": [
+   "If I did not win, I would not buy a house."
+  ],
+  "slots": [
+   {
+    "correct": "If I didn't win,",
+    "options": [
+     "If I didn't win,",
+     "If I wouldn't win,",
+     "If I weren't win,",
+     "If I don't win,"
+    ]
+   },
+   {
+    "correct": "I wouldn't buy a house.",
+    "options": [
+     "I wouldn't buy a house.",
+     "I won't buy a house.",
+     "I didn't buy a house.",
+     "I would buy a house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы они не пришли, я бы не был счастлив.",
+  "en": "If they didn't come, I wouldn't be happy.",
+  "alternatives": [
+   "If they did not come, I would not be happy."
+  ],
+  "slots": [
+   {
+    "correct": "If they didn't come,",
+    "options": [
+     "If they didn't come,",
+     "If they wouldn't come,",
+     "If they weren't come,",
+     "If they don't come,"
+    ]
+   },
+   {
+    "correct": "I wouldn't be happy.",
+    "options": [
+     "I wouldn't be happy.",
+     "I won't be happy.",
+     "I didn't be happy.",
+     "I would be happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был тобой, я бы не работал.",
+  "en": "If I were you, I wouldn't work.",
+  "alternatives": [
+   "If I were you, I would not work."
+  ],
+  "slots": [
+   {
+    "correct": "If I were you,",
+    "options": [
+     "If I were you,",
+     "If I was you,",
+     "If I would be you,",
+     "If I am you,"
+    ]
+   },
+   {
+    "correct": "I wouldn't work.",
+    "options": [
+     "I wouldn't work.",
+     "I won't work.",
+     "I didn't work.",
+     "I would work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был тобой, я бы купил дом.",
+  "en": "If I were you, I would buy a house.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I were you,",
+    "options": [
+     "If I were you,",
+     "If I was you,",
+     "If I would be you,"
+    ]
+   },
+   {
+    "correct": "I would buy",
+    "options": [
+     "I would buy",
+     "I bought",
+     "I will buy"
+    ]
+   },
+   {
+    "correct": "a house.",
+    "options": [
+     "a house.",
+     "a car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы она не работала, она бы не была усталой.",
+  "en": "If she didn't work, she wouldn't be tired.",
+  "alternatives": [
+   "If she did not work, she would not be tired."
+  ],
+  "slots": [
+   {
+    "correct": "If she didn't work,",
+    "options": [
+     "If she didn't work,",
+     "If she doesn't work,",
+     "If she wouldn't work,"
+    ]
+   },
+   {
+    "correct": "she wouldn't be",
+    "options": [
+     "she wouldn't be",
+     "she would be",
+     "she isn't"
+    ]
+   },
+   {
+    "correct": "tired.",
+    "options": [
+     "tired.",
+     "happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы они не были заняты, они бы пришли.",
+  "en": "If they weren't busy, they would come.",
+  "alternatives": [
+   "If they were not busy, they would come."
+  ],
+  "slots": [
+   {
+    "correct": "If they weren't busy,",
+    "options": [
+     "If they weren't busy,",
+     "If they aren't busy,",
+     "If they wouldn't be busy,"
+    ]
+   },
+   {
+    "correct": "they would come.",
+    "options": [
+     "they would come.",
+     "they came.",
+     "they will come."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы она выиграла, она бы купила машину.",
+  "en": "If she won, she would buy a car.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If she won,",
+    "options": [
+     "If she won,",
+     "If she wins,",
+     "If she would win,"
+    ]
+   },
+   {
+    "correct": "she would buy",
+    "options": [
+     "she would buy",
+     "she bought",
+     "she will buy"
+    ]
+   },
+   {
+    "correct": "a car.",
+    "options": [
+     "a car.",
+     "a house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы мы не были голодны, мы бы не ели.",
+  "en": "If we weren't hungry, we wouldn't eat.",
+  "alternatives": [
+   "If we were not hungry, we would not eat."
+  ],
+  "slots": [
+   {
+    "correct": "If we weren't hungry,",
+    "options": [
+     "If we weren't hungry,",
+     "If we aren't hungry,",
+     "If we wouldn't be hungry,"
+    ]
+   },
+   {
+    "correct": "we wouldn't eat.",
+    "options": [
+     "we wouldn't eat.",
+     "we would eat.",
+     "we didn't eat."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы они жили здесь, они бы помогли нам.",
+  "en": "If they lived here, they would help us.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If they lived here,",
+    "options": [
+     "If they lived here,",
+     "If they live here,",
+     "If they would live here,"
+    ]
+   },
+   {
+    "correct": "they would help",
+    "options": [
+     "they would help",
+     "they helped",
+     "they will help"
+    ]
+   },
+   {
+    "correct": "us.",
+    "options": [
+     "us.",
+     "me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы она не была дома, она бы не работала.",
+  "en": "If she weren't home, she wouldn't work.",
+  "alternatives": [
+   "If she were not home, she would not work."
+  ],
+  "slots": [
+   {
+    "correct": "If she weren't home,",
+    "options": [
+     "If she weren't home,",
+     "If she isn't home,",
+     "If she wouldn't be home,"
+    ]
+   },
+   {
+    "correct": "she wouldn't work.",
+    "options": [
+     "she wouldn't work.",
+     "she would work.",
+     "she didn't work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я знал правду, я бы не пришел.",
+  "en": "If I knew the truth, I wouldn't come.",
+  "alternatives": [
+   "If I knew the truth, I would not come."
+  ],
+  "slots": [
+   {
+    "correct": "If I knew the truth,",
+    "options": [
+     "If I knew the truth,",
+     "If I know the truth,",
+     "If I would know the truth,"
+    ]
+   },
+   {
+    "correct": "I wouldn't come.",
+    "options": [
+     "I wouldn't come.",
+     "I would come.",
+     "I came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был тобой, я бы не помогал ему.",
+  "en": "If I were you, I would not help him.",
+  "alternatives": [
+   "If I were you, I wouldn't help him."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If she",
+     "If they"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was",
+     "did"
+    ]
+   },
+   {
+    "correct": "you,",
+    "options": [
+     "you,",
+     "there,",
+     "busy,"
+    ]
+   },
+   {
+    "correct": "I would not",
+    "options": [
+     "I would not",
+     "I did not",
+     "I will not"
+    ]
+   },
+   {
+    "correct": "help him.",
+    "options": [
+     "help him.",
+     "helped him.",
+     "helping him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был тобой, я бы не жил там.",
+  "en": "If I were you, I would not live there.",
+  "alternatives": [
+   "If I were you, I wouldn't live there."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If they",
+     "If she"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was",
+     "did"
+    ]
+   },
+   {
+    "correct": "you,",
+    "options": [
+     "you,",
+     "busy,",
+     "here,"
+    ]
+   },
+   {
+    "correct": "I would not",
+    "options": [
+     "I would not",
+     "I did not",
+     "I will not"
+    ]
+   },
+   {
+    "correct": "live there.",
+    "options": [
+     "live there.",
+     "lived there.",
+     "living there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был тобой, я бы не пришел.",
+  "en": "If I were you, I would not come.",
+  "alternatives": [
+   "If I were you, I wouldn't come."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If she",
+     "If he"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was",
+     "did"
+    ]
+   },
+   {
+    "correct": "you,",
+    "options": [
+     "you,",
+     "busy,",
+     "there,"
+    ]
+   },
+   {
+    "correct": "I would not",
+    "options": [
+     "I would not",
+     "I did not",
+     "I will not"
+    ]
+   },
+   {
+    "correct": "come.",
+    "options": [
+     "come.",
+     "came.",
+     "coming."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не был тобой, я бы не знал.",
+  "en": "If I were not you, I would not know.",
+  "alternatives": [
+   "If I weren't you, I wouldn't know."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If he",
+     "If they"
+    ]
+   },
+   {
+    "correct": "were not",
+    "options": [
+     "were not",
+     "was not",
+     "did not"
+    ]
+   },
+   {
+    "correct": "you,",
+    "options": [
+     "you,",
+     "busy,",
+     "here,"
+    ]
+   },
+   {
+    "correct": "I would not",
+    "options": [
+     "I would not",
+     "I did not",
+     "I will not"
+    ]
+   },
+   {
+    "correct": "know.",
+    "options": [
+     "know.",
+     "knew.",
+     "knowing."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был в Лондоне, я бы поехал туда.",
+  "en": "If I were in London, I would go there.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I were",
+    "options": [
+     "If I were",
+     "If I was",
+     "If I am",
+     "If I would be"
+    ]
+   },
+   {
+    "correct": "in London,",
+    "options": [
+     "in London,",
+     "at London,",
+     "to London,",
+     "on London,"
+    ]
+   },
+   {
+    "correct": "I would go",
+    "options": [
+     "I would go",
+     "I went",
+     "I go",
+     "I will go"
+    ]
+   },
+   {
+    "correct": "there.",
+    "options": [
+     "there.",
+     "here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не был тобой, я бы выиграл.",
+  "en": "If I were not you, I would win.",
+  "alternatives": [
+   "If I weren't you, I would win."
+  ],
+  "slots": [
+   {
+    "correct": "If I were not",
+    "options": [
+     "If I were not",
+     "If I was not",
+     "If I am not",
+     "If I wouldn't be"
+    ]
+   },
+   {
+    "correct": "you,",
+    "options": [
+     "you,",
+     "he,",
+     "they,"
+    ]
+   },
+   {
+    "correct": "I would win.",
+    "options": [
+     "I would win.",
+     "I win.",
+     "I won.",
+     "I will win."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы он не был занят, он бы помог нам.",
+  "en": "If he were not busy, he would help us.",
+  "alternatives": [
+   "If he weren't busy, he would help us."
+  ],
+  "slots": [
+   {
+    "correct": "If he were not",
+    "options": [
+     "If he were not",
+     "If he was not",
+     "If he is not",
+     "If he would not be"
+    ]
+   },
+   {
+    "correct": "busy,",
+    "options": [
+     "busy,",
+     "happy,"
+    ]
+   },
+   {
+    "correct": "he would help",
+    "options": [
+     "he would help",
+     "he helped",
+     "he helps",
+     "he will help"
+    ]
+   },
+   {
+    "correct": "us.",
+    "options": [
+     "us.",
+     "me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я знал его, я бы помог ему.",
+  "en": "If I knew him, I would help him.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I knew",
+    "options": [
+     "If I knew",
+     "If I would know",
+     "If I know",
+     "If I had known"
+    ]
+   },
+   {
+    "correct": "him,",
+    "options": [
+     "him,",
+     "her,"
+    ]
+   },
+   {
+    "correct": "I would help",
+    "options": [
+     "I would help",
+     "I helped",
+     "I help",
+     "I will help"
+    ]
+   },
+   {
+    "correct": "him.",
+    "options": [
+     "him.",
+     "her."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был тобой, я бы не был усталым.",
+  "en": "If I were you, I wouldn't be tired.",
+  "alternatives": [
+   "If I were you, I would not be tired."
+  ],
+  "slots": [
+   {
+    "correct": "If I were",
+    "options": [
+     "If I were",
+     "If I was",
+     "If I am",
+     "If I would be"
+    ]
+   },
+   {
+    "correct": "you,",
+    "options": [
+     "you,",
+     "him,",
+     "them,"
+    ]
+   },
+   {
+    "correct": "I wouldn't be",
+    "options": [
+     "I wouldn't be",
+     "I would be",
+     "I didn't be",
+     "I was not"
+    ]
+   },
+   {
+    "correct": "tired.",
+    "options": [
+     "tired.",
+     "busy.",
+     "happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не работал, я бы путешествовал по миру.",
+  "en": "If I didn't work, I would travel the world.",
+  "alternatives": [
+   "If I did not work, I would travel the world."
+  ],
+  "slots": [
+   {
+    "correct": "If I didn't work,",
+    "options": [
+     "If I didn't work,",
+     "If I wouldn't work,",
+     "If I worked,",
+     "If I don't work,"
+    ]
+   },
+   {
+    "correct": "I would travel",
+    "options": [
+     "I would travel",
+     "I traveled",
+     "I travel",
+     "I will travel"
+    ]
+   },
+   {
+    "correct": "the world.",
+    "options": [
+     "the world.",
+     "to London."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я знал ответ, я бы не был занят.",
+  "en": "If I knew the answer, I wouldn't be busy.",
+  "alternatives": [
+   "If I knew the answer, I would not be busy."
+  ],
+  "slots": [
+   {
+    "correct": "If I knew",
+    "options": [
+     "If I knew",
+     "If I would know",
+     "If I know",
+     "If I had known"
+    ]
+   },
+   {
+    "correct": "the answer,",
+    "options": [
+     "the answer,",
+     "the truth,"
+    ]
+   },
+   {
+    "correct": "I wouldn't be",
+    "options": [
+     "I wouldn't be",
+     "I would be",
+     "I was",
+     "I am"
+    ]
+   },
+   {
+    "correct": "busy.",
+    "options": [
+     "busy.",
+     "tired."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я был тобой, я бы выиграл.",
+  "en": "If I were you, I would win.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I were you,",
+    "options": [
+     "If I were you,",
+     "If I was you,",
+     "If I am you,",
+     "If I be you,"
+    ]
+   },
+   {
+    "correct": "I would win.",
+    "options": [
+     "I would win.",
+     "I will win.",
+     "I would won.",
+     "I won."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не выиграл, я бы не купил машину.",
+  "en": "If I didn't win, I wouldn't buy a car.",
+  "alternatives": [
+   "If I did not win, I would not buy a car."
+  ],
+  "slots": [
+   {
+    "correct": "If I didn't win,",
+    "options": [
+     "If I didn't win,",
+     "If I don't win,",
+     "If I wouldn't win,",
+     "If I won't win,"
+    ]
+   },
+   {
+    "correct": "I wouldn't buy a car.",
+    "options": [
+     "I wouldn't buy a car.",
+     "I didn't buy a car.",
+     "I don't buy a car.",
+     "I would buy a car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы они не работали, они бы не были усталыми.",
+  "en": "If they didn't work, they wouldn't be tired.",
+  "alternatives": [
+   "If they did not work, they would not be tired."
+  ],
+  "slots": [
+   {
+    "correct": "If they didn't work,",
+    "options": [
+     "If they didn't work,",
+     "If they don't work,",
+     "If they wouldn't work,",
+     "If they weren't work,"
+    ]
+   },
+   {
+    "correct": "they wouldn't be tired.",
+    "options": [
+     "they wouldn't be tired.",
+     "they wouldn't tired.",
+     "they didn't be tired.",
+     "they don't be tired."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы я не выиграл, я бы не путешествовал.",
+  "en": "If I didn't win, I wouldn't travel.",
+  "alternatives": [
+   "If I did not win, I would not travel."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "I",
+     "If he"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "wouldn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "win,",
+    "options": [
+     "win,",
+     "won,",
+     "wins,"
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "if I",
+     "he"
+    ]
+   },
+   {
+    "correct": "wouldn't",
+    "options": [
+     "wouldn't",
+     "didn't",
+     "won't",
+     "don't"
+    ]
+   },
+   {
+    "correct": "travel.",
+    "options": [
+     "travel.",
+     "traveled.",
+     "travels."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_second",
+  "ru": "Если бы они были здесь, они бы помогли.",
+  "en": "If they were here, they would help.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If he",
+     "They"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was",
+     "are",
+     "would be"
+    ]
+   },
+   {
+    "correct": "here,",
+    "options": [
+     "here,",
+     "there,",
+     "home,"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "we",
+     "he"
+    ]
+   },
+   {
+    "correct": "would",
+    "options": [
+     "would",
+     "will",
+     "did"
+    ]
+   },
+   {
+    "correct": "help.",
+    "options": [
+     "help.",
+     "helped.",
+     "helping."
+    ]
+   }
+  ]
+ }
+]

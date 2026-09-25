@@ -1,0 +1,2836 @@
+[
+ {
+  "topic": "tag_questions",
+  "ru": "Ты не устал, правда?",
+  "en": "You aren't tired, are you?",
+  "alternatives": [
+   "You are not tired, are you?"
+  ],
+  "slots": [
+   {
+    "correct": "You aren't tired,",
+    "options": [
+     "You aren't tired,",
+     "You are tired,",
+     "You were tired,",
+     "You don't get tired,"
+    ]
+   },
+   {
+    "correct": "are you?",
+    "options": [
+     "are you?",
+     "aren't you?",
+     "do you?",
+     "don't you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Она не дома, не так ли?",
+  "en": "She isn't at home, is she?",
+  "alternatives": [
+   "She is not at home, is she?"
+  ],
+  "slots": [
+   {
+    "correct": "She isn't at home,",
+    "options": [
+     "She isn't at home,",
+     "She is at home,",
+     "She wasn't at home,",
+     "She won't be at home,"
+    ]
+   },
+   {
+    "correct": "is she?",
+    "options": [
+     "is she?",
+     "isn't she?",
+     "does she?",
+     "doesn't she?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Вы не опоздали, так ведь?",
+  "en": "You weren't late, were you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You weren't late,",
+    "options": [
+     "You weren't late,",
+     "You were late,",
+     "You aren't late,",
+     "You are late,"
+    ]
+   },
+   {
+    "correct": "were you?",
+    "options": [
+     "were you?",
+     "weren't you?",
+     "are you?",
+     "aren't you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он не работает здесь, правда?",
+  "en": "He doesn't work here, does he?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He doesn't work here,",
+    "options": [
+     "He doesn't work here,",
+     "He works here,",
+     "He didn't work here,",
+     "He worked here,"
+    ]
+   },
+   {
+    "correct": "does he?",
+    "options": [
+     "does he?",
+     "doesn't he?",
+     "is he?",
+     "isn't he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они не знали, правда?",
+  "en": "They didn't know, did they?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They didn't know,",
+    "options": [
+     "They didn't know,",
+     "They knew,",
+     "They don't know,",
+     "They know,"
+    ]
+   },
+   {
+    "correct": "did they?",
+    "options": [
+     "did they?",
+     "didn't they?",
+     "are they?",
+     "aren't they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты не поможешь, не так ли?",
+  "en": "You won't help, will you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You won't help,",
+    "options": [
+     "You won't help,",
+     "You will help,",
+     "You don't help,",
+     "You didn't help,"
+    ]
+   },
+   {
+    "correct": "will you?",
+    "options": [
+     "will you?",
+     "won't you?",
+     "do you?",
+     "don't you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он готов, не так ли?",
+  "en": "He is ready, isn't he?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He is ready,",
+    "options": [
+     "He is ready,",
+     "He isn't ready,",
+     "He was ready,",
+     "He won't be ready,"
+    ]
+   },
+   {
+    "correct": "isn't he?",
+    "options": [
+     "isn't he?",
+     "is he?",
+     "doesn't he?",
+     "does he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они живут здесь, правда?",
+  "en": "They live here, don't they?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They live here,",
+    "options": [
+     "They live here,",
+     "They don't live here,",
+     "They lived here,",
+     "They didn't live here,"
+    ]
+   },
+   {
+    "correct": "don't they?",
+    "options": [
+     "don't they?",
+     "do they?",
+     "aren't they?",
+     "are they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты пойдешь, не так ли?",
+  "en": "You will go, won't you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You will go,",
+    "options": [
+     "You will go,",
+     "You won't go,",
+     "You are going,",
+     "You aren't going,"
+    ]
+   },
+   {
+    "correct": "won't you?",
+    "options": [
+     "won't you?",
+     "will you?",
+     "don't you?",
+     "do you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он видел это, не так ли?",
+  "en": "He saw it, didn't he?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He saw it,",
+    "options": [
+     "He saw it,",
+     "He didn't see it,",
+     "He sees it,",
+     "He doesn't see it,"
+    ]
+   },
+   {
+    "correct": "didn't he?",
+    "options": [
+     "didn't he?",
+     "did he?",
+     "isn't he?",
+     "is he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Она придет, правда?",
+  "en": "She will come, won't she?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She will come,",
+    "options": [
+     "She will come,",
+     "She won't come,",
+     "She is coming,",
+     "She isn't coming,"
+    ]
+   },
+   {
+    "correct": "won't she?",
+    "options": [
+     "won't she?",
+     "will she?",
+     "doesn't she?",
+     "does she?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они умеют плавать, не так ли?",
+  "en": "They can swim, can't they?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They can swim,",
+    "options": [
+     "They can swim,",
+     "They can't swim,",
+     "They could swim,",
+     "They couldn't swim,"
+    ]
+   },
+   {
+    "correct": "can't they?",
+    "options": [
+     "can't they?",
+     "can they?",
+     "don't they?",
+     "do they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты устал, не так ли?",
+  "en": "You are tired, aren't you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You are tired,",
+    "options": [
+     "You are tired,",
+     "You aren't tired,"
+    ]
+   },
+   {
+    "correct": "aren't you?",
+    "options": [
+     "aren't you?",
+     "are you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Она дома, правда?",
+  "en": "She is at home, isn't she?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She is at home,",
+    "options": [
+     "She is at home,",
+     "She isn't at home,"
+    ]
+   },
+   {
+    "correct": "isn't she?",
+    "options": [
+     "isn't she?",
+     "is she?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Вы опоздали, не так ли?",
+  "en": "You are late, aren't you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You are late,",
+    "options": [
+     "You are late,",
+     "You aren't late,"
+    ]
+   },
+   {
+    "correct": "aren't you?",
+    "options": [
+     "aren't you?",
+     "are you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он работает здесь, правда?",
+  "en": "He works here, doesn't he?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He works here,",
+    "options": [
+     "He works here,",
+     "He doesn't work here,"
+    ]
+   },
+   {
+    "correct": "doesn't he?",
+    "options": [
+     "doesn't he?",
+     "does he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они знали это, не так ли?",
+  "en": "They knew it, didn't they?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They knew it,",
+    "options": [
+     "They knew it,",
+     "They didn't know it,"
+    ]
+   },
+   {
+    "correct": "didn't they?",
+    "options": [
+     "didn't they?",
+     "did they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты поможешь, правда?",
+  "en": "You will help, won't you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You will help,",
+    "options": [
+     "You will help,",
+     "You won't help,"
+    ]
+   },
+   {
+    "correct": "won't you?",
+    "options": [
+     "won't you?",
+     "will you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он не готов, так ведь?",
+  "en": "He isn't ready, is he?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He isn't ready,",
+    "options": [
+     "He isn't ready,",
+     "He is ready,"
+    ]
+   },
+   {
+    "correct": "is he?",
+    "options": [
+     "is he?",
+     "isn't he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они не живут здесь, правда?",
+  "en": "They don't live here, do they?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They don't live here,",
+    "options": [
+     "They don't live here,",
+     "They live here,"
+    ]
+   },
+   {
+    "correct": "do they?",
+    "options": [
+     "do they?",
+     "don't they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты не пойдешь, не так ли?",
+  "en": "You won't go, will you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You won't go,",
+    "options": [
+     "You won't go,",
+     "You will go,"
+    ]
+   },
+   {
+    "correct": "will you?",
+    "options": [
+     "will you?",
+     "won't you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он не видел это, правда?",
+  "en": "He didn't see it, did he?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He didn't see it,",
+    "options": [
+     "He didn't see it,",
+     "He saw it,"
+    ]
+   },
+   {
+    "correct": "did he?",
+    "options": [
+     "did he?",
+     "didn't he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Она не придет, не так ли?",
+  "en": "She won't come, will she?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She won't come,",
+    "options": [
+     "She won't come,",
+     "She will come,"
+    ]
+   },
+   {
+    "correct": "will she?",
+    "options": [
+     "will she?",
+     "won't she?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они не умеют плавать, правда?",
+  "en": "They can't swim, can they?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They can't swim,",
+    "options": [
+     "They can't swim,",
+     "They can swim,"
+    ]
+   },
+   {
+    "correct": "can they?",
+    "options": [
+     "can they?",
+     "can't they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Это не было легко, правда?",
+  "en": "It wasn't easy, was it?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It wasn't easy,",
+    "options": [
+     "It wasn't easy,",
+     "It was easy,",
+     "It isn't easy,",
+     "It is easy,"
+    ]
+   },
+   {
+    "correct": "was it?",
+    "options": [
+     "was it?",
+     "wasn't it?",
+     "is it?",
+     "isn't it?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Вы не будете ждать, правда?",
+  "en": "You won't wait, will you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You won't wait,",
+    "options": [
+     "You won't wait,",
+     "You will wait,",
+     "You don't wait,",
+     "You didn't wait,"
+    ]
+   },
+   {
+    "correct": "will you?",
+    "options": [
+     "will you?",
+     "won't you?",
+     "do you?",
+     "don't you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он не может плавать, правда?",
+  "en": "He can't swim, can he?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He can't swim,",
+    "options": [
+     "He can't swim,",
+     "He can swim,",
+     "He doesn't swim,",
+     "He works,"
+    ]
+   },
+   {
+    "correct": "can he?",
+    "options": [
+     "can he?",
+     "can't he?",
+     "does he?",
+     "doesn't he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Она не была занята, правда?",
+  "en": "She wasn't busy, was she?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She wasn't busy,",
+    "options": [
+     "She wasn't busy,",
+     "She was busy,",
+     "She isn't busy,",
+     "She is busy,"
+    ]
+   },
+   {
+    "correct": "was she?",
+    "options": [
+     "was she?",
+     "wasn't she?",
+     "is she?",
+     "isn't she?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они не придут завтра, правда?",
+  "en": "They won't come tomorrow, will they?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They won't come tomorrow,",
+    "options": [
+     "They won't come tomorrow,",
+     "They will come tomorrow,",
+     "They don't come tomorrow,",
+     "They didn't come tomorrow,"
+    ]
+   },
+   {
+    "correct": "will they?",
+    "options": [
+     "will they?",
+     "won't they?",
+     "do they?",
+     "did they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты не работаешь здесь, правда?",
+  "en": "You don't work here, do you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You don't work here,",
+    "options": [
+     "You don't work here,",
+     "You work here,",
+     "You didn't work here,",
+     "You won't work here,"
+    ]
+   },
+   {
+    "correct": "do you?",
+    "options": [
+     "do you?",
+     "don't you?",
+     "did you?",
+     "will you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Она была готова, не так ли?",
+  "en": "She was ready, wasn't she?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She was ready,",
+    "options": [
+     "She was ready,",
+     "She wasn't ready,",
+     "She is ready,",
+     "She isn't ready,"
+    ]
+   },
+   {
+    "correct": "wasn't she?",
+    "options": [
+     "wasn't she?",
+     "was she?",
+     "isn't she?",
+     "is she?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они работают здесь, не так ли?",
+  "en": "They work here, don't they?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They work here,",
+    "options": [
+     "They work here,",
+     "They don't work here,",
+     "They worked here,",
+     "They didn't work here,"
+    ]
+   },
+   {
+    "correct": "don't they?",
+    "options": [
+     "don't they?",
+     "do they?",
+     "didn't they?",
+     "did they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Это будет легко, правда?",
+  "en": "It will be easy, won't it?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It will be easy,",
+    "options": [
+     "It will be easy,",
+     "It won't be easy,",
+     "It is easy,",
+     "It isn't easy,"
+    ]
+   },
+   {
+    "correct": "won't it?",
+    "options": [
+     "won't it?",
+     "will it?",
+     "isn't it?",
+     "is it?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он знает это, правда?",
+  "en": "He knows it, doesn't he?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He knows it,",
+    "options": [
+     "He knows it,",
+     "He doesn't know it,",
+     "He knew it,",
+     "He didn't know it,"
+    ]
+   },
+   {
+    "correct": "doesn't he?",
+    "options": [
+     "doesn't he?",
+     "does he?",
+     "didn't he?",
+     "did he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они были дома, не так ли?",
+  "en": "They were at home, weren't they?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They were at home,",
+    "options": [
+     "They were at home,",
+     "They weren't at home,",
+     "They are at home,",
+     "They aren't at home,"
+    ]
+   },
+   {
+    "correct": "weren't they?",
+    "options": [
+     "weren't they?",
+     "were they?",
+     "aren't they?",
+     "are they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты умеешь плавать, не так ли?",
+  "en": "You can swim, can't you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You can swim,",
+    "options": [
+     "You can swim,",
+     "You can't swim,",
+     "You work,",
+     "You don't work,"
+    ]
+   },
+   {
+    "correct": "can't you?",
+    "options": [
+     "can't you?",
+     "can you?",
+     "don't you?",
+     "do you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Вы не были готовы, правда?",
+  "en": "You weren't ready, were you?",
+  "alternatives": [
+   "You were not ready, were you?"
+  ],
+  "slots": [
+   {
+    "correct": "You weren't ready,",
+    "options": [
+     "You weren't ready,",
+     "You were ready,"
+    ]
+   },
+   {
+    "correct": "were you?",
+    "options": [
+     "were you?",
+     "weren't you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он не был дома, так ведь?",
+  "en": "He wasn't at home, was he?",
+  "alternatives": [
+   "He was not at home, was he?"
+  ],
+  "slots": [
+   {
+    "correct": "He wasn't at home,",
+    "options": [
+     "He wasn't at home,",
+     "He was at home,"
+    ]
+   },
+   {
+    "correct": "was he?",
+    "options": [
+     "was he?",
+     "wasn't he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они не опаздывали, не так ли?",
+  "en": "They weren't late, were they?",
+  "alternatives": [
+   "They were not late, were they?"
+  ],
+  "slots": [
+   {
+    "correct": "They weren't late,",
+    "options": [
+     "They weren't late,",
+     "They were late,"
+    ]
+   },
+   {
+    "correct": "were they?",
+    "options": [
+     "were they?",
+     "weren't they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты не работаешь, правда?",
+  "en": "You don't work, do you?",
+  "alternatives": [
+   "You do not work, do you?"
+  ],
+  "slots": [
+   {
+    "correct": "You don't work,",
+    "options": [
+     "You don't work,",
+     "You work,"
+    ]
+   },
+   {
+    "correct": "do you?",
+    "options": [
+     "do you?",
+     "don't you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он не живет здесь, правда?",
+  "en": "He doesn't live here, does he?",
+  "alternatives": [
+   "He does not live here, does he?"
+  ],
+  "slots": [
+   {
+    "correct": "He doesn't live here,",
+    "options": [
+     "He doesn't live here,",
+     "He lives here,"
+    ]
+   },
+   {
+    "correct": "does he?",
+    "options": [
+     "does he?",
+     "doesn't he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они не знали этого, так ведь?",
+  "en": "They didn't know it, did they?",
+  "alternatives": [
+   "They did not know it, did they?"
+  ],
+  "slots": [
+   {
+    "correct": "They didn't know it,",
+    "options": [
+     "They didn't know it,",
+     "They knew it,"
+    ]
+   },
+   {
+    "correct": "did they?",
+    "options": [
+     "did they?",
+     "didn't they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Это не поможет, правда?",
+  "en": "It won't help, will it?",
+  "alternatives": [
+   "It will not help, will it?"
+  ],
+  "slots": [
+   {
+    "correct": "It won't help,",
+    "options": [
+     "It won't help,",
+     "It will help,"
+    ]
+   },
+   {
+    "correct": "will it?",
+    "options": [
+     "will it?",
+     "won't it?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты не видишь его, так ведь?",
+  "en": "You don't see him, do you?",
+  "alternatives": [
+   "You do not see him, do you?"
+  ],
+  "slots": [
+   {
+    "correct": "You don't see him,",
+    "options": [
+     "You don't see him,",
+     "You see him,"
+    ]
+   },
+   {
+    "correct": "do you?",
+    "options": [
+     "do you?",
+     "don't you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он не умеет плавать, правда?",
+  "en": "He can't swim, can he?",
+  "alternatives": [
+   "He cannot swim, can he?"
+  ],
+  "slots": [
+   {
+    "correct": "He can't swim,",
+    "options": [
+     "He can't swim,",
+     "He can swim,"
+    ]
+   },
+   {
+    "correct": "can he?",
+    "options": [
+     "can he?",
+     "can't he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты не придешь, правда?",
+  "en": "You won't come, will you?",
+  "alternatives": [
+   "You will not come, will you?"
+  ],
+  "slots": [
+   {
+    "correct": "You won't come,",
+    "options": [
+     "You won't come,",
+     "You will come,"
+    ]
+   },
+   {
+    "correct": "will you?",
+    "options": [
+     "will you?",
+     "won't you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Мы не опаздываем, правда?",
+  "en": "We aren't late, are we?",
+  "alternatives": [
+   "We are not late, are we?"
+  ],
+  "slots": [
+   {
+    "correct": "We aren't late,",
+    "options": [
+     "We aren't late,",
+     "We are late,"
+    ]
+   },
+   {
+    "correct": "are we?",
+    "options": [
+     "are we?",
+     "aren't we?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они не работают, так ведь?",
+  "en": "They don't work, do they?",
+  "alternatives": [
+   "They do not work, do they?"
+  ],
+  "slots": [
+   {
+    "correct": "They don't work,",
+    "options": [
+     "They don't work,",
+     "They work,"
+    ]
+   },
+   {
+    "correct": "do they?",
+    "options": [
+     "do they?",
+     "don't they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он не был готов, правда?",
+  "en": "He wasn't ready, was he?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He wasn't ready,",
+    "options": [
+     "He wasn't ready,",
+     "He isn't ready,",
+     "He won't be ready,"
+    ]
+   },
+   {
+    "correct": "was he?",
+    "options": [
+     "was he?",
+     "is he?",
+     "will he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они не были дома, не так ли?",
+  "en": "They weren't at home, were they?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They weren't at home,",
+    "options": [
+     "They weren't at home,",
+     "They aren't at home,",
+     "They won't be at home,"
+    ]
+   },
+   {
+    "correct": "were they?",
+    "options": [
+     "were they?",
+     "are they?",
+     "will they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты не опаздывал, правда?",
+  "en": "You weren't late, were you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You weren't late,",
+    "options": [
+     "You weren't late,",
+     "You aren't late,",
+     "You weren't busy,"
+    ]
+   },
+   {
+    "correct": "were you?",
+    "options": [
+     "were you?",
+     "are you?",
+     "do you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он не работает, не так ли?",
+  "en": "He doesn't work, does he?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He doesn't work,",
+    "options": [
+     "He doesn't work,",
+     "He didn't work,",
+     "He isn't working,"
+    ]
+   },
+   {
+    "correct": "does he?",
+    "options": [
+     "does he?",
+     "did he?",
+     "is he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты не знал этого, правда?",
+  "en": "You didn't know it, did you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You didn't know it,",
+    "options": [
+     "You didn't know it,",
+     "You don't know it,",
+     "You won't know it,"
+    ]
+   },
+   {
+    "correct": "did you?",
+    "options": [
+     "did you?",
+     "do you?",
+     "will you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Это не поможет, не так ли?",
+  "en": "It won't help, will it?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It won't help,",
+    "options": [
+     "It won't help,",
+     "It doesn't help,",
+     "It didn't help,"
+    ]
+   },
+   {
+    "correct": "will it?",
+    "options": [
+     "will it?",
+     "does it?",
+     "did it?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты не видишь её, правда?",
+  "en": "You don't see her, do you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You don't see her,",
+    "options": [
+     "You don't see her,",
+     "You didn't see her,",
+     "You won't see her,"
+    ]
+   },
+   {
+    "correct": "do you?",
+    "options": [
+     "do you?",
+     "did you?",
+     "will you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он не умеет плавать, так ведь?",
+  "en": "He can't swim, can he?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He can't swim,",
+    "options": [
+     "He can't swim,",
+     "He doesn't swim,",
+     "He didn't swim,"
+    ]
+   },
+   {
+    "correct": "can he?",
+    "options": [
+     "can he?",
+     "does he?",
+     "did he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Она была занята, не так ли?",
+  "en": "She was busy, wasn't she?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She was busy,",
+    "options": [
+     "She was busy,",
+     "She is busy,",
+     "She will be busy,"
+    ]
+   },
+   {
+    "correct": "wasn't she?",
+    "options": [
+     "wasn't she?",
+     "isn't she?",
+     "won't she?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они работают здесь, правда?",
+  "en": "They work here, don't they?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They work here,",
+    "options": [
+     "They work here,",
+     "They worked here,",
+     "They are working here,"
+    ]
+   },
+   {
+    "correct": "don't they?",
+    "options": [
+     "don't they?",
+     "didn't they?",
+     "aren't they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты придешь, не так ли?",
+  "en": "You will come, won't you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You will come,",
+    "options": [
+     "You will come,",
+     "You come,",
+     "You came,"
+    ]
+   },
+   {
+    "correct": "won't you?",
+    "options": [
+     "won't you?",
+     "don't you?",
+     "didn't you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Вы не были дома, правда?",
+  "en": "You weren't at home, were you?",
+  "alternatives": [
+   "You were not at home, were you?"
+  ],
+  "slots": [
+   {
+    "correct": "You weren't",
+    "options": [
+     "You weren't",
+     "You were",
+     "You aren't"
+    ]
+   },
+   {
+    "correct": "at home,",
+    "options": [
+     "at home,",
+     "at work,"
+    ]
+   },
+   {
+    "correct": "were you?",
+    "options": [
+     "were you?",
+     "weren't you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он не работает здесь, не так ли?",
+  "en": "He doesn't work here, does he?",
+  "alternatives": [
+   "He does not work here, does he?"
+  ],
+  "slots": [
+   {
+    "correct": "He doesn't",
+    "options": [
+     "He doesn't",
+     "He does",
+     "He didn't"
+    ]
+   },
+   {
+    "correct": "work here,",
+    "options": [
+     "work here,",
+     "live here,"
+    ]
+   },
+   {
+    "correct": "does he?",
+    "options": [
+     "does he?",
+     "doesn't he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они не видели это, не так ли?",
+  "en": "They didn't see it, did they?",
+  "alternatives": [
+   "They did not see it, did they?"
+  ],
+  "slots": [
+   {
+    "correct": "They didn't",
+    "options": [
+     "They didn't",
+     "They did",
+     "They don't"
+    ]
+   },
+   {
+    "correct": "see it,",
+    "options": [
+     "see it,",
+     "know it,"
+    ]
+   },
+   {
+    "correct": "did they?",
+    "options": [
+     "did they?",
+     "didn't they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты не можешь плавать, правда?",
+  "en": "You can't swim, can you?",
+  "alternatives": [
+   "You cannot swim, can you?"
+  ],
+  "slots": [
+   {
+    "correct": "You can't",
+    "options": [
+     "You can't",
+     "You can"
+    ]
+   },
+   {
+    "correct": "swim,",
+    "options": [
+     "swim,",
+     "help,"
+    ]
+   },
+   {
+    "correct": "can you?",
+    "options": [
+     "can you?",
+     "can't you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Она не будет ждать, не так ли?",
+  "en": "She won't wait, will she?",
+  "alternatives": [
+   "She will not wait, will she?"
+  ],
+  "slots": [
+   {
+    "correct": "She won't",
+    "options": [
+     "She won't",
+     "She will"
+    ]
+   },
+   {
+    "correct": "wait,",
+    "options": [
+     "wait,",
+     "come,"
+    ]
+   },
+   {
+    "correct": "will she?",
+    "options": [
+     "will she?",
+     "won't she?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Это не было поздно, правда?",
+  "en": "It wasn't late, was it?",
+  "alternatives": [
+   "It was not late, was it?"
+  ],
+  "slots": [
+   {
+    "correct": "It wasn't",
+    "options": [
+     "It wasn't",
+     "It was"
+    ]
+   },
+   {
+    "correct": "late,",
+    "options": [
+     "late,",
+     "ready,"
+    ]
+   },
+   {
+    "correct": "was it?",
+    "options": [
+     "was it?",
+     "wasn't it?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Она занята, не так ли?",
+  "en": "She is busy, isn't she?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She is",
+    "options": [
+     "She is",
+     "She isn't"
+    ]
+   },
+   {
+    "correct": "busy,",
+    "options": [
+     "busy,",
+     "ready,"
+    ]
+   },
+   {
+    "correct": "isn't she?",
+    "options": [
+     "isn't she?",
+     "is she?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они знают это, не так ли?",
+  "en": "They know it, don't they?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They know",
+    "options": [
+     "They know",
+     "They don't know"
+    ]
+   },
+   {
+    "correct": "it,",
+    "options": [
+     "it,",
+     "them,"
+    ]
+   },
+   {
+    "correct": "don't they?",
+    "options": [
+     "don't they?",
+     "do they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он придет, правда?",
+  "en": "He will come, won't he?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He will",
+    "options": [
+     "He will",
+     "He won't"
+    ]
+   },
+   {
+    "correct": "come,",
+    "options": [
+     "come,",
+     "help,"
+    ]
+   },
+   {
+    "correct": "won't he?",
+    "options": [
+     "won't he?",
+     "will he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты умеешь плавать, правда?",
+  "en": "You can swim, can't you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You can",
+    "options": [
+     "You can",
+     "You can't"
+    ]
+   },
+   {
+    "correct": "swim,",
+    "options": [
+     "swim,",
+     "work,"
+    ]
+   },
+   {
+    "correct": "can't you?",
+    "options": [
+     "can't you?",
+     "can you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он работает здесь, не так ли?",
+  "en": "He works here, doesn't he?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He works",
+    "options": [
+     "He works",
+     "He doesn't work"
+    ]
+   },
+   {
+    "correct": "here,",
+    "options": [
+     "here,",
+     "there,"
+    ]
+   },
+   {
+    "correct": "doesn't he?",
+    "options": [
+     "doesn't he?",
+     "does he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он не устал, правда?",
+  "en": "He isn't tired, is he?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He isn't tired,",
+    "options": [
+     "He isn't tired,",
+     "He is tired,",
+     "He was tired,",
+     "He weren't tired,"
+    ]
+   },
+   {
+    "correct": "is he?",
+    "options": [
+     "is he?",
+     "isn't he?",
+     "was he?",
+     "has he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Вы не готовы, так ведь?",
+  "en": "You aren't ready, are you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You aren't ready,",
+    "options": [
+     "You aren't ready,",
+     "You are ready,",
+     "You weren't ready,",
+     "You are not ready,"
+    ]
+   },
+   {
+    "correct": "are you?",
+    "options": [
+     "are you?",
+     "aren't you?",
+     "were you?",
+     "do you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они не были дома, правда?",
+  "en": "They weren't at home, were they?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They weren't at home,",
+    "options": [
+     "They weren't at home,",
+     "They were at home,",
+     "They aren't at home,",
+     "They was at home,"
+    ]
+   },
+   {
+    "correct": "were they?",
+    "options": [
+     "were they?",
+     "weren't they?",
+     "are they?",
+     "did they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты не живешь здесь, так ведь?",
+  "en": "You don't live here, do you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You don't live here,",
+    "options": [
+     "You don't live here,",
+     "You do live here,",
+     "You didn't live here,",
+     "You doesn't live here,"
+    ]
+   },
+   {
+    "correct": "do you?",
+    "options": [
+     "do you?",
+     "don't you?",
+     "are you?",
+     "did you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они не знали это, правда?",
+  "en": "They didn't know it, did they?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They didn't know it,",
+    "options": [
+     "They didn't know it,",
+     "They did know it,",
+     "They don't know it,",
+     "They doesn't know it,"
+    ]
+   },
+   {
+    "correct": "did they?",
+    "options": [
+     "did they?",
+     "didn't they?",
+     "do they?",
+     "were they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Она не придет, правда?",
+  "en": "She won't come, will she?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She won't come,",
+    "options": [
+     "She won't come,",
+     "She will come,",
+     "She doesn't come,",
+     "She didn't come,"
+    ]
+   },
+   {
+    "correct": "will she?",
+    "options": [
+     "will she?",
+     "won't she?",
+     "does she?",
+     "is she?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты не можешь плавать, так ведь?",
+  "en": "You can't swim, can you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You can't swim,",
+    "options": [
+     "You can't swim,",
+     "You can swim,",
+     "You could swim,",
+     "You do swim,"
+    ]
+   },
+   {
+    "correct": "can you?",
+    "options": [
+     "can you?",
+     "can't you?",
+     "do you?",
+     "will you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он не видел это, так ведь?",
+  "en": "He didn't see it, did he?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He didn't see it,",
+    "options": [
+     "He didn't see it,",
+     "He did see it,",
+     "He doesn't see it,",
+     "He wasn't see it,"
+    ]
+   },
+   {
+    "correct": "did he?",
+    "options": [
+     "did he?",
+     "didn't he?",
+     "does he?",
+     "is he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты не поможешь, правда?",
+  "en": "You won't help, will you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You won't help,",
+    "options": [
+     "You won't help,",
+     "You will help,",
+     "You don't help,",
+     "You didn't help,"
+    ]
+   },
+   {
+    "correct": "will you?",
+    "options": [
+     "will you?",
+     "won't you?",
+     "do you?",
+     "are you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они не опаздывают, так ведь?",
+  "en": "They aren't late, are they?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They aren't late,",
+    "options": [
+     "They aren't late,",
+     "They are late,",
+     "They weren't late,",
+     "They was late,"
+    ]
+   },
+   {
+    "correct": "are they?",
+    "options": [
+     "are they?",
+     "aren't they?",
+     "were they?",
+     "do they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он не устал, не так ли?",
+  "en": "He isn't tired, is he?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He isn't tired,",
+    "options": [
+     "He isn't tired,",
+     "He is tired,",
+     "He wasn't tired,",
+     "He was tired,"
+    ]
+   },
+   {
+    "correct": "is he?",
+    "options": [
+     "is he?",
+     "isn't he?",
+     "was he?",
+     "wasn't he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты не готов, не так ли?",
+  "en": "You aren't ready, are you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You aren't ready,",
+    "options": [
+     "You aren't ready,",
+     "You are ready,",
+     "You weren't ready,",
+     "You were ready,"
+    ]
+   },
+   {
+    "correct": "are you?",
+    "options": [
+     "are you?",
+     "aren't you?",
+     "were you?",
+     "weren't you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они не были дома, так ведь?",
+  "en": "They weren't at home, were they?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They weren't at home,",
+    "options": [
+     "They weren't at home,",
+     "They were at home,",
+     "They aren't at home,",
+     "They are at home,"
+    ]
+   },
+   {
+    "correct": "were they?",
+    "options": [
+     "were they?",
+     "weren't they?",
+     "are they?",
+     "aren't they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они не знают это, так ведь?",
+  "en": "They don't know it, do they?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They don't know it,",
+    "options": [
+     "They don't know it,",
+     "They know it,",
+     "They didn't know it,",
+     "They knew it,"
+    ]
+   },
+   {
+    "correct": "do they?",
+    "options": [
+     "do they?",
+     "don't they?",
+     "did they?",
+     "didn't they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты не помогаешь, правда?",
+  "en": "You don't help, do you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You don't help,",
+    "options": [
+     "You don't help,",
+     "You help,",
+     "You didn't help,",
+     "You helped,"
+    ]
+   },
+   {
+    "correct": "do you?",
+    "options": [
+     "do you?",
+     "don't you?",
+     "did you?",
+     "didn't you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они не видели это, правда?",
+  "en": "They didn't see it, did they?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They didn't see it,",
+    "options": [
+     "They didn't see it,",
+     "They saw it,",
+     "They don't see it,",
+     "They see it,"
+    ]
+   },
+   {
+    "correct": "did they?",
+    "options": [
+     "did they?",
+     "didn't they?",
+     "do they?",
+     "don't they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он не придет, правда?",
+  "en": "He won't come, will he?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He won't come,",
+    "options": [
+     "He won't come,",
+     "He will come,",
+     "He doesn't come,",
+     "He comes,"
+    ]
+   },
+   {
+    "correct": "will he?",
+    "options": [
+     "will he?",
+     "won't he?",
+     "does he?",
+     "doesn't he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты не будешь ждать, правда?",
+  "en": "You won't wait, will you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You won't wait,",
+    "options": [
+     "You won't wait,",
+     "You will wait,",
+     "You don't wait,",
+     "You wait,"
+    ]
+   },
+   {
+    "correct": "will you?",
+    "options": [
+     "will you?",
+     "won't you?",
+     "do you?",
+     "don't you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Она не может плавать, правда?",
+  "en": "She can't swim, can she?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She can't swim,",
+    "options": [
+     "She can't swim,",
+     "She can swim,",
+     "She won't swim,",
+     "She will swim,"
+    ]
+   },
+   {
+    "correct": "can she?",
+    "options": [
+     "can she?",
+     "can't she?",
+     "will she?",
+     "won't she?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты не можешь идти, правда?",
+  "en": "You can't go, can you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You can't go,",
+    "options": [
+     "You can't go,",
+     "You can go,",
+     "You won't go,",
+     "You will go,"
+    ]
+   },
+   {
+    "correct": "can you?",
+    "options": [
+     "can you?",
+     "can't you?",
+     "will you?",
+     "won't you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Вы не устали, правда?",
+  "en": "You aren't tired, are you?",
+  "alternatives": [
+   "You are not tired, are you?"
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "aren't",
+    "options": [
+     "aren't",
+     "don't",
+     "weren't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "tired,",
+    "options": [
+     "tired,",
+     "late,",
+     "home,",
+     "ready,"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "aren't",
+     "do",
+     "don't"
+    ]
+   },
+   {
+    "correct": "you?",
+    "options": [
+     "you?",
+     "he?",
+     "they?",
+     "we?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он не был готов, так ведь?",
+  "en": "He wasn't ready, was he?",
+  "alternatives": [
+   "He was not ready, was he?"
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "You",
+     "They",
+     "It"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "isn't",
+     "didn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "ready,",
+    "options": [
+     "ready,",
+     "late,",
+     "tired,",
+     "home,"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "wasn't",
+     "is",
+     "were"
+    ]
+   },
+   {
+    "correct": "he?",
+    "options": [
+     "he?",
+     "it?",
+     "you?",
+     "they?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они не опаздывают, не так ли?",
+  "en": "They aren't late, are they?",
+  "alternatives": [
+   "They are not late, are they?"
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "You",
+     "We",
+     "He"
+    ]
+   },
+   {
+    "correct": "aren't",
+    "options": [
+     "aren't",
+     "don't",
+     "won't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "late,",
+    "options": [
+     "late,",
+     "tired,",
+     "ready,",
+     "home,"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "aren't",
+     "do",
+     "did"
+    ]
+   },
+   {
+    "correct": "they?",
+    "options": [
+     "they?",
+     "you?",
+     "we?",
+     "he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Она не работает, так ведь?",
+  "en": "She doesn't work, does she?",
+  "alternatives": [
+   "She does not work, does she?"
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "isn't",
+     "won't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "work,",
+    "options": [
+     "work,",
+     "come,",
+     "live,",
+     "help,"
+    ]
+   },
+   {
+    "correct": "does",
+    "options": [
+     "does",
+     "doesn't",
+     "is",
+     "will"
+    ]
+   },
+   {
+    "correct": "she?",
+    "options": [
+     "she?",
+     "he?",
+     "they?",
+     "you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Вы не придете, так ведь?",
+  "en": "You won't come, will you?",
+  "alternatives": [
+   "You will not come, will you?"
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "They",
+     "We",
+     "He"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "don't",
+     "aren't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "come,",
+    "options": [
+     "come,",
+     "go,",
+     "work,",
+     "live,"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "won't",
+     "do",
+     "are"
+    ]
+   },
+   {
+    "correct": "you?",
+    "options": [
+     "you?",
+     "they?",
+     "we?",
+     "he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Она была дома, не так ли?",
+  "en": "She was at home, wasn't she?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "is",
+     "were",
+     "did"
+    ]
+   },
+   {
+    "correct": "at home,",
+    "options": [
+     "at home,",
+     "ready,",
+     "tired,",
+     "late,"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "was",
+     "isn't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "she?",
+    "options": [
+     "she?",
+     "he?",
+     "they?",
+     "you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Ты работаешь здесь, не так ли?",
+  "en": "You work here, don't you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "They",
+     "We",
+     "He"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "live",
+     "come",
+     "help"
+    ]
+   },
+   {
+    "correct": "here,",
+    "options": [
+     "here,",
+     "now,",
+     "today,"
+    ]
+   },
+   {
+    "correct": "don't",
+    "options": [
+     "don't",
+     "do",
+     "aren't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "you?",
+    "options": [
+     "you?",
+     "they?",
+     "we?",
+     "he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Они будут готовы, не так ли?",
+  "en": "They will be ready, won't they?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "You",
+     "We",
+     "He"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "are",
+     "were",
+     "do"
+    ]
+   },
+   {
+    "correct": "be ready,",
+    "options": [
+     "be ready,",
+     "be tired,",
+     "be late,"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will",
+     "aren't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "they?",
+    "options": [
+     "they?",
+     "you?",
+     "we?",
+     "he?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Он может помочь, не так ли?",
+  "en": "He can help, can't he?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "You",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "can",
+    "options": [
+     "can",
+     "will",
+     "is",
+     "does"
+    ]
+   },
+   {
+    "correct": "help,",
+    "options": [
+     "help,",
+     "swim,",
+     "work,",
+     "come,"
+    ]
+   },
+   {
+    "correct": "can't",
+    "options": [
+     "can't",
+     "can",
+     "won't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "he?",
+    "options": [
+     "he?",
+     "you?",
+     "they?",
+     "we?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tag_questions",
+  "ru": "Вы знали это, не так ли?",
+  "en": "You knew this, didn't you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "They",
+     "We",
+     "He"
+    ]
+   },
+   {
+    "correct": "knew",
+    "options": [
+     "knew",
+     "know",
+     "see",
+     "saw"
+    ]
+   },
+   {
+    "correct": "this,",
+    "options": [
+     "this,",
+     "it,"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "did",
+     "don't",
+     "aren't"
+    ]
+   },
+   {
+    "correct": "you?",
+    "options": [
+     "you?",
+     "they?",
+     "we?",
+     "he?"
+    ]
+   }
+  ]
+ }
+]

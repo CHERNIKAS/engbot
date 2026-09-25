@@ -1,0 +1,3570 @@
+[
+ {
+  "topic": "future_going_to",
+  "ru": "Я собираюсь купить машину.",
+  "en": "I am going to buy a car.",
+  "alternatives": [
+   "I'm going to buy a car."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "You",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "am going to",
+    "options": [
+     "am going to",
+     "is going to",
+     "are going to"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buys",
+     "bought",
+     "buying"
+    ]
+   },
+   {
+    "correct": "a car.",
+    "options": [
+     "a car.",
+     "the car.",
+     "cars."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается изучать английский.",
+  "en": "She is going to study English.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "am going to",
+     "are going to"
+    ]
+   },
+   {
+    "correct": "study",
+    "options": [
+     "study",
+     "studies",
+     "studied",
+     "studying"
+    ]
+   },
+   {
+    "correct": "English.",
+    "options": [
+     "English.",
+     "math.",
+     "science."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Они собираются переехать в Лондон.",
+  "en": "They are going to move to London.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "It"
+    ]
+   },
+   {
+    "correct": "are going to",
+    "options": [
+     "are going to",
+     "is going to",
+     "am going to"
+    ]
+   },
+   {
+    "correct": "move",
+    "options": [
+     "move",
+     "moves",
+     "moved",
+     "moving"
+    ]
+   },
+   {
+    "correct": "to London.",
+    "options": [
+     "to London.",
+     "to Paris.",
+     "to home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я не собираюсь путешествовать летом.",
+  "en": "I am not going to travel in summer.",
+  "alternatives": [
+   "I'm not going to travel in summer."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "am not going to",
+    "options": [
+     "am not going to",
+     "is not going to",
+     "are not going to"
+    ]
+   },
+   {
+    "correct": "travel",
+    "options": [
+     "travel",
+     "travels",
+     "traveled",
+     "travelling"
+    ]
+   },
+   {
+    "correct": "in summer.",
+    "options": [
+     "in summer.",
+     "in winter."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Он не собирается готовить ужин.",
+  "en": "He is not going to cook dinner.",
+  "alternatives": [
+   "He isn't going to cook dinner."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "is not going to",
+    "options": [
+     "is not going to",
+     "am not going to",
+     "are not going to"
+    ]
+   },
+   {
+    "correct": "cook",
+    "options": [
+     "cook",
+     "cooks",
+     "cooked",
+     "cooking"
+    ]
+   },
+   {
+    "correct": "dinner.",
+    "options": [
+     "dinner.",
+     "lunch.",
+     "breakfast."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Звонит телефон. Я отвечу.",
+  "en": "The phone is ringing. I will answer.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The phone is ringing.",
+    "options": [
+     "The phone is ringing.",
+     "It is quiet."
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "He"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "am going to"
+    ]
+   },
+   {
+    "correct": "answer.",
+    "options": [
+     "answer.",
+     "call."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Смотри, тучи! Сейчас пойдет дождь.",
+  "en": "Look at the clouds! It is going to rain.",
+  "alternatives": [
+   "Look at the clouds! It's going to rain."
+  ],
+  "slots": [
+   {
+    "correct": "Look at the clouds!",
+    "options": [
+     "Look at the clouds!",
+     "It is sunny."
+    ]
+   },
+   {
+    "correct": "It",
+    "options": [
+     "It",
+     "They"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "will"
+    ]
+   },
+   {
+    "correct": "rain.",
+    "options": [
+     "rain.",
+     "snow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Тяжелая сумка? Я помогу тебе.",
+  "en": "Heavy bag? I will help you.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Heavy bag?",
+    "options": [
+     "Heavy bag?",
+     "Nice day?"
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "am going to"
+    ]
+   },
+   {
+    "correct": "help you.",
+    "options": [
+     "help you.",
+     "call you."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она решила навестить бабушку завтра.",
+  "en": "She is going to visit her grandma tomorrow.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "will"
+    ]
+   },
+   {
+    "correct": "visit",
+    "options": [
+     "visit",
+     "visits",
+     "visited",
+     "visiting"
+    ]
+   },
+   {
+    "correct": "her grandma tomorrow.",
+    "options": [
+     "her grandma tomorrow.",
+     "her friend today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Мы собираемся начать новый проект.",
+  "en": "We are going to start a new project.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "are going to",
+    "options": [
+     "are going to",
+     "is going to",
+     "am going to"
+    ]
+   },
+   {
+    "correct": "start",
+    "options": [
+     "start",
+     "starts",
+     "started",
+     "starting"
+    ]
+   },
+   {
+    "correct": "a new project.",
+    "options": [
+     "a new project.",
+     "the new project."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается навестить их завтра.",
+  "en": "She is going to visit them tomorrow.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "are going to",
+     "am going to"
+    ]
+   },
+   {
+    "correct": "visit",
+    "options": [
+     "visit",
+     "visits",
+     "visited",
+     "visiting"
+    ]
+   },
+   {
+    "correct": "them tomorrow.",
+    "options": [
+     "them tomorrow.",
+     "him tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Ты собираешься работать сегодня?",
+  "en": "Are you going to work today?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are you",
+    "options": [
+     "Are you",
+     "Is he",
+     "Am I"
+    ]
+   },
+   {
+    "correct": "going to",
+    "options": [
+     "going to",
+     "go to"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "works",
+     "worked",
+     "working"
+    ]
+   },
+   {
+    "correct": "today?",
+    "options": [
+     "today?",
+     "now?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я не собираюсь смотреть этот фильм.",
+  "en": "I am not going to watch this film.",
+  "alternatives": [
+   "I'm not going to watch this film."
+  ],
+  "slots": [
+   {
+    "correct": "I am not",
+    "options": [
+     "I am not",
+     "I is not",
+     "I are not"
+    ]
+   },
+   {
+    "correct": "going to",
+    "options": [
+     "going to",
+     "go to"
+    ]
+   },
+   {
+    "correct": "watch",
+    "options": [
+     "watch",
+     "watches",
+     "watched",
+     "watching"
+    ]
+   },
+   {
+    "correct": "this film.",
+    "options": [
+     "this film.",
+     "that film."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Он не собирается переезжать в другой город.",
+  "en": "He is not going to move to another city.",
+  "alternatives": [
+   "He's not going to move to another city."
+  ],
+  "slots": [
+   {
+    "correct": "He is not",
+    "options": [
+     "He is not",
+     "He are not",
+     "He am not"
+    ]
+   },
+   {
+    "correct": "going to",
+    "options": [
+     "going to",
+     "go to"
+    ]
+   },
+   {
+    "correct": "move",
+    "options": [
+     "move",
+     "moves",
+     "moved",
+     "moving"
+    ]
+   },
+   {
+    "correct": "to another city.",
+    "options": [
+     "to another city.",
+     "to this city."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Дверь открыта. Я закрою её.",
+  "en": "The door is open. I will close it.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The door is open.",
+    "options": [
+     "The door is open.",
+     "The door will open."
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "am going to"
+    ]
+   },
+   {
+    "correct": "close it.",
+    "options": [
+     "close it.",
+     "closing it."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "У нас закончилось молоко. Я куплю его.",
+  "en": "We are out of milk. I will buy some.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We are out of milk.",
+    "options": [
+     "We are out of milk.",
+     "We are going to milk."
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "am going to"
+    ]
+   },
+   {
+    "correct": "buy some.",
+    "options": [
+     "buy some.",
+     "buying some."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я решил, что буду изучать испанский.",
+  "en": "I am going to study Spanish.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I am",
+    "options": [
+     "I am",
+     "I will"
+    ]
+   },
+   {
+    "correct": "going to",
+    "options": [
+     "going to",
+     "go to"
+    ]
+   },
+   {
+    "correct": "study",
+    "options": [
+     "study",
+     "studies",
+     "studied",
+     "studying"
+    ]
+   },
+   {
+    "correct": "Spanish.",
+    "options": [
+     "Spanish.",
+     "English."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я не решил, но, может быть, я позвоню ему.",
+  "en": "I haven't decided, but I will call him.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I haven't decided,",
+    "options": [
+     "I haven't decided,",
+     "I am going to decide,"
+    ]
+   },
+   {
+    "correct": "but I",
+    "options": [
+     "but I",
+     "but he"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "am going to"
+    ]
+   },
+   {
+    "correct": "call him.",
+    "options": [
+     "call him.",
+     "calling him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается готовить завтрак для всех.",
+  "en": "She is going to cook breakfast for everyone.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She is",
+    "options": [
+     "She is",
+     "She will"
+    ]
+   },
+   {
+    "correct": "going to",
+    "options": [
+     "going to",
+     "go to"
+    ]
+   },
+   {
+    "correct": "cook",
+    "options": [
+     "cook",
+     "cooks",
+     "cooked",
+     "cooking"
+    ]
+   },
+   {
+    "correct": "breakfast for everyone.",
+    "options": [
+     "breakfast for everyone.",
+     "dinner for everyone."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я собираюсь изучать немецкий язык.",
+  "en": "I am going to study German.",
+  "alternatives": [
+   "I'm going to study German."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "am going to",
+    "options": [
+     "am going to",
+     "is going to",
+     "are going to"
+    ]
+   },
+   {
+    "correct": "study German.",
+    "options": [
+     "study German.",
+     "read books.",
+     "eat dinner."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Он собирается путешествовать по Европе.",
+  "en": "He is going to travel around Europe.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "are going to",
+     "am going to"
+    ]
+   },
+   {
+    "correct": "travel around Europe.",
+    "options": [
+     "travel around Europe.",
+     "start a project.",
+     "buy a car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она не собирается звонить им.",
+  "en": "She is not going to call them.",
+  "alternatives": [
+   "She isn't going to call them."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "is not going to",
+    "options": [
+     "is not going to",
+     "are not going to",
+     "am not going to"
+    ]
+   },
+   {
+    "correct": "call them.",
+    "options": [
+     "call them.",
+     "visit them.",
+     "help them."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Ты собираешься начать работу завтра?",
+  "en": "Are you going to start work tomorrow?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are you",
+    "options": [
+     "Are you",
+     "Is he",
+     "Is she"
+    ]
+   },
+   {
+    "correct": "going to",
+    "options": [
+     "going to",
+     "want to",
+     "like to"
+    ]
+   },
+   {
+    "correct": "start work tomorrow?",
+    "options": [
+     "start work tomorrow?",
+     "buy a car today?",
+     "cook dinner now?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается смотреть этот сериал?",
+  "en": "Is she going to watch this series?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is she",
+    "options": [
+     "Is she",
+     "Are you",
+     "Are they"
+    ]
+   },
+   {
+    "correct": "going to",
+    "options": [
+     "going to",
+     "wants to",
+     "likes to"
+    ]
+   },
+   {
+    "correct": "watch this series?",
+    "options": [
+     "watch this series?",
+     "study English?",
+     "travel far?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается навестить их в пятницу.",
+  "en": "She is going to visit them on Friday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "am going to",
+     "are going to"
+    ]
+   },
+   {
+    "correct": "visit them on Friday.",
+    "options": [
+     "visit them on Friday.",
+     "call them on Friday.",
+     "help them on Friday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я не собираюсь переезжать в другой город.",
+  "en": "I am not going to move to another city.",
+  "alternatives": [
+   "I'm not going to move to another city."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "am not going to",
+    "options": [
+     "am not going to",
+     "is not going to",
+     "are not going to"
+    ]
+   },
+   {
+    "correct": "move to another city.",
+    "options": [
+     "move to another city.",
+     "travel to another city.",
+     "study in another city."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Ты собираешься готовить обед сегодня?",
+  "en": "Are you going to cook lunch today?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are you",
+    "options": [
+     "Are you",
+     "Is he",
+     "Is she"
+    ]
+   },
+   {
+    "correct": "going to",
+    "options": [
+     "going to",
+     "will",
+     "can"
+    ]
+   },
+   {
+    "correct": "cook lunch today?",
+    "options": [
+     "cook lunch today?",
+     "eat lunch today?",
+     "buy lunch today?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я решу эту проблему завтра.",
+  "en": "I will solve this problem tomorrow.",
+  "alternatives": [
+   "I'll solve this problem tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "am going to",
+     "am"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "am going to",
+     "do"
+    ]
+   },
+   {
+    "correct": "solve this problem tomorrow.",
+    "options": [
+     "solve this problem tomorrow.",
+     "start this problem tomorrow.",
+     "help this problem tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я собираюсь купить дом.",
+  "en": "I am going to buy a house.",
+  "alternatives": [
+   "I'm going to buy a house."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "am going to",
+    "options": [
+     "am going to",
+     "is going to",
+     "are going to"
+    ]
+   },
+   {
+    "correct": "buy a house.",
+    "options": [
+     "buy a house.",
+     "buy the house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается начать новую работу.",
+  "en": "She is going to start a new job.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "am going to",
+     "are going to"
+    ]
+   },
+   {
+    "correct": "start a new job.",
+    "options": [
+     "start a new job.",
+     "start new jobs."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Они не собираются путешествовать в этом году.",
+  "en": "They are not going to travel this year.",
+  "alternatives": [
+   "They aren't going to travel this year."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "are not going to",
+    "options": [
+     "are not going to",
+     "is not going to",
+     "am not going to"
+    ]
+   },
+   {
+    "correct": "travel this year.",
+    "options": [
+     "travel this year.",
+     "travel a year."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Ты собираешься навестить их в субботу?",
+  "en": "Are you going to visit them on Saturday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are you",
+    "options": [
+     "Are you",
+     "Is he",
+     "Is she"
+    ]
+   },
+   {
+    "correct": "going to visit",
+    "options": [
+     "going to visit",
+     "going to call"
+    ]
+   },
+   {
+    "correct": "them on Saturday?",
+    "options": [
+     "them on Saturday?",
+     "him on Saturday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Он не собирается помогать ей.",
+  "en": "He is not going to help her.",
+  "alternatives": [
+   "He isn't going to help her."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "is not going to",
+    "options": [
+     "is not going to",
+     "are not going to",
+     "am not going to"
+    ]
+   },
+   {
+    "correct": "help her.",
+    "options": [
+     "help her.",
+     "help him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я не собираюсь смотреть этот сериал.",
+  "en": "I am not going to watch this series.",
+  "alternatives": [
+   "I'm not going to watch this series."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "am not going to",
+    "options": [
+     "am not going to",
+     "is not going to",
+     "are not going to"
+    ]
+   },
+   {
+    "correct": "watch this series.",
+    "options": [
+     "watch this series.",
+     "watch a series."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается готовить ужин?",
+  "en": "Is she going to cook dinner?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is she",
+    "options": [
+     "Is she",
+     "Are you",
+     "Is he"
+    ]
+   },
+   {
+    "correct": "going to",
+    "options": [
+     "going to",
+     "will"
+    ]
+   },
+   {
+    "correct": "cook dinner?",
+    "options": [
+     "cook dinner?",
+     "cook a dinner?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я собираюсь купить новые туфли.",
+  "en": "I am going to buy new shoes.",
+  "alternatives": [
+   "I'm going to buy new shoes."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "am going to",
+    "options": [
+     "am going to",
+     "is going to",
+     "are going to"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buys",
+     "bought"
+    ]
+   },
+   {
+    "correct": "new shoes.",
+    "options": [
+     "new shoes.",
+     "a car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается изучать биологию.",
+  "en": "She is going to study biology.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "am going to",
+     "are going to"
+    ]
+   },
+   {
+    "correct": "study",
+    "options": [
+     "study",
+     "studies",
+     "studied"
+    ]
+   },
+   {
+    "correct": "biology.",
+    "options": [
+     "biology.",
+     "English."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Ты собираешься путешествовать в Италию?",
+  "en": "Are you going to travel to Italy?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "you going to",
+    "options": [
+     "you going to",
+     "he going to",
+     "she going to"
+    ]
+   },
+   {
+    "correct": "travel",
+    "options": [
+     "travel",
+     "travels",
+     "traveled"
+    ]
+   },
+   {
+    "correct": "to Italy?",
+    "options": [
+     "to Italy?",
+     "to France?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она не собирается переезжать.",
+  "en": "She is not going to move.",
+  "alternatives": [
+   "She isn't going to move."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "is not going to",
+    "options": [
+     "is not going to",
+     "are not going to",
+     "am not going to"
+    ]
+   },
+   {
+    "correct": "move.",
+    "options": [
+     "move.",
+     "start.",
+     "cook."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Холодно. Я закрою окно.",
+  "en": "It is cold. I will close the window.",
+  "alternatives": [
+   "It's cold. I'll close the window."
+  ],
+  "slots": [
+   {
+    "correct": "It is cold.",
+    "options": [
+     "It is cold.",
+     "It is hot."
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "am going to",
+     "is going to"
+    ]
+   },
+   {
+    "correct": "close the window.",
+    "options": [
+     "close the window.",
+     "open the door."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я не собираюсь начинать сейчас.",
+  "en": "I am not going to start now.",
+  "alternatives": [
+   "I'm not going to start now."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "am not going to",
+    "options": [
+     "am not going to",
+     "is not going to",
+     "are not going to"
+    ]
+   },
+   {
+    "correct": "start",
+    "options": [
+     "start",
+     "starts",
+     "started"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я забыл телефон. Я позвоню позже.",
+  "en": "I forgot the phone. I will call later.",
+  "alternatives": [
+   "I forgot my phone. I'll call later."
+  ],
+  "slots": [
+   {
+    "correct": "I forgot the phone.",
+    "options": [
+     "I forgot the phone.",
+     "I have a phone."
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "am going to",
+     "is going to"
+    ]
+   },
+   {
+    "correct": "call later.",
+    "options": [
+     "call later.",
+     "visit later."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Он собирается помогать мне завтра.",
+  "en": "He is going to help me tomorrow.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "am going to",
+     "are going to"
+    ]
+   },
+   {
+    "correct": "help",
+    "options": [
+     "help",
+     "helps",
+     "helped"
+    ]
+   },
+   {
+    "correct": "me tomorrow.",
+    "options": [
+     "me tomorrow.",
+     "them today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается готовить пасту?",
+  "en": "Is she going to cook pasta?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Are",
+     "Am"
+    ]
+   },
+   {
+    "correct": "she going to",
+    "options": [
+     "she going to",
+     "they going to",
+     "I going to"
+    ]
+   },
+   {
+    "correct": "cook",
+    "options": [
+     "cook",
+     "cooks",
+     "cooked"
+    ]
+   },
+   {
+    "correct": "pasta?",
+    "options": [
+     "pasta?",
+     "dinner?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я не решил. Может, я куплю это.",
+  "en": "I haven't decided. I will buy it.",
+  "alternatives": [
+   "I haven't decided. I'll buy it."
+  ],
+  "slots": [
+   {
+    "correct": "I haven't decided.",
+    "options": [
+     "I haven't decided.",
+     "I am going to decide."
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "am going to",
+     "is going to"
+    ]
+   },
+   {
+    "correct": "buy it.",
+    "options": [
+     "buy it.",
+     "start it."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Он собирается смотреть этот фильм?",
+  "en": "Is he going to watch this movie?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Are",
+     "Am"
+    ]
+   },
+   {
+    "correct": "he going to",
+    "options": [
+     "he going to",
+     "you going to",
+     "they going to"
+    ]
+   },
+   {
+    "correct": "watch",
+    "options": [
+     "watch",
+     "watches",
+     "watched"
+    ]
+   },
+   {
+    "correct": "this movie?",
+    "options": [
+     "this movie?",
+     "this show?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Смотри, дождь начинается. Я уйду.",
+  "en": "Look, it is starting to rain. I will leave.",
+  "alternatives": [
+   "Look, it's starting to rain. I'll leave."
+  ],
+  "slots": [
+   {
+    "correct": "Look, it is starting to rain.",
+    "options": [
+     "Look, it is starting to rain.",
+     "It is going to rain."
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "am going to",
+     "are going to"
+    ]
+   },
+   {
+    "correct": "leave.",
+    "options": [
+     "leave.",
+     "stay."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Он собирается начать новую жизнь завтра.",
+  "en": "He is going to start a new life tomorrow.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "are going to",
+     "am going to",
+     "will"
+    ]
+   },
+   {
+    "correct": "start",
+    "options": [
+     "start",
+     "starts",
+     "starting",
+     "started"
+    ]
+   },
+   {
+    "correct": "a new life tomorrow.",
+    "options": [
+     "a new life tomorrow.",
+     "the new life now.",
+     "his new life today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она не собирается изучать биологию.",
+  "en": "She is not going to study biology.",
+  "alternatives": [
+   "She isn't going to study biology."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is not going to",
+    "options": [
+     "is not going to",
+     "are not going to",
+     "am not going to",
+     "will not"
+    ]
+   },
+   {
+    "correct": "study",
+    "options": [
+     "study",
+     "studies",
+     "studying",
+     "studied"
+    ]
+   },
+   {
+    "correct": "biology.",
+    "options": [
+     "biology.",
+     "chemistry.",
+     "history."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Он собирается помочь мне в понедельник.",
+  "en": "He is going to help me on Monday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "are going to",
+     "am going to",
+     "will"
+    ]
+   },
+   {
+    "correct": "help",
+    "options": [
+     "help",
+     "helps",
+     "helping",
+     "helped"
+    ]
+   },
+   {
+    "correct": "me on Monday.",
+    "options": [
+     "me on Monday.",
+     "her on Tuesday.",
+     "us on Friday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается готовить пасту на ужин?",
+  "en": "Is she going to cook pasta for dinner?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is she going to",
+    "options": [
+     "Is she going to",
+     "Are you going to",
+     "Is he going to",
+     "Will she"
+    ]
+   },
+   {
+    "correct": "cook",
+    "options": [
+     "cook",
+     "cooks",
+     "cooking",
+     "cooked"
+    ]
+   },
+   {
+    "correct": "pasta for dinner?",
+    "options": [
+     "pasta for dinner?",
+     "soup for lunch?",
+     "meat for dinner?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Они собираются смотреть этот сериал сегодня.",
+  "en": "They are going to watch this series today.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "We"
+    ]
+   },
+   {
+    "correct": "are going to",
+    "options": [
+     "are going to",
+     "is going to",
+     "am going to",
+     "will"
+    ]
+   },
+   {
+    "correct": "watch",
+    "options": [
+     "watch",
+     "watches",
+     "watching",
+     "watched"
+    ]
+   },
+   {
+    "correct": "this series today.",
+    "options": [
+     "this series today.",
+     "that movie tonight.",
+     "this show now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Ты собираешься переезжать в другой город?",
+  "en": "Are you going to move to another city?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are you going to",
+    "options": [
+     "Are you going to",
+     "Is he going to",
+     "Are they going to",
+     "Will you"
+    ]
+   },
+   {
+    "correct": "move",
+    "options": [
+     "move",
+     "moves",
+     "moving",
+     "moved"
+    ]
+   },
+   {
+    "correct": "to another city?",
+    "options": [
+     "to another city?",
+     "to a new house?",
+     "to London?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Он не собирается звонить им завтра.",
+  "en": "He is not going to call them tomorrow.",
+  "alternatives": [
+   "He isn't going to call them tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "is not going to",
+    "options": [
+     "is not going to",
+     "are not going to",
+     "am not going to",
+     "will not"
+    ]
+   },
+   {
+    "correct": "call",
+    "options": [
+     "call",
+     "calls",
+     "calling",
+     "called"
+    ]
+   },
+   {
+    "correct": "them tomorrow.",
+    "options": [
+     "them tomorrow.",
+     "her today.",
+     "him later."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я собираюсь купить билеты.",
+  "en": "I am going to buy tickets.",
+  "alternatives": [
+   "I'm going to buy tickets."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "am going to",
+    "options": [
+     "am going to",
+     "is going to",
+     "are going to"
+    ]
+   },
+   {
+    "correct": "buy tickets",
+    "options": [
+     "buy tickets",
+     "bought tickets",
+     "buying tickets"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается изучать испанский.",
+  "en": "She is going to study Spanish.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "am going to",
+     "are going to"
+    ]
+   },
+   {
+    "correct": "study Spanish",
+    "options": [
+     "study Spanish",
+     "studies Spanish",
+     "studied Spanish"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Он собирается путешествовать летом.",
+  "en": "He is going to travel in summer.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "am going to",
+     "are going to"
+    ]
+   },
+   {
+    "correct": "travel in summer",
+    "options": [
+     "travel in summer",
+     "travels in summer",
+     "traveled in summer"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Они не собираются переезжать.",
+  "en": "They are not going to move.",
+  "alternatives": [
+   "They aren't going to move."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "are not going to",
+    "options": [
+     "are not going to",
+     "is not going to",
+     "am not going to"
+    ]
+   },
+   {
+    "correct": "move",
+    "options": [
+     "move",
+     "moves",
+     "moving"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она не собирается начинать сейчас.",
+  "en": "She is not going to start now.",
+  "alternatives": [
+   "She isn't going to start now."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "is not going to",
+    "options": [
+     "is not going to",
+     "are not going to",
+     "am not going to"
+    ]
+   },
+   {
+    "correct": "start now",
+    "options": [
+     "start now",
+     "starts now",
+     "started now"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Ты собираешься звонить ему?",
+  "en": "Are you going to call him?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are you",
+    "options": [
+     "Are you",
+     "Is he",
+     "Is she"
+    ]
+   },
+   {
+    "correct": "going to",
+    "options": [
+     "going to",
+     "go to",
+     "gone to"
+    ]
+   },
+   {
+    "correct": "call him",
+    "options": [
+     "call him",
+     "calls him",
+     "called him"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается смотреть фильм?",
+  "en": "Is she going to watch a film?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is she",
+    "options": [
+     "Is she",
+     "Are you",
+     "Am I"
+    ]
+   },
+   {
+    "correct": "going to",
+    "options": [
+     "going to",
+     "go to",
+     "gone to"
+    ]
+   },
+   {
+    "correct": "watch a film",
+    "options": [
+     "watch a film",
+     "watches a film",
+     "watched a film"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Он собирается купить машину.",
+  "en": "He is going to buy a car.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "are going to",
+     "am going to"
+    ]
+   },
+   {
+    "correct": "buy a car.",
+    "options": [
+     "buy a car.",
+     "study a car.",
+     "move a car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Ты собираешься работать завтра?",
+  "en": "Are you going to work tomorrow?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "you going to",
+    "options": [
+     "you going to",
+     "he going to",
+     "she going to"
+    ]
+   },
+   {
+    "correct": "work tomorrow?",
+    "options": [
+     "work tomorrow?",
+     "start tomorrow?",
+     "cook tomorrow?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Он собирается путешествовать в июле.",
+  "en": "He is going to travel in July.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "are going to",
+     "am going to"
+    ]
+   },
+   {
+    "correct": "travel in July.",
+    "options": [
+     "travel in July.",
+     "move in July.",
+     "start in July."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается навестить их?",
+  "en": "Is she going to visit them?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Are",
+     "Do"
+    ]
+   },
+   {
+    "correct": "she going to",
+    "options": [
+     "she going to",
+     "you going to",
+     "they going to"
+    ]
+   },
+   {
+    "correct": "visit them?",
+    "options": [
+     "visit them?",
+     "help them?",
+     "cook them?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она не собирается звонить им завтра.",
+  "en": "She is not going to call them tomorrow.",
+  "alternatives": [
+   "She's not going to call them tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "is not going to",
+    "options": [
+     "is not going to",
+     "are not going to",
+     "am not going to"
+    ]
+   },
+   {
+    "correct": "call them tomorrow.",
+    "options": [
+     "call them tomorrow.",
+     "cook them tomorrow.",
+     "watch them tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается смотреть фильм вечером.",
+  "en": "She is going to watch a film tonight.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "are going to",
+     "am going to"
+    ]
+   },
+   {
+    "correct": "watch a film tonight.",
+    "options": [
+     "watch a film tonight.",
+     "study a film tonight.",
+     "move a film tonight."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я решил, я собираюсь купить машину.",
+  "en": "I am going to buy a car.",
+  "alternatives": [
+   "I'm going to buy a car."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "am going to",
+    "options": [
+     "am going to",
+     "is going to",
+     "are going to"
+    ]
+   },
+   {
+    "correct": "buy a car.",
+    "options": [
+     "buy a car.",
+     "study a car.",
+     "move a car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я не собираюсь идти туда.",
+  "en": "I am not going to go.",
+  "alternatives": [
+   "I'm not going to go."
+  ],
+  "slots": [
+   {
+    "correct": "I am not",
+    "options": [
+     "I am not",
+     "I is not",
+     "I are not"
+    ]
+   },
+   {
+    "correct": "going to",
+    "options": [
+     "going to",
+     "will",
+     "go to"
+    ]
+   },
+   {
+    "correct": "go.",
+    "options": [
+     "go.",
+     "buy.",
+     "cook."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она не собирается работать сегодня.",
+  "en": "She is not going to work today.",
+  "alternatives": [
+   "She isn't going to work today."
+  ],
+  "slots": [
+   {
+    "correct": "She is not",
+    "options": [
+     "She is not",
+     "She am not",
+     "She are not"
+    ]
+   },
+   {
+    "correct": "going to",
+    "options": [
+     "going to",
+     "will",
+     "to"
+    ]
+   },
+   {
+    "correct": "work today.",
+    "options": [
+     "work today.",
+     "travel today.",
+     "start today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Ты собираешься работать?",
+  "en": "Are you going to work?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are you",
+    "options": [
+     "Are you",
+     "Is you",
+     "Am you"
+    ]
+   },
+   {
+    "correct": "going to",
+    "options": [
+     "going to",
+     "will",
+     "to"
+    ]
+   },
+   {
+    "correct": "work?",
+    "options": [
+     "work?",
+     "cook?",
+     "call?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Он собирается путешествовать?",
+  "en": "Is he going to travel?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is he",
+    "options": [
+     "Is he",
+     "Are he",
+     "Am he"
+    ]
+   },
+   {
+    "correct": "going to",
+    "options": [
+     "going to",
+     "to",
+     "will"
+    ]
+   },
+   {
+    "correct": "travel?",
+    "options": [
+     "travel?",
+     "buy?",
+     "start?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Телефон звонит. Я отвечу.",
+  "en": "The phone is ringing. I will answer.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The phone is ringing.",
+    "options": [
+     "The phone is ringing.",
+     "The phone rings.",
+     "The phone will ring."
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "am going to",
+     "am"
+    ]
+   },
+   {
+    "correct": "answer.",
+    "options": [
+     "answer.",
+     "going to answer.",
+     "answering."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Смотри, тучи. Будет дождь.",
+  "en": "Look at the clouds. It is going to rain.",
+  "alternatives": [
+   "Look at the clouds. It's going to rain."
+  ],
+  "slots": [
+   {
+    "correct": "Look at the clouds.",
+    "options": [
+     "Look at the clouds.",
+     "I will look.",
+     "Look clouds."
+    ]
+   },
+   {
+    "correct": "It is going to",
+    "options": [
+     "It is going to",
+     "It will",
+     "It is"
+    ]
+   },
+   {
+    "correct": "rain.",
+    "options": [
+     "rain.",
+     "to rain.",
+     "raining."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Тяжелая дверь. Я помогу тебе.",
+  "en": "The door is heavy. I will help you.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The door is heavy.",
+    "options": [
+     "The door is heavy.",
+     "The door is going to be heavy.",
+     "The door will be heavy."
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "am going to",
+     "am"
+    ]
+   },
+   {
+    "correct": "help you.",
+    "options": [
+     "help you.",
+     "to help you.",
+     "helping you."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Мы решили, что начнем проект.",
+  "en": "We are going to start the project.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "are going to",
+    "options": [
+     "are going to",
+     "will",
+     "are"
+    ]
+   },
+   {
+    "correct": "start the project.",
+    "options": [
+     "start the project.",
+     "to start the project.",
+     "starting the project."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она голодна. Она приготовит еду.",
+  "en": "She is hungry. She will cook food.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She is hungry.",
+    "options": [
+     "She is hungry.",
+     "She is going to be hungry.",
+     "She will be hungry."
+    ]
+   },
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "is going to",
+     "is"
+    ]
+   },
+   {
+    "correct": "cook food.",
+    "options": [
+     "cook food.",
+     "to cook food.",
+     "cooking food."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я решил, что собираюсь купить машину.",
+  "en": "I am going to buy a car.",
+  "alternatives": [
+   "I'm going to buy a car."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "am going to",
+    "options": [
+     "am going to",
+     "will",
+     "is going to"
+    ]
+   },
+   {
+    "correct": "buy a car.",
+    "options": [
+     "buy a car.",
+     "start a car.",
+     "watch a car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается изучать испанский язык.",
+  "en": "She is going to study Spanish.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "are going to",
+     "will"
+    ]
+   },
+   {
+    "correct": "study Spanish.",
+    "options": [
+     "study Spanish.",
+     "start Spanish.",
+     "visit Spanish."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Ты собираешься работать в эти выходные?",
+  "en": "Are you going to work tomorrow?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Will"
+    ]
+   },
+   {
+    "correct": "you going to",
+    "options": [
+     "you going to",
+     "you will",
+     "he going to"
+    ]
+   },
+   {
+    "correct": "work tomorrow?",
+    "options": [
+     "work tomorrow?",
+     "start tomorrow?",
+     "cook tomorrow?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается путешествовать в июле?",
+  "en": "Is she going to travel in July?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Are",
+     "Will"
+    ]
+   },
+   {
+    "correct": "she going to",
+    "options": [
+     "she going to",
+     "she will",
+     "they going to"
+    ]
+   },
+   {
+    "correct": "travel in July?",
+    "options": [
+     "travel in July?",
+     "start in July?",
+     "visit in July?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я не собираюсь начинать эту работу сейчас.",
+  "en": "I am not going to start now.",
+  "alternatives": [
+   "I'm not going to start now."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "am not going to",
+    "options": [
+     "am not going to",
+     "is not going to",
+     "will not"
+    ]
+   },
+   {
+    "correct": "start now.",
+    "options": [
+     "start now.",
+     "move now.",
+     "cook now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается помочь мне завтра.",
+  "en": "She is going to help me tomorrow.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "will",
+     "are going to"
+    ]
+   },
+   {
+    "correct": "help me tomorrow.",
+    "options": [
+     "help me tomorrow.",
+     "start me tomorrow.",
+     "move me tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается навестить бабушку в воскресенье.",
+  "en": "She is going to visit grandma Sunday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "will",
+     "are going to"
+    ]
+   },
+   {
+    "correct": "visit grandma Sunday.",
+    "options": [
+     "visit grandma Sunday.",
+     "start grandma Sunday.",
+     "cook grandma Sunday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я решил, я собираюсь купить новый телефон.",
+  "en": "I am going to buy a new phone.",
+  "alternatives": [
+   "I'm going to buy a new phone."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "am going to",
+    "options": [
+     "am going to",
+     "is going to",
+     "are going to"
+    ]
+   },
+   {
+    "correct": "buy a new phone.",
+    "options": [
+     "buy a new phone.",
+     "study a new phone.",
+     "travel a new phone."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается начать учить английский.",
+  "en": "She is going to start learning English.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "am going to",
+     "are going to"
+    ]
+   },
+   {
+    "correct": "start learning English.",
+    "options": [
+     "start learning English.",
+     "visit learning English.",
+     "cook learning English."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Он не собирается путешествовать в следующем месяце.",
+  "en": "He is not going to travel next month.",
+  "alternatives": [
+   "He isn't going to travel next month."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "is not going to",
+    "options": [
+     "is not going to",
+     "are not going to",
+     "am not going to"
+    ]
+   },
+   {
+    "correct": "travel next month.",
+    "options": [
+     "travel next month.",
+     "start next month.",
+     "buy next month."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Ты собираешься звонить им сегодня?",
+  "en": "Are you going to call them today?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "you going to",
+    "options": [
+     "you going to",
+     "she going to",
+     "he going to"
+    ]
+   },
+   {
+    "correct": "call them today?",
+    "options": [
+     "call them today?",
+     "cook them today?",
+     "watch them today?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается навестить их в среду?",
+  "en": "Is she going to visit them on Wednesday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Are",
+     "Am"
+    ]
+   },
+   {
+    "correct": "she going to",
+    "options": [
+     "she going to",
+     "they going to",
+     "you going to"
+    ]
+   },
+   {
+    "correct": "visit them on Wednesday?",
+    "options": [
+     "visit them on Wednesday?",
+     "start them on Wednesday?",
+     "move them on Wednesday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я не собираюсь готовить обед.",
+  "en": "I am not going to cook lunch.",
+  "alternatives": [
+   "I'm not going to cook lunch."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "am not going to",
+    "options": [
+     "am not going to",
+     "is not going to",
+     "are not going to"
+    ]
+   },
+   {
+    "correct": "cook lunch.",
+    "options": [
+     "cook lunch.",
+     "buy lunch.",
+     "watch lunch."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она собирается изучать математику.",
+  "en": "She is going to study math.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "am going to",
+     "are going to"
+    ]
+   },
+   {
+    "correct": "study math.",
+    "options": [
+     "study math.",
+     "cook math.",
+     "move math."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Он не собирается путешествовать в октябре.",
+  "en": "He is not going to travel in October.",
+  "alternatives": [
+   "He isn't going to travel in October."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "is not going to",
+    "options": [
+     "is not going to",
+     "am not going to",
+     "are not going to"
+    ]
+   },
+   {
+    "correct": "travel in October.",
+    "options": [
+     "travel in October.",
+     "buy in October.",
+     "start in October."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Они собираются переезжать завтра?",
+  "en": "Are they going to move tomorrow?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "they going to",
+    "options": [
+     "they going to",
+     "he going to",
+     "she going to"
+    ]
+   },
+   {
+    "correct": "move tomorrow?",
+    "options": [
+     "move tomorrow?",
+     "cook tomorrow?",
+     "help tomorrow?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Он собирается начать тренировки?",
+  "en": "Is he going to start training?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Are",
+     "Am"
+    ]
+   },
+   {
+    "correct": "he going to",
+    "options": [
+     "he going to",
+     "they going to",
+     "you going to"
+    ]
+   },
+   {
+    "correct": "start training?",
+    "options": [
+     "start training?",
+     "visit training?",
+     "call training?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Ты собираешься смотреть матч?",
+  "en": "Are you going to watch the match?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are you going to",
+    "options": [
+     "Are you going to",
+     "Are you will",
+     "Do you"
+    ]
+   },
+   {
+    "correct": "watch the match?",
+    "options": [
+     "watch the match?",
+     "start the match?",
+     "travel the match?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Он собирается приготовить ужин для нас.",
+  "en": "He is going to cook dinner for us.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "is going to",
+    "options": [
+     "is going to",
+     "are going to",
+     "am going to"
+    ]
+   },
+   {
+    "correct": "cook dinner for us.",
+    "options": [
+     "cook dinner for us.",
+     "study biology now.",
+     "travel to Italy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Она не собирается навестить их сегодня.",
+  "en": "She is not going to visit them today.",
+  "alternatives": [
+   "She isn't going to visit them today."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "You"
+    ]
+   },
+   {
+    "correct": "is not going to",
+    "options": [
+     "is not going to",
+     "are not going to",
+     "am not going to"
+    ]
+   },
+   {
+    "correct": "visit them today.",
+    "options": [
+     "visit them today.",
+     "start the project.",
+     "move to the city."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Ты собираешься изучать новый язык?",
+  "en": "Are you going to study a new language?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are you going to",
+    "options": [
+     "Are you going to",
+     "Is he going to",
+     "Am I going to"
+    ]
+   },
+   {
+    "correct": "study",
+    "options": [
+     "study",
+     "start",
+     "visit"
+    ]
+   },
+   {
+    "correct": "a new language?",
+    "options": [
+     "a new language?",
+     "the dinner?",
+     "the movie?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я решил. Я собираюсь изучать французский.",
+  "en": "I am going to study French.",
+  "alternatives": [
+   "I'm going to study French."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "am going to",
+    "options": [
+     "am going to",
+     "will",
+     "am"
+    ]
+   },
+   {
+    "correct": "study",
+    "options": [
+     "study",
+     "studied",
+     "studies"
+    ]
+   },
+   {
+    "correct": "French.",
+    "options": [
+     "French.",
+     "a car.",
+     "dinner."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "future_going_to",
+  "ru": "Я не знаю, что выбрать. Я куплю это.",
+  "en": "I will buy it.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "We"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "am going to",
+     "won't"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buying",
+     "bought"
+    ]
+   },
+   {
+    "correct": "it.",
+    "options": [
+     "it.",
+     "the car.",
+     "food."
+    ]
+   }
+  ]
+ }
+]

@@ -1,0 +1,3848 @@
+[
+ {
+  "topic": "irregular_participle",
+  "ru": "Я уже видел этот фильм.",
+  "en": "I have seen this movie.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "am"
+    ]
+   },
+   {
+    "correct": "seen",
+    "options": [
+     "seen",
+     "saw",
+     "see"
+    ]
+   },
+   {
+    "correct": "this movie.",
+    "options": [
+     "this movie.",
+     "this book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она взяла мою ручку.",
+  "en": "She has taken my pen.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "is"
+    ]
+   },
+   {
+    "correct": "taken",
+    "options": [
+     "taken",
+     "took",
+     "take"
+    ]
+   },
+   {
+    "correct": "my pen.",
+    "options": [
+     "my pen.",
+     "the bag."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Ты уже съел свой обед?",
+  "en": "Have you eaten your lunch?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have",
+    "options": [
+     "Have",
+     "Has",
+     "Do"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "eaten",
+    "options": [
+     "eaten",
+     "ate",
+     "eat"
+    ]
+   },
+   {
+    "correct": "your lunch?",
+    "options": [
+     "your lunch?",
+     "it all?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Я не написал это письмо.",
+  "en": "I have not written this letter.",
+  "alternatives": [
+   "I haven't written this letter."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "have not",
+    "options": [
+     "have not",
+     "has not",
+     "had not"
+    ]
+   },
+   {
+    "correct": "written",
+    "options": [
+     "written",
+     "wrote",
+     "write"
+    ]
+   },
+   {
+    "correct": "this letter.",
+    "options": [
+     "this letter.",
+     "the book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Он выпил весь чай.",
+  "en": "He has drunk all the tea.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "is"
+    ]
+   },
+   {
+    "correct": "drunk",
+    "options": [
+     "drunk",
+     "drank",
+     "drink"
+    ]
+   },
+   {
+    "correct": "all the tea.",
+    "options": [
+     "all the tea.",
+     "my coffee."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Мы сделали нашу работу.",
+  "en": "We have done our work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "are"
+    ]
+   },
+   {
+    "correct": "done",
+    "options": [
+     "done",
+     "did",
+     "do"
+    ]
+   },
+   {
+    "correct": "our work.",
+    "options": [
+     "our work.",
+     "the task."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Они сломали мой телефон.",
+  "en": "They have broken my phone.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "had"
+    ]
+   },
+   {
+    "correct": "broken",
+    "options": [
+     "broken",
+     "broke",
+     "break"
+    ]
+   },
+   {
+    "correct": "my phone.",
+    "options": [
+     "my phone.",
+     "the cup."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Я забыл свой ключ.",
+  "en": "I have forgotten my key.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "had"
+    ]
+   },
+   {
+    "correct": "forgotten",
+    "options": [
+     "forgotten",
+     "forgot",
+     "forget"
+    ]
+   },
+   {
+    "correct": "my key.",
+    "options": [
+     "my key.",
+     "the time."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она дала мне эту книгу.",
+  "en": "She has given me this book.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "had"
+    ]
+   },
+   {
+    "correct": "given",
+    "options": [
+     "given",
+     "gave",
+     "give"
+    ]
+   },
+   {
+    "correct": "me this book.",
+    "options": [
+     "me this book.",
+     "the money."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Он поговорил с учителем.",
+  "en": "He has spoken to the teacher.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "is"
+    ]
+   },
+   {
+    "correct": "spoken",
+    "options": [
+     "spoken",
+     "spoke",
+     "speak"
+    ]
+   },
+   {
+    "correct": "to the teacher.",
+    "options": [
+     "to the teacher.",
+     "about it."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Мы знаем их давно.",
+  "en": "We have known them for long.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "do"
+    ]
+   },
+   {
+    "correct": "known",
+    "options": [
+     "known",
+     "knew",
+     "know"
+    ]
+   },
+   {
+    "correct": "them for long.",
+    "options": [
+     "them for long.",
+     "for years."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она ушла домой.",
+  "en": "She has gone home.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "is"
+    ]
+   },
+   {
+    "correct": "gone",
+    "options": [
+     "gone",
+     "went",
+     "go"
+    ]
+   },
+   {
+    "correct": "home.",
+    "options": [
+     "home.",
+     "to work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Я уже видел это кино.",
+  "en": "I have seen this movie.",
+  "alternatives": [
+   "I've seen this movie."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "did",
+     "had"
+    ]
+   },
+   {
+    "correct": "seen",
+    "options": [
+     "seen",
+     "saw",
+     "see",
+     "sees"
+    ]
+   },
+   {
+    "correct": "this movie.",
+    "options": [
+     "this movie.",
+     "that film."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она взяла твою сумку.",
+  "en": "She has taken your bag.",
+  "alternatives": [
+   "She's taken your bag."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "had",
+     "did"
+    ]
+   },
+   {
+    "correct": "taken",
+    "options": [
+     "taken",
+     "took",
+     "take",
+     "takes"
+    ]
+   },
+   {
+    "correct": "your bag.",
+    "options": [
+     "your bag.",
+     "my bag."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Ты уже написал отчет?",
+  "en": "Have you written the report?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have",
+    "options": [
+     "Have",
+     "Has",
+     "Did",
+     "Do"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "written",
+    "options": [
+     "written",
+     "wrote",
+     "write",
+     "writes"
+    ]
+   },
+   {
+    "correct": "the report?",
+    "options": [
+     "the report?",
+     "the letter?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Мы не съели завтрак.",
+  "en": "We have not eaten breakfast.",
+  "alternatives": [
+   "We haven't eaten breakfast."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "She",
+     "It"
+    ]
+   },
+   {
+    "correct": "have not",
+    "options": [
+     "have not",
+     "has not",
+     "did not",
+     "do not"
+    ]
+   },
+   {
+    "correct": "eaten",
+    "options": [
+     "eaten",
+     "ate",
+     "eat",
+     "eats"
+    ]
+   },
+   {
+    "correct": "breakfast.",
+    "options": [
+     "breakfast.",
+     "lunch."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Он выпил весь сок.",
+  "en": "He has drunk all the juice.",
+  "alternatives": [
+   "He's drunk all the juice."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "had",
+     "did"
+    ]
+   },
+   {
+    "correct": "drunk",
+    "options": [
+     "drunk",
+     "drank",
+     "drink",
+     "drinks"
+    ]
+   },
+   {
+    "correct": "all the juice.",
+    "options": [
+     "all the juice.",
+     "all the water."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Они сделали домашнее задание.",
+  "en": "They have done their homework.",
+  "alternatives": [
+   "They've done their homework."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "had",
+     "did"
+    ]
+   },
+   {
+    "correct": "done",
+    "options": [
+     "done",
+     "did",
+     "do",
+     "does"
+    ]
+   },
+   {
+    "correct": "their homework.",
+    "options": [
+     "their homework.",
+     "the work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Ты сломал мой карандаш?",
+  "en": "Have you broken my pencil?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have",
+    "options": [
+     "Have",
+     "Has",
+     "Did",
+     "Do"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "broken",
+    "options": [
+     "broken",
+     "broke",
+     "break",
+     "breaks"
+    ]
+   },
+   {
+    "correct": "my pencil?",
+    "options": [
+     "my pencil?",
+     "my pen?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Я забыл свой пароль.",
+  "en": "I have forgotten my password.",
+  "alternatives": [
+   "I've forgotten my password."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "had",
+     "did"
+    ]
+   },
+   {
+    "correct": "forgotten",
+    "options": [
+     "forgotten",
+     "forgot",
+     "forget",
+     "forgets"
+    ]
+   },
+   {
+    "correct": "my password.",
+    "options": [
+     "my password.",
+     "my name."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она дала мне совет.",
+  "en": "She has given me advice.",
+  "alternatives": [
+   "She's given me advice."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "had",
+     "did"
+    ]
+   },
+   {
+    "correct": "given",
+    "options": [
+     "given",
+     "gave",
+     "give",
+     "gives"
+    ]
+   },
+   {
+    "correct": "me advice.",
+    "options": [
+     "me advice.",
+     "my money."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Он поговорил с менеджером.",
+  "en": "He has spoken to the manager.",
+  "alternatives": [
+   "He's spoken to the manager."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "had",
+     "did"
+    ]
+   },
+   {
+    "correct": "spoken",
+    "options": [
+     "spoken",
+     "spoke",
+     "speak",
+     "speaks"
+    ]
+   },
+   {
+    "correct": "to the manager.",
+    "options": [
+     "to the manager.",
+     "to the boss."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Мы знаем их много лет.",
+  "en": "We have known them for years.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "had",
+     "did"
+    ]
+   },
+   {
+    "correct": "known",
+    "options": [
+     "known",
+     "knew",
+     "know",
+     "knows"
+    ]
+   },
+   {
+    "correct": "them for years.",
+    "options": [
+     "them for years.",
+     "them long."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она ушла в школу.",
+  "en": "She has gone to school.",
+  "alternatives": [
+   "She's gone to school."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "had",
+     "did"
+    ]
+   },
+   {
+    "correct": "gone",
+    "options": [
+     "gone",
+     "went",
+     "go",
+     "goes"
+    ]
+   },
+   {
+    "correct": "to school.",
+    "options": [
+     "to school.",
+     "to work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Я уже видел его.",
+  "en": "I have seen it.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "You",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has"
+    ]
+   },
+   {
+    "correct": "seen",
+    "options": [
+     "seen",
+     "saw",
+     "see",
+     "sees"
+    ]
+   },
+   {
+    "correct": "it.",
+    "options": [
+     "it.",
+     "him.",
+     "them."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она взяла мою сумку.",
+  "en": "She has taken my bag.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "It"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have"
+    ]
+   },
+   {
+    "correct": "taken",
+    "options": [
+     "taken",
+     "took",
+     "take",
+     "takes"
+    ]
+   },
+   {
+    "correct": "my bag.",
+    "options": [
+     "my bag.",
+     "my pen.",
+     "my book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Ты уже съел яблоко?",
+  "en": "Have you eaten an apple?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have",
+    "options": [
+     "Have",
+     "Has"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "eaten",
+    "options": [
+     "eaten",
+     "ate",
+     "eat"
+    ]
+   },
+   {
+    "correct": "an apple?",
+    "options": [
+     "an apple?",
+     "your lunch?",
+     "the cake?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Я не написал отчет.",
+  "en": "I have not written the report.",
+  "alternatives": [
+   "I haven't written the report."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "have not",
+    "options": [
+     "have not",
+     "has not",
+     "had not"
+    ]
+   },
+   {
+    "correct": "written",
+    "options": [
+     "written",
+     "wrote",
+     "write"
+    ]
+   },
+   {
+    "correct": "the report.",
+    "options": [
+     "the report.",
+     "the letter.",
+     "the email."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Он выпил весь кофе.",
+  "en": "He has drunk all the coffee.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have"
+    ]
+   },
+   {
+    "correct": "drunk",
+    "options": [
+     "drunk",
+     "drank",
+     "drink"
+    ]
+   },
+   {
+    "correct": "all the coffee.",
+    "options": [
+     "all the coffee.",
+     "the water.",
+     "the milk."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Мы сделали эту работу.",
+  "en": "We have done this work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has"
+    ]
+   },
+   {
+    "correct": "done",
+    "options": [
+     "done",
+     "did",
+     "do"
+    ]
+   },
+   {
+    "correct": "this work.",
+    "options": [
+     "this work.",
+     "the task.",
+     "everything."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Они сломали мой стул.",
+  "en": "They have broken my chair.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has"
+    ]
+   },
+   {
+    "correct": "broken",
+    "options": [
+     "broken",
+     "broke",
+     "break"
+    ]
+   },
+   {
+    "correct": "my chair.",
+    "options": [
+     "my chair.",
+     "my toy.",
+     "the vase."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Я забыл своё имя.",
+  "en": "I have forgotten my name.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has"
+    ]
+   },
+   {
+    "correct": "forgotten",
+    "options": [
+     "forgotten",
+     "forgot",
+     "forget"
+    ]
+   },
+   {
+    "correct": "my name.",
+    "options": [
+     "my name.",
+     "the answer.",
+     "the rules."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она дала мне шанс.",
+  "en": "She has given me a chance.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have"
+    ]
+   },
+   {
+    "correct": "given",
+    "options": [
+     "given",
+     "gave",
+     "give"
+    ]
+   },
+   {
+    "correct": "me a chance.",
+    "options": [
+     "me a chance.",
+     "the keys.",
+     "the money."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Он поговорил с ней.",
+  "en": "He has spoken to her.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have"
+    ]
+   },
+   {
+    "correct": "spoken",
+    "options": [
+     "spoken",
+     "spoke",
+     "speak"
+    ]
+   },
+   {
+    "correct": "to her.",
+    "options": [
+     "to her.",
+     "to him.",
+     "to them."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Мы знаем их долго.",
+  "en": "We have known them for long.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has"
+    ]
+   },
+   {
+    "correct": "known",
+    "options": [
+     "known",
+     "knew",
+     "know"
+    ]
+   },
+   {
+    "correct": "them for long.",
+    "options": [
+     "them for long.",
+     "him well.",
+     "her well."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она ушла в парк.",
+  "en": "She has gone to the park.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have"
+    ]
+   },
+   {
+    "correct": "gone",
+    "options": [
+     "gone",
+     "went",
+     "go"
+    ]
+   },
+   {
+    "correct": "to the park.",
+    "options": [
+     "to the park.",
+     "to the shop.",
+     "to work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Я видел этот фильм.",
+  "en": "I have seen this movie.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "had",
+     "am"
+    ]
+   },
+   {
+    "correct": "seen",
+    "options": [
+     "seen",
+     "saw",
+     "see",
+     "sees"
+    ]
+   },
+   {
+    "correct": "this movie.",
+    "options": [
+     "this movie.",
+     "the movie."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Ты съел свой обед?",
+  "en": "Have you eaten your lunch?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have",
+    "options": [
+     "Have",
+     "Has",
+     "Did",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "eaten",
+    "options": [
+     "eaten",
+     "ate",
+     "eat",
+     "eats"
+    ]
+   },
+   {
+    "correct": "your lunch?",
+    "options": [
+     "your lunch?",
+     "the lunch?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Они сделали работу.",
+  "en": "They have done the work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "had",
+     "are"
+    ]
+   },
+   {
+    "correct": "done",
+    "options": [
+     "done",
+     "did",
+     "do",
+     "does"
+    ]
+   },
+   {
+    "correct": "the work.",
+    "options": [
+     "the work.",
+     "my work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Ты сломал мой стул?",
+  "en": "Have you broken my chair?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have",
+    "options": [
+     "Have",
+     "Has",
+     "Did",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "broken",
+    "options": [
+     "broken",
+     "broke",
+     "break",
+     "breaks"
+    ]
+   },
+   {
+    "correct": "my chair?",
+    "options": [
+     "my chair?",
+     "the chair?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Я уже видел этого человека.",
+  "en": "I have seen this person.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "have seen",
+    "options": [
+     "have seen",
+     "has seen",
+     "saw",
+     "see"
+    ]
+   },
+   {
+    "correct": "this person.",
+    "options": [
+     "this person.",
+     "that man.",
+     "this place."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она взяла новую машину.",
+  "en": "She has taken the new car.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has taken",
+    "options": [
+     "has taken",
+     "have taken",
+     "took",
+     "take"
+    ]
+   },
+   {
+    "correct": "the new car.",
+    "options": [
+     "the new car.",
+     "my bag.",
+     "the book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Ты уже написал это слово?",
+  "en": "Have you written this word?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have you",
+    "options": [
+     "Have you",
+     "Has he",
+     "Did you",
+     "Do you"
+    ]
+   },
+   {
+    "correct": "written",
+    "options": [
+     "written",
+     "wrote",
+     "write",
+     "writing"
+    ]
+   },
+   {
+    "correct": "this word?",
+    "options": [
+     "this word?",
+     "the text?",
+     "my name?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Мы съели всю еду.",
+  "en": "We have eaten all the food.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "have eaten",
+    "options": [
+     "have eaten",
+     "has eaten",
+     "ate",
+     "eat"
+    ]
+   },
+   {
+    "correct": "all the food.",
+    "options": [
+     "all the food.",
+     "the lunch.",
+     "the cake."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Они выпили холодную воду.",
+  "en": "They have drunk cold water.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have drunk",
+    "options": [
+     "have drunk",
+     "has drunk",
+     "drank",
+     "drink"
+    ]
+   },
+   {
+    "correct": "cold water.",
+    "options": [
+     "cold water.",
+     "the milk.",
+     "the tea."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Он сделал выбор.",
+  "en": "He has done his choice.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "has done",
+    "options": [
+     "has done",
+     "have done",
+     "did",
+     "do"
+    ]
+   },
+   {
+    "correct": "his choice.",
+    "options": [
+     "his choice.",
+     "the task.",
+     "the work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она сломала мой компьютер.",
+  "en": "She has broken my computer.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "has broken",
+    "options": [
+     "has broken",
+     "have broken",
+     "broke",
+     "break"
+    ]
+   },
+   {
+    "correct": "my computer.",
+    "options": [
+     "my computer.",
+     "the door.",
+     "the table."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Ты забыл мой номер?",
+  "en": "Have you forgotten my number?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have you",
+    "options": [
+     "Have you",
+     "Has he",
+     "Did you",
+     "Do you"
+    ]
+   },
+   {
+    "correct": "forgotten",
+    "options": [
+     "forgotten",
+     "forgot",
+     "forget",
+     "forgetting"
+    ]
+   },
+   {
+    "correct": "my number?",
+    "options": [
+     "my number?",
+     "the address?",
+     "the time?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Они дали мне деньги.",
+  "en": "They have given me money.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have given",
+    "options": [
+     "have given",
+     "has given",
+     "gave",
+     "give"
+    ]
+   },
+   {
+    "correct": "me money.",
+    "options": [
+     "me money.",
+     "the answer.",
+     "some help."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Я поговорил с ней.",
+  "en": "I have spoken to her.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We",
+     "She"
+    ]
+   },
+   {
+    "correct": "have spoken",
+    "options": [
+     "have spoken",
+     "has spoken",
+     "spoke",
+     "speak"
+    ]
+   },
+   {
+    "correct": "to her.",
+    "options": [
+     "to her.",
+     "to him.",
+     "to them."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она ушла в офис.",
+  "en": "She has gone to the office.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has gone",
+    "options": [
+     "has gone",
+     "have gone",
+     "went",
+     "go"
+    ]
+   },
+   {
+    "correct": "to the office.",
+    "options": [
+     "to the office.",
+     "to work.",
+     "to town."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Мы знаем этот факт.",
+  "en": "We have known this fact.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "I",
+     "She"
+    ]
+   },
+   {
+    "correct": "have known",
+    "options": [
+     "have known",
+     "has known",
+     "knew",
+     "know"
+    ]
+   },
+   {
+    "correct": "this fact.",
+    "options": [
+     "this fact.",
+     "the truth.",
+     "the rules."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Я уже видел этого актера.",
+  "en": "I have seen this actor.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "have seen",
+    "options": [
+     "have seen",
+     "saw",
+     "has seen",
+     "have saw"
+    ]
+   },
+   {
+    "correct": "this actor.",
+    "options": [
+     "this actor.",
+     "that film.",
+     "the book.",
+     "my friend."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она взяла твою тетрадь.",
+  "en": "She has taken your notebook.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has taken",
+    "options": [
+     "has taken",
+     "took",
+     "have taken",
+     "has took"
+    ]
+   },
+   {
+    "correct": "your notebook.",
+    "options": [
+     "your notebook.",
+     "my pen.",
+     "the bag.",
+     "a key."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Ты уже написал этот текст?",
+  "en": "Have you written this text?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have",
+    "options": [
+     "Have",
+     "Has",
+     "Did",
+     "Do"
+    ]
+   },
+   {
+    "correct": "you written",
+    "options": [
+     "you written",
+     "you wrote",
+     "you write",
+     "you have written"
+    ]
+   },
+   {
+    "correct": "this text?",
+    "options": [
+     "this text?",
+     "the report?",
+     "a letter?",
+     "my name?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Мы съели весь пирог.",
+  "en": "We have eaten the whole cake.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "have eaten",
+    "options": [
+     "have eaten",
+     "ate",
+     "has eaten",
+     "have ate"
+    ]
+   },
+   {
+    "correct": "the whole cake.",
+    "options": [
+     "the whole cake.",
+     "all the food.",
+     "the lunch.",
+     "the breakfast."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Они выпили много воды.",
+  "en": "They have drunk much water.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have drunk",
+    "options": [
+     "have drunk",
+     "drank",
+     "has drunk",
+     "have drank"
+    ]
+   },
+   {
+    "correct": "much water.",
+    "options": [
+     "much water.",
+     "cold tea.",
+     "some juice.",
+     "hot coffee."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Он сделал свою домашнюю работу.",
+  "en": "He has done his homework.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "has done",
+    "options": [
+     "has done",
+     "did",
+     "have done",
+     "has did"
+    ]
+   },
+   {
+    "correct": "his homework.",
+    "options": [
+     "his homework.",
+     "the work.",
+     "this task.",
+     "the job."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она сломала свою игрушку.",
+  "en": "She has broken her toy.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has broken",
+    "options": [
+     "has broken",
+     "broke",
+     "have broken",
+     "has broke"
+    ]
+   },
+   {
+    "correct": "her toy.",
+    "options": [
+     "her toy.",
+     "my phone.",
+     "the chair.",
+     "the table."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Я забыл свой адрес.",
+  "en": "I have forgotten my address.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "have forgotten",
+    "options": [
+     "have forgotten",
+     "forgot",
+     "has forgotten",
+     "have forgot"
+    ]
+   },
+   {
+    "correct": "my address.",
+    "options": [
+     "my address.",
+     "the password.",
+     "my name.",
+     "the number."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Они дали мне совет.",
+  "en": "They have given me advice.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have given",
+    "options": [
+     "have given",
+     "gave",
+     "has given",
+     "have gave"
+    ]
+   },
+   {
+    "correct": "me advice.",
+    "options": [
+     "me advice.",
+     "me money.",
+     "us help.",
+     "the answer."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Он поговорил с директором.",
+  "en": "He has spoken to the director.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "has spoken",
+    "options": [
+     "has spoken",
+     "spoke",
+     "have spoken",
+     "has spoke"
+    ]
+   },
+   {
+    "correct": "to the director.",
+    "options": [
+     "to the director.",
+     "to the manager.",
+     "to her.",
+     "to him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Мы знаем их пять лет.",
+  "en": "We have known them for five years.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "I",
+     "You"
+    ]
+   },
+   {
+    "correct": "have known",
+    "options": [
+     "have known",
+     "knew",
+     "has known",
+     "have knew"
+    ]
+   },
+   {
+    "correct": "them for five years.",
+    "options": [
+     "them for five years.",
+     "them for a long time.",
+     "this fact.",
+     "the truth."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она ушла в магазин.",
+  "en": "She has gone to the shop.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has gone",
+    "options": [
+     "has gone",
+     "went",
+     "have gone",
+     "has went"
+    ]
+   },
+   {
+    "correct": "to the shop.",
+    "options": [
+     "to the shop.",
+     "to school.",
+     "to the office.",
+     "home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Я написал этот текст.",
+  "en": "I have written this text.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "have written",
+    "options": [
+     "have written",
+     "has written",
+     "have wrote",
+     "has wrote"
+    ]
+   },
+   {
+    "correct": "this text.",
+    "options": [
+     "this text.",
+     "this letter.",
+     "this book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она съела свой завтрак.",
+  "en": "She has eaten her breakfast.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "has eaten",
+    "options": [
+     "has eaten",
+     "have eaten",
+     "has ate",
+     "have ate"
+    ]
+   },
+   {
+    "correct": "her breakfast.",
+    "options": [
+     "her breakfast.",
+     "her lunch.",
+     "her dinner."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Ты видел мою машину?",
+  "en": "Have you seen my car?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have you",
+    "options": [
+     "Have you",
+     "Has you",
+     "Did you"
+    ]
+   },
+   {
+    "correct": "seen",
+    "options": [
+     "seen",
+     "saw",
+     "see"
+    ]
+   },
+   {
+    "correct": "my car?",
+    "options": [
+     "my car?",
+     "my bag?",
+     "my phone?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Мы не взяли ключи.",
+  "en": "We have not taken the keys.",
+  "alternatives": [
+   "We haven't taken the keys."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "have not taken",
+    "options": [
+     "have not taken",
+     "has not taken",
+     "have not took",
+     "has not took"
+    ]
+   },
+   {
+    "correct": "the keys.",
+    "options": [
+     "the keys.",
+     "the books.",
+     "the bags."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Он забыл мой вопрос.",
+  "en": "He has forgotten my question.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has forgotten",
+    "options": [
+     "has forgotten",
+     "have forgotten",
+     "has forgot",
+     "have forgot"
+    ]
+   },
+   {
+    "correct": "my question.",
+    "options": [
+     "my question.",
+     "my name.",
+     "my number."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Они выпили всё молоко.",
+  "en": "They have drunk all the milk.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have drunk",
+    "options": [
+     "have drunk",
+     "has drunk",
+     "have drank",
+     "has drank"
+    ]
+   },
+   {
+    "correct": "all the milk.",
+    "options": [
+     "all the milk.",
+     "all the water.",
+     "all the juice."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Ты поговорил с ним?",
+  "en": "Have you spoken with him?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have you",
+    "options": [
+     "Have you",
+     "Has you",
+     "Do you"
+    ]
+   },
+   {
+    "correct": "spoken",
+    "options": [
+     "spoken",
+     "spoke",
+     "speak"
+    ]
+   },
+   {
+    "correct": "with him?",
+    "options": [
+     "with him?",
+     "with her?",
+     "with them?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она дала мне ответ.",
+  "en": "She has given me the answer.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "has given",
+    "options": [
+     "has given",
+     "have given",
+     "has gave",
+     "have gave"
+    ]
+   },
+   {
+    "correct": "me the answer.",
+    "options": [
+     "me the answer.",
+     "me the key.",
+     "me the book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Мы сделали много ошибок.",
+  "en": "We have done many mistakes.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have done",
+    "options": [
+     "have done",
+     "has done",
+     "have did",
+     "has did"
+    ]
+   },
+   {
+    "correct": "many mistakes.",
+    "options": [
+     "many mistakes.",
+     "many things.",
+     "many exercises."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Он сломал мой подарок.",
+  "en": "He has broken my gift.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "has broken",
+    "options": [
+     "has broken",
+     "have broken",
+     "has broke",
+     "have broke"
+    ]
+   },
+   {
+    "correct": "my gift.",
+    "options": [
+     "my gift.",
+     "my toy.",
+     "my plate."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Я знал его давно.",
+  "en": "I have known him for a long time.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "have known",
+    "options": [
+     "have known",
+     "has known",
+     "have knew",
+     "has knew"
+    ]
+   },
+   {
+    "correct": "him for a long time.",
+    "options": [
+     "him for a long time.",
+     "him for years.",
+     "him for ages."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Я уже сделал это.",
+  "en": "I have already done it.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has"
+    ]
+   },
+   {
+    "correct": "already done",
+    "options": [
+     "already done",
+     "already did",
+     "already do"
+    ]
+   },
+   {
+    "correct": "it.",
+    "options": [
+     "it.",
+     "them."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она видела этот дом.",
+  "en": "She has seen this house.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have"
+    ]
+   },
+   {
+    "correct": "seen",
+    "options": [
+     "seen",
+     "saw",
+     "see"
+    ]
+   },
+   {
+    "correct": "this house.",
+    "options": [
+     "this house.",
+     "this car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Они написали это письмо.",
+  "en": "They have written this letter.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has"
+    ]
+   },
+   {
+    "correct": "written",
+    "options": [
+     "written",
+     "wrote",
+     "write"
+    ]
+   },
+   {
+    "correct": "this letter.",
+    "options": [
+     "this letter.",
+     "this book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Он взял мою ручку.",
+  "en": "He has taken my pen.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have"
+    ]
+   },
+   {
+    "correct": "taken",
+    "options": [
+     "taken",
+     "took",
+     "take"
+    ]
+   },
+   {
+    "correct": "my pen.",
+    "options": [
+     "my pen.",
+     "my book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Мы съели всю рыбу.",
+  "en": "We have eaten all the fish.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has"
+    ]
+   },
+   {
+    "correct": "eaten",
+    "options": [
+     "eaten",
+     "ate",
+     "eat"
+    ]
+   },
+   {
+    "correct": "all the fish.",
+    "options": [
+     "all the fish.",
+     "the cake."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она выпила холодный чай.",
+  "en": "She has drunk cold tea.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have"
+    ]
+   },
+   {
+    "correct": "drunk",
+    "options": [
+     "drunk",
+     "drank",
+     "drink"
+    ]
+   },
+   {
+    "correct": "cold tea.",
+    "options": [
+     "cold tea.",
+     "cold water."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Вы когда-нибудь говорили с ним?",
+  "en": "Have you spoken to him?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have",
+    "options": [
+     "Have",
+     "Has"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "spoken",
+    "options": [
+     "spoken",
+     "spoke",
+     "speak"
+    ]
+   },
+   {
+    "correct": "to him?",
+    "options": [
+     "to him?",
+     "to them?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Он дал мне эту книгу.",
+  "en": "He has given me this book.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have"
+    ]
+   },
+   {
+    "correct": "given",
+    "options": [
+     "given",
+     "gave",
+     "give"
+    ]
+   },
+   {
+    "correct": "me this book.",
+    "options": [
+     "me this book.",
+     "me the pen."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Я узнал правду.",
+  "en": "I have known the truth.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has"
+    ]
+   },
+   {
+    "correct": "known",
+    "options": [
+     "known",
+     "knew",
+     "know"
+    ]
+   },
+   {
+    "correct": "the truth.",
+    "options": [
+     "the truth.",
+     "the story."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она забыла свой кошелек.",
+  "en": "She has forgotten her wallet.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have"
+    ]
+   },
+   {
+    "correct": "forgotten",
+    "options": [
+     "forgotten",
+     "forgot",
+     "forget"
+    ]
+   },
+   {
+    "correct": "her wallet.",
+    "options": [
+     "her wallet.",
+     "her keys."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Мы ушли домой.",
+  "en": "We have gone home.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has"
+    ]
+   },
+   {
+    "correct": "gone",
+    "options": [
+     "gone",
+     "went",
+     "go"
+    ]
+   },
+   {
+    "correct": "home.",
+    "options": [
+     "home.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Я уже видел этот самолет.",
+  "en": "I have already seen this plane.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "had",
+     "did"
+    ]
+   },
+   {
+    "correct": "already",
+    "options": [
+     "already",
+     "just",
+     "now",
+     "never"
+    ]
+   },
+   {
+    "correct": "seen",
+    "options": [
+     "seen",
+     "saw",
+     "see",
+     "sees"
+    ]
+   },
+   {
+    "correct": "this plane.",
+    "options": [
+     "this plane.",
+     "that plane.",
+     "my plane.",
+     "the plane."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она написала длинное письмо.",
+  "en": "She has written a long letter.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "had",
+     "does"
+    ]
+   },
+   {
+    "correct": "written",
+    "options": [
+     "written",
+     "wrote",
+     "write",
+     "writes"
+    ]
+   },
+   {
+    "correct": "a long letter.",
+    "options": [
+     "a long letter.",
+     "the long letter.",
+     "this long letter."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Они выпили весь сок.",
+  "en": "They have drunk all the juice.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "had",
+     "did"
+    ]
+   },
+   {
+    "correct": "drunk",
+    "options": [
+     "drunk",
+     "drank",
+     "drink",
+     "drinks"
+    ]
+   },
+   {
+    "correct": "all the juice.",
+    "options": [
+     "all the juice.",
+     "the whole juice.",
+     "this juice."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Он взял мою сумку.",
+  "en": "He has taken my bag.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "had",
+     "does"
+    ]
+   },
+   {
+    "correct": "taken",
+    "options": [
+     "taken",
+     "took",
+     "take",
+     "takes"
+    ]
+   },
+   {
+    "correct": "my bag.",
+    "options": [
+     "my bag.",
+     "this bag.",
+     "the bag."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Вы когда-нибудь ели суши?",
+  "en": "Have you ever eaten sushi?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have",
+    "options": [
+     "Have",
+     "Has",
+     "Did",
+     "Do"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "we",
+     "he"
+    ]
+   },
+   {
+    "correct": "ever",
+    "options": [
+     "ever",
+     "never",
+     "always",
+     "often"
+    ]
+   },
+   {
+    "correct": "eaten",
+    "options": [
+     "eaten",
+     "ate",
+     "eat",
+     "eats"
+    ]
+   },
+   {
+    "correct": "sushi?",
+    "options": [
+     "sushi?",
+     "the sushi?",
+     "this sushi?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она забыла свой пароль.",
+  "en": "She has forgotten her password.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have",
+     "had",
+     "does"
+    ]
+   },
+   {
+    "correct": "forgotten",
+    "options": [
+     "forgotten",
+     "forgot",
+     "forget",
+     "forgets"
+    ]
+   },
+   {
+    "correct": "her password.",
+    "options": [
+     "her password.",
+     "the password.",
+     "my password."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Мы сломали старый стул.",
+  "en": "We have broken the old chair.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "You",
+     "I"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "had",
+     "did"
+    ]
+   },
+   {
+    "correct": "broken",
+    "options": [
+     "broken",
+     "broke",
+     "break",
+     "breaks"
+    ]
+   },
+   {
+    "correct": "the old chair.",
+    "options": [
+     "the old chair.",
+     "an old chair.",
+     "this old chair."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Он не сделал задание.",
+  "en": "He has not done the task.",
+  "alternatives": [
+   "He hasn't done the task."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "has not",
+    "options": [
+     "has not",
+     "hasn't",
+     "have not",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "done",
+    "options": [
+     "done",
+     "did",
+     "do",
+     "does"
+    ]
+   },
+   {
+    "correct": "the task.",
+    "options": [
+     "the task.",
+     "this task.",
+     "my task."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Я поговорил с ним.",
+  "en": "I have spoken with him.",
+  "alternatives": [
+   "I have spoken to him."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "had",
+     "did"
+    ]
+   },
+   {
+    "correct": "spoken",
+    "options": [
+     "spoken",
+     "spoke",
+     "speak",
+     "speaks"
+    ]
+   },
+   {
+    "correct": "with him.",
+    "options": [
+     "with him.",
+     "to him.",
+     "about him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Мы знаем его давно.",
+  "en": "We have known him for a long time.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "I",
+     "You"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "had",
+     "did"
+    ]
+   },
+   {
+    "correct": "known",
+    "options": [
+     "known",
+     "knew",
+     "know",
+     "knows"
+    ]
+   },
+   {
+    "correct": "him for a long time.",
+    "options": [
+     "him for a long time.",
+     "him long.",
+     "him well."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Я уже прочитал эту книгу.",
+  "en": "I have already read this book.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has"
+    ]
+   },
+   {
+    "correct": "already read",
+    "options": [
+     "already read",
+     "already write",
+     "already wrote"
+    ]
+   },
+   {
+    "correct": "this book.",
+    "options": [
+     "this book.",
+     "these books."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Она уже ушла из дома.",
+  "en": "She has already gone home.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has",
+    "options": [
+     "has",
+     "have"
+    ]
+   },
+   {
+    "correct": "already gone",
+    "options": [
+     "already gone",
+     "already went",
+     "already go"
+    ]
+   },
+   {
+    "correct": "home.",
+    "options": [
+     "home.",
+     "the house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Вы когда-нибудь видели этот фильм?",
+  "en": "Have you ever seen this movie?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have",
+    "options": [
+     "Have",
+     "Has"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "ever seen",
+    "options": [
+     "ever seen",
+     "ever saw",
+     "ever see"
+    ]
+   },
+   {
+    "correct": "this movie?",
+    "options": [
+     "this movie?",
+     "this book?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_participle",
+  "ru": "Они не выпили весь кофе.",
+  "en": "They have not drunk all the coffee.",
+  "alternatives": [
+   "They haven't drunk all the coffee."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have not",
+    "options": [
+     "have not",
+     "has not"
+    ]
+   },
+   {
+    "correct": "drunk",
+    "options": [
+     "drunk",
+     "drank",
+     "drink"
+    ]
+   },
+   {
+    "correct": "all the coffee.",
+    "options": [
+     "all the coffee.",
+     "all the water."
+    ]
+   }
+  ]
+ }
+]

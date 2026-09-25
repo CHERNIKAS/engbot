@@ -1,0 +1,3564 @@
+[
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Я сейчас работаю.",
+  "en": "I am working now.",
+  "alternatives": [
+   "I'm working now."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "am",
+    "options": [
+     "am",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "working",
+    "options": [
+     "working",
+     "work",
+     "worked"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "usually.",
+     "often."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она читает книгу сейчас.",
+  "en": "She is reading a book now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "am",
+     "are"
+    ]
+   },
+   {
+    "correct": "reading",
+    "options": [
+     "reading",
+     "read",
+     "reads"
+    ]
+   },
+   {
+    "correct": "a book now.",
+    "options": [
+     "a book now.",
+     "books every day."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Он сейчас не спит.",
+  "en": "He is not sleeping now.",
+  "alternatives": [
+   "He isn't sleeping now."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "is not",
+    "options": [
+     "is not",
+     "am not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "sleeping",
+    "options": [
+     "sleeping",
+     "sleep",
+     "sleeps"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "every night."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Они сейчас не едят.",
+  "en": "They are not eating now.",
+  "alternatives": [
+   "They aren't eating now."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "eating",
+    "options": [
+     "eating",
+     "eat",
+     "eats"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "at home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Ты сейчас работаешь?",
+  "en": "Are you working now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "working",
+    "options": [
+     "working",
+     "work",
+     "worked"
+    ]
+   },
+   {
+    "correct": "now?",
+    "options": [
+     "now?",
+     "every day?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она сейчас готовит?",
+  "en": "Is she cooking now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Are",
+     "Am"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "cooking",
+    "options": [
+     "cooking",
+     "cook",
+     "cooks"
+    ]
+   },
+   {
+    "correct": "now?",
+    "options": [
+     "now?",
+     "every day?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Смотри, он бежит.",
+  "en": "Look, he is running.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Look,",
+    "options": [
+     "Look,",
+     "Usually,"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "I",
+     "they"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "am",
+     "are"
+    ]
+   },
+   {
+    "correct": "running.",
+    "options": [
+     "running.",
+     "runs."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Слушай, они разговаривают.",
+  "en": "Listen, they are talking.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Listen,",
+    "options": [
+     "Listen,",
+     "Every day,"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "I"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "am"
+    ]
+   },
+   {
+    "correct": "talking.",
+    "options": [
+     "talking.",
+     "talk."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Я не пью кофе сейчас.",
+  "en": "I am not drinking coffee now.",
+  "alternatives": [
+   "I'm not drinking coffee now."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "am not",
+    "options": [
+     "am not",
+     "is not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "drinking",
+    "options": [
+     "drinking",
+     "drink",
+     "drinks"
+    ]
+   },
+   {
+    "correct": "coffee now.",
+    "options": [
+     "coffee now.",
+     "coffee daily."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она сейчас пишет письмо?",
+  "en": "Is she writing a letter now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Are",
+     "Am"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "writing",
+    "options": [
+     "writing",
+     "write",
+     "writes"
+    ]
+   },
+   {
+    "correct": "a letter now?",
+    "options": [
+     "a letter now?",
+     "a letter often?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Они сейчас изучают английский.",
+  "en": "They are studying English now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "am"
+    ]
+   },
+   {
+    "correct": "studying",
+    "options": [
+     "studying",
+     "study",
+     "studies"
+    ]
+   },
+   {
+    "correct": "English now.",
+    "options": [
+     "English now.",
+     "English usually."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Смотри, он ждет автобус.",
+  "en": "Look, he is waiting for the bus.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Look,",
+    "options": [
+     "Look,",
+     "Often,"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "they",
+     "I"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "am"
+    ]
+   },
+   {
+    "correct": "waiting for the bus.",
+    "options": [
+     "waiting for the bus.",
+     "waits for the bus."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Я сейчас читаю интересную книгу.",
+  "en": "I am reading an interesting book now.",
+  "alternatives": [
+   "I'm reading an interesting book now."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "am reading",
+    "options": [
+     "am reading",
+     "read",
+     "is reading",
+     "are reading"
+    ]
+   },
+   {
+    "correct": "an interesting book now.",
+    "options": [
+     "an interesting book now.",
+     "a book now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Он не играет в футбол сейчас.",
+  "en": "He is not playing football now.",
+  "alternatives": [
+   "He isn't playing football now."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "is not playing",
+    "options": [
+     "is not playing",
+     "does not play",
+     "are not playing",
+     "is playing"
+    ]
+   },
+   {
+    "correct": "football now.",
+    "options": [
+     "football now.",
+     "a game now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Они сейчас смотрят телевизор?",
+  "en": "Are they watching TV now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Do",
+     "Is"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "watching TV now?",
+    "options": [
+     "watching TV now?",
+     "watch TV now?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Смотри, она сейчас бежит домой.",
+  "en": "Look, she is running home now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Look,",
+    "options": [
+     "Look,",
+     "Listen,"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "they",
+     "I"
+    ]
+   },
+   {
+    "correct": "is running",
+    "options": [
+     "is running",
+     "runs",
+     "are running",
+     "am running"
+    ]
+   },
+   {
+    "correct": "home now.",
+    "options": [
+     "home now.",
+     "to school now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она обычно работает, но сейчас она ест.",
+  "en": "She usually works, but she is eating now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She usually works,",
+    "options": [
+     "She usually works,",
+     "She is usually working,"
+    ]
+   },
+   {
+    "correct": "but she",
+    "options": [
+     "but she",
+     "but they"
+    ]
+   },
+   {
+    "correct": "is eating",
+    "options": [
+     "is eating",
+     "eats",
+     "are eating"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "every day."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Я не сплю, я сейчас слушаю музыку.",
+  "en": "I am not sleeping, I am listening to music.",
+  "alternatives": [
+   "I'm not sleeping, I'm listening to music."
+  ],
+  "slots": [
+   {
+    "correct": "I am not sleeping,",
+    "options": [
+     "I am not sleeping,",
+     "I do not sleep,"
+    ]
+   },
+   {
+    "correct": "I am listening",
+    "options": [
+     "I am listening",
+     "I listen"
+    ]
+   },
+   {
+    "correct": "to music.",
+    "options": [
+     "to music.",
+     "now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "В данный момент он учит английский.",
+  "en": "He is studying English at the moment.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "is studying",
+    "options": [
+     "is studying",
+     "studies",
+     "are studying"
+    ]
+   },
+   {
+    "correct": "English at the moment.",
+    "options": [
+     "English at the moment.",
+     "English now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Они сейчас не пьют чай.",
+  "en": "They are not drinking tea now.",
+  "alternatives": [
+   "They aren't drinking tea now."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "are not drinking",
+    "options": [
+     "are not drinking",
+     "do not drink",
+     "is not drinking"
+    ]
+   },
+   {
+    "correct": "tea now.",
+    "options": [
+     "tea now.",
+     "coffee now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Ты сейчас слушаешь меня?",
+  "en": "Are you listening to me now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Do",
+     "Is"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "listening to me now?",
+    "options": [
+     "listening to me now?",
+     "listen to me now?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она не работает, она сейчас отдыхает.",
+  "en": "She is not working, she is resting now.",
+  "alternatives": [
+   "She isn't working, she is resting now."
+  ],
+  "slots": [
+   {
+    "correct": "She is not working,",
+    "options": [
+     "She is not working,",
+     "She does not work,"
+    ]
+   },
+   {
+    "correct": "she is resting",
+    "options": [
+     "she is resting",
+     "she rests"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "every day."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Слушай, он сейчас разговаривает по телефону.",
+  "en": "Listen, he is talking on the phone now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Listen,",
+    "options": [
+     "Listen,",
+     "Look,"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "they",
+     "I"
+    ]
+   },
+   {
+    "correct": "is talking",
+    "options": [
+     "is talking",
+     "talks",
+     "are talking"
+    ]
+   },
+   {
+    "correct": "on the phone now.",
+    "options": [
+     "on the phone now.",
+     "now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Сейчас он пишет новое письмо.",
+  "en": "He is writing a new letter now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is writing",
+    "options": [
+     "is writing",
+     "writes",
+     "are writing"
+    ]
+   },
+   {
+    "correct": "a new letter now.",
+    "options": [
+     "a new letter now.",
+     "a letter now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Я сейчас пью воду.",
+  "en": "I am drinking water now.",
+  "alternatives": [
+   "I'm drinking water now."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "am drinking",
+    "options": [
+     "am drinking",
+     "drink",
+     "drank",
+     "drinks"
+    ]
+   },
+   {
+    "correct": "water now.",
+    "options": [
+     "water now.",
+     "coffee now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Он сейчас читает газету.",
+  "en": "He is reading a newspaper.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "is reading",
+    "options": [
+     "is reading",
+     "reads",
+     "read",
+     "are reading"
+    ]
+   },
+   {
+    "correct": "a newspaper.",
+    "options": [
+     "a newspaper.",
+     "a book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она сейчас не работает.",
+  "en": "She is not working now.",
+  "alternatives": [
+   "She isn't working now."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "is not working",
+    "options": [
+     "is not working",
+     "is working",
+     "are not working",
+     "does not work"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Они сейчас не бегут.",
+  "en": "They are not running now.",
+  "alternatives": [
+   "They aren't running now."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "are not running",
+    "options": [
+     "are not running",
+     "are running",
+     "is not running",
+     "do not run"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "fast."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Ты сейчас ешь яблоко?",
+  "en": "Are you eating an apple?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Do",
+     "Is"
+    ]
+   },
+   {
+    "correct": "you eating",
+    "options": [
+     "you eating",
+     "you eat",
+     "you ate"
+    ]
+   },
+   {
+    "correct": "an apple?",
+    "options": [
+     "an apple?",
+     "the pizza?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она сейчас спит?",
+  "en": "Is she sleeping now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Are",
+     "Does"
+    ]
+   },
+   {
+    "correct": "she sleeping",
+    "options": [
+     "she sleeping",
+     "she sleep",
+     "she sleeps"
+    ]
+   },
+   {
+    "correct": "now?",
+    "options": [
+     "now?",
+     "today?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Смотри, он сейчас играет.",
+  "en": "Look, he is playing now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Look,",
+    "options": [
+     "Look,",
+     "Listen,"
+    ]
+   },
+   {
+    "correct": "he is playing",
+    "options": [
+     "he is playing",
+     "he plays",
+     "he played"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "well."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Обычно он учится, но сейчас он играет.",
+  "en": "He usually studies, but now he is playing.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He usually studies,",
+    "options": [
+     "He usually studies,",
+     "He is studying,"
+    ]
+   },
+   {
+    "correct": "but now",
+    "options": [
+     "but now",
+     "and now"
+    ]
+   },
+   {
+    "correct": "he is playing.",
+    "options": [
+     "he is playing.",
+     "he plays."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Слушай, она сейчас поет.",
+  "en": "Listen, she is singing now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Listen,",
+    "options": [
+     "Listen,",
+     "Look,"
+    ]
+   },
+   {
+    "correct": "she is singing",
+    "options": [
+     "she is singing",
+     "she sings",
+     "she sang"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "well."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Я не смотрю фильм сейчас.",
+  "en": "I am not watching a movie now.",
+  "alternatives": [
+   "I'm not watching a movie now."
+  ],
+  "slots": [
+   {
+    "correct": "I am not watching",
+    "options": [
+     "I am not watching",
+     "I do not watch",
+     "I am watching"
+    ]
+   },
+   {
+    "correct": "a movie",
+    "options": [
+     "a movie",
+     "a book"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она сейчас пишет домашнюю работу?",
+  "en": "Is she writing homework now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Are",
+     "Does"
+    ]
+   },
+   {
+    "correct": "she writing",
+    "options": [
+     "she writing",
+     "she writes",
+     "she write"
+    ]
+   },
+   {
+    "correct": "homework now?",
+    "options": [
+     "homework now?",
+     "a letter now?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Они не изучают математику сейчас.",
+  "en": "They are not studying math now.",
+  "alternatives": [
+   "They aren't studying math now."
+  ],
+  "slots": [
+   {
+    "correct": "They are not studying",
+    "options": [
+     "They are not studying",
+     "They are studying",
+     "They do not study"
+    ]
+   },
+   {
+    "correct": "math",
+    "options": [
+     "math",
+     "English"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Мама сейчас готовит обед.",
+  "en": "Mom is cooking lunch now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Mom",
+    "options": [
+     "Mom",
+     "Moms",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "is cooking",
+    "options": [
+     "is cooking",
+     "are cooking",
+     "cooks",
+     "cooked"
+    ]
+   },
+   {
+    "correct": "lunch now.",
+    "options": [
+     "lunch now.",
+     "a lunch now.",
+     "the lunch now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Я не работаю в данный момент.",
+  "en": "I am not working at the moment.",
+  "alternatives": [
+   "I'm not working at the moment."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "She"
+    ]
+   },
+   {
+    "correct": "am not working",
+    "options": [
+     "am not working",
+     "is not working",
+     "do not work",
+     "not working"
+    ]
+   },
+   {
+    "correct": "at the moment.",
+    "options": [
+     "at the moment.",
+     "in the moment.",
+     "now moment."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Смотри, ребенок спит.",
+  "en": "Look, the baby is sleeping.",
+  "alternatives": [
+   "Look, a baby is sleeping."
+  ],
+  "slots": [
+   {
+    "correct": "Look,",
+    "options": [
+     "Look,",
+     "Listen,",
+     "Wait,"
+    ]
+   },
+   {
+    "correct": "the baby",
+    "options": [
+     "the baby",
+     "babies",
+     "the babies"
+    ]
+   },
+   {
+    "correct": "is sleeping.",
+    "options": [
+     "is sleeping.",
+     "are sleeping.",
+     "sleeps.",
+     "sleep."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Он не смотрит телевизор сейчас.",
+  "en": "He is not watching TV now.",
+  "alternatives": [
+   "He isn't watching TV now."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "is not watching",
+    "options": [
+     "is not watching",
+     "are not watching",
+     "does not watch",
+     "not watching"
+    ]
+   },
+   {
+    "correct": "TV now.",
+    "options": [
+     "TV now.",
+     "the TV now.",
+     "a TV now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Ты сейчас слушаешь учителя?",
+  "en": "Are you listening to the teacher?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Do",
+     "Is",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "listening to the teacher?",
+    "options": [
+     "listening to the teacher?",
+     "listen to the teacher?",
+     "are listening to the teacher?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она обычно спит, но сейчас она читает.",
+  "en": "She usually sleeps, but now she is reading.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She usually sleeps,",
+    "options": [
+     "She usually sleeps,",
+     "She is usually sleeping,",
+     "She usually sleep,"
+    ]
+   },
+   {
+    "correct": "but now she",
+    "options": [
+     "but now she",
+     "but now her",
+     "but now they"
+    ]
+   },
+   {
+    "correct": "is reading.",
+    "options": [
+     "is reading.",
+     "reads.",
+     "are reading."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Слушай, они играют в футбол.",
+  "en": "Listen, they are playing football.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Listen,",
+    "options": [
+     "Listen,",
+     "Look,",
+     "Wait,"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "are playing",
+    "options": [
+     "are playing",
+     "is playing",
+     "play",
+     "played"
+    ]
+   },
+   {
+    "correct": "football.",
+    "options": [
+     "football.",
+     "a football.",
+     "the football."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она не пьет чай сейчас.",
+  "en": "She is not drinking tea now.",
+  "alternatives": [
+   "She isn't drinking tea now."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "is not drinking",
+    "options": [
+     "is not drinking",
+     "are not drinking",
+     "does not drink",
+     "not drinking"
+    ]
+   },
+   {
+    "correct": "tea now.",
+    "options": [
+     "tea now.",
+     "a tea now.",
+     "the tea now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Он сейчас работает над проектом.",
+  "en": "He is working on a project now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "is working",
+    "options": [
+     "is working",
+     "are working",
+     "works",
+     "work"
+    ]
+   },
+   {
+    "correct": "on a project now.",
+    "options": [
+     "on a project now.",
+     "in a project now.",
+     "at a project now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Ты сейчас пишешь письмо?",
+  "en": "Are you writing a letter now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Do",
+     "Is"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "writing a letter now?",
+    "options": [
+     "writing a letter now?",
+     "write a letter now?",
+     "are writing a letter now?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Обычно он бегает, но сейчас он ест.",
+  "en": "He usually runs, but now he is eating.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He usually runs,",
+    "options": [
+     "He usually runs,",
+     "He is usually running,",
+     "He usually run,"
+    ]
+   },
+   {
+    "correct": "but now he",
+    "options": [
+     "but now he",
+     "but now they",
+     "but now she"
+    ]
+   },
+   {
+    "correct": "is eating.",
+    "options": [
+     "is eating.",
+     "eats.",
+     "are eating."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Смотри, собака бежит.",
+  "en": "Look, the dog is running.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Look,",
+    "options": [
+     "Look,",
+     "Listen,",
+     "Wait,"
+    ]
+   },
+   {
+    "correct": "the dog",
+    "options": [
+     "the dog",
+     "the dogs"
+    ]
+   },
+   {
+    "correct": "is running.",
+    "options": [
+     "is running.",
+     "are running.",
+     "run."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она не читает сейчас.",
+  "en": "She is not reading now.",
+  "alternatives": [
+   "She isn't reading now."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "is not",
+    "options": [
+     "is not",
+     "are not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "reading now.",
+    "options": [
+     "reading now.",
+     "read now.",
+     "reads now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Ты сейчас ешь?",
+  "en": "Are you eating now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Do",
+     "Is"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "eating now?",
+    "options": [
+     "eating now?",
+     "eat now?",
+     "eats now?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Они сейчас работают.",
+  "en": "They are working now.",
+  "alternatives": [
+   "They're working now."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "am"
+    ]
+   },
+   {
+    "correct": "working now.",
+    "options": [
+     "working now.",
+     "work now.",
+     "works now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Слушай, он сейчас поет.",
+  "en": "Listen, he is singing now.",
+  "alternatives": [
+   "Listen, he's singing now."
+  ],
+  "slots": [
+   {
+    "correct": "Listen,",
+    "options": [
+     "Listen,",
+     "Look,",
+     "Wait,"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "is singing now.",
+    "options": [
+     "is singing now.",
+     "are singing now.",
+     "sings now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Он сейчас не работает.",
+  "en": "He is not working now.",
+  "alternatives": [
+   "He isn't working now."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is not",
+    "options": [
+     "is not",
+     "are not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "working now.",
+    "options": [
+     "working now.",
+     "work now.",
+     "works now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она сейчас изучает английский?",
+  "en": "Is she studying English now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Does",
+     "Are"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "studying English now?",
+    "options": [
+     "studying English now?",
+     "study English now?",
+     "studies English now?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Я сейчас пишу письмо.",
+  "en": "I am writing a letter.",
+  "alternatives": [
+   "I'm writing a letter."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "am",
+    "options": [
+     "am",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "writing a letter.",
+    "options": [
+     "writing a letter.",
+     "write a letter.",
+     "writes a letter."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Смотри, они играют в футбол.",
+  "en": "Look, they are playing football.",
+  "alternatives": [
+   "Look, they're playing football."
+  ],
+  "slots": [
+   {
+    "correct": "Look,",
+    "options": [
+     "Look,",
+     "Listen,",
+     "Wait,"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "are playing football.",
+    "options": [
+     "are playing football.",
+     "is playing football.",
+     "play football."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она сейчас не смотрит телевизор.",
+  "en": "She is not watching TV.",
+  "alternatives": [
+   "She isn't watching TV."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is not",
+    "options": [
+     "is not",
+     "are not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "watching TV.",
+    "options": [
+     "watching TV.",
+     "watch TV.",
+     "watches TV."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Ты сейчас слушаешь музыку?",
+  "en": "Are you listening to music?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Do",
+     "Is"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "listening to music?",
+    "options": [
+     "listening to music?",
+     "listen to music?",
+     "listens to music?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она сейчас пьет воду.",
+  "en": "She is drinking water now.",
+  "alternatives": [
+   "She's drinking water now."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "am"
+    ]
+   },
+   {
+    "correct": "drinking water now.",
+    "options": [
+     "drinking water now.",
+     "drink water now.",
+     "drinks water now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Я сейчас слушаю учителя.",
+  "en": "I am listening to the teacher.",
+  "alternatives": [
+   "I'm listening to the teacher."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "am listening",
+    "options": [
+     "am listening",
+     "listen",
+     "listened",
+     "are listening"
+    ]
+   },
+   {
+    "correct": "to the teacher.",
+    "options": [
+     "to the teacher.",
+     "the teacher.",
+     "to teacher.",
+     "at the teacher."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она сейчас не ест яблоко.",
+  "en": "She is not eating an apple.",
+  "alternatives": [
+   "She isn't eating an apple."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "I",
+     "You"
+    ]
+   },
+   {
+    "correct": "is not eating",
+    "options": [
+     "is not eating",
+     "does not eat",
+     "is eating",
+     "are not eating"
+    ]
+   },
+   {
+    "correct": "an apple.",
+    "options": [
+     "an apple.",
+     "apples.",
+     "the apple.",
+     "a apple."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Они сейчас работают над проектом?",
+  "en": "Are they working on the project?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Do",
+     "Is",
+     "Were"
+    ]
+   },
+   {
+    "correct": "they working",
+    "options": [
+     "they working",
+     "they work",
+     "they are working",
+     "he is working"
+    ]
+   },
+   {
+    "correct": "on the project?",
+    "options": [
+     "on the project?",
+     "in the project?",
+     "at the project?",
+     "on project?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Смотри, он сейчас читает книгу.",
+  "en": "Look, he is reading a book.",
+  "alternatives": [
+   "Look, he's reading a book."
+  ],
+  "slots": [
+   {
+    "correct": "Look,",
+    "options": [
+     "Look,",
+     "Listen,",
+     "Wait,",
+     "See,"
+    ]
+   },
+   {
+    "correct": "he is reading",
+    "options": [
+     "he is reading",
+     "he reads",
+     "he is read",
+     "they are reading"
+    ]
+   },
+   {
+    "correct": "a book.",
+    "options": [
+     "a book.",
+     "the book.",
+     "books.",
+     "to a book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Он обычно спит, но сейчас он работает.",
+  "en": "He usually sleeps, but now he is working.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He usually sleeps,",
+    "options": [
+     "He usually sleeps,",
+     "He is sleeping,",
+     "He usually sleep,",
+     "He sleeping,"
+    ]
+   },
+   {
+    "correct": "but now he",
+    "options": [
+     "but now he",
+     "but he",
+     "but now",
+     "and now he"
+    ]
+   },
+   {
+    "correct": "is working.",
+    "options": [
+     "is working.",
+     "works.",
+     "is work.",
+     "worked."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она не изучает математику в данный момент.",
+  "en": "She is not studying math at the moment.",
+  "alternatives": [
+   "She isn't studying math at the moment."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "is not studying",
+    "options": [
+     "is not studying",
+     "does not study",
+     "is studying",
+     "are not studying"
+    ]
+   },
+   {
+    "correct": "math at the moment.",
+    "options": [
+     "math at the moment.",
+     "math now.",
+     "math.",
+     "the math at the moment."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Слушай, ребенок сейчас плачет.",
+  "en": "Listen, the baby is crying now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Listen,",
+    "options": [
+     "Listen,",
+     "Look,",
+     "Watch,",
+     "See,"
+    ]
+   },
+   {
+    "correct": "the baby",
+    "options": [
+     "the baby",
+     "a baby",
+     "babies",
+     "he"
+    ]
+   },
+   {
+    "correct": "is crying now.",
+    "options": [
+     "is crying now.",
+     "cries now.",
+     "is cry now.",
+     "are crying now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Ты сейчас бежишь домой?",
+  "en": "Are you running home now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Do",
+     "Is",
+     "Can"
+    ]
+   },
+   {
+    "correct": "you running",
+    "options": [
+     "you running",
+     "you run",
+     "you are running",
+     "he running"
+    ]
+   },
+   {
+    "correct": "home now?",
+    "options": [
+     "home now?",
+     "to home now?",
+     "at home now?",
+     "to the home now?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Они сейчас не смотрят фильм.",
+  "en": "They are not watching a movie.",
+  "alternatives": [
+   "They aren't watching a movie."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "She",
+     "He",
+     "It"
+    ]
+   },
+   {
+    "correct": "are not watching",
+    "options": [
+     "are not watching",
+     "do not watch",
+     "are watching",
+     "is not watching"
+    ]
+   },
+   {
+    "correct": "a movie.",
+    "options": [
+     "a movie.",
+     "the movie.",
+     "movies.",
+     "to a movie."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Смотри, они сейчас играют в саду.",
+  "en": "Look, they are playing in the garden.",
+  "alternatives": [
+   "Look, they're playing in the garden."
+  ],
+  "slots": [
+   {
+    "correct": "Look,",
+    "options": [
+     "Look,",
+     "Listen,",
+     "Wait,",
+     "See,"
+    ]
+   },
+   {
+    "correct": "they are playing",
+    "options": [
+     "they are playing",
+     "they play",
+     "they is playing",
+     "they are play"
+    ]
+   },
+   {
+    "correct": "in the garden.",
+    "options": [
+     "in the garden.",
+     "at the garden.",
+     "to the garden.",
+     "in garden."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Обычно она бегает, но сейчас она ест.",
+  "en": "She usually runs, but now she is eating.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She usually runs,",
+    "options": [
+     "She usually runs,",
+     "She is running,",
+     "She usually run,",
+     "She running,"
+    ]
+   },
+   {
+    "correct": "but now she",
+    "options": [
+     "but now she",
+     "but she",
+     "and now she",
+     "now she"
+    ]
+   },
+   {
+    "correct": "is eating.",
+    "options": [
+     "is eating.",
+     "eats.",
+     "is eat.",
+     "eat."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она сейчас готовит обед?",
+  "en": "Is she cooking lunch?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Does",
+     "Are",
+     "Can"
+    ]
+   },
+   {
+    "correct": "she cooking",
+    "options": [
+     "she cooking",
+     "she cook",
+     "she is cooking",
+     "they cooking"
+    ]
+   },
+   {
+    "correct": "lunch?",
+    "options": [
+     "lunch?",
+     "the lunch?",
+     "a lunch?",
+     "my lunch?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Смотри, она сейчас ест яблоко.",
+  "en": "Look, she is eating an apple.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Look,",
+    "options": [
+     "Look,",
+     "Listen,",
+     "Wait,"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "is eating",
+    "options": [
+     "is eating",
+     "are eating",
+     "eats"
+    ]
+   },
+   {
+    "correct": "an apple.",
+    "options": [
+     "an apple.",
+     "a book.",
+     "a cake."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Я не работаю сейчас.",
+  "en": "I am not working now.",
+  "alternatives": [
+   "I'm not working now."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "am not working",
+    "options": [
+     "am not working",
+     "is not working",
+     "work"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "every day.",
+     "usually."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Слушай, они сейчас играют.",
+  "en": "Listen, they are playing now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Listen,",
+    "options": [
+     "Listen,",
+     "Look,",
+     "Wait,"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "are playing",
+    "options": [
+     "are playing",
+     "is playing",
+     "play"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "every day.",
+     "often."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она сейчас читает книгу?",
+  "en": "Is she reading a book now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Are",
+     "Does"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "reading",
+    "options": [
+     "reading",
+     "read",
+     "reads"
+    ]
+   },
+   {
+    "correct": "a book now?",
+    "options": [
+     "a book now?",
+     "a letter now?",
+     "a story now?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Мама сейчас не готовит.",
+  "en": "Mom is not cooking now.",
+  "alternatives": [
+   "Mom isn't cooking now."
+  ],
+  "slots": [
+   {
+    "correct": "Mom",
+    "options": [
+     "Mom",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "is not cooking",
+    "options": [
+     "is not cooking",
+     "are not cooking",
+     "cooks"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "every day.",
+     "usually."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Смотри, он сейчас бежит.",
+  "en": "Look, he is running now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Look,",
+    "options": [
+     "Look,",
+     "Listen,",
+     "Wait,"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "is running",
+    "options": [
+     "is running",
+     "are running",
+     "runs"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "every day.",
+     "often."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Я сейчас читаю книгу.",
+  "en": "I am reading a book now.",
+  "alternatives": [
+   "I'm reading a book now."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "am",
+    "options": [
+     "am",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "reading",
+    "options": [
+     "reading",
+     "read",
+     "reads"
+    ]
+   },
+   {
+    "correct": "a book now.",
+    "options": [
+     "a book now.",
+     "books now.",
+     "the book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Они сейчас не работают.",
+  "en": "They are not working now.",
+  "alternatives": [
+   "They aren't working now."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "working",
+    "options": [
+     "working",
+     "work",
+     "works"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "today.",
+     "every day."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Ты сейчас смотришь телевизор?",
+  "en": "Are you watching TV now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Do"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "watching",
+    "options": [
+     "watching",
+     "watch",
+     "watches"
+    ]
+   },
+   {
+    "correct": "TV now?",
+    "options": [
+     "TV now?",
+     "the TV now?",
+     "TV?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Слушай, они сейчас поют.",
+  "en": "Listen, they are singing now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Listen,",
+    "options": [
+     "Listen,",
+     "Look,",
+     "Wait,"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "am"
+    ]
+   },
+   {
+    "correct": "singing now.",
+    "options": [
+     "singing now.",
+     "sing now.",
+     "sings now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Я сейчас учу английский.",
+  "en": "I am studying English now.",
+  "alternatives": [
+   "I'm studying English now."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "am",
+    "options": [
+     "am",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "studying",
+    "options": [
+     "studying",
+     "study",
+     "studies"
+    ]
+   },
+   {
+    "correct": "English now.",
+    "options": [
+     "English now.",
+     "English.",
+     "my English."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Обычно он работает, но сейчас он отдыхает.",
+  "en": "He usually works but he is resting now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He usually works",
+    "options": [
+     "He usually works",
+     "He works",
+     "He is working"
+    ]
+   },
+   {
+    "correct": "but he",
+    "options": [
+     "but he",
+     "and he",
+     "but they"
+    ]
+   },
+   {
+    "correct": "is resting",
+    "options": [
+     "is resting",
+     "rests",
+     "are resting"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "usually.",
+     "often."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Ты сейчас ждешь автобус?",
+  "en": "Are you waiting for the bus?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Do"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "waiting",
+    "options": [
+     "waiting",
+     "wait",
+     "waits"
+    ]
+   },
+   {
+    "correct": "for the bus?",
+    "options": [
+     "for the bus?",
+     "for a bus?",
+     "the bus?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Мама сейчас не готовит обед.",
+  "en": "Mom is not cooking dinner now.",
+  "alternatives": [
+   "Mom isn't cooking dinner now."
+  ],
+  "slots": [
+   {
+    "correct": "Mom",
+    "options": [
+     "Mom",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "is not",
+    "options": [
+     "is not",
+     "are not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "cooking",
+    "options": [
+     "cooking",
+     "cook",
+     "cooks"
+    ]
+   },
+   {
+    "correct": "dinner now.",
+    "options": [
+     "dinner now.",
+     "dinner.",
+     "lunch now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Смотри, собака сейчас пьет воду.",
+  "en": "Look, the dog is drinking water now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Look, the dog",
+    "options": [
+     "Look, the dog",
+     "Look, the dogs",
+     "Listen, the dog"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "am"
+    ]
+   },
+   {
+    "correct": "drinking",
+    "options": [
+     "drinking",
+     "drink",
+     "drinks"
+    ]
+   },
+   {
+    "correct": "water now.",
+    "options": [
+     "water now.",
+     "the water now.",
+     "water."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Он сейчас ест пиццу.",
+  "en": "He is eating pizza now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "is eating",
+    "options": [
+     "is eating",
+     "are eating",
+     "eats",
+     "is eat"
+    ]
+   },
+   {
+    "correct": "pizza now.",
+    "options": [
+     "pizza now.",
+     "a pizza now.",
+     "pizza.",
+     "the pizza now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Они не читают книгу сейчас.",
+  "en": "They are not reading a book now.",
+  "alternatives": [
+   "They aren't reading a book now."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "It"
+    ]
+   },
+   {
+    "correct": "are not reading",
+    "options": [
+     "are not reading",
+     "is not reading",
+     "do not read",
+     "are reading"
+    ]
+   },
+   {
+    "correct": "a book now.",
+    "options": [
+     "a book now.",
+     "the book now.",
+     "books now.",
+     "a book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Вы сейчас изучаете английский?",
+  "en": "Are you studying English now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "studying English now?",
+    "options": [
+     "studying English now?",
+     "study English now?",
+     "studying English?",
+     "study English?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она не пьет воду в данный момент.",
+  "en": "She is not drinking water right now.",
+  "alternatives": [
+   "She isn't drinking water right now."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "is not drinking",
+    "options": [
+     "is not drinking",
+     "is drinking",
+     "are not drinking",
+     "does not drink"
+    ]
+   },
+   {
+    "correct": "water right now.",
+    "options": [
+     "water right now.",
+     "the water right now.",
+     "water.",
+     "a water right now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Смотри, он пишет письмо.",
+  "en": "Look, he is writing a letter.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Look,",
+    "options": [
+     "Look,",
+     "Listen,",
+     "Wait,",
+     "See,"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "they",
+     "we",
+     "you"
+    ]
+   },
+   {
+    "correct": "is writing a letter.",
+    "options": [
+     "is writing a letter.",
+     "is writing letter.",
+     "writes a letter.",
+     "are writing a letter."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Я не сплю сейчас.",
+  "en": "I am not sleeping now.",
+  "alternatives": [
+   "I'm not sleeping now."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "am not sleeping",
+    "options": [
+     "am not sleeping",
+     "is not sleeping",
+     "are not sleeping",
+     "sleep"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "at the moment.",
+     "today.",
+     "right now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Слушай, она говорит по телефону.",
+  "en": "Listen, she is talking on the phone.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Listen,",
+    "options": [
+     "Listen,",
+     "Look,",
+     "Wait,",
+     "See,"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "they",
+     "we",
+     "you"
+    ]
+   },
+   {
+    "correct": "is talking on the phone.",
+    "options": [
+     "is talking on the phone.",
+     "talks on the phone.",
+     "is talk on the phone.",
+     "are talking on the phone."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она сейчас смотрит фильм?",
+  "en": "Is she watching a movie now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Are",
+     "Does",
+     "Do"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "they",
+     "you",
+     "we"
+    ]
+   },
+   {
+    "correct": "watching a movie now?",
+    "options": [
+     "watching a movie now?",
+     "watch a movie now?",
+     "watching movie now?",
+     "is watching a movie?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Смотри, ребенок бежит к маме.",
+  "en": "Look, the baby is running to mom.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Look,",
+    "options": [
+     "Look,",
+     "Listen,",
+     "Wait,",
+     "See,"
+    ]
+   },
+   {
+    "correct": "the baby",
+    "options": [
+     "the baby",
+     "the babies",
+     "he",
+     "you"
+    ]
+   },
+   {
+    "correct": "is running to mom.",
+    "options": [
+     "is running to mom.",
+     "runs to mom.",
+     "is run to mom.",
+     "are running to mom."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Обычно она читает, но сейчас она пишет.",
+  "en": "She usually reads, but she is writing now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She usually reads,",
+    "options": [
+     "She usually reads,",
+     "She reads usually,",
+     "She is usually reading,",
+     "She usually read,"
+    ]
+   },
+   {
+    "correct": "but she",
+    "options": [
+     "but she",
+     "and she",
+     "but they",
+     "but he"
+    ]
+   },
+   {
+    "correct": "is writing now.",
+    "options": [
+     "is writing now.",
+     "writes now.",
+     "is write now.",
+     "are writing now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Они не ждут автобус сейчас.",
+  "en": "They are not waiting for the bus now.",
+  "alternatives": [
+   "They aren't waiting for the bus now."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "It"
+    ]
+   },
+   {
+    "correct": "are not waiting",
+    "options": [
+     "are not waiting",
+     "is not waiting",
+     "do not wait",
+     "are waiting"
+    ]
+   },
+   {
+    "correct": "for the bus now.",
+    "options": [
+     "for the bus now.",
+     "for a bus now.",
+     "the bus now.",
+     "wait the bus now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Она сейчас готовит ужин.",
+  "en": "She is cooking dinner now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "is cooking",
+    "options": [
+     "is cooking",
+     "cooks",
+     "are cooking",
+     "cooked"
+    ]
+   },
+   {
+    "correct": "dinner now.",
+    "options": [
+     "dinner now.",
+     "the dinner.",
+     "a dinner.",
+     "dinner."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Они не смотрят телевизор сейчас.",
+  "en": "They aren't watching TV now.",
+  "alternatives": [
+   "They are not watching TV now."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "It"
+    ]
+   },
+   {
+    "correct": "aren't watching",
+    "options": [
+     "aren't watching",
+     "don't watch",
+     "isn't watching",
+     "won't watch"
+    ]
+   },
+   {
+    "correct": "TV now.",
+    "options": [
+     "TV now.",
+     "a TV.",
+     "the TV.",
+     "TV."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_present_continuous",
+  "ru": "Ты сейчас ждешь друзей?",
+  "en": "Are you waiting for friends now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Do",
+     "Is",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you waiting",
+    "options": [
+     "you waiting",
+     "you wait",
+     "you are waiting",
+     "you waited"
+    ]
+   },
+   {
+    "correct": "for friends now?",
+    "options": [
+     "for friends now?",
+     "friends now?",
+     "to friends now?",
+     "at friends now?"
+    ]
+   }
+  ]
+ }
+]

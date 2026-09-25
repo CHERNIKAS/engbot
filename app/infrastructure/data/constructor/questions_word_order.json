@@ -1,0 +1,3888 @@
+[
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты купил молоко?",
+  "en": "Did you buy milk?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you buy milk?",
+    "options": [
+     "you buy milk?",
+     "you bought milk?",
+     "you bought the milk?",
+     "you buy the milk?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Она не видела его.",
+  "en": "She didn't see him.",
+  "alternatives": [
+   "She did not see him."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "Did she",
+     "Was she",
+     "She was"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "wasn't",
+     "did"
+    ]
+   },
+   {
+    "correct": "see him.",
+    "options": [
+     "see him.",
+     "saw him.",
+     "seen him.",
+     "see he."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Где он ел завтрак?",
+  "en": "Where did he eat breakfast?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Where",
+    "options": [
+     "Where",
+     "What",
+     "When",
+     "Why"
+    ]
+   },
+   {
+    "correct": "did",
+    "options": [
+     "did",
+     "was",
+     "does",
+     "were"
+    ]
+   },
+   {
+    "correct": "he eat breakfast?",
+    "options": [
+     "he eat breakfast?",
+     "he ate breakfast?",
+     "he eats breakfast?",
+     "he did eat breakfast?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Я не сказал это.",
+  "en": "I didn't say it.",
+  "alternatives": [
+   "I did not say it."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "Did I",
+     "Was I",
+     "I was"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "wasn't",
+     "did"
+    ]
+   },
+   {
+    "correct": "say it.",
+    "options": [
+     "say it.",
+     "said it.",
+     "says it.",
+     "say that."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты был дома?",
+  "en": "Were you at home?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Did",
+     "Was",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you at home?",
+    "options": [
+     "you at home?",
+     "you be at home?",
+     "you went home?",
+     "you stay at home?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Она не была счастлива.",
+  "en": "She wasn't happy.",
+  "alternatives": [
+   "She was not happy."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "Did she",
+     "Was she",
+     "She didn't"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "didn't",
+     "weren't",
+     "not"
+    ]
+   },
+   {
+    "correct": "happy.",
+    "options": [
+     "happy.",
+     "be happy.",
+     "feel happy.",
+     "happily."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Что они написали?",
+  "en": "What did they write?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "What",
+    "options": [
+     "What",
+     "Where",
+     "When",
+     "How"
+    ]
+   },
+   {
+    "correct": "did",
+    "options": [
+     "did",
+     "were",
+     "was",
+     "do"
+    ]
+   },
+   {
+    "correct": "they write?",
+    "options": [
+     "they write?",
+     "they wrote?",
+     "they written?",
+     "they did write?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Он был занят вчера?",
+  "en": "Was he busy yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Did",
+     "Were",
+     "Is"
+    ]
+   },
+   {
+    "correct": "he busy",
+    "options": [
+     "he busy",
+     "he be busy",
+     "he was busy",
+     "he did busy"
+    ]
+   },
+   {
+    "correct": "yesterday?",
+    "options": [
+     "yesterday?",
+     "tomorrow?",
+     "now?",
+     "last?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Почему она была грустной?",
+  "en": "Why was she sad?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Why",
+    "options": [
+     "Why",
+     "Where",
+     "When",
+     "What"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "did",
+     "were",
+     "is"
+    ]
+   },
+   {
+    "correct": "she sad?",
+    "options": [
+     "she sad?",
+     "she be sad?",
+     "she feel sad?",
+     "she was sad?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты взял мою книгу?",
+  "en": "Did you take my book?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Were",
+     "Was",
+     "Do"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "take my book?",
+    "options": [
+     "take my book?",
+     "took my book?",
+     "taken my book?",
+     "take the book?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты ходил в парк?",
+  "en": "Did you go to the park?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "go",
+    "options": [
+     "go",
+     "went",
+     "gone",
+     "goes"
+    ]
+   },
+   {
+    "correct": "to the park?",
+    "options": [
+     "to the park?",
+     "at the park?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Она не видела фильм.",
+  "en": "She didn't see the movie.",
+  "alternatives": [
+   "She did not see the movie."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "saw",
+     "seen",
+     "sees"
+    ]
+   },
+   {
+    "correct": "the movie.",
+    "options": [
+     "the movie.",
+     "a movie."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Что он принес?",
+  "en": "What did he bring?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "What",
+    "options": [
+     "What",
+     "Where",
+     "When",
+     "Why"
+    ]
+   },
+   {
+    "correct": "did",
+    "options": [
+     "did",
+     "was",
+     "does",
+     "were"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "you",
+     "they",
+     "she"
+    ]
+   },
+   {
+    "correct": "bring?",
+    "options": [
+     "bring?",
+     "brought?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Я не знал его имя.",
+  "en": "I didn't know his name.",
+  "alternatives": [
+   "I did not know his name."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "know",
+    "options": [
+     "know",
+     "knew",
+     "known",
+     "knows"
+    ]
+   },
+   {
+    "correct": "his name.",
+    "options": [
+     "his name.",
+     "the name."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты был на встрече?",
+  "en": "Were you at the meeting?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Did",
+     "Was",
+     "Do"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "at the meeting?",
+    "options": [
+     "at the meeting?",
+     "in the meeting?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Она не была готова.",
+  "en": "She wasn't ready.",
+  "alternatives": [
+   "She was not ready."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "didn't",
+     "weren't",
+     "don't"
+    ]
+   },
+   {
+    "correct": "ready.",
+    "options": [
+     "ready.",
+     "happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Как они пришли сюда?",
+  "en": "How did they come here?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "How",
+    "options": [
+     "How",
+     "Why",
+     "Where",
+     "What"
+    ]
+   },
+   {
+    "correct": "did",
+    "options": [
+     "did",
+     "do",
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "she",
+     "you"
+    ]
+   },
+   {
+    "correct": "come",
+    "options": [
+     "come",
+     "came"
+    ]
+   },
+   {
+    "correct": "here?",
+    "options": [
+     "here?",
+     "there?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Они не дали мне денег.",
+  "en": "They didn't give me money.",
+  "alternatives": [
+   "They did not give me money."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "weren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "give",
+    "options": [
+     "give",
+     "gave",
+     "given",
+     "gives"
+    ]
+   },
+   {
+    "correct": "me money.",
+    "options": [
+     "me money.",
+     "the money."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Он был твоим другом?",
+  "en": "Was he your friend?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Did",
+     "Were",
+     "Is"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "your friend?",
+    "options": [
+     "your friend?",
+     "a friend?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Они не были в школе.",
+  "en": "They weren't at school.",
+  "alternatives": [
+   "They were not at school."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "She",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "didn't",
+     "wasn't",
+     "don't"
+    ]
+   },
+   {
+    "correct": "at school.",
+    "options": [
+     "at school.",
+     "in school."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Где ты купил это?",
+  "en": "Where did you buy it?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Where",
+    "options": [
+     "Where",
+     "What",
+     "Why",
+     "How"
+    ]
+   },
+   {
+    "correct": "did",
+    "options": [
+     "did",
+     "do",
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they",
+     "she"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "bought"
+    ]
+   },
+   {
+    "correct": "it?",
+    "options": [
+     "it?",
+     "this?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Я был в Лондоне.",
+  "en": "Was I in London?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Did",
+     "Were",
+     "Had"
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "he",
+     "she",
+     "you"
+    ]
+   },
+   {
+    "correct": "in London?",
+    "options": [
+     "in London?",
+     "at London?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты видел мою сестру?",
+  "en": "Did you see my sister?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "saw",
+     "seen",
+     "seeing"
+    ]
+   },
+   {
+    "correct": "my sister?",
+    "options": [
+     "my sister?",
+     "the house?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Она не купила эту машину.",
+  "en": "She didn't buy this car.",
+  "alternatives": [
+   "She did not buy this car."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "bought",
+     "buying"
+    ]
+   },
+   {
+    "correct": "this car.",
+    "options": [
+     "this car.",
+     "the food."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Что он сказал вчера?",
+  "en": "What did he say yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "What",
+    "options": [
+     "What",
+     "Where",
+     "Why"
+    ]
+   },
+   {
+    "correct": "did",
+    "options": [
+     "did",
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "you",
+     "they"
+    ]
+   },
+   {
+    "correct": "say yesterday?",
+    "options": [
+     "say yesterday?",
+     "say today?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Они не знали правду.",
+  "en": "They didn't know the truth.",
+  "alternatives": [
+   "They did not know the truth."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "weren't",
+     "don't"
+    ]
+   },
+   {
+    "correct": "know",
+    "options": [
+     "know",
+     "knew",
+     "known"
+    ]
+   },
+   {
+    "correct": "the truth.",
+    "options": [
+     "the truth.",
+     "my name."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты был прав?",
+  "en": "Were you right?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Did",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "right?",
+    "options": [
+     "right?",
+     "happy?",
+     "there?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Она не была дома.",
+  "en": "She wasn't at home.",
+  "alternatives": [
+   "She was not at home."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "at home.",
+    "options": [
+     "at home.",
+     "ready."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Куда они пошли?",
+  "en": "Where did they go?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Where",
+    "options": [
+     "Where",
+     "What",
+     "Why"
+    ]
+   },
+   {
+    "correct": "did",
+    "options": [
+     "did",
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "go?",
+    "options": [
+     "go?",
+     "went?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты съел мой завтрак?",
+  "en": "Did you eat my breakfast?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "eat",
+    "options": [
+     "eat",
+     "ate",
+     "eaten"
+    ]
+   },
+   {
+    "correct": "my breakfast?",
+    "options": [
+     "my breakfast?",
+     "the apple?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Они не были уставшими.",
+  "en": "They weren't tired.",
+  "alternatives": [
+   "They were not tired."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "tired.",
+    "options": [
+     "tired.",
+     "happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Почему он взял мой телефон?",
+  "en": "Why did he take my phone?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Why",
+    "options": [
+     "Why",
+     "Where",
+     "What"
+    ]
+   },
+   {
+    "correct": "did",
+    "options": [
+     "did",
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "you",
+     "they"
+    ]
+   },
+   {
+    "correct": "take",
+    "options": [
+     "take",
+     "took",
+     "taken"
+    ]
+   },
+   {
+    "correct": "my phone?",
+    "options": [
+     "my phone?",
+     "the bag?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Он был твоим учителем?",
+  "en": "Was he your teacher?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Did",
+     "Were"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "your teacher?",
+    "options": [
+     "your teacher?",
+     "at school?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Я не написал это письмо.",
+  "en": "I didn't write this letter.",
+  "alternatives": [
+   "I did not write this letter."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "wasn't",
+     "don't"
+    ]
+   },
+   {
+    "correct": "write",
+    "options": [
+     "write",
+     "wrote",
+     "written"
+    ]
+   },
+   {
+    "correct": "this letter.",
+    "options": [
+     "this letter.",
+     "the email."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты звонил ей вчера?",
+  "en": "Did you call her yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you call",
+    "options": [
+     "you call",
+     "you called"
+    ]
+   },
+   {
+    "correct": "her yesterday?",
+    "options": [
+     "her yesterday?",
+     "she yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Они не читали эту книгу.",
+  "en": "They did not read this book.",
+  "alternatives": [
+   "They didn't read this book."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "was not"
+    ]
+   },
+   {
+    "correct": "read",
+    "options": [
+     "read",
+     "readed",
+     "reads"
+    ]
+   },
+   {
+    "correct": "this book.",
+    "options": [
+     "this book.",
+     "that book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Что ты хотел купить?",
+  "en": "What did you want to buy?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "What did",
+    "options": [
+     "What did",
+     "Where did",
+     "Why did"
+    ]
+   },
+   {
+    "correct": "you want",
+    "options": [
+     "you want",
+     "you wanted"
+    ]
+   },
+   {
+    "correct": "to buy?",
+    "options": [
+     "to buy?",
+     "buy?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Она не видела этот фильм.",
+  "en": "She didn't see this film.",
+  "alternatives": [
+   "She did not see this film."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "saw"
+    ]
+   },
+   {
+    "correct": "this film.",
+    "options": [
+     "this film.",
+     "the film."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты был на вечеринке?",
+  "en": "Were you at the party?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Did"
+    ]
+   },
+   {
+    "correct": "you at",
+    "options": [
+     "you at",
+     "you be at"
+    ]
+   },
+   {
+    "correct": "the party?",
+    "options": [
+     "the party?",
+     "a party?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Она была дома вчера?",
+  "en": "Was she home yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Did"
+    ]
+   },
+   {
+    "correct": "she home",
+    "options": [
+     "she home",
+     "she be home"
+    ]
+   },
+   {
+    "correct": "yesterday?",
+    "options": [
+     "yesterday?",
+     "today?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Они не были довольны.",
+  "en": "They weren't happy.",
+  "alternatives": [
+   "They were not happy."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "didn't be"
+    ]
+   },
+   {
+    "correct": "happy.",
+    "options": [
+     "happy.",
+     "sad."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Я не был голоден.",
+  "en": "I wasn't hungry.",
+  "alternatives": [
+   "I was not hungry."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "didn't be"
+    ]
+   },
+   {
+    "correct": "hungry.",
+    "options": [
+     "hungry.",
+     "tired."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Где они были вечером?",
+  "en": "Where were they in the evening?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Where were",
+    "options": [
+     "Where were",
+     "Where did"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he"
+    ]
+   },
+   {
+    "correct": "in the evening?",
+    "options": [
+     "in the evening?",
+     "at night?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Он не был студентом.",
+  "en": "He wasn't a student.",
+  "alternatives": [
+   "He was not a student."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "a student.",
+    "options": [
+     "a student.",
+     "a teacher."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты пришел вовремя?",
+  "en": "Did you come on time?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you come",
+    "options": [
+     "you come",
+     "you came"
+    ]
+   },
+   {
+    "correct": "on time?",
+    "options": [
+     "on time?",
+     "late?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Они не знали ответ.",
+  "en": "They didn't know the answer.",
+  "alternatives": [
+   "They did not know the answer."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't"
+    ]
+   },
+   {
+    "correct": "know",
+    "options": [
+     "know",
+     "knew"
+    ]
+   },
+   {
+    "correct": "the answer.",
+    "options": [
+     "the answer.",
+     "the name."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты видел этот фильм?",
+  "en": "Did you see this movie?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "saw",
+     "seen",
+     "seeing"
+    ]
+   },
+   {
+    "correct": "this movie?",
+    "options": [
+     "this movie?",
+     "that book?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Он не ел яблоко.",
+  "en": "He did not eat an apple.",
+  "alternatives": [
+   "He didn't eat an apple."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "was not"
+    ]
+   },
+   {
+    "correct": "eat",
+    "options": [
+     "eat",
+     "ate",
+     "eaten",
+     "eating"
+    ]
+   },
+   {
+    "correct": "an apple.",
+    "options": [
+     "an apple.",
+     "the food."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Где она купила это?",
+  "en": "Where did she buy it?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Where did",
+    "options": [
+     "Where did",
+     "What did",
+     "Why did"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "you"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "bought",
+     "buying"
+    ]
+   },
+   {
+    "correct": "it?",
+    "options": [
+     "it?",
+     "them?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Они не знали это место.",
+  "en": "They didn't know this place.",
+  "alternatives": [
+   "They did not know this place."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "know",
+    "options": [
+     "know",
+     "knew",
+     "known"
+    ]
+   },
+   {
+    "correct": "this place.",
+    "options": [
+     "this place.",
+     "that house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Что он сказал ей?",
+  "en": "What did he say to her?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "What did",
+    "options": [
+     "What did",
+     "Why did",
+     "Where did"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "say",
+    "options": [
+     "say",
+     "said",
+     "saying"
+    ]
+   },
+   {
+    "correct": "to her?",
+    "options": [
+     "to her?",
+     "to me?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты взял мою сумку?",
+  "en": "Did you take my bag?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "he"
+    ]
+   },
+   {
+    "correct": "take",
+    "options": [
+     "take",
+     "took",
+     "taken"
+    ]
+   },
+   {
+    "correct": "my bag?",
+    "options": [
+     "my bag?",
+     "my pen?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Она была занята вчера?",
+  "en": "Was she busy yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Did",
+     "Were"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "it"
+    ]
+   },
+   {
+    "correct": "busy",
+    "options": [
+     "busy",
+     "happy",
+     "sad"
+    ]
+   },
+   {
+    "correct": "yesterday?",
+    "options": [
+     "yesterday?",
+     "today?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты был в парке?",
+  "en": "Were you in the park?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Did",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "in the park?",
+    "options": [
+     "in the park?",
+     "at home?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Они не были друзьями.",
+  "en": "They weren't friends.",
+  "alternatives": [
+   "They were not friends."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "didn't",
+     "don't"
+    ]
+   },
+   {
+    "correct": "friends.",
+    "options": [
+     "friends.",
+     "happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Я не был болен.",
+  "en": "I was not sick.",
+  "alternatives": [
+   "I wasn't sick."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "was not",
+    "options": [
+     "was not",
+     "did not",
+     "were not"
+    ]
+   },
+   {
+    "correct": "sick.",
+    "options": [
+     "sick.",
+     "tired."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Почему они были там?",
+  "en": "Why were they there?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Why were",
+    "options": [
+     "Why were",
+     "Why did",
+     "Where were"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "you",
+     "we"
+    ]
+   },
+   {
+    "correct": "there?",
+    "options": [
+     "there?",
+     "happy?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты звонил ему вчера?",
+  "en": "Did you call him yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "call",
+    "options": [
+     "call",
+     "called",
+     "calls",
+     "calling"
+    ]
+   },
+   {
+    "correct": "him yesterday?",
+    "options": [
+     "him yesterday?",
+     "his yesterday?",
+     "he yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Они не знали этот адрес.",
+  "en": "They didn't know this address.",
+  "alternatives": [
+   "They did not know this address."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "weren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "know",
+    "options": [
+     "know",
+     "knew",
+     "known",
+     "knowing"
+    ]
+   },
+   {
+    "correct": "this address.",
+    "options": [
+     "this address.",
+     "that address.",
+     "these address."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Где ты купил молоко?",
+  "en": "Where did you buy milk?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Where",
+    "options": [
+     "Where",
+     "What",
+     "When",
+     "Why"
+    ]
+   },
+   {
+    "correct": "did",
+    "options": [
+     "did",
+     "do",
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "buy milk?",
+    "options": [
+     "buy milk?",
+     "bought milk?",
+     "buying milk?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Он был дома?",
+  "en": "Was he at home?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Did",
+     "Were",
+     "Is"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "she",
+     "it",
+     "they"
+    ]
+   },
+   {
+    "correct": "at home?",
+    "options": [
+     "at home?",
+     "in home?",
+     "to home?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Она не взяла сумку.",
+  "en": "She didn't take the bag.",
+  "alternatives": [
+   "She did not take the bag."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "doesn't",
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "take",
+    "options": [
+     "take",
+     "took",
+     "taken",
+     "taking"
+    ]
+   },
+   {
+    "correct": "the bag.",
+    "options": [
+     "the bag.",
+     "a bag.",
+     "my bag."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты видел его?",
+  "en": "Did you see him?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Was",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they",
+     "she"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "saw",
+     "seen",
+     "seeing"
+    ]
+   },
+   {
+    "correct": "him?",
+    "options": [
+     "him?",
+     "her?",
+     "them?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Они не были заняты.",
+  "en": "They weren't busy.",
+  "alternatives": [
+   "They were not busy."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "didn't",
+     "wasn't",
+     "don't"
+    ]
+   },
+   {
+    "correct": "busy.",
+    "options": [
+     "busy.",
+     "happy.",
+     "ready."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Что он съел?",
+  "en": "What did he eat?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "What",
+    "options": [
+     "What",
+     "Where",
+     "Why",
+     "When"
+    ]
+   },
+   {
+    "correct": "did",
+    "options": [
+     "did",
+     "does",
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "she",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "eat?",
+    "options": [
+     "eat?",
+     "ate?",
+     "eaten?",
+     "eating?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Я не пришел рано.",
+  "en": "I didn't come early.",
+  "alternatives": [
+   "I did not come early."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "wasn't",
+     "don't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "come",
+    "options": [
+     "come",
+     "came",
+     "coming"
+    ]
+   },
+   {
+    "correct": "early.",
+    "options": [
+     "early.",
+     "late."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Она была учителем?",
+  "en": "Was she a teacher?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Did",
+     "Were",
+     "Is"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "a teacher?",
+    "options": [
+     "a teacher?",
+     "a doctor?",
+     "a student?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Они не дали мне книгу.",
+  "en": "They didn't give me the book.",
+  "alternatives": [
+   "They did not give me the book."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "weren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "give",
+    "options": [
+     "give",
+     "gave",
+     "given",
+     "giving"
+    ]
+   },
+   {
+    "correct": "me the book.",
+    "options": [
+     "me the book.",
+     "me a book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Вы были счастливы там?",
+  "en": "Were you happy there?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Did",
+     "Was",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "we",
+     "he"
+    ]
+   },
+   {
+    "correct": "happy",
+    "options": [
+     "happy",
+     "sad",
+     "busy"
+    ]
+   },
+   {
+    "correct": "there?",
+    "options": [
+     "there?",
+     "here?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты не видел его вчера?",
+  "en": "Did you not see him yesterday?",
+  "alternatives": [
+   "Didn't you see him yesterday?"
+  ],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "not",
+    "options": [
+     "not",
+     "no",
+     "never",
+     "none"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "saw",
+     "seen",
+     "seeing"
+    ]
+   },
+   {
+    "correct": "him yesterday?",
+    "options": [
+     "him yesterday?",
+     "her today?",
+     "it now?",
+     "them lately?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Что она написала ему?",
+  "en": "What did she write to him?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "What",
+    "options": [
+     "What",
+     "Where",
+     "Why",
+     "When"
+    ]
+   },
+   {
+    "correct": "did",
+    "options": [
+     "did",
+     "does",
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "write",
+    "options": [
+     "write",
+     "wrote",
+     "written",
+     "writes"
+    ]
+   },
+   {
+    "correct": "to him?",
+    "options": [
+     "to him?",
+     "to me?",
+     "to them?",
+     "to us?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Я не ел ваш суп.",
+  "en": "I did not eat your soup.",
+  "alternatives": [
+   "I didn't eat your soup."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "was not",
+     "were not"
+    ]
+   },
+   {
+    "correct": "eat",
+    "options": [
+     "eat",
+     "ate",
+     "eaten",
+     "eats"
+    ]
+   },
+   {
+    "correct": "your soup.",
+    "options": [
+     "your soup.",
+     "my bread.",
+     "the fish.",
+     "this meal."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Они были в кино?",
+  "en": "Were they at the cinema?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Did",
+     "Was",
+     "Are"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "she",
+     "you"
+    ]
+   },
+   {
+    "correct": "at the cinema?",
+    "options": [
+     "at the cinema?",
+     "at home?",
+     "in school?",
+     "at work?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Почему он не пришел?",
+  "en": "Why did he not come?",
+  "alternatives": [
+   "Why didn't he come?"
+  ],
+  "slots": [
+   {
+    "correct": "Why",
+    "options": [
+     "Why",
+     "Where",
+     "When",
+     "What"
+    ]
+   },
+   {
+    "correct": "did",
+    "options": [
+     "did",
+     "was",
+     "does",
+     "were"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "she",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "not",
+    "options": [
+     "not",
+     "no",
+     "never",
+     "none"
+    ]
+   },
+   {
+    "correct": "come?",
+    "options": [
+     "come?",
+     "came?",
+     "comes?",
+     "coming?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Она не знала правду.",
+  "en": "She did not know the truth.",
+  "alternatives": [
+   "She didn't know the truth."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "was not",
+     "do not",
+     "were not"
+    ]
+   },
+   {
+    "correct": "know",
+    "options": [
+     "know",
+     "knew",
+     "known",
+     "knowing"
+    ]
+   },
+   {
+    "correct": "the truth.",
+    "options": [
+     "the truth.",
+     "the answer.",
+     "the name.",
+     "the story."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты был готов к работе?",
+  "en": "Were you ready for work?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Did",
+     "Was",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "ready",
+    "options": [
+     "ready",
+     "happy",
+     "busy",
+     "tired"
+    ]
+   },
+   {
+    "correct": "for work?",
+    "options": [
+     "for work?",
+     "for school?",
+     "for lunch?",
+     "for it?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Он не был твоим братом.",
+  "en": "He was not your brother.",
+  "alternatives": [
+   "He wasn't your brother."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "was not",
+    "options": [
+     "was not",
+     "did not",
+     "were not",
+     "do not"
+    ]
+   },
+   {
+    "correct": "your brother.",
+    "options": [
+     "your brother.",
+     "your friend.",
+     "your teacher.",
+     "your boss."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Они не видели эту птицу.",
+  "en": "They did not see this bird.",
+  "alternatives": [
+   "They didn't see this bird."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "We"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "were not",
+     "do not",
+     "was not"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "saw",
+     "seen",
+     "sees"
+    ]
+   },
+   {
+    "correct": "this bird.",
+    "options": [
+     "this bird.",
+     "that dog.",
+     "this cat.",
+     "that cow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Как он взял мой телефон?",
+  "en": "How did he take my phone?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "How",
+    "options": [
+     "How",
+     "Why",
+     "When",
+     "What"
+    ]
+   },
+   {
+    "correct": "did",
+    "options": [
+     "did",
+     "was",
+     "does",
+     "were"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "she",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "take",
+    "options": [
+     "take",
+     "took",
+     "taken",
+     "takes"
+    ]
+   },
+   {
+    "correct": "my phone?",
+    "options": [
+     "my phone?",
+     "my bag?",
+     "my book?",
+     "my pen?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Они не были на улице.",
+  "en": "They were not outside.",
+  "alternatives": [
+   "They weren't outside."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "We"
+    ]
+   },
+   {
+    "correct": "were not",
+    "options": [
+     "were not",
+     "did not",
+     "was not",
+     "do not"
+    ]
+   },
+   {
+    "correct": "outside.",
+    "options": [
+     "outside.",
+     "at home.",
+     "in school.",
+     "at work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты дал ему эту книгу?",
+  "en": "Did you give him this book?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Were",
+     "Do",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "give",
+    "options": [
+     "give",
+     "gave",
+     "given",
+     "gives"
+    ]
+   },
+   {
+    "correct": "him this book?",
+    "options": [
+     "him this book?",
+     "her that pen?",
+     "me that bag?",
+     "them this gift?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Вы были дома вчера вечером?",
+  "en": "Were you at home last night?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was",
+     "Did",
+     "Didn't"
+    ]
+   },
+   {
+    "correct": "you at home last night?",
+    "options": [
+     "you at home last night?",
+     "you be at home last night?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Она не видела его вчера.",
+  "en": "She didn't see him yesterday.",
+  "alternatives": [
+   "She did not see him yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "did not",
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "saw",
+     "seen",
+     "sees"
+    ]
+   },
+   {
+    "correct": "him yesterday.",
+    "options": [
+     "him yesterday.",
+     "it yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Что он купил в магазине?",
+  "en": "What did he buy at the shop?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "What",
+    "options": [
+     "What",
+     "Where",
+     "Why",
+     "When"
+    ]
+   },
+   {
+    "correct": "did he",
+    "options": [
+     "did he",
+     "did they",
+     "was he",
+     "were they"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "bought",
+     "buys",
+     "buying"
+    ]
+   },
+   {
+    "correct": "at the shop?",
+    "options": [
+     "at the shop?",
+     "in the shop?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Я не съел яблоко.",
+  "en": "I didn't eat the apple.",
+  "alternatives": [
+   "I did not eat the apple."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "did not",
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "eat",
+    "options": [
+     "eat",
+     "ate",
+     "eaten",
+     "eats"
+    ]
+   },
+   {
+    "correct": "the apple.",
+    "options": [
+     "the apple.",
+     "an apple."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Они были рады встрече?",
+  "en": "Were they happy to meet?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was",
+     "Did",
+     "Didn't"
+    ]
+   },
+   {
+    "correct": "they happy",
+    "options": [
+     "they happy",
+     "they be happy",
+     "he happy"
+    ]
+   },
+   {
+    "correct": "to meet?",
+    "options": [
+     "to meet?",
+     "to see?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Куда он пошел вчера?",
+  "en": "Where did he go yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Where",
+    "options": [
+     "Where",
+     "What",
+     "Why",
+     "When"
+    ]
+   },
+   {
+    "correct": "did he",
+    "options": [
+     "did he",
+     "did they",
+     "was he",
+     "were they"
+    ]
+   },
+   {
+    "correct": "go",
+    "options": [
+     "go",
+     "went",
+     "gone",
+     "goes"
+    ]
+   },
+   {
+    "correct": "yesterday?",
+    "options": [
+     "yesterday?",
+     "there?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Она не была в офисе.",
+  "en": "She wasn't at the office.",
+  "alternatives": [
+   "She was not at the office."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "was not",
+     "didn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "at the office.",
+    "options": [
+     "at the office.",
+     "in the office."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты взял мой карандаш?",
+  "en": "Did you take my pencil?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Was",
+     "Were",
+     "Didn't"
+    ]
+   },
+   {
+    "correct": "you take",
+    "options": [
+     "you take",
+     "you took",
+     "you taken",
+     "you takes"
+    ]
+   },
+   {
+    "correct": "my pencil?",
+    "options": [
+     "my pencil?",
+     "my pen?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Они не знали это правило.",
+  "en": "They didn't know this rule.",
+  "alternatives": [
+   "They did not know this rule."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "You"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "did not",
+     "weren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "know",
+    "options": [
+     "know",
+     "knew",
+     "known",
+     "knows"
+    ]
+   },
+   {
+    "correct": "this rule.",
+    "options": [
+     "this rule.",
+     "the rule."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Они не были уставшими вчера.",
+  "en": "They weren't tired yesterday.",
+  "alternatives": [
+   "They were not tired yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "were not",
+     "didn't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "tired yesterday.",
+    "options": [
+     "tired yesterday.",
+     "happy yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты не видел мою собаку?",
+  "en": "Did you not see my dog?",
+  "alternatives": [
+   "Didn't you see my dog?"
+  ],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Was",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "not",
+    "options": [
+     "not",
+     "never",
+     "no",
+     "don't"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "saw",
+     "seen",
+     "seeing"
+    ]
+   },
+   {
+    "correct": "my dog?",
+    "options": [
+     "my dog?",
+     "the dog?",
+     "me?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Они не съели завтрак.",
+  "en": "They did not eat breakfast.",
+  "alternatives": [
+   "They didn't eat breakfast."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "was not",
+     "were not"
+    ]
+   },
+   {
+    "correct": "eat",
+    "options": [
+     "eat",
+     "ate",
+     "eaten",
+     "eating"
+    ]
+   },
+   {
+    "correct": "breakfast.",
+    "options": [
+     "breakfast.",
+     "the food.",
+     "lunch."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Я не купил хлеб.",
+  "en": "I did not buy bread.",
+  "alternatives": [
+   "I didn't buy bread."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "was not",
+     "were not"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "bought",
+     "buying",
+     "buys"
+    ]
+   },
+   {
+    "correct": "bread.",
+    "options": [
+     "bread.",
+     "milk.",
+     "the food."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Он был в школе?",
+  "en": "Was he at school?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Did",
+     "Were",
+     "Is"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "at school?",
+    "options": [
+     "at school?",
+     "at home?",
+     "happy?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Почему она не пришла?",
+  "en": "Why did she not come?",
+  "alternatives": [
+   "Why didn't she come?"
+  ],
+  "slots": [
+   {
+    "correct": "Why",
+    "options": [
+     "Why",
+     "Where",
+     "When",
+     "What"
+    ]
+   },
+   {
+    "correct": "did",
+    "options": [
+     "did",
+     "was",
+     "were",
+     "do"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "not come?",
+    "options": [
+     "not come?",
+     "not came?",
+     "not coming?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты не написал ответ?",
+  "en": "Did you not write the answer?",
+  "alternatives": [
+   "Didn't you write the answer?"
+  ],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Were",
+     "Do",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "not",
+    "options": [
+     "not",
+     "never",
+     "no"
+    ]
+   },
+   {
+    "correct": "write",
+    "options": [
+     "write",
+     "wrote",
+     "written",
+     "writing"
+    ]
+   },
+   {
+    "correct": "the answer?",
+    "options": [
+     "the answer?",
+     "the letter?",
+     "the book?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Она была твоим другом?",
+  "en": "Was she your friend?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Did",
+     "Were",
+     "Is"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "your friend?",
+    "options": [
+     "your friend?",
+     "at work?",
+     "busy?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты не купил молоко вчера?",
+  "en": "Did you not buy milk yesterday?",
+  "alternatives": [
+   "Didn't you buy milk yesterday?"
+  ],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Was",
+     "Were",
+     "Do"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "not",
+    "options": [
+     "not",
+     "never",
+     "no",
+     "none"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "bought",
+     "buys",
+     "buying"
+    ]
+   },
+   {
+    "correct": "milk yesterday?",
+    "options": [
+     "milk yesterday?",
+     "the milk yesterday?",
+     "some milk yesterday?",
+     "a milk yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "questions_word_order",
+  "ru": "Ты был на работе вчера?",
+  "en": "Were you at work yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was",
+     "Did"
+    ]
+   },
+   {
+    "correct": "you at work yesterday?",
+    "options": [
+     "you at work yesterday?",
+     "they at work yesterday?",
+     "he at work yesterday?"
+    ]
+   }
+  ]
+ }
+]

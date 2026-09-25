@@ -1,0 +1,3763 @@
+[
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я хочу поехать в Лондон.",
+  "en": "I want to go to London.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I want",
+    "options": [
+     "I want",
+     "I enjoy",
+     "I finish",
+     "I stop"
+    ]
+   },
+   {
+    "correct": "to go",
+    "options": [
+     "to go",
+     "go",
+     "going",
+     "goes"
+    ]
+   },
+   {
+    "correct": "to London.",
+    "options": [
+     "to London.",
+     "in London.",
+     "at London."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Он любит читать книги.",
+  "en": "He enjoys reading books.",
+  "alternatives": [
+   "He likes reading books."
+  ],
+  "slots": [
+   {
+    "correct": "He enjoys",
+    "options": [
+     "He enjoys",
+     "He wants",
+     "He decides",
+     "He hopes"
+    ]
+   },
+   {
+    "correct": "reading",
+    "options": [
+     "reading",
+     "to read",
+     "read",
+     "reads"
+    ]
+   },
+   {
+    "correct": "books.",
+    "options": [
+     "books.",
+     "a book.",
+     "the book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Мы решили изучать английский.",
+  "en": "We decided to study English.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We decided",
+    "options": [
+     "We decided",
+     "We finished",
+     "We stopped",
+     "We enjoyed"
+    ]
+   },
+   {
+    "correct": "to study",
+    "options": [
+     "to study",
+     "studying",
+     "study",
+     "studies"
+    ]
+   },
+   {
+    "correct": "English.",
+    "options": [
+     "English.",
+     "the English.",
+     "an English."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Она закончила работать поздно.",
+  "en": "She finished working late.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She finished",
+    "options": [
+     "She finished",
+     "She wanted",
+     "She hoped",
+     "She decided"
+    ]
+   },
+   {
+    "correct": "working",
+    "options": [
+     "working",
+     "to work",
+     "work",
+     "works"
+    ]
+   },
+   {
+    "correct": "late.",
+    "options": [
+     "late.",
+     "slowly.",
+     "early."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Они надеются поехать в путешествие.",
+  "en": "They hope to travel.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They hope",
+    "options": [
+     "They hope",
+     "They enjoy",
+     "They finish",
+     "They stop"
+    ]
+   },
+   {
+    "correct": "to travel.",
+    "options": [
+     "to travel.",
+     "traveling.",
+     "travel.",
+     "travels."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Перестань играть на компьютере.",
+  "en": "Stop playing on the computer.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Stop",
+    "options": [
+     "Stop",
+     "Want",
+     "Need",
+     "Hope"
+    ]
+   },
+   {
+    "correct": "playing",
+    "options": [
+     "playing",
+     "to play",
+     "play",
+     "played"
+    ]
+   },
+   {
+    "correct": "on the computer.",
+    "options": [
+     "on the computer.",
+     "the computer.",
+     "to the computer."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я начал изучать испанский.",
+  "en": "I started studying Spanish.",
+  "alternatives": [
+   "I started to study Spanish."
+  ],
+  "slots": [
+   {
+    "correct": "I started",
+    "options": [
+     "I started",
+     "I finished",
+     "I wanted",
+     "I decided"
+    ]
+   },
+   {
+    "correct": "studying",
+    "options": [
+     "studying",
+     "to study",
+     "study",
+     "studies"
+    ]
+   },
+   {
+    "correct": "Spanish.",
+    "options": [
+     "Spanish.",
+     "the Spanish.",
+     "a Spanish."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Нам нужно есть здоровую еду.",
+  "en": "We need to eat healthy food.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We need",
+    "options": [
+     "We need",
+     "We enjoy",
+     "We finish",
+     "We stop"
+    ]
+   },
+   {
+    "correct": "to eat",
+    "options": [
+     "to eat",
+     "eating",
+     "eat",
+     "eats"
+    ]
+   },
+   {
+    "correct": "healthy food.",
+    "options": [
+     "healthy food.",
+     "the food.",
+     "to food."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Он обещал помочь мне.",
+  "en": "He promised to help me.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He promised",
+    "options": [
+     "He promised",
+     "He enjoyed",
+     "He finished",
+     "He stopped"
+    ]
+   },
+   {
+    "correct": "to help",
+    "options": [
+     "to help",
+     "helping",
+     "help",
+     "helps"
+    ]
+   },
+   {
+    "correct": "me.",
+    "options": [
+     "me.",
+     "I.",
+     "my."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Она любит играть в теннис.",
+  "en": "She likes playing tennis.",
+  "alternatives": [
+   "She likes to play tennis."
+  ],
+  "slots": [
+   {
+    "correct": "She likes",
+    "options": [
+     "She likes",
+     "She wants",
+     "She needs",
+     "She decides"
+    ]
+   },
+   {
+    "correct": "playing",
+    "options": [
+     "playing",
+     "to play",
+     "play",
+     "plays"
+    ]
+   },
+   {
+    "correct": "tennis.",
+    "options": [
+     "tennis.",
+     "the tennis.",
+     "a tennis."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Они пробуют работать вместе.",
+  "en": "They try to work together.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They try",
+    "options": [
+     "They try",
+     "They enjoy",
+     "They finish",
+     "They stop"
+    ]
+   },
+   {
+    "correct": "to work",
+    "options": [
+     "to work",
+     "working",
+     "work",
+     "works"
+    ]
+   },
+   {
+    "correct": "together.",
+    "options": [
+     "together.",
+     "well.",
+     "hard."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я забыл поехать в магазин.",
+  "en": "I forgot to go to the shop.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I forgot",
+    "options": [
+     "I forgot",
+     "I enjoyed",
+     "I finished",
+     "I stopped"
+    ]
+   },
+   {
+    "correct": "to go",
+    "options": [
+     "to go",
+     "going",
+     "go",
+     "goes"
+    ]
+   },
+   {
+    "correct": "to the shop.",
+    "options": [
+     "to the shop.",
+     "the shop.",
+     "shop."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я наслаждаюсь чтением книг.",
+  "en": "I enjoy reading books.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "enjoy",
+    "options": [
+     "enjoy",
+     "want",
+     "decide"
+    ]
+   },
+   {
+    "correct": "reading",
+    "options": [
+     "reading",
+     "to read",
+     "read"
+    ]
+   },
+   {
+    "correct": "books.",
+    "options": [
+     "books.",
+     "a book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Он хочет работать здесь.",
+  "en": "He wants to work here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "wants",
+    "options": [
+     "wants",
+     "enjoy",
+     "finish"
+    ]
+   },
+   {
+    "correct": "to work",
+    "options": [
+     "to work",
+     "working",
+     "work"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Мы закончили есть ужин.",
+  "en": "We finished eating dinner.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "finished",
+    "options": [
+     "finished",
+     "decided",
+     "hoped"
+    ]
+   },
+   {
+    "correct": "eating",
+    "options": [
+     "eating",
+     "to eat",
+     "eat"
+    ]
+   },
+   {
+    "correct": "dinner.",
+    "options": [
+     "dinner.",
+     "lunch."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Они решили путешествовать летом.",
+  "en": "They decided to travel in summer.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "decided",
+    "options": [
+     "decided",
+     "enjoyed",
+     "finished"
+    ]
+   },
+   {
+    "correct": "to travel",
+    "options": [
+     "to travel",
+     "traveling",
+     "travel"
+    ]
+   },
+   {
+    "correct": "in summer.",
+    "options": [
+     "in summer.",
+     "in winter."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Она перестала курить вчера.",
+  "en": "She stopped smoking yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "stopped",
+    "options": [
+     "stopped",
+     "wanted",
+     "hoped"
+    ]
+   },
+   {
+    "correct": "smoking",
+    "options": [
+     "smoking",
+     "to smoke",
+     "smoke"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я надеюсь поехать в отпуск.",
+  "en": "I hope to go on vacation.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "hope",
+    "options": [
+     "hope",
+     "enjoy",
+     "stop"
+    ]
+   },
+   {
+    "correct": "to go",
+    "options": [
+     "to go",
+     "going",
+     "go"
+    ]
+   },
+   {
+    "correct": "on vacation.",
+    "options": [
+     "on vacation.",
+     "to work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Он начал играть на гитаре.",
+  "en": "He started playing the guitar.",
+  "alternatives": [
+   "He started to play the guitar."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "started",
+    "options": [
+     "started",
+     "wanted",
+     "enjoyed"
+    ]
+   },
+   {
+    "correct": "playing",
+    "options": [
+     "playing",
+     "to play",
+     "play"
+    ]
+   },
+   {
+    "correct": "the guitar.",
+    "options": [
+     "the guitar.",
+     "tennis."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Мне нужно помочь маме.",
+  "en": "I need to help my mother.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "need",
+    "options": [
+     "need",
+     "finish",
+     "enjoy"
+    ]
+   },
+   {
+    "correct": "to help",
+    "options": [
+     "to help",
+     "helping",
+     "help"
+    ]
+   },
+   {
+    "correct": "my mother.",
+    "options": [
+     "my mother.",
+     "my friend."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Они обещают учиться лучше.",
+  "en": "They promise to study better.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "promise",
+    "options": [
+     "promise",
+     "finish",
+     "enjoy"
+    ]
+   },
+   {
+    "correct": "to study",
+    "options": [
+     "to study",
+     "studying",
+     "study"
+    ]
+   },
+   {
+    "correct": "better.",
+    "options": [
+     "better.",
+     "harder."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Мы пробуем изучать французский.",
+  "en": "We try to study French.",
+  "alternatives": [
+   "We try studying French."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "try",
+    "options": [
+     "try",
+     "finish",
+     "enjoy"
+    ]
+   },
+   {
+    "correct": "to study",
+    "options": [
+     "to study",
+     "studying",
+     "study"
+    ]
+   },
+   {
+    "correct": "French.",
+    "options": [
+     "French.",
+     "English."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Она забыла сделать домашку.",
+  "en": "She forgot to do homework.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "forgot",
+    "options": [
+     "forgot",
+     "enjoyed",
+     "finished"
+    ]
+   },
+   {
+    "correct": "to do",
+    "options": [
+     "to do",
+     "doing",
+     "do"
+    ]
+   },
+   {
+    "correct": "homework.",
+    "options": [
+     "homework.",
+     "the work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я помню как путешествовал.",
+  "en": "I remember traveling.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "remember",
+    "options": [
+     "remember",
+     "start",
+     "decide"
+    ]
+   },
+   {
+    "correct": "traveling.",
+    "options": [
+     "traveling.",
+     "to travel.",
+     "travel."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я наслаждаюсь игрой в футбол.",
+  "en": "I enjoy playing football.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "enjoy",
+    "options": [
+     "enjoy",
+     "decide",
+     "need",
+     "want"
+    ]
+   },
+   {
+    "correct": "playing",
+    "options": [
+     "playing",
+     "to play",
+     "play"
+    ]
+   },
+   {
+    "correct": "football.",
+    "options": [
+     "football.",
+     "tennis."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Она закончила читать книгу.",
+  "en": "She finished reading the book.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "finished",
+    "options": [
+     "finished",
+     "hoped",
+     "decided",
+     "wanted"
+    ]
+   },
+   {
+    "correct": "reading",
+    "options": [
+     "reading",
+     "to read",
+     "read"
+    ]
+   },
+   {
+    "correct": "the book.",
+    "options": [
+     "the book.",
+     "the paper."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Он хочет купить машину.",
+  "en": "He wants to buy a car.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "wants",
+    "options": [
+     "wants",
+     "enjoys",
+     "finishes"
+    ]
+   },
+   {
+    "correct": "to buy",
+    "options": [
+     "to buy",
+     "buying",
+     "buy"
+    ]
+   },
+   {
+    "correct": "a car.",
+    "options": [
+     "a car.",
+     "a house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Мы решили пойти домой.",
+  "en": "We decided to go home.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "decided",
+    "options": [
+     "decided",
+     "enjoyed",
+     "finished"
+    ]
+   },
+   {
+    "correct": "to go",
+    "options": [
+     "to go",
+     "going",
+     "go"
+    ]
+   },
+   {
+    "correct": "home.",
+    "options": [
+     "home.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Они надеются работать вместе.",
+  "en": "They hope to work together.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "He"
+    ]
+   },
+   {
+    "correct": "hope",
+    "options": [
+     "hope",
+     "stop",
+     "enjoy"
+    ]
+   },
+   {
+    "correct": "to work",
+    "options": [
+     "to work",
+     "working",
+     "work"
+    ]
+   },
+   {
+    "correct": "together.",
+    "options": [
+     "together.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Перестань делать шум.",
+  "en": "Stop making noise.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Stop",
+    "options": [
+     "Stop",
+     "Want",
+     "Decide"
+    ]
+   },
+   {
+    "correct": "making",
+    "options": [
+     "making",
+     "to make",
+     "make"
+    ]
+   },
+   {
+    "correct": "noise.",
+    "options": [
+     "noise.",
+     "fun."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Она начала петь песню.",
+  "en": "She started to sing a song.",
+  "alternatives": [
+   "She started singing a song."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "started",
+    "options": [
+     "started",
+     "hoped",
+     "decided"
+    ]
+   },
+   {
+    "correct": "to sing",
+    "options": [
+     "to sing",
+     "singing"
+    ]
+   },
+   {
+    "correct": "a song.",
+    "options": [
+     "a song.",
+     "music."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я обещаю прийти вовремя.",
+  "en": "I promise to arrive on time.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "promise",
+    "options": [
+     "promise",
+     "finish",
+     "enjoy"
+    ]
+   },
+   {
+    "correct": "to arrive",
+    "options": [
+     "to arrive",
+     "arriving",
+     "arrive"
+    ]
+   },
+   {
+    "correct": "on time.",
+    "options": [
+     "on time.",
+     "today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Нам нужно изучать математику.",
+  "en": "We need to study math.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "need",
+    "options": [
+     "need",
+     "enjoy",
+     "finish"
+    ]
+   },
+   {
+    "correct": "to study",
+    "options": [
+     "to study",
+     "studying",
+     "study"
+    ]
+   },
+   {
+    "correct": "math.",
+    "options": [
+     "math.",
+     "English."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Он начал есть завтрак.",
+  "en": "He began eating breakfast.",
+  "alternatives": [
+   "He began to eat breakfast."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "began",
+    "options": [
+     "began",
+     "wanted",
+     "hoped"
+    ]
+   },
+   {
+    "correct": "eating",
+    "options": [
+     "eating",
+     "to eat"
+    ]
+   },
+   {
+    "correct": "breakfast.",
+    "options": [
+     "breakfast.",
+     "dinner."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я пробую играть на пианино.",
+  "en": "I try to play the piano.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "try",
+    "options": [
+     "try",
+     "finish",
+     "enjoy"
+    ]
+   },
+   {
+    "correct": "to play",
+    "options": [
+     "to play",
+     "playing",
+     "play"
+    ]
+   },
+   {
+    "correct": "the piano.",
+    "options": [
+     "the piano.",
+     "the guitar."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Она забыла купить молоко.",
+  "en": "She forgot to buy milk.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "forgot",
+    "options": [
+     "forgot",
+     "decided",
+     "hoped"
+    ]
+   },
+   {
+    "correct": "to buy",
+    "options": [
+     "to buy",
+     "buying",
+     "buy"
+    ]
+   },
+   {
+    "correct": "milk.",
+    "options": [
+     "milk.",
+     "bread."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я наслаждаюсь игрой в шахматы.",
+  "en": "I enjoy playing chess.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "enjoy",
+    "options": [
+     "enjoy",
+     "decide",
+     "want",
+     "hope"
+    ]
+   },
+   {
+    "correct": "playing",
+    "options": [
+     "playing",
+     "to play",
+     "play",
+     "played"
+    ]
+   },
+   {
+    "correct": "chess.",
+    "options": [
+     "chess.",
+     "game.",
+     "ball."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Она закончила готовить обед.",
+  "en": "She finished cooking lunch.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "finished",
+    "options": [
+     "finished",
+     "decided",
+     "hoped",
+     "needed"
+    ]
+   },
+   {
+    "correct": "cooking",
+    "options": [
+     "cooking",
+     "to cook",
+     "cook",
+     "cooks"
+    ]
+   },
+   {
+    "correct": "lunch.",
+    "options": [
+     "lunch.",
+     "dinner.",
+     "food."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Перестань делать это сейчас.",
+  "en": "Stop doing that now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Stop",
+    "options": [
+     "Stop",
+     "Want",
+     "Decide",
+     "Hope"
+    ]
+   },
+   {
+    "correct": "doing",
+    "options": [
+     "doing",
+     "to do",
+     "do",
+     "did"
+    ]
+   },
+   {
+    "correct": "that",
+    "options": [
+     "that",
+     "it",
+     "this"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "today.",
+     "here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Мы хотим поехать в отпуск.",
+  "en": "We want to go on vacation.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "want",
+    "options": [
+     "want",
+     "enjoy",
+     "finish",
+     "stop"
+    ]
+   },
+   {
+    "correct": "to go",
+    "options": [
+     "to go",
+     "going",
+     "go",
+     "went"
+    ]
+   },
+   {
+    "correct": "on vacation.",
+    "options": [
+     "on vacation.",
+     "home.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Он решил работать много.",
+  "en": "He decided to work hard.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "decided",
+    "options": [
+     "decided",
+     "enjoyed",
+     "finished",
+     "stopped"
+    ]
+   },
+   {
+    "correct": "to work",
+    "options": [
+     "to work",
+     "working",
+     "work",
+     "worked"
+    ]
+   },
+   {
+    "correct": "hard.",
+    "options": [
+     "hard.",
+     "well.",
+     "much."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Они надеются купить дом.",
+  "en": "They hope to buy a house.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "hope",
+    "options": [
+     "hope",
+     "enjoy",
+     "stop",
+     "finish"
+    ]
+   },
+   {
+    "correct": "to buy",
+    "options": [
+     "to buy",
+     "buying",
+     "buy",
+     "bought"
+    ]
+   },
+   {
+    "correct": "a house.",
+    "options": [
+     "a house.",
+     "a car.",
+     "food."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Она обещает прийти вовремя.",
+  "en": "She promises to come on time.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "promises",
+    "options": [
+     "promises",
+     "enjoys",
+     "stops",
+     "finishes"
+    ]
+   },
+   {
+    "correct": "to come",
+    "options": [
+     "to come",
+     "coming",
+     "come",
+     "came"
+    ]
+   },
+   {
+    "correct": "on time.",
+    "options": [
+     "on time.",
+     "early.",
+     "fast."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Нам нужно изучать английский.",
+  "en": "We need to study English.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "need",
+    "options": [
+     "need",
+     "enjoy",
+     "finish",
+     "start"
+    ]
+   },
+   {
+    "correct": "to study",
+    "options": [
+     "to study",
+     "studying",
+     "study",
+     "studied"
+    ]
+   },
+   {
+    "correct": "English.",
+    "options": [
+     "English.",
+     "French.",
+     "math."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я пытаюсь работать усерднее.",
+  "en": "I try to work harder.",
+  "alternatives": [
+   "I am trying to work harder."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "try",
+    "options": [
+     "try",
+     "enjoy",
+     "finish",
+     "stop"
+    ]
+   },
+   {
+    "correct": "to work",
+    "options": [
+     "to work",
+     "working",
+     "work",
+     "worked"
+    ]
+   },
+   {
+    "correct": "harder.",
+    "options": [
+     "harder.",
+     "well.",
+     "much."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Они начали играть в футбол.",
+  "en": "They started playing football.",
+  "alternatives": [
+   "They started to play football."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "started",
+    "options": [
+     "started",
+     "wanted",
+     "decided",
+     "hoped"
+    ]
+   },
+   {
+    "correct": "playing",
+    "options": [
+     "playing",
+     "to play",
+     "play",
+     "played"
+    ]
+   },
+   {
+    "correct": "football.",
+    "options": [
+     "football.",
+     "tennis.",
+     "games."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я забыл позвонить маме.",
+  "en": "I forgot to call my mom.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "forgot",
+    "options": [
+     "forgot",
+     "enjoyed",
+     "finished",
+     "started"
+    ]
+   },
+   {
+    "correct": "to call",
+    "options": [
+     "to call",
+     "calling",
+     "call",
+     "called"
+    ]
+   },
+   {
+    "correct": "my mom.",
+    "options": [
+     "my mom.",
+     "him.",
+     "her."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Он помнит как путешествовал там.",
+  "en": "He remembers traveling there.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "remembers",
+    "options": [
+     "remembers",
+     "wants",
+     "hopes",
+     "decides"
+    ]
+   },
+   {
+    "correct": "traveling",
+    "options": [
+     "traveling",
+     "to travel",
+     "travel",
+     "traveled"
+    ]
+   },
+   {
+    "correct": "there.",
+    "options": [
+     "there.",
+     "home.",
+     "much."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Она хочет работать здесь.",
+  "en": "She wants to work here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "wants",
+    "options": [
+     "wants",
+     "want"
+    ]
+   },
+   {
+    "correct": "to work",
+    "options": [
+     "to work",
+     "working",
+     "work"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я наслаждаюсь игрой на гитаре.",
+  "en": "I enjoy playing the guitar.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "enjoy",
+    "options": [
+     "enjoy",
+     "want",
+     "decide",
+     "need"
+    ]
+   },
+   {
+    "correct": "playing",
+    "options": [
+     "playing",
+     "to play",
+     "play",
+     "played"
+    ]
+   },
+   {
+    "correct": "the guitar.",
+    "options": [
+     "the guitar.",
+     "the piano.",
+     "the game."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Она закончила писать отчет.",
+  "en": "She finished writing the report.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "finished",
+    "options": [
+     "finished",
+     "hoped",
+     "decided",
+     "wanted"
+    ]
+   },
+   {
+    "correct": "writing",
+    "options": [
+     "writing",
+     "to write",
+     "write",
+     "wrote"
+    ]
+   },
+   {
+    "correct": "the report.",
+    "options": [
+     "the report.",
+     "the book.",
+     "the letter."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Они хотят работать вместе.",
+  "en": "They want to work together.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "want",
+    "options": [
+     "want",
+     "enjoy",
+     "finish",
+     "stop"
+    ]
+   },
+   {
+    "correct": "to work",
+    "options": [
+     "to work",
+     "working",
+     "work",
+     "worked"
+    ]
+   },
+   {
+    "correct": "together.",
+    "options": [
+     "together.",
+     "hard.",
+     "daily."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Он решил купить дом.",
+  "en": "He decided to buy a house.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "decided",
+    "options": [
+     "decided",
+     "enjoyed",
+     "finished",
+     "stopped"
+    ]
+   },
+   {
+    "correct": "to buy",
+    "options": [
+     "to buy",
+     "buying",
+     "buy",
+     "bought"
+    ]
+   },
+   {
+    "correct": "a house.",
+    "options": [
+     "a house.",
+     "a car.",
+     "a boat."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Перестань громко разговаривать.",
+  "en": "Stop talking loudly.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Stop",
+    "options": [
+     "Stop",
+     "Want",
+     "Hope",
+     "Decide"
+    ]
+   },
+   {
+    "correct": "talking",
+    "options": [
+     "talking",
+     "to talk",
+     "talk",
+     "talked"
+    ]
+   },
+   {
+    "correct": "loudly.",
+    "options": [
+     "loudly.",
+     "quietly.",
+     "now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я надеюсь увидеть тебя завтра.",
+  "en": "I hope to see you tomorrow.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "hope",
+    "options": [
+     "hope",
+     "enjoy",
+     "finish",
+     "stop"
+    ]
+   },
+   {
+    "correct": "to see",
+    "options": [
+     "to see",
+     "seeing",
+     "see",
+     "saw"
+    ]
+   },
+   {
+    "correct": "you tomorrow.",
+    "options": [
+     "you tomorrow.",
+     "him later.",
+     "her soon."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Мы начали изучать физику.",
+  "en": "We started to study physics.",
+  "alternatives": [
+   "We started studying physics."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "started",
+    "options": [
+     "started",
+     "wanted",
+     "hoped",
+     "needed"
+    ]
+   },
+   {
+    "correct": "to study",
+    "options": [
+     "to study",
+     "studying",
+     "study",
+     "studied"
+    ]
+   },
+   {
+    "correct": "physics.",
+    "options": [
+     "physics.",
+     "history.",
+     "biology."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Мне нужно закончить эту работу.",
+  "en": "I need to finish this work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "need",
+    "options": [
+     "need",
+     "enjoy",
+     "stop",
+     "finish"
+    ]
+   },
+   {
+    "correct": "to finish",
+    "options": [
+     "to finish",
+     "finishing",
+     "finish",
+     "finished"
+    ]
+   },
+   {
+    "correct": "this work.",
+    "options": [
+     "this work.",
+     "this task.",
+     "this project."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Они пробуют готовить ужин.",
+  "en": "They try to cook dinner.",
+  "alternatives": [
+   "They try cooking dinner."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "try",
+    "options": [
+     "try",
+     "enjoy",
+     "stop",
+     "finish"
+    ]
+   },
+   {
+    "correct": "to cook",
+    "options": [
+     "to cook",
+     "cooking",
+     "cook",
+     "cooked"
+    ]
+   },
+   {
+    "correct": "dinner.",
+    "options": [
+     "dinner.",
+     "lunch.",
+     "breakfast."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я забыл закрыть дверь.",
+  "en": "I forgot to close the door.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "forgot",
+    "options": [
+     "forgot",
+     "wanted",
+     "hoped",
+     "decided"
+    ]
+   },
+   {
+    "correct": "to close",
+    "options": [
+     "to close",
+     "closing",
+     "close",
+     "closed"
+    ]
+   },
+   {
+    "correct": "the door.",
+    "options": [
+     "the door.",
+     "the window.",
+     "the gate."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Он любит гулять в парке.",
+  "en": "He likes walking in the park.",
+  "alternatives": [
+   "He likes to walk in the park."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "likes",
+    "options": [
+     "likes",
+     "starts",
+     "decides",
+     "hopes"
+    ]
+   },
+   {
+    "correct": "walking",
+    "options": [
+     "walking",
+     "to walk",
+     "walk",
+     "walked"
+    ]
+   },
+   {
+    "correct": "in the park.",
+    "options": [
+     "in the park.",
+     "in the city.",
+     "at home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я хочу купить билет.",
+  "en": "I want to buy a ticket.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I want",
+    "options": [
+     "I want",
+     "I enjoy",
+     "I finish",
+     "I stop"
+    ]
+   },
+   {
+    "correct": "to buy",
+    "options": [
+     "to buy",
+     "buying"
+    ]
+   },
+   {
+    "correct": "a ticket.",
+    "options": [
+     "a ticket.",
+     "a house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Они закончили читать статью.",
+  "en": "They finished reading the article.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They finished",
+    "options": [
+     "They finished",
+     "They want",
+     "They need",
+     "They hope"
+    ]
+   },
+   {
+    "correct": "reading",
+    "options": [
+     "reading",
+     "to read"
+    ]
+   },
+   {
+    "correct": "the article.",
+    "options": [
+     "the article.",
+     "the book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Нам нужно изучать новые слова.",
+  "en": "We need to study new words.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We need",
+    "options": [
+     "We need",
+     "We enjoy",
+     "We finish",
+     "We stop"
+    ]
+   },
+   {
+    "correct": "to study",
+    "options": [
+     "to study",
+     "studying"
+    ]
+   },
+   {
+    "correct": "new words.",
+    "options": [
+     "new words.",
+     "the lesson."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Она наслаждается игрой на скрипке.",
+  "en": "She enjoys playing the violin.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She enjoys",
+    "options": [
+     "She enjoys",
+     "She wants",
+     "She hopes",
+     "She decides"
+    ]
+   },
+   {
+    "correct": "playing",
+    "options": [
+     "playing",
+     "to play"
+    ]
+   },
+   {
+    "correct": "the violin.",
+    "options": [
+     "the violin.",
+     "the piano."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Он решил поехать в Париж.",
+  "en": "He decided to travel to Paris.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He decided",
+    "options": [
+     "He decided",
+     "He enjoys",
+     "He finishes",
+     "He stops"
+    ]
+   },
+   {
+    "correct": "to travel",
+    "options": [
+     "to travel",
+     "traveling"
+    ]
+   },
+   {
+    "correct": "to Paris.",
+    "options": [
+     "to Paris.",
+     "to London."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Перестань играть на улице.",
+  "en": "Stop playing outside.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Stop",
+    "options": [
+     "Stop",
+     "Want",
+     "Hope",
+     "Decide"
+    ]
+   },
+   {
+    "correct": "playing",
+    "options": [
+     "playing",
+     "to play"
+    ]
+   },
+   {
+    "correct": "outside.",
+    "options": [
+     "outside.",
+     "now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я надеюсь встретить друзей.",
+  "en": "I hope to meet friends.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I hope",
+    "options": [
+     "I hope",
+     "I enjoy",
+     "I finish",
+     "I stop"
+    ]
+   },
+   {
+    "correct": "to meet",
+    "options": [
+     "to meet",
+     "meeting"
+    ]
+   },
+   {
+    "correct": "friends.",
+    "options": [
+     "friends.",
+     "them."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Они начали работать сегодня.",
+  "en": "They started working today.",
+  "alternatives": [
+   "They started to work today."
+  ],
+  "slots": [
+   {
+    "correct": "They started",
+    "options": [
+     "They started",
+     "They want",
+     "They finish",
+     "They hope"
+    ]
+   },
+   {
+    "correct": "working",
+    "options": [
+     "working",
+     "to work"
+    ]
+   },
+   {
+    "correct": "today.",
+    "options": [
+     "today.",
+     "now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Мы пробуем изучить правила.",
+  "en": "We try to learn the rules.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We try",
+    "options": [
+     "We try",
+     "We enjoy",
+     "We finish",
+     "We stop"
+    ]
+   },
+   {
+    "correct": "to learn",
+    "options": [
+     "to learn",
+     "learning"
+    ]
+   },
+   {
+    "correct": "the rules.",
+    "options": [
+     "the rules.",
+     "the language."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Он забыл купить хлеб.",
+  "en": "He forgot to buy bread.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He forgot",
+    "options": [
+     "He forgot",
+     "He enjoys",
+     "He finishes",
+     "He stops"
+    ]
+   },
+   {
+    "correct": "to buy",
+    "options": [
+     "to buy",
+     "buying"
+    ]
+   },
+   {
+    "correct": "bread.",
+    "options": [
+     "bread.",
+     "milk."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Она любит гулять в лесу.",
+  "en": "She likes walking in the forest.",
+  "alternatives": [
+   "She likes to walk in the forest."
+  ],
+  "slots": [
+   {
+    "correct": "She likes",
+    "options": [
+     "She likes",
+     "She wants",
+     "She hopes",
+     "She decides"
+    ]
+   },
+   {
+    "correct": "walking",
+    "options": [
+     "walking",
+     "to walk"
+    ]
+   },
+   {
+    "correct": "in the forest.",
+    "options": [
+     "in the forest.",
+     "in the park."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я люблю играть в теннис.",
+  "en": "I like playing tennis.",
+  "alternatives": [
+   "I like to play tennis."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "like",
+    "options": [
+     "like",
+     "enjoy",
+     "want"
+    ]
+   },
+   {
+    "correct": "playing",
+    "options": [
+     "playing",
+     "to play",
+     "play"
+    ]
+   },
+   {
+    "correct": "tennis.",
+    "options": [
+     "tennis.",
+     "soccer.",
+     "chess."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Он хочет учиться сегодня.",
+  "en": "He wants to study today.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "wants",
+    "options": [
+     "wants",
+     "want"
+    ]
+   },
+   {
+    "correct": "to study",
+    "options": [
+     "to study",
+     "studying",
+     "study"
+    ]
+   },
+   {
+    "correct": "today.",
+    "options": [
+     "today.",
+     "now.",
+     "here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Она закончила делать работу.",
+  "en": "She finished doing work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "finished",
+    "options": [
+     "finished",
+     "finishes"
+    ]
+   },
+   {
+    "correct": "doing",
+    "options": [
+     "doing",
+     "to do",
+     "do"
+    ]
+   },
+   {
+    "correct": "work.",
+    "options": [
+     "work.",
+     "homework."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Мы решили работать вместе.",
+  "en": "We decided to work together.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "decided",
+    "options": [
+     "decided",
+     "decide"
+    ]
+   },
+   {
+    "correct": "to work",
+    "options": [
+     "to work",
+     "working",
+     "work"
+    ]
+   },
+   {
+    "correct": "together.",
+    "options": [
+     "together.",
+     "here.",
+     "now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Они наслаждаются игрой в карты.",
+  "en": "They enjoy playing cards.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "enjoy",
+    "options": [
+     "enjoy",
+     "enjoys"
+    ]
+   },
+   {
+    "correct": "playing",
+    "options": [
+     "playing",
+     "to play",
+     "play"
+    ]
+   },
+   {
+    "correct": "cards.",
+    "options": [
+     "cards.",
+     "chess.",
+     "tennis."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я надеюсь поехать в Лондон.",
+  "en": "I hope to travel to London.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "hope",
+    "options": [
+     "hope",
+     "hopes"
+    ]
+   },
+   {
+    "correct": "to travel",
+    "options": [
+     "to travel",
+     "traveling",
+     "travel"
+    ]
+   },
+   {
+    "correct": "to London.",
+    "options": [
+     "to London.",
+     "to Paris."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Она обещает помогать мне.",
+  "en": "She promises to help me.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "promises",
+    "options": [
+     "promises",
+     "promise"
+    ]
+   },
+   {
+    "correct": "to help",
+    "options": [
+     "to help",
+     "helping",
+     "help"
+    ]
+   },
+   {
+    "correct": "me.",
+    "options": [
+     "me.",
+     "him.",
+     "us."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Он начал читать газету.",
+  "en": "He started reading a newspaper.",
+  "alternatives": [
+   "He started to read a newspaper.",
+   "He began reading a newspaper.",
+   "He began to read a newspaper."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "started",
+    "options": [
+     "started",
+     "began"
+    ]
+   },
+   {
+    "correct": "reading",
+    "options": [
+     "reading",
+     "to read"
+    ]
+   },
+   {
+    "correct": "a newspaper.",
+    "options": [
+     "a newspaper.",
+     "a book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я пытаюсь выучить это правило.",
+  "en": "I try to learn this rule.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "try",
+    "options": [
+     "try",
+     "tries"
+    ]
+   },
+   {
+    "correct": "to learn",
+    "options": [
+     "to learn",
+     "learning",
+     "learn"
+    ]
+   },
+   {
+    "correct": "this rule.",
+    "options": [
+     "this rule.",
+     "this word."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Он забыл принести еду.",
+  "en": "He forgot to bring food.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "forgot",
+    "options": [
+     "forgot",
+     "forgets"
+    ]
+   },
+   {
+    "correct": "to bring",
+    "options": [
+     "to bring",
+     "bringing",
+     "bring"
+    ]
+   },
+   {
+    "correct": "food.",
+    "options": [
+     "food.",
+     "water."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Они помнят, как путешествовали вместе.",
+  "en": "They remember traveling together.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "remember",
+    "options": [
+     "remember",
+     "remembers"
+    ]
+   },
+   {
+    "correct": "traveling",
+    "options": [
+     "traveling",
+     "to travel"
+    ]
+   },
+   {
+    "correct": "together.",
+    "options": [
+     "together.",
+     "here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Она наслаждается чтением книг.",
+  "en": "She enjoys reading books.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She enjoys",
+    "options": [
+     "She enjoys",
+     "She wants",
+     "She hopes",
+     "She decides"
+    ]
+   },
+   {
+    "correct": "reading",
+    "options": [
+     "reading",
+     "to read",
+     "read",
+     "readed"
+    ]
+   },
+   {
+    "correct": "books.",
+    "options": [
+     "books.",
+     "the books."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Мы закончили работать сегодня.",
+  "en": "We finished working today.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We finished",
+    "options": [
+     "We finished",
+     "We want",
+     "We hope",
+     "We decide"
+    ]
+   },
+   {
+    "correct": "working",
+    "options": [
+     "working",
+     "to work",
+     "work",
+     "worked"
+    ]
+   },
+   {
+    "correct": "today.",
+    "options": [
+     "today.",
+     "at today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Он решил изучать математику.",
+  "en": "He decided to study mathematics.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He decided",
+    "options": [
+     "He decided",
+     "He enjoys",
+     "He stops",
+     "He finishes"
+    ]
+   },
+   {
+    "correct": "to study",
+    "options": [
+     "to study",
+     "studying",
+     "study",
+     "studied"
+    ]
+   },
+   {
+    "correct": "mathematics.",
+    "options": [
+     "mathematics.",
+     "the math."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Перестань играть на гитаре.",
+  "en": "Stop playing the guitar.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Stop",
+    "options": [
+     "Stop",
+     "Want",
+     "Hope",
+     "Decide"
+    ]
+   },
+   {
+    "correct": "playing",
+    "options": [
+     "playing",
+     "to play",
+     "play",
+     "played"
+    ]
+   },
+   {
+    "correct": "the guitar.",
+    "options": [
+     "the guitar.",
+     "a guitar."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я надеюсь поехать домой.",
+  "en": "I hope to go home.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I hope",
+    "options": [
+     "I hope",
+     "I enjoy",
+     "I finish",
+     "I stop"
+    ]
+   },
+   {
+    "correct": "to go",
+    "options": [
+     "to go",
+     "going",
+     "go",
+     "went"
+    ]
+   },
+   {
+    "correct": "home.",
+    "options": [
+     "home.",
+     "to home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Они начали работать вместе.",
+  "en": "They started working together.",
+  "alternatives": [
+   "They started to work together."
+  ],
+  "slots": [
+   {
+    "correct": "They started",
+    "options": [
+     "They started",
+     "They want",
+     "They hope",
+     "They decide"
+    ]
+   },
+   {
+    "correct": "working",
+    "options": [
+     "working",
+     "to work",
+     "work",
+     "worked"
+    ]
+   },
+   {
+    "correct": "together.",
+    "options": [
+     "together.",
+     "all together."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Мне нужно съесть завтрак.",
+  "en": "I need to eat breakfast.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I need",
+    "options": [
+     "I need",
+     "I enjoy",
+     "I finish",
+     "I stop"
+    ]
+   },
+   {
+    "correct": "to eat",
+    "options": [
+     "to eat",
+     "eating",
+     "eat",
+     "ate"
+    ]
+   },
+   {
+    "correct": "breakfast.",
+    "options": [
+     "breakfast.",
+     "the breakfast."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Он обещает приехать завтра.",
+  "en": "He promises to come tomorrow.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He promises",
+    "options": [
+     "He promises",
+     "He enjoys",
+     "He finishes",
+     "He stops"
+    ]
+   },
+   {
+    "correct": "to come",
+    "options": [
+     "to come",
+     "coming",
+     "come",
+     "came"
+    ]
+   },
+   {
+    "correct": "tomorrow.",
+    "options": [
+     "tomorrow.",
+     "at tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я пробую закончить отчет.",
+  "en": "I try to finish the report.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I try",
+    "options": [
+     "I try",
+     "I enjoy",
+     "I stop",
+     "I start"
+    ]
+   },
+   {
+    "correct": "to finish",
+    "options": [
+     "to finish",
+     "finishing",
+     "finish",
+     "finished"
+    ]
+   },
+   {
+    "correct": "the report.",
+    "options": [
+     "the report.",
+     "a report."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Они начали изучать английский.",
+  "en": "They began studying English.",
+  "alternatives": [
+   "They began to study English."
+  ],
+  "slots": [
+   {
+    "correct": "They began",
+    "options": [
+     "They began",
+     "They want",
+     "They hope",
+     "They decide"
+    ]
+   },
+   {
+    "correct": "studying",
+    "options": [
+     "studying",
+     "to study",
+     "study",
+     "studied"
+    ]
+   },
+   {
+    "correct": "English.",
+    "options": [
+     "English.",
+     "the English."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Он надеется поехать в Лондон.",
+  "en": "He hopes to go to London.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "hopes",
+    "options": [
+     "hopes",
+     "hope"
+    ]
+   },
+   {
+    "correct": "to go",
+    "options": [
+     "to go",
+     "going",
+     "go"
+    ]
+   },
+   {
+    "correct": "to London.",
+    "options": [
+     "to London.",
+     "to Paris."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Она начала изучать английский.",
+  "en": "She started to study English.",
+  "alternatives": [
+   "She started studying English."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "started",
+    "options": [
+     "started",
+     "start"
+    ]
+   },
+   {
+    "correct": "to study",
+    "options": [
+     "to study",
+     "studying"
+    ]
+   },
+   {
+    "correct": "English.",
+    "options": [
+     "English.",
+     "math."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я люблю читать книги вечером.",
+  "en": "I like reading books in the evening.",
+  "alternatives": [
+   "I like to read books in the evening."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "like",
+    "options": [
+     "like",
+     "likes"
+    ]
+   },
+   {
+    "correct": "reading",
+    "options": [
+     "reading",
+     "to read",
+     "read"
+    ]
+   },
+   {
+    "correct": "books in the evening.",
+    "options": [
+     "books in the evening.",
+     "a book now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Они решили поехать в горы.",
+  "en": "They decided to go to the mountains.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "decided",
+    "options": [
+     "decided",
+     "decide"
+    ]
+   },
+   {
+    "correct": "to go",
+    "options": [
+     "to go",
+     "going",
+     "go"
+    ]
+   },
+   {
+    "correct": "to the mountains.",
+    "options": [
+     "to the mountains.",
+     "to the city."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Он закончил читать эту статью.",
+  "en": "He finished reading this article.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "finished",
+    "options": [
+     "finished",
+     "finish"
+    ]
+   },
+   {
+    "correct": "reading",
+    "options": [
+     "reading",
+     "to read",
+     "read"
+    ]
+   },
+   {
+    "correct": "this article.",
+    "options": [
+     "this article.",
+     "this book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Мы надеемся работать вместе скоро.",
+  "en": "We hope to work together soon.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "hope",
+    "options": [
+     "hope",
+     "hopes"
+    ]
+   },
+   {
+    "correct": "to work",
+    "options": [
+     "to work",
+     "working",
+     "work"
+    ]
+   },
+   {
+    "correct": "together soon.",
+    "options": [
+     "together soon.",
+     "very well."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Нам нужно изучать новые правила.",
+  "en": "We need to study new rules.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "need",
+    "options": [
+     "need",
+     "needs"
+    ]
+   },
+   {
+    "correct": "to study",
+    "options": [
+     "to study",
+     "studying",
+     "study"
+    ]
+   },
+   {
+    "correct": "new rules.",
+    "options": [
+     "new rules.",
+     "English now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "gerund_infinitive",
+  "ru": "Я наслаждаюсь чтением новых книг.",
+  "en": "I enjoy reading new books.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "enjoy",
+    "options": [
+     "enjoy",
+     "wants",
+     "decides",
+     "hopes"
+    ]
+   },
+   {
+    "correct": "reading",
+    "options": [
+     "reading",
+     "to read",
+     "read",
+     "reads"
+    ]
+   },
+   {
+    "correct": "new books.",
+    "options": [
+     "new books.",
+     "my books.",
+     "a book.",
+     "the book."
+    ]
+   }
+  ]
+ }
+]

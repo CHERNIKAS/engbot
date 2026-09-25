@@ -1,0 +1,3457 @@
+[
+ {
+  "topic": "passive_simple",
+  "ru": "Этот дом построен в 1990 году.",
+  "en": "This house was built in 1990.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This house",
+    "options": [
+     "This house",
+     "These houses"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "is",
+     "were",
+     "are"
+    ]
+   },
+   {
+    "correct": "built",
+    "options": [
+     "built",
+     "build",
+     "building"
+    ]
+   },
+   {
+    "correct": "in 1990.",
+    "options": [
+     "in 1990.",
+     "at 1990."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти письма отправлены сегодня.",
+  "en": "These letters are sent today.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These letters",
+    "options": [
+     "These letters",
+     "This letter"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "sent",
+    "options": [
+     "sent",
+     "send",
+     "sending"
+    ]
+   },
+   {
+    "correct": "today.",
+    "options": [
+     "today.",
+     "yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Книга написана моим братом.",
+  "en": "The book was written by my brother.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The book",
+    "options": [
+     "The book",
+     "The books"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "is",
+     "were",
+     "are"
+    ]
+   },
+   {
+    "correct": "written",
+    "options": [
+     "written",
+     "wrote",
+     "write"
+    ]
+   },
+   {
+    "correct": "by my brother.",
+    "options": [
+     "by my brother.",
+     "with my brother."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Окна не помыты сейчас.",
+  "en": "The windows aren't cleaned now.",
+  "alternatives": [
+   "The windows are not cleaned now."
+  ],
+  "slots": [
+   {
+    "correct": "The windows",
+    "options": [
+     "The windows",
+     "The window"
+    ]
+   },
+   {
+    "correct": "aren't",
+    "options": [
+     "aren't",
+     "isn't",
+     "weren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "cleaned",
+    "options": [
+     "cleaned",
+     "clean",
+     "cleaning"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "last week."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Этот торт сделан моей мамой.",
+  "en": "This cake is made by my mom.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This cake",
+    "options": [
+     "This cake",
+     "These cakes"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "made",
+    "options": [
+     "made",
+     "make",
+     "making"
+    ]
+   },
+   {
+    "correct": "by my mom.",
+    "options": [
+     "by my mom.",
+     "with my mom."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Был ли этот магазин открыт вчера?",
+  "en": "Was this shop opened yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Were",
+     "Is",
+     "Are"
+    ]
+   },
+   {
+    "correct": "this shop",
+    "options": [
+     "this shop",
+     "these shops"
+    ]
+   },
+   {
+    "correct": "opened",
+    "options": [
+     "opened",
+     "open",
+     "opening"
+    ]
+   },
+   {
+    "correct": "yesterday?",
+    "options": [
+     "yesterday?",
+     "now?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Машины проданы моим отцом.",
+  "en": "The cars were sold by my father.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The cars",
+    "options": [
+     "The cars",
+     "The car"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was",
+     "are",
+     "is"
+    ]
+   },
+   {
+    "correct": "sold",
+    "options": [
+     "sold",
+     "sell",
+     "selling"
+    ]
+   },
+   {
+    "correct": "by my father.",
+    "options": [
+     "by my father.",
+     "with my father."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Ключи были найдены полицией.",
+  "en": "The keys were found by the police.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The keys",
+    "options": [
+     "The keys",
+     "The key"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was",
+     "are",
+     "is"
+    ]
+   },
+   {
+    "correct": "found",
+    "options": [
+     "found",
+     "find",
+     "finding"
+    ]
+   },
+   {
+    "correct": "by the police.",
+    "options": [
+     "by the police.",
+     "with the police."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Дверь не закрыта сейчас.",
+  "en": "The door isn't closed now.",
+  "alternatives": [
+   "The door is not closed now."
+  ],
+  "slots": [
+   {
+    "correct": "The door",
+    "options": [
+     "The door",
+     "The doors"
+    ]
+   },
+   {
+    "correct": "isn't",
+    "options": [
+     "isn't",
+     "aren't",
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "closed",
+    "options": [
+     "closed",
+     "close",
+     "closing"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Фотографии сделаны моим другом.",
+  "en": "The photos were taken by my friend.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The photos",
+    "options": [
+     "The photos",
+     "The photo"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was",
+     "are",
+     "is"
+    ]
+   },
+   {
+    "correct": "taken",
+    "options": [
+     "taken",
+     "took",
+     "take"
+    ]
+   },
+   {
+    "correct": "by my friend.",
+    "options": [
+     "by my friend.",
+     "with my friend."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Этот подарок куплен для тебя.",
+  "en": "This gift is bought for you.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This gift",
+    "options": [
+     "This gift",
+     "These gifts"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "bought",
+    "options": [
+     "bought",
+     "buy",
+     "buying"
+    ]
+   },
+   {
+    "correct": "for you.",
+    "options": [
+     "for you.",
+     "by you."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Приглашены ли они на вечеринку?",
+  "en": "Are they invited to the party?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Were",
+     "Is",
+     "Was"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he"
+    ]
+   },
+   {
+    "correct": "invited",
+    "options": [
+     "invited",
+     "invite",
+     "inviting"
+    ]
+   },
+   {
+    "correct": "to the party?",
+    "options": [
+     "to the party?",
+     "at the party?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Этот дом построен из дерева.",
+  "en": "This house is built of wood.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This house",
+    "options": [
+     "This house",
+     "These houses"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "built",
+    "options": [
+     "built",
+     "build",
+     "building"
+    ]
+   },
+   {
+    "correct": "of wood.",
+    "options": [
+     "of wood.",
+     "with wood."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти столы сделаны из металла.",
+  "en": "These tables are made of metal.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These tables",
+    "options": [
+     "These tables",
+     "This table"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "made",
+    "options": [
+     "made",
+     "make",
+     "making"
+    ]
+   },
+   {
+    "correct": "of metal.",
+    "options": [
+     "of metal.",
+     "from metal."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Письмо было написано вчера.",
+  "en": "The letter was written yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The letter",
+    "options": [
+     "The letter",
+     "The letters"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "written",
+    "options": [
+     "written",
+     "wrote",
+     "write"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти книги были куплены вчера.",
+  "en": "These books were bought yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These books",
+    "options": [
+     "These books",
+     "This book"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was",
+     "are",
+     "is"
+    ]
+   },
+   {
+    "correct": "bought",
+    "options": [
+     "bought",
+     "buy",
+     "buying"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Этот торт не сделан сейчас.",
+  "en": "This cake isn't made now.",
+  "alternatives": [
+   "This cake is not made now."
+  ],
+  "slots": [
+   {
+    "correct": "This cake",
+    "options": [
+     "This cake",
+     "These cakes"
+    ]
+   },
+   {
+    "correct": "isn't",
+    "options": [
+     "isn't",
+     "aren't",
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "made",
+    "options": [
+     "made",
+     "make",
+     "making"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти машины не проданы сегодня.",
+  "en": "These cars aren't sold today.",
+  "alternatives": [
+   "These cars are not sold today."
+  ],
+  "slots": [
+   {
+    "correct": "These cars",
+    "options": [
+     "These cars",
+     "This car"
+    ]
+   },
+   {
+    "correct": "aren't",
+    "options": [
+     "aren't",
+     "isn't",
+     "weren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "sold",
+    "options": [
+     "sold",
+     "sell",
+     "selling"
+    ]
+   },
+   {
+    "correct": "today.",
+    "options": [
+     "today.",
+     "yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Был ли этот дом построен моим отцом?",
+  "en": "Was this house built by my father?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Were",
+     "Is",
+     "Are"
+    ]
+   },
+   {
+    "correct": "this house",
+    "options": [
+     "this house",
+     "these houses"
+    ]
+   },
+   {
+    "correct": "built",
+    "options": [
+     "built",
+     "build",
+     "building"
+    ]
+   },
+   {
+    "correct": "by my father?",
+    "options": [
+     "by my father?",
+     "with my father?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Были ли эти окна закрыты рабочими?",
+  "en": "Were these windows closed by the workers?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was",
+     "Are",
+     "Is"
+    ]
+   },
+   {
+    "correct": "these windows",
+    "options": [
+     "these windows",
+     "this window"
+    ]
+   },
+   {
+    "correct": "closed",
+    "options": [
+     "closed",
+     "close",
+     "closing"
+    ]
+   },
+   {
+    "correct": "by the workers?",
+    "options": [
+     "by the workers?",
+     "with the workers?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Фотография была найдена ребенком.",
+  "en": "The photo was found by the child.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The photo",
+    "options": [
+     "The photo",
+     "The photos"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "found",
+    "options": [
+     "found",
+     "find",
+     "finding"
+    ]
+   },
+   {
+    "correct": "by the child.",
+    "options": [
+     "by the child.",
+     "with the child."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Письма были отправлены моим другом.",
+  "en": "The letters were sent by my friend.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The letters",
+    "options": [
+     "The letters",
+     "The letter"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was",
+     "are",
+     "is"
+    ]
+   },
+   {
+    "correct": "sent",
+    "options": [
+     "sent",
+     "send",
+     "sending"
+    ]
+   },
+   {
+    "correct": "by my friend.",
+    "options": [
+     "by my friend.",
+     "with my friend."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эта комната убрана моей мамой.",
+  "en": "This room is cleaned by my mother.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This room",
+    "options": [
+     "This room",
+     "These rooms"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "cleaned",
+    "options": [
+     "cleaned",
+     "clean",
+     "cleaning"
+    ]
+   },
+   {
+    "correct": "by my mother.",
+    "options": [
+     "by my mother.",
+     "with my mother."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Они приглашены моей сестрой.",
+  "en": "They are invited by my sister.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "invited",
+    "options": [
+     "invited",
+     "invite",
+     "inviting"
+    ]
+   },
+   {
+    "correct": "by my sister.",
+    "options": [
+     "by my sister.",
+     "with my sister."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Этот хлеб сделан утром.",
+  "en": "This bread is made in the morning.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This bread",
+    "options": [
+     "This bread",
+     "These breads"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "made",
+    "options": [
+     "made",
+     "make",
+     "makes"
+    ]
+   },
+   {
+    "correct": "in the morning.",
+    "options": [
+     "in the morning.",
+     "by the morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти дома построены в прошлом году.",
+  "en": "These houses were built last year.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These houses",
+    "options": [
+     "These houses",
+     "This house"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "are",
+     "was",
+     "is"
+    ]
+   },
+   {
+    "correct": "built",
+    "options": [
+     "built",
+     "build",
+     "builds"
+    ]
+   },
+   {
+    "correct": "last year.",
+    "options": [
+     "last year.",
+     "every year."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти письма не написаны.",
+  "en": "These letters are not written.",
+  "alternatives": [
+   "These letters aren't written."
+  ],
+  "slots": [
+   {
+    "correct": "These letters",
+    "options": [
+     "These letters",
+     "This letter"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "were not",
+     "was not"
+    ]
+   },
+   {
+    "correct": "written.",
+    "options": [
+     "written.",
+     "write.",
+     "wrote."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Этот подарок не был куплен.",
+  "en": "This present was not bought.",
+  "alternatives": [
+   "This present wasn't bought."
+  ],
+  "slots": [
+   {
+    "correct": "This present",
+    "options": [
+     "This present",
+     "These presents"
+    ]
+   },
+   {
+    "correct": "was not",
+    "options": [
+     "was not",
+     "were not",
+     "is not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "bought.",
+    "options": [
+     "bought.",
+     "buy.",
+     "buys."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Был ли этот стол сделан плотником?",
+  "en": "Was this table made by a carpenter?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Were",
+     "Is",
+     "Are"
+    ]
+   },
+   {
+    "correct": "this table",
+    "options": [
+     "this table",
+     "these tables"
+    ]
+   },
+   {
+    "correct": "made",
+    "options": [
+     "made",
+     "make",
+     "makes"
+    ]
+   },
+   {
+    "correct": "by a carpenter?",
+    "options": [
+     "by a carpenter?",
+     "in a carpenter?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти цветы куплены флористом.",
+  "en": "These flowers are bought by a florist.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These flowers",
+    "options": [
+     "These flowers",
+     "This flower"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "were",
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "bought",
+    "options": [
+     "bought",
+     "buy",
+     "buys"
+    ]
+   },
+   {
+    "correct": "by a florist.",
+    "options": [
+     "by a florist.",
+     "in a florist."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эта комната убрана рабочими.",
+  "en": "This room was cleaned by workers.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This room",
+    "options": [
+     "This room",
+     "These rooms"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "cleaned",
+    "options": [
+     "cleaned",
+     "clean",
+     "cleans"
+    ]
+   },
+   {
+    "correct": "by workers.",
+    "options": [
+     "by workers.",
+     "in workers."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Были ли эти окна открыты тобой?",
+  "en": "Were these windows opened by you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was",
+     "Are",
+     "Is"
+    ]
+   },
+   {
+    "correct": "these windows",
+    "options": [
+     "these windows",
+     "this window"
+    ]
+   },
+   {
+    "correct": "opened",
+    "options": [
+     "opened",
+     "open",
+     "opens"
+    ]
+   },
+   {
+    "correct": "by you?",
+    "options": [
+     "by you?",
+     "in you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эта машина продана дилером.",
+  "en": "This car is sold by a dealer.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This car",
+    "options": [
+     "This car",
+     "These cars"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "sold",
+    "options": [
+     "sold",
+     "sell",
+     "sells"
+    ]
+   },
+   {
+    "correct": "by a dealer.",
+    "options": [
+     "by a dealer.",
+     "in a dealer."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти вещи взяты полицией.",
+  "en": "These things were taken by police.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These things",
+    "options": [
+     "These things",
+     "This thing"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "are",
+     "was",
+     "is"
+    ]
+   },
+   {
+    "correct": "taken",
+    "options": [
+     "taken",
+     "take",
+     "takes"
+    ]
+   },
+   {
+    "correct": "by police.",
+    "options": [
+     "by police.",
+     "in police."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Они не приглашены на праздник.",
+  "en": "They are not invited to the party.",
+  "alternatives": [
+   "They aren't invited to the party."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "were not",
+     "was not"
+    ]
+   },
+   {
+    "correct": "invited",
+    "options": [
+     "invited",
+     "invite",
+     "invites"
+    ]
+   },
+   {
+    "correct": "to the party.",
+    "options": [
+     "to the party.",
+     "in the party."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эта книга найдена в библиотеке.",
+  "en": "This book was found in the library.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This book",
+    "options": [
+     "This book",
+     "These books"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "found",
+    "options": [
+     "found",
+     "find",
+     "finds"
+    ]
+   },
+   {
+    "correct": "in the library.",
+    "options": [
+     "in the library.",
+     "by the library."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Этот дом построен в прошлом году.",
+  "en": "This house was built last year.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This house",
+    "options": [
+     "This house",
+     "These houses"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "built last year.",
+    "options": [
+     "built last year.",
+     "build last year.",
+     "building last year."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Письмо не написано сегодня.",
+  "en": "The letter isn't written today.",
+  "alternatives": [
+   "The letter is not written today."
+  ],
+  "slots": [
+   {
+    "correct": "The letter",
+    "options": [
+     "The letter",
+     "The letters"
+    ]
+   },
+   {
+    "correct": "isn't",
+    "options": [
+     "isn't",
+     "aren't",
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "written today.",
+    "options": [
+     "written today.",
+     "wrote today.",
+     "write today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Были ли письма отправлены утром?",
+  "en": "Were the letters sent in the morning?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was",
+     "Are",
+     "Is"
+    ]
+   },
+   {
+    "correct": "the letters",
+    "options": [
+     "the letters",
+     "the letter"
+    ]
+   },
+   {
+    "correct": "sent in the morning?",
+    "options": [
+     "sent in the morning?",
+     "send in the morning?",
+     "sending in the morning?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Книга была куплена моим другом.",
+  "en": "The book was bought by my friend.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The book",
+    "options": [
+     "The book",
+     "The books"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "bought by my friend.",
+    "options": [
+     "bought by my friend.",
+     "buy by my friend.",
+     "buying by my friend."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Окна не были открыты рабочими.",
+  "en": "The windows weren't opened by workers.",
+  "alternatives": [
+   "The windows were not opened by workers."
+  ],
+  "slots": [
+   {
+    "correct": "The windows",
+    "options": [
+     "The windows",
+     "The window"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't",
+     "aren't",
+     "isn't"
+    ]
+   },
+   {
+    "correct": "opened by workers.",
+    "options": [
+     "opened by workers.",
+     "open by workers.",
+     "opening by workers."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Этот торт был сделан моей бабушкой.",
+  "en": "This cake was made by my grandmother.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This cake",
+    "options": [
+     "This cake",
+     "These cakes"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "made by my grandmother.",
+    "options": [
+     "made by my grandmother.",
+     "make by my grandmother.",
+     "making by my grandmother."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Фотографии не были найдены полицией.",
+  "en": "The photos weren't found by the police.",
+  "alternatives": [
+   "The photos were not found by the police."
+  ],
+  "slots": [
+   {
+    "correct": "The photos",
+    "options": [
+     "The photos",
+     "The photo"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't",
+     "aren't",
+     "isn't"
+    ]
+   },
+   {
+    "correct": "found by the police.",
+    "options": [
+     "found by the police.",
+     "find by the police.",
+     "finding by the police."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Были ли вещи взяты тобой?",
+  "en": "Were the things taken by you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was",
+     "Are",
+     "Is"
+    ]
+   },
+   {
+    "correct": "the things",
+    "options": [
+     "the things",
+     "the thing"
+    ]
+   },
+   {
+    "correct": "taken by you?",
+    "options": [
+     "taken by you?",
+     "take by you?",
+     "taking by you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Комната не убрана сейчас.",
+  "en": "The room isn't cleaned now.",
+  "alternatives": [
+   "The room is not cleaned now."
+  ],
+  "slots": [
+   {
+    "correct": "The room",
+    "options": [
+     "The room",
+     "The rooms"
+    ]
+   },
+   {
+    "correct": "isn't",
+    "options": [
+     "isn't",
+     "aren't",
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "cleaned now.",
+    "options": [
+     "cleaned now.",
+     "clean now.",
+     "cleaning now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эта машина не была куплена.",
+  "en": "This car was not bought.",
+  "alternatives": [
+   "This car wasn't bought."
+  ],
+  "slots": [
+   {
+    "correct": "This car",
+    "options": [
+     "This car",
+     "These cars"
+    ]
+   },
+   {
+    "correct": "was not",
+    "options": [
+     "was not",
+     "were not",
+     "is not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "bought.",
+    "options": [
+     "bought.",
+     "buy.",
+     "buying."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Был ли этот торт сделан поваром?",
+  "en": "Was this cake made by the chef?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Were",
+     "Is",
+     "Are"
+    ]
+   },
+   {
+    "correct": "this cake",
+    "options": [
+     "this cake",
+     "these cakes"
+    ]
+   },
+   {
+    "correct": "made",
+    "options": [
+     "made",
+     "make",
+     "making"
+    ]
+   },
+   {
+    "correct": "by the chef?",
+    "options": [
+     "by the chef?",
+     "by a chef?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Этот торт сделан поваром.",
+  "en": "This cake is made by the chef.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This cake",
+    "options": [
+     "This cake",
+     "These cakes"
+    ]
+   },
+   {
+    "correct": "is made",
+    "options": [
+     "is made",
+     "are made",
+     "was made",
+     "were made"
+    ]
+   },
+   {
+    "correct": "by the chef.",
+    "options": [
+     "by the chef.",
+     "by a chef."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти столы сделаны плотником.",
+  "en": "These tables are made by the carpenter.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These tables",
+    "options": [
+     "This table",
+     "These tables"
+    ]
+   },
+   {
+    "correct": "are made",
+    "options": [
+     "is made",
+     "are made",
+     "was made",
+     "were made"
+    ]
+   },
+   {
+    "correct": "by the carpenter.",
+    "options": [
+     "by the carpenter.",
+     "by a carpenter."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Книга была написана автором.",
+  "en": "The book was written by the author.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The book",
+    "options": [
+     "The book",
+     "The books"
+    ]
+   },
+   {
+    "correct": "was written",
+    "options": [
+     "is written",
+     "are written",
+     "was written",
+     "were written"
+    ]
+   },
+   {
+    "correct": "by the author.",
+    "options": [
+     "by the author.",
+     "by an author."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Письма были отправлены курьером.",
+  "en": "The letters were sent by the courier.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The letters",
+    "options": [
+     "The letter",
+     "The letters"
+    ]
+   },
+   {
+    "correct": "were sent",
+    "options": [
+     "is sent",
+     "are sent",
+     "was sent",
+     "were sent"
+    ]
+   },
+   {
+    "correct": "by the courier.",
+    "options": [
+     "by the courier.",
+     "by a courier."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Этот дом построен архитектором.",
+  "en": "This house was built by the architect.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This house",
+    "options": [
+     "This house",
+     "These houses"
+    ]
+   },
+   {
+    "correct": "was built",
+    "options": [
+     "is built",
+     "are built",
+     "was built",
+     "were built"
+    ]
+   },
+   {
+    "correct": "by the architect.",
+    "options": [
+     "by the architect.",
+     "by an architect."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Цветы куплены флористом.",
+  "en": "The flowers are bought by the florist.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The flowers",
+    "options": [
+     "The flower",
+     "The flowers"
+    ]
+   },
+   {
+    "correct": "are bought",
+    "options": [
+     "is bought",
+     "are bought",
+     "was bought",
+     "were bought"
+    ]
+   },
+   {
+    "correct": "by the florist.",
+    "options": [
+     "by the florist.",
+     "by a florist."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Были ли эти окна закрыты?",
+  "en": "Were these windows closed?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Is",
+     "Are",
+     "Was",
+     "Were"
+    ]
+   },
+   {
+    "correct": "these windows",
+    "options": [
+     "this window",
+     "these windows"
+    ]
+   },
+   {
+    "correct": "closed?",
+    "options": [
+     "closed?",
+     "opened?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Этот подарок взят тобой?",
+  "en": "Was this gift taken by you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Is",
+     "Are",
+     "Was",
+     "Were"
+    ]
+   },
+   {
+    "correct": "this gift",
+    "options": [
+     "this gift",
+     "these gifts"
+    ]
+   },
+   {
+    "correct": "taken by you?",
+    "options": [
+     "taken by you?",
+     "taken by him?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эта машина сделана в Японии.",
+  "en": "This car is made in Japan.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This car",
+    "options": [
+     "This car",
+     "These cars"
+    ]
+   },
+   {
+    "correct": "is made",
+    "options": [
+     "is made",
+     "are made",
+     "was made",
+     "were made"
+    ]
+   },
+   {
+    "correct": "in Japan.",
+    "options": [
+     "in Japan.",
+     "by Japan."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти дома построены в прошлом веке.",
+  "en": "These houses were built last century.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These houses",
+    "options": [
+     "These houses",
+     "This house"
+    ]
+   },
+   {
+    "correct": "were built",
+    "options": [
+     "were built",
+     "was built",
+     "are built",
+     "is built"
+    ]
+   },
+   {
+    "correct": "last century.",
+    "options": [
+     "last century.",
+     "by last century."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Письма не отправлены сегодня.",
+  "en": "The letters are not sent today.",
+  "alternatives": [
+   "The letters aren't sent today."
+  ],
+  "slots": [
+   {
+    "correct": "The letters",
+    "options": [
+     "The letters",
+     "The letter"
+    ]
+   },
+   {
+    "correct": "are not sent",
+    "options": [
+     "are not sent",
+     "is not sent",
+     "were not sent",
+     "was not sent"
+    ]
+   },
+   {
+    "correct": "today.",
+    "options": [
+     "today.",
+     "yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Был ли этот торт куплен тобой?",
+  "en": "Was this cake bought by you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Were",
+     "Is",
+     "Are"
+    ]
+   },
+   {
+    "correct": "this cake",
+    "options": [
+     "this cake",
+     "these cakes"
+    ]
+   },
+   {
+    "correct": "bought by you?",
+    "options": [
+     "bought by you?",
+     "bought you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эта комната не была убрана рабочими.",
+  "en": "This room was not cleaned by workers.",
+  "alternatives": [
+   "This room wasn't cleaned by workers."
+  ],
+  "slots": [
+   {
+    "correct": "This room",
+    "options": [
+     "This room",
+     "These rooms"
+    ]
+   },
+   {
+    "correct": "was not cleaned",
+    "options": [
+     "was not cleaned",
+     "were not cleaned",
+     "is not cleaned",
+     "are not cleaned"
+    ]
+   },
+   {
+    "correct": "by workers.",
+    "options": [
+     "by workers.",
+     "with workers."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти окна открыты моим братом.",
+  "en": "These windows are opened by my brother.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These windows",
+    "options": [
+     "These windows",
+     "This window"
+    ]
+   },
+   {
+    "correct": "are opened",
+    "options": [
+     "are opened",
+     "is opened",
+     "were opened",
+     "was opened"
+    ]
+   },
+   {
+    "correct": "by my brother.",
+    "options": [
+     "by my brother.",
+     "with my brother."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Этот подарок не куплен сейчас.",
+  "en": "This gift is not bought now.",
+  "alternatives": [
+   "This gift isn't bought now."
+  ],
+  "slots": [
+   {
+    "correct": "This gift",
+    "options": [
+     "This gift",
+     "These gifts"
+    ]
+   },
+   {
+    "correct": "is not bought",
+    "options": [
+     "is not bought",
+     "are not bought",
+     "was not bought",
+     "were not bought"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Были ли они приглашены учителем?",
+  "en": "Were they invited by the teacher?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was",
+     "Are",
+     "Is"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he"
+    ]
+   },
+   {
+    "correct": "invited by the teacher?",
+    "options": [
+     "invited by the teacher?",
+     "invited the teacher?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти столы проданы магазином.",
+  "en": "These tables are sold by the shop.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These tables",
+    "options": [
+     "These tables",
+     "This table"
+    ]
+   },
+   {
+    "correct": "are sold",
+    "options": [
+     "are sold",
+     "is sold",
+     "were sold",
+     "was sold"
+    ]
+   },
+   {
+    "correct": "by the shop.",
+    "options": [
+     "by the shop.",
+     "with the shop."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Фотография сделана моим отцом.",
+  "en": "The photo is taken by my father.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The photo",
+    "options": [
+     "The photo",
+     "The photos"
+    ]
+   },
+   {
+    "correct": "is taken",
+    "options": [
+     "is taken",
+     "are taken",
+     "was taken",
+     "were taken"
+    ]
+   },
+   {
+    "correct": "by my father.",
+    "options": [
+     "by my father.",
+     "with my father."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эта дверь не была закрыта.",
+  "en": "This door was not closed.",
+  "alternatives": [
+   "This door wasn't closed."
+  ],
+  "slots": [
+   {
+    "correct": "This door",
+    "options": [
+     "This door",
+     "These doors"
+    ]
+   },
+   {
+    "correct": "was not closed.",
+    "options": [
+     "was not closed.",
+     "were not closed.",
+     "is not closed.",
+     "are not closed."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эта машина сделана в Германии.",
+  "en": "This car is made in Germany.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This car",
+    "options": [
+     "This car",
+     "These cars"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "made in Germany.",
+    "options": [
+     "made in Germany.",
+     "built in Germany."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Письмо не было отправлено им.",
+  "en": "The letter was not sent by him.",
+  "alternatives": [
+   "The letter wasn't sent by him."
+  ],
+  "slots": [
+   {
+    "correct": "The letter",
+    "options": [
+     "The letter",
+     "The letters"
+    ]
+   },
+   {
+    "correct": "was not",
+    "options": [
+     "was not",
+     "were not",
+     "is not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "sent by him.",
+    "options": [
+     "sent by him.",
+     "written by him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Была ли эта книга найдена тобой?",
+  "en": "Was this book found by you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Were",
+     "Is",
+     "Are"
+    ]
+   },
+   {
+    "correct": "this book",
+    "options": [
+     "this book",
+     "these books"
+    ]
+   },
+   {
+    "correct": "found by you?",
+    "options": [
+     "found by you?",
+     "taken by you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти окна не открыты сейчас.",
+  "en": "These windows are not opened now.",
+  "alternatives": [
+   "These windows aren't opened now."
+  ],
+  "slots": [
+   {
+    "correct": "These windows",
+    "options": [
+     "These windows",
+     "This window"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "were not",
+     "was not"
+    ]
+   },
+   {
+    "correct": "opened now.",
+    "options": [
+     "opened now.",
+     "cleaned now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Фотография была сделана моей сестрой.",
+  "en": "The photo was taken by my sister.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The photo",
+    "options": [
+     "The photo",
+     "The photos"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "taken by my sister.",
+    "options": [
+     "taken by my sister.",
+     "made by my sister."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти вещи проданы моим братом.",
+  "en": "These things are sold by my brother.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These things",
+    "options": [
+     "These things",
+     "This thing"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "sold by my brother.",
+    "options": [
+     "sold by my brother.",
+     "bought by my brother."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Был ли этот подарок куплен ею?",
+  "en": "Was this gift bought by her?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Were",
+     "Is",
+     "Are"
+    ]
+   },
+   {
+    "correct": "this gift",
+    "options": [
+     "this gift",
+     "these gifts"
+    ]
+   },
+   {
+    "correct": "bought by her?",
+    "options": [
+     "bought by her?",
+     "sold by her?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Столы не были убраны рабочими.",
+  "en": "The tables were not cleaned by the workers.",
+  "alternatives": [
+   "The tables weren't cleaned by the workers."
+  ],
+  "slots": [
+   {
+    "correct": "The tables",
+    "options": [
+     "The tables",
+     "The table"
+    ]
+   },
+   {
+    "correct": "were not",
+    "options": [
+     "were not",
+     "was not",
+     "are not",
+     "is not"
+    ]
+   },
+   {
+    "correct": "cleaned by the workers.",
+    "options": [
+     "cleaned by the workers.",
+     "built by the workers."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эта комната убрана сегодня.",
+  "en": "This room is cleaned today.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This room",
+    "options": [
+     "This room",
+     "These rooms"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "cleaned today.",
+    "options": [
+     "cleaned today.",
+     "opened today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Книга не была написана автором.",
+  "en": "The book was not written by the author.",
+  "alternatives": [
+   "The book wasn't written by the author."
+  ],
+  "slots": [
+   {
+    "correct": "The book",
+    "options": [
+     "The book",
+     "The books"
+    ]
+   },
+   {
+    "correct": "was not",
+    "options": [
+     "was not",
+     "were not",
+     "is not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "written by the author.",
+    "options": [
+     "written by the author.",
+     "bought by the author."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эта машина сделана в 2010 году.",
+  "en": "This car was made in 2010.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This car",
+    "options": [
+     "This car",
+     "These cars"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "made in 2010.",
+    "options": [
+     "made in 2010.",
+     "built in 2010."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти столы сделаны в Италии.",
+  "en": "These tables are made in Italy.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These tables",
+    "options": [
+     "These tables",
+     "This table"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "were",
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "made in Italy.",
+    "options": [
+     "made in Italy.",
+     "sold in Italy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эта дверь не закрыта сейчас.",
+  "en": "This door isn't closed now.",
+  "alternatives": [
+   "This door is not closed now."
+  ],
+  "slots": [
+   {
+    "correct": "This door",
+    "options": [
+     "This door",
+     "These doors"
+    ]
+   },
+   {
+    "correct": "isn't",
+    "options": [
+     "isn't",
+     "aren't",
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "closed now.",
+    "options": [
+     "closed now.",
+     "opened now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти письма не были отправлены вчера.",
+  "en": "These letters weren't sent yesterday.",
+  "alternatives": [
+   "These letters were not sent yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "These letters",
+    "options": [
+     "These letters",
+     "This letter"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "isn't",
+     "aren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "sent yesterday.",
+    "options": [
+     "sent yesterday.",
+     "written yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Была ли эта книга написана автором?",
+  "en": "Was this book written by the author?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Were",
+     "Is",
+     "Are"
+    ]
+   },
+   {
+    "correct": "this book",
+    "options": [
+     "this book",
+     "these books"
+    ]
+   },
+   {
+    "correct": "written by the author?",
+    "options": [
+     "written by the author?",
+     "built by the author?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Были ли эти подарки куплены ими?",
+  "en": "Were these gifts bought by them?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was",
+     "Are",
+     "Is"
+    ]
+   },
+   {
+    "correct": "these gifts",
+    "options": [
+     "these gifts",
+     "this gift"
+    ]
+   },
+   {
+    "correct": "bought by them?",
+    "options": [
+     "bought by them?",
+     "sold by them?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Дом был построен моими родителями.",
+  "en": "The house was built by my parents.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The house",
+    "options": [
+     "The house",
+     "The houses"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "built by my parents.",
+    "options": [
+     "built by my parents.",
+     "made by my parents."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти вещи найдены полицией.",
+  "en": "These things are found by the police.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These things",
+    "options": [
+     "These things",
+     "This thing"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "were",
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "found by the police.",
+    "options": [
+     "found by the police.",
+     "taken by the police."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эта комната не была убрана сестрой.",
+  "en": "This room wasn't cleaned by my sister.",
+  "alternatives": [
+   "This room was not cleaned by my sister."
+  ],
+  "slots": [
+   {
+    "correct": "This room",
+    "options": [
+     "This room",
+     "These rooms"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't",
+     "isn't",
+     "aren't"
+    ]
+   },
+   {
+    "correct": "cleaned by my sister.",
+    "options": [
+     "cleaned by my sister.",
+     "opened by my sister."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Они приглашены моим другом.",
+  "en": "They are invited by my friend.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "were",
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "invited by my friend.",
+    "options": [
+     "invited by my friend.",
+     "taken by my friend."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Этот хлеб не был продан вчера.",
+  "en": "This bread wasn't sold yesterday.",
+  "alternatives": [
+   "This bread was not sold yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "This bread",
+    "options": [
+     "This bread",
+     "These loaves"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't",
+     "isn't",
+     "aren't"
+    ]
+   },
+   {
+    "correct": "sold yesterday.",
+    "options": [
+     "sold yesterday.",
+     "made yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Этот дом построен моими родителями.",
+  "en": "This house is built by my parents.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This house",
+    "options": [
+     "This house",
+     "These houses"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "built by my parents.",
+    "options": [
+     "built by my parents.",
+     "made by my parents."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти дома были построены моими друзьями.",
+  "en": "These houses were built by my friends.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These houses",
+    "options": [
+     "These houses",
+     "This house"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "are",
+     "was",
+     "is"
+    ]
+   },
+   {
+    "correct": "built by my friends.",
+    "options": [
+     "built by my friends.",
+     "sold by my friends."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эта книга не написана автором.",
+  "en": "This book is not written by the author.",
+  "alternatives": [
+   "This book isn't written by the author."
+  ],
+  "slots": [
+   {
+    "correct": "This book",
+    "options": [
+     "This book",
+     "These books"
+    ]
+   },
+   {
+    "correct": "is not",
+    "options": [
+     "is not",
+     "are not",
+     "was not",
+     "were not"
+    ]
+   },
+   {
+    "correct": "written by the author.",
+    "options": [
+     "written by the author.",
+     "made by the author."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти письма были написаны автором.",
+  "en": "These letters were written by the author.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These letters",
+    "options": [
+     "These letters",
+     "This letter"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "are",
+     "was",
+     "is"
+    ]
+   },
+   {
+    "correct": "written by the author.",
+    "options": [
+     "written by the author.",
+     "sent by the author."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эта машина не сделана в Италии.",
+  "en": "This car is not made in Italy.",
+  "alternatives": [
+   "This car isn't made in Italy."
+  ],
+  "slots": [
+   {
+    "correct": "This car",
+    "options": [
+     "This car",
+     "These cars"
+    ]
+   },
+   {
+    "correct": "is not",
+    "options": [
+     "is not",
+     "are not",
+     "was not",
+     "were not"
+    ]
+   },
+   {
+    "correct": "made in Italy.",
+    "options": [
+     "made in Italy.",
+     "built in Italy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти машины были сделаны в Италии.",
+  "en": "These cars were made in Italy.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These cars",
+    "options": [
+     "These cars",
+     "This car"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "are",
+     "was",
+     "is"
+    ]
+   },
+   {
+    "correct": "made in Italy.",
+    "options": [
+     "made in Italy.",
+     "sold in Italy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Был ли этот торт куплен бабушкой?",
+  "en": "Was this cake bought by grandma?",
+  "alternatives": [
+   "Was this cake bought by my grandmother?"
+  ],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Were",
+     "Is",
+     "Are"
+    ]
+   },
+   {
+    "correct": "this cake",
+    "options": [
+     "this cake",
+     "these cakes"
+    ]
+   },
+   {
+    "correct": "bought by grandma?",
+    "options": [
+     "bought by grandma?",
+     "made by grandma?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Были ли эти торты куплены бабушкой?",
+  "en": "Were these cakes bought by grandma?",
+  "alternatives": [
+   "Were these cakes bought by my grandmother?"
+  ],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was",
+     "Are",
+     "Is"
+    ]
+   },
+   {
+    "correct": "these cakes",
+    "options": [
+     "these cakes",
+     "this cake"
+    ]
+   },
+   {
+    "correct": "bought by grandma?",
+    "options": [
+     "bought by grandma?",
+     "made by grandma?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эта дверь не была открыта им.",
+  "en": "This door was not opened by him.",
+  "alternatives": [
+   "This door wasn't opened by him."
+  ],
+  "slots": [
+   {
+    "correct": "This door",
+    "options": [
+     "This door",
+     "These doors"
+    ]
+   },
+   {
+    "correct": "was not",
+    "options": [
+     "was not",
+     "were not",
+     "is not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "opened by him.",
+    "options": [
+     "opened by him.",
+     "closed by him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти двери были открыты им.",
+  "en": "These doors were opened by him.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These doors",
+    "options": [
+     "These doors",
+     "This door"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was",
+     "are",
+     "is"
+    ]
+   },
+   {
+    "correct": "opened by him.",
+    "options": [
+     "opened by him.",
+     "closed by him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Этот подарок не был найден полицией.",
+  "en": "This gift was not found by the police.",
+  "alternatives": [
+   "This gift wasn't found by the police."
+  ],
+  "slots": [
+   {
+    "correct": "This gift",
+    "options": [
+     "This gift",
+     "These gifts"
+    ]
+   },
+   {
+    "correct": "was not",
+    "options": [
+     "was not",
+     "were not",
+     "is not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "found by the police.",
+    "options": [
+     "found by the police.",
+     "taken by the police."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эти подарки были найдены полицией.",
+  "en": "These gifts were found by the police.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These gifts",
+    "options": [
+     "These gifts",
+     "This gift"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was",
+     "are",
+     "is"
+    ]
+   },
+   {
+    "correct": "found by the police.",
+    "options": [
+     "found by the police.",
+     "taken by the police."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "passive_simple",
+  "ru": "Эта машина продана моим отцом.",
+  "en": "This car is sold by my father.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This car",
+    "options": [
+     "This car",
+     "These cars"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "sold",
+    "options": [
+     "sold",
+     "sell",
+     "build",
+     "made"
+    ]
+   },
+   {
+    "correct": "by my father.",
+    "options": [
+     "by my father.",
+     "to my father."
+    ]
+   }
+  ]
+ }
+]

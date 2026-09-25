@@ -1,0 +1,4116 @@
+[
+ {
+  "topic": "do_does_questions",
+  "ru": "Она работает здесь?",
+  "en": "Does she work here?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Is",
+     "Did"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "it",
+     "they"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "works",
+     "worked",
+     "working"
+    ]
+   },
+   {
+    "correct": "here?",
+    "options": [
+     "here?",
+     "there?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он не говорит по-английски.",
+  "en": "He doesn't speak English.",
+  "alternatives": [
+   "He does not speak English."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "It",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "speak",
+    "options": [
+     "speak",
+     "speaks",
+     "spoke",
+     "speaking"
+    ]
+   },
+   {
+    "correct": "English.",
+    "options": [
+     "English.",
+     "Russian."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Где он живет?",
+  "en": "Where does he live?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Where",
+    "options": [
+     "Where",
+     "What",
+     "Why",
+     "When"
+    ]
+   },
+   {
+    "correct": "does",
+    "options": [
+     "does",
+     "do",
+     "is",
+     "did"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "she",
+     "it",
+     "they"
+    ]
+   },
+   {
+    "correct": "live?",
+    "options": [
+     "live?",
+     "lives?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не любит кофе.",
+  "en": "She doesn't like coffee.",
+  "alternatives": [
+   "She does not like coffee."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "isn't"
+    ]
+   },
+   {
+    "correct": "like",
+    "options": [
+     "like",
+     "likes",
+     "liked",
+     "liking"
+    ]
+   },
+   {
+    "correct": "coffee.",
+    "options": [
+     "coffee.",
+     "tea."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Что ты хочешь?",
+  "en": "What do you want?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "What",
+    "options": [
+     "What",
+     "Where",
+     "When",
+     "Why"
+    ]
+   },
+   {
+    "correct": "do",
+    "options": [
+     "do",
+     "does",
+     "are",
+     "did"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "want?",
+    "options": [
+     "want?",
+     "wants?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не ходит в школу.",
+  "en": "She doesn't go to school.",
+  "alternatives": [
+   "She does not go to school."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "go",
+    "options": [
+     "go",
+     "goes",
+     "went",
+     "going"
+    ]
+   },
+   {
+    "correct": "to school.",
+    "options": [
+     "to school.",
+     "home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он читает книги?",
+  "en": "Does he read books?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Is",
+     "Did"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "she",
+     "it",
+     "they"
+    ]
+   },
+   {
+    "correct": "read",
+    "options": [
+     "read",
+     "reads",
+     "reading",
+     "red"
+    ]
+   },
+   {
+    "correct": "books?",
+    "options": [
+     "books?",
+     "news?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Я не знаю его.",
+  "en": "I don't know him.",
+  "alternatives": [
+   "I do not know him."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "don't",
+    "options": [
+     "don't",
+     "doesn't",
+     "didn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "know",
+    "options": [
+     "know",
+     "knows",
+     "knew",
+     "knowing"
+    ]
+   },
+   {
+    "correct": "him.",
+    "options": [
+     "him.",
+     "her."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она помогает тебе?",
+  "en": "Does she help you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Is",
+     "Did"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "help",
+    "options": [
+     "help",
+     "helps",
+     "helped",
+     "helping"
+    ]
+   },
+   {
+    "correct": "you?",
+    "options": [
+     "you?",
+     "him?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он не играет в футбол.",
+  "en": "He doesn't play football.",
+  "alternatives": [
+   "He does not play football."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "play",
+    "options": [
+     "play",
+     "plays",
+     "played",
+     "playing"
+    ]
+   },
+   {
+    "correct": "football.",
+    "options": [
+     "football.",
+     "tennis."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Ты ешь мясо?",
+  "en": "Do you eat meat?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do",
+    "options": [
+     "Do",
+     "Does",
+     "Are",
+     "Did"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "eat",
+    "options": [
+     "eat",
+     "eats",
+     "ate",
+     "eating"
+    ]
+   },
+   {
+    "correct": "meat?",
+    "options": [
+     "meat?",
+     "fish?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не учится здесь.",
+  "en": "She doesn't study here.",
+  "alternatives": [
+   "She does not study here."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "study",
+    "options": [
+     "study",
+     "studies",
+     "studied",
+     "studying"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она начинает работу рано?",
+  "en": "Does she start work early?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Is"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "it"
+    ]
+   },
+   {
+    "correct": "start",
+    "options": [
+     "start",
+     "starts",
+     "starting"
+    ]
+   },
+   {
+    "correct": "work early?",
+    "options": [
+     "work early?",
+     "works early?",
+     "working early?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он не заканчивает работу поздно.",
+  "en": "He doesn't finish work late.",
+  "alternatives": [
+   "He does not finish work late."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "isn't"
+    ]
+   },
+   {
+    "correct": "finish",
+    "options": [
+     "finish",
+     "finishes",
+     "finished"
+    ]
+   },
+   {
+    "correct": "work late.",
+    "options": [
+     "work late.",
+     "works late.",
+     "working late."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Где она покупает еду?",
+  "en": "Where does she buy food?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Where",
+    "options": [
+     "Where",
+     "What",
+     "When"
+    ]
+   },
+   {
+    "correct": "does",
+    "options": [
+     "does",
+     "do",
+     "is"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "it"
+    ]
+   },
+   {
+    "correct": "buy food?",
+    "options": [
+     "buy food?",
+     "buys food?",
+     "buying food?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не покупает молоко.",
+  "en": "She doesn't buy milk.",
+  "alternatives": [
+   "She does not buy milk."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "isn't"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buys",
+     "buying"
+    ]
+   },
+   {
+    "correct": "milk.",
+    "options": [
+     "milk.",
+     "the milk."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он приходит сюда каждый день?",
+  "en": "Does he come here every day?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Is"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "come",
+    "options": [
+     "come",
+     "comes",
+     "coming"
+    ]
+   },
+   {
+    "correct": "here every day?",
+    "options": [
+     "here every day?",
+     "there every day?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не готовит ужин.",
+  "en": "She doesn't make dinner.",
+  "alternatives": [
+   "She does not make dinner."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "isn't"
+    ]
+   },
+   {
+    "correct": "make",
+    "options": [
+     "make",
+     "makes",
+     "making"
+    ]
+   },
+   {
+    "correct": "dinner.",
+    "options": [
+     "dinner.",
+     "a dinner."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Что он делает?",
+  "en": "What does he do?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "What",
+    "options": [
+     "What",
+     "Where",
+     "When"
+    ]
+   },
+   {
+    "correct": "does",
+    "options": [
+     "does",
+     "do",
+     "is"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "do?",
+    "options": [
+     "do?",
+     "does?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не видит тебя.",
+  "en": "She doesn't see you.",
+  "alternatives": [
+   "She does not see you."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "isn't"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "sees",
+     "seeing"
+    ]
+   },
+   {
+    "correct": "you.",
+    "options": [
+     "you.",
+     "me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она пьет чай?",
+  "en": "Does she drink tea?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Is"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "it"
+    ]
+   },
+   {
+    "correct": "drink",
+    "options": [
+     "drink",
+     "drinks",
+     "drinking"
+    ]
+   },
+   {
+    "correct": "tea?",
+    "options": [
+     "tea?",
+     "the tea?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он не нуждается в помощи.",
+  "en": "He doesn't need help.",
+  "alternatives": [
+   "He does not need help."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "isn't"
+    ]
+   },
+   {
+    "correct": "need",
+    "options": [
+     "need",
+     "needs",
+     "needing"
+    ]
+   },
+   {
+    "correct": "help.",
+    "options": [
+     "help.",
+     "some help."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Где она работает?",
+  "en": "Where does she work?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Where",
+    "options": [
+     "Where",
+     "What",
+     "When"
+    ]
+   },
+   {
+    "correct": "does",
+    "options": [
+     "does",
+     "do",
+     "is"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "it"
+    ]
+   },
+   {
+    "correct": "work?",
+    "options": [
+     "work?",
+     "works?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не знает ответ.",
+  "en": "She doesn't know the answer.",
+  "alternatives": [
+   "She does not know the answer."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "isn't"
+    ]
+   },
+   {
+    "correct": "know",
+    "options": [
+     "know",
+     "knows",
+     "knowing"
+    ]
+   },
+   {
+    "correct": "the answer.",
+    "options": [
+     "the answer.",
+     "an answer."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она много работает?",
+  "en": "Does she work a lot?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Is"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "works",
+     "worked"
+    ]
+   },
+   {
+    "correct": "a lot?",
+    "options": [
+     "a lot?",
+     "much?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он не работает здесь.",
+  "en": "He doesn't work here.",
+  "alternatives": [
+   "He does not work here."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "works",
+     "working"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Где он работает?",
+  "en": "Where does he work?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Where",
+    "options": [
+     "Where",
+     "What",
+     "Why"
+    ]
+   },
+   {
+    "correct": "does",
+    "options": [
+     "does",
+     "do",
+     "is"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "she",
+     "you"
+    ]
+   },
+   {
+    "correct": "work?",
+    "options": [
+     "work?",
+     "works?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не живет в городе.",
+  "en": "She doesn't live in the city.",
+  "alternatives": [
+   "She does not live in the city."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "It"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "live",
+    "options": [
+     "live",
+     "lives",
+     "living"
+    ]
+   },
+   {
+    "correct": "in the city.",
+    "options": [
+     "in the city.",
+     "here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она знает его?",
+  "en": "Does she know him?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Is"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "it"
+    ]
+   },
+   {
+    "correct": "know",
+    "options": [
+     "know",
+     "knows",
+     "knew"
+    ]
+   },
+   {
+    "correct": "him?",
+    "options": [
+     "him?",
+     "her?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он не хочет кофе.",
+  "en": "He doesn't want coffee.",
+  "alternatives": [
+   "He does not want coffee."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "want",
+    "options": [
+     "want",
+     "wants",
+     "wanted"
+    ]
+   },
+   {
+    "correct": "coffee.",
+    "options": [
+     "coffee.",
+     "tea."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она видит его?",
+  "en": "Does she see him?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Is"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "you"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "sees",
+     "saw"
+    ]
+   },
+   {
+    "correct": "him?",
+    "options": [
+     "him?",
+     "me?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он не читает книги.",
+  "en": "He doesn't read books.",
+  "alternatives": [
+   "He does not read books."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "read",
+    "options": [
+     "read",
+     "reads",
+     "reading"
+    ]
+   },
+   {
+    "correct": "books.",
+    "options": [
+     "books.",
+     "a book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он не ест мясо.",
+  "en": "He doesn't eat meat.",
+  "alternatives": [
+   "He does not eat meat."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "eat",
+    "options": [
+     "eat",
+     "eats",
+     "ate"
+    ]
+   },
+   {
+    "correct": "meat.",
+    "options": [
+     "meat.",
+     "fish."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Где она покупает молоко?",
+  "en": "Where does she buy milk?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Where",
+    "options": [
+     "Where",
+     "What",
+     "Why"
+    ]
+   },
+   {
+    "correct": "does",
+    "options": [
+     "does",
+     "do",
+     "is"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "you"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buys",
+     "bought"
+    ]
+   },
+   {
+    "correct": "milk?",
+    "options": [
+     "milk?",
+     "food?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он не делает это.",
+  "en": "He doesn't do it.",
+  "alternatives": [
+   "He does not do it."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "do",
+    "options": [
+     "do",
+     "does",
+     "did"
+    ]
+   },
+   {
+    "correct": "it.",
+    "options": [
+     "it.",
+     "this."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Ты пьешь молоко?",
+  "en": "Do you drink milk?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do",
+    "options": [
+     "Do",
+     "Does",
+     "Don't",
+     "Doesn't"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he",
+     "it"
+    ]
+   },
+   {
+    "correct": "drink",
+    "options": [
+     "drink",
+     "drinks",
+     "drinking",
+     "drank"
+    ]
+   },
+   {
+    "correct": "milk?",
+    "options": [
+     "milk?",
+     "the milk?",
+     "some milk?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не пьет кофе.",
+  "en": "She doesn't drink coffee.",
+  "alternatives": [
+   "She does not drink coffee."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "does",
+     "do"
+    ]
+   },
+   {
+    "correct": "drink",
+    "options": [
+     "drink",
+     "drinks",
+     "drinking",
+     "drank"
+    ]
+   },
+   {
+    "correct": "coffee.",
+    "options": [
+     "coffee.",
+     "the coffee.",
+     "a coffee."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Где она учится?",
+  "en": "Where does she study?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Where",
+    "options": [
+     "Where",
+     "What",
+     "When"
+    ]
+   },
+   {
+    "correct": "does",
+    "options": [
+     "does",
+     "do",
+     "doesn't",
+     "don't"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "study?",
+    "options": [
+     "study?",
+     "studies?",
+     "studying?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он не начинает рано.",
+  "en": "He doesn't start early.",
+  "alternatives": [
+   "He does not start early."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "You",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "does",
+     "do"
+    ]
+   },
+   {
+    "correct": "start",
+    "options": [
+     "start",
+     "starts",
+     "starting",
+     "started"
+    ]
+   },
+   {
+    "correct": "early.",
+    "options": [
+     "early.",
+     "now.",
+     "today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Я не покупаю книги.",
+  "en": "I don't buy books.",
+  "alternatives": [
+   "I do not buy books."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "He",
+     "It"
+    ]
+   },
+   {
+    "correct": "don't",
+    "options": [
+     "don't",
+     "doesn't",
+     "do",
+     "does"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buys",
+     "buying",
+     "bought"
+    ]
+   },
+   {
+    "correct": "books.",
+    "options": [
+     "books.",
+     "the books.",
+     "a book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не делает это.",
+  "en": "She doesn't do it.",
+  "alternatives": [
+   "She does not do it."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "does",
+     "do"
+    ]
+   },
+   {
+    "correct": "do",
+    "options": [
+     "do",
+     "does",
+     "doing",
+     "did"
+    ]
+   },
+   {
+    "correct": "it.",
+    "options": [
+     "it.",
+     "that.",
+     "this."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Что он хочет?",
+  "en": "What does he want?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "What",
+    "options": [
+     "What",
+     "Where",
+     "When"
+    ]
+   },
+   {
+    "correct": "does",
+    "options": [
+     "does",
+     "do",
+     "doesn't",
+     "don't"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "want?",
+    "options": [
+     "want?",
+     "wants?",
+     "wanting?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не помогает мне.",
+  "en": "She doesn't help me.",
+  "alternatives": [
+   "She does not help me."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "does",
+     "do"
+    ]
+   },
+   {
+    "correct": "help",
+    "options": [
+     "help",
+     "helps",
+     "helping",
+     "helped"
+    ]
+   },
+   {
+    "correct": "me.",
+    "options": [
+     "me.",
+     "him.",
+     "her."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Ты играешь здесь?",
+  "en": "Do you play here?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do",
+    "options": [
+     "Do",
+     "Does",
+     "Don't",
+     "Doesn't"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he",
+     "it"
+    ]
+   },
+   {
+    "correct": "play",
+    "options": [
+     "play",
+     "plays",
+     "playing",
+     "played"
+    ]
+   },
+   {
+    "correct": "here?",
+    "options": [
+     "here?",
+     "there?",
+     "today?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Ты не работаешь здесь.",
+  "en": "You don't work here.",
+  "alternatives": [
+   "You do not work here."
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "She",
+     "He",
+     "It"
+    ]
+   },
+   {
+    "correct": "don't",
+    "options": [
+     "don't",
+     "doesn't",
+     "didn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "work here.",
+    "options": [
+     "work here.",
+     "works here.",
+     "working here.",
+     "worked here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не работает здесь.",
+  "en": "She doesn't work here.",
+  "alternatives": [
+   "She does not work here."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "work here.",
+    "options": [
+     "work here.",
+     "works here.",
+     "working here.",
+     "worked here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она любит музыку?",
+  "en": "Does she like music?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Is",
+     "Did"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "like music?",
+    "options": [
+     "like music?",
+     "likes music?",
+     "liking music?",
+     "liked music?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Ты знаешь его?",
+  "en": "Do you know him?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do",
+    "options": [
+     "Do",
+     "Does",
+     "Is",
+     "Did"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "know him?",
+    "options": [
+     "know him?",
+     "knows him?",
+     "knowing him?",
+     "knew him?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не читает книги.",
+  "en": "She doesn't read books.",
+  "alternatives": [
+   "She does not read books."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "You",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "read books.",
+    "options": [
+     "read books.",
+     "reads books.",
+     "reading books.",
+     "readed books."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он не хочет есть.",
+  "en": "He doesn't want to eat.",
+  "alternatives": [
+   "He does not want to eat."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "want to eat.",
+    "options": [
+     "want to eat.",
+     "wants to eat.",
+     "wanting to eat.",
+     "wanted to eat."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не пьет молоко.",
+  "en": "She doesn't drink milk.",
+  "alternatives": [
+   "She does not drink milk."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "drink milk.",
+    "options": [
+     "drink milk.",
+     "drinks milk.",
+     "drinking milk.",
+     "drank milk."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она делает это?",
+  "en": "Does she do it?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Is",
+     "Did"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "do it?",
+    "options": [
+     "do it?",
+     "does it?",
+     "doing it?",
+     "did it?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Что она покупает?",
+  "en": "What does she buy?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "What",
+    "options": [
+     "What",
+     "Where",
+     "When",
+     "Why"
+    ]
+   },
+   {
+    "correct": "does",
+    "options": [
+     "does",
+     "do",
+     "is",
+     "did"
+    ]
+   },
+   {
+    "correct": "she buy?",
+    "options": [
+     "she buy?",
+     "she buys?",
+     "she buying?",
+     "she bought?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он не начинает работу.",
+  "en": "He doesn't start work.",
+  "alternatives": [
+   "He does not start work."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "start work.",
+    "options": [
+     "start work.",
+     "starts work.",
+     "starting work.",
+     "started work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он нуждается в помощи?",
+  "en": "Does he need help?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Is",
+     "Has"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "need help?",
+    "options": [
+     "need help?",
+     "needs help?",
+     "needing help?",
+     "needed help?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не учит английский.",
+  "en": "She doesn't study English.",
+  "alternatives": [
+   "She does not study English."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "isn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "study English.",
+    "options": [
+     "study English.",
+     "studies English.",
+     "studying English.",
+     "studied English."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не пьет воду.",
+  "en": "She doesn't drink water.",
+  "alternatives": [
+   "She does not drink water."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "We",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "isn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "drink water.",
+    "options": [
+     "drink water.",
+     "drinks water.",
+     "drinking water.",
+     "drank water."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она начинает работу?",
+  "en": "Does she start work?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Is",
+     "Has"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "start work?",
+    "options": [
+     "start work?",
+     "starts work?",
+     "starting work?",
+     "started work?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не заканчивает рано.",
+  "en": "She doesn't finish early.",
+  "alternatives": [
+   "She does not finish early."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "You",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "isn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "finish early.",
+    "options": [
+     "finish early.",
+     "finishes early.",
+     "finishing early.",
+     "finished early."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он идет в школу?",
+  "en": "Does he go to school?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Is",
+     "Has"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "go to school?",
+    "options": [
+     "go to school?",
+     "goes to school?",
+     "going to school?",
+     "gone to school?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он приходит сюда?",
+  "en": "Does he come here?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Is",
+     "Has"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "come here?",
+    "options": [
+     "come here?",
+     "comes here?",
+     "coming here?",
+     "came here?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не любит музыку.",
+  "en": "She doesn't like music.",
+  "alternatives": [
+   "She does not like music."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "You",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "isn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "like music.",
+    "options": [
+     "like music.",
+     "likes music.",
+     "liking music.",
+     "liked music."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не работает по субботам.",
+  "en": "She doesn't work on Saturdays.",
+  "alternatives": [
+   "She does not work on Saturdays."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "does"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "works",
+     "worked",
+     "working"
+    ]
+   },
+   {
+    "correct": "on Saturdays.",
+    "options": [
+     "on Saturdays.",
+     "at Saturdays."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не нуждается в помощи.",
+  "en": "She doesn't need help.",
+  "alternatives": [
+   "She does not need help."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "It",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "does"
+    ]
+   },
+   {
+    "correct": "need",
+    "options": [
+     "need",
+     "needs",
+     "needed",
+     "needing"
+    ]
+   },
+   {
+    "correct": "help.",
+    "options": [
+     "help.",
+     "the help."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не делает это каждое утро.",
+  "en": "She doesn't do it every morning.",
+  "alternatives": [
+   "She does not do it every morning."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "does"
+    ]
+   },
+   {
+    "correct": "do",
+    "options": [
+     "do",
+     "does",
+     "did",
+     "doing"
+    ]
+   },
+   {
+    "correct": "it every morning.",
+    "options": [
+     "it every morning.",
+     "it in morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не видит их здесь.",
+  "en": "She doesn't see them here.",
+  "alternatives": [
+   "She does not see them here."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "does"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "sees",
+     "saw",
+     "seeing"
+    ]
+   },
+   {
+    "correct": "them here.",
+    "options": [
+     "them here.",
+     "him here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не заканчивает работу рано.",
+  "en": "She doesn't finish work early.",
+  "alternatives": [
+   "She does not finish work early."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "does"
+    ]
+   },
+   {
+    "correct": "finish",
+    "options": [
+     "finish",
+     "finishes",
+     "finished",
+     "finishing"
+    ]
+   },
+   {
+    "correct": "work early.",
+    "options": [
+     "work early.",
+     "the work early."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Где она живет сейчас?",
+  "en": "Where does she live now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Where",
+    "options": [
+     "Where",
+     "What",
+     "When"
+    ]
+   },
+   {
+    "correct": "does",
+    "options": [
+     "does",
+     "do",
+     "did"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "it",
+     "they"
+    ]
+   },
+   {
+    "correct": "live now?",
+    "options": [
+     "live now?",
+     "lives now?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Что она покупает в магазине?",
+  "en": "What does she buy at the store?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "What",
+    "options": [
+     "What",
+     "Where",
+     "When"
+    ]
+   },
+   {
+    "correct": "does",
+    "options": [
+     "does",
+     "do",
+     "did"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "it",
+     "they"
+    ]
+   },
+   {
+    "correct": "buy at the store?",
+    "options": [
+     "buy at the store?",
+     "buys at the store?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она приходит сюда вовремя?",
+  "en": "Does she come here on time?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Did"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "come",
+    "options": [
+     "come",
+     "comes",
+     "came",
+     "coming"
+    ]
+   },
+   {
+    "correct": "here on time?",
+    "options": [
+     "here on time?",
+     "here in time?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она изучает английский здесь?",
+  "en": "Does she study English here?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Did"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "study",
+    "options": [
+     "study",
+     "studies",
+     "studied",
+     "studying"
+    ]
+   },
+   {
+    "correct": "English here?",
+    "options": [
+     "English here?",
+     "the English here?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она хочет пить воду?",
+  "en": "Does she want to drink water?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Did"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "it",
+     "they"
+    ]
+   },
+   {
+    "correct": "want to drink",
+    "options": [
+     "want to drink",
+     "wants to drink",
+     "want drink"
+    ]
+   },
+   {
+    "correct": "water?",
+    "options": [
+     "water?",
+     "the water?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она видит его каждый день?",
+  "en": "Does she see him every day?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Did"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "it",
+     "they"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "sees",
+     "saw",
+     "seeing"
+    ]
+   },
+   {
+    "correct": "him every day?",
+    "options": [
+     "him every day?",
+     "him daily?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Где она живет?",
+  "en": "Where does she live?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Where",
+    "options": [
+     "Where",
+     "What",
+     "When",
+     "Why"
+    ]
+   },
+   {
+    "correct": "does",
+    "options": [
+     "does",
+     "do",
+     "is",
+     "did"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "you",
+     "they"
+    ]
+   },
+   {
+    "correct": "live?",
+    "options": [
+     "live?",
+     "lives?",
+     "living?",
+     "lived?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Что она хочет?",
+  "en": "What does she want?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "What",
+    "options": [
+     "What",
+     "Where",
+     "When",
+     "Who"
+    ]
+   },
+   {
+    "correct": "does",
+    "options": [
+     "does",
+     "do",
+     "did",
+     "is"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "it",
+     "you",
+     "we"
+    ]
+   },
+   {
+    "correct": "want?",
+    "options": [
+     "want?",
+     "wants?",
+     "wanted?",
+     "wanting?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Где ты работаешь?",
+  "en": "Where do you work?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Where",
+    "options": [
+     "Where",
+     "What",
+     "When",
+     "Why"
+    ]
+   },
+   {
+    "correct": "do",
+    "options": [
+     "do",
+     "does",
+     "did",
+     "is"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "work?",
+    "options": [
+     "work?",
+     "works?",
+     "worked?",
+     "working?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Что ты хочешь купить?",
+  "en": "What do you want to buy?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "What",
+    "options": [
+     "What",
+     "Where",
+     "When",
+     "Who"
+    ]
+   },
+   {
+    "correct": "do",
+    "options": [
+     "do",
+     "does",
+     "did",
+     "is"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "want to buy?",
+    "options": [
+     "want to buy?",
+     "wants to buy?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не говорит по-английски.",
+  "en": "She doesn't speak English.",
+  "alternatives": [
+   "She does not speak English."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "isn't"
+    ]
+   },
+   {
+    "correct": "speak",
+    "options": [
+     "speak",
+     "speaks",
+     "spoke",
+     "speaking"
+    ]
+   },
+   {
+    "correct": "English.",
+    "options": [
+     "English.",
+     "the English."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Что они делают?",
+  "en": "What do they do?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "What",
+    "options": [
+     "What",
+     "Where",
+     "When",
+     "Why"
+    ]
+   },
+   {
+    "correct": "do",
+    "options": [
+     "do",
+     "does",
+     "are",
+     "did"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "we",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "do?",
+    "options": [
+     "do?",
+     "does?",
+     "did?",
+     "doing?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не покупает яблоки.",
+  "en": "She doesn't buy apples.",
+  "alternatives": [
+   "She does not buy apples."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buys",
+     "bought",
+     "buying"
+    ]
+   },
+   {
+    "correct": "apples.",
+    "options": [
+     "apples.",
+     "milk.",
+     "tea."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он не хочет играть.",
+  "en": "He doesn't want to play.",
+  "alternatives": [
+   "He does not want to play."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "want",
+    "options": [
+     "want",
+     "wants",
+     "wanted",
+     "wanting"
+    ]
+   },
+   {
+    "correct": "to play.",
+    "options": [
+     "to play.",
+     "play.",
+     "plays.",
+     "playing."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он часто ест здесь?",
+  "en": "Does he eat here often?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Is",
+     "Did"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "she",
+     "they",
+     "it"
+    ]
+   },
+   {
+    "correct": "eat",
+    "options": [
+     "eat",
+     "eats",
+     "ate",
+     "eating"
+    ]
+   },
+   {
+    "correct": "here often?",
+    "options": [
+     "here often?",
+     "often here?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не говорит по-французски.",
+  "en": "She doesn't speak French.",
+  "alternatives": [
+   "She does not speak French."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "speak",
+    "options": [
+     "speak",
+     "speaks",
+     "spoke",
+     "speaking"
+    ]
+   },
+   {
+    "correct": "French.",
+    "options": [
+     "French.",
+     "English.",
+     "music."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Где он живет сейчас?",
+  "en": "Where does he live now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Where",
+    "options": [
+     "Where",
+     "What",
+     "When",
+     "Why"
+    ]
+   },
+   {
+    "correct": "does",
+    "options": [
+     "does",
+     "do",
+     "did",
+     "is"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "she",
+     "it",
+     "they"
+    ]
+   },
+   {
+    "correct": "live",
+    "options": [
+     "live",
+     "lives",
+     "lived",
+     "living"
+    ]
+   },
+   {
+    "correct": "now?",
+    "options": [
+     "now?",
+     "here?",
+     "there?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не покупает хлеб.",
+  "en": "She doesn't buy bread.",
+  "alternatives": [
+   "She does not buy bread."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buys",
+     "bought"
+    ]
+   },
+   {
+    "correct": "bread.",
+    "options": [
+     "bread.",
+     "milk.",
+     "meat."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он не играет здесь.",
+  "en": "He doesn't play here.",
+  "alternatives": [
+   "He does not play here."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "play",
+    "options": [
+     "play",
+     "plays",
+     "played"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there.",
+     "outside."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она работает в офисе?",
+  "en": "Does she work in an office?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Does",
+    "options": [
+     "Does",
+     "Do",
+     "Did"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "it"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "works",
+     "worked"
+    ]
+   },
+   {
+    "correct": "in an office?",
+    "options": [
+     "in an office?",
+     "at home?",
+     "there?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не ест яблоки.",
+  "en": "She doesn't eat apples.",
+  "alternatives": [
+   "She does not eat apples."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "eat",
+    "options": [
+     "eat",
+     "eats",
+     "ate"
+    ]
+   },
+   {
+    "correct": "apples.",
+    "options": [
+     "apples.",
+     "meat.",
+     "fish."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Что он делает дома?",
+  "en": "What does he do at home?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "What",
+    "options": [
+     "What",
+     "Where",
+     "Why"
+    ]
+   },
+   {
+    "correct": "does",
+    "options": [
+     "does",
+     "do",
+     "did"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "do",
+    "options": [
+     "do",
+     "does",
+     "did"
+    ]
+   },
+   {
+    "correct": "at home?",
+    "options": [
+     "at home?",
+     "there?",
+     "here?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не идет в школу.",
+  "en": "She doesn't go to school.",
+  "alternatives": [
+   "She does not go to school."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "go",
+    "options": [
+     "go",
+     "goes",
+     "went"
+    ]
+   },
+   {
+    "correct": "to school.",
+    "options": [
+     "to school.",
+     "to work.",
+     "home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Ты не знаешь его?",
+  "en": "Don't you know him?",
+  "alternatives": [
+   "Do you not know him?"
+  ],
+  "slots": [
+   {
+    "correct": "Don't",
+    "options": [
+     "Don't",
+     "Doesn't",
+     "Didn't"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "know",
+    "options": [
+     "know",
+     "knows",
+     "knew"
+    ]
+   },
+   {
+    "correct": "him?",
+    "options": [
+     "him?",
+     "her?",
+     "them?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не видит их.",
+  "en": "She doesn't see them.",
+  "alternatives": [
+   "She does not see them."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "sees",
+     "saw"
+    ]
+   },
+   {
+    "correct": "them.",
+    "options": [
+     "them.",
+     "him.",
+     "her."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не знает его.",
+  "en": "She doesn't know him.",
+  "alternatives": [
+   "She does not know him."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "know",
+    "options": [
+     "know",
+     "knows",
+     "knowing"
+    ]
+   },
+   {
+    "correct": "him.",
+    "options": [
+     "him.",
+     "her."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он не говорит по-русски.",
+  "en": "He doesn't speak Russian.",
+  "alternatives": [
+   "He does not speak Russian."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't"
+    ]
+   },
+   {
+    "correct": "speak",
+    "options": [
+     "speak",
+     "speaks",
+     "speaking"
+    ]
+   },
+   {
+    "correct": "Russian.",
+    "options": [
+     "Russian.",
+     "English."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не делает это дома.",
+  "en": "She doesn't do it at home.",
+  "alternatives": [
+   "She does not do it at home."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "We"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't"
+    ]
+   },
+   {
+    "correct": "do",
+    "options": [
+     "do",
+     "does"
+    ]
+   },
+   {
+    "correct": "it at home.",
+    "options": [
+     "it at home.",
+     "it here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Что она делает здесь?",
+  "en": "What does she do here?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "What",
+    "options": [
+     "What",
+     "Where"
+    ]
+   },
+   {
+    "correct": "does",
+    "options": [
+     "does",
+     "do"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "you"
+    ]
+   },
+   {
+    "correct": "do",
+    "options": [
+     "do",
+     "does"
+    ]
+   },
+   {
+    "correct": "here?",
+    "options": [
+     "here?",
+     "there?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Он не хочет это покупать.",
+  "en": "He doesn't want to buy it.",
+  "alternatives": [
+   "He does not want to buy it."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't"
+    ]
+   },
+   {
+    "correct": "want",
+    "options": [
+     "want",
+     "wants"
+    ]
+   },
+   {
+    "correct": "to buy it.",
+    "options": [
+     "to buy it.",
+     "to eat it."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не видит их сейчас.",
+  "en": "She doesn't see them now.",
+  "alternatives": [
+   "She does not see them now."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "sees"
+    ]
+   },
+   {
+    "correct": "them now.",
+    "options": [
+     "them now.",
+     "him now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Она не учит французский.",
+  "en": "She doesn't study French.",
+  "alternatives": [
+   "She does not study French."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "doesn't",
+    "options": [
+     "doesn't",
+     "don't",
+     "didn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "study",
+    "options": [
+     "study",
+     "studies",
+     "studied",
+     "studying"
+    ]
+   },
+   {
+    "correct": "French.",
+    "options": [
+     "French.",
+     "English."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "do_does_questions",
+  "ru": "Где он играет?",
+  "en": "Where does he play?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Where",
+    "options": [
+     "Where",
+     "What",
+     "When",
+     "Why"
+    ]
+   },
+   {
+    "correct": "does",
+    "options": [
+     "does",
+     "do",
+     "is",
+     "did"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "she",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "play?",
+    "options": [
+     "play?",
+     "plays?",
+     "played?",
+     "playing?"
+    ]
+   }
+  ]
+ }
+]

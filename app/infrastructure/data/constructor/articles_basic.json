@@ -1,0 +1,3283 @@
+[
+ {
+  "topic": "articles_basic",
+  "ru": "Я купил книгу. Книга интересная.",
+  "en": "I bought a book. The book is interesting.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I bought",
+    "options": [
+     "I bought",
+     "I buy"
+    ]
+   },
+   {
+    "correct": "a book.",
+    "options": [
+     "a book.",
+     "the book."
+    ]
+   },
+   {
+    "correct": "The book",
+    "options": [
+     "The book",
+     "A book"
+    ]
+   },
+   {
+    "correct": "is interesting.",
+    "options": [
+     "is interesting.",
+     "was interesting."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Это яблоко. Яблоко красное.",
+  "en": "This is an apple. The apple is red.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "It is"
+    ]
+   },
+   {
+    "correct": "an apple.",
+    "options": [
+     "an apple.",
+     "a apple."
+    ]
+   },
+   {
+    "correct": "The apple",
+    "options": [
+     "The apple",
+     "An apple"
+    ]
+   },
+   {
+    "correct": "is red.",
+    "options": [
+     "is red.",
+     "are red."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "У меня есть машина. Машина новая.",
+  "en": "I have a car. The car is new.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I has"
+    ]
+   },
+   {
+    "correct": "a car.",
+    "options": [
+     "a car.",
+     "the car."
+    ]
+   },
+   {
+    "correct": "The car",
+    "options": [
+     "The car",
+     "A car"
+    ]
+   },
+   {
+    "correct": "is new.",
+    "options": [
+     "is new.",
+     "are new."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я вижу дом. Дом большой.",
+  "en": "I see a house. The house is big.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I see",
+    "options": [
+     "I see",
+     "I saw"
+    ]
+   },
+   {
+    "correct": "a house.",
+    "options": [
+     "a house.",
+     "an house."
+    ]
+   },
+   {
+    "correct": "The house",
+    "options": [
+     "The house",
+     "A house"
+    ]
+   },
+   {
+    "correct": "is big.",
+    "options": [
+     "is big.",
+     "are big."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Она съела яблоко за час.",
+  "en": "She ate an apple in an hour.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She ate",
+    "options": [
+     "She ate",
+     "She eat"
+    ]
+   },
+   {
+    "correct": "an apple",
+    "options": [
+     "an apple",
+     "a apple"
+    ]
+   },
+   {
+    "correct": "in",
+    "options": [
+     "in",
+     "at"
+    ]
+   },
+   {
+    "correct": "an hour.",
+    "options": [
+     "an hour.",
+     "a hour."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я люблю музыку.",
+  "en": "I like music.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I like",
+    "options": [
+     "I like",
+     "I likes"
+    ]
+   },
+   {
+    "correct": "music.",
+    "options": [
+     "music.",
+     "the music."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Кошки очень милые.",
+  "en": "Cats are nice.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Cats",
+    "options": [
+     "Cats",
+     "The cats"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is"
+    ]
+   },
+   {
+    "correct": "nice.",
+    "options": [
+     "nice.",
+     "a nice."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Солнце светит ярко.",
+  "en": "The sun shines brightly.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The sun",
+    "options": [
+     "The sun",
+     "A sun"
+    ]
+   },
+   {
+    "correct": "shines",
+    "options": [
+     "shines",
+     "shine"
+    ]
+   },
+   {
+    "correct": "brightly.",
+    "options": [
+     "brightly.",
+     "bright."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Луна красивая ночью.",
+  "en": "The moon is beautiful at night.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The moon",
+    "options": [
+     "The moon",
+     "A moon"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "beautiful at night.",
+    "options": [
+     "beautiful at night.",
+     "the beautiful at night."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Они идут в школу.",
+  "en": "They go to school.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They go",
+    "options": [
+     "They go",
+     "They goes"
+    ]
+   },
+   {
+    "correct": "to",
+    "options": [
+     "to",
+     "at"
+    ]
+   },
+   {
+    "correct": "school.",
+    "options": [
+     "school.",
+     "the school."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Мне нужна вода.",
+  "en": "I need water.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I need",
+    "options": [
+     "I need",
+     "I needs"
+    ]
+   },
+   {
+    "correct": "water.",
+    "options": [
+     "water.",
+     "a water."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я посмотрел фильм.",
+  "en": "I watched a film.",
+  "alternatives": [
+   "I watched the film."
+  ],
+  "slots": [
+   {
+    "correct": "I watched",
+    "options": [
+     "I watched",
+     "I watch"
+    ]
+   },
+   {
+    "correct": "a",
+    "options": [
+     "a",
+     "the"
+    ]
+   },
+   {
+    "correct": "film.",
+    "options": [
+     "film.",
+     "films."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "У меня есть собака. Собака добрая.",
+  "en": "I have a dog. The dog is kind.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I am",
+     "I see"
+    ]
+   },
+   {
+    "correct": "a dog.",
+    "options": [
+     "a dog.",
+     "the dog.",
+     "an dog."
+    ]
+   },
+   {
+    "correct": "The dog",
+    "options": [
+     "The dog",
+     "A dog",
+     "An dog"
+    ]
+   },
+   {
+    "correct": "is kind.",
+    "options": [
+     "is kind.",
+     "are kind.",
+     "be kind."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Он читает книгу. Книга очень старая.",
+  "en": "He reads a book. The book is old.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He reads",
+    "options": [
+     "He reads",
+     "He read",
+     "He is reading"
+    ]
+   },
+   {
+    "correct": "a book.",
+    "options": [
+     "a book.",
+     "the book.",
+     "an book."
+    ]
+   },
+   {
+    "correct": "The book",
+    "options": [
+     "The book",
+     "A book",
+     "An book"
+    ]
+   },
+   {
+    "correct": "is old.",
+    "options": [
+     "is old.",
+     "are old.",
+     "was old."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я купил машину. Машина быстрая.",
+  "en": "I bought a car. The car is fast.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I bought",
+    "options": [
+     "I bought",
+     "I buy",
+     "I am buying"
+    ]
+   },
+   {
+    "correct": "a car.",
+    "options": [
+     "a car.",
+     "the car.",
+     "an car."
+    ]
+   },
+   {
+    "correct": "The car",
+    "options": [
+     "The car",
+     "A car",
+     "An car"
+    ]
+   },
+   {
+    "correct": "is fast.",
+    "options": [
+     "is fast.",
+     "are fast.",
+     "was fast."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Это был интересный фильм.",
+  "en": "It was an interesting film.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It was",
+    "options": [
+     "It was",
+     "It is",
+     "It were"
+    ]
+   },
+   {
+    "correct": "an",
+    "options": [
+     "an",
+     "a",
+     "the"
+    ]
+   },
+   {
+    "correct": "interesting film.",
+    "options": [
+     "interesting film.",
+     "interesting book.",
+     "interesting car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Она ждала целый час.",
+  "en": "She waited an hour.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She waited",
+    "options": [
+     "She waited",
+     "She wait",
+     "She waits"
+    ]
+   },
+   {
+    "correct": "an",
+    "options": [
+     "an",
+     "a",
+     "the"
+    ]
+   },
+   {
+    "correct": "hour.",
+    "options": [
+     "hour.",
+     "day.",
+     "week."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Мне нравится вода.",
+  "en": "I like water.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I like",
+    "options": [
+     "I like",
+     "I like a",
+     "I like the"
+    ]
+   },
+   {
+    "correct": "water.",
+    "options": [
+     "water.",
+     "a water.",
+     "the water."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Луна сегодня очень яркая.",
+  "en": "The moon is very bright today.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The",
+    "options": [
+     "The",
+     "A",
+     "An"
+    ]
+   },
+   {
+    "correct": "moon is",
+    "options": [
+     "moon is",
+     "moon are",
+     "sun is"
+    ]
+   },
+   {
+    "correct": "very bright today.",
+    "options": [
+     "very bright today.",
+     "very cold today.",
+     "very old today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я вижу дом и машину.",
+  "en": "I see a house and a car.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I see",
+    "options": [
+     "I see",
+     "I saw",
+     "I look"
+    ]
+   },
+   {
+    "correct": "a house",
+    "options": [
+     "a house",
+     "the house",
+     "an house"
+    ]
+   },
+   {
+    "correct": "and",
+    "options": [
+     "and",
+     "or",
+     "but"
+    ]
+   },
+   {
+    "correct": "a car.",
+    "options": [
+     "a car.",
+     "the car.",
+     "an car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Собаки любят бегать.",
+  "en": "Dogs like to run.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Dogs",
+    "options": [
+     "Dogs",
+     "The dogs",
+     "A dogs"
+    ]
+   },
+   {
+    "correct": "like to",
+    "options": [
+     "like to",
+     "likes to",
+     "are like to"
+    ]
+   },
+   {
+    "correct": "run.",
+    "options": [
+     "run.",
+     "eat.",
+     "sleep."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Он идет в школу.",
+  "en": "He goes to school.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He goes",
+    "options": [
+     "He goes",
+     "He go",
+     "He is go"
+    ]
+   },
+   {
+    "correct": "to",
+    "options": [
+     "to",
+     "to a",
+     "to the"
+    ]
+   },
+   {
+    "correct": "school.",
+    "options": [
+     "school.",
+     "the school.",
+     "a school."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Мы съели яблоко.",
+  "en": "We ate an apple.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We ate",
+    "options": [
+     "We ate",
+     "We eat",
+     "We are eating"
+    ]
+   },
+   {
+    "correct": "an",
+    "options": [
+     "an",
+     "a",
+     "the"
+    ]
+   },
+   {
+    "correct": "apple.",
+    "options": [
+     "apple.",
+     "car.",
+     "house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Солнце греет землю.",
+  "en": "The sun warms the earth.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The sun",
+    "options": [
+     "The sun",
+     "A sun",
+     "An sun"
+    ]
+   },
+   {
+    "correct": "warms",
+    "options": [
+     "warms",
+     "warm",
+     "is warm"
+    ]
+   },
+   {
+    "correct": "the earth.",
+    "options": [
+     "the earth.",
+     "an earth.",
+     "a earth."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "У меня есть книга. Книга новая.",
+  "en": "I have a book. The book is new.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I has",
+     "I had"
+    ]
+   },
+   {
+    "correct": "a book.",
+    "options": [
+     "a book.",
+     "the book.",
+     "books."
+    ]
+   },
+   {
+    "correct": "The book",
+    "options": [
+     "The book",
+     "A book",
+     "Books"
+    ]
+   },
+   {
+    "correct": "is new.",
+    "options": [
+     "is new.",
+     "are new.",
+     "was new."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я вижу яблоко. Яблоко зеленое.",
+  "en": "I see an apple. The apple is green.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I see",
+    "options": [
+     "I see",
+     "I saw",
+     "I look"
+    ]
+   },
+   {
+    "correct": "an apple.",
+    "options": [
+     "an apple.",
+     "a apple.",
+     "the apple."
+    ]
+   },
+   {
+    "correct": "The apple",
+    "options": [
+     "The apple",
+     "An apple",
+     "Apples"
+    ]
+   },
+   {
+    "correct": "is green.",
+    "options": [
+     "is green.",
+     "are green.",
+     "was green."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Она купила машину. Машина дорогая.",
+  "en": "She bought a car. The car is expensive.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She bought",
+    "options": [
+     "She bought",
+     "She buys",
+     "She buy"
+    ]
+   },
+   {
+    "correct": "a car.",
+    "options": [
+     "a car.",
+     "an car.",
+     "the car."
+    ]
+   },
+   {
+    "correct": "The car",
+    "options": [
+     "The car",
+     "A car",
+     "Cars"
+    ]
+   },
+   {
+    "correct": "is expensive.",
+    "options": [
+     "is expensive.",
+     "are expensive.",
+     "was expensive."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я встретил собаку. Собака была большой.",
+  "en": "I met a dog. The dog was big.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I met",
+    "options": [
+     "I met",
+     "I meet",
+     "I meeting"
+    ]
+   },
+   {
+    "correct": "a dog.",
+    "options": [
+     "a dog.",
+     "an dog.",
+     "the dog."
+    ]
+   },
+   {
+    "correct": "The dog",
+    "options": [
+     "The dog",
+     "A dog",
+     "Dogs"
+    ]
+   },
+   {
+    "correct": "was big.",
+    "options": [
+     "was big.",
+     "is big.",
+     "are big."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Это был час.",
+  "en": "It was an hour.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It was",
+    "options": [
+     "It was",
+     "It is",
+     "It were"
+    ]
+   },
+   {
+    "correct": "an hour.",
+    "options": [
+     "an hour.",
+     "a hour.",
+     "the hour."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я люблю фильмы.",
+  "en": "I love films.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I love",
+    "options": [
+     "I love",
+     "I like",
+     "I enjoy"
+    ]
+   },
+   {
+    "correct": "films.",
+    "options": [
+     "films.",
+     "a films.",
+     "the films."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Солнце очень горячее.",
+  "en": "The sun is very hot.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The sun",
+    "options": [
+     "The sun",
+     "A sun",
+     "Sun"
+    ]
+   },
+   {
+    "correct": "is very hot.",
+    "options": [
+     "is very hot.",
+     "are very hot.",
+     "was very hot."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я купил дом.",
+  "en": "I bought a house.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I bought",
+    "options": [
+     "I bought",
+     "I buy",
+     "I am buying"
+    ]
+   },
+   {
+    "correct": "a house.",
+    "options": [
+     "a house.",
+     "an house.",
+     "the house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Дети идут в школу.",
+  "en": "Children go to school.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Children",
+    "options": [
+     "Children",
+     "The children",
+     "A children"
+    ]
+   },
+   {
+    "correct": "go to school.",
+    "options": [
+     "go to school.",
+     "go to the school.",
+     "go to a school."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Луна видна ночью.",
+  "en": "The moon is visible at night.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The moon",
+    "options": [
+     "The moon",
+     "A moon",
+     "Moon"
+    ]
+   },
+   {
+    "correct": "is visible",
+    "options": [
+     "is visible",
+     "are visible",
+     "was visible"
+    ]
+   },
+   {
+    "correct": "at night.",
+    "options": [
+     "at night.",
+     "at the night.",
+     "at a night."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я съел яблоко.",
+  "en": "I ate an apple.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I ate",
+    "options": [
+     "I ate",
+     "I eat",
+     "I am eating"
+    ]
+   },
+   {
+    "correct": "an apple.",
+    "options": [
+     "an apple.",
+     "a apple.",
+     "the apple."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я читаю книгу.",
+  "en": "I am reading a book.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I am reading",
+    "options": [
+     "I am reading",
+     "I read",
+     "I was reading"
+    ]
+   },
+   {
+    "correct": "a book.",
+    "options": [
+     "a book.",
+     "the book.",
+     "books."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Это была машина.",
+  "en": "It was a car.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It was",
+    "options": [
+     "It was",
+     "It is",
+     "They were"
+    ]
+   },
+   {
+    "correct": "a car.",
+    "options": [
+     "a car.",
+     "the car.",
+     "cars."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я купил яблоко. Яблоко вкусное.",
+  "en": "I bought an apple. The apple is tasty.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I bought an apple.",
+    "options": [
+     "I bought an apple.",
+     "I bought a apple.",
+     "I bought the apple."
+    ]
+   },
+   {
+    "correct": "The apple",
+    "options": [
+     "The apple",
+     "An apple",
+     "A apple"
+    ]
+   },
+   {
+    "correct": "is tasty.",
+    "options": [
+     "is tasty.",
+     "are tasty.",
+     "was tasty."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Он съел яблоко за час.",
+  "en": "He ate an apple in an hour.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He ate",
+    "options": [
+     "He ate",
+     "He eats",
+     "He is eating"
+    ]
+   },
+   {
+    "correct": "an apple",
+    "options": [
+     "an apple",
+     "a apple",
+     "the apple"
+    ]
+   },
+   {
+    "correct": "in an hour.",
+    "options": [
+     "in an hour.",
+     "in a hour.",
+     "in the hour."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я посмотрел фильм. Фильм длинный.",
+  "en": "I watched a film. The film is long.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I watched a film.",
+    "options": [
+     "I watched a film.",
+     "I watched the film.",
+     "I watched film."
+    ]
+   },
+   {
+    "correct": "The film",
+    "options": [
+     "The film",
+     "A film",
+     "Film"
+    ]
+   },
+   {
+    "correct": "is long.",
+    "options": [
+     "is long.",
+     "are long.",
+     "was long."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я купил дом. Дом большой.",
+  "en": "I bought a house. The house is big.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I bought a house.",
+    "options": [
+     "I bought a house.",
+     "I bought the house.",
+     "I bought house."
+    ]
+   },
+   {
+    "correct": "The house",
+    "options": [
+     "The house",
+     "A house",
+     "House"
+    ]
+   },
+   {
+    "correct": "is big.",
+    "options": [
+     "is big.",
+     "are big.",
+     "was big."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "У меня есть кот. Кот черный.",
+  "en": "I have a cat. The cat is black.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I has",
+     "I am",
+     "I do"
+    ]
+   },
+   {
+    "correct": "a cat.",
+    "options": [
+     "a cat.",
+     "the cat.",
+     "cat.",
+     "an cat."
+    ]
+   },
+   {
+    "correct": "The cat",
+    "options": [
+     "The cat",
+     "A cat",
+     "Cats",
+     "An cat"
+    ]
+   },
+   {
+    "correct": "is black.",
+    "options": [
+     "is black.",
+     "are black.",
+     "was black.",
+     "be black."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я купил машину. Машина очень быстрая.",
+  "en": "I bought a car. The car is very fast.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I bought",
+    "options": [
+     "I bought",
+     "I buy",
+     "I am buying",
+     "I will buy"
+    ]
+   },
+   {
+    "correct": "a car.",
+    "options": [
+     "a car.",
+     "the car.",
+     "car.",
+     "an car."
+    ]
+   },
+   {
+    "correct": "The car",
+    "options": [
+     "The car",
+     "A car",
+     "Cars",
+     "An car"
+    ]
+   },
+   {
+    "correct": "is very fast.",
+    "options": [
+     "is very fast.",
+     "are very fast.",
+     "was very fast.",
+     "be very fast."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я вижу собаку. Собака лает.",
+  "en": "I see a dog. The dog is barking.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I see",
+    "options": [
+     "I see",
+     "I saw",
+     "I am seeing",
+     "I look"
+    ]
+   },
+   {
+    "correct": "a dog.",
+    "options": [
+     "a dog.",
+     "the dog.",
+     "dog.",
+     "an dog."
+    ]
+   },
+   {
+    "correct": "The dog",
+    "options": [
+     "The dog",
+     "A dog",
+     "Dogs",
+     "An dog"
+    ]
+   },
+   {
+    "correct": "is barking.",
+    "options": [
+     "is barking.",
+     "are barking.",
+     "was barking.",
+     "be barking."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Она ест яблоко. Яблоко сладкое.",
+  "en": "She eats an apple. The apple is sweet.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She eats",
+    "options": [
+     "She eats",
+     "She eat",
+     "She is eating",
+     "She ate"
+    ]
+   },
+   {
+    "correct": "an apple.",
+    "options": [
+     "an apple.",
+     "a apple.",
+     "the apple.",
+     "apples."
+    ]
+   },
+   {
+    "correct": "The apple",
+    "options": [
+     "The apple",
+     "An apple",
+     "A apple",
+     "Apples"
+    ]
+   },
+   {
+    "correct": "is sweet.",
+    "options": [
+     "is sweet.",
+     "are sweet.",
+     "was sweet.",
+     "be sweet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я прочитал книгу за час.",
+  "en": "I read a book in an hour.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I read",
+    "options": [
+     "I read",
+     "I am reading",
+     "I will read",
+     "I have read"
+    ]
+   },
+   {
+    "correct": "a book",
+    "options": [
+     "a book",
+     "the book",
+     "an book",
+     "books"
+    ]
+   },
+   {
+    "correct": "in an hour.",
+    "options": [
+     "in an hour.",
+     "in a hour.",
+     "in the hour.",
+     "in hour."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Солнце встает рано.",
+  "en": "The sun rises early.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The sun",
+    "options": [
+     "The sun",
+     "A sun",
+     "Sun",
+     "An sun"
+    ]
+   },
+   {
+    "correct": "rises early.",
+    "options": [
+     "rises early.",
+     "rise early.",
+     "is rise early.",
+     "are rise early."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Музыка делает меня счастливым.",
+  "en": "Music makes me happy.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Music",
+    "options": [
+     "Music",
+     "The music",
+     "A music",
+     "An music"
+    ]
+   },
+   {
+    "correct": "makes me happy.",
+    "options": [
+     "makes me happy.",
+     "make me happy.",
+     "is make me happy.",
+     "are make me happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Дети любят воду.",
+  "en": "Children like water.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Children",
+    "options": [
+     "Children",
+     "The children",
+     "A children",
+     "An children"
+    ]
+   },
+   {
+    "correct": "like water.",
+    "options": [
+     "like water.",
+     "likes water.",
+     "is like water.",
+     "are like water."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Луна светит ночью.",
+  "en": "The moon shines at night.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The moon",
+    "options": [
+     "The moon",
+     "A moon",
+     "Moon",
+     "An moon"
+    ]
+   },
+   {
+    "correct": "shines at night.",
+    "options": [
+     "shines at night.",
+     "shine at night.",
+     "is shine at night.",
+     "are shine at night."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Это был скучный фильм.",
+  "en": "It was a boring film.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It was",
+    "options": [
+     "It was",
+     "It were",
+     "It is",
+     "It be"
+    ]
+   },
+   {
+    "correct": "a boring film.",
+    "options": [
+     "a boring film.",
+     "an boring film.",
+     "the boring film.",
+     "boring film."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я иду в школу.",
+  "en": "I go to school.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I go",
+    "options": [
+     "I go",
+     "I goes",
+     "I am go",
+     "I will go"
+    ]
+   },
+   {
+    "correct": "to school.",
+    "options": [
+     "to school.",
+     "to the school.",
+     "to a school.",
+     "to an school."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "У меня есть дом. Дом очень старый.",
+  "en": "I have a house. The house is very old.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I has",
+     "I am",
+     "I do"
+    ]
+   },
+   {
+    "correct": "a house.",
+    "options": [
+     "a house.",
+     "the house.",
+     "house.",
+     "an house."
+    ]
+   },
+   {
+    "correct": "The house",
+    "options": [
+     "The house",
+     "A house",
+     "Houses",
+     "An house"
+    ]
+   },
+   {
+    "correct": "is very old.",
+    "options": [
+     "is very old.",
+     "are very old.",
+     "was very old.",
+     "be very old."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я вижу кота. Кот спит.",
+  "en": "I see a cat. The cat is sleeping.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I see",
+    "options": [
+     "I see",
+     "I saw",
+     "I am seeing"
+    ]
+   },
+   {
+    "correct": "a cat.",
+    "options": [
+     "a cat.",
+     "the cat.",
+     "cat."
+    ]
+   },
+   {
+    "correct": "The cat",
+    "options": [
+     "The cat",
+     "A cat",
+     "Cat"
+    ]
+   },
+   {
+    "correct": "is sleeping.",
+    "options": [
+     "is sleeping.",
+     "sleeps.",
+     "was sleeping."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Это была интересная книга.",
+  "en": "It was an interesting book.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It was",
+    "options": [
+     "It was",
+     "It is",
+     "It were"
+    ]
+   },
+   {
+    "correct": "an",
+    "options": [
+     "an",
+     "a",
+     "the"
+    ]
+   },
+   {
+    "correct": "interesting book.",
+    "options": [
+     "interesting book.",
+     "interesting books.",
+     "an interesting book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я купил машину. Машина красная.",
+  "en": "I bought a car. The car is red.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I bought",
+    "options": [
+     "I bought",
+     "I buy",
+     "I am buying"
+    ]
+   },
+   {
+    "correct": "a car.",
+    "options": [
+     "a car.",
+     "the car.",
+     "car."
+    ]
+   },
+   {
+    "correct": "The car",
+    "options": [
+     "The car",
+     "A car",
+     "Cars"
+    ]
+   },
+   {
+    "correct": "is red.",
+    "options": [
+     "is red.",
+     "was red.",
+     "are red."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Солнце очень большое.",
+  "en": "The sun is very big.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The sun",
+    "options": [
+     "The sun",
+     "A sun",
+     "Sun"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "was"
+    ]
+   },
+   {
+    "correct": "very big.",
+    "options": [
+     "very big.",
+     "a very big.",
+     "the very big."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Кошки не любят воду.",
+  "en": "Cats do not like water.",
+  "alternatives": [
+   "Cats don't like water."
+  ],
+  "slots": [
+   {
+    "correct": "Cats",
+    "options": [
+     "Cats",
+     "The cats",
+     "A cats"
+    ]
+   },
+   {
+    "correct": "do not like",
+    "options": [
+     "do not like",
+     "like",
+     "are not liking"
+    ]
+   },
+   {
+    "correct": "water.",
+    "options": [
+     "water.",
+     "the water.",
+     "a water."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я купил дом. Дом старый.",
+  "en": "I bought a house. The house is old.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I bought",
+    "options": [
+     "I bought",
+     "I buy",
+     "I am buying"
+    ]
+   },
+   {
+    "correct": "a house.",
+    "options": [
+     "a house.",
+     "the house.",
+     "house."
+    ]
+   },
+   {
+    "correct": "The house",
+    "options": [
+     "The house",
+     "A house",
+     "Houses"
+    ]
+   },
+   {
+    "correct": "is old.",
+    "options": [
+     "is old.",
+     "was old.",
+     "are old."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Луна красивая.",
+  "en": "The moon is beautiful.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The moon",
+    "options": [
+     "The moon",
+     "A moon",
+     "Moon"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "was"
+    ]
+   },
+   {
+    "correct": "beautiful.",
+    "options": [
+     "beautiful.",
+     "a beautiful.",
+     "the beautiful."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я вижу собаку. Собака добрая.",
+  "en": "I see a dog. The dog is kind.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I see",
+    "options": [
+     "I see",
+     "I saw",
+     "I am seeing"
+    ]
+   },
+   {
+    "correct": "a dog.",
+    "options": [
+     "a dog.",
+     "the dog.",
+     "dog."
+    ]
+   },
+   {
+    "correct": "The dog",
+    "options": [
+     "The dog",
+     "A dog",
+     "Dogs"
+    ]
+   },
+   {
+    "correct": "is kind.",
+    "options": [
+     "is kind.",
+     "was kind.",
+     "are kind."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я купил собаку. Собака очень милая.",
+  "en": "I bought a dog. The dog is very cute.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I bought",
+    "options": [
+     "I bought",
+     "I see",
+     "I have"
+    ]
+   },
+   {
+    "correct": "a dog.",
+    "options": [
+     "a dog.",
+     "the dog.",
+     "an dog."
+    ]
+   },
+   {
+    "correct": "The dog",
+    "options": [
+     "The dog",
+     "A dog",
+     "An dog"
+    ]
+   },
+   {
+    "correct": "is very cute.",
+    "options": [
+     "is very cute.",
+     "are very cute."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Это здание — школа. Школа большая.",
+  "en": "This building is a school. The school is big.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This building is",
+    "options": [
+     "This building is",
+     "This is"
+    ]
+   },
+   {
+    "correct": "a school.",
+    "options": [
+     "a school.",
+     "the school.",
+     "an school."
+    ]
+   },
+   {
+    "correct": "The school",
+    "options": [
+     "The school",
+     "A school",
+     "An school"
+    ]
+   },
+   {
+    "correct": "is big.",
+    "options": [
+     "is big.",
+     "are big."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "У меня есть кот. Кот серый.",
+  "en": "I have a cat. The cat is grey.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I like"
+    ]
+   },
+   {
+    "correct": "a cat.",
+    "options": [
+     "a cat.",
+     "the cat.",
+     "an cat."
+    ]
+   },
+   {
+    "correct": "The cat",
+    "options": [
+     "The cat",
+     "A cat",
+     "An cat"
+    ]
+   },
+   {
+    "correct": "is grey.",
+    "options": [
+     "is grey.",
+     "are grey."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Она купила книгу. Книга очень интересная.",
+  "en": "She bought a book. The book is very interesting.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She bought",
+    "options": [
+     "She bought",
+     "She read"
+    ]
+   },
+   {
+    "correct": "a book.",
+    "options": [
+     "a book.",
+     "the book.",
+     "an book."
+    ]
+   },
+   {
+    "correct": "The book",
+    "options": [
+     "The book",
+     "A book",
+     "An book"
+    ]
+   },
+   {
+    "correct": "is very interesting.",
+    "options": [
+     "is very interesting.",
+     "are very interesting."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я съел яблоко за час.",
+  "en": "I ate an apple in an hour.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I ate",
+    "options": [
+     "I ate",
+     "I eat"
+    ]
+   },
+   {
+    "correct": "an apple",
+    "options": [
+     "an apple",
+     "a apple"
+    ]
+   },
+   {
+    "correct": "in",
+    "options": [
+     "in",
+     "on",
+     "at"
+    ]
+   },
+   {
+    "correct": "an hour.",
+    "options": [
+     "an hour.",
+     "a hour."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Собаки любят бегать в парке.",
+  "en": "Dogs love running in the park.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Dogs",
+    "options": [
+     "Dogs",
+     "The dogs"
+    ]
+   },
+   {
+    "correct": "love running",
+    "options": [
+     "love running",
+     "loves running"
+    ]
+   },
+   {
+    "correct": "in the park.",
+    "options": [
+     "in the park.",
+     "in park."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Вода важна для здоровья.",
+  "en": "Water is important for health.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Water",
+    "options": [
+     "Water",
+     "The water"
+    ]
+   },
+   {
+    "correct": "is important",
+    "options": [
+     "is important",
+     "are important"
+    ]
+   },
+   {
+    "correct": "for health.",
+    "options": [
+     "for health.",
+     "for the health."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я посмотрел фильм. Фильм был скучным.",
+  "en": "I watched a film. The film was boring.",
+  "alternatives": [
+   "I watched a movie. The movie was boring."
+  ],
+  "slots": [
+   {
+    "correct": "I watched",
+    "options": [
+     "I watched",
+     "I see"
+    ]
+   },
+   {
+    "correct": "a film.",
+    "options": [
+     "a film.",
+     "the film.",
+     "an film."
+    ]
+   },
+   {
+    "correct": "The film",
+    "options": [
+     "The film",
+     "A film",
+     "An film"
+    ]
+   },
+   {
+    "correct": "was boring.",
+    "options": [
+     "was boring.",
+     "were boring."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Солнце ярче, чем луна.",
+  "en": "The sun is brighter than the moon.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The sun",
+    "options": [
+     "The sun",
+     "Sun"
+    ]
+   },
+   {
+    "correct": "is brighter",
+    "options": [
+     "is brighter",
+     "are brighter"
+    ]
+   },
+   {
+    "correct": "than the moon.",
+    "options": [
+     "than the moon.",
+     "than moon."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Мне нравится классическая музыка.",
+  "en": "I like classical music.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I like",
+    "options": [
+     "I like",
+     "I love"
+    ]
+   },
+   {
+    "correct": "classical music.",
+    "options": [
+     "classical music.",
+     "the classical music."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я вижу кота. Кот ест.",
+  "en": "I see a cat. The cat is eating.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I see",
+    "options": [
+     "I see",
+     "I saw",
+     "I am seeing"
+    ]
+   },
+   {
+    "correct": "a cat.",
+    "options": [
+     "a cat.",
+     "the cat.",
+     "cat."
+    ]
+   },
+   {
+    "correct": "The cat",
+    "options": [
+     "The cat",
+     "A cat",
+     "Cats"
+    ]
+   },
+   {
+    "correct": "is eating.",
+    "options": [
+     "is eating.",
+     "eats.",
+     "was eating."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я купил дом. Дом новый.",
+  "en": "I bought a house. The house is new.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I bought",
+    "options": [
+     "I bought",
+     "I have",
+     "I see"
+    ]
+   },
+   {
+    "correct": "a house.",
+    "options": [
+     "a house.",
+     "the house.",
+     "house."
+    ]
+   },
+   {
+    "correct": "The house",
+    "options": [
+     "The house",
+     "A house",
+     "Houses"
+    ]
+   },
+   {
+    "correct": "is new.",
+    "options": [
+     "is new.",
+     "was new.",
+     "are new."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я слышу музыку.",
+  "en": "I hear music.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "hear",
+    "options": [
+     "hear",
+     "listened",
+     "play"
+    ]
+   },
+   {
+    "correct": "music.",
+    "options": [
+     "music.",
+     "a music.",
+     "the music."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Солнце яркое.",
+  "en": "The sun is bright.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The sun",
+    "options": [
+     "The sun",
+     "A sun",
+     "Sun"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was",
+     "are"
+    ]
+   },
+   {
+    "correct": "bright.",
+    "options": [
+     "bright.",
+     "a bright.",
+     "the bright."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "У меня есть машина.",
+  "en": "I have a car.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I buy",
+     "I see"
+    ]
+   },
+   {
+    "correct": "a car.",
+    "options": [
+     "a car.",
+     "an car.",
+     "the car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Дети любят кошек.",
+  "en": "Children like cats.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Children",
+    "options": [
+     "Children",
+     "The children",
+     "A child"
+    ]
+   },
+   {
+    "correct": "like",
+    "options": [
+     "like",
+     "likes",
+     "liked"
+    ]
+   },
+   {
+    "correct": "cats.",
+    "options": [
+     "cats.",
+     "the cats.",
+     "a cat."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Это был час ожидания.",
+  "en": "It was an hour.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It was",
+    "options": [
+     "It was",
+     "It is",
+     "It had"
+    ]
+   },
+   {
+    "correct": "an hour.",
+    "options": [
+     "an hour.",
+     "a hour.",
+     "the hour."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я вижу луну.",
+  "en": "I see the moon.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I see",
+    "options": [
+     "I see",
+     "I look at",
+     "I watch"
+    ]
+   },
+   {
+    "correct": "the moon.",
+    "options": [
+     "the moon.",
+     "a moon.",
+     "moon."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Вода холодная.",
+  "en": "Water is cold.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Water",
+    "options": [
+     "Water",
+     "The water",
+     "A water"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "was"
+    ]
+   },
+   {
+    "correct": "cold.",
+    "options": [
+     "cold.",
+     "a cold.",
+     "the cold."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Она купила фильм.",
+  "en": "She bought a film.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "bought",
+    "options": [
+     "bought",
+     "buys",
+     "has"
+    ]
+   },
+   {
+    "correct": "a film.",
+    "options": [
+     "a film.",
+     "an film.",
+     "the film."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Вода очень холодная сегодня.",
+  "en": "Water is very cold today.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Water",
+    "options": [
+     "Water",
+     "The water",
+     "A water"
+    ]
+   },
+   {
+    "correct": "is very cold today.",
+    "options": [
+     "is very cold today.",
+     "are very cold today.",
+     "is very warm today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Кошки любят молоко.",
+  "en": "Cats like milk.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Cats",
+    "options": [
+     "Cats",
+     "The cats",
+     "A cat"
+    ]
+   },
+   {
+    "correct": "like milk.",
+    "options": [
+     "like milk.",
+     "likes milk.",
+     "love water."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я купил книгу. Книга очень хорошая.",
+  "en": "I bought a book. The book is very good.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I bought",
+    "options": [
+     "I bought",
+     "I buy",
+     "I did buy"
+    ]
+   },
+   {
+    "correct": "a book.",
+    "options": [
+     "a book.",
+     "the book.",
+     "an book."
+    ]
+   },
+   {
+    "correct": "The book",
+    "options": [
+     "The book",
+     "A book",
+     "An book"
+    ]
+   },
+   {
+    "correct": "is very good.",
+    "options": [
+     "is very good.",
+     "are very good."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я ждал час. Час прошел быстро.",
+  "en": "I waited an hour. The hour passed quickly.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I waited",
+    "options": [
+     "I waited",
+     "I wait"
+    ]
+   },
+   {
+    "correct": "an hour.",
+    "options": [
+     "an hour.",
+     "a hour.",
+     "the hour."
+    ]
+   },
+   {
+    "correct": "The hour",
+    "options": [
+     "The hour",
+     "An hour",
+     "A hour"
+    ]
+   },
+   {
+    "correct": "passed quickly.",
+    "options": [
+     "passed quickly.",
+     "pass quickly."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я купил машину. Машина новая.",
+  "en": "I bought a car. The car is new.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I bought",
+    "options": [
+     "I bought",
+     "I buy"
+    ]
+   },
+   {
+    "correct": "a car.",
+    "options": [
+     "a car.",
+     "the car.",
+     "an car."
+    ]
+   },
+   {
+    "correct": "The car",
+    "options": [
+     "The car",
+     "A car",
+     "An car"
+    ]
+   },
+   {
+    "correct": "is new.",
+    "options": [
+     "is new.",
+     "are new."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я вижу собаку. Собака маленькая.",
+  "en": "I see a dog. The dog is small.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I see",
+    "options": [
+     "I see",
+     "I saw"
+    ]
+   },
+   {
+    "correct": "a dog.",
+    "options": [
+     "a dog.",
+     "the dog.",
+     "an dog."
+    ]
+   },
+   {
+    "correct": "The dog",
+    "options": [
+     "The dog",
+     "A dog",
+     "An dog"
+    ]
+   },
+   {
+    "correct": "is small.",
+    "options": [
+     "is small.",
+     "are small."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я купил кота. Кот милый.",
+  "en": "I bought a cat. The cat is cute.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I bought",
+    "options": [
+     "I bought",
+     "I buy"
+    ]
+   },
+   {
+    "correct": "a cat.",
+    "options": [
+     "a cat.",
+     "the cat.",
+     "an cat."
+    ]
+   },
+   {
+    "correct": "The cat",
+    "options": [
+     "The cat",
+     "A cat",
+     "An cat"
+    ]
+   },
+   {
+    "correct": "is cute.",
+    "options": [
+     "is cute.",
+     "are cute."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я посмотрел фильм. Фильм интересный.",
+  "en": "I watched a film. The film is interesting.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I watched",
+    "options": [
+     "I watched",
+     "I watch"
+    ]
+   },
+   {
+    "correct": "a film.",
+    "options": [
+     "a film.",
+     "the film.",
+     "an film."
+    ]
+   },
+   {
+    "correct": "The film",
+    "options": [
+     "The film",
+     "A film",
+     "An film"
+    ]
+   },
+   {
+    "correct": "is interesting.",
+    "options": [
+     "is interesting.",
+     "are interesting."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Кошки любят музыку.",
+  "en": "Cats like music.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Cats",
+    "options": [
+     "Cats",
+     "The cats",
+     "A cats"
+    ]
+   },
+   {
+    "correct": "like",
+    "options": [
+     "like",
+     "likes"
+    ]
+   },
+   {
+    "correct": "music.",
+    "options": [
+     "music.",
+     "a music.",
+     "the music."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я пью воду.",
+  "en": "I drink water.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I drink",
+    "options": [
+     "I drink",
+     "I am drink"
+    ]
+   },
+   {
+    "correct": "water.",
+    "options": [
+     "water.",
+     "a water.",
+     "the water."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Луна светит ярко.",
+  "en": "The moon shines brightly.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The moon",
+    "options": [
+     "The moon",
+     "A moon",
+     "Moon"
+    ]
+   },
+   {
+    "correct": "shines",
+    "options": [
+     "shines",
+     "shine"
+    ]
+   },
+   {
+    "correct": "brightly.",
+    "options": [
+     "brightly.",
+     "bright."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Это здание — дом. Дом очень старый.",
+  "en": "It is a house. The house is old.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It is",
+    "options": [
+     "It is",
+     "They are"
+    ]
+   },
+   {
+    "correct": "a house.",
+    "options": [
+     "a house.",
+     "the house."
+    ]
+   },
+   {
+    "correct": "The house",
+    "options": [
+     "The house",
+     "A house"
+    ]
+   },
+   {
+    "correct": "is old.",
+    "options": [
+     "is old.",
+     "are old."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "У меня есть яблоко. Яблоко зеленое.",
+  "en": "I have an apple. The apple is green.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I eat"
+    ]
+   },
+   {
+    "correct": "an apple.",
+    "options": [
+     "an apple.",
+     "a apple."
+    ]
+   },
+   {
+    "correct": "The apple",
+    "options": [
+     "The apple",
+     "An apple"
+    ]
+   },
+   {
+    "correct": "is green.",
+    "options": [
+     "is green.",
+     "are green."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я вижу собаку. Собака очень милая.",
+  "en": "I see a dog. The dog is cute.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I see",
+    "options": [
+     "I see",
+     "I saw"
+    ]
+   },
+   {
+    "correct": "a dog.",
+    "options": [
+     "a dog.",
+     "the dog."
+    ]
+   },
+   {
+    "correct": "The dog",
+    "options": [
+     "The dog",
+     "A dog"
+    ]
+   },
+   {
+    "correct": "is cute.",
+    "options": [
+     "is cute.",
+     "are cute."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Он купил фильм. Фильм очень длинный.",
+  "en": "He bought a film. The film is long.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He bought",
+    "options": [
+     "He bought",
+     "He watched"
+    ]
+   },
+   {
+    "correct": "a film.",
+    "options": [
+     "a film.",
+     "the film."
+    ]
+   },
+   {
+    "correct": "The film",
+    "options": [
+     "The film",
+     "A film"
+    ]
+   },
+   {
+    "correct": "is long.",
+    "options": [
+     "is long.",
+     "was long."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Мне нравится музыка.",
+  "en": "I like music.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I like",
+    "options": [
+     "I like",
+     "I like the"
+    ]
+   },
+   {
+    "correct": "music.",
+    "options": [
+     "music.",
+     "a music."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я жду уже час.",
+  "en": "I have waited an hour.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have waited",
+    "options": [
+     "I have waited",
+     "I wait"
+    ]
+   },
+   {
+    "correct": "an hour.",
+    "options": [
+     "an hour.",
+     "a hour."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я съел яблоко. Яблоко было вкусным.",
+  "en": "I ate an apple. The apple was tasty.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I ate",
+    "options": [
+     "I ate",
+     "I eat"
+    ]
+   },
+   {
+    "correct": "an",
+    "options": [
+     "an",
+     "a",
+     "the"
+    ]
+   },
+   {
+    "correct": "apple.",
+    "options": [
+     "apple.",
+     "orange."
+    ]
+   },
+   {
+    "correct": "The",
+    "options": [
+     "The",
+     "An"
+    ]
+   },
+   {
+    "correct": "apple was tasty.",
+    "options": [
+     "apple was tasty.",
+     "apple was sweet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "articles_basic",
+  "ru": "Я вижу машину. Машина синяя.",
+  "en": "I see a car. The car is blue.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I see",
+    "options": [
+     "I see",
+     "I saw"
+    ]
+   },
+   {
+    "correct": "a",
+    "options": [
+     "a",
+     "the",
+     "an"
+    ]
+   },
+   {
+    "correct": "car.",
+    "options": [
+     "car.",
+     "dog."
+    ]
+   },
+   {
+    "correct": "The",
+    "options": [
+     "The",
+     "A",
+     "An"
+    ]
+   },
+   {
+    "correct": "car is blue.",
+    "options": [
+     "car is blue.",
+     "dog is blue."
+    ]
+   }
+  ]
+ }
+]

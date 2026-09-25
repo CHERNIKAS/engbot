@@ -1,0 +1,3764 @@
+[
+ {
+  "topic": "used_to",
+  "ru": "Раньше я много курил.",
+  "en": "I used to smoke a lot.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "smoke a lot.",
+    "options": [
+     "smoke a lot.",
+     "smoked a lot.",
+     "smoking a lot."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше она жила здесь.",
+  "en": "She used to live here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "live here.",
+    "options": [
+     "live here.",
+     "lived here.",
+     "lives here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше мы много играли.",
+  "en": "We used to play a lot.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "play a lot.",
+    "options": [
+     "play a lot.",
+     "played a lot.",
+     "playing a lot."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше он работал здесь.",
+  "en": "He used to work here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "work here.",
+    "options": [
+     "work here.",
+     "worked here.",
+     "working here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Я раньше не курил.",
+  "en": "I didn't use to smoke.",
+  "alternatives": [
+   "I did not use to smoke."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "smoke.",
+    "options": [
+     "smoke.",
+     "smoked.",
+     "smoking."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Она раньше не жила здесь.",
+  "en": "She didn't use to live here.",
+  "alternatives": [
+   "She did not use to live here."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "live here.",
+    "options": [
+     "live here.",
+     "lived here.",
+     "living here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Мы раньше не ходили туда.",
+  "en": "We didn't use to go there.",
+  "alternatives": [
+   "We did not use to go there."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "go there.",
+    "options": [
+     "go there.",
+     "went there.",
+     "going there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Он раньше не пил чай.",
+  "en": "He didn't use to drink tea.",
+  "alternatives": [
+   "He did not use to drink tea."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "drink tea.",
+    "options": [
+     "drink tea.",
+     "drank tea.",
+     "drinking tea."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Ты раньше читал много?",
+  "en": "Did you use to read a lot?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "read a lot?",
+    "options": [
+     "read a lot?",
+     "readed a lot?",
+     "reading a lot?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Ты раньше смотрел телевизор?",
+  "en": "Did you use to watch TV?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "watch TV?",
+    "options": [
+     "watch TV?",
+     "watched TV?",
+     "watching TV?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Они раньше учились здесь?",
+  "en": "Did they use to study here?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "you"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "study here?",
+    "options": [
+     "study here?",
+     "studied here?",
+     "studying here?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Ты раньше ел мясо?",
+  "en": "Did you use to eat meat?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "eat meat?",
+    "options": [
+     "eat meat?",
+     "ate meat?",
+     "eating meat?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше я часто ходил туда.",
+  "en": "I used to go there often.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "go there often.",
+    "options": [
+     "go there often.",
+     "going there often.",
+     "gone there often."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше она пила много кофе.",
+  "en": "She used to drink much coffee.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "drink much coffee.",
+    "options": [
+     "drink much coffee.",
+     "drank much coffee.",
+     "drinking much coffee."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше мы имели машину.",
+  "en": "We used to have a car.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "have a car.",
+    "options": [
+     "have a car.",
+     "had a car.",
+     "having a car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше он читал книги каждый день.",
+  "en": "He used to read books daily.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "read books daily.",
+    "options": [
+     "read books daily.",
+     "reads books daily.",
+     "reading books daily."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше я не смотрел фильмы.",
+  "en": "I didn't use to watch films.",
+  "alternatives": [
+   "I did not use to watch films."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "did"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "used"
+    ]
+   },
+   {
+    "correct": "watch films.",
+    "options": [
+     "watch films.",
+     "watched films.",
+     "watching films."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше она не работала здесь.",
+  "en": "She didn't use to work here.",
+  "alternatives": [
+   "She did not use to work here."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "did"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "used"
+    ]
+   },
+   {
+    "correct": "work here.",
+    "options": [
+     "work here.",
+     "worked here.",
+     "working here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше мы не изучали французский.",
+  "en": "We didn't use to study French.",
+  "alternatives": [
+   "We did not use to study French."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "did"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "used"
+    ]
+   },
+   {
+    "correct": "study French.",
+    "options": [
+     "study French.",
+     "studied French.",
+     "studying French."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше он не ел много овощей.",
+  "en": "He didn't use to eat vegetables.",
+  "alternatives": [
+   "He did not use to eat vegetables."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "did"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "used"
+    ]
+   },
+   {
+    "correct": "eat vegetables.",
+    "options": [
+     "eat vegetables.",
+     "ate vegetables.",
+     "eating vegetables."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше ты ходил на работу?",
+  "en": "Did you use to go to work?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "used"
+    ]
+   },
+   {
+    "correct": "go to work?",
+    "options": [
+     "go to work?",
+     "went to work?",
+     "going to work?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше они играли на улице?",
+  "en": "Did they use to play outside?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "used"
+    ]
+   },
+   {
+    "correct": "play outside?",
+    "options": [
+     "play outside?",
+     "played outside?",
+     "playing outside?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше она пила молоко?",
+  "en": "Did she use to drink milk?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "used"
+    ]
+   },
+   {
+    "correct": "drink milk?",
+    "options": [
+     "drink milk?",
+     "drank milk?",
+     "drinking milk?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше мы жили в городе?",
+  "en": "Did we use to live in town?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "we",
+    "options": [
+     "we",
+     "you",
+     "they"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "used"
+    ]
+   },
+   {
+    "correct": "live in town?",
+    "options": [
+     "live in town?",
+     "lived in town?",
+     "living in town?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше я часто пил чай.",
+  "en": "I used to drink tea often.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "You",
+     "They"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "using to"
+    ]
+   },
+   {
+    "correct": "drink tea often.",
+    "options": [
+     "drink tea often.",
+     "drank tea often.",
+     "drinking tea often."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше они часто смотрели кино.",
+  "en": "They used to watch movies.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "watch movies.",
+    "options": [
+     "watch movies.",
+     "watched movies.",
+     "watching movies."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше я много работал.",
+  "en": "I used to work a lot.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "using to"
+    ]
+   },
+   {
+    "correct": "work a lot.",
+    "options": [
+     "work a lot.",
+     "worked a lot.",
+     "working a lot."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше мы часто читали вместе.",
+  "en": "We used to read together.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "You",
+     "He"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "did used to"
+    ]
+   },
+   {
+    "correct": "read together.",
+    "options": [
+     "read together.",
+     "readed together.",
+     "reading together."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Я раньше не играл здесь.",
+  "en": "I didn't use to play here.",
+  "alternatives": [
+   "I did not use to play here."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "using to"
+    ]
+   },
+   {
+    "correct": "play here.",
+    "options": [
+     "play here.",
+     "played here.",
+     "playing here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Она раньше не училась здесь.",
+  "en": "She didn't use to study here.",
+  "alternatives": [
+   "She did not use to study here."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "study here.",
+    "options": [
+     "study here.",
+     "studied here.",
+     "studying here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Мы раньше не ели дома.",
+  "en": "We didn't use to eat at home.",
+  "alternatives": [
+   "We did not use to eat at home."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "You",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "using to"
+    ]
+   },
+   {
+    "correct": "eat at home.",
+    "options": [
+     "eat at home.",
+     "ate at home.",
+     "eating at home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Он раньше не жил в центре.",
+  "en": "He didn't use to live downtown.",
+  "alternatives": [
+   "He did not use to live downtown."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "using to"
+    ]
+   },
+   {
+    "correct": "live downtown.",
+    "options": [
+     "live downtown.",
+     "lived downtown.",
+     "living downtown."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Ты раньше пил много воды?",
+  "en": "Did you use to drink much water?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "using to"
+    ]
+   },
+   {
+    "correct": "drink much water?",
+    "options": [
+     "drink much water?",
+     "drank much water?",
+     "drinking much water?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Она раньше много работала?",
+  "en": "Did she use to work a lot?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "using to"
+    ]
+   },
+   {
+    "correct": "work a lot?",
+    "options": [
+     "work a lot?",
+     "worked a lot?",
+     "working a lot?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Они раньше ходили в парк?",
+  "en": "Did they use to go to the park?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "we",
+     "he"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "using to"
+    ]
+   },
+   {
+    "correct": "go to the park?",
+    "options": [
+     "go to the park?",
+     "went to the park?",
+     "going to the park?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "У тебя раньше была собака?",
+  "en": "Did you use to have a dog?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "using to"
+    ]
+   },
+   {
+    "correct": "have a dog?",
+    "options": [
+     "have a dog?",
+     "had a dog?",
+     "having a dog?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше я часто играл в футбол.",
+  "en": "I used to play football often.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "am used to"
+    ]
+   },
+   {
+    "correct": "play football often.",
+    "options": [
+     "play football often.",
+     "playing football often.",
+     "played football often."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше он много читал.",
+  "en": "He used to read a lot.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I",
+     "You"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "was used to"
+    ]
+   },
+   {
+    "correct": "read a lot.",
+    "options": [
+     "read a lot.",
+     "reading a lot.",
+     "reads a lot."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше они часто смотрели телевизор.",
+  "en": "They used to watch TV often.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "She",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "were used to"
+    ]
+   },
+   {
+    "correct": "watch TV often.",
+    "options": [
+     "watch TV often.",
+     "watched TV often.",
+     "watching TV often."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше мы часто ходили в кино.",
+  "en": "We used to go to the cinema.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "are used to"
+    ]
+   },
+   {
+    "correct": "go to the cinema.",
+    "options": [
+     "go to the cinema.",
+     "went to the cinema.",
+     "going to the cinema."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Я раньше не работал там.",
+  "en": "I didn't use to work there.",
+  "alternatives": [
+   "I did not use to work there."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't use to",
+    "options": [
+     "didn't use to",
+     "didn't used to",
+     "don't use to"
+    ]
+   },
+   {
+    "correct": "work there.",
+    "options": [
+     "work there.",
+     "worked there.",
+     "working there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Она раньше не читала газеты.",
+  "en": "She didn't use to read newspapers.",
+  "alternatives": [
+   "She did not use to read newspapers."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't use to",
+    "options": [
+     "didn't use to",
+     "didn't used to",
+     "doesn't use to"
+    ]
+   },
+   {
+    "correct": "read newspapers.",
+    "options": [
+     "read newspapers.",
+     "reads newspapers.",
+     "reading newspapers."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Мы раньше не ели мясо.",
+  "en": "We didn't use to eat meat.",
+  "alternatives": [
+   "We did not use to eat meat."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't use to",
+    "options": [
+     "didn't use to",
+     "didn't used to",
+     "don't use to"
+    ]
+   },
+   {
+    "correct": "eat meat.",
+    "options": [
+     "eat meat.",
+     "ate meat.",
+     "eating meat."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Они раньше не жили вместе.",
+  "en": "They didn't use to live together.",
+  "alternatives": [
+   "They did not use to live together."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "She",
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "didn't use to",
+    "options": [
+     "didn't use to",
+     "didn't used to",
+     "don't use to"
+    ]
+   },
+   {
+    "correct": "live together.",
+    "options": [
+     "live together.",
+     "lived together.",
+     "living together."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Ты раньше много работал?",
+  "en": "Did you use to work a lot?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did you",
+    "options": [
+     "Did you",
+     "Do you",
+     "Were you"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to"
+    ]
+   },
+   {
+    "correct": "work a lot?",
+    "options": [
+     "work a lot?",
+     "worked a lot?",
+     "working a lot?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Она раньше изучала английский?",
+  "en": "Did she use to study English?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did she",
+    "options": [
+     "Did she",
+     "Does she",
+     "Was she"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to"
+    ]
+   },
+   {
+    "correct": "study English?",
+    "options": [
+     "study English?",
+     "studied English?",
+     "studying English?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Они раньше часто играли там?",
+  "en": "Did they use to play there often?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did they",
+    "options": [
+     "Did they",
+     "Do they",
+     "Were they"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to"
+    ]
+   },
+   {
+    "correct": "play there often?",
+    "options": [
+     "play there often?",
+     "played there often?",
+     "playing there often?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "У тебя раньше была машина?",
+  "en": "Did you use to have a car?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did you",
+    "options": [
+     "Did you",
+     "Do you",
+     "Were you"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to"
+    ]
+   },
+   {
+    "correct": "have a car?",
+    "options": [
+     "have a car?",
+     "had a car?",
+     "having a car?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше я часто ел рыбу.",
+  "en": "I used to eat fish often.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "using to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "eat fish often.",
+    "options": [
+     "eat fish often.",
+     "ate fish often.",
+     "eaten fish often.",
+     "eating fish often."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше она часто смотрела мультфильмы.",
+  "en": "She used to watch cartoons.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "You",
+     "They"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "using to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "watch cartoons.",
+    "options": [
+     "watch cartoons.",
+     "watched cartoons.",
+     "watching cartoons.",
+     "watches cartoons."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше мы часто пили сок.",
+  "en": "We used to drink juice.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "using to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "drink juice.",
+    "options": [
+     "drink juice.",
+     "drank juice.",
+     "drunk juice.",
+     "drinking juice."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше он часто играл в теннис.",
+  "en": "He used to play tennis.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "using to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "play tennis.",
+    "options": [
+     "play tennis.",
+     "played tennis.",
+     "playing tennis.",
+     "plays tennis."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Я раньше не работал в офисе.",
+  "en": "I didn't use to work in an office.",
+  "alternatives": [
+   "I did not use to work in an office."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "using to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "work in an office.",
+    "options": [
+     "work in an office.",
+     "worked in an office.",
+     "working in an office.",
+     "works in an office."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Она раньше не ходила в школу.",
+  "en": "She didn't use to go to school.",
+  "alternatives": [
+   "She did not use to go to school."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "using to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "go to school.",
+    "options": [
+     "go to school.",
+     "went to school.",
+     "gone to school.",
+     "going to school."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Мы раньше не изучали историю.",
+  "en": "We didn't use to study history.",
+  "alternatives": [
+   "We did not use to study history."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "using to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "study history.",
+    "options": [
+     "study history.",
+     "studied history.",
+     "studying history.",
+     "studies history."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Они раньше не имели кошку.",
+  "en": "They didn't use to have a cat.",
+  "alternatives": [
+   "They did not use to have a cat."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "using to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "have a cat.",
+    "options": [
+     "have a cat.",
+     "had a cat.",
+     "having a cat.",
+     "has a cat."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Ты раньше жил в Лондоне?",
+  "en": "Did you use to live in London?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Will"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "using to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "live in London?",
+    "options": [
+     "live in London?",
+     "lived in London?",
+     "living in London?",
+     "lives in London?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Он раньше курил много?",
+  "en": "Did he use to smoke a lot?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Will"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "using to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "smoke a lot?",
+    "options": [
+     "smoke a lot?",
+     "smoked a lot?",
+     "smoking a lot?",
+     "smokes a lot?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Она раньше читала газеты?",
+  "en": "Did she use to read newspapers?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Will"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "you",
+     "they"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "using to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "read newspapers?",
+    "options": [
+     "read newspapers?",
+     "reads newspapers?",
+     "reading newspapers?",
+     "readed newspapers?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Они раньше ели дома?",
+  "en": "Did they use to eat at home?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Will"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "she",
+     "you"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "using to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "eat at home?",
+    "options": [
+     "eat at home?",
+     "ate at home?",
+     "eaten at home?",
+     "eating at home?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше я часто ездил в отпуск.",
+  "en": "I used to go on vacation often.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "used to go",
+    "options": [
+     "used to go",
+     "use to go",
+     "use to went",
+     "used to went"
+    ]
+   },
+   {
+    "correct": "on vacation often.",
+    "options": [
+     "on vacation often.",
+     "to vacation often.",
+     "on holidays often."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше она часто смотрела новости.",
+  "en": "She used to watch the news often.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "used to watch",
+    "options": [
+     "used to watch",
+     "use to watch",
+     "used to watched",
+     "use to watched"
+    ]
+   },
+   {
+    "correct": "the news often.",
+    "options": [
+     "the news often.",
+     "news often.",
+     "at news often."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше мы жили в большой квартире.",
+  "en": "We used to live in a big apartment.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "used to live",
+    "options": [
+     "used to live",
+     "use to live",
+     "used to lived",
+     "use to lived"
+    ]
+   },
+   {
+    "correct": "in a big apartment.",
+    "options": [
+     "in a big apartment.",
+     "at a big apartment.",
+     "on a big apartment."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше он много изучал математику.",
+  "en": "He used to study math a lot.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "used to study",
+    "options": [
+     "used to study",
+     "use to study",
+     "used to studied",
+     "use to studied"
+    ]
+   },
+   {
+    "correct": "math a lot.",
+    "options": [
+     "math a lot.",
+     "at math a lot.",
+     "the math a lot."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Я раньше не пил много воды.",
+  "en": "I didn't use to drink much water.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't use to",
+    "options": [
+     "didn't use to",
+     "didn't used to",
+     "did not used to"
+    ]
+   },
+   {
+    "correct": "drink much water.",
+    "options": [
+     "drink much water.",
+     "drank much water.",
+     "drinking much water."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Она раньше не ела фастфуд.",
+  "en": "She didn't use to eat fast food.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't use to",
+    "options": [
+     "didn't use to",
+     "didn't used to",
+     "did not used to"
+    ]
+   },
+   {
+    "correct": "eat fast food.",
+    "options": [
+     "eat fast food.",
+     "ate fast food.",
+     "eaten fast food."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Мы раньше не работали вместе.",
+  "en": "We didn't use to work together.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't use to",
+    "options": [
+     "didn't use to",
+     "didn't used to",
+     "did not used to"
+    ]
+   },
+   {
+    "correct": "work together.",
+    "options": [
+     "work together.",
+     "worked together.",
+     "working together."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Он раньше не читал газеты.",
+  "en": "He didn't use to read newspapers.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't use to",
+    "options": [
+     "didn't use to",
+     "didn't used to",
+     "did not used to"
+    ]
+   },
+   {
+    "correct": "read newspapers.",
+    "options": [
+     "read newspapers.",
+     "readed newspapers.",
+     "reading newspapers."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Ты раньше играл в компьютерные игры?",
+  "en": "Did you use to play computer games?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did you",
+    "options": [
+     "Did you",
+     "Do you",
+     "Were you"
+    ]
+   },
+   {
+    "correct": "use to play",
+    "options": [
+     "use to play",
+     "used to play",
+     "use to played"
+    ]
+   },
+   {
+    "correct": "computer games?",
+    "options": [
+     "computer games?",
+     "in computer games?",
+     "at computer games?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Она раньше ходила в спортзал?",
+  "en": "Did she use to go to the gym?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did she",
+    "options": [
+     "Did she",
+     "Does she",
+     "Was she"
+    ]
+   },
+   {
+    "correct": "use to go",
+    "options": [
+     "use to go",
+     "used to go",
+     "use to went"
+    ]
+   },
+   {
+    "correct": "to the gym?",
+    "options": [
+     "to the gym?",
+     "in the gym?",
+     "at the gym?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Они раньше имели собаку?",
+  "en": "Did they use to have a dog?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did they",
+    "options": [
+     "Did they",
+     "Do they",
+     "Were they"
+    ]
+   },
+   {
+    "correct": "use to have",
+    "options": [
+     "use to have",
+     "used to have",
+     "use to had"
+    ]
+   },
+   {
+    "correct": "a dog?",
+    "options": [
+     "a dog?",
+     "the dog?",
+     "dogs?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Ты раньше курил сигареты?",
+  "en": "Did you use to smoke cigarettes?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did you",
+    "options": [
+     "Did you",
+     "Do you",
+     "Were you"
+    ]
+   },
+   {
+    "correct": "use to smoke",
+    "options": [
+     "use to smoke",
+     "used to smoke",
+     "use to smoked"
+    ]
+   },
+   {
+    "correct": "cigarettes?",
+    "options": [
+     "cigarettes?",
+     "the cigarettes?",
+     "a cigarette?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше я курил каждый день.",
+  "en": "I used to smoke every day.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "am used to"
+    ]
+   },
+   {
+    "correct": "smoke",
+    "options": [
+     "smoke",
+     "smokes",
+     "smoked"
+    ]
+   },
+   {
+    "correct": "every day.",
+    "options": [
+     "every day.",
+     "last week.",
+     "now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше она жила в Париже.",
+  "en": "She used to live in Paris.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "live",
+    "options": [
+     "live",
+     "lived",
+     "lives"
+    ]
+   },
+   {
+    "correct": "in Paris.",
+    "options": [
+     "in Paris.",
+     "at home.",
+     "in school."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше мы играли вместе.",
+  "en": "We used to play together.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "did use to"
+    ]
+   },
+   {
+    "correct": "play",
+    "options": [
+     "play",
+     "played",
+     "playing"
+    ]
+   },
+   {
+    "correct": "together.",
+    "options": [
+     "together.",
+     "often.",
+     "every day."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше он работал в банке.",
+  "en": "He used to work in a bank.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "worked",
+     "working"
+    ]
+   },
+   {
+    "correct": "in a bank.",
+    "options": [
+     "in a bank.",
+     "at home.",
+     "in shop."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше я не курил сигареты.",
+  "en": "I didn't use to smoke cigarettes.",
+  "alternatives": [
+   "I did not use to smoke cigarettes."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "using to"
+    ]
+   },
+   {
+    "correct": "smoke cigarettes.",
+    "options": [
+     "smoke cigarettes.",
+     "eat meat.",
+     "live here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше она не жила здесь.",
+  "en": "She didn't use to live here.",
+  "alternatives": [
+   "She did not use to live here."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "doesn't",
+     "don't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "live here.",
+    "options": [
+     "live here.",
+     "work here.",
+     "eat here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше мы не играли в футбол.",
+  "en": "We didn't use to play football.",
+  "alternatives": [
+   "We did not use to play football."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "using to"
+    ]
+   },
+   {
+    "correct": "play football.",
+    "options": [
+     "play football.",
+     "study math.",
+     "drink tea."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше он не работал здесь.",
+  "en": "He didn't use to work here.",
+  "alternatives": [
+   "He did not use to work here."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "doesn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "work here.",
+    "options": [
+     "work here.",
+     "live here.",
+     "read here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше ты курил каждый день?",
+  "en": "Did you use to smoke every day?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "smoke every day?",
+    "options": [
+     "smoke every day?",
+     "live here?",
+     "work hard?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше она жила в Лондоне?",
+  "en": "Did she use to live in London?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Does",
+     "Do"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "you",
+     "they"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "live in London?",
+    "options": [
+     "live in London?",
+     "work in Paris?",
+     "eat meat?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше вы играли на улице?",
+  "en": "Did you use to play outside?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "play outside?",
+    "options": [
+     "play outside?",
+     "study history?",
+     "drink juice?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше он работал в офисе?",
+  "en": "Did he use to work in an office?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Does",
+     "Do"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "work in an office?",
+    "options": [
+     "work in an office?",
+     "live in a city?",
+     "read books?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше я часто ездил на велосипеде.",
+  "en": "I used to ride a bike often.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "ride a bike often.",
+    "options": [
+     "ride a bike often.",
+     "played a bike often.",
+     "work a bike often."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше она часто ела яблоки.",
+  "en": "She used to eat apples often.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "eat apples often.",
+    "options": [
+     "eat apples often.",
+     "read apples often.",
+     "live apples often."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше мы часто ходили в горы.",
+  "en": "We used to go to mountains.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "go to mountains.",
+    "options": [
+     "go to mountains.",
+     "play to mountains.",
+     "drink to mountains."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше он часто играл на гитаре.",
+  "en": "He used to play the guitar.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "play the guitar.",
+    "options": [
+     "play the guitar.",
+     "watch the guitar.",
+     "study the guitar."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Я раньше не курил каждый день.",
+  "en": "I didn't use to smoke daily.",
+  "alternatives": [
+   "I did not use to smoke daily."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "She"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "smoke daily.",
+    "options": [
+     "smoke daily.",
+     "play daily.",
+     "live daily."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Она раньше не работала по выходным.",
+  "en": "She didn't use to work weekends.",
+  "alternatives": [
+   "She did not use to work weekends."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "work weekends.",
+    "options": [
+     "work weekends.",
+     "eat weekends.",
+     "go weekends."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Мы раньше не жили в этом доме.",
+  "en": "We didn't use to live here.",
+  "alternatives": [
+   "We did not use to live here."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "live here.",
+    "options": [
+     "live here.",
+     "read here.",
+     "drink here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Они раньше не смотрели новости.",
+  "en": "They didn't use to watch news.",
+  "alternatives": [
+   "They did not use to watch news."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "watch news.",
+    "options": [
+     "watch news.",
+     "work news.",
+     "eat news."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Ты раньше пил кофе по утрам?",
+  "en": "Did you use to drink coffee?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "she"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "drink coffee?",
+    "options": [
+     "drink coffee?",
+     "work coffee?",
+     "live coffee?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Она раньше много читала?",
+  "en": "Did she use to read much?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "we",
+     "they"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "read much?",
+    "options": [
+     "read much?",
+     "play much?",
+     "eat much?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Они раньше учились вместе?",
+  "en": "Did they use to study together?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "I"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to"
+    ]
+   },
+   {
+    "correct": "study together?",
+    "options": [
+     "study together?",
+     "watch together?",
+     "drink together?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше я часто пил молоко.",
+  "en": "I used to drink milk often.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "You",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "uses to",
+     "using to"
+    ]
+   },
+   {
+    "correct": "drink milk often.",
+    "options": [
+     "drink milk often.",
+     "drank milk often.",
+     "drinks milk often.",
+     "drinking milk often."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше она не жила в центре.",
+  "en": "She didn't use to live downtown.",
+  "alternatives": [
+   "She did not use to live downtown."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to",
+     "using to"
+    ]
+   },
+   {
+    "correct": "live downtown.",
+    "options": [
+     "live downtown.",
+     "lived downtown.",
+     "lives downtown.",
+     "living downtown."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Ты раньше смотрел этот сериал?",
+  "en": "Did you use to watch this show?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Will"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to",
+     "using to"
+    ]
+   },
+   {
+    "correct": "watch this show?",
+    "options": [
+     "watch this show?",
+     "watched this show?",
+     "watches this show?",
+     "watching this show?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше мы часто читали книги.",
+  "en": "We used to read books often.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "used to",
+    "options": [
+     "used to",
+     "use to",
+     "uses to",
+     "using to"
+    ]
+   },
+   {
+    "correct": "read books often.",
+    "options": [
+     "read books often.",
+     "reads books often.",
+     "reading books often.",
+     "red books often."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "used_to",
+  "ru": "Раньше он не играл на гитаре.",
+  "en": "He didn't use to play guitar.",
+  "alternatives": [
+   "He did not use to play guitar."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "use to",
+    "options": [
+     "use to",
+     "used to",
+     "uses to",
+     "using to"
+    ]
+   },
+   {
+    "correct": "play guitar.",
+    "options": [
+     "play guitar.",
+     "played guitar.",
+     "plays guitar.",
+     "playing guitar."
+    ]
+   }
+  ]
+ }
+]

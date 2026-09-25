@@ -1,0 +1,3338 @@
+[
+ {
+  "topic": "verb_to_be",
+  "ru": "Я очень устал.",
+  "en": "I am very tired.",
+  "alternatives": [
+   "I'm very tired."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "am",
+    "options": [
+     "am",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "very tired.",
+    "options": [
+     "very tired.",
+     "hungry now.",
+     "at work.",
+     "at home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Он сейчас дома.",
+  "en": "He is at home.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "am",
+     "are"
+    ]
+   },
+   {
+    "correct": "at home.",
+    "options": [
+     "at home.",
+     "at work.",
+     "at school.",
+     "very happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Они готовы к работе.",
+  "en": "They are ready.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I",
+     "It"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "am"
+    ]
+   },
+   {
+    "correct": "ready.",
+    "options": [
+     "ready.",
+     "tired.",
+     "hungry.",
+     "cold."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Я не голоден.",
+  "en": "I am not hungry.",
+  "alternatives": [
+   "I'm not hungry."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "am not",
+    "options": [
+     "am not",
+     "is not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "hungry.",
+    "options": [
+     "hungry.",
+     "tired.",
+     "late.",
+     "happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Она сейчас не здесь.",
+  "en": "She is not here.",
+  "alternatives": [
+   "She isn't here."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "is not",
+    "options": [
+     "is not",
+     "am not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there.",
+     "at home.",
+     "at work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Мы не опаздываем.",
+  "en": "We are not late.",
+  "alternatives": [
+   "We aren't late."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "late.",
+    "options": [
+     "late.",
+     "hungry.",
+     "tired.",
+     "cold."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Ты готов?",
+  "en": "Are you ready?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "ready?",
+    "options": [
+     "ready?",
+     "happy?",
+     "tired?",
+     "busy?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Он дома?",
+  "en": "Is he at home?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Are",
+     "Am"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "at home?",
+    "options": [
+     "at home?",
+     "at work?",
+     "at school?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Они заняты?",
+  "en": "Are they busy?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "it"
+    ]
+   },
+   {
+    "correct": "busy?",
+    "options": [
+     "busy?",
+     "happy?",
+     "ready?",
+     "tired?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Этот врач очень старый.",
+  "en": "The doctor is very old.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The doctor",
+    "options": [
+     "The doctor",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "am"
+    ]
+   },
+   {
+    "correct": "very old.",
+    "options": [
+     "very old.",
+     "very happy.",
+     "very busy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Мы не студенты.",
+  "en": "We are not students.",
+  "alternatives": [
+   "We aren't students."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "students.",
+    "options": [
+     "students.",
+     "teachers.",
+     "busy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Я не на работе.",
+  "en": "I am not at work.",
+  "alternatives": [
+   "I'm not at work."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "You",
+     "She"
+    ]
+   },
+   {
+    "correct": "am not",
+    "options": [
+     "am not",
+     "is not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "at work.",
+    "options": [
+     "at work.",
+     "at home.",
+     "at school."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Я счастлив сегодня.",
+  "en": "I am happy today.",
+  "alternatives": [
+   "I'm happy today."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "am",
+    "options": [
+     "am",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "happy today.",
+    "options": [
+     "happy today.",
+     "at home now.",
+     "at work today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Она занята сейчас.",
+  "en": "She is busy now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "am",
+     "are"
+    ]
+   },
+   {
+    "correct": "busy now.",
+    "options": [
+     "busy now.",
+     "at school.",
+     "ready."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Они не на работе.",
+  "en": "They are not at work.",
+  "alternatives": [
+   "They aren't at work."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "am"
+    ]
+   },
+   {
+    "correct": "not at work.",
+    "options": [
+     "not at work.",
+     "not here.",
+     "not ready."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Вы сегодня в школе?",
+  "en": "Are you at school today?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "it"
+    ]
+   },
+   {
+    "correct": "at school today?",
+    "options": [
+     "at school today?",
+     "hungry today?",
+     "cold today?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Я не холодный.",
+  "en": "I am not cold.",
+  "alternatives": [
+   "I'm not cold."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "am",
+    "options": [
+     "am",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "not cold.",
+    "options": [
+     "not cold.",
+     "not tired.",
+     "not busy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Он не студент.",
+  "en": "He is not a student.",
+  "alternatives": [
+   "He isn't a student."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "am",
+     "are"
+    ]
+   },
+   {
+    "correct": "not a student.",
+    "options": [
+     "not a student.",
+     "not a teacher.",
+     "not ready."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Она дома?",
+  "en": "Is she at home?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Are",
+     "Am"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "you",
+     "they"
+    ]
+   },
+   {
+    "correct": "at home?",
+    "options": [
+     "at home?",
+     "at work?",
+     "at school?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Мы не старые.",
+  "en": "We are not old.",
+  "alternatives": [
+   "We aren't old."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "am"
+    ]
+   },
+   {
+    "correct": "not old.",
+    "options": [
+     "not old.",
+     "not ready.",
+     "not busy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Я очень голоден.",
+  "en": "I am very hungry.",
+  "alternatives": [
+   "I'm very hungry."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "am",
+    "options": [
+     "am",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "very hungry.",
+    "options": [
+     "very hungry.",
+     "very cold.",
+     "very busy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Они сейчас на работе.",
+  "en": "They are at work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "am"
+    ]
+   },
+   {
+    "correct": "at work.",
+    "options": [
+     "at work.",
+     "at home.",
+     "at school."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Он сегодня очень занят.",
+  "en": "He is very busy today.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "am"
+    ]
+   },
+   {
+    "correct": "very busy today.",
+    "options": [
+     "very busy today.",
+     "very tired today.",
+     "very happy today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Ты не опаздываешь.",
+  "en": "You are not late.",
+  "alternatives": [
+   "You aren't late."
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "late.",
+    "options": [
+     "late.",
+     "ready.",
+     "happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Она не готова.",
+  "en": "She is not ready.",
+  "alternatives": [
+   "She isn't ready."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is not",
+    "options": [
+     "is not",
+     "are not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "ready.",
+    "options": [
+     "ready.",
+     "busy.",
+     "tired."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Я не учитель.",
+  "en": "I am not a teacher.",
+  "alternatives": [
+   "I'm not a teacher."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "am not",
+    "options": [
+     "am not",
+     "is not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "a teacher.",
+    "options": [
+     "a teacher.",
+     "a doctor.",
+     "a student."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Они там?",
+  "en": "Are they there?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "I"
+    ]
+   },
+   {
+    "correct": "there?",
+    "options": [
+     "there?",
+     "here?",
+     "ready?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Он сейчас занят?",
+  "en": "Is he busy now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Are",
+     "Am"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "they",
+     "I"
+    ]
+   },
+   {
+    "correct": "busy now?",
+    "options": [
+     "busy now?",
+     "tired now?",
+     "ready now?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Я готов?",
+  "en": "Am I ready?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Am",
+    "options": [
+     "Am",
+     "Is",
+     "Are"
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "ready?",
+    "options": [
+     "ready?",
+     "happy?",
+     "late?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Эта машина новая.",
+  "en": "This car is new.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This car",
+    "options": [
+     "This car",
+     "These cars",
+     "I"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "am"
+    ]
+   },
+   {
+    "correct": "new.",
+    "options": [
+     "new.",
+     "old.",
+     "cold."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Мы не устали.",
+  "en": "We are not tired.",
+  "alternatives": [
+   "We aren't tired."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "tired.",
+    "options": [
+     "tired.",
+     "hungry.",
+     "busy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Сегодня на улице тепло.",
+  "en": "It is warm today.",
+  "alternatives": [
+   "It's warm today."
+  ],
+  "slots": [
+   {
+    "correct": "It",
+    "options": [
+     "It",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "am"
+    ]
+   },
+   {
+    "correct": "warm today.",
+    "options": [
+     "warm today.",
+     "cold today.",
+     "new today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Я не устал сейчас.",
+  "en": "I am not tired now.",
+  "alternatives": [
+   "I'm not tired now."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "am not",
+    "options": [
+     "am not",
+     "is not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "tired now.",
+    "options": [
+     "tired now.",
+     "ready now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Она занята на работе.",
+  "en": "She is busy at work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "am",
+     "are"
+    ]
+   },
+   {
+    "correct": "busy at work.",
+    "options": [
+     "busy at work.",
+     "happy at work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Они не готовы сегодня.",
+  "en": "They are not ready today.",
+  "alternatives": [
+   "They aren't ready today."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "ready today.",
+    "options": [
+     "ready today.",
+     "late today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Он сегодня не в школе.",
+  "en": "He is not at school today.",
+  "alternatives": [
+   "He isn't at school today."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "is not",
+    "options": [
+     "is not",
+     "am not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "at school today.",
+    "options": [
+     "at school today.",
+     "at work today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Я не врач.",
+  "en": "I am not a doctor.",
+  "alternatives": [
+   "I'm not a doctor."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "am not",
+    "options": [
+     "am not",
+     "is not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "a doctor.",
+    "options": [
+     "a doctor.",
+     "a teacher."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Мы не холодные.",
+  "en": "We are not cold.",
+  "alternatives": [
+   "We aren't cold."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "cold.",
+    "options": [
+     "cold.",
+     "tired."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Ты счастлив здесь?",
+  "en": "Are you happy here?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "it"
+    ]
+   },
+   {
+    "correct": "happy here?",
+    "options": [
+     "happy here?",
+     "ready here?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Она сегодня не здесь.",
+  "en": "She is not here today.",
+  "alternatives": [
+   "She isn't here today."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is not",
+    "options": [
+     "is not",
+     "are not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "here today.",
+    "options": [
+     "here today.",
+     "there today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Эта машина старая.",
+  "en": "This car is old.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This car",
+    "options": [
+     "This car",
+     "These cars"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "old.",
+    "options": [
+     "old.",
+     "new."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Они не студенты.",
+  "en": "They are not students.",
+  "alternatives": [
+   "They aren't students."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "students.",
+    "options": [
+     "students.",
+     "teachers."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Она сейчас дома?",
+  "en": "Is she at home now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Are",
+     "Am"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "at home now?",
+    "options": [
+     "at home now?",
+     "at work now?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Я счастлив.",
+  "en": "I am happy.",
+  "alternatives": [
+   "I'm happy."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "am",
+    "options": [
+     "am",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "happy.",
+    "options": [
+     "happy.",
+     "hungry.",
+     "tired.",
+     "busy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Она не занята.",
+  "en": "She is not busy.",
+  "alternatives": [
+   "She isn't busy."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "is not",
+    "options": [
+     "is not",
+     "am not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "busy.",
+    "options": [
+     "busy.",
+     "ready.",
+     "late.",
+     "here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Они готовы?",
+  "en": "Are they ready?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "ready?",
+    "options": [
+     "ready?",
+     "hungry?",
+     "happy?",
+     "late?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Он учитель.",
+  "en": "He is a teacher.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "am",
+     "are"
+    ]
+   },
+   {
+    "correct": "a teacher.",
+    "options": [
+     "a teacher.",
+     "a student.",
+     "a doctor."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Ты сейчас здесь?",
+  "en": "Are you here now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "here now?",
+    "options": [
+     "here now?",
+     "there now?",
+     "at home now?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Это не старая машина.",
+  "en": "It is not an old car.",
+  "alternatives": [
+   "It isn't an old car."
+  ],
+  "slots": [
+   {
+    "correct": "It",
+    "options": [
+     "It",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "is not",
+    "options": [
+     "is not",
+     "are not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "an old car.",
+    "options": [
+     "an old car.",
+     "a new car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "На улице холодно.",
+  "en": "It is cold outside.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It",
+    "options": [
+     "It",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "am"
+    ]
+   },
+   {
+    "correct": "cold outside.",
+    "options": [
+     "cold outside.",
+     "warm outside."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Я не студент.",
+  "en": "I am not a student.",
+  "alternatives": [
+   "I'm not a student."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "am not",
+    "options": [
+     "am not",
+     "is not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "a student.",
+    "options": [
+     "a student.",
+     "a teacher.",
+     "a doctor."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Вы заняты?",
+  "en": "Are you busy?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "busy?",
+    "options": [
+     "busy?",
+     "hungry?",
+     "ready?",
+     "tired?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Она в школе.",
+  "en": "She is at school.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "am",
+     "are"
+    ]
+   },
+   {
+    "correct": "at school.",
+    "options": [
+     "at school.",
+     "at home.",
+     "at work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Я очень занят сейчас.",
+  "en": "I am very busy now.",
+  "alternatives": [
+   "I'm very busy now."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "am",
+    "options": [
+     "am",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "very busy now.",
+    "options": [
+     "very busy now.",
+     "at home now.",
+     "at work now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Они не готовы сейчас.",
+  "en": "They are not ready now.",
+  "alternatives": [
+   "They aren't ready now."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "ready now.",
+    "options": [
+     "ready now.",
+     "tired now.",
+     "hungry now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Вы сегодня не устали?",
+  "en": "Are you not tired today?",
+  "alternatives": [
+   "Aren't you tired today?"
+  ],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "not tired today?",
+    "options": [
+     "not tired today?",
+     "not hungry today?",
+     "not busy today?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Она врач.",
+  "en": "She is a doctor.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "am",
+     "are"
+    ]
+   },
+   {
+    "correct": "a doctor.",
+    "options": [
+     "a doctor.",
+     "a student.",
+     "a teacher."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Мы не опаздываем сегодня.",
+  "en": "We are not late today.",
+  "alternatives": [
+   "We aren't late today."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "late today.",
+    "options": [
+     "late today.",
+     "busy today.",
+     "ready today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Он сейчас на работе?",
+  "en": "Is he at work now?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Are",
+     "Am"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "they",
+     "I"
+    ]
+   },
+   {
+    "correct": "at work now?",
+    "options": [
+     "at work now?",
+     "at school now?",
+     "at home now?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Я не голоден сейчас.",
+  "en": "I am not hungry now.",
+  "alternatives": [
+   "I'm not hungry now."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "am not",
+    "options": [
+     "am not",
+     "is not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "hungry now.",
+    "options": [
+     "hungry now.",
+     "tired now.",
+     "ready now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Они счастливы сегодня.",
+  "en": "They are happy today.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "am"
+    ]
+   },
+   {
+    "correct": "happy today.",
+    "options": [
+     "happy today.",
+     "busy today.",
+     "ready today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "На улице сегодня тепло.",
+  "en": "It is warm today.",
+  "alternatives": [
+   "It's warm today."
+  ],
+  "slots": [
+   {
+    "correct": "It",
+    "options": [
+     "It",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "am"
+    ]
+   },
+   {
+    "correct": "warm today.",
+    "options": [
+     "warm today.",
+     "cold today.",
+     "busy today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Вы сегодня дома?",
+  "en": "Are you at home today?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "it"
+    ]
+   },
+   {
+    "correct": "at home today?",
+    "options": [
+     "at home today?",
+     "at work today?",
+     "at school today?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Я устал.",
+  "en": "I am tired.",
+  "alternatives": [
+   "I'm tired."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "am",
+    "options": [
+     "am",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "tired.",
+    "options": [
+     "tired.",
+     "ready.",
+     "happy.",
+     "busy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Вы не опаздываете.",
+  "en": "You are not late.",
+  "alternatives": [
+   "You aren't late."
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "late.",
+    "options": [
+     "late.",
+     "busy.",
+     "ready.",
+     "happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Я не здесь.",
+  "en": "I am not here.",
+  "alternatives": [
+   "I'm not here."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "am not",
+    "options": [
+     "am not",
+     "is not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there.",
+     "at home.",
+     "at work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Они дома?",
+  "en": "Are they at home?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "she",
+     "I"
+    ]
+   },
+   {
+    "correct": "at home?",
+    "options": [
+     "at home?",
+     "at work?",
+     "at school?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Ты счастлив?",
+  "en": "Are you happy?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "happy?",
+    "options": [
+     "happy?",
+     "ready?",
+     "busy?",
+     "tired?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Они не заняты.",
+  "en": "They are not busy.",
+  "alternatives": [
+   "They aren't busy."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "busy.",
+    "options": [
+     "busy.",
+     "tired.",
+     "happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Он не голоден.",
+  "en": "He is not hungry.",
+  "alternatives": [
+   "He isn't hungry."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is not",
+    "options": [
+     "is not",
+     "are not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "hungry.",
+    "options": [
+     "hungry.",
+     "tired.",
+     "late."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Она учитель.",
+  "en": "She is a teacher.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "am"
+    ]
+   },
+   {
+    "correct": "a teacher.",
+    "options": [
+     "a teacher.",
+     "a student.",
+     "a doctor."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Он на работе.",
+  "en": "He is at work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "am"
+    ]
+   },
+   {
+    "correct": "at work.",
+    "options": [
+     "at work.",
+     "at home.",
+     "at school."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Я не устал.",
+  "en": "I am not tired.",
+  "alternatives": [
+   "I'm not tired."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "She"
+    ]
+   },
+   {
+    "correct": "am not",
+    "options": [
+     "am not",
+     "are not",
+     "is not"
+    ]
+   },
+   {
+    "correct": "tired.",
+    "options": [
+     "tired.",
+     "busy.",
+     "hungry."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Она счастлива.",
+  "en": "She is happy.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "am"
+    ]
+   },
+   {
+    "correct": "happy.",
+    "options": [
+     "happy.",
+     "busy.",
+     "tired."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Это не новая машина.",
+  "en": "It is not a new car.",
+  "alternatives": [
+   "It isn't a new car."
+  ],
+  "slots": [
+   {
+    "correct": "It",
+    "options": [
+     "It",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is not",
+    "options": [
+     "is not",
+     "are not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "a new car.",
+    "options": [
+     "a new car.",
+     "an old car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Они в школе?",
+  "en": "Are they at school?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "I"
+    ]
+   },
+   {
+    "correct": "at school?",
+    "options": [
+     "at school?",
+     "at home?",
+     "at work?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Они не готовы.",
+  "en": "They are not ready.",
+  "alternatives": [
+   "They aren't ready."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "am"
+    ]
+   },
+   {
+    "correct": "not ready.",
+    "options": [
+     "not ready.",
+     "not busy.",
+     "not happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Он занят.",
+  "en": "He is busy.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "am"
+    ]
+   },
+   {
+    "correct": "busy.",
+    "options": [
+     "busy.",
+     "tired.",
+     "ready."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Они не голодные.",
+  "en": "They are not hungry.",
+  "alternatives": [
+   "They aren't hungry."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "am"
+    ]
+   },
+   {
+    "correct": "not hungry.",
+    "options": [
+     "not hungry.",
+     "not ready.",
+     "not busy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Она здесь?",
+  "en": "Is she here?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Are",
+     "Am"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "they",
+     "I"
+    ]
+   },
+   {
+    "correct": "here?",
+    "options": [
+     "here?",
+     "there?",
+     "at home?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Машина старая.",
+  "en": "The car is old.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The car",
+    "options": [
+     "The car",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "am"
+    ]
+   },
+   {
+    "correct": "old.",
+    "options": [
+     "old.",
+     "new.",
+     "busy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Она не врач.",
+  "en": "She is not a doctor.",
+  "alternatives": [
+   "She isn't a doctor."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "am"
+    ]
+   },
+   {
+    "correct": "not a doctor.",
+    "options": [
+     "not a doctor.",
+     "not a student.",
+     "not a teacher."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Мы там?",
+  "en": "Are we there?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "we",
+    "options": [
+     "we",
+     "he",
+     "I"
+    ]
+   },
+   {
+    "correct": "there?",
+    "options": [
+     "there?",
+     "here?",
+     "at home?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Я голоден.",
+  "en": "I am hungry.",
+  "alternatives": [
+   "I'm hungry."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "am",
+    "options": [
+     "am",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "hungry.",
+    "options": [
+     "hungry.",
+     "tired.",
+     "busy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Мы готовы.",
+  "en": "We are ready.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "am"
+    ]
+   },
+   {
+    "correct": "ready.",
+    "options": [
+     "ready.",
+     "happy.",
+     "busy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Он не учитель.",
+  "en": "He is not a teacher.",
+  "alternatives": [
+   "He isn't a teacher."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is not",
+    "options": [
+     "is not",
+     "are not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "a teacher.",
+    "options": [
+     "a teacher.",
+     "a doctor.",
+     "a student."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Вы студенты?",
+  "en": "Are you students?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "students?",
+    "options": [
+     "students?",
+     "teachers?",
+     "doctors?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Она занята.",
+  "en": "She is busy.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "am"
+    ]
+   },
+   {
+    "correct": "busy.",
+    "options": [
+     "busy.",
+     "tired.",
+     "happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Они не холодные.",
+  "en": "They are not cold.",
+  "alternatives": [
+   "They aren't cold."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "cold.",
+    "options": [
+     "cold.",
+     "warm.",
+     "old."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Это новая машина.",
+  "en": "It is a new car.",
+  "alternatives": [
+   "It's a new car."
+  ],
+  "slots": [
+   {
+    "correct": "It",
+    "options": [
+     "It",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "am"
+    ]
+   },
+   {
+    "correct": "a new car.",
+    "options": [
+     "a new car.",
+     "an old car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Я здесь.",
+  "en": "I am here.",
+  "alternatives": [
+   "I'm here."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "am",
+    "options": [
+     "am",
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Они не дома.",
+  "en": "They are not at home.",
+  "alternatives": [
+   "They aren't at home."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "at home.",
+    "options": [
+     "at home.",
+     "at work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Ты занят?",
+  "en": "Are you busy?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Are",
+    "options": [
+     "Are",
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "busy?",
+    "options": [
+     "busy?",
+     "ready?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Он не занят на работе.",
+  "en": "He is not at work.",
+  "alternatives": [
+   "He isn't at work."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "is not",
+    "options": [
+     "is not",
+     "are not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "at work.",
+    "options": [
+     "at work.",
+     "at school."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Она готова?",
+  "en": "Is she ready?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Is",
+    "options": [
+     "Is",
+     "Are",
+     "Am"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "ready?",
+    "options": [
+     "ready?",
+     "late?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Они не учителя.",
+  "en": "They are not teachers.",
+  "alternatives": [
+   "They aren't teachers."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "teachers.",
+    "options": [
+     "teachers.",
+     "students."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Она не холодная.",
+  "en": "She is not cold.",
+  "alternatives": [
+   "She isn't cold."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "is not",
+    "options": [
+     "is not",
+     "are not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "cold.",
+    "options": [
+     "cold.",
+     "warm."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Ты не студент.",
+  "en": "You are not a student.",
+  "alternatives": [
+   "You aren't a student."
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "are not",
+    "options": [
+     "are not",
+     "is not",
+     "am not"
+    ]
+   },
+   {
+    "correct": "a student.",
+    "options": [
+     "a student.",
+     "a doctor."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Мы не заняты сегодня.",
+  "en": "We aren't busy today.",
+  "alternatives": [
+   "We are not busy today."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "aren't",
+    "options": [
+     "aren't",
+     "isn't",
+     "am not"
+    ]
+   },
+   {
+    "correct": "busy",
+    "options": [
+     "busy",
+     "ready",
+     "hungry"
+    ]
+   },
+   {
+    "correct": "today.",
+    "options": [
+     "today.",
+     "now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "verb_to_be",
+  "ru": "Вы очень заняты сейчас.",
+  "en": "You are very busy now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "She",
+     "It"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "am",
+     "is"
+    ]
+   },
+   {
+    "correct": "very busy now.",
+    "options": [
+     "very busy now.",
+     "at home now.",
+     "at work now."
+    ]
+   }
+  ]
+ }
+]

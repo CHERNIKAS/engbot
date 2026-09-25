@@ -1,0 +1,3315 @@
+[
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У меня много друзей.",
+  "en": "I have many friends.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I am",
+     "I do"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "friends.",
+    "options": [
+     "friends.",
+     "friend.",
+     "money.",
+     "water."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У меня нет много времени.",
+  "en": "I don't have much time.",
+  "alternatives": [
+   "I do not have much time."
+  ],
+  "slots": [
+   {
+    "correct": "I don't have",
+    "options": [
+     "I don't have",
+     "I have",
+     "I am not"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "time.",
+    "options": [
+     "time.",
+     "books.",
+     "friends.",
+     "days."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У меня есть немного хлеба.",
+  "en": "I have some bread.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I don't have",
+     "Do I have"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "bread.",
+    "options": [
+     "bread.",
+     "books.",
+     "friends.",
+     "apples."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У тебя есть какие-нибудь книги?",
+  "en": "Do you have any books?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you have",
+    "options": [
+     "Do you have",
+     "You have",
+     "You don't have"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "much",
+     "many"
+    ]
+   },
+   {
+    "correct": "books?",
+    "options": [
+     "books?",
+     "milk?",
+     "bread?",
+     "water?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Там много яблок.",
+  "en": "There are many apples.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There are",
+    "options": [
+     "There are",
+     "There is",
+     "They are"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "apples.",
+    "options": [
+     "apples.",
+     "milk.",
+     "money.",
+     "work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "В чашке много молока.",
+  "en": "There is much milk in the cup.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There is",
+    "options": [
+     "There is",
+     "There are",
+     "It is"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "milk in the cup.",
+    "options": [
+     "milk in the cup.",
+     "apples in the box.",
+     "friends at home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У нас есть немного денег.",
+  "en": "We have some money.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We have",
+    "options": [
+     "We have",
+     "We don't have",
+     "Do we have"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "money.",
+    "options": [
+     "money.",
+     "apples.",
+     "books.",
+     "days."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У вас нет каких-либо вопросов?",
+  "en": "Do you not have any work?",
+  "alternatives": [
+   "Don't you have any work?"
+  ],
+  "slots": [
+   {
+    "correct": "Do you",
+    "options": [
+     "Do you",
+     "You",
+     "Are you"
+    ]
+   },
+   {
+    "correct": "not have any",
+    "options": [
+     "not have any",
+     "have some",
+     "not have some"
+    ]
+   },
+   {
+    "correct": "work?",
+    "options": [
+     "work?",
+     "friends?",
+     "apples?",
+     "books?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Я не купил никаких яблок.",
+  "en": "I didn't buy any apples.",
+  "alternatives": [
+   "I did not buy any apples."
+  ],
+  "slots": [
+   {
+    "correct": "I didn't buy",
+    "options": [
+     "I didn't buy",
+     "I bought",
+     "I have buy"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "much",
+     "many"
+    ]
+   },
+   {
+    "correct": "apples.",
+    "options": [
+     "apples.",
+     "milk.",
+     "money.",
+     "sugar."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Он выпил немного воды.",
+  "en": "He drank some water.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He drank",
+    "options": [
+     "He drank",
+     "He didn't drink",
+     "Did he drink"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "much",
+     "many"
+    ]
+   },
+   {
+    "correct": "water.",
+    "options": [
+     "water.",
+     "apples.",
+     "friends.",
+     "days."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "На столе есть немного сахара.",
+  "en": "There is some sugar on the table.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There is",
+    "options": [
+     "There is",
+     "There are",
+     "There were"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "sugar on the table.",
+    "options": [
+     "sugar on the table.",
+     "books on the table.",
+     "people on the table."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У меня нет никаких идей.",
+  "en": "I don't have any ideas.",
+  "alternatives": [
+   "I do not have any ideas."
+  ],
+  "slots": [
+   {
+    "correct": "I don't have",
+    "options": [
+     "I don't have",
+     "I have",
+     "I am having"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "much",
+     "many"
+    ]
+   },
+   {
+    "correct": "ideas.",
+    "options": [
+     "ideas.",
+     "money.",
+     "water.",
+     "milk."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У тебя есть много работы?",
+  "en": "Do you have much work?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you have",
+    "options": [
+     "Do you have",
+     "Are you have",
+     "Do you has"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "work?",
+    "options": [
+     "work?",
+     "works?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У меня много книг.",
+  "en": "I have many books.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I am",
+     "I has"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much",
+     "any"
+    ]
+   },
+   {
+    "correct": "books.",
+    "options": [
+     "books.",
+     "book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У меня есть немного кофе.",
+  "en": "I have some coffee.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I am",
+     "I has"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "coffee.",
+    "options": [
+     "coffee.",
+     "coffees."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У них нет никаких друзей.",
+  "en": "They don't have any friends.",
+  "alternatives": [
+   "They do not have any friends."
+  ],
+  "slots": [
+   {
+    "correct": "They don't have",
+    "options": [
+     "They don't have",
+     "They aren't have",
+     "They doesn't have"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "friends.",
+    "options": [
+     "friends.",
+     "friend."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У тебя есть какие-нибудь вопросы?",
+  "en": "Do you have any questions?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you have",
+    "options": [
+     "Do you have",
+     "Are you have",
+     "Do you has"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "much",
+     "many"
+    ]
+   },
+   {
+    "correct": "questions?",
+    "options": [
+     "questions?",
+     "question?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "В парке много людей.",
+  "en": "There are many people in the park.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There are",
+    "options": [
+     "There are",
+     "There is",
+     "There have"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "people in the park.",
+    "options": [
+     "people in the park.",
+     "person in the park."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Я не хочу много сахара.",
+  "en": "I don't want much sugar.",
+  "alternatives": [
+   "I do not want much sugar."
+  ],
+  "slots": [
+   {
+    "correct": "I don't want",
+    "options": [
+     "I don't want",
+     "I am not want",
+     "I doesn't want"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "any",
+     "some"
+    ]
+   },
+   {
+    "correct": "sugar.",
+    "options": [
+     "sugar.",
+     "sugars."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У нас есть немного яблок.",
+  "en": "We have some apples.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We have",
+    "options": [
+     "We have",
+     "We are",
+     "We has"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "much",
+     "many"
+    ]
+   },
+   {
+    "correct": "apples.",
+    "options": [
+     "apples.",
+     "apple."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Вы купили какие-нибудь яблоки?",
+  "en": "Did you buy any apples?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did you buy",
+    "options": [
+     "Did you buy",
+     "Do you buy",
+     "Are you buy"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "apples?",
+    "options": [
+     "apples?",
+     "apple?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У меня есть немного работы.",
+  "en": "I have some work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I am",
+     "I has"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "work.",
+    "options": [
+     "work.",
+     "works."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Там нет никакой воды.",
+  "en": "There isn't any water there.",
+  "alternatives": [
+   "There is not any water there."
+  ],
+  "slots": [
+   {
+    "correct": "There isn't",
+    "options": [
+     "There isn't",
+     "There aren't",
+     "There doesn't"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "water there.",
+    "options": [
+     "water there.",
+     "waters there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У него много дней выходных.",
+  "en": "He has many days off.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He has",
+    "options": [
+     "He has",
+     "He have",
+     "He is"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "days off.",
+    "options": [
+     "days off.",
+     "day off."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У тебя есть много яблок?",
+  "en": "Do you have many apples?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you have",
+    "options": [
+     "Do you have",
+     "Are you have",
+     "Does you have",
+     "Have you got"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "apples?",
+    "options": [
+     "apples?",
+     "apple?",
+     "water?",
+     "money?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "В стакане нет много воды.",
+  "en": "There isn't much water in the glass.",
+  "alternatives": [
+   "There is not much water in the glass."
+  ],
+  "slots": [
+   {
+    "correct": "There isn't",
+    "options": [
+     "There isn't",
+     "There aren't",
+     "It isn't",
+     "They aren't"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "water in the glass.",
+    "options": [
+     "water in the glass.",
+     "apples in the glass.",
+     "books in the glass.",
+     "people in the glass."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У тебя есть какие-нибудь деньги?",
+  "en": "Do you have any money?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you have",
+    "options": [
+     "Do you have",
+     "Does you have",
+     "Are you have",
+     "Have you have"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "money?",
+    "options": [
+     "money?",
+     "apples?",
+     "books?",
+     "friends?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Она купила много яблок.",
+  "en": "She bought many apples.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She bought",
+    "options": [
+     "She bought",
+     "She buy",
+     "She buys",
+     "She is buying"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "apples.",
+    "options": [
+     "apples.",
+     "water.",
+     "milk.",
+     "coffee."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "На столе нет много кофе.",
+  "en": "There isn't much coffee on the table.",
+  "alternatives": [
+   "There is not much coffee on the table."
+  ],
+  "slots": [
+   {
+    "correct": "There isn't",
+    "options": [
+     "There isn't",
+     "There aren't",
+     "It isn't",
+     "They aren't"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "coffee on the table.",
+    "options": [
+     "coffee on the table.",
+     "books on the table.",
+     "friends on the table.",
+     "apples on the table."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У них есть немного хлеба.",
+  "en": "They have some bread.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They have",
+    "options": [
+     "They have",
+     "They are",
+     "They do",
+     "They get"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "bread.",
+    "options": [
+     "bread.",
+     "apples.",
+     "books.",
+     "friends."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У меня нет никаких планов.",
+  "en": "I don't have any plans.",
+  "alternatives": [
+   "I do not have any plans."
+  ],
+  "slots": [
+   {
+    "correct": "I don't have",
+    "options": [
+     "I don't have",
+     "I have some",
+     "I do have",
+     "I am not have"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "plans.",
+    "options": [
+     "plans.",
+     "money.",
+     "time.",
+     "water."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Там много людей.",
+  "en": "There are many people.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There are",
+    "options": [
+     "There are",
+     "There is",
+     "They are",
+     "There have"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "people.",
+    "options": [
+     "people.",
+     "water.",
+     "milk.",
+     "money."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "В бутылке много молока.",
+  "en": "There is much milk in the bottle.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There is",
+    "options": [
+     "There is",
+     "There are",
+     "It is",
+     "They are"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "milk in the bottle.",
+    "options": [
+     "milk in the bottle.",
+     "books in the bottle.",
+     "apples in the bottle.",
+     "friends in the bottle."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У него есть некоторые книги.",
+  "en": "He has some books.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He has",
+    "options": [
+     "He has",
+     "He have",
+     "He is",
+     "He do"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "books.",
+    "options": [
+     "books.",
+     "water.",
+     "milk.",
+     "money."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Ты купил какие-нибудь яблоки?",
+  "en": "Did you buy any apples?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did you buy",
+    "options": [
+     "Did you buy",
+     "Do you buy",
+     "Are you buy",
+     "Have you buy"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "apples?",
+    "options": [
+     "apples?",
+     "water?",
+     "milk?",
+     "money?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "В бутылке нет много воды.",
+  "en": "There isn't much water in the bottle.",
+  "alternatives": [
+   "There is not much water in the bottle."
+  ],
+  "slots": [
+   {
+    "correct": "There",
+    "options": [
+     "There",
+     "It"
+    ]
+   },
+   {
+    "correct": "isn't",
+    "options": [
+     "isn't",
+     "aren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "any"
+    ]
+   },
+   {
+    "correct": "water in the bottle.",
+    "options": [
+     "water in the bottle.",
+     "waters in the bottle."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У меня есть немного денег.",
+  "en": "I have some money.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I am having"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many"
+    ]
+   },
+   {
+    "correct": "money.",
+    "options": [
+     "money.",
+     "moneys."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У меня нет никакой работы.",
+  "en": "I don't have any work.",
+  "alternatives": [
+   "I do not have any work."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "don't have",
+    "options": [
+     "don't have",
+     "doesn't have",
+     "didn't have"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "many"
+    ]
+   },
+   {
+    "correct": "work.",
+    "options": [
+     "work.",
+     "works."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "В саду много людей.",
+  "en": "There are many people in the garden.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There are",
+    "options": [
+     "There are",
+     "There is"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much",
+     "some"
+    ]
+   },
+   {
+    "correct": "people in the garden.",
+    "options": [
+     "people in the garden.",
+     "person in the garden."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Она купила немного хлеба.",
+  "en": "She bought some bread.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She bought",
+    "options": [
+     "She bought",
+     "She buys"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many"
+    ]
+   },
+   {
+    "correct": "bread.",
+    "options": [
+     "bread.",
+     "breads."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Ты хочешь немного сахара?",
+  "en": "Do you want some sugar?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you want",
+    "options": [
+     "Do you want",
+     "Are you want"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many"
+    ]
+   },
+   {
+    "correct": "sugar?",
+    "options": [
+     "sugar?",
+     "sugars?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У них нет много времени.",
+  "en": "They don't have much time.",
+  "alternatives": [
+   "They do not have much time."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "don't have",
+    "options": [
+     "don't have",
+     "doesn't have"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "any"
+    ]
+   },
+   {
+    "correct": "time.",
+    "options": [
+     "time.",
+     "times."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У меня есть некоторые друзья.",
+  "en": "I have some friends.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I am having"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "much"
+    ]
+   },
+   {
+    "correct": "friends.",
+    "options": [
+     "friends.",
+     "friend."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У тебя есть много друзей?",
+  "en": "Do you have many friends?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you have",
+    "options": [
+     "Do you have",
+     "Does he have",
+     "Are you having"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "friends?",
+    "options": [
+     "friends?",
+     "water?",
+     "money?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У меня нет много сахара.",
+  "en": "I don't have much sugar.",
+  "alternatives": [
+   "I do not have much sugar."
+  ],
+  "slots": [
+   {
+    "correct": "I don't have",
+    "options": [
+     "I don't have",
+     "I have no",
+     "I am not having"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "sugar.",
+    "options": [
+     "sugar.",
+     "books.",
+     "apples."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У меня есть немного времени.",
+  "en": "I have some time.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "Do I have",
+     "I am having"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "time.",
+    "options": [
+     "time.",
+     "books.",
+     "apples."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "В стакане много воды.",
+  "en": "There is much water in the glass.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There is",
+    "options": [
+     "There is",
+     "There are",
+     "It has"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "water in the glass.",
+    "options": [
+     "water in the glass.",
+     "apples in the box."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У них есть некоторые идеи.",
+  "en": "They have some ideas.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They have",
+    "options": [
+     "They have",
+     "They are having",
+     "Do they have"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "ideas.",
+    "options": [
+     "ideas.",
+     "water.",
+     "sugar."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У нас много работы.",
+  "en": "We have much work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We have",
+    "options": [
+     "We have",
+     "We are having",
+     "Do we have"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "work.",
+    "options": [
+     "work.",
+     "books.",
+     "friends."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Я не купил никаких книг.",
+  "en": "I didn't buy any books.",
+  "alternatives": [
+   "I did not buy any books."
+  ],
+  "slots": [
+   {
+    "correct": "I didn't buy",
+    "options": [
+     "I didn't buy",
+     "I don't buy",
+     "I bought no"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "books.",
+    "options": [
+     "books.",
+     "water.",
+     "milk."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У тебя есть некоторые идеи?",
+  "en": "Do you have some ideas?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you have",
+    "options": [
+     "Do you have",
+     "Are you having",
+     "Does he have"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "ideas?",
+    "options": [
+     "ideas?",
+     "water?",
+     "money?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "На столе много книг.",
+  "en": "There are many books on the table.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There are",
+    "options": [
+     "There are",
+     "There is",
+     "They are"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "books on the table.",
+    "options": [
+     "books on the table.",
+     "water on the table."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У него нет никаких друзей.",
+  "en": "He doesn't have any friends.",
+  "alternatives": [
+   "He does not have any friends."
+  ],
+  "slots": [
+   {
+    "correct": "He doesn't have",
+    "options": [
+     "He doesn't have",
+     "He don't have",
+     "He has no"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "friends.",
+    "options": [
+     "friends.",
+     "money.",
+     "water."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У меня много яблок.",
+  "en": "I have many apples.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I am",
+     "Do I have"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much",
+     "some"
+    ]
+   },
+   {
+    "correct": "apples.",
+    "options": [
+     "apples.",
+     "apple.",
+     "water."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У тебя много работы?",
+  "en": "Do you have much work?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you have",
+    "options": [
+     "Do you have",
+     "Are you have",
+     "Have you"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "some"
+    ]
+   },
+   {
+    "correct": "work?",
+    "options": [
+     "work?",
+     "jobs?",
+     "tasks?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У меня есть немного молока.",
+  "en": "I have some milk.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I do",
+     "I like"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many"
+    ]
+   },
+   {
+    "correct": "milk.",
+    "options": [
+     "milk.",
+     "apple.",
+     "book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У вас нет никаких идей?",
+  "en": "Do you have any ideas?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you have",
+    "options": [
+     "Do you have",
+     "Are you have",
+     "Have you"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "much"
+    ]
+   },
+   {
+    "correct": "ideas?",
+    "options": [
+     "ideas?",
+     "idea?",
+     "money?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "В коробке много книг.",
+  "en": "There are many books in the box.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There are",
+    "options": [
+     "There are",
+     "There is",
+     "They are"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much",
+     "some"
+    ]
+   },
+   {
+    "correct": "books in the box.",
+    "options": [
+     "books in the box.",
+     "book in the box.",
+     "milk in the box."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Я хочу немного хлеба.",
+  "en": "I want some bread.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I want",
+    "options": [
+     "I want",
+     "I have",
+     "I buy"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many"
+    ]
+   },
+   {
+    "correct": "bread.",
+    "options": [
+     "bread.",
+     "books.",
+     "apple."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У него есть немного времени.",
+  "en": "He has some time.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He has",
+    "options": [
+     "He has",
+     "He have",
+     "He is"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many"
+    ]
+   },
+   {
+    "correct": "time.",
+    "options": [
+     "time.",
+     "times.",
+     "books."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У меня есть некоторые книги.",
+  "en": "I have some books.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I has"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "books.",
+    "options": [
+     "books.",
+     "book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У нее есть некоторые идеи.",
+  "en": "She has some ideas.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She has",
+    "options": [
+     "She has",
+     "She have"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "ideas.",
+    "options": [
+     "ideas.",
+     "idea."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У них много работы.",
+  "en": "They have much work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They have",
+    "options": [
+     "They have",
+     "They has"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many"
+    ]
+   },
+   {
+    "correct": "work.",
+    "options": [
+     "work.",
+     "works."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Ты хочешь немного молока?",
+  "en": "Do you want some milk?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you want",
+    "options": [
+     "Do you want",
+     "Does you want"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "milk?",
+    "options": [
+     "milk?",
+     "milks?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У тебя есть много денег?",
+  "en": "Do you have much money?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you have",
+    "options": [
+     "Do you have",
+     "Does you have",
+     "Have you"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "some"
+    ]
+   },
+   {
+    "correct": "money?",
+    "options": [
+     "money?",
+     "moneys?",
+     "any money?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Я купил некоторые книги.",
+  "en": "I bought some books.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I bought",
+    "options": [
+     "I bought",
+     "I buy",
+     "I did bought"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "much"
+    ]
+   },
+   {
+    "correct": "books.",
+    "options": [
+     "books.",
+     "book.",
+     "some book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У вас нет каких-либо идей?",
+  "en": "Do you have any ideas?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you have",
+    "options": [
+     "Do you have",
+     "Do you has",
+     "Have you"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "many"
+    ]
+   },
+   {
+    "correct": "ideas?",
+    "options": [
+     "ideas?",
+     "idea?",
+     "some idea?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Там нет много людей.",
+  "en": "There are not many people.",
+  "alternatives": [
+   "There aren't many people."
+  ],
+  "slots": [
+   {
+    "correct": "There are not",
+    "options": [
+     "There are not",
+     "There is not",
+     "There not"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much",
+     "some"
+    ]
+   },
+   {
+    "correct": "people.",
+    "options": [
+     "people.",
+     "person.",
+     "any people."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Они купили некоторые яблоки.",
+  "en": "They bought some apples.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They bought",
+    "options": [
+     "They bought",
+     "They buy",
+     "They have buy"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "much"
+    ]
+   },
+   {
+    "correct": "apples.",
+    "options": [
+     "apples.",
+     "apple.",
+     "many apples."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У тебя есть какие-нибудь друзья?",
+  "en": "Do you have any friends?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you have",
+    "options": [
+     "Do you have",
+     "Do you has",
+     "Are you have"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "many"
+    ]
+   },
+   {
+    "correct": "friends?",
+    "options": [
+     "friends?",
+     "friend?",
+     "some friends?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "В коробке много сахара.",
+  "en": "There is much sugar in the box.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There is",
+    "options": [
+     "There is",
+     "There are",
+     "There has"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "some"
+    ]
+   },
+   {
+    "correct": "sugar in the box.",
+    "options": [
+     "sugar in the box.",
+     "sugars in the box.",
+     "some sugar in box."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Я не купил никакого хлеба.",
+  "en": "I did not buy any bread.",
+  "alternatives": [
+   "I didn't buy any bread."
+  ],
+  "slots": [
+   {
+    "correct": "I did not buy",
+    "options": [
+     "I did not buy",
+     "I do not buy",
+     "I have not buy"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "much"
+    ]
+   },
+   {
+    "correct": "bread.",
+    "options": [
+     "bread.",
+     "breads.",
+     "some bread."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У него есть некоторые дни отдыха.",
+  "en": "He has some days off.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He has",
+    "options": [
+     "He has",
+     "He have",
+     "He does have"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many"
+    ]
+   },
+   {
+    "correct": "days off.",
+    "options": [
+     "days off.",
+     "day off.",
+     "any days off."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У тебя есть много воды?",
+  "en": "Do you have much water?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you have",
+    "options": [
+     "Do you have",
+     "You have",
+     "Does you have"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "water?",
+    "options": [
+     "water?",
+     "waters?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Я купил немного молока.",
+  "en": "I bought some milk.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I bought",
+    "options": [
+     "I bought",
+     "I buy"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "much",
+     "many"
+    ]
+   },
+   {
+    "correct": "milk.",
+    "options": [
+     "milk.",
+     "milks."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У них нет никаких идей.",
+  "en": "They don't have any ideas.",
+  "alternatives": [
+   "They do not have any ideas."
+  ],
+  "slots": [
+   {
+    "correct": "They don't have",
+    "options": [
+     "They don't have",
+     "They do not have",
+     "They have"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "much",
+     "many"
+    ]
+   },
+   {
+    "correct": "ideas.",
+    "options": [
+     "ideas.",
+     "idea."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "В чашке много кофе.",
+  "en": "There is much coffee in the cup.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There is",
+    "options": [
+     "There is",
+     "There are"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "coffee in the cup.",
+    "options": [
+     "coffee in the cup.",
+     "coffees in the cup."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Ты хочешь немного хлеба?",
+  "en": "Do you want some bread?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you want",
+    "options": [
+     "Do you want",
+     "You want",
+     "Does you want"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "much",
+     "many"
+    ]
+   },
+   {
+    "correct": "bread?",
+    "options": [
+     "bread?",
+     "breads?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У него нет никакой работы.",
+  "en": "He doesn't have any work.",
+  "alternatives": [
+   "He does not have any work."
+  ],
+  "slots": [
+   {
+    "correct": "He doesn't have",
+    "options": [
+     "He doesn't have",
+     "He does not have",
+     "He don't have"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "much",
+     "many"
+    ]
+   },
+   {
+    "correct": "work.",
+    "options": [
+     "work.",
+     "works."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Там много дней.",
+  "en": "There are many days.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There are",
+    "options": [
+     "There are",
+     "There is"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "days.",
+    "options": [
+     "days.",
+     "day."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У вас есть какие-нибудь вопросы?",
+  "en": "Do you have any questions?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you have",
+    "options": [
+     "Do you have",
+     "You have",
+     "Does you have"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "much",
+     "many"
+    ]
+   },
+   {
+    "correct": "questions?",
+    "options": [
+     "questions?",
+     "question?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Мне нужно немного времени.",
+  "en": "I need some time.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I need",
+    "options": [
+     "I need",
+     "I needs"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "much",
+     "many"
+    ]
+   },
+   {
+    "correct": "time.",
+    "options": [
+     "time.",
+     "times."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "В бутылке нет много молока.",
+  "en": "There isn't much milk in the bottle.",
+  "alternatives": [
+   "There is not much milk in the bottle."
+  ],
+  "slots": [
+   {
+    "correct": "There isn't",
+    "options": [
+     "There isn't",
+     "There is not",
+     "There aren't"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "milk in the bottle.",
+    "options": [
+     "milk in the bottle.",
+     "milks in the bottle."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У меня есть немного друзей.",
+  "en": "I have some friends.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I am",
+     "Do I have"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "much",
+     "many"
+    ]
+   },
+   {
+    "correct": "friends.",
+    "options": [
+     "friends.",
+     "water.",
+     "money."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У тебя есть какие-нибудь идеи?",
+  "en": "Do you have any ideas?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you have",
+    "options": [
+     "Do you have",
+     "You have",
+     "Are you have"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "much",
+     "many"
+    ]
+   },
+   {
+    "correct": "ideas?",
+    "options": [
+     "ideas?",
+     "time?",
+     "work?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У него есть некоторые деньги.",
+  "en": "He has some money.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He has",
+    "options": [
+     "He has",
+     "He have",
+     "He is"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "money.",
+    "options": [
+     "money.",
+     "books.",
+     "days."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У нас нет никакой воды.",
+  "en": "We do not have any water.",
+  "alternatives": [
+   "We don't have any water."
+  ],
+  "slots": [
+   {
+    "correct": "We do not have",
+    "options": [
+     "We do not have",
+     "We have no",
+     "We are not have"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "water.",
+    "options": [
+     "water.",
+     "friends.",
+     "apples."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У них есть некоторые вопросы.",
+  "en": "They have some questions.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They have",
+    "options": [
+     "They have",
+     "They are",
+     "They do have"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "questions.",
+    "options": [
+     "questions.",
+     "water.",
+     "milk."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У тебя есть много времени?",
+  "en": "Do you have much time?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you have",
+    "options": [
+     "Do you have",
+     "Are you have",
+     "Does you have"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "time?",
+    "options": [
+     "time?",
+     "books?",
+     "people?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Они купили некоторые книги.",
+  "en": "They bought some books.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They bought",
+    "options": [
+     "They bought",
+     "They buy",
+     "They are buy"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "books.",
+    "options": [
+     "books.",
+     "money.",
+     "bread."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Я хочу купить немного кофе.",
+  "en": "I want to buy some coffee.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I want to buy",
+    "options": [
+     "I want to buy",
+     "I wanted to buy",
+     "I am buying"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "coffee.",
+    "options": [
+     "coffee.",
+     "coffees."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Мне нужно купить немного хлеба.",
+  "en": "I need to buy some bread.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I need to buy",
+    "options": [
+     "I need to buy",
+     "I need buying",
+     "I am buying"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "much",
+     "many"
+    ]
+   },
+   {
+    "correct": "bread.",
+    "options": [
+     "bread.",
+     "breads."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Ты купил много яблок?",
+  "en": "Did you buy many apples?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did you buy",
+    "options": [
+     "Did you buy",
+     "Do you buy",
+     "Are you buying"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "apples?",
+    "options": [
+     "apples?",
+     "apple?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Там нет много машин.",
+  "en": "There aren't many cars there.",
+  "alternatives": [
+   "There are not many cars there."
+  ],
+  "slots": [
+   {
+    "correct": "There aren't",
+    "options": [
+     "There aren't",
+     "There isn't"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "cars there.",
+    "options": [
+     "cars there.",
+     "car there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У тебя есть какой-нибудь сахар?",
+  "en": "Do you have any sugar?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you have",
+    "options": [
+     "Do you have",
+     "Did you have",
+     "Are you having"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "much",
+     "many"
+    ]
+   },
+   {
+    "correct": "sugar?",
+    "options": [
+     "sugar?",
+     "sugars?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "В чашке нет много воды.",
+  "en": "There isn't much water in the cup.",
+  "alternatives": [
+   "There is not much water in the cup."
+  ],
+  "slots": [
+   {
+    "correct": "There isn't",
+    "options": [
+     "There isn't",
+     "There aren't",
+     "There is"
+    ]
+   },
+   {
+    "correct": "much",
+    "options": [
+     "much",
+     "many",
+     "some",
+     "any"
+    ]
+   },
+   {
+    "correct": "water in the cup.",
+    "options": [
+     "water in the cup.",
+     "books in the cup.",
+     "friends in the cup."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У меня есть немного яблок.",
+  "en": "I have some apples.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have",
+    "options": [
+     "I have",
+     "I has",
+     "I do have"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "apples.",
+    "options": [
+     "apples.",
+     "water.",
+     "money.",
+     "milk."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У меня нет никакой воды.",
+  "en": "I don't have any water.",
+  "alternatives": [
+   "I do not have any water."
+  ],
+  "slots": [
+   {
+    "correct": "I don't have",
+    "options": [
+     "I don't have",
+     "I doesn't have",
+     "I have no"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "water.",
+    "options": [
+     "water.",
+     "apples.",
+     "friends.",
+     "days."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "Я хочу купить немного яблок.",
+  "en": "I want to buy some apples.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I want to buy",
+    "options": [
+     "I want to buy",
+     "I want buying",
+     "I wanted buy"
+    ]
+   },
+   {
+    "correct": "some",
+    "options": [
+     "some",
+     "any",
+     "much",
+     "many"
+    ]
+   },
+   {
+    "correct": "apples.",
+    "options": [
+     "apples.",
+     "apple."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "quantifiers_basic",
+  "ru": "У тебя есть какие-нибудь яблоки?",
+  "en": "Do you have any apples?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Do you have",
+    "options": [
+     "Do you have",
+     "Are you have",
+     "Does you have"
+    ]
+   },
+   {
+    "correct": "any",
+    "options": [
+     "any",
+     "some",
+     "much",
+     "many"
+    ]
+   },
+   {
+    "correct": "apples?",
+    "options": [
+     "apples?",
+     "apple?"
+    ]
+   }
+  ]
+ }
+]

@@ -1,0 +1,3294 @@
+[
+ {
+  "topic": "past_perfect",
+  "ru": "Я уже закончил работу, когда он пришел.",
+  "en": "I had finished work when he came.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "had finished",
+    "options": [
+     "had finished",
+     "finished",
+     "have finished"
+    ]
+   },
+   {
+    "correct": "work when he came.",
+    "options": [
+     "work when he came.",
+     "work before he came.",
+     "the work after he came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Когда я пришел, магазин уже закрылся.",
+  "en": "When I came, the shop had closed.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "When I came,",
+    "options": [
+     "When I came,",
+     "Before I came,",
+     "After I came,"
+    ]
+   },
+   {
+    "correct": "the shop",
+    "options": [
+     "the shop",
+     "the store",
+     "my friend"
+    ]
+   },
+   {
+    "correct": "had closed.",
+    "options": [
+     "had closed.",
+     "closed.",
+     "has closed."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Он не съел ужин, когда я вернулся.",
+  "en": "He hadn't eaten dinner when I returned.",
+  "alternatives": [
+   "He had not eaten dinner when I returned."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "hadn't eaten",
+    "options": [
+     "hadn't eaten",
+     "didn't eat",
+     "haven't eaten"
+    ]
+   },
+   {
+    "correct": "dinner when I returned.",
+    "options": [
+     "dinner when I returned.",
+     "food when I returned.",
+     "lunch before I came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже сделал домашнее задание до обеда?",
+  "en": "Had you finished your homework before lunch?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had you",
+    "options": [
+     "Had you",
+     "Did you",
+     "Have you"
+    ]
+   },
+   {
+    "correct": "finished",
+    "options": [
+     "finished",
+     "finish",
+     "finishing"
+    ]
+   },
+   {
+    "correct": "your homework before lunch?",
+    "options": [
+     "your homework before lunch?",
+     "the work before lunch?",
+     "the task before lunch?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я забыл ключи, когда пошел в магазин.",
+  "en": "I had forgotten my keys when I went shopping.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "had forgotten",
+    "options": [
+     "had forgotten",
+     "forgot",
+     "have forgotten"
+    ]
+   },
+   {
+    "correct": "my keys when I went shopping.",
+    "options": [
+     "my keys when I went shopping.",
+     "the keys before I went out.",
+     "my bag when I went home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Они уже ушли, когда начался дождь.",
+  "en": "They had already left when it started.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "He"
+    ]
+   },
+   {
+    "correct": "had already left",
+    "options": [
+     "had already left",
+     "left",
+     "already left"
+    ]
+   },
+   {
+    "correct": "when it started.",
+    "options": [
+     "when it started.",
+     "before it started.",
+     "after it started."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Он не видел этот фильм до вчерашнего дня.",
+  "en": "He hadn't seen the movie before yesterday.",
+  "alternatives": [
+   "He had not seen the movie before yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "hadn't seen",
+    "options": [
+     "hadn't seen",
+     "didn't see",
+     "hasn't seen"
+    ]
+   },
+   {
+    "correct": "the movie before yesterday.",
+    "options": [
+     "the movie before yesterday.",
+     "it before yesterday.",
+     "the film before yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Она купила билет после того, как он ушел.",
+  "en": "She bought the ticket after he had left.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She bought",
+    "options": [
+     "She bought",
+     "She had bought",
+     "She buys"
+    ]
+   },
+   {
+    "correct": "the ticket after",
+    "options": [
+     "the ticket after",
+     "the pass after",
+     "the seat after"
+    ]
+   },
+   {
+    "correct": "he had left.",
+    "options": [
+     "he had left.",
+     "he left.",
+     "he has left."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже поел, когда я пришел?",
+  "en": "Had you already eaten when I came?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had you",
+    "options": [
+     "Had you",
+     "Did you",
+     "Have you"
+    ]
+   },
+   {
+    "correct": "already eaten",
+    "options": [
+     "already eaten",
+     "eaten",
+     "eat"
+    ]
+   },
+   {
+    "correct": "when I came?",
+    "options": [
+     "when I came?",
+     "before I came?",
+     "after I came?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Они не закончили урок до звонка.",
+  "en": "They hadn't finished the lesson before the bell.",
+  "alternatives": [
+   "They had not finished the lesson before the bell."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "He"
+    ]
+   },
+   {
+    "correct": "hadn't finished",
+    "options": [
+     "hadn't finished",
+     "didn't finish",
+     "haven't finished"
+    ]
+   },
+   {
+    "correct": "the lesson before the bell.",
+    "options": [
+     "the lesson before the bell.",
+     "the work before the bell.",
+     "it before the bell."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я пошел домой после того, как закончил работу.",
+  "en": "I went home after I had finished work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I went",
+    "options": [
+     "I went",
+     "I had gone",
+     "I go"
+    ]
+   },
+   {
+    "correct": "home after",
+    "options": [
+     "home after",
+     "there after",
+     "back after"
+    ]
+   },
+   {
+    "correct": "I had finished work.",
+    "options": [
+     "I had finished work.",
+     "I finished work.",
+     "I have finished work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я уже ушел, когда он пришел.",
+  "en": "I had already left when he came.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "had already left",
+    "options": [
+     "had already left",
+     "already left",
+     "have already left",
+     "already leave"
+    ]
+   },
+   {
+    "correct": "when he came.",
+    "options": [
+     "when he came.",
+     "before he came.",
+     "after he came.",
+     "when he comes."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Он не сделал работу до обеда.",
+  "en": "He hadn't finished work before lunch.",
+  "alternatives": [
+   "He had not finished work before lunch."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I",
+     "She"
+    ]
+   },
+   {
+    "correct": "hadn't finished",
+    "options": [
+     "hadn't finished",
+     "didn't finish",
+     "hasn't finished",
+     "won't finish"
+    ]
+   },
+   {
+    "correct": "work before lunch.",
+    "options": [
+     "work before lunch.",
+     "the work after lunch.",
+     "homework after lunch.",
+     "work when lunch."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я увидел его после того, как он ушел.",
+  "en": "I saw him after he had left.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I saw him",
+    "options": [
+     "I saw him",
+     "I had seen him",
+     "I see him",
+     "I have seen him"
+    ]
+   },
+   {
+    "correct": "after he had left.",
+    "options": [
+     "after he had left.",
+     "after he left.",
+     "before he had left.",
+     "after he has left."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Мы не видели этот фильм до вчера.",
+  "en": "We hadn't seen this film before yesterday.",
+  "alternatives": [
+   "We had not seen this film before yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "hadn't seen",
+    "options": [
+     "hadn't seen",
+     "didn't see",
+     "haven't seen",
+     "don't see"
+    ]
+   },
+   {
+    "correct": "this film before yesterday.",
+    "options": [
+     "this film before yesterday.",
+     "the film after yesterday.",
+     "this film when yesterday.",
+     "this movie before yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Он купил еду после того, как я ушел.",
+  "en": "He bought food after I had left.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He bought food",
+    "options": [
+     "He bought food",
+     "He had bought food",
+     "He buys food",
+     "He buy food"
+    ]
+   },
+   {
+    "correct": "after I had left.",
+    "options": [
+     "after I had left.",
+     "after I left.",
+     "before I had left.",
+     "after I have left."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты сделал это до того, как пришел?",
+  "en": "Had you done it before you came?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had you done",
+    "options": [
+     "Had you done",
+     "Did you do",
+     "Have you done",
+     "Were you doing"
+    ]
+   },
+   {
+    "correct": "it before you came?",
+    "options": [
+     "it before you came?",
+     "it after you came?",
+     "it when you came?",
+     "it before you come?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Она забыла, что мы уже ели.",
+  "en": "She forgot that we had already eaten.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She forgot",
+    "options": [
+     "She forgot",
+     "She had forgotten",
+     "She forgets",
+     "She has forgotten"
+    ]
+   },
+   {
+    "correct": "that we had already eaten.",
+    "options": [
+     "that we had already eaten.",
+     "that we already ate.",
+     "that we have already eaten.",
+     "that we already eat."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Он не начал работу, когда я пришел.",
+  "en": "He hadn't started work when I came.",
+  "alternatives": [
+   "He had not started work when I came."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "hadn't started",
+    "options": [
+     "hadn't started",
+     "didn't start",
+     "hasn't started",
+     "wasn't starting"
+    ]
+   },
+   {
+    "correct": "work when I came.",
+    "options": [
+     "work when I came.",
+     "work before I came.",
+     "work after I came.",
+     "work when I come."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже закрыл дверь, когда я ушел?",
+  "en": "Had you already closed the door when I left?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had you",
+    "options": [
+     "Had you",
+     "Did you",
+     "Have you",
+     "Were you"
+    ]
+   },
+   {
+    "correct": "already closed",
+    "options": [
+     "already closed",
+     "close",
+     "already close",
+     "already closing"
+    ]
+   },
+   {
+    "correct": "the door when I left?",
+    "options": [
+     "the door when I left?",
+     "the door before I left?",
+     "the door after I left?",
+     "the door when I leave?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Они пошли домой после того, как сделали работу.",
+  "en": "They went home after they had done the work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They went home",
+    "options": [
+     "They went home",
+     "They had gone home",
+     "They go home",
+     "They have gone home"
+    ]
+   },
+   {
+    "correct": "after they had done",
+    "options": [
+     "after they had done",
+     "after they did",
+     "before they had done",
+     "after they have done"
+    ]
+   },
+   {
+    "correct": "the work.",
+    "options": [
+     "the work.",
+     "the homework.",
+     "the job.",
+     "the task."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже сделал это до того, как пришел?",
+  "en": "Had you done it before you came?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had you done",
+    "options": [
+     "Had you done",
+     "Did you do",
+     "Have you done"
+    ]
+   },
+   {
+    "correct": "it before you came?",
+    "options": [
+     "it before you came?",
+     "it after you came?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Она не видела этот фильм до вчера.",
+  "en": "She hadn't seen this film before yesterday.",
+  "alternatives": [
+   "She had not seen this film before yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "She hadn't seen",
+    "options": [
+     "She hadn't seen",
+     "She didn't see",
+     "She hasn't seen"
+    ]
+   },
+   {
+    "correct": "this film before yesterday.",
+    "options": [
+     "this film before yesterday.",
+     "this film until yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я уже сделал работу, когда он пришел.",
+  "en": "I had already done the work when he came.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "had",
+    "options": [
+     "had",
+     "did",
+     "have"
+    ]
+   },
+   {
+    "correct": "already done",
+    "options": [
+     "already done",
+     "already did",
+     "already do"
+    ]
+   },
+   {
+    "correct": "the work when he came.",
+    "options": [
+     "the work when he came.",
+     "the work when he comes."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Она не закончила отчет до того, как ушла.",
+  "en": "She hadn't finished the report before she left.",
+  "alternatives": [
+   "She had not finished the report before she left."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "hadn't",
+    "options": [
+     "hadn't",
+     "didn't",
+     "hasn't"
+    ]
+   },
+   {
+    "correct": "finished",
+    "options": [
+     "finished",
+     "finish",
+     "finishing"
+    ]
+   },
+   {
+    "correct": "the report before she left.",
+    "options": [
+     "the report before she left.",
+     "the report before she leaves."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже ушел, когда я пришел?",
+  "en": "Had you already left when I came?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had",
+    "options": [
+     "Had",
+     "Did",
+     "Have"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "already left",
+    "options": [
+     "already left",
+     "already leave",
+     "already leaving"
+    ]
+   },
+   {
+    "correct": "when I came?",
+    "options": [
+     "when I came?",
+     "when I come?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я купил хлеб после того, как он ушел.",
+  "en": "I bought bread after he had left.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I bought",
+    "options": [
+     "I bought",
+     "I had bought"
+    ]
+   },
+   {
+    "correct": "bread after",
+    "options": [
+     "bread after",
+     "bread when"
+    ]
+   },
+   {
+    "correct": "he had left.",
+    "options": [
+     "he had left.",
+     "he left."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Они не видели этот фильм до вчерашнего дня.",
+  "en": "They hadn't seen this film before yesterday.",
+  "alternatives": [
+   "They had not seen this film before yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "He"
+    ]
+   },
+   {
+    "correct": "hadn't",
+    "options": [
+     "hadn't",
+     "didn't",
+     "haven't"
+    ]
+   },
+   {
+    "correct": "seen",
+    "options": [
+     "seen",
+     "saw",
+     "see"
+    ]
+   },
+   {
+    "correct": "this film before yesterday.",
+    "options": [
+     "this film before yesterday.",
+     "this film after yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я начал работу после того, как он ушел.",
+  "en": "I started work after he had left.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I started",
+    "options": [
+     "I started",
+     "I had started"
+    ]
+   },
+   {
+    "correct": "work after",
+    "options": [
+     "work after",
+     "work before"
+    ]
+   },
+   {
+    "correct": "he had left.",
+    "options": [
+     "he had left.",
+     "he left."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже съел обед, когда я пришел?",
+  "en": "Had you already eaten lunch when I came?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had",
+    "options": [
+     "Had",
+     "Did",
+     "Have"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "already eaten",
+    "options": [
+     "already eaten",
+     "already ate",
+     "already eat"
+    ]
+   },
+   {
+    "correct": "lunch when I came?",
+    "options": [
+     "lunch when I came?",
+     "lunch when I come?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Она забыла, что мы уже купили билет.",
+  "en": "She forgot that we had already bought a ticket.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She forgot",
+    "options": [
+     "She forgot",
+     "She had forgotten"
+    ]
+   },
+   {
+    "correct": "that we",
+    "options": [
+     "that we",
+     "that they"
+    ]
+   },
+   {
+    "correct": "had already bought",
+    "options": [
+     "had already bought",
+     "already bought"
+    ]
+   },
+   {
+    "correct": "a ticket.",
+    "options": [
+     "a ticket.",
+     "the tickets."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я потерял ключи, которые он мне дал.",
+  "en": "I lost the keys that he had given me.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I lost",
+    "options": [
+     "I lost",
+     "I had lost"
+    ]
+   },
+   {
+    "correct": "the keys that",
+    "options": [
+     "the keys that",
+     "the key which"
+    ]
+   },
+   {
+    "correct": "he had given me.",
+    "options": [
+     "he had given me.",
+     "he gave me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Магазин уже закрылся до того, как я пришел.",
+  "en": "The shop had already closed before I came.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The shop",
+    "options": [
+     "The shop",
+     "They"
+    ]
+   },
+   {
+    "correct": "had",
+    "options": [
+     "had",
+     "did",
+     "was"
+    ]
+   },
+   {
+    "correct": "already closed",
+    "options": [
+     "already closed",
+     "already close"
+    ]
+   },
+   {
+    "correct": "before I came.",
+    "options": [
+     "before I came.",
+     "before I come."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Он не поел до того, как начал работу.",
+  "en": "He hadn't eaten before he started work.",
+  "alternatives": [
+   "He had not eaten before he started work."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "hadn't",
+    "options": [
+     "hadn't",
+     "didn't",
+     "hasn't"
+    ]
+   },
+   {
+    "correct": "eaten before",
+    "options": [
+     "eaten before",
+     "eaten after"
+    ]
+   },
+   {
+    "correct": "he started work.",
+    "options": [
+     "he started work.",
+     "he had started work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже закончил, когда она пришла?",
+  "en": "Had you already finished when she came?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had",
+    "options": [
+     "Had",
+     "Did",
+     "Have"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "already finished",
+    "options": [
+     "already finished",
+     "already finish"
+    ]
+   },
+   {
+    "correct": "when she came?",
+    "options": [
+     "when she came?",
+     "when she comes?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я уже поел, когда он пришел.",
+  "en": "I had already eaten when he came.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "had already eaten",
+    "options": [
+     "had already eaten",
+     "have already eaten",
+     "already ate",
+     "was eating"
+    ]
+   },
+   {
+    "correct": "when he came.",
+    "options": [
+     "when he came.",
+     "when he comes.",
+     "before he came.",
+     "after he came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Она не закончила работу до того, как ушла.",
+  "en": "She hadn't finished the work before she left.",
+  "alternatives": [
+   "She had not finished the work before she left."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "hadn't finished",
+    "options": [
+     "hadn't finished",
+     "didn't finish",
+     "haven't finished",
+     "hasn't finished"
+    ]
+   },
+   {
+    "correct": "the work before she left.",
+    "options": [
+     "the work before she left.",
+     "the work when she left.",
+     "the work after she left."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже купил билет, когда пришел?",
+  "en": "Had you already bought a ticket when you came?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had",
+    "options": [
+     "Had",
+     "Did",
+     "Have"
+    ]
+   },
+   {
+    "correct": "you already bought",
+    "options": [
+     "you already bought",
+     "you already buy",
+     "you have bought"
+    ]
+   },
+   {
+    "correct": "a ticket when you came?",
+    "options": [
+     "a ticket when you came?",
+     "a ticket before you came?",
+     "a ticket after you came?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Он не видел ее до того, как она пришла.",
+  "en": "He hadn't seen her before she came.",
+  "alternatives": [
+   "He had not seen her before she came."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "hadn't seen",
+    "options": [
+     "hadn't seen",
+     "didn't see",
+     "hasn't seen",
+     "wasn't seeing"
+    ]
+   },
+   {
+    "correct": "her before she came.",
+    "options": [
+     "her before she came.",
+     "her when she came.",
+     "her after she came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я уже потерял ключи, когда ты пришел.",
+  "en": "I had already lost my keys when you came.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "had already lost",
+    "options": [
+     "had already lost",
+     "have already lost",
+     "already lost"
+    ]
+   },
+   {
+    "correct": "my keys when you came.",
+    "options": [
+     "my keys when you came.",
+     "my keys before you came.",
+     "my keys after you came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Они не забыли, что он ушел.",
+  "en": "They hadn't forgotten that he had left.",
+  "alternatives": [
+   "They had not forgotten that he had left."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "hadn't forgotten",
+    "options": [
+     "hadn't forgotten",
+     "didn't forget",
+     "haven't forgotten"
+    ]
+   },
+   {
+    "correct": "that he had left.",
+    "options": [
+     "that he had left.",
+     "that he left.",
+     "that he has left."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже начал делать это до того, как пришел?",
+  "en": "Had you already started doing it before you came?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had",
+    "options": [
+     "Had",
+     "Did",
+     "Have"
+    ]
+   },
+   {
+    "correct": "you already started",
+    "options": [
+     "you already started",
+     "you already start",
+     "you have started"
+    ]
+   },
+   {
+    "correct": "doing it before you came?",
+    "options": [
+     "doing it before you came?",
+     "doing it when you came?",
+     "doing it after you came?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Магазин уже закрылся, когда мы пришли.",
+  "en": "The shop had already closed when we came.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The shop",
+    "options": [
+     "The shop",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "had already closed",
+    "options": [
+     "had already closed",
+     "already closed",
+     "has already closed"
+    ]
+   },
+   {
+    "correct": "when we came.",
+    "options": [
+     "when we came.",
+     "before we came.",
+     "after we came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я не сделал работу до того, как он пришел.",
+  "en": "I hadn't done the work before he came.",
+  "alternatives": [
+   "I had not done the work before he came."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "hadn't done",
+    "options": [
+     "hadn't done",
+     "didn't do",
+     "haven't done"
+    ]
+   },
+   {
+    "correct": "the work before he came.",
+    "options": [
+     "the work before he came.",
+     "the work when he came.",
+     "the work after he came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Она уже ушла, когда он увидел ее.",
+  "en": "She had already left when he saw her.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "had already left",
+    "options": [
+     "had already left",
+     "already left",
+     "has already left"
+    ]
+   },
+   {
+    "correct": "when he saw her.",
+    "options": [
+     "when he saw her.",
+     "before he saw her.",
+     "after he saw her."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже съел обед до того, как пошел домой?",
+  "en": "Had you already eaten lunch before you went home?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had",
+    "options": [
+     "Had",
+     "Did",
+     "Have"
+    ]
+   },
+   {
+    "correct": "you already eaten",
+    "options": [
+     "you already eaten",
+     "you already eat",
+     "you have eaten"
+    ]
+   },
+   {
+    "correct": "lunch before you went home?",
+    "options": [
+     "lunch before you went home?",
+     "lunch when you went home?",
+     "lunch after you went home?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Мы не пошли домой до того, как закончили работу.",
+  "en": "We hadn't gone home before we finished the work.",
+  "alternatives": [
+   "We had not gone home before we finished the work."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "hadn't gone",
+    "options": [
+     "hadn't gone",
+     "didn't go",
+     "haven't gone"
+    ]
+   },
+   {
+    "correct": "home before we finished the work.",
+    "options": [
+     "home before we finished the work.",
+     "home when we finished the work.",
+     "home after we finished the work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Она не закончила проект до того, как уехала.",
+  "en": "She hadn't finished the project before she left.",
+  "alternatives": [
+   "She had not finished the project before she left."
+  ],
+  "slots": [
+   {
+    "correct": "She hadn't",
+    "options": [
+     "She hadn't",
+     "She didn't",
+     "She hasn't",
+     "She won't"
+    ]
+   },
+   {
+    "correct": "finished",
+    "options": [
+     "finished",
+     "finish",
+     "finishing",
+     "finishes"
+    ]
+   },
+   {
+    "correct": "the project before she left.",
+    "options": [
+     "the project before she left.",
+     "the project before she had left.",
+     "the project before she was leaving."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже съел завтрак, когда я позвонил?",
+  "en": "Had you already eaten breakfast when I called?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had you",
+    "options": [
+     "Had you",
+     "Did you",
+     "Have you",
+     "Were you"
+    ]
+   },
+   {
+    "correct": "already eaten",
+    "options": [
+     "already eaten",
+     "already ate",
+     "already eat",
+     "already eating"
+    ]
+   },
+   {
+    "correct": "breakfast when I called?",
+    "options": [
+     "breakfast when I called?",
+     "breakfast when I had called?",
+     "breakfast when I was calling?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Они уже ушли, когда мы приехали.",
+  "en": "They had already left when we arrived.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They had",
+    "options": [
+     "They had",
+     "They have",
+     "They were",
+     "They did"
+    ]
+   },
+   {
+    "correct": "already left",
+    "options": [
+     "already left",
+     "already leave",
+     "already leaving",
+     "already leaves"
+    ]
+   },
+   {
+    "correct": "when we arrived.",
+    "options": [
+     "when we arrived.",
+     "when we had arrived.",
+     "when we were arriving."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Он не купил подарки до того, как ушел.",
+  "en": "He hadn't bought gifts before he left.",
+  "alternatives": [
+   "He had not bought gifts before he left."
+  ],
+  "slots": [
+   {
+    "correct": "He hadn't",
+    "options": [
+     "He hadn't",
+     "He didn't",
+     "He hasn't",
+     "He won't"
+    ]
+   },
+   {
+    "correct": "bought",
+    "options": [
+     "bought",
+     "buy",
+     "buying",
+     "buys"
+    ]
+   },
+   {
+    "correct": "gifts before he left.",
+    "options": [
+     "gifts before he left.",
+     "gifts before he had left.",
+     "gifts before he was leaving."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже видел это место до того, как мы пришли?",
+  "en": "Had you already seen this place before we came?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had you",
+    "options": [
+     "Had you",
+     "Did you",
+     "Have you",
+     "Were you"
+    ]
+   },
+   {
+    "correct": "already seen",
+    "options": [
+     "already seen",
+     "already saw",
+     "already see",
+     "already seeing"
+    ]
+   },
+   {
+    "correct": "this place before we came?",
+    "options": [
+     "this place before we came?",
+     "this place before we had come?",
+     "this place before we were coming?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я не забыл, что он ушел.",
+  "en": "I hadn't forgotten that he had left.",
+  "alternatives": [
+   "I had not forgotten that he had left."
+  ],
+  "slots": [
+   {
+    "correct": "I hadn't",
+    "options": [
+     "I hadn't",
+     "I didn't",
+     "I haven't",
+     "I won't"
+    ]
+   },
+   {
+    "correct": "forgotten",
+    "options": [
+     "forgotten",
+     "forgot",
+     "forget",
+     "forgetting"
+    ]
+   },
+   {
+    "correct": "that he had left.",
+    "options": [
+     "that he had left.",
+     "that he left.",
+     "that he was leaving."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Она уже закрыла магазин, когда ты пришел?",
+  "en": "Had she already closed the shop when you came?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had she",
+    "options": [
+     "Had she",
+     "Did she",
+     "Has she",
+     "Was she"
+    ]
+   },
+   {
+    "correct": "already closed",
+    "options": [
+     "already closed",
+     "already close",
+     "already closing",
+     "already closes"
+    ]
+   },
+   {
+    "correct": "the shop when you came?",
+    "options": [
+     "the shop when you came?",
+     "the shop when you had come?",
+     "the shop when you were coming?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я потерял деньги, которые заработал.",
+  "en": "I had lost the money that I had earned.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I had",
+    "options": [
+     "I had",
+     "I lost",
+     "I have",
+     "I did"
+    ]
+   },
+   {
+    "correct": "lost",
+    "options": [
+     "lost",
+     "lose",
+     "losing",
+     "loses"
+    ]
+   },
+   {
+    "correct": "the money that I had earned.",
+    "options": [
+     "the money that I had earned.",
+     "the money that I earned.",
+     "the money that I was earning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты не сделал работу, когда я пришел.",
+  "en": "You hadn't done the work when I came.",
+  "alternatives": [
+   "You had not done the work when I came."
+  ],
+  "slots": [
+   {
+    "correct": "You hadn't",
+    "options": [
+     "You hadn't",
+     "You didn't",
+     "You haven't",
+     "You won't"
+    ]
+   },
+   {
+    "correct": "done",
+    "options": [
+     "done",
+     "did",
+     "do",
+     "doing"
+    ]
+   },
+   {
+    "correct": "the work when I came.",
+    "options": [
+     "the work when I came.",
+     "the work when I had come.",
+     "the work when I was coming."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Мы пошли гулять после того, как он ушел.",
+  "en": "We went for a walk after he had left.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We went",
+    "options": [
+     "We went",
+     "We had gone",
+     "We go",
+     "We were going"
+    ]
+   },
+   {
+    "correct": "for a walk after he",
+    "options": [
+     "for a walk after he",
+     "for a walk after he had",
+     "for a walk after he was"
+    ]
+   },
+   {
+    "correct": "had left.",
+    "options": [
+     "had left.",
+     "left.",
+     "was leaving."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Он уже ушел, когда я пришел.",
+  "en": "He had already left when I came.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "had already left",
+    "options": [
+     "had already left",
+     "already left",
+     "has already left"
+    ]
+   },
+   {
+    "correct": "when I came.",
+    "options": [
+     "when I came.",
+     "before I came.",
+     "after I came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я не сделал это, до того как он ушел.",
+  "en": "I hadn't done it before he left.",
+  "alternatives": [
+   "I had not done it before he left."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "hadn't done",
+    "options": [
+     "hadn't done",
+     "didn't do",
+     "haven't done"
+    ]
+   },
+   {
+    "correct": "it before he left.",
+    "options": [
+     "it before he left.",
+     "it when he left.",
+     "it after he left."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже съел обед, когда она пришла?",
+  "en": "Had you already eaten lunch when she came?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had",
+    "options": [
+     "Had",
+     "Did",
+     "Have"
+    ]
+   },
+   {
+    "correct": "you already eaten",
+    "options": [
+     "you already eaten",
+     "you already ate",
+     "you eat"
+    ]
+   },
+   {
+    "correct": "lunch when she came?",
+    "options": [
+     "lunch when she came?",
+     "lunch before she came?",
+     "lunch after she came?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Они закончили работу после того, как он ушел.",
+  "en": "They finished work after he had left.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "finished",
+    "options": [
+     "finished",
+     "had finished",
+     "finish"
+    ]
+   },
+   {
+    "correct": "work after he had left.",
+    "options": [
+     "work after he had left.",
+     "work after he left.",
+     "work when he left."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я не видел его, до того как он ушел.",
+  "en": "I hadn't seen him before he left.",
+  "alternatives": [
+   "I had not seen him before he left."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "hadn't seen",
+    "options": [
+     "hadn't seen",
+     "didn't see",
+     "haven't seen"
+    ]
+   },
+   {
+    "correct": "him before he left.",
+    "options": [
+     "him before he left.",
+     "him when he left.",
+     "him after he left."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже купил билет, когда я пришел?",
+  "en": "Had you already bought a ticket when I came?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had",
+    "options": [
+     "Had",
+     "Did",
+     "Have"
+    ]
+   },
+   {
+    "correct": "you already bought",
+    "options": [
+     "you already bought",
+     "you already buy",
+     "you bought"
+    ]
+   },
+   {
+    "correct": "a ticket when I came?",
+    "options": [
+     "a ticket when I came?",
+     "a ticket before I came?",
+     "a ticket after I came?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Она ушла после того, как закончила работу.",
+  "en": "She left after she had finished work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "left",
+    "options": [
+     "left",
+     "had left",
+     "leaves"
+    ]
+   },
+   {
+    "correct": "after she had finished work.",
+    "options": [
+     "after she had finished work.",
+     "after she finished work.",
+     "when she finished work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я уже забыл, что он пришел.",
+  "en": "I had already forgotten that he came.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "had already forgotten",
+    "options": [
+     "had already forgotten",
+     "already forgot",
+     "have already forgotten"
+    ]
+   },
+   {
+    "correct": "that he came.",
+    "options": [
+     "that he came.",
+     "that he had come.",
+     "that he comes."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже закрыл дверь, до того как ушел?",
+  "en": "Had you already closed the door before you left?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had",
+    "options": [
+     "Had",
+     "Did",
+     "Have"
+    ]
+   },
+   {
+    "correct": "you already closed",
+    "options": [
+     "you already closed",
+     "you already close",
+     "you closed"
+    ]
+   },
+   {
+    "correct": "the door before you left?",
+    "options": [
+     "the door before you left?",
+     "the door when you left?",
+     "the door after you left?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Мы не начали урок, когда он пришел.",
+  "en": "We hadn't started the lesson when he came.",
+  "alternatives": [
+   "We had not started the lesson when he came."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "hadn't started",
+    "options": [
+     "hadn't started",
+     "didn't start",
+     "haven't started"
+    ]
+   },
+   {
+    "correct": "the lesson when he came.",
+    "options": [
+     "the lesson when he came.",
+     "the lesson before he came.",
+     "the lesson after he came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я потерял ключи, которые купил вчера.",
+  "en": "I lost the keys that I had bought yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "lost",
+    "options": [
+     "lost",
+     "had lost",
+     "lose"
+    ]
+   },
+   {
+    "correct": "the keys that I had bought yesterday.",
+    "options": [
+     "the keys that I had bought yesterday.",
+     "the keys that I bought yesterday.",
+     "the keys that I buy yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже пошел домой, когда я позвонил?",
+  "en": "Had you already gone home when I called?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had",
+    "options": [
+     "Had",
+     "Did",
+     "Have"
+    ]
+   },
+   {
+    "correct": "you already gone",
+    "options": [
+     "you already gone",
+     "you already go",
+     "you went"
+    ]
+   },
+   {
+    "correct": "home when I called?",
+    "options": [
+     "home when I called?",
+     "home before I called?",
+     "home after I called?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я уже закончил проект, когда он пришел.",
+  "en": "I had finished the project when he came.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "had finished",
+    "options": [
+     "had finished",
+     "finished",
+     "have finished"
+    ]
+   },
+   {
+    "correct": "the project when he came.",
+    "options": [
+     "the project when he came.",
+     "the project before he came.",
+     "the project after he came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Они не ушли до того, как начался дождь.",
+  "en": "They hadn't left before the rain started.",
+  "alternatives": [
+   "They had not left before the rain started."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "hadn't left",
+    "options": [
+     "hadn't left",
+     "didn't leave",
+     "haven't left"
+    ]
+   },
+   {
+    "correct": "before the rain started.",
+    "options": [
+     "before the rain started.",
+     "after the rain started.",
+     "when the rain started."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже съел завтрак, когда я пришел?",
+  "en": "Had you eaten breakfast when I came?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had you",
+    "options": [
+     "Had you",
+     "Did you",
+     "Have you"
+    ]
+   },
+   {
+    "correct": "eaten",
+    "options": [
+     "eaten",
+     "eat",
+     "ate"
+    ]
+   },
+   {
+    "correct": "breakfast when I came?",
+    "options": [
+     "breakfast when I came?",
+     "lunch when I came?",
+     "dinner when I came?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я не видел этот фильм до вчерашнего дня.",
+  "en": "I hadn't seen this film before yesterday.",
+  "alternatives": [
+   "I had not seen this film before yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "She"
+    ]
+   },
+   {
+    "correct": "hadn't seen",
+    "options": [
+     "hadn't seen",
+     "didn't see",
+     "haven't seen"
+    ]
+   },
+   {
+    "correct": "this film before yesterday.",
+    "options": [
+     "this film before yesterday.",
+     "it before yesterday.",
+     "that movie before yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Она купила книгу после того, как я ушел.",
+  "en": "She bought the book after I had left.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She bought the book",
+    "options": [
+     "She bought the book",
+     "She had bought the book",
+     "She buys the book"
+    ]
+   },
+   {
+    "correct": "after",
+    "options": [
+     "after",
+     "before",
+     "when"
+    ]
+   },
+   {
+    "correct": "I had left.",
+    "options": [
+     "I had left.",
+     "I left.",
+     "I have left."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже сделал это, до того как пришел?",
+  "en": "Had you done it before you came?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had you done",
+    "options": [
+     "Had you done",
+     "Did you do",
+     "Have you done"
+    ]
+   },
+   {
+    "correct": "it",
+    "options": [
+     "it",
+     "this",
+     "that"
+    ]
+   },
+   {
+    "correct": "before you came?",
+    "options": [
+     "before you came?",
+     "after you came?",
+     "when you came?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я забыл, что уже купил билет.",
+  "en": "I had forgotten that I had bought a ticket.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I had forgotten",
+    "options": [
+     "I had forgotten",
+     "I forgot",
+     "I have forgotten"
+    ]
+   },
+   {
+    "correct": "that I",
+    "options": [
+     "that I",
+     "that he",
+     "that she"
+    ]
+   },
+   {
+    "correct": "had bought a ticket.",
+    "options": [
+     "had bought a ticket.",
+     "bought a ticket.",
+     "have bought a ticket."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Они не начали урок до того, как учитель пришел.",
+  "en": "They hadn't started the lesson before the teacher came.",
+  "alternatives": [
+   "They had not started the lesson before the teacher came."
+  ],
+  "slots": [
+   {
+    "correct": "They hadn't started",
+    "options": [
+     "They hadn't started",
+     "They didn't start",
+     "They haven't started"
+    ]
+   },
+   {
+    "correct": "the lesson",
+    "options": [
+     "the lesson",
+     "the work",
+     "the project"
+    ]
+   },
+   {
+    "correct": "before the teacher came.",
+    "options": [
+     "before the teacher came.",
+     "after the teacher came.",
+     "when the teacher came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Он уже ушел, когда я увидел его.",
+  "en": "He had already left when I saw him.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He had already left",
+    "options": [
+     "He had already left",
+     "He left",
+     "He has already left"
+    ]
+   },
+   {
+    "correct": "when",
+    "options": [
+     "when",
+     "before",
+     "after"
+    ]
+   },
+   {
+    "correct": "I saw him.",
+    "options": [
+     "I saw him.",
+     "I had seen him.",
+     "I see him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Магазин уже закрылся, когда я пришел.",
+  "en": "The shop had already closed when I came.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The shop had already closed",
+    "options": [
+     "The shop had already closed",
+     "The shop closed",
+     "The shop has already closed"
+    ]
+   },
+   {
+    "correct": "when",
+    "options": [
+     "when",
+     "before",
+     "after"
+    ]
+   },
+   {
+    "correct": "I came.",
+    "options": [
+     "I came.",
+     "I had come.",
+     "I come."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже потерял ключи, когда я их нашел?",
+  "en": "Had you lost the keys when I found them?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had you lost",
+    "options": [
+     "Had you lost",
+     "Did you lose",
+     "Have you lost"
+    ]
+   },
+   {
+    "correct": "the keys when",
+    "options": [
+     "the keys when",
+     "the money when",
+     "the ticket when"
+    ]
+   },
+   {
+    "correct": "I found them?",
+    "options": [
+     "I found them?",
+     "I had found them?",
+     "I find them?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я уже ушел, когда он позвонил.",
+  "en": "I had already left when he called.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "had already left",
+    "options": [
+     "had already left",
+     "have already left",
+     "already left"
+    ]
+   },
+   {
+    "correct": "when he called.",
+    "options": [
+     "when he called.",
+     "before he called.",
+     "after he called."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Они еще не съели завтрак до того, как ушли.",
+  "en": "They hadn't eaten breakfast before they left.",
+  "alternatives": [
+   "They had not eaten breakfast before they left."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "She",
+     "We"
+    ]
+   },
+   {
+    "correct": "hadn't eaten",
+    "options": [
+     "hadn't eaten",
+     "didn't eat",
+     "haven't eaten"
+    ]
+   },
+   {
+    "correct": "breakfast before they left.",
+    "options": [
+     "breakfast before they left.",
+     "lunch before they left.",
+     "dinner before they left."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже сделал это, когда я пришел?",
+  "en": "Had you done it when I came?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had you",
+    "options": [
+     "Had you",
+     "Did you",
+     "Have you"
+    ]
+   },
+   {
+    "correct": "done",
+    "options": [
+     "done",
+     "do",
+     "did"
+    ]
+   },
+   {
+    "correct": "it when I came?",
+    "options": [
+     "it when I came?",
+     "it before I came?",
+     "it after I came?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Она уже видела его до того, как он ушел.",
+  "en": "She had already seen him before he left.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "had already seen",
+    "options": [
+     "had already seen",
+     "already saw",
+     "has already seen"
+    ]
+   },
+   {
+    "correct": "him before he left.",
+    "options": [
+     "him before he left.",
+     "it before he left.",
+     "her before he left."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Мы не закончили проект до того, как они пришли.",
+  "en": "We hadn't finished the project before they came.",
+  "alternatives": [
+   "We had not finished the project before they came."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "hadn't finished",
+    "options": [
+     "hadn't finished",
+     "didn't finish",
+     "haven't finished"
+    ]
+   },
+   {
+    "correct": "the project before they came.",
+    "options": [
+     "the project before they came.",
+     "the work before they came.",
+     "the book before they came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже купил продукты, когда я позвонил?",
+  "en": "Had you bought food when I called?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had you",
+    "options": [
+     "Had you",
+     "Did you",
+     "Have you"
+    ]
+   },
+   {
+    "correct": "bought",
+    "options": [
+     "bought",
+     "buy",
+     "buyed"
+    ]
+   },
+   {
+    "correct": "food when I called?",
+    "options": [
+     "food when I called?",
+     "it when I called?",
+     "dinner when I called?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Ты уже начал урок, когда он пришел?",
+  "en": "Had you started the lesson when he came?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Had you",
+    "options": [
+     "Had you",
+     "Did you",
+     "Have you"
+    ]
+   },
+   {
+    "correct": "started",
+    "options": [
+     "started",
+     "start",
+     "starting"
+    ]
+   },
+   {
+    "correct": "the lesson when he came?",
+    "options": [
+     "the lesson when he came?",
+     "it when he came?",
+     "work when he came?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Она не забыла, что мы купили билет.",
+  "en": "She hadn't forgotten that we had bought a ticket.",
+  "alternatives": [
+   "She had not forgotten that we had bought a ticket."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "hadn't forgotten",
+    "options": [
+     "hadn't forgotten",
+     "didn't forget",
+     "haven't forgotten"
+    ]
+   },
+   {
+    "correct": "that we had bought a ticket.",
+    "options": [
+     "that we had bought a ticket.",
+     "that we bought a ticket.",
+     "that we had seen a film."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я потерял деньги, которые заработал раньше.",
+  "en": "I had lost the money that I had earned.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "had lost",
+    "options": [
+     "had lost",
+     "lost",
+     "have lost"
+    ]
+   },
+   {
+    "correct": "the money that I had earned.",
+    "options": [
+     "the money that I had earned.",
+     "the keys that I had found.",
+     "the ticket that I had bought."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Они пошли домой после того, как закончили работу.",
+  "en": "They went home after they had finished work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They went home",
+    "options": [
+     "They went home",
+     "They had gone home",
+     "They go home"
+    ]
+   },
+   {
+    "correct": "after they",
+    "options": [
+     "after they",
+     "before they",
+     "when they"
+    ]
+   },
+   {
+    "correct": "had finished work.",
+    "options": [
+     "had finished work.",
+     "finished work.",
+     "have finished work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я уже сделал упражнение, когда он пришел.",
+  "en": "I had already done the exercise when he came.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "had already done",
+    "options": [
+     "had already done",
+     "already did",
+     "have already done"
+    ]
+   },
+   {
+    "correct": "the exercise when he came.",
+    "options": [
+     "the exercise when he came.",
+     "my work when he arrived."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Он не закончил отчет до того, как ушел.",
+  "en": "He hadn't finished the report before he left.",
+  "alternatives": [
+   "He had not finished the report before he left."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "hadn't finished",
+    "options": [
+     "hadn't finished",
+     "didn't finish",
+     "hasn't finished"
+    ]
+   },
+   {
+    "correct": "the report before he left.",
+    "options": [
+     "the report before he left.",
+     "the project before he went."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Мы пошли домой после того, как он закончил работу.",
+  "en": "We went home after he had finished work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We went home after",
+    "options": [
+     "We went home after",
+     "We had gone home after"
+    ]
+   },
+   {
+    "correct": "he had finished",
+    "options": [
+     "he had finished",
+     "he finished",
+     "he has finished"
+    ]
+   },
+   {
+    "correct": "work.",
+    "options": [
+     "work.",
+     "the job."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я не видел ее, до того как она ушла.",
+  "en": "I hadn't seen her before she left.",
+  "alternatives": [
+   "I had not seen her before she left."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "hadn't seen",
+    "options": [
+     "hadn't seen",
+     "didn't see",
+     "hadn't saw"
+    ]
+   },
+   {
+    "correct": "her before she left.",
+    "options": [
+     "her before she left.",
+     "him before he went."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Она забыла, что уже купила билет.",
+  "en": "She forgot that she had already bought a ticket.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She forgot that she",
+    "options": [
+     "She forgot that she",
+     "She had forgotten that she"
+    ]
+   },
+   {
+    "correct": "had already bought",
+    "options": [
+     "had already bought",
+     "already bought",
+     "has already bought"
+    ]
+   },
+   {
+    "correct": "a ticket.",
+    "options": [
+     "a ticket.",
+     "the ticket."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Они не закрыли магазин, когда я пришел.",
+  "en": "They hadn't closed the shop when I came.",
+  "alternatives": [
+   "They had not closed the shop when I came."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "hadn't closed",
+    "options": [
+     "hadn't closed",
+     "didn't close",
+     "haven't closed"
+    ]
+   },
+   {
+    "correct": "the shop when I came.",
+    "options": [
+     "the shop when I came.",
+     "the store when I arrived."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я ушел после того, как он пришел.",
+  "en": "I left after he had come.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I left after",
+    "options": [
+     "I left after",
+     "I had left after"
+    ]
+   },
+   {
+    "correct": "he had come.",
+    "options": [
+     "he had come.",
+     "he came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Он не потерял ключи, которые купил.",
+  "en": "He hadn't lost the keys that he had bought.",
+  "alternatives": [
+   "He had not lost the keys that he had bought."
+  ],
+  "slots": [
+   {
+    "correct": "He hadn't lost",
+    "options": [
+     "He hadn't lost",
+     "He didn't lose",
+     "He hasn't lost"
+    ]
+   },
+   {
+    "correct": "the keys that he",
+    "options": [
+     "the keys that he",
+     "the key that he"
+    ]
+   },
+   {
+    "correct": "had bought.",
+    "options": [
+     "had bought.",
+     "bought."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Я уже съел обед, когда он пришел.",
+  "en": "I had already eaten lunch when he came.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "had already eaten",
+    "options": [
+     "had already eaten",
+     "already ate",
+     "have already eaten"
+    ]
+   },
+   {
+    "correct": "lunch when he came.",
+    "options": [
+     "lunch when he came.",
+     "lunch when he come.",
+     "dinner when he came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_perfect",
+  "ru": "Они не закончили проект, до того как они ушли.",
+  "en": "They hadn't finished the project before they left.",
+  "alternatives": [
+   "They had not finished the project before they left."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "hadn't finished",
+    "options": [
+     "hadn't finished",
+     "didn't finish",
+     "haven't finished"
+    ]
+   },
+   {
+    "correct": "the project before they left.",
+    "options": [
+     "the project before they left.",
+     "the project before they leave.",
+     "the work before they left."
+    ]
+   }
+  ]
+ }
+]

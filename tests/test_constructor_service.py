@@ -10,6 +10,7 @@ from __future__ import annotations
 import pytest
 
 from app.domain import constructor as c
+from app.infrastructure.repositories.constructor import ConstructorRepository
 from app.services.constructor_service import ConstructorService
 
 SLOTS = [
@@ -203,3 +204,51 @@ def test_the_score_is_hidden_until_it_means_something():
     )
     assert "·" not in fresh.text.splitlines()[0]
     assert "2.0" in started.text.splitlines()[0]
+
+
+class _CapturedResult:
+    def scalars(self):
+        return self
+
+    def first(self):
+        return None
+
+
+class _CapturingSession:
+    """Records the statement instead of running it — there is no database in
+    this suite, and the point of these tests is what the query asks for."""
+
+    def __init__(self):
+        self.statements = []
+
+    async def execute(self, statement):
+        self.statements.append(statement)
+        return _CapturedResult()
+
+
+@pytest.mark.asyncio
+async def test_a_topic_with_no_phrases_is_not_offered_as_active():
+    """A topic still awaiting content must not block the ones behind it.
+
+    Without this the first empty topic stops the curriculum dead: the plan goes
+    on booking grammar slots, every card comes back empty because `pick_phrase`
+    has nothing to return, and grammar disappears from the day with nothing in
+    the log. Twenty-six of the twenty-seven topics have no phrases yet, so this
+    is the normal case, not the corner one.
+    """
+    session = _CapturingSession()
+    await ConstructorRepository(session).active_topic(user_id=1)
+    sql = str(session.statements[-1]).lower()
+    assert "grammar_phrases" in sql
+    assert "exists" in sql
+
+
+@pytest.mark.asyncio
+async def test_active_topic_still_follows_the_curriculum_order():
+    """Skipping empty topics must not become skipping the order: position
+    decides, and a learner must not meet question forms before the statement
+    they invert."""
+    session = _CapturingSession()
+    await ConstructorRepository(session).active_topic(user_id=1)
+    sql = str(session.statements[-1]).lower()
+    assert "order by grammar_topics.position asc" in sql

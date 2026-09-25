@@ -1,0 +1,3536 @@
+[
+ {
+  "topic": "modals_basic",
+  "ru": "Ты умеешь плавать?",
+  "en": "Can you swim?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Can",
+    "options": [
+     "Can",
+     "Must",
+     "Should"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "swim?",
+    "options": [
+     "swim?",
+     "swims?",
+     "to swim?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Тебе нельзя здесь курить.",
+  "en": "You mustn't smoke here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "don't have to",
+     "can't"
+    ]
+   },
+   {
+    "correct": "smoke here.",
+    "options": [
+     "smoke here.",
+     "smokes here.",
+     "to smoke here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Мне не нужно ждать.",
+  "en": "I don't have to wait.",
+  "alternatives": [
+   "I do not have to wait."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "don't have to",
+    "options": [
+     "don't have to",
+     "mustn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "wait.",
+    "options": [
+     "wait.",
+     "waits.",
+     "to wait."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Тебе следует помочь ей.",
+  "en": "You should help her.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "should",
+    "options": [
+     "should",
+     "must",
+     "can"
+    ]
+   },
+   {
+    "correct": "help her.",
+    "options": [
+     "help her.",
+     "helps her.",
+     "to help her."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Она должна работать сегодня.",
+  "en": "She has to work today.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "has to",
+    "options": [
+     "has to",
+     "have to",
+     "must"
+    ]
+   },
+   {
+    "correct": "work today.",
+    "options": [
+     "work today.",
+     "works today.",
+     "to work today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ты не умеешь водить.",
+  "en": "You can't drive.",
+  "alternatives": [
+   "You cannot drive."
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "can't",
+    "options": [
+     "can't",
+     "mustn't",
+     "shouldn't"
+    ]
+   },
+   {
+    "correct": "drive.",
+    "options": [
+     "drive.",
+     "drives.",
+     "to drive."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Нам нельзя уходить.",
+  "en": "We mustn't leave.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "You",
+     "He"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "don't have to",
+     "can't"
+    ]
+   },
+   {
+    "correct": "leave.",
+    "options": [
+     "leave.",
+     "leaves.",
+     "to leave."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ему не нужно оставаться.",
+  "en": "He doesn't have to stay.",
+  "alternatives": [
+   "He does not have to stay."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "doesn't have to",
+    "options": [
+     "doesn't have to",
+     "don't have to",
+     "mustn't"
+    ]
+   },
+   {
+    "correct": "stay.",
+    "options": [
+     "stay.",
+     "stays.",
+     "to stay."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ты должен идти сейчас.",
+  "en": "You must go now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "must",
+    "options": [
+     "must",
+     "should",
+     "can"
+    ]
+   },
+   {
+    "correct": "go now.",
+    "options": [
+     "go now.",
+     "goes now.",
+     "to go now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Она умеет говорить по-английски.",
+  "en": "She can speak English.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "can",
+    "options": [
+     "can",
+     "should",
+     "must"
+    ]
+   },
+   {
+    "correct": "speak English.",
+    "options": [
+     "speak English.",
+     "speaks English.",
+     "to speak English."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Тебе не следует бегать.",
+  "en": "You shouldn't run.",
+  "alternatives": [
+   "You should not run."
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "shouldn't",
+    "options": [
+     "shouldn't",
+     "mustn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "run.",
+    "options": [
+     "run.",
+     "runs.",
+     "to run."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Они должны прийти вовремя.",
+  "en": "They have to come on time.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have to",
+    "options": [
+     "have to",
+     "has to",
+     "must"
+    ]
+   },
+   {
+    "correct": "come on time.",
+    "options": [
+     "come on time.",
+     "comes on time.",
+     "to come on time."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Я умею плавать.",
+  "en": "I can swim.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "can",
+    "options": [
+     "can",
+     "must",
+     "should"
+    ]
+   },
+   {
+    "correct": "swim.",
+    "options": [
+     "swim.",
+     "swims.",
+     "to swim."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Я могу плавать здесь.",
+  "en": "I can swim here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "can",
+    "options": [
+     "can",
+     "must",
+     "should"
+    ]
+   },
+   {
+    "correct": "swim here.",
+    "options": [
+     "swim here.",
+     "swims here.",
+     "swam here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Тебе нельзя работать здесь.",
+  "en": "You mustn't work here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "don't have to",
+     "shouldn't"
+    ]
+   },
+   {
+    "correct": "work here.",
+    "options": [
+     "work here.",
+     "works here.",
+     "working here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Тебе не нужно работать сегодня.",
+  "en": "You don't have to work today.",
+  "alternatives": [
+   "You do not have to work today."
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "don't have to",
+    "options": [
+     "don't have to",
+     "mustn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "work today.",
+    "options": [
+     "work today.",
+     "works today.",
+     "to work today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ей следует водить машину.",
+  "en": "She should drive.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "should",
+    "options": [
+     "should",
+     "can",
+     "must"
+    ]
+   },
+   {
+    "correct": "drive.",
+    "options": [
+     "drive.",
+     "drives.",
+     "driving."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Она должна идти.",
+  "en": "She has to go.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "has to",
+    "options": [
+     "has to",
+     "have to",
+     "must"
+    ]
+   },
+   {
+    "correct": "go.",
+    "options": [
+     "go.",
+     "goes.",
+     "going."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Они не умеют водить.",
+  "en": "They can't drive.",
+  "alternatives": [
+   "They cannot drive."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "can't",
+    "options": [
+     "can't",
+     "mustn't",
+     "shouldn't"
+    ]
+   },
+   {
+    "correct": "drive.",
+    "options": [
+     "drive.",
+     "drives.",
+     "driving."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Мне нельзя бегать здесь.",
+  "en": "I mustn't run here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "can't",
+     "shouldn't"
+    ]
+   },
+   {
+    "correct": "run here.",
+    "options": [
+     "run here.",
+     "runs here.",
+     "running here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ей не нужно помогать.",
+  "en": "She doesn't have to help.",
+  "alternatives": [
+   "She does not have to help."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't have to",
+    "options": [
+     "doesn't have to",
+     "don't have to",
+     "mustn't"
+    ]
+   },
+   {
+    "correct": "help.",
+    "options": [
+     "help.",
+     "helps.",
+     "helping."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Тебе следует прийти.",
+  "en": "You should come.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "should",
+    "options": [
+     "should",
+     "can",
+     "must"
+    ]
+   },
+   {
+    "correct": "come.",
+    "options": [
+     "come.",
+     "comes.",
+     "coming."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Нам нельзя оставаться.",
+  "en": "We mustn't stay.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "She"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "can't",
+     "shouldn't"
+    ]
+   },
+   {
+    "correct": "stay.",
+    "options": [
+     "stay.",
+     "stays.",
+     "staying."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Они не должны уходить.",
+  "en": "They mustn't leave.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "don't have to",
+     "shouldn't"
+    ]
+   },
+   {
+    "correct": "leave.",
+    "options": [
+     "leave.",
+     "leaves.",
+     "leaving."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Я могу говорить по-английски.",
+  "en": "I can speak English.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "can",
+    "options": [
+     "can",
+     "must",
+     "should"
+    ]
+   },
+   {
+    "correct": "speak English.",
+    "options": [
+     "speak English.",
+     "speaks English.",
+     "speaking English."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ты не должен курить здесь.",
+  "en": "You mustn't smoke here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "don't have to",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "smoke here.",
+    "options": [
+     "smoke here.",
+     "to smoke here.",
+     "smokes here.",
+     "smoking here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Мне не нужно плавать сегодня.",
+  "en": "I don't have to swim today.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "don't have to",
+    "options": [
+     "don't have to",
+     "mustn't",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "swim today.",
+    "options": [
+     "swim today.",
+     "swims today.",
+     "to swim today.",
+     "swimming today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Она должна водить машину.",
+  "en": "She has to drive.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has to",
+    "options": [
+     "has to",
+     "have to",
+     "must",
+     "should"
+    ]
+   },
+   {
+    "correct": "drive.",
+    "options": [
+     "drive.",
+     "drives.",
+     "to drive.",
+     "driving."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Мы можем идти сейчас.",
+  "en": "We can go now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "can",
+    "options": [
+     "can",
+     "must",
+     "should",
+     "have to"
+    ]
+   },
+   {
+    "correct": "go now.",
+    "options": [
+     "go now.",
+     "to go now.",
+     "goes now.",
+     "going now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ему нельзя бегать в зале.",
+  "en": "He mustn't run in the gym.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "doesn't have to",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "run in the gym.",
+    "options": [
+     "run in the gym.",
+     "runs in the gym.",
+     "to run in the gym.",
+     "running in the gym."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Им не нужно прийти завтра.",
+  "en": "They don't have to come tomorrow.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "She",
+     "He",
+     "It"
+    ]
+   },
+   {
+    "correct": "don't have to",
+    "options": [
+     "don't have to",
+     "mustn't",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "come tomorrow.",
+    "options": [
+     "come tomorrow.",
+     "comes tomorrow.",
+     "to come tomorrow.",
+     "coming tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Тебе следует остаться дома.",
+  "en": "You should stay home.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "should",
+    "options": [
+     "should",
+     "must",
+     "have to",
+     "can"
+    ]
+   },
+   {
+    "correct": "stay home.",
+    "options": [
+     "stay home.",
+     "stays home.",
+     "to stay home.",
+     "staying home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Я не должен уходить сейчас.",
+  "en": "I mustn't leave now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "don't have to",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "leave now.",
+    "options": [
+     "leave now.",
+     "leaves now.",
+     "to leave now.",
+     "leaving now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Она не обязана работать завтра.",
+  "en": "She doesn't have to work tomorrow.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "doesn't have to",
+    "options": [
+     "doesn't have to",
+     "mustn't",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "work tomorrow.",
+    "options": [
+     "work tomorrow.",
+     "works tomorrow.",
+     "to work tomorrow.",
+     "working tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Мы умеем говорить по-русски.",
+  "en": "We can speak Russian.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "can",
+    "options": [
+     "can",
+     "must",
+     "should",
+     "have to"
+    ]
+   },
+   {
+    "correct": "speak Russian.",
+    "options": [
+     "speak Russian.",
+     "speaks Russian.",
+     "to speak Russian.",
+     "speaking Russian."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Тебе нельзя помогать ему.",
+  "en": "You mustn't help him.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "don't have to",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "help him.",
+    "options": [
+     "help him.",
+     "helps him.",
+     "to help him.",
+     "helping him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ей следует водить машину аккуратно.",
+  "en": "She should drive carefully.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "should",
+    "options": [
+     "should",
+     "must",
+     "have to",
+     "can"
+    ]
+   },
+   {
+    "correct": "drive carefully.",
+    "options": [
+     "drive carefully.",
+     "drives carefully.",
+     "to drive carefully.",
+     "driving carefully."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ты можешь помочь мне?",
+  "en": "Can you help me?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Can",
+    "options": [
+     "Can",
+     "Must",
+     "Should",
+     "Have"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "help",
+    "options": [
+     "help",
+     "helps",
+     "to help",
+     "helped"
+    ]
+   },
+   {
+    "correct": "me?",
+    "options": [
+     "me?",
+     "him?",
+     "us?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Им нельзя курить здесь.",
+  "en": "They mustn't smoke here.",
+  "alternatives": [
+   "They must not smoke here."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "don't have to",
+     "can't",
+     "shouldn't"
+    ]
+   },
+   {
+    "correct": "smoke",
+    "options": [
+     "smoke",
+     "smokes",
+     "to smoke",
+     "smoked"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Нам не нужно бегать.",
+  "en": "We don't have to run.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "don't have to",
+    "options": [
+     "don't have to",
+     "mustn't",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "run.",
+    "options": [
+     "run.",
+     "runs.",
+     "to run."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ему следует прийти завтра.",
+  "en": "He should come tomorrow.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "should",
+    "options": [
+     "should",
+     "must",
+     "can",
+     "have to"
+    ]
+   },
+   {
+    "correct": "come",
+    "options": [
+     "come",
+     "comes",
+     "to come",
+     "came"
+    ]
+   },
+   {
+    "correct": "tomorrow.",
+    "options": [
+     "tomorrow.",
+     "today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Она должна водить машину сейчас.",
+  "en": "She has to drive now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has to",
+    "options": [
+     "has to",
+     "have to",
+     "must",
+     "should"
+    ]
+   },
+   {
+    "correct": "drive",
+    "options": [
+     "drive",
+     "drives",
+     "to drive",
+     "drove"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Тебе нельзя уходить.",
+  "en": "You mustn't leave.",
+  "alternatives": [
+   "You must not leave."
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "don't have to",
+     "can't",
+     "shouldn't"
+    ]
+   },
+   {
+    "correct": "leave.",
+    "options": [
+     "leave.",
+     "leaves.",
+     "to leave."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Я не обязан работать сегодня.",
+  "en": "I don't have to work today.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "don't have to",
+    "options": [
+     "don't have to",
+     "mustn't",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "works",
+     "to work",
+     "worked"
+    ]
+   },
+   {
+    "correct": "today.",
+    "options": [
+     "today.",
+     "tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Тебе следует остаться здесь.",
+  "en": "You should stay here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "should",
+    "options": [
+     "should",
+     "must",
+     "can",
+     "have to"
+    ]
+   },
+   {
+    "correct": "stay",
+    "options": [
+     "stay",
+     "stays",
+     "to stay",
+     "stayed"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Они должны работать сейчас.",
+  "en": "They have to work now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have to",
+    "options": [
+     "have to",
+     "has to",
+     "must",
+     "should"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "works",
+     "to work"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Мне нельзя плавать здесь.",
+  "en": "I mustn't swim here.",
+  "alternatives": [
+   "I must not swim here."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "don't have to",
+     "can't",
+     "shouldn't"
+    ]
+   },
+   {
+    "correct": "swim",
+    "options": [
+     "swim",
+     "swims",
+     "to swim"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Она не обязана ждать нас.",
+  "en": "She doesn't have to wait.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "doesn't have to",
+    "options": [
+     "doesn't have to",
+     "don't have to",
+     "mustn't",
+     "shouldn't"
+    ]
+   },
+   {
+    "correct": "wait.",
+    "options": [
+     "wait.",
+     "waits.",
+     "to wait."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Мы можем говорить по-английски.",
+  "en": "We can speak English.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "can",
+    "options": [
+     "can",
+     "must",
+     "should",
+     "have to"
+    ]
+   },
+   {
+    "correct": "speak",
+    "options": [
+     "speak",
+     "speaks",
+     "to speak"
+    ]
+   },
+   {
+    "correct": "English.",
+    "options": [
+     "English.",
+     "Russian."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ты не умеешь плавать.",
+  "en": "You cannot swim.",
+  "alternatives": [
+   "You can't swim."
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "cannot",
+    "options": [
+     "cannot",
+     "should not",
+     "must not",
+     "do not have to"
+    ]
+   },
+   {
+    "correct": "swim",
+    "options": [
+     "swim",
+     "swims",
+     "swimming",
+     "to swim"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Нам нельзя курить здесь.",
+  "en": "We mustn't smoke here.",
+  "alternatives": [
+   "We must not smoke here."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "You",
+     "They"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "don't have to",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "smoke here.",
+    "options": [
+     "smoke here.",
+     "to smoke here.",
+     "smokes here.",
+     "smoking here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Мне не нужно водить машину.",
+  "en": "I don't have to drive.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "We"
+    ]
+   },
+   {
+    "correct": "don't have to",
+    "options": [
+     "don't have to",
+     "must not",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "drive.",
+    "options": [
+     "drive.",
+     "to drive.",
+     "drives.",
+     "driving."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ей следует прийти вовремя.",
+  "en": "She should come on time.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "should",
+    "options": [
+     "should",
+     "can",
+     "must",
+     "has to"
+    ]
+   },
+   {
+    "correct": "come on time.",
+    "options": [
+     "come on time.",
+     "to come on time.",
+     "comes on time.",
+     "coming on time."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Он должен работать сегодня.",
+  "en": "He has to work today.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has to",
+    "options": [
+     "has to",
+     "have to",
+     "must",
+     "should"
+    ]
+   },
+   {
+    "correct": "work today.",
+    "options": [
+     "work today.",
+     "to work today.",
+     "works today.",
+     "working today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Вы не умеете говорить по-английски.",
+  "en": "You can't speak English.",
+  "alternatives": [
+   "You cannot speak English."
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "can't",
+    "options": [
+     "can't",
+     "mustn't",
+     "shouldn't",
+     "don't have to"
+    ]
+   },
+   {
+    "correct": "speak English.",
+    "options": [
+     "speak English.",
+     "to speak English.",
+     "speaks English.",
+     "speaking English."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Тебе нельзя бегать в коридоре.",
+  "en": "You mustn't run in the hall.",
+  "alternatives": [
+   "You must not run in the hall."
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "don't have to",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "run in the hall.",
+    "options": [
+     "run in the hall.",
+     "to run in the hall.",
+     "runs in the hall.",
+     "running in the hall."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Им не нужно уходить сейчас.",
+  "en": "They don't have to leave now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "don't have to",
+    "options": [
+     "don't have to",
+     "mustn't",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "leave now.",
+    "options": [
+     "leave now.",
+     "to leave now.",
+     "leaves now.",
+     "leaving now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Тебе следует помочь мне.",
+  "en": "You should help me.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "should",
+    "options": [
+     "should",
+     "can",
+     "must",
+     "have to"
+    ]
+   },
+   {
+    "correct": "help me.",
+    "options": [
+     "help me.",
+     "to help me.",
+     "helps me.",
+     "helping me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Она не должна оставаться дома.",
+  "en": "She mustn't stay at home.",
+  "alternatives": [
+   "She must not stay at home."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "shouldn't",
+     "can't",
+     "doesn't have to"
+    ]
+   },
+   {
+    "correct": "stay at home.",
+    "options": [
+     "stay at home.",
+     "to stay at home.",
+     "stays at home.",
+     "staying at home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ты можешь подождать меня?",
+  "en": "Can you wait for me?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Can",
+    "options": [
+     "Can",
+     "Should",
+     "Must"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "he"
+    ]
+   },
+   {
+    "correct": "wait for me?",
+    "options": [
+     "wait for me?",
+     "to wait for me?",
+     "waits for me?",
+     "waiting for me?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Мне не нужно идти туда.",
+  "en": "I don't have to go there.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "don't have to",
+    "options": [
+     "don't have to",
+     "mustn't",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "go there.",
+    "options": [
+     "go there.",
+     "to go there.",
+     "goes there.",
+     "going there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Тебе не нужно курить здесь.",
+  "en": "You don't have to smoke here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "don't have to",
+    "options": [
+     "don't have to",
+     "mustn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "smoke here.",
+    "options": [
+     "smoke here.",
+     "stay here.",
+     "go here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Она умеет плавать хорошо.",
+  "en": "She can swim well.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "can",
+    "options": [
+     "can",
+     "must",
+     "should"
+    ]
+   },
+   {
+    "correct": "swim well.",
+    "options": [
+     "swim well.",
+     "run well.",
+     "work well."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Он не умеет водить машину.",
+  "en": "He can't drive.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "can't",
+    "options": [
+     "can't",
+     "mustn't",
+     "shouldn't"
+    ]
+   },
+   {
+    "correct": "drive.",
+    "options": [
+     "drive.",
+     "swim.",
+     "speak."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Нам следует водить машину аккуратно.",
+  "en": "We should drive carefully.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "You",
+     "They"
+    ]
+   },
+   {
+    "correct": "should",
+    "options": [
+     "should",
+     "must",
+     "can"
+    ]
+   },
+   {
+    "correct": "drive carefully.",
+    "options": [
+     "drive carefully.",
+     "swim carefully.",
+     "run carefully."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Мне нужно работать сегодня.",
+  "en": "I have to work today.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "have to",
+    "options": [
+     "have to",
+     "must",
+     "should"
+    ]
+   },
+   {
+    "correct": "work today.",
+    "options": [
+     "work today.",
+     "go today.",
+     "stay today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ей не нужно работать сегодня.",
+  "en": "She doesn't have to work today.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "doesn't have to",
+    "options": [
+     "doesn't have to",
+     "mustn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "work today.",
+    "options": [
+     "work today.",
+     "wait today.",
+     "leave today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Им нельзя прийти сюда.",
+  "en": "They mustn't come here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "You",
+     "We"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "shouldn't",
+     "don't have to"
+    ]
+   },
+   {
+    "correct": "come here.",
+    "options": [
+     "come here.",
+     "go here.",
+     "stay here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Тебе не следует уходить сейчас.",
+  "en": "You shouldn't leave now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "shouldn't",
+    "options": [
+     "shouldn't",
+     "mustn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "leave now.",
+    "options": [
+     "leave now.",
+     "stay now.",
+     "wait now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Она должна прийти вовремя.",
+  "en": "She has to come on time.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "has to",
+    "options": [
+     "has to",
+     "must",
+     "should"
+    ]
+   },
+   {
+    "correct": "come on time.",
+    "options": [
+     "come on time.",
+     "go on time.",
+     "work on time."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ты можешь бегать в парке.",
+  "en": "You can run in the park.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "can",
+    "options": [
+     "can",
+     "should",
+     "must"
+    ]
+   },
+   {
+    "correct": "run in the park.",
+    "options": [
+     "run in the park.",
+     "swim in the park.",
+     "wait in the park."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Им не нужно помогать мне.",
+  "en": "They don't have to help me.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "don't have to",
+    "options": [
+     "don't have to",
+     "mustn't",
+     "shouldn't"
+    ]
+   },
+   {
+    "correct": "help me.",
+    "options": [
+     "help me.",
+     "wait for me.",
+     "speak to me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Я могу плавать быстро.",
+  "en": "I can swim fast.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "can",
+    "options": [
+     "can",
+     "must",
+     "should"
+    ]
+   },
+   {
+    "correct": "swim",
+    "options": [
+     "swim",
+     "swims",
+     "swimming"
+    ]
+   },
+   {
+    "correct": "fast.",
+    "options": [
+     "fast.",
+     "well.",
+     "now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ей следует помочь ему.",
+  "en": "She should help him.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "should",
+    "options": [
+     "should",
+     "must",
+     "can"
+    ]
+   },
+   {
+    "correct": "help",
+    "options": [
+     "help",
+     "helps",
+     "helping"
+    ]
+   },
+   {
+    "correct": "him.",
+    "options": [
+     "him.",
+     "them."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Он должен работать завтра.",
+  "en": "He has to work tomorrow.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has to",
+    "options": [
+     "has to",
+     "have to"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "works",
+     "working"
+    ]
+   },
+   {
+    "correct": "tomorrow.",
+    "options": [
+     "tomorrow.",
+     "today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Нам не нужно ждать его.",
+  "en": "We don't have to wait for him.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "don't have to",
+    "options": [
+     "don't have to",
+     "mustn't",
+     "shouldn't"
+    ]
+   },
+   {
+    "correct": "wait for",
+    "options": [
+     "wait for",
+     "wait"
+    ]
+   },
+   {
+    "correct": "him.",
+    "options": [
+     "him.",
+     "them."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ты можешь прийти завтра?",
+  "en": "Can you come tomorrow?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Can",
+    "options": [
+     "Can",
+     "Should",
+     "Must"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "he"
+    ]
+   },
+   {
+    "correct": "come",
+    "options": [
+     "come",
+     "comes",
+     "coming"
+    ]
+   },
+   {
+    "correct": "tomorrow?",
+    "options": [
+     "tomorrow?",
+     "today?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ему нельзя оставлять машину здесь.",
+  "en": "He mustn't leave the car here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "can't",
+     "don't have to"
+    ]
+   },
+   {
+    "correct": "leave",
+    "options": [
+     "leave",
+     "leaves",
+     "leaving"
+    ]
+   },
+   {
+    "correct": "the car here.",
+    "options": [
+     "the car here.",
+     "us here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Они должны говорить тихо.",
+  "en": "They must speak quietly.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "must",
+    "options": [
+     "must",
+     "should",
+     "can"
+    ]
+   },
+   {
+    "correct": "speak",
+    "options": [
+     "speak",
+     "speaks",
+     "speaking"
+    ]
+   },
+   {
+    "correct": "quietly.",
+    "options": [
+     "quietly.",
+     "loudly."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Тебе не следует бегать здесь.",
+  "en": "You shouldn't run here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "shouldn't",
+    "options": [
+     "shouldn't",
+     "mustn't",
+     "don't have to"
+    ]
+   },
+   {
+    "correct": "run",
+    "options": [
+     "run",
+     "runs",
+     "running"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Я не обязан уходить сейчас.",
+  "en": "I don't have to leave now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "don't have to",
+    "options": [
+     "don't have to",
+     "mustn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "leave",
+    "options": [
+     "leave",
+     "leaves",
+     "leaving"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Она умеет хорошо водить машину.",
+  "en": "She can drive well.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "can",
+    "options": [
+     "can",
+     "must",
+     "should"
+    ]
+   },
+   {
+    "correct": "drive",
+    "options": [
+     "drive",
+     "drives",
+     "driving"
+    ]
+   },
+   {
+    "correct": "well.",
+    "options": [
+     "well.",
+     "fast."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Я не обязан ждать его.",
+  "en": "I don't have to wait for him.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "don't have to",
+    "options": [
+     "don't have to",
+     "mustn't",
+     "should",
+     "can't"
+    ]
+   },
+   {
+    "correct": "wait for him.",
+    "options": [
+     "wait for him.",
+     "stay home.",
+     "work today.",
+     "go away."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Тебе нельзя курить здесь.",
+  "en": "You mustn't smoke here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "don't have to",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "smoke here.",
+    "options": [
+     "smoke here.",
+     "wait here.",
+     "work here.",
+     "run here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Вам следует помочь ей.",
+  "en": "You should help her.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "should",
+    "options": [
+     "should",
+     "must",
+     "have to",
+     "can"
+    ]
+   },
+   {
+    "correct": "help her.",
+    "options": [
+     "help her.",
+     "wait here.",
+     "go away.",
+     "drive here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Мы не обязаны идти туда.",
+  "en": "We don't have to go there.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She",
+     "He",
+     "It"
+    ]
+   },
+   {
+    "correct": "don't have to",
+    "options": [
+     "don't have to",
+     "mustn't",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "go there.",
+    "options": [
+     "go there.",
+     "stay there.",
+     "wait there.",
+     "run there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ему нельзя оставлять её здесь.",
+  "en": "He mustn't leave her here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "doesn't have to",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "leave her here.",
+    "options": [
+     "leave her here.",
+     "wait here.",
+     "stay here.",
+     "work here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Они не должны опаздывать.",
+  "en": "They mustn't be late.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "mustn't",
+    "options": [
+     "mustn't",
+     "don't have to",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "be late.",
+    "options": [
+     "be late.",
+     "go away.",
+     "stay here.",
+     "work hard."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Я не обязан работать завтра.",
+  "en": "I don't have to work tomorrow.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "don't have to",
+    "options": [
+     "don't have to",
+     "mustn't",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "work tomorrow.",
+    "options": [
+     "work tomorrow.",
+     "wait tomorrow.",
+     "run tomorrow.",
+     "stay tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Вы можете идти домой сейчас.",
+  "en": "You can go home now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "can",
+    "options": [
+     "can",
+     "must",
+     "should",
+     "have to"
+    ]
+   },
+   {
+    "correct": "go home now.",
+    "options": [
+     "go home now.",
+     "wait here now.",
+     "run here now.",
+     "stay here now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ей следует говорить громче.",
+  "en": "She should speak louder.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "should",
+    "options": [
+     "should",
+     "must",
+     "has to",
+     "can"
+    ]
+   },
+   {
+    "correct": "speak louder.",
+    "options": [
+     "speak louder.",
+     "wait here.",
+     "run fast.",
+     "work hard."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Он не обязан помогать нам.",
+  "en": "He doesn't have to help us.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't have to",
+    "options": [
+     "doesn't have to",
+     "mustn't",
+     "shouldn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "help us.",
+    "options": [
+     "help us.",
+     "wait here.",
+     "go away.",
+     "stay home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Я умею плавать быстро.",
+  "en": "I can swim fast.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "You",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "can",
+    "options": [
+     "can",
+     "must",
+     "should"
+    ]
+   },
+   {
+    "correct": "swim",
+    "options": [
+     "swim",
+     "swims",
+     "swimming",
+     "to swim"
+    ]
+   },
+   {
+    "correct": "fast.",
+    "options": [
+     "fast.",
+     "well.",
+     "now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Тебе не нужно здесь курить.",
+  "en": "You don't have to smoke here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "don't have to",
+    "options": [
+     "don't have to",
+     "mustn't",
+     "can't",
+     "shouldn't"
+    ]
+   },
+   {
+    "correct": "smoke",
+    "options": [
+     "smoke",
+     "smokes",
+     "smoking",
+     "to smoke"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Я не могу бегать быстро.",
+  "en": "I can't run fast.",
+  "alternatives": [
+   "I cannot run fast."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "You",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "can't",
+    "options": [
+     "can't",
+     "mustn't",
+     "shouldn't",
+     "don't have to"
+    ]
+   },
+   {
+    "correct": "run",
+    "options": [
+     "run",
+     "runs",
+     "to run",
+     "running"
+    ]
+   },
+   {
+    "correct": "fast.",
+    "options": [
+     "fast.",
+     "well."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Нам не нужно ждать их.",
+  "en": "We don't have to wait for them.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "You",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "don't have to",
+    "options": [
+     "don't have to",
+     "mustn't",
+     "shouldn't"
+    ]
+   },
+   {
+    "correct": "wait for",
+    "options": [
+     "wait for",
+     "wait",
+     "waiting for"
+    ]
+   },
+   {
+    "correct": "them.",
+    "options": [
+     "them.",
+     "him.",
+     "her."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Вы должны работать быстро.",
+  "en": "You must work fast.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "must",
+    "options": [
+     "must",
+     "can",
+     "should"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "works",
+     "worked"
+    ]
+   },
+   {
+    "correct": "fast.",
+    "options": [
+     "fast.",
+     "slowly."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Ей можно плавать здесь.",
+  "en": "She can swim here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "can",
+    "options": [
+     "can",
+     "must",
+     "should"
+    ]
+   },
+   {
+    "correct": "swim",
+    "options": [
+     "swim",
+     "swims",
+     "swimming"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Он не обязан оставаться.",
+  "en": "He doesn't have to stay.",
+  "alternatives": [
+   "He does not have to stay."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "doesn't have to",
+    "options": [
+     "doesn't have to",
+     "don't have to",
+     "mustn't"
+    ]
+   },
+   {
+    "correct": "stay.",
+    "options": [
+     "stay.",
+     "leave."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "modals_basic",
+  "ru": "Тебе следует прийти вовремя.",
+  "en": "You should come on time.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "should",
+    "options": [
+     "should",
+     "must",
+     "can"
+    ]
+   },
+   {
+    "correct": "come",
+    "options": [
+     "come",
+     "comes",
+     "came"
+    ]
+   },
+   {
+    "correct": "on time.",
+    "options": [
+     "on time.",
+     "early.",
+     "late."
+    ]
+   }
+  ]
+ }
+]

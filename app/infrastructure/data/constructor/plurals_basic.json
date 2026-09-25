@@ -1,0 +1,3352 @@
+[
+ {
+  "topic": "plurals_basic",
+  "ru": "Эти книги новые.",
+  "en": "These books are new.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These",
+    "options": [
+     "These",
+     "This",
+     "That",
+     "The"
+    ]
+   },
+   {
+    "correct": "books",
+    "options": [
+     "books",
+     "book",
+     "a book",
+     "the book"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "new.",
+    "options": [
+     "new.",
+     "big.",
+     "old.",
+     "red."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Там пять детей.",
+  "en": "There are five children.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There",
+    "options": [
+     "There",
+     "Here",
+     "These",
+     "Those"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "five",
+    "options": [
+     "five",
+     "ten",
+     "two",
+     "six"
+    ]
+   },
+   {
+    "correct": "children.",
+    "options": [
+     "children.",
+     "childs.",
+     "child.",
+     "a child."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Города очень большие.",
+  "en": "Cities are very big.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Cities",
+    "options": [
+     "Cities",
+     "Citys",
+     "City",
+     "A city"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "very",
+    "options": [
+     "very",
+     "too",
+     "so",
+     "quite"
+    ]
+   },
+   {
+    "correct": "big.",
+    "options": [
+     "big.",
+     "small.",
+     "old.",
+     "new."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "В коробках много яблок.",
+  "en": "Boxes have many apples.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Boxes",
+    "options": [
+     "Boxes",
+     "Boxs",
+     "Box",
+     "A box"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "had",
+     "are"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much",
+     "some",
+     "the"
+    ]
+   },
+   {
+    "correct": "apples.",
+    "options": [
+     "apples.",
+     "apple.",
+     "an apple.",
+     "the apple."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Люди смотрят на часы.",
+  "en": "People watch the watches.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "People",
+    "options": [
+     "People",
+     "Peoples",
+     "Person",
+     "A person"
+    ]
+   },
+   {
+    "correct": "watch",
+    "options": [
+     "watch",
+     "watches",
+     "watched",
+     "are"
+    ]
+   },
+   {
+    "correct": "the",
+    "options": [
+     "the",
+     "some",
+     "many",
+     "these"
+    ]
+   },
+   {
+    "correct": "watches.",
+    "options": [
+     "watches.",
+     "watchs.",
+     "watch.",
+     "a watch."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Мужчины моют грязные тарелки.",
+  "en": "Men wash dirty dishes.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Men",
+    "options": [
+     "Men",
+     "Mans",
+     "Man",
+     "A man"
+    ]
+   },
+   {
+    "correct": "wash",
+    "options": [
+     "wash",
+     "washes",
+     "washed",
+     "are"
+    ]
+   },
+   {
+    "correct": "dirty",
+    "options": [
+     "dirty",
+     "clean",
+     "big",
+     "small"
+    ]
+   },
+   {
+    "correct": "dishes.",
+    "options": [
+     "dishes.",
+     "dishs.",
+     "dish.",
+     "a dish."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Эти женщины мои друзья.",
+  "en": "These women are my friends.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These",
+    "options": [
+     "These",
+     "This",
+     "Those",
+     "The"
+    ]
+   },
+   {
+    "correct": "women",
+    "options": [
+     "women",
+     "womans",
+     "woman",
+     "a woman"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "my",
+    "options": [
+     "my",
+     "our",
+     "their",
+     "the"
+    ]
+   },
+   {
+    "correct": "friends.",
+    "options": [
+     "friends.",
+     "friend.",
+     "a friend.",
+     "the friend."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Мои зубы белые.",
+  "en": "My teeth are white.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My",
+    "options": [
+     "My",
+     "The",
+     "These",
+     "Those"
+    ]
+   },
+   {
+    "correct": "teeth",
+    "options": [
+     "teeth",
+     "tooths",
+     "tooth",
+     "a tooth"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is",
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "white.",
+    "options": [
+     "white.",
+     "big.",
+     "small.",
+     "long."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Страны имеют много домов.",
+  "en": "Countries have many houses.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Countries",
+    "options": [
+     "Countries",
+     "Countrys",
+     "Country",
+     "A country"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has",
+     "had",
+     "are"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much",
+     "some",
+     "the"
+    ]
+   },
+   {
+    "correct": "houses.",
+    "options": [
+     "houses.",
+     "house.",
+     "a house.",
+     "the house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "У них болят ноги.",
+  "en": "Their feet hurt.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Their",
+    "options": [
+     "Their",
+     "The",
+     "These",
+     "Those"
+    ]
+   },
+   {
+    "correct": "feet",
+    "options": [
+     "feet",
+     "foots",
+     "foot",
+     "a foot"
+    ]
+   },
+   {
+    "correct": "hurt.",
+    "options": [
+     "hurt.",
+     "hurts.",
+     "are.",
+     "were."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Дни длятся две недели.",
+  "en": "Days last two weeks.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Days",
+    "options": [
+     "Days",
+     "Day",
+     "A day",
+     "The day"
+    ]
+   },
+   {
+    "correct": "last",
+    "options": [
+     "last",
+     "lasts",
+     "lasted",
+     "are"
+    ]
+   },
+   {
+    "correct": "two",
+    "options": [
+     "two",
+     "ten",
+     "five",
+     "six"
+    ]
+   },
+   {
+    "correct": "weeks.",
+    "options": [
+     "weeks.",
+     "week.",
+     "a week.",
+     "the week."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Машины едут по дорогам.",
+  "en": "Cars drive on roads.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Cars",
+    "options": [
+     "Cars",
+     "Car",
+     "A car",
+     "The car"
+    ]
+   },
+   {
+    "correct": "drive",
+    "options": [
+     "drive",
+     "drives",
+     "drove",
+     "are"
+    ]
+   },
+   {
+    "correct": "on",
+    "options": [
+     "on",
+     "in",
+     "at",
+     "to"
+    ]
+   },
+   {
+    "correct": "roads.",
+    "options": [
+     "roads.",
+     "road.",
+     "a road.",
+     "the road."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Там три книги.",
+  "en": "There are three books.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There are",
+    "options": [
+     "There are",
+     "There is"
+    ]
+   },
+   {
+    "correct": "three",
+    "options": [
+     "three",
+     "one"
+    ]
+   },
+   {
+    "correct": "books.",
+    "options": [
+     "books.",
+     "book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Мои друзья купили часы.",
+  "en": "My friends bought watches.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friends",
+    "options": [
+     "My friends",
+     "My friend"
+    ]
+   },
+   {
+    "correct": "bought",
+    "options": [
+     "bought",
+     "buy"
+    ]
+   },
+   {
+    "correct": "watches.",
+    "options": [
+     "watches.",
+     "watch."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Две страны очень красивые.",
+  "en": "Two countries are very beautiful.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Two countries",
+    "options": [
+     "Two countries",
+     "Two countrys"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is"
+    ]
+   },
+   {
+    "correct": "very beautiful.",
+    "options": [
+     "very beautiful.",
+     "very beautiful"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Четыре человека стоят там.",
+  "en": "Four people stand there.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Four people",
+    "options": [
+     "Four people",
+     "Four persons"
+    ]
+   },
+   {
+    "correct": "stand",
+    "options": [
+     "stand",
+     "stands"
+    ]
+   },
+   {
+    "correct": "there.",
+    "options": [
+     "there.",
+     "here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Эти коробки стоят здесь.",
+  "en": "These boxes are here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These boxes",
+    "options": [
+     "These boxes",
+     "This box"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Многие мужчины работают сейчас.",
+  "en": "Many men work now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Many men",
+    "options": [
+     "Many men",
+     "Many man"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "works"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Десять женщин едят яблоки.",
+  "en": "Ten women eat apples.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Ten women",
+    "options": [
+     "Ten women",
+     "Ten woman"
+    ]
+   },
+   {
+    "correct": "eat",
+    "options": [
+     "eat",
+     "eats"
+    ]
+   },
+   {
+    "correct": "apples.",
+    "options": [
+     "apples.",
+     "apple."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Мои зубы очень крепкие.",
+  "en": "My teeth are very strong.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My teeth",
+    "options": [
+     "My teeth",
+     "My tooth"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is"
+    ]
+   },
+   {
+    "correct": "very strong.",
+    "options": [
+     "very strong.",
+     "very white."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Две машины стоят около домов.",
+  "en": "Two cars are near houses.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Two cars",
+    "options": [
+     "Two cars",
+     "Two car"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is"
+    ]
+   },
+   {
+    "correct": "near houses.",
+    "options": [
+     "near houses.",
+     "near house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Там есть грязные тарелки.",
+  "en": "There are dirty dishes.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There are",
+    "options": [
+     "There are",
+     "There is"
+    ]
+   },
+   {
+    "correct": "dirty",
+    "options": [
+     "dirty",
+     "clean"
+    ]
+   },
+   {
+    "correct": "dishes.",
+    "options": [
+     "dishes.",
+     "dish."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Мои ноги болят.",
+  "en": "My feet hurt.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My feet",
+    "options": [
+     "My feet",
+     "My foot"
+    ]
+   },
+   {
+    "correct": "hurt.",
+    "options": [
+     "hurt.",
+     "hurts."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Города имеют много дорог.",
+  "en": "Cities have many roads.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Cities",
+    "options": [
+     "Cities",
+     "Citys"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has"
+    ]
+   },
+   {
+    "correct": "many roads.",
+    "options": [
+     "many roads.",
+     "many road."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Там живут люди.",
+  "en": "People live there.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "People",
+    "options": [
+     "Person",
+     "People",
+     "Peoples"
+    ]
+   },
+   {
+    "correct": "live",
+    "options": [
+     "live",
+     "lives",
+     "lived"
+    ]
+   },
+   {
+    "correct": "there.",
+    "options": [
+     "there.",
+     "here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Эти страны очень старые.",
+  "en": "These countries are very old.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These countries",
+    "options": [
+     "This country",
+     "These country",
+     "These countries"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "is",
+     "are",
+     "were"
+    ]
+   },
+   {
+    "correct": "very old.",
+    "options": [
+     "very old.",
+     "too old."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "У них есть белые зубы.",
+  "en": "They have white teeth.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They have",
+    "options": [
+     "They have",
+     "They has",
+     "They had"
+    ]
+   },
+   {
+    "correct": "white",
+    "options": [
+     "white",
+     "black"
+    ]
+   },
+   {
+    "correct": "teeth.",
+    "options": [
+     "tooth",
+     "teeth.",
+     "tooths"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Две женщины читают книги.",
+  "en": "Two women read books.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Two women",
+    "options": [
+     "Two woman",
+     "Two women",
+     "Two womans"
+    ]
+   },
+   {
+    "correct": "read",
+    "options": [
+     "read",
+     "reads",
+     "are reading"
+    ]
+   },
+   {
+    "correct": "books.",
+    "options": [
+     "book",
+     "books.",
+     "the book"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Десять машин стоят здесь.",
+  "en": "Ten cars stand here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Ten cars",
+    "options": [
+     "Ten car",
+     "Ten cars",
+     "Ten car's"
+    ]
+   },
+   {
+    "correct": "stand",
+    "options": [
+     "stand",
+     "stands",
+     "stood"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Все дети любят яблоки.",
+  "en": "All children like apples.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "All children",
+    "options": [
+     "All child",
+     "All children",
+     "All childs"
+    ]
+   },
+   {
+    "correct": "like",
+    "options": [
+     "like",
+     "likes",
+     "liked"
+    ]
+   },
+   {
+    "correct": "apples.",
+    "options": [
+     "apple",
+     "apples.",
+     "the apple"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Там есть три коробки.",
+  "en": "There are three boxes.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There are",
+    "options": [
+     "There is",
+     "There are",
+     "There were"
+    ]
+   },
+   {
+    "correct": "three",
+    "options": [
+     "one",
+     "three"
+    ]
+   },
+   {
+    "correct": "boxes.",
+    "options": [
+     "box",
+     "boxs",
+     "boxes."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Пять человек идут домой.",
+  "en": "Five people go home.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Five people",
+    "options": [
+     "Five person",
+     "Five people",
+     "Five peoples"
+    ]
+   },
+   {
+    "correct": "go",
+    "options": [
+     "go",
+     "goes",
+     "went"
+    ]
+   },
+   {
+    "correct": "home.",
+    "options": [
+     "home.",
+     "house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Две недели очень длинные.",
+  "en": "Two weeks are very long.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Two weeks",
+    "options": [
+     "Two week",
+     "Two weeks",
+     "Two weeks'"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "is",
+     "are",
+     "were"
+    ]
+   },
+   {
+    "correct": "very long.",
+    "options": [
+     "very long.",
+     "too long."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Мои ноги очень большие.",
+  "en": "My feet are very big.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My feet",
+    "options": [
+     "My foot",
+     "My feet",
+     "My foots"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "is",
+     "are",
+     "were"
+    ]
+   },
+   {
+    "correct": "very big.",
+    "options": [
+     "very big.",
+     "too big."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Города имеют много домов.",
+  "en": "Cities have many houses.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Cities",
+    "options": [
+     "City",
+     "Citys",
+     "Cities"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "has",
+     "have",
+     "had"
+    ]
+   },
+   {
+    "correct": "many houses.",
+    "options": [
+     "many house.",
+     "many houses."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Мои друзья имеют много книг.",
+  "en": "My friends have many books.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friends",
+    "options": [
+     "My friend",
+     "My friends"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "has",
+     "have"
+    ]
+   },
+   {
+    "correct": "many books.",
+    "options": [
+     "many book.",
+     "many books."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Эти города очень красивые.",
+  "en": "These cities are very beautiful.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These",
+    "options": [
+     "This",
+     "These"
+    ]
+   },
+   {
+    "correct": "cities",
+    "options": [
+     "city",
+     "cities"
+    ]
+   },
+   {
+    "correct": "are very beautiful.",
+    "options": [
+     "is very beautiful.",
+     "are very beautiful."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Там стоят две коробки.",
+  "en": "Two boxes are there.",
+  "alternatives": [
+   "There are two boxes."
+  ],
+  "slots": [
+   {
+    "correct": "Two",
+    "options": [
+     "One",
+     "Two"
+    ]
+   },
+   {
+    "correct": "boxes",
+    "options": [
+     "box",
+     "boxes"
+    ]
+   },
+   {
+    "correct": "are there.",
+    "options": [
+     "is there.",
+     "are there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Дети любят яблоки.",
+  "en": "Children like apples.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Children",
+    "options": [
+     "Child",
+     "Children"
+    ]
+   },
+   {
+    "correct": "like",
+    "options": [
+     "likes",
+     "like"
+    ]
+   },
+   {
+    "correct": "apples.",
+    "options": [
+     "apple.",
+     "apples."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Эти страны имеют много людей.",
+  "en": "These countries have many people.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These",
+    "options": [
+     "This",
+     "These"
+    ]
+   },
+   {
+    "correct": "countries",
+    "options": [
+     "country",
+     "countries"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "has",
+     "have"
+    ]
+   },
+   {
+    "correct": "many people.",
+    "options": [
+     "many person.",
+     "many people."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Женщины смотрят на часы.",
+  "en": "Women watch the watches.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Women",
+    "options": [
+     "Woman",
+     "Women"
+    ]
+   },
+   {
+    "correct": "watch",
+    "options": [
+     "watches",
+     "watch"
+    ]
+   },
+   {
+    "correct": "the watches.",
+    "options": [
+     "the watch.",
+     "the watches."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Эти дома имеют много окон.",
+  "en": "These houses have many windows.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These",
+    "options": [
+     "This",
+     "These"
+    ]
+   },
+   {
+    "correct": "houses",
+    "options": [
+     "house",
+     "houses"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "has",
+     "have"
+    ]
+   },
+   {
+    "correct": "many windows.",
+    "options": [
+     "many window.",
+     "many windows."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Люди любят новые машины.",
+  "en": "People like new cars.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "People",
+    "options": [
+     "Person",
+     "People"
+    ]
+   },
+   {
+    "correct": "like",
+    "options": [
+     "likes",
+     "like"
+    ]
+   },
+   {
+    "correct": "new cars.",
+    "options": [
+     "new car.",
+     "new cars."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Четыре недели идут быстро.",
+  "en": "Four weeks go fast.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Four",
+    "options": [
+     "One",
+     "Four"
+    ]
+   },
+   {
+    "correct": "weeks",
+    "options": [
+     "week",
+     "weeks"
+    ]
+   },
+   {
+    "correct": "go",
+    "options": [
+     "goes",
+     "go"
+    ]
+   },
+   {
+    "correct": "fast.",
+    "options": [
+     "fast.",
+     "fasts."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Мои друзья покупают часы.",
+  "en": "My friends buy watches.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friends",
+    "options": [
+     "My friend",
+     "My friends",
+     "My friend's"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buys",
+     "buy",
+     "buying"
+    ]
+   },
+   {
+    "correct": "watches.",
+    "options": [
+     "watchs",
+     "watch",
+     "watches."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Там стоят четыре коробки.",
+  "en": "Four boxes are there.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Four boxes",
+    "options": [
+     "Four box",
+     "Four boxs",
+     "Four boxes"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "is",
+     "are",
+     "be"
+    ]
+   },
+   {
+    "correct": "there.",
+    "options": [
+     "there.",
+     "here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Две страны очень большие.",
+  "en": "Two countries are very big.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Two countries",
+    "options": [
+     "Two countrys",
+     "Two country",
+     "Two countries"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "is",
+     "are",
+     "be"
+    ]
+   },
+   {
+    "correct": "very big.",
+    "options": [
+     "very big.",
+     "very small."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Десять человек любят яблоки.",
+  "en": "Ten people like apples.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Ten people",
+    "options": [
+     "Ten person",
+     "Ten peoples",
+     "Ten people"
+    ]
+   },
+   {
+    "correct": "like",
+    "options": [
+     "likes",
+     "like",
+     "liking"
+    ]
+   },
+   {
+    "correct": "apples.",
+    "options": [
+     "apple",
+     "apples.",
+     "appels"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Все мужчины имеют крепкие зубы.",
+  "en": "All men have strong teeth.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "All men",
+    "options": [
+     "All man",
+     "All mens",
+     "All men"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "has",
+     "have",
+     "had"
+    ]
+   },
+   {
+    "correct": "strong teeth.",
+    "options": [
+     "strong tooth.",
+     "strong tooths.",
+     "strong teeth."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Пять женщин имеют красивые часы.",
+  "en": "Five women have beautiful watches.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Five women",
+    "options": [
+     "Five woman",
+     "Five womens",
+     "Five women"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "has",
+     "have",
+     "are"
+    ]
+   },
+   {
+    "correct": "beautiful watches.",
+    "options": [
+     "beautiful watch.",
+     "beautiful watchs.",
+     "beautiful watches."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Эти дети имеют маленькие ступни.",
+  "en": "These children have small feet.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These children",
+    "options": [
+     "These childs",
+     "These child",
+     "These children"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "has",
+     "have",
+     "are"
+    ]
+   },
+   {
+    "correct": "small feet.",
+    "options": [
+     "small foot.",
+     "small foots.",
+     "small feet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Мои друзья едят яблоки.",
+  "en": "My friends eat apples.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friends",
+    "options": [
+     "My friend",
+     "My friends",
+     "My friends'"
+    ]
+   },
+   {
+    "correct": "eat",
+    "options": [
+     "eats",
+     "eat",
+     "eating"
+    ]
+   },
+   {
+    "correct": "apples.",
+    "options": [
+     "apple",
+     "apples.",
+     "appels"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Три страны имеют новые машины.",
+  "en": "Three countries have new cars.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Three countries",
+    "options": [
+     "Three countrys",
+     "Three country",
+     "Three countries"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "has",
+     "have",
+     "had"
+    ]
+   },
+   {
+    "correct": "new cars.",
+    "options": [
+     "new car.",
+     "new cars."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Эти женщины моют грязные тарелки.",
+  "en": "These women wash dirty dishes.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These women",
+    "options": [
+     "These woman",
+     "These womens",
+     "These women"
+    ]
+   },
+   {
+    "correct": "wash",
+    "options": [
+     "washes",
+     "wash",
+     "washing"
+    ]
+   },
+   {
+    "correct": "dirty dishes.",
+    "options": [
+     "dirty dish.",
+     "dirty dishs.",
+     "dirty dishes."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Там десять машин.",
+  "en": "There are ten cars.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There",
+    "options": [
+     "There",
+     "These",
+     "Those"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is"
+    ]
+   },
+   {
+    "correct": "ten cars.",
+    "options": [
+     "ten cars.",
+     "ten car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Эти яблоки красные.",
+  "en": "These apples are red.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These",
+    "options": [
+     "These",
+     "This"
+    ]
+   },
+   {
+    "correct": "apples",
+    "options": [
+     "apples",
+     "apple"
+    ]
+   },
+   {
+    "correct": "are red.",
+    "options": [
+     "are red.",
+     "is red."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Десять городов большие.",
+  "en": "Ten cities are big.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Ten",
+    "options": [
+     "Ten",
+     "A"
+    ]
+   },
+   {
+    "correct": "cities",
+    "options": [
+     "cities",
+     "city",
+     "citys"
+    ]
+   },
+   {
+    "correct": "are big.",
+    "options": [
+     "are big.",
+     "is big."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Пять стран красивые.",
+  "en": "Five countries are beautiful.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Five",
+    "options": [
+     "Five",
+     "One"
+    ]
+   },
+   {
+    "correct": "countries",
+    "options": [
+     "countries",
+     "country",
+     "countrys"
+    ]
+   },
+   {
+    "correct": "are beautiful.",
+    "options": [
+     "are beautiful.",
+     "is beautiful."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Две коробки новые.",
+  "en": "Two boxes are new.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Two",
+    "options": [
+     "Two",
+     "A"
+    ]
+   },
+   {
+    "correct": "boxes",
+    "options": [
+     "boxes",
+     "box",
+     "boxs"
+    ]
+   },
+   {
+    "correct": "are new.",
+    "options": [
+     "are new.",
+     "is new."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Там пять часов.",
+  "en": "There are five watches.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There are",
+    "options": [
+     "There are",
+     "There is"
+    ]
+   },
+   {
+    "correct": "five",
+    "options": [
+     "five",
+     "a"
+    ]
+   },
+   {
+    "correct": "watches.",
+    "options": [
+     "watches.",
+     "watch.",
+     "watchs."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Эти тарелки грязные.",
+  "en": "These dishes are dirty.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These",
+    "options": [
+     "These",
+     "This"
+    ]
+   },
+   {
+    "correct": "dishes",
+    "options": [
+     "dishes",
+     "dish",
+     "dishs"
+    ]
+   },
+   {
+    "correct": "are dirty.",
+    "options": [
+     "are dirty.",
+     "is dirty."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Мои дети едят.",
+  "en": "My children are eating.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My",
+    "options": [
+     "My",
+     "The"
+    ]
+   },
+   {
+    "correct": "children",
+    "options": [
+     "children",
+     "child"
+    ]
+   },
+   {
+    "correct": "are eating.",
+    "options": [
+     "are eating.",
+     "is eating."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Все мужчины здесь.",
+  "en": "All men are here.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "All",
+    "options": [
+     "All",
+     "The"
+    ]
+   },
+   {
+    "correct": "men",
+    "options": [
+     "men",
+     "man"
+    ]
+   },
+   {
+    "correct": "are here.",
+    "options": [
+     "are here.",
+     "is here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Там две женщины.",
+  "en": "There are two women.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There are",
+    "options": [
+     "There are",
+     "There is"
+    ]
+   },
+   {
+    "correct": "two",
+    "options": [
+     "two",
+     "a"
+    ]
+   },
+   {
+    "correct": "women.",
+    "options": [
+     "women.",
+     "woman."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Мои ступни болят.",
+  "en": "My feet hurt.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My",
+    "options": [
+     "My",
+     "The"
+    ]
+   },
+   {
+    "correct": "feet",
+    "options": [
+     "feet",
+     "foot"
+    ]
+   },
+   {
+    "correct": "hurt.",
+    "options": [
+     "hurt.",
+     "hurts."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Три человека идут.",
+  "en": "Three people are walking.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Three",
+    "options": [
+     "Three",
+     "One"
+    ]
+   },
+   {
+    "correct": "people",
+    "options": [
+     "people",
+     "person"
+    ]
+   },
+   {
+    "correct": "are walking.",
+    "options": [
+     "are walking.",
+     "is walking."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Мои друзья покупают много книг.",
+  "en": "My friends buy many books.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friends",
+    "options": [
+     "My friend",
+     "My friends",
+     "My friend's"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buys",
+     "bought"
+    ]
+   },
+   {
+    "correct": "many books.",
+    "options": [
+     "many books.",
+     "many book.",
+     "much books."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Эти большие города имеют много парков.",
+  "en": "These big cities have many parks.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These big cities",
+    "options": [
+     "This big city",
+     "These big city",
+     "These big cities"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "has",
+     "have",
+     "had"
+    ]
+   },
+   {
+    "correct": "many parks.",
+    "options": [
+     "many park.",
+     "many parks.",
+     "much parks."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Те страны имеют много дорог.",
+  "en": "Those countries have many roads.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Those countries",
+    "options": [
+     "That country",
+     "Those country",
+     "Those countries"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "has",
+     "have",
+     "had"
+    ]
+   },
+   {
+    "correct": "many roads.",
+    "options": [
+     "many road.",
+     "many roads.",
+     "much roads."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Там стоят две большие коробки.",
+  "en": "Two big boxes stand there.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Two big boxes",
+    "options": [
+     "Two big box",
+     "Two big boxs",
+     "Two big boxes"
+    ]
+   },
+   {
+    "correct": "stand",
+    "options": [
+     "stands",
+     "stand",
+     "standing"
+    ]
+   },
+   {
+    "correct": "there.",
+    "options": [
+     "there.",
+     "here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Все мои дети имеют красивые часы.",
+  "en": "All my children have beautiful watches.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "All my children",
+    "options": [
+     "All my child",
+     "All my children",
+     "All my childs"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "has",
+     "have",
+     "had"
+    ]
+   },
+   {
+    "correct": "beautiful watches.",
+    "options": [
+     "beautiful watch.",
+     "beautiful watches.",
+     "beautiful watchs."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Мои зубы болят сегодня.",
+  "en": "My teeth hurt today.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My teeth",
+    "options": [
+     "My tooth",
+     "My tooths",
+     "My teeth"
+    ]
+   },
+   {
+    "correct": "hurt",
+    "options": [
+     "hurts",
+     "hurt",
+     "hurting"
+    ]
+   },
+   {
+    "correct": "today.",
+    "options": [
+     "today.",
+     "now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Эти люди едят яблоки.",
+  "en": "These people eat apples.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These people",
+    "options": [
+     "This person",
+     "These person",
+     "These people"
+    ]
+   },
+   {
+    "correct": "eat",
+    "options": [
+     "eats",
+     "eat",
+     "eating"
+    ]
+   },
+   {
+    "correct": "apples.",
+    "options": [
+     "apple.",
+     "apples.",
+     "apple's."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Мои ступни очень большие.",
+  "en": "My feet are very big.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My feet",
+    "options": [
+     "My foot",
+     "My foots",
+     "My feet"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "is",
+     "am",
+     "are"
+    ]
+   },
+   {
+    "correct": "very big.",
+    "options": [
+     "very big.",
+     "very long."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Там стоят пять мужчин.",
+  "en": "Five men stand there.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Five men",
+    "options": [
+     "Five man",
+     "Five men",
+     "Five mans"
+    ]
+   },
+   {
+    "correct": "stand",
+    "options": [
+     "stands",
+     "stand",
+     "standing"
+    ]
+   },
+   {
+    "correct": "there.",
+    "options": [
+     "there.",
+     "here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Эти тарелки очень чистые.",
+  "en": "These dishes are very clean.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These dishes",
+    "options": [
+     "This dish",
+     "These dish",
+     "These dishes"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "is",
+     "are",
+     "were"
+    ]
+   },
+   {
+    "correct": "very clean.",
+    "options": [
+     "very clean.",
+     "very dirty."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Многие женщины работают в домах.",
+  "en": "Many women work in houses.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Many women",
+    "options": [
+     "Many woman",
+     "Many womens",
+     "Many women"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "works",
+     "work",
+     "working"
+    ]
+   },
+   {
+    "correct": "in houses.",
+    "options": [
+     "in house.",
+     "in houses."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Две страны имеют много городов.",
+  "en": "Two countries have many cities.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Two countries",
+    "options": [
+     "Two country",
+     "Two countrys",
+     "Two countries"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "has",
+     "have",
+     "had"
+    ]
+   },
+   {
+    "correct": "many cities.",
+    "options": [
+     "many city.",
+     "many citys.",
+     "many cities."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Там есть пять детей.",
+  "en": "There are five children.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There are",
+    "options": [
+     "There is",
+     "There are",
+     "There were"
+    ]
+   },
+   {
+    "correct": "five",
+    "options": [
+     "five",
+     "a",
+     "one"
+    ]
+   },
+   {
+    "correct": "children.",
+    "options": [
+     "childs",
+     "children.",
+     "child"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Те люди очень добрые.",
+  "en": "Those people are very kind.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Those",
+    "options": [
+     "That",
+     "Those",
+     "This"
+    ]
+   },
+   {
+    "correct": "people",
+    "options": [
+     "person",
+     "peoples",
+     "people"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "is",
+     "are",
+     "were"
+    ]
+   },
+   {
+    "correct": "very kind.",
+    "options": [
+     "very kind.",
+     "a kind.",
+     "kind."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Две страны имеют города.",
+  "en": "Two countries have cities.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Two",
+    "options": [
+     "One",
+     "Two",
+     "A"
+    ]
+   },
+   {
+    "correct": "countries",
+    "options": [
+     "country",
+     "countrys",
+     "countries"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "has",
+     "have",
+     "had"
+    ]
+   },
+   {
+    "correct": "cities.",
+    "options": [
+     "citys",
+     "cities.",
+     "a city"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Четыре мужчины стоят там.",
+  "en": "Four men stand there.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Four",
+    "options": [
+     "One",
+     "Four",
+     "A"
+    ]
+   },
+   {
+    "correct": "men",
+    "options": [
+     "man",
+     "mens",
+     "men"
+    ]
+   },
+   {
+    "correct": "stand",
+    "options": [
+     "stands",
+     "stand",
+     "standing"
+    ]
+   },
+   {
+    "correct": "there.",
+    "options": [
+     "there.",
+     "here.",
+     "away."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Эти женщины имеют часы.",
+  "en": "These women have watches.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These",
+    "options": [
+     "This",
+     "These",
+     "That"
+    ]
+   },
+   {
+    "correct": "women",
+    "options": [
+     "woman",
+     "womens",
+     "women"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "has",
+     "have",
+     "had"
+    ]
+   },
+   {
+    "correct": "watches.",
+    "options": [
+     "watchs",
+     "watches.",
+     "watch"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Мои ступни болят сейчас.",
+  "en": "My feet hurt now.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My",
+    "options": [
+     "My",
+     "The",
+     "A"
+    ]
+   },
+   {
+    "correct": "feet",
+    "options": [
+     "foot",
+     "feets",
+     "feet"
+    ]
+   },
+   {
+    "correct": "hurt",
+    "options": [
+     "hurts",
+     "hurt",
+     "hurting"
+    ]
+   },
+   {
+    "correct": "now.",
+    "options": [
+     "now.",
+     "today.",
+     "then."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Десять стран очень большие.",
+  "en": "Ten countries are very big.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Ten",
+    "options": [
+     "One",
+     "Ten",
+     "A"
+    ]
+   },
+   {
+    "correct": "countries",
+    "options": [
+     "country",
+     "countrys",
+     "countries"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "is",
+     "are",
+     "were"
+    ]
+   },
+   {
+    "correct": "very big.",
+    "options": [
+     "very big.",
+     "big.",
+     "a big."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Эти книги очень интересные.",
+  "en": "These books are very interesting.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These",
+    "options": [
+     "This",
+     "That",
+     "These"
+    ]
+   },
+   {
+    "correct": "books",
+    "options": [
+     "book",
+     "books",
+     "bookes"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "is",
+     "are",
+     "were"
+    ]
+   },
+   {
+    "correct": "very interesting.",
+    "options": [
+     "very interesting.",
+     "interesting.",
+     "an interesting."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Все люди едят яблоки.",
+  "en": "All people eat apples.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "All",
+    "options": [
+     "All",
+     "Every",
+     "Each"
+    ]
+   },
+   {
+    "correct": "people",
+    "options": [
+     "person",
+     "peoples",
+     "people"
+    ]
+   },
+   {
+    "correct": "eat",
+    "options": [
+     "eats",
+     "eat",
+     "eating"
+    ]
+   },
+   {
+    "correct": "apples.",
+    "options": [
+     "apple",
+     "apples.",
+     "an apple"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Две женщины моют тарелки.",
+  "en": "Two women wash dishes.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Two",
+    "options": [
+     "One",
+     "Two",
+     "A"
+    ]
+   },
+   {
+    "correct": "women",
+    "options": [
+     "woman",
+     "womens",
+     "women"
+    ]
+   },
+   {
+    "correct": "wash",
+    "options": [
+     "washes",
+     "wash",
+     "washing"
+    ]
+   },
+   {
+    "correct": "dishes.",
+    "options": [
+     "dishs",
+     "dish",
+     "dishes."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Мои друзья покупают две машины.",
+  "en": "My friends buy two cars.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friends",
+    "options": [
+     "My friends",
+     "My friend"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buys"
+    ]
+   },
+   {
+    "correct": "two cars.",
+    "options": [
+     "two cars.",
+     "two car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Там есть три страны.",
+  "en": "There are three countries.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There are",
+    "options": [
+     "There are",
+     "There is"
+    ]
+   },
+   {
+    "correct": "three countries.",
+    "options": [
+     "three countries.",
+     "three countrys.",
+     "three country."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Две женщины покупают книги.",
+  "en": "Two women buy books.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Two women",
+    "options": [
+     "Two women",
+     "Two woman"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buys"
+    ]
+   },
+   {
+    "correct": "books.",
+    "options": [
+     "books.",
+     "book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Там стоят четыре тарелки.",
+  "en": "There are four dishes.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There are",
+    "options": [
+     "There are",
+     "There is"
+    ]
+   },
+   {
+    "correct": "four dishes.",
+    "options": [
+     "four dishes.",
+     "four dishs.",
+     "four dish."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Мои дети имеют новые часы.",
+  "en": "My children have new watches.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My children",
+    "options": [
+     "My children",
+     "My childs",
+     "My child"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has"
+    ]
+   },
+   {
+    "correct": "new watches.",
+    "options": [
+     "new watches.",
+     "new watchs.",
+     "new watch."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Пять человек имеют красные яблоки.",
+  "en": "Five people have red apples.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Five people",
+    "options": [
+     "Five people",
+     "Five person"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has"
+    ]
+   },
+   {
+    "correct": "red apples.",
+    "options": [
+     "red apples.",
+     "red apple."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Три женщины моют дома.",
+  "en": "Three women wash houses.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Three women",
+    "options": [
+     "Three women",
+     "Three woman"
+    ]
+   },
+   {
+    "correct": "wash",
+    "options": [
+     "wash",
+     "washes"
+    ]
+   },
+   {
+    "correct": "houses.",
+    "options": [
+     "houses.",
+     "house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Наши страны имеют много городов.",
+  "en": "Our countries have many cities.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Our",
+    "options": [
+     "Our",
+     "These",
+     "Those"
+    ]
+   },
+   {
+    "correct": "countries",
+    "options": [
+     "countries",
+     "countrys",
+     "countryies"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has"
+    ]
+   },
+   {
+    "correct": "many",
+    "options": [
+     "many",
+     "much"
+    ]
+   },
+   {
+    "correct": "cities.",
+    "options": [
+     "cities.",
+     "citys.",
+     "cityies."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "У этих людей белые зубы.",
+  "en": "These people have white teeth.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "These",
+    "options": [
+     "These",
+     "This",
+     "Those"
+    ]
+   },
+   {
+    "correct": "people",
+    "options": [
+     "people",
+     "peoples",
+     "person"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has"
+    ]
+   },
+   {
+    "correct": "white",
+    "options": [
+     "white",
+     "red"
+    ]
+   },
+   {
+    "correct": "teeth.",
+    "options": [
+     "teeth.",
+     "tooths.",
+     "tooth."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Там стоят десять коробок.",
+  "en": "There are ten boxes.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "There",
+    "options": [
+     "There",
+     "These",
+     "Those"
+    ]
+   },
+   {
+    "correct": "are",
+    "options": [
+     "are",
+     "is"
+    ]
+   },
+   {
+    "correct": "ten",
+    "options": [
+     "ten",
+     "two"
+    ]
+   },
+   {
+    "correct": "boxes.",
+    "options": [
+     "boxes.",
+     "boxs.",
+     "boxies."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Те дети имеют большие ступни.",
+  "en": "Those children have big feet.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Those",
+    "options": [
+     "Those",
+     "These",
+     "That"
+    ]
+   },
+   {
+    "correct": "children",
+    "options": [
+     "children",
+     "childs",
+     "child"
+    ]
+   },
+   {
+    "correct": "have",
+    "options": [
+     "have",
+     "has"
+    ]
+   },
+   {
+    "correct": "big",
+    "options": [
+     "big",
+     "small"
+    ]
+   },
+   {
+    "correct": "feet.",
+    "options": [
+     "feet.",
+     "foots.",
+     "foot."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "plurals_basic",
+  "ru": "Мои друзья моют грязные тарелки.",
+  "en": "My friends wash dirty dishes.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My",
+    "options": [
+     "My",
+     "These"
+    ]
+   },
+   {
+    "correct": "friends",
+    "options": [
+     "friends",
+     "friend"
+    ]
+   },
+   {
+    "correct": "wash",
+    "options": [
+     "wash",
+     "washes"
+    ]
+   },
+   {
+    "correct": "dirty",
+    "options": [
+     "dirty",
+     "clean"
+    ]
+   },
+   {
+    "correct": "dishes.",
+    "options": [
+     "dishes.",
+     "dishs.",
+     "dishies."
+    ]
+   }
+  ]
+ }
+]

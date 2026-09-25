@@ -1,0 +1,3485 @@
+[
+ {
+  "topic": "past_continuous",
+  "ru": "Я работал весь вечер.",
+  "en": "I was working all evening.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We",
+     "He"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "working all evening.",
+    "options": [
+     "working all evening.",
+     "work all evening.",
+     "worked all evening."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они спали в десять часов.",
+  "en": "They were sleeping at ten.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "It"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "sleeping at ten.",
+    "options": [
+     "sleeping at ten.",
+     "sleep at ten.",
+     "slept at ten."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я не читал книгу.",
+  "en": "I wasn't reading a book.",
+  "alternatives": [
+   "I was not reading a book."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "reading a book.",
+    "options": [
+     "reading a book.",
+     "read a book.",
+     "readed a book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Мы не ждали автобус.",
+  "en": "We weren't waiting for the bus.",
+  "alternatives": [
+   "We were not waiting for the bus."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "waiting for the bus.",
+    "options": [
+     "waiting for the bus.",
+     "wait for the bus.",
+     "waited for the bus."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Ты смотрел телевизор?",
+  "en": "Were you watching TV?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "watching TV?",
+    "options": [
+     "watching TV?",
+     "watch TV?",
+     "watched TV?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Она готовила, когда он пришел.",
+  "en": "She was cooking when he came.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "cooking when he came.",
+    "options": [
+     "cooking when he came.",
+     "cook when he came.",
+     "cooked when he came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Шел дождь, когда я вышел.",
+  "en": "It was raining when I went out.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It",
+    "options": [
+     "It",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "raining when I went out.",
+    "options": [
+     "raining when I went out.",
+     "rain when I went out.",
+     "rained when I went out."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они говорили, когда ты зашел.",
+  "en": "They were talking when you entered.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "I",
+     "She"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "talking when you entered.",
+    "options": [
+     "talking when you entered.",
+     "talk when you entered.",
+     "talked when you entered."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я учился, пока они играли.",
+  "en": "I was studying while they were playing.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "studying while they were playing.",
+    "options": [
+     "studying while they were playing.",
+     "study while they were playing.",
+     "studied while they were playing."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Ты вел машину, когда увидел её?",
+  "en": "Were you driving when you saw her?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "driving when you saw her?",
+    "options": [
+     "driving when you saw her?",
+     "drive when you saw her?",
+     "drove when you saw her?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Мы ждали, когда начался фильм.",
+  "en": "We were waiting when the film started.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "waiting when the film started.",
+    "options": [
+     "waiting when the film started.",
+     "wait when the film started.",
+     "waited when the film started."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Он читал, когда зазвонил телефон.",
+  "en": "He was reading when the phone rang.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "reading when the phone rang.",
+    "options": [
+     "reading when the phone rang.",
+     "read when the phone rang.",
+     "readed when the phone rang."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я готовил ужин в семь.",
+  "en": "I was cooking dinner at seven.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "cooking dinner at seven.",
+    "options": [
+     "cooking dinner at seven.",
+     "cook dinner at seven."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они работали в два часа.",
+  "en": "They were working at two o'clock.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "working at two o'clock.",
+    "options": [
+     "working at two o'clock.",
+     "work at two o'clock."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Мы не смотрели телевизор вчера.",
+  "en": "We weren't watching TV yesterday.",
+  "alternatives": [
+   "We were not watching TV yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "watching TV yesterday.",
+    "options": [
+     "watching TV yesterday.",
+     "watched TV yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Он не спал днем.",
+  "en": "He wasn't sleeping in the afternoon.",
+  "alternatives": [
+   "He was not sleeping in the afternoon."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "sleeping in the afternoon.",
+    "options": [
+     "sleeping in the afternoon.",
+     "sleep in the afternoon."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Ты читал, когда я вошел?",
+  "en": "Were you reading when I entered?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he"
+    ]
+   },
+   {
+    "correct": "reading when I entered?",
+    "options": [
+     "reading when I entered?",
+     "read when I entered?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Она ждала, когда пошел снег?",
+  "en": "Was she waiting when it snowed?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Were"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "waiting when it snowed?",
+    "options": [
+     "waiting when it snowed?",
+     "wait when it snowed?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я вел машину, когда увидел дом.",
+  "en": "I was driving when I saw the house.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "driving when I saw the house.",
+    "options": [
+     "driving when I saw the house.",
+     "drive when I saw the house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они играли, пока я работал.",
+  "en": "They were playing while I worked.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "She"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "playing while I worked.",
+    "options": [
+     "playing while I worked.",
+     "played while I worked."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Шел дождь, пока мы ждали.",
+  "en": "It was raining while we waited.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It",
+    "options": [
+     "It",
+     "They"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "raining while we waited.",
+    "options": [
+     "raining while we waited.",
+     "rain while we waited."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я говорил, когда ты позвонил.",
+  "en": "I was talking when you called.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "talking when you called.",
+    "options": [
+     "talking when you called.",
+     "talk when you called."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Мы учились, когда ты пришел.",
+  "en": "We were studying when you arrived.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "studying when you arrived.",
+    "options": [
+     "studying when you arrived.",
+     "study when you arrived."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Он смотрел кино, когда я ушел.",
+  "en": "He was watching a movie when I left.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "watching a movie when I left.",
+    "options": [
+     "watching a movie when I left.",
+     "watch a movie when I left."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я работал, когда ты позвонил.",
+  "en": "I was working when you called.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "was working",
+    "options": [
+     "was working",
+     "were working",
+     "is working",
+     "are working"
+    ]
+   },
+   {
+    "correct": "when you called.",
+    "options": [
+     "when you called.",
+     "while you called.",
+     "when you call.",
+     "while you call."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они не спали, когда я пришел.",
+  "en": "They weren't sleeping when I arrived.",
+  "alternatives": [
+   "They were not sleeping when I arrived."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "weren't sleeping",
+    "options": [
+     "weren't sleeping",
+     "wasn't sleeping",
+     "didn't sleep",
+     "don't sleep"
+    ]
+   },
+   {
+    "correct": "when I arrived.",
+    "options": [
+     "when I arrived.",
+     "while I arrived.",
+     "when I arrive.",
+     "while I arrive."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Ты ждал, когда начался дождь?",
+  "en": "Were you waiting when it started raining?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were you",
+    "options": [
+     "Were you",
+     "Was you",
+     "Did you",
+     "Are you"
+    ]
+   },
+   {
+    "correct": "waiting",
+    "options": [
+     "waiting",
+     "waited",
+     "wait",
+     "waits"
+    ]
+   },
+   {
+    "correct": "when it started raining?",
+    "options": [
+     "when it started raining?",
+     "while it started raining?",
+     "when it start raining?",
+     "while it start raining?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Мы читали, пока он работал.",
+  "en": "We were reading while he was working.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "were reading",
+    "options": [
+     "were reading",
+     "was reading",
+     "are reading",
+     "is reading"
+    ]
+   },
+   {
+    "correct": "while he was working.",
+    "options": [
+     "while he was working.",
+     "when he was working.",
+     "while he worked.",
+     "when he worked."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Он не смотрел кино в пять.",
+  "en": "He wasn't watching a movie at five.",
+  "alternatives": [
+   "He was not watching a movie at five."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "wasn't watching",
+    "options": [
+     "wasn't watching",
+     "weren't watching",
+     "didn't watch",
+     "don't watch"
+    ]
+   },
+   {
+    "correct": "a movie at five.",
+    "options": [
+     "a movie at five.",
+     "the movie at five.",
+     "movies at five.",
+     "a film at five."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Вы вели машину, когда увидели нас?",
+  "en": "Were you driving when you saw us?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were you",
+    "options": [
+     "Were you",
+     "Was you",
+     "Did you",
+     "Are you"
+    ]
+   },
+   {
+    "correct": "driving",
+    "options": [
+     "driving",
+     "drove",
+     "drive",
+     "drives"
+    ]
+   },
+   {
+    "correct": "when you saw us?",
+    "options": [
+     "when you saw us?",
+     "while you saw us?",
+     "when you see us?",
+     "while you see us?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они играли, когда зашел учитель.",
+  "en": "They were playing when the teacher entered.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I",
+     "It"
+    ]
+   },
+   {
+    "correct": "were playing",
+    "options": [
+     "were playing",
+     "was playing",
+     "are playing",
+     "is playing"
+    ]
+   },
+   {
+    "correct": "when the teacher entered.",
+    "options": [
+     "when the teacher entered.",
+     "while the teacher entered.",
+     "when the teacher enters.",
+     "while the teacher enters."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я не готовил ужин в шесть.",
+  "en": "I wasn't cooking dinner at six.",
+  "alternatives": [
+   "I was not cooking dinner at six."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "wasn't cooking",
+    "options": [
+     "wasn't cooking",
+     "weren't cooking",
+     "didn't cook",
+     "don't cook"
+    ]
+   },
+   {
+    "correct": "dinner at six.",
+    "options": [
+     "dinner at six.",
+     "a dinner at six.",
+     "the dinner at six.",
+     "dinners at six."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Она училась, пока он смотрел ТВ.",
+  "en": "She was studying while he was watching TV.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "was studying",
+    "options": [
+     "was studying",
+     "were studying",
+     "is studying",
+     "are studying"
+    ]
+   },
+   {
+    "correct": "while he was watching TV.",
+    "options": [
+     "while he was watching TV.",
+     "when he was watching TV.",
+     "while he watched TV.",
+     "when he watched TV."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Шел дождь, когда мы вышли.",
+  "en": "It was raining when we went out.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It",
+    "options": [
+     "It",
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "was raining",
+    "options": [
+     "was raining",
+     "were raining",
+     "is raining",
+     "are raining"
+    ]
+   },
+   {
+    "correct": "when we went out.",
+    "options": [
+     "when we went out.",
+     "while we went out.",
+     "when we go out.",
+     "while we go out."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Мы не ждали, когда он пришел.",
+  "en": "We weren't waiting when he arrived.",
+  "alternatives": [
+   "We were not waiting when he arrived."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "weren't waiting",
+    "options": [
+     "weren't waiting",
+     "wasn't waiting",
+     "didn't wait",
+     "don't wait"
+    ]
+   },
+   {
+    "correct": "when he arrived.",
+    "options": [
+     "when he arrived.",
+     "while he arrived.",
+     "when he arrives.",
+     "while he arrives."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Ты говорил, когда я вошел?",
+  "en": "Were you talking when I entered?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were you",
+    "options": [
+     "Were you",
+     "Was you",
+     "Did you",
+     "Are you"
+    ]
+   },
+   {
+    "correct": "talking",
+    "options": [
+     "talking",
+     "talked",
+     "talk",
+     "talks"
+    ]
+   },
+   {
+    "correct": "when I entered?",
+    "options": [
+     "when I entered?",
+     "while I entered?",
+     "when I enter?",
+     "while I enter?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я работал, когда ты пришел.",
+  "en": "I was working when you arrived.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "You",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "working",
+    "options": [
+     "working",
+     "work",
+     "worked"
+    ]
+   },
+   {
+    "correct": "when you arrived.",
+    "options": [
+     "when you arrived.",
+     "when you arrive."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они не спали, когда я позвонил.",
+  "en": "They weren't sleeping when I called.",
+  "alternatives": [
+   "They were not sleeping when I called."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "sleeping",
+    "options": [
+     "sleeping",
+     "sleep",
+     "slept"
+    ]
+   },
+   {
+    "correct": "when I called.",
+    "options": [
+     "when I called.",
+     "while I called."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Ты читал книгу, когда я вошел?",
+  "en": "Were you reading a book when I entered?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "reading",
+    "options": [
+     "reading",
+     "read"
+    ]
+   },
+   {
+    "correct": "a book when I entered?",
+    "options": [
+     "a book when I entered?",
+     "a book when I enter?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Мы готовили, пока они смотрели телевизор.",
+  "en": "We were cooking while they were watching TV.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "cooking",
+    "options": [
+     "cooking",
+     "cook"
+    ]
+   },
+   {
+    "correct": "while they were watching TV.",
+    "options": [
+     "while they were watching TV.",
+     "while they watched TV."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я не вел машину, когда увидел аварию.",
+  "en": "I wasn't driving when I saw the accident.",
+  "alternatives": [
+   "I was not driving when I saw the accident."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "driving",
+    "options": [
+     "driving",
+     "drove",
+     "drive"
+    ]
+   },
+   {
+    "correct": "when I saw the accident.",
+    "options": [
+     "when I saw the accident.",
+     "when I see the accident."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Она ждала, когда начался урок.",
+  "en": "She was waiting when the lesson started.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "waiting",
+    "options": [
+     "waiting",
+     "wait"
+    ]
+   },
+   {
+    "correct": "when the lesson started.",
+    "options": [
+     "when the lesson started.",
+     "when the lesson starts."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они разговаривали, когда он зашел.",
+  "en": "They were talking when he entered.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "talking",
+    "options": [
+     "talking",
+     "talked",
+     "talk"
+    ]
+   },
+   {
+    "correct": "when he entered.",
+    "options": [
+     "when he entered.",
+     "when he enters."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Вы играли, когда пошел дождь?",
+  "en": "Were you playing when it started raining?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "playing",
+    "options": [
+     "playing",
+     "play"
+    ]
+   },
+   {
+    "correct": "when it started raining?",
+    "options": [
+     "when it started raining?",
+     "when it start raining?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я учился, когда ты позвал меня.",
+  "en": "I was studying when you called me.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "studying",
+    "options": [
+     "studying",
+     "studied",
+     "study"
+    ]
+   },
+   {
+    "correct": "when you called me.",
+    "options": [
+     "when you called me.",
+     "when you call me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Он не смотрел кино, когда я пришел.",
+  "en": "He wasn't watching a movie when I arrived.",
+  "alternatives": [
+   "He was not watching a movie when I arrived."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "watching",
+    "options": [
+     "watching",
+     "watch",
+     "watched"
+    ]
+   },
+   {
+    "correct": "a movie when I arrived.",
+    "options": [
+     "a movie when I arrived.",
+     "a movie when I arrive."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Мы ждали автобус, когда он появился.",
+  "en": "We were waiting for a bus when he appeared.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "She"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "waiting for a bus",
+    "options": [
+     "waiting for a bus",
+     "waited for a bus"
+    ]
+   },
+   {
+    "correct": "when he appeared.",
+    "options": [
+     "when he appeared.",
+     "when he appears."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Шел дождь, пока мы играли.",
+  "en": "It was raining while we were playing.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It",
+    "options": [
+     "It",
+     "They"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "raining",
+    "options": [
+     "raining",
+     "rain"
+    ]
+   },
+   {
+    "correct": "while we were playing.",
+    "options": [
+     "while we were playing.",
+     "while we played."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я спал, когда ты пришел.",
+  "en": "I was sleeping when you arrived.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "sleeping",
+    "options": [
+     "sleeping",
+     "slept",
+     "sleep"
+    ]
+   },
+   {
+    "correct": "when you arrived.",
+    "options": [
+     "when you arrived.",
+     "while you arrived."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они работали, когда она позвонила.",
+  "en": "They were working when she called.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "working",
+    "options": [
+     "working",
+     "worked",
+     "work"
+    ]
+   },
+   {
+    "correct": "when she called.",
+    "options": [
+     "when she called.",
+     "while she called."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Она не смотрела телевизор в пять.",
+  "en": "She wasn't watching TV at five.",
+  "alternatives": [
+   "She was not watching TV at five."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "watching",
+    "options": [
+     "watching",
+     "watched",
+     "watch"
+    ]
+   },
+   {
+    "correct": "TV at five.",
+    "options": [
+     "TV at five.",
+     "the TV at five."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Ты читал, когда я увидел тебя?",
+  "en": "Were you reading when I saw you?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "reading",
+    "options": [
+     "reading",
+     "read",
+     "reads"
+    ]
+   },
+   {
+    "correct": "when I saw you?",
+    "options": [
+     "when I saw you?",
+     "while I saw you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Мы не вели машину, когда пошел снег.",
+  "en": "We weren't driving when it snowed.",
+  "alternatives": [
+   "We were not driving when it snowed."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "I",
+     "She"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "driving",
+    "options": [
+     "driving",
+     "drove",
+     "drive"
+    ]
+   },
+   {
+    "correct": "when it snowed.",
+    "options": [
+     "when it snowed.",
+     "while it snowed."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я не ждал, когда начался спектакль.",
+  "en": "I wasn't waiting when the play started.",
+  "alternatives": [
+   "I was not waiting when the play started."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "waiting",
+    "options": [
+     "waiting",
+     "waited",
+     "wait"
+    ]
+   },
+   {
+    "correct": "when the play started.",
+    "options": [
+     "when the play started.",
+     "while the play started."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они не разговаривали, когда я вошел.",
+  "en": "They weren't talking when I entered.",
+  "alternatives": [
+   "They were not talking when I entered."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "talking",
+    "options": [
+     "talking",
+     "talked",
+     "talk"
+    ]
+   },
+   {
+    "correct": "when I entered.",
+    "options": [
+     "when I entered.",
+     "while I entered."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Он учился, когда ты пришел домой.",
+  "en": "He was studying when you came home.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "studying",
+    "options": [
+     "studying",
+     "studied",
+     "study"
+    ]
+   },
+   {
+    "correct": "when you came home.",
+    "options": [
+     "when you came home.",
+     "while you came home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они играли, когда начался дождь.",
+  "en": "They were playing when it started raining.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "playing",
+    "options": [
+     "playing",
+     "played",
+     "play"
+    ]
+   },
+   {
+    "correct": "when it started raining.",
+    "options": [
+     "when it started raining.",
+     "while it started raining."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Шел дождь, пока я готовил.",
+  "en": "It was raining while I was cooking.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It",
+    "options": [
+     "It",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "raining",
+    "options": [
+     "raining",
+     "rained",
+     "rain"
+    ]
+   },
+   {
+    "correct": "while I was cooking.",
+    "options": [
+     "while I was cooking.",
+     "when I was cooking."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Вы читали, когда учитель вошел?",
+  "en": "Were you reading when the teacher entered?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "reading",
+    "options": [
+     "reading",
+     "read",
+     "reads"
+    ]
+   },
+   {
+    "correct": "when the teacher entered?",
+    "options": [
+     "when the teacher entered?",
+     "while the teacher entered?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я не работал, пока они смотрели кино.",
+  "en": "I wasn't working while they were watching a movie.",
+  "alternatives": [
+   "I was not working while they were watching a movie."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "working",
+    "options": [
+     "working",
+     "worked",
+     "work"
+    ]
+   },
+   {
+    "correct": "while they were watching a movie.",
+    "options": [
+     "while they were watching a movie.",
+     "when they were watching a movie."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Она работала весь вечер.",
+  "en": "She was working all evening.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "working all evening.",
+    "options": [
+     "working all evening.",
+     "work all evening.",
+     "worked all evening."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они играли в два часа.",
+  "en": "They were playing at two o'clock.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "playing at two o'clock.",
+    "options": [
+     "playing at two o'clock.",
+     "play at two o'clock.",
+     "played at two o'clock."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я не спал в полночь.",
+  "en": "I wasn't sleeping at midnight.",
+  "alternatives": [
+   "I was not sleeping at midnight."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "sleeping at midnight.",
+    "options": [
+     "sleeping at midnight.",
+     "sleep at midnight.",
+     "slept at midnight."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Мы не работали вчера в семь.",
+  "en": "We weren't working at seven yesterday.",
+  "alternatives": [
+   "We were not working at seven yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "working at seven yesterday.",
+    "options": [
+     "working at seven yesterday.",
+     "work at seven yesterday.",
+     "worked at seven yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Ты смотрел кино?",
+  "en": "Were you watching a movie?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "watching a movie?",
+    "options": [
+     "watching a movie?",
+     "watch a movie?",
+     "watched a movie?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Он ждал, когда начался урок.",
+  "en": "He was waiting when the lesson started.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "waiting when the lesson started.",
+    "options": [
+     "waiting when the lesson started.",
+     "wait when the lesson started.",
+     "waited when the lesson started."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они читали, когда я пришел.",
+  "en": "They were reading when I arrived.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "reading when I arrived.",
+    "options": [
+     "reading when I arrived.",
+     "read when I arrived.",
+     "reads when I arrived."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я готовил, когда ты зашел.",
+  "en": "I was cooking when you entered.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "cooking when you entered.",
+    "options": [
+     "cooking when you entered.",
+     "cook when you entered.",
+     "cooked when you entered."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Мы учились, когда он позвонил.",
+  "en": "We were studying when he called.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "studying when he called.",
+    "options": [
+     "studying when he called.",
+     "study when he called.",
+     "studied when he called."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Шел дождь, пока я читал.",
+  "en": "It was raining while I was reading.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It",
+    "options": [
+     "It",
+     "They"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "raining while I was reading.",
+    "options": [
+     "raining while I was reading.",
+     "rain while I was reading.",
+     "rained while I was reading."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Вы разговаривали, когда он вошел?",
+  "en": "Were you talking when he entered?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he"
+    ]
+   },
+   {
+    "correct": "talking when he entered?",
+    "options": [
+     "talking when he entered?",
+     "talk when he entered?",
+     "talked when he entered?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я вел машину, когда ты позвонил.",
+  "en": "I was driving when you called.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "driving when you called.",
+    "options": [
+     "driving when you called.",
+     "drive when you called.",
+     "drove when you called."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они не работали, когда я позвонил.",
+  "en": "They were not working when I called.",
+  "alternatives": [
+   "They weren't working when I called."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I",
+     "She"
+    ]
+   },
+   {
+    "correct": "were not",
+    "options": [
+     "were not",
+     "was not",
+     "did not",
+     "are not"
+    ]
+   },
+   {
+    "correct": "working",
+    "options": [
+     "working",
+     "worked",
+     "work",
+     "works"
+    ]
+   },
+   {
+    "correct": "when I called.",
+    "options": [
+     "when I called.",
+     "while I called.",
+     "when I call.",
+     "while I call."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Вы читали, когда он вошел?",
+  "en": "Were you reading when he entered?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was",
+     "Did",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "reading",
+    "options": [
+     "reading",
+     "read",
+     "reads",
+     "red"
+    ]
+   },
+   {
+    "correct": "when he entered?",
+    "options": [
+     "when he entered?",
+     "while he entered?",
+     "when he enter?",
+     "while he enter?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Она готовила, пока он смотрел ТВ.",
+  "en": "She was cooking while he was watching TV.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were",
+     "did",
+     "is"
+    ]
+   },
+   {
+    "correct": "cooking",
+    "options": [
+     "cooking",
+     "cooked",
+     "cook",
+     "cooks"
+    ]
+   },
+   {
+    "correct": "while he was watching TV.",
+    "options": [
+     "while he was watching TV.",
+     "when he was watching TV.",
+     "while he watched TV.",
+     "when he watched TV."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Ты играл, когда пошел дождь?",
+  "en": "Were you playing when it started raining?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was",
+     "Did",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "playing",
+    "options": [
+     "playing",
+     "played",
+     "play",
+     "plays"
+    ]
+   },
+   {
+    "correct": "when it started raining?",
+    "options": [
+     "when it started raining?",
+     "while it started raining?",
+     "when it start raining?",
+     "while it start raining?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Мы не смотрели кино в восемь.",
+  "en": "We were not watching a movie at eight.",
+  "alternatives": [
+   "We weren't watching a movie at eight."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "were not watching",
+    "options": [
+     "were not watching",
+     "was not watching",
+     "did not watch",
+     "were watching"
+    ]
+   },
+   {
+    "correct": "a movie at eight.",
+    "options": [
+     "a movie at eight.",
+     "a movie yesterday.",
+     "TV at eight.",
+     "film at eight."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Ты вел машину, когда увидел меня?",
+  "en": "Were you driving when you saw me?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was",
+     "Did",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you driving",
+    "options": [
+     "you driving",
+     "you drive",
+     "you were driving",
+     "he driving"
+    ]
+   },
+   {
+    "correct": "when you saw me?",
+    "options": [
+     "when you saw me?",
+     "while you saw me?",
+     "when you were seeing me?",
+     "when I saw you?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Он не готовил еду в пять.",
+  "en": "He was not cooking at five.",
+  "alternatives": [
+   "He wasn't cooking at five."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "was not cooking",
+    "options": [
+     "was not cooking",
+     "were not cooking",
+     "did not cook",
+     "is not cooking"
+    ]
+   },
+   {
+    "correct": "at five.",
+    "options": [
+     "at five.",
+     "at noon.",
+     "yesterday.",
+     "all day."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Вы учили уроки, когда он пришел?",
+  "en": "Were you studying when he arrived?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was",
+     "Did",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you studying",
+    "options": [
+     "you studying",
+     "you study",
+     "you were studying",
+     "they studying"
+    ]
+   },
+   {
+    "correct": "when he arrived?",
+    "options": [
+     "when he arrived?",
+     "while he arrived?",
+     "when he was arriving?",
+     "when you arrived?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Мы ждали, когда начался дождь.",
+  "en": "We were waiting when it started raining.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "were waiting",
+    "options": [
+     "were waiting",
+     "was waiting",
+     "waited",
+     "are waiting"
+    ]
+   },
+   {
+    "correct": "when it started raining.",
+    "options": [
+     "when it started raining.",
+     "while it started raining.",
+     "when it was raining.",
+     "while it rained."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они не работали, когда он вошел.",
+  "en": "They weren't working when he entered.",
+  "alternatives": [
+   "They were not working when he entered."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "weren't working",
+    "options": [
+     "weren't working",
+     "wasn't working",
+     "didn't work"
+    ]
+   },
+   {
+    "correct": "when he entered.",
+    "options": [
+     "when he entered.",
+     "while he entered.",
+     "when he was entering."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Вы не ждали, когда начался фильм.",
+  "en": "You weren't waiting when the movie started.",
+  "alternatives": [
+   "You were not waiting when the movie started."
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "weren't waiting",
+    "options": [
+     "weren't waiting",
+     "wasn't waiting",
+     "didn't wait"
+    ]
+   },
+   {
+    "correct": "when the movie started.",
+    "options": [
+     "when the movie started.",
+     "while the movie started.",
+     "when the movie was starting."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Она смотрела ТВ, пока я готовил.",
+  "en": "She was watching TV while I was cooking.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "was watching",
+    "options": [
+     "was watching",
+     "were watching",
+     "watched"
+    ]
+   },
+   {
+    "correct": "TV while I was cooking.",
+    "options": [
+     "TV while I was cooking.",
+     "TV when I cooked.",
+     "TV while I cooked."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Шел дождь, пока они играли.",
+  "en": "It was raining while they were playing.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It",
+    "options": [
+     "It",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "was raining",
+    "options": [
+     "was raining",
+     "were raining",
+     "rained"
+    ]
+   },
+   {
+    "correct": "while they were playing.",
+    "options": [
+     "while they were playing.",
+     "when they played.",
+     "while they played."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Ты вел машину, пока я спал?",
+  "en": "Were you driving while I was sleeping?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was",
+     "Did"
+    ]
+   },
+   {
+    "correct": "you driving",
+    "options": [
+     "you driving",
+     "you drive",
+     "you drove"
+    ]
+   },
+   {
+    "correct": "while I was sleeping?",
+    "options": [
+     "while I was sleeping?",
+     "when I slept?",
+     "while I slept?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они не разговаривали в десять.",
+  "en": "They weren't talking at ten.",
+  "alternatives": [
+   "They were not talking at ten."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "weren't talking",
+    "options": [
+     "weren't talking",
+     "wasn't talking",
+     "didn't talk"
+    ]
+   },
+   {
+    "correct": "at ten.",
+    "options": [
+     "at ten.",
+     "yesterday.",
+     "at home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я учился весь день вчера.",
+  "en": "I was studying all day yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "was studying",
+    "options": [
+     "was studying",
+     "were studying",
+     "studied"
+    ]
+   },
+   {
+    "correct": "all day yesterday.",
+    "options": [
+     "all day yesterday.",
+     "every day.",
+     "at home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Вы работали в этот момент?",
+  "en": "Were you working at that moment?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was",
+     "Did"
+    ]
+   },
+   {
+    "correct": "you working",
+    "options": [
+     "you working",
+     "you work",
+     "you worked"
+    ]
+   },
+   {
+    "correct": "at that moment?",
+    "options": [
+     "at that moment?",
+     "yesterday?",
+     "every day?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Она не читала в семь вечера.",
+  "en": "She wasn't reading at seven p.m.",
+  "alternatives": [
+   "She was not reading at seven p.m."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "wasn't reading",
+    "options": [
+     "wasn't reading",
+     "weren't reading",
+     "didn't read"
+    ]
+   },
+   {
+    "correct": "at seven p.m.",
+    "options": [
+     "at seven p.m.",
+     "every evening.",
+     "at home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они готовили, когда я пришел.",
+  "en": "They were cooking when I arrived.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "were cooking",
+    "options": [
+     "were cooking",
+     "was cooking",
+     "cooked"
+    ]
+   },
+   {
+    "correct": "when I arrived.",
+    "options": [
+     "when I arrived.",
+     "while I arrived.",
+     "when I was arriving."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я спал, когда зазвонил телефон.",
+  "en": "I was sleeping when the phone rang.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "You",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "was sleeping",
+    "options": [
+     "was sleeping",
+     "were sleeping",
+     "slept",
+     "did sleep"
+    ]
+   },
+   {
+    "correct": "when the phone rang.",
+    "options": [
+     "when the phone rang.",
+     "while the phone rang.",
+     "when the phone was ringing."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они не работали в тот момент.",
+  "en": "They weren't working at that moment.",
+  "alternatives": [
+   "They were not working at that moment."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "weren't working",
+    "options": [
+     "weren't working",
+     "wasn't working",
+     "didn't work",
+     "weren't work"
+    ]
+   },
+   {
+    "correct": "at that moment.",
+    "options": [
+     "at that moment.",
+     "yesterday.",
+     "at home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Ты смотрел телевизор, когда я пришел?",
+  "en": "Were you watching TV when I arrived?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was",
+     "Did",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you watching",
+    "options": [
+     "you watching",
+     "you watch",
+     "you were watching",
+     "you did watch"
+    ]
+   },
+   {
+    "correct": "TV when I arrived?",
+    "options": [
+     "TV when I arrived?",
+     "the TV when I arrive?",
+     "TV while I arrived?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Она читала книгу, пока я готовил.",
+  "en": "She was reading a book while I was cooking.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "was reading",
+    "options": [
+     "was reading",
+     "were reading",
+     "read",
+     "did read"
+    ]
+   },
+   {
+    "correct": "a book while I was cooking.",
+    "options": [
+     "a book while I was cooking.",
+     "a book when I cooked.",
+     "the book while I cook."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Шел дождь, когда мы вышли из дома.",
+  "en": "It was raining when we left home.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It",
+    "options": [
+     "It",
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "was raining",
+    "options": [
+     "was raining",
+     "were raining",
+     "rained",
+     "did rain"
+    ]
+   },
+   {
+    "correct": "when we left home.",
+    "options": [
+     "when we left home.",
+     "while we left home.",
+     "when we leave home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я не читал, когда ты позвонил.",
+  "en": "I wasn't reading when you called.",
+  "alternatives": [
+   "I was not reading when you called."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "wasn't reading",
+    "options": [
+     "wasn't reading",
+     "weren't reading",
+     "didn't read",
+     "wasn't read"
+    ]
+   },
+   {
+    "correct": "when you called.",
+    "options": [
+     "when you called.",
+     "while you called.",
+     "when you call."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они играли, когда начался фильм.",
+  "en": "They were playing when the movie started.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "were playing",
+    "options": [
+     "were playing",
+     "was playing",
+     "played",
+     "did play"
+    ]
+   },
+   {
+    "correct": "when the movie started.",
+    "options": [
+     "when the movie started.",
+     "while the movie started.",
+     "when the movie starts."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Я готовил, когда ты позвонил.",
+  "en": "I was cooking when you called.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "You",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were",
+     "did",
+     "am"
+    ]
+   },
+   {
+    "correct": "cooking",
+    "options": [
+     "cooking",
+     "cooked",
+     "cook",
+     "cooks"
+    ]
+   },
+   {
+    "correct": "when you called.",
+    "options": [
+     "when you called.",
+     "while you called.",
+     "when you call.",
+     "while you call."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "past_continuous",
+  "ru": "Они не работали, когда я зашел.",
+  "en": "They weren't working when I entered.",
+  "alternatives": [
+   "They were not working when I entered."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't",
+     "didn't",
+     "aren't"
+    ]
+   },
+   {
+    "correct": "working",
+    "options": [
+     "working",
+     "work",
+     "worked",
+     "works"
+    ]
+   },
+   {
+    "correct": "when I entered.",
+    "options": [
+     "when I entered.",
+     "while I entered.",
+     "when I enter.",
+     "while I enter."
+    ]
+   }
+  ]
+ }
+]

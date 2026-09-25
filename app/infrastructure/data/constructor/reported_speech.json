@@ -1,0 +1,3536 @@
+[
+ {
+  "topic": "reported_speech",
+  "ru": "Он сказал, что работает здесь.",
+  "en": "He said that he worked there.",
+  "alternatives": [
+   "He said he worked there"
+  ],
+  "slots": [
+   {
+    "correct": "He said",
+    "options": [
+     "He said",
+     "He told",
+     "He asked"
+    ]
+   },
+   {
+    "correct": "that he",
+    "options": [
+     "that he",
+     "that I",
+     "that they"
+    ]
+   },
+   {
+    "correct": "worked",
+    "options": [
+     "worked",
+     "works",
+     "is working"
+    ]
+   },
+   {
+    "correct": "there.",
+    "options": [
+     "there.",
+     "here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она сказала мне, что закончила работу.",
+  "en": "She told me she had finished work.",
+  "alternatives": [
+   "She told me that she had finished work"
+  ],
+  "slots": [
+   {
+    "correct": "She told me",
+    "options": [
+     "She told me",
+     "She said me",
+     "She asked me"
+    ]
+   },
+   {
+    "correct": "she had finished",
+    "options": [
+     "she had finished",
+     "she finished",
+     "she has finished"
+    ]
+   },
+   {
+    "correct": "work.",
+    "options": [
+     "work.",
+     "the work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Они спросили, где я живу.",
+  "en": "They asked where I lived.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They asked",
+    "options": [
+     "They asked",
+     "They said",
+     "They told"
+    ]
+   },
+   {
+    "correct": "where",
+    "options": [
+     "where",
+     "if",
+     "that"
+    ]
+   },
+   {
+    "correct": "I lived.",
+    "options": [
+     "I lived.",
+     "I live.",
+     "did I live."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мой друг сказал, что придет.",
+  "en": "My friend said he would come.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friend said",
+    "options": [
+     "My friend said",
+     "My friend told",
+     "My friend asked"
+    ]
+   },
+   {
+    "correct": "he would",
+    "options": [
+     "he would",
+     "he will",
+     "he is"
+    ]
+   },
+   {
+    "correct": "come.",
+    "options": [
+     "come.",
+     "came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Учитель сказал нам, что дождь пойдет.",
+  "en": "The teacher told us it would rain.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The teacher told us",
+    "options": [
+     "The teacher told us",
+     "The teacher said us",
+     "The teacher asked us"
+    ]
+   },
+   {
+    "correct": "it would",
+    "options": [
+     "it would",
+     "it will",
+     "it is"
+    ]
+   },
+   {
+    "correct": "rain.",
+    "options": [
+     "rain.",
+     "raining."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мама спросила, хочу ли я есть.",
+  "en": "Mum asked if I wanted to eat.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Mum asked",
+    "options": [
+     "Mum asked",
+     "Mum said",
+     "Mum told"
+    ]
+   },
+   {
+    "correct": "if",
+    "options": [
+     "if",
+     "where",
+     "that"
+    ]
+   },
+   {
+    "correct": "I wanted",
+    "options": [
+     "I wanted",
+     "I want",
+     "did I want"
+    ]
+   },
+   {
+    "correct": "to eat.",
+    "options": [
+     "to eat.",
+     "eat."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он сказал, что купил новую машину.",
+  "en": "He said he had bought a car.",
+  "alternatives": [
+   "He said that he had bought a car"
+  ],
+  "slots": [
+   {
+    "correct": "He said",
+    "options": [
+     "He said",
+     "He told",
+     "He asked"
+    ]
+   },
+   {
+    "correct": "he had bought",
+    "options": [
+     "he had bought",
+     "he bought",
+     "he has bought"
+    ]
+   },
+   {
+    "correct": "a car.",
+    "options": [
+     "a car.",
+     "the car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она спросила, знаю ли я ответ.",
+  "en": "She asked if I knew the answer.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She asked",
+    "options": [
+     "She asked",
+     "She said",
+     "She told"
+    ]
+   },
+   {
+    "correct": "if",
+    "options": [
+     "if",
+     "that",
+     "where"
+    ]
+   },
+   {
+    "correct": "I knew",
+    "options": [
+     "I knew",
+     "I know",
+     "did I know"
+    ]
+   },
+   {
+    "correct": "the answer.",
+    "options": [
+     "the answer.",
+     "an answer."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он сказал, что нуждается в помощи.",
+  "en": "He said he needed help.",
+  "alternatives": [
+   "He said that he needed help"
+  ],
+  "slots": [
+   {
+    "correct": "He said",
+    "options": [
+     "He said",
+     "He told",
+     "He asked"
+    ]
+   },
+   {
+    "correct": "he needed",
+    "options": [
+     "he needed",
+     "he needs",
+     "he is needing"
+    ]
+   },
+   {
+    "correct": "help.",
+    "options": [
+     "help.",
+     "some help."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она спросила, где я учился.",
+  "en": "She asked where I had studied.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She asked",
+    "options": [
+     "She asked",
+     "She said",
+     "She told"
+    ]
+   },
+   {
+    "correct": "where",
+    "options": [
+     "where",
+     "if",
+     "that"
+    ]
+   },
+   {
+    "correct": "I had studied.",
+    "options": [
+     "I had studied.",
+     "I studied.",
+     "I study."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он сказал, что это много стоит.",
+  "en": "He said it cost a lot.",
+  "alternatives": [
+   "He said that it cost a lot"
+  ],
+  "slots": [
+   {
+    "correct": "He said",
+    "options": [
+     "He said",
+     "He told",
+     "He asked"
+    ]
+   },
+   {
+    "correct": "it cost",
+    "options": [
+     "it cost",
+     "it costs",
+     "it is costing"
+    ]
+   },
+   {
+    "correct": "a lot.",
+    "options": [
+     "a lot.",
+     "much."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мама спросила, когда я вернусь.",
+  "en": "Mum asked when I would come back.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Mum asked",
+    "options": [
+     "Mum asked",
+     "Mum said",
+     "Mum told"
+    ]
+   },
+   {
+    "correct": "when",
+    "options": [
+     "when",
+     "if",
+     "that"
+    ]
+   },
+   {
+    "correct": "I would come",
+    "options": [
+     "I would come",
+     "I will come",
+     "I come"
+    ]
+   },
+   {
+    "correct": "back.",
+    "options": [
+     "back.",
+     "home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он сказал, что хочет спать.",
+  "en": "He said he wanted to sleep.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He said",
+    "options": [
+     "He said",
+     "He told",
+     "He asked"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "I",
+     "they"
+    ]
+   },
+   {
+    "correct": "wanted",
+    "options": [
+     "wanted",
+     "wants",
+     "want"
+    ]
+   },
+   {
+    "correct": "to sleep.",
+    "options": [
+     "to sleep.",
+     "sleeping.",
+     "sleep."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она сказала, что ест яблоко.",
+  "en": "She said she was eating an apple.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She said",
+    "options": [
+     "She said",
+     "She told",
+     "She asked"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "I",
+     "they"
+    ]
+   },
+   {
+    "correct": "was eating",
+    "options": [
+     "was eating",
+     "is eating",
+     "ate"
+    ]
+   },
+   {
+    "correct": "an apple.",
+    "options": [
+     "an apple.",
+     "apples.",
+     "the apple."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Они спросили, нужно ли мне идти.",
+  "en": "They asked if I needed to go.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They asked",
+    "options": [
+     "They asked",
+     "They said",
+     "They told"
+    ]
+   },
+   {
+    "correct": "if",
+    "options": [
+     "if",
+     "that",
+     "where"
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "needed to go.",
+    "options": [
+     "needed to go.",
+     "need to go.",
+     "needs to go."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мой друг сказал, что уже путешествовал.",
+  "en": "My friend said he had traveled.",
+  "alternatives": [
+   "My friend said that he had traveled."
+  ],
+  "slots": [
+   {
+    "correct": "My friend said",
+    "options": [
+     "My friend said",
+     "My friend told",
+     "My friend asked"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "I",
+     "they"
+    ]
+   },
+   {
+    "correct": "had traveled.",
+    "options": [
+     "had traveled.",
+     "has traveled.",
+     "traveled."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Учитель сказал нам, что урок начался.",
+  "en": "The teacher told us the lesson had started.",
+  "alternatives": [
+   "The teacher told us that the lesson had started."
+  ],
+  "slots": [
+   {
+    "correct": "The teacher told us",
+    "options": [
+     "The teacher told us",
+     "The teacher said",
+     "The teacher asked"
+    ]
+   },
+   {
+    "correct": "the lesson",
+    "options": [
+     "the lesson",
+     "my lesson",
+     "a lesson"
+    ]
+   },
+   {
+    "correct": "had started.",
+    "options": [
+     "had started.",
+     "started.",
+     "has started."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мама спросила, где я звонил другу.",
+  "en": "Mum asked where I had called my friend.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Mum asked",
+    "options": [
+     "Mum asked",
+     "Mum said",
+     "Mum told"
+    ]
+   },
+   {
+    "correct": "where",
+    "options": [
+     "where",
+     "if",
+     "that"
+    ]
+   },
+   {
+    "correct": "I had called",
+    "options": [
+     "I had called",
+     "I called",
+     "I have called"
+    ]
+   },
+   {
+    "correct": "my friend.",
+    "options": [
+     "my friend.",
+     "a friend.",
+     "her friend."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он сказал, что будет ждать меня.",
+  "en": "He said he would wait for me.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He said",
+    "options": [
+     "He said",
+     "He told",
+     "He asked"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "I",
+     "they"
+    ]
+   },
+   {
+    "correct": "would wait",
+    "options": [
+     "would wait",
+     "will wait",
+     "waited"
+    ]
+   },
+   {
+    "correct": "for me.",
+    "options": [
+     "for me.",
+     "to me.",
+     "at me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она спросила, помогу ли я ей.",
+  "en": "She asked if I would help her.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She asked",
+    "options": [
+     "She asked",
+     "She said",
+     "She told"
+    ]
+   },
+   {
+    "correct": "if",
+    "options": [
+     "if",
+     "where",
+     "that"
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "would help her.",
+    "options": [
+     "would help her.",
+     "will help her.",
+     "helped her."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Они сказали, что закончили учебу.",
+  "en": "They said they had finished their studies.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They said",
+    "options": [
+     "They said",
+     "They told",
+     "They asked"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "we",
+     "he"
+    ]
+   },
+   {
+    "correct": "had finished",
+    "options": [
+     "had finished",
+     "finished",
+     "have finished"
+    ]
+   },
+   {
+    "correct": "their studies.",
+    "options": [
+     "their studies.",
+     "my studies.",
+     "the studies."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мой друг спросил, где я купил еду.",
+  "en": "My friend asked where I had bought food.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friend asked",
+    "options": [
+     "My friend asked",
+     "My friend said",
+     "My friend told"
+    ]
+   },
+   {
+    "correct": "where",
+    "options": [
+     "where",
+     "if",
+     "that"
+    ]
+   },
+   {
+    "correct": "I had bought",
+    "options": [
+     "I had bought",
+     "I bought",
+     "I have bought"
+    ]
+   },
+   {
+    "correct": "food.",
+    "options": [
+     "food.",
+     "the food.",
+     "a food."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Учитель сказал нам, что он знает ответ.",
+  "en": "The teacher told us he knew the answer.",
+  "alternatives": [
+   "The teacher told us that he knew the answer."
+  ],
+  "slots": [
+   {
+    "correct": "The teacher told us",
+    "options": [
+     "The teacher told us",
+     "The teacher said",
+     "The teacher asked"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "I",
+     "they"
+    ]
+   },
+   {
+    "correct": "knew",
+    "options": [
+     "knew",
+     "know",
+     "had known"
+    ]
+   },
+   {
+    "correct": "the answer.",
+    "options": [
+     "the answer.",
+     "an answer.",
+     "answers."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мама спросила, куда я иду.",
+  "en": "Mum asked where I was going.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Mum asked",
+    "options": [
+     "Mum asked",
+     "Mum said",
+     "Mum told"
+    ]
+   },
+   {
+    "correct": "where",
+    "options": [
+     "where",
+     "if",
+     "that"
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "was going.",
+    "options": [
+     "was going.",
+     "am going.",
+     "went."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он сказал, что живет в Лондоне.",
+  "en": "He said he lived in London.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He said",
+    "options": [
+     "He said",
+     "He says",
+     "He tell"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "I",
+     "they"
+    ]
+   },
+   {
+    "correct": "lived",
+    "options": [
+     "lived",
+     "live",
+     "lives"
+    ]
+   },
+   {
+    "correct": "in London.",
+    "options": [
+     "in London.",
+     "at London."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она сказала мне, что придет завтра.",
+  "en": "She told me she would come tomorrow.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She told me",
+    "options": [
+     "She told me",
+     "She said me",
+     "She say me"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "I",
+     "he"
+    ]
+   },
+   {
+    "correct": "would come",
+    "options": [
+     "would come",
+     "will come",
+     "came"
+    ]
+   },
+   {
+    "correct": "tomorrow.",
+    "options": [
+     "tomorrow.",
+     "today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Они спросили, где я работал.",
+  "en": "They asked where I worked.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They asked",
+    "options": [
+     "They asked",
+     "They ask",
+     "They told"
+    ]
+   },
+   {
+    "correct": "where",
+    "options": [
+     "where",
+     "if",
+     "what"
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "worked.",
+    "options": [
+     "worked.",
+     "work.",
+     "works."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мой друг сказал, что уже закончил.",
+  "en": "My friend said he had finished.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friend said",
+    "options": [
+     "My friend said",
+     "My friend told",
+     "My friend says"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "I",
+     "she"
+    ]
+   },
+   {
+    "correct": "had finished.",
+    "options": [
+     "had finished.",
+     "has finished.",
+     "finished."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Учитель сказал нам, что он учится.",
+  "en": "The teacher told us he was studying.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The teacher told us",
+    "options": [
+     "The teacher told us",
+     "The teacher said us",
+     "The teacher says us"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "I",
+     "they"
+    ]
+   },
+   {
+    "correct": "was studying.",
+    "options": [
+     "was studying.",
+     "is studying.",
+     "studied."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мама спросила, нужно ли мне идти.",
+  "en": "Mum asked if I needed to go.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Mum asked",
+    "options": [
+     "Mum asked",
+     "Mum said",
+     "Mum tells"
+    ]
+   },
+   {
+    "correct": "if",
+    "options": [
+     "if",
+     "where",
+     "that"
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "needed to go.",
+    "options": [
+     "needed to go.",
+     "need to go.",
+     "needs to go."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он спросил, где я купил яблоко.",
+  "en": "He asked where I had bought an apple.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He asked",
+    "options": [
+     "He asked",
+     "He said",
+     "He tells"
+    ]
+   },
+   {
+    "correct": "where",
+    "options": [
+     "where",
+     "if",
+     "that"
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "he",
+     "we"
+    ]
+   },
+   {
+    "correct": "had bought",
+    "options": [
+     "had bought",
+     "bought",
+     "have bought"
+    ]
+   },
+   {
+    "correct": "an apple.",
+    "options": [
+     "an apple.",
+     "the apple."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она спросила, буду ли я спать.",
+  "en": "She asked if I would sleep.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She asked",
+    "options": [
+     "She asked",
+     "She said",
+     "She told"
+    ]
+   },
+   {
+    "correct": "if",
+    "options": [
+     "if",
+     "where",
+     "that"
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "he",
+     "we"
+    ]
+   },
+   {
+    "correct": "would sleep.",
+    "options": [
+     "would sleep.",
+     "will sleep.",
+     "slept."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он спросил, где я путешествовал.",
+  "en": "He asked where I had traveled.",
+  "alternatives": [
+   "He asked where I had travelled."
+  ],
+  "slots": [
+   {
+    "correct": "He asked",
+    "options": [
+     "He asked",
+     "He said",
+     "He tells"
+    ]
+   },
+   {
+    "correct": "where",
+    "options": [
+     "where",
+     "if",
+     "that"
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "he",
+     "we"
+    ]
+   },
+   {
+    "correct": "had traveled.",
+    "options": [
+     "had traveled.",
+     "traveled.",
+     "have traveled."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она сказала мне, что ей нужна помощь.",
+  "en": "She told me she needed help.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She told me",
+    "options": [
+     "She told me",
+     "She said me",
+     "She says me"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "I",
+     "he"
+    ]
+   },
+   {
+    "correct": "needed",
+    "options": [
+     "needed",
+     "needs",
+     "need"
+    ]
+   },
+   {
+    "correct": "help.",
+    "options": [
+     "help.",
+     "a help."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Они спросили, где я ждал.",
+  "en": "They asked where I had waited.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They asked",
+    "options": [
+     "They asked",
+     "They said",
+     "They tell"
+    ]
+   },
+   {
+    "correct": "where",
+    "options": [
+     "where",
+     "if",
+     "that"
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "had waited.",
+    "options": [
+     "had waited.",
+     "waited.",
+     "have waited."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мой друг сказал, что он начал учиться.",
+  "en": "My friend said he had started to study.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friend said",
+    "options": [
+     "My friend said",
+     "My friend told",
+     "My friend asks"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "I",
+     "she"
+    ]
+   },
+   {
+    "correct": "had started",
+    "options": [
+     "had started",
+     "started",
+     "has started"
+    ]
+   },
+   {
+    "correct": "to study.",
+    "options": [
+     "to study.",
+     "studying."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он сказал, что любит кофе.",
+  "en": "He said that he loved coffee.",
+  "alternatives": [
+   "He said he loved coffee."
+  ],
+  "slots": [
+   {
+    "correct": "He said",
+    "options": [
+     "He said",
+     "He asked",
+     "He tells"
+    ]
+   },
+   {
+    "correct": "that he",
+    "options": [
+     "that he",
+     "that I",
+     "that they"
+    ]
+   },
+   {
+    "correct": "loved",
+    "options": [
+     "loved",
+     "love",
+     "loves",
+     "will love"
+    ]
+   },
+   {
+    "correct": "coffee.",
+    "options": [
+     "coffee.",
+     "the coffee."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она сказала мне, что устала.",
+  "en": "She told me that she was tired.",
+  "alternatives": [
+   "She told me she was tired."
+  ],
+  "slots": [
+   {
+    "correct": "She told me",
+    "options": [
+     "She told me",
+     "She said me",
+     "She asked me"
+    ]
+   },
+   {
+    "correct": "that she",
+    "options": [
+     "that she",
+     "that I",
+     "that he"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "is",
+     "were",
+     "been"
+    ]
+   },
+   {
+    "correct": "tired.",
+    "options": [
+     "tired.",
+     "very tired."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Они спросили, пойду ли я домой.",
+  "en": "They asked if I would go home.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They asked",
+    "options": [
+     "They asked",
+     "They said",
+     "They told"
+    ]
+   },
+   {
+    "correct": "if I",
+    "options": [
+     "if I",
+     "if he",
+     "if she"
+    ]
+   },
+   {
+    "correct": "would go",
+    "options": [
+     "would go",
+     "will go",
+     "go",
+     "went"
+    ]
+   },
+   {
+    "correct": "home.",
+    "options": [
+     "home.",
+     "to home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мой друг сказал, что уже видел этот фильм.",
+  "en": "My friend said that he had seen this film.",
+  "alternatives": [
+   "My friend said he had seen this film."
+  ],
+  "slots": [
+   {
+    "correct": "My friend said",
+    "options": [
+     "My friend said",
+     "My friend told",
+     "My friend asked"
+    ]
+   },
+   {
+    "correct": "that he",
+    "options": [
+     "that he",
+     "that I",
+     "that she"
+    ]
+   },
+   {
+    "correct": "had seen",
+    "options": [
+     "had seen",
+     "has seen",
+     "saw",
+     "see"
+    ]
+   },
+   {
+    "correct": "this film.",
+    "options": [
+     "this film.",
+     "the film."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мама спросила, где я был.",
+  "en": "Mum asked where I had been.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Mum asked",
+    "options": [
+     "Mum asked",
+     "Mum said",
+     "Mum told"
+    ]
+   },
+   {
+    "correct": "where I",
+    "options": [
+     "where I",
+     "where he",
+     "where she"
+    ]
+   },
+   {
+    "correct": "had been.",
+    "options": [
+     "had been.",
+     "was.",
+     "have been."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он спросил, умею ли я плавать.",
+  "en": "He asked if I could swim.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He asked",
+    "options": [
+     "He asked",
+     "He said",
+     "He told"
+    ]
+   },
+   {
+    "correct": "if I",
+    "options": [
+     "if I",
+     "if he",
+     "if she"
+    ]
+   },
+   {
+    "correct": "could",
+    "options": [
+     "could",
+     "can",
+     "will"
+    ]
+   },
+   {
+    "correct": "swim.",
+    "options": [
+     "swim.",
+     "to swim."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она спросила, когда начнется дождь.",
+  "en": "She asked when it would rain.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She asked",
+    "options": [
+     "She asked",
+     "She said",
+     "She told"
+    ]
+   },
+   {
+    "correct": "when it",
+    "options": [
+     "when it",
+     "when I",
+     "when he"
+    ]
+   },
+   {
+    "correct": "would rain.",
+    "options": [
+     "would rain.",
+     "will rain.",
+     "rained."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Они спросили, как я нашел дорогу.",
+  "en": "They asked how I had found the way.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They asked",
+    "options": [
+     "They asked",
+     "They said",
+     "They told"
+    ]
+   },
+   {
+    "correct": "how I",
+    "options": [
+     "how I",
+     "how he",
+     "how she"
+    ]
+   },
+   {
+    "correct": "had found",
+    "options": [
+     "had found",
+     "found",
+     "have found"
+    ]
+   },
+   {
+    "correct": "the way.",
+    "options": [
+     "the way.",
+     "my way."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Учитель сказал нам, что он закончил читать.",
+  "en": "The teacher told us that he had finished reading.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The teacher told us",
+    "options": [
+     "The teacher told us",
+     "The teacher said us",
+     "The teacher asked us"
+    ]
+   },
+   {
+    "correct": "that he",
+    "options": [
+     "that he",
+     "that I",
+     "that they"
+    ]
+   },
+   {
+    "correct": "had finished",
+    "options": [
+     "had finished",
+     "finished",
+     "has finished"
+    ]
+   },
+   {
+    "correct": "reading.",
+    "options": [
+     "reading.",
+     "to read."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он сказал, что делает домашнюю работу.",
+  "en": "He said he was doing his homework.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He said",
+    "options": [
+     "He said",
+     "He told",
+     "He asked"
+    ]
+   },
+   {
+    "correct": "he was doing",
+    "options": [
+     "he was doing",
+     "he is doing",
+     "he did",
+     "he does"
+    ]
+   },
+   {
+    "correct": "his homework.",
+    "options": [
+     "his homework.",
+     "my homework.",
+     "their homework."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она сказала мне, что уезжает в отпуск.",
+  "en": "She told me she was going on vacation.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She told me",
+    "options": [
+     "She told me",
+     "She said me",
+     "She asked me"
+    ]
+   },
+   {
+    "correct": "she was going",
+    "options": [
+     "she was going",
+     "she is going",
+     "she went",
+     "she goes"
+    ]
+   },
+   {
+    "correct": "on vacation.",
+    "options": [
+     "on vacation.",
+     "to work.",
+     "to school."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Они спросили, есть ли у меня время.",
+  "en": "They asked if I had time.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They asked",
+    "options": [
+     "They asked",
+     "They said",
+     "They told"
+    ]
+   },
+   {
+    "correct": "if I had",
+    "options": [
+     "if I had",
+     "if I have",
+     "if I would have"
+    ]
+   },
+   {
+    "correct": "time.",
+    "options": [
+     "time.",
+     "money.",
+     "food."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мой друг сказал, что купил билеты.",
+  "en": "My friend said he had bought tickets.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friend said",
+    "options": [
+     "My friend said",
+     "My friend told",
+     "My friend asked"
+    ]
+   },
+   {
+    "correct": "he had bought",
+    "options": [
+     "he had bought",
+     "he has bought",
+     "he bought",
+     "he buys"
+    ]
+   },
+   {
+    "correct": "tickets.",
+    "options": [
+     "tickets.",
+     "food.",
+     "clothes."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Учитель сказал нам, что он не придет.",
+  "en": "The teacher told us he would not come.",
+  "alternatives": [
+   "The teacher told us he wouldn't come."
+  ],
+  "slots": [
+   {
+    "correct": "The teacher told us",
+    "options": [
+     "The teacher told us",
+     "The teacher said us",
+     "The teacher asked us"
+    ]
+   },
+   {
+    "correct": "he would not come.",
+    "options": [
+     "he would not come.",
+     "he will not come.",
+     "he did not come."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мама спросила, где я купил хлеб.",
+  "en": "Mum asked where I had bought bread.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Mum asked",
+    "options": [
+     "Mum asked",
+     "Mum said",
+     "Mum told"
+    ]
+   },
+   {
+    "correct": "where I had bought",
+    "options": [
+     "where I had bought",
+     "where I bought",
+     "where I have bought"
+    ]
+   },
+   {
+    "correct": "bread.",
+    "options": [
+     "bread.",
+     "milk.",
+     "fruit."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он сказал, что учит английский.",
+  "en": "He said he was studying English.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He said",
+    "options": [
+     "He said",
+     "He told",
+     "He asked"
+    ]
+   },
+   {
+    "correct": "he was studying",
+    "options": [
+     "he was studying",
+     "he is studying",
+     "he studied",
+     "he studies"
+    ]
+   },
+   {
+    "correct": "English.",
+    "options": [
+     "English.",
+     "math.",
+     "science."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она спросила, будет ли завтра дождь.",
+  "en": "She asked if it would rain tomorrow.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She asked",
+    "options": [
+     "She asked",
+     "She said",
+     "She told"
+    ]
+   },
+   {
+    "correct": "if it would rain",
+    "options": [
+     "if it would rain",
+     "if it will rain",
+     "if it rains"
+    ]
+   },
+   {
+    "correct": "tomorrow.",
+    "options": [
+     "tomorrow.",
+     "today.",
+     "yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Они сказали, что им нужна помощь.",
+  "en": "They said they needed help.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They said",
+    "options": [
+     "They said",
+     "They told",
+     "They asked"
+    ]
+   },
+   {
+    "correct": "they needed",
+    "options": [
+     "they needed",
+     "they need",
+     "they were needing"
+    ]
+   },
+   {
+    "correct": "help.",
+    "options": [
+     "help.",
+     "food.",
+     "money."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мой друг спросил, где я работаю.",
+  "en": "My friend asked where I worked.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friend asked",
+    "options": [
+     "My friend asked",
+     "My friend said",
+     "My friend told"
+    ]
+   },
+   {
+    "correct": "where I worked.",
+    "options": [
+     "where I worked.",
+     "where I work.",
+     "where I am working."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Учитель сказал нам, что он закончил урок.",
+  "en": "The teacher told us he had finished the lesson.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The teacher told us",
+    "options": [
+     "The teacher told us",
+     "The teacher said us",
+     "The teacher asked us"
+    ]
+   },
+   {
+    "correct": "he had finished",
+    "options": [
+     "he had finished",
+     "he finished",
+     "he has finished"
+    ]
+   },
+   {
+    "correct": "the lesson.",
+    "options": [
+     "the lesson.",
+     "the work.",
+     "the book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мама спросила, хочу ли я спать.",
+  "en": "Mum asked if I wanted to sleep.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Mum asked",
+    "options": [
+     "Mum asked",
+     "Mum said",
+     "Mum told"
+    ]
+   },
+   {
+    "correct": "if I wanted",
+    "options": [
+     "if I wanted",
+     "if I want",
+     "if I was wanting"
+    ]
+   },
+   {
+    "correct": "to sleep.",
+    "options": [
+     "to sleep.",
+     "to eat.",
+     "to go."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он сказал, что делает зарядку.",
+  "en": "He said he was doing exercise.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He said",
+    "options": [
+     "He said",
+     "He told",
+     "He asked"
+    ]
+   },
+   {
+    "correct": "he was doing",
+    "options": [
+     "he is doing",
+     "he was doing",
+     "he did"
+    ]
+   },
+   {
+    "correct": "exercise.",
+    "options": [
+     "exercise.",
+     "his workout."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она сказала, что приготовила ужин.",
+  "en": "She said she had cooked dinner.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She said",
+    "options": [
+     "She said",
+     "She told",
+     "She asked"
+    ]
+   },
+   {
+    "correct": "she had cooked",
+    "options": [
+     "she cooked",
+     "she has cooked",
+     "she had cooked"
+    ]
+   },
+   {
+    "correct": "dinner.",
+    "options": [
+     "dinner.",
+     "supper."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Они спросили, пойду ли я в кино.",
+  "en": "They asked if I would go to the cinema.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They asked",
+    "options": [
+     "They asked",
+     "They said",
+     "They told me"
+    ]
+   },
+   {
+    "correct": "if I would go",
+    "options": [
+     "if I will go",
+     "if I would go",
+     "if I go"
+    ]
+   },
+   {
+    "correct": "to the cinema.",
+    "options": [
+     "to the cinema.",
+     "to the movies."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мой друг сказал, что будет много работать.",
+  "en": "My friend said he would work a lot.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friend said",
+    "options": [
+     "My friend said",
+     "My friend asked",
+     "My friend told"
+    ]
+   },
+   {
+    "correct": "he would work",
+    "options": [
+     "he will work",
+     "he would work",
+     "he works"
+    ]
+   },
+   {
+    "correct": "a lot.",
+    "options": [
+     "a lot.",
+     "hard."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Учитель сказал нам, что он хочет чаю.",
+  "en": "The teacher told us he wanted some tea.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The teacher told us",
+    "options": [
+     "The teacher told us",
+     "The teacher said",
+     "The teacher asked"
+    ]
+   },
+   {
+    "correct": "he wanted",
+    "options": [
+     "he wants",
+     "he wanted",
+     "he had wanted"
+    ]
+   },
+   {
+    "correct": "some tea.",
+    "options": [
+     "some tea.",
+     "tea."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мама спросила, где я купил молоко.",
+  "en": "Mum asked where I had bought milk.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Mum asked",
+    "options": [
+     "Mum asked",
+     "Mum said",
+     "Mum told"
+    ]
+   },
+   {
+    "correct": "where I had bought",
+    "options": [
+     "where I bought",
+     "where I had bought",
+     "where I have bought"
+    ]
+   },
+   {
+    "correct": "milk.",
+    "options": [
+     "milk.",
+     "some milk."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он сказал, что не хочет звонить им.",
+  "en": "He said he did not want to call them.",
+  "alternatives": [
+   "He said he didn't want to call them."
+  ],
+  "slots": [
+   {
+    "correct": "He said",
+    "options": [
+     "He said",
+     "He asked",
+     "He told"
+    ]
+   },
+   {
+    "correct": "he did not want",
+    "options": [
+     "he does not want",
+     "he did not want",
+     "he had not wanted"
+    ]
+   },
+   {
+    "correct": "to call them.",
+    "options": [
+     "to call them.",
+     "to phone them."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она спросила, где я был вчера.",
+  "en": "She asked where I had been yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She asked",
+    "options": [
+     "She asked",
+     "She said",
+     "She told"
+    ]
+   },
+   {
+    "correct": "where I had been",
+    "options": [
+     "where I was",
+     "where I have been",
+     "where I had been"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "the day before."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Они спросили, умею ли я плавать.",
+  "en": "They asked if I could swim.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They asked",
+    "options": [
+     "They asked",
+     "They said",
+     "They told"
+    ]
+   },
+   {
+    "correct": "if I could swim.",
+    "options": [
+     "if I can swim.",
+     "if I could swim."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мой друг сказал, что уже закончил проект.",
+  "en": "My friend said he had finished the project.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friend said",
+    "options": [
+     "My friend said",
+     "My friend asked",
+     "My friend told"
+    ]
+   },
+   {
+    "correct": "he had finished",
+    "options": [
+     "he finished",
+     "he has finished",
+     "he had finished"
+    ]
+   },
+   {
+    "correct": "the project.",
+    "options": [
+     "the project.",
+     "his work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Учитель сказал нам, что он придет позже.",
+  "en": "The teacher told us he would come later.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The teacher told us",
+    "options": [
+     "The teacher told us",
+     "The teacher said",
+     "The teacher asked"
+    ]
+   },
+   {
+    "correct": "he would come",
+    "options": [
+     "he will come",
+     "he would come",
+     "he comes"
+    ]
+   },
+   {
+    "correct": "later.",
+    "options": [
+     "later.",
+     "afterwards."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мама спросила, где я нашел деньги.",
+  "en": "Mum asked where I had found the money.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Mum asked",
+    "options": [
+     "Mum asked",
+     "Mum said",
+     "Mum told"
+    ]
+   },
+   {
+    "correct": "where I had found",
+    "options": [
+     "where I found",
+     "where I had found",
+     "where I have found"
+    ]
+   },
+   {
+    "correct": "the money.",
+    "options": [
+     "the money.",
+     "my money."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он сказал, что работает в банке.",
+  "en": "He said that he worked in a bank.",
+  "alternatives": [
+   "He said he worked in a bank."
+  ],
+  "slots": [
+   {
+    "correct": "He said that he",
+    "options": [
+     "He said that he",
+     "He says that he",
+     "He said that I"
+    ]
+   },
+   {
+    "correct": "worked",
+    "options": [
+     "worked",
+     "works",
+     "will work"
+    ]
+   },
+   {
+    "correct": "in a bank.",
+    "options": [
+     "in a bank.",
+     "at a bank."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она сказала, что уже закончила.",
+  "en": "She said she had finished.",
+  "alternatives": [
+   "She said that she had finished."
+  ],
+  "slots": [
+   {
+    "correct": "She said she",
+    "options": [
+     "She said she",
+     "She told she",
+     "She says she"
+    ]
+   },
+   {
+    "correct": "had finished.",
+    "options": [
+     "had finished.",
+     "has finished.",
+     "finished."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Они спросили, пойду ли я туда.",
+  "en": "They asked if I would go there.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They asked if I",
+    "options": [
+     "They asked if I",
+     "They ask if I",
+     "They asked that I"
+    ]
+   },
+   {
+    "correct": "would go",
+    "options": [
+     "would go",
+     "will go",
+     "go"
+    ]
+   },
+   {
+    "correct": "there.",
+    "options": [
+     "there.",
+     "here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Учитель сказал нам, что он поможет.",
+  "en": "The teacher told us he would help.",
+  "alternatives": [
+   "The teacher told us that he would help."
+  ],
+  "slots": [
+   {
+    "correct": "The teacher told us he",
+    "options": [
+     "The teacher told us he",
+     "The teacher said us he",
+     "The teacher told us I"
+    ]
+   },
+   {
+    "correct": "would help.",
+    "options": [
+     "would help.",
+     "will help.",
+     "helped."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мой друг сказал, что он придет.",
+  "en": "My friend said he would come.",
+  "alternatives": [
+   "My friend said that he would come."
+  ],
+  "slots": [
+   {
+    "correct": "My friend said he",
+    "options": [
+     "My friend said he",
+     "My friend told he",
+     "My friend says he"
+    ]
+   },
+   {
+    "correct": "would come.",
+    "options": [
+     "would come.",
+     "will come.",
+     "came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она спросила, где я живу.",
+  "en": "She asked where I lived.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She asked where I",
+    "options": [
+     "She asked where I",
+     "She asks where I",
+     "She told where I"
+    ]
+   },
+   {
+    "correct": "lived.",
+    "options": [
+     "lived.",
+     "live.",
+     "had lived."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он сказал, что погода плохая.",
+  "en": "He said that the weather was bad.",
+  "alternatives": [
+   "He said the weather was bad."
+  ],
+  "slots": [
+   {
+    "correct": "He said that the weather",
+    "options": [
+     "He said that the weather",
+     "He told that the weather",
+     "He says that the weather"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "is",
+     "has been"
+    ]
+   },
+   {
+    "correct": "bad.",
+    "options": [
+     "bad.",
+     "good."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Учитель сказал нам, что он занят.",
+  "en": "The teacher told us he was busy.",
+  "alternatives": [
+   "The teacher told us that he was busy."
+  ],
+  "slots": [
+   {
+    "correct": "The teacher told us he",
+    "options": [
+     "The teacher told us he",
+     "The teacher said us he",
+     "The teacher told us I"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "is",
+     "had been"
+    ]
+   },
+   {
+    "correct": "busy.",
+    "options": [
+     "busy.",
+     "free."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он сказал, что изучает английский.",
+  "en": "He said he was studying English.",
+  "alternatives": [
+   "He said that he was studying English."
+  ],
+  "slots": [
+   {
+    "correct": "He said he",
+    "options": [
+     "He said he",
+     "He told he",
+     "He said I"
+    ]
+   },
+   {
+    "correct": "was studying",
+    "options": [
+     "was studying",
+     "is studying",
+     "studied"
+    ]
+   },
+   {
+    "correct": "English.",
+    "options": [
+     "English.",
+     "French."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она сказала, что работает в офисе.",
+  "en": "She said she worked in an office.",
+  "alternatives": [
+   "She said that she worked in an office."
+  ],
+  "slots": [
+   {
+    "correct": "She said",
+    "options": [
+     "She said",
+     "She told",
+     "She asked",
+     "She says"
+    ]
+   },
+   {
+    "correct": "she worked",
+    "options": [
+     "she worked",
+     "she works",
+     "she has worked",
+     "she is working"
+    ]
+   },
+   {
+    "correct": "in an office.",
+    "options": [
+     "in an office.",
+     "at office.",
+     "in office.",
+     "to an office."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мой друг сказал, что будет занят.",
+  "en": "My friend said he would be busy.",
+  "alternatives": [
+   "My friend said that he would be busy."
+  ],
+  "slots": [
+   {
+    "correct": "My friend said",
+    "options": [
+     "My friend said",
+     "My friend told",
+     "My friend asked",
+     "My friend says"
+    ]
+   },
+   {
+    "correct": "he would be",
+    "options": [
+     "he would be",
+     "he will be",
+     "he is",
+     "he was"
+    ]
+   },
+   {
+    "correct": "busy.",
+    "options": [
+     "busy.",
+     "very busy.",
+     "a busy.",
+     "busily."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Учитель сказал нам, что он придет.",
+  "en": "The teacher told us he would come.",
+  "alternatives": [
+   "The teacher told us that he would come."
+  ],
+  "slots": [
+   {
+    "correct": "The teacher told us",
+    "options": [
+     "The teacher told us",
+     "The teacher said us",
+     "The teacher asked us",
+     "The teacher tells us"
+    ]
+   },
+   {
+    "correct": "he would come.",
+    "options": [
+     "he would come.",
+     "he will come.",
+     "he comes.",
+     "he came."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мама спросила, нужно ли мне поесть.",
+  "en": "Mum asked if I needed to eat.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Mum asked",
+    "options": [
+     "Mum asked",
+     "Mum said",
+     "Mum told",
+     "Mum asks"
+    ]
+   },
+   {
+    "correct": "if I needed",
+    "options": [
+     "if I needed",
+     "if I need",
+     "if did I need",
+     "that I needed"
+    ]
+   },
+   {
+    "correct": "to eat.",
+    "options": [
+     "to eat.",
+     "eat.",
+     "eating.",
+     "ate."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он сказал, что погода была хорошей.",
+  "en": "He said the weather was good.",
+  "alternatives": [
+   "He said that the weather was good."
+  ],
+  "slots": [
+   {
+    "correct": "He said",
+    "options": [
+     "He said",
+     "He asked",
+     "He told",
+     "He says"
+    ]
+   },
+   {
+    "correct": "the weather",
+    "options": [
+     "the weather",
+     "weather",
+     "a weather",
+     "weather the"
+    ]
+   },
+   {
+    "correct": "was good.",
+    "options": [
+     "was good.",
+     "is good.",
+     "has been good.",
+     "were good."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она спросила, где я купил билеты.",
+  "en": "She asked where I had bought tickets.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She asked",
+    "options": [
+     "She asked",
+     "She said",
+     "She told",
+     "She asks"
+    ]
+   },
+   {
+    "correct": "where",
+    "options": [
+     "where",
+     "when",
+     "why",
+     "how"
+    ]
+   },
+   {
+    "correct": "I had bought",
+    "options": [
+     "I had bought",
+     "I bought",
+     "had I bought",
+     "I have bought"
+    ]
+   },
+   {
+    "correct": "tickets.",
+    "options": [
+     "tickets.",
+     "the tickets.",
+     "a ticket.",
+     "to tickets."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Они сказали, что хотят спать.",
+  "en": "They said they wanted to sleep.",
+  "alternatives": [
+   "They said that they wanted to sleep."
+  ],
+  "slots": [
+   {
+    "correct": "They said",
+    "options": [
+     "They said",
+     "They told",
+     "They asked",
+     "They say"
+    ]
+   },
+   {
+    "correct": "they wanted",
+    "options": [
+     "they wanted",
+     "they want",
+     "they have wanted",
+     "they were wanting"
+    ]
+   },
+   {
+    "correct": "to sleep.",
+    "options": [
+     "to sleep.",
+     "sleep.",
+     "sleeping.",
+     "slept."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мой друг спросил, где я был.",
+  "en": "My friend asked where I had been.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friend asked",
+    "options": [
+     "My friend asked",
+     "My friend said",
+     "My friend told",
+     "My friend asks"
+    ]
+   },
+   {
+    "correct": "where I had been.",
+    "options": [
+     "where I had been.",
+     "where was I.",
+     "where I was.",
+     "where had I been."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Учитель сказал нам, что он закончил работу.",
+  "en": "The teacher told us he had finished work.",
+  "alternatives": [
+   "The teacher told us that he had finished work."
+  ],
+  "slots": [
+   {
+    "correct": "The teacher told us",
+    "options": [
+     "The teacher told us",
+     "The teacher said us",
+     "The teacher asked us",
+     "The teacher told"
+    ]
+   },
+   {
+    "correct": "he had finished",
+    "options": [
+     "he had finished",
+     "he finished",
+     "he has finished",
+     "he finishes"
+    ]
+   },
+   {
+    "correct": "work.",
+    "options": [
+     "work.",
+     "the work.",
+     "a work.",
+     "working."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мама спросила, где я учился.",
+  "en": "Mum asked where I had studied.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Mum asked",
+    "options": [
+     "Mum asked",
+     "Mum said",
+     "Mum told",
+     "Mum asks"
+    ]
+   },
+   {
+    "correct": "where I had studied.",
+    "options": [
+     "where I had studied.",
+     "where I studied.",
+     "where had I studied.",
+     "where I study."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Они спросили, где я купил яблоко.",
+  "en": "They asked where I had bought an apple.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They asked",
+    "options": [
+     "They asked",
+     "They said",
+     "They told",
+     "They ask"
+    ]
+   },
+   {
+    "correct": "where I",
+    "options": [
+     "where I",
+     "where did I",
+     "where had I"
+    ]
+   },
+   {
+    "correct": "had bought",
+    "options": [
+     "had bought",
+     "bought",
+     "buy",
+     "have bought"
+    ]
+   },
+   {
+    "correct": "an apple.",
+    "options": [
+     "an apple.",
+     "the apple."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он спросил, где я ждал.",
+  "en": "He asked where I had waited.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He asked",
+    "options": [
+     "He asked",
+     "He said",
+     "He told"
+    ]
+   },
+   {
+    "correct": "where I",
+    "options": [
+     "where I",
+     "where did I",
+     "where had I"
+    ]
+   },
+   {
+    "correct": "had waited.",
+    "options": [
+     "had waited.",
+     "waited.",
+     "wait.",
+     "was waiting."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мама спросила, где я был вчера.",
+  "en": "Mum asked where I had been yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Mum asked",
+    "options": [
+     "Mum asked",
+     "Mum said",
+     "Mum told"
+    ]
+   },
+   {
+    "correct": "where I",
+    "options": [
+     "where I",
+     "where was I",
+     "where did I"
+    ]
+   },
+   {
+    "correct": "had been",
+    "options": [
+     "had been",
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он спросил, где я купил билеты.",
+  "en": "He asked where I had bought tickets.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He asked",
+    "options": [
+     "He asked",
+     "He said",
+     "He told"
+    ]
+   },
+   {
+    "correct": "where I",
+    "options": [
+     "where I",
+     "where did I",
+     "where had I"
+    ]
+   },
+   {
+    "correct": "had bought",
+    "options": [
+     "had bought",
+     "bought",
+     "buy"
+    ]
+   },
+   {
+    "correct": "tickets.",
+    "options": [
+     "tickets.",
+     "the tickets."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она сказала мне, что будет работать завтра.",
+  "en": "She told me that she would work tomorrow.",
+  "alternatives": [
+   "She told me she would work tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "She told me",
+    "options": [
+     "She told me",
+     "She said me",
+     "She asked me",
+     "She tells me"
+    ]
+   },
+   {
+    "correct": "that she",
+    "options": [
+     "that she",
+     "that I",
+     "that he",
+     "that they"
+    ]
+   },
+   {
+    "correct": "would work",
+    "options": [
+     "would work",
+     "will work",
+     "works",
+     "worked"
+    ]
+   },
+   {
+    "correct": "tomorrow.",
+    "options": [
+     "tomorrow.",
+     "yesterday.",
+     "today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Они спросили, где я жил.",
+  "en": "They asked where I had lived.",
+  "alternatives": [
+   "They asked where I lived."
+  ],
+  "slots": [
+   {
+    "correct": "They asked",
+    "options": [
+     "They asked",
+     "They said",
+     "They told",
+     "They tell"
+    ]
+   },
+   {
+    "correct": "where I",
+    "options": [
+     "where I",
+     "where he",
+     "where she",
+     "where they"
+    ]
+   },
+   {
+    "correct": "had lived.",
+    "options": [
+     "had lived.",
+     "lived.",
+     "have lived.",
+     "live."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мой друг сказал, что уже пришел.",
+  "en": "My friend said that he had arrived.",
+  "alternatives": [
+   "My friend said he had arrived."
+  ],
+  "slots": [
+   {
+    "correct": "My friend said",
+    "options": [
+     "My friend said",
+     "My friend told",
+     "My friend asked",
+     "My friend says"
+    ]
+   },
+   {
+    "correct": "that he",
+    "options": [
+     "that he",
+     "that I",
+     "that she",
+     "that they"
+    ]
+   },
+   {
+    "correct": "had arrived.",
+    "options": [
+     "had arrived.",
+     "has arrived.",
+     "arrived.",
+     "arrives."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Учитель сказал нам, что он хочет есть.",
+  "en": "The teacher told us that he wanted to eat.",
+  "alternatives": [
+   "The teacher told us he wanted to eat."
+  ],
+  "slots": [
+   {
+    "correct": "The teacher told us",
+    "options": [
+     "The teacher told us",
+     "The teacher said us",
+     "The teacher asked us",
+     "The teacher tells us"
+    ]
+   },
+   {
+    "correct": "that he",
+    "options": [
+     "that he",
+     "that I",
+     "that we",
+     "that they"
+    ]
+   },
+   {
+    "correct": "wanted",
+    "options": [
+     "wanted",
+     "wants",
+     "would want",
+     "has wanted"
+    ]
+   },
+   {
+    "correct": "to eat.",
+    "options": [
+     "to eat.",
+     "eating.",
+     "eat."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Мама спросила, идет ли дождь.",
+  "en": "Mum asked if it was raining.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Mum asked",
+    "options": [
+     "Mum asked",
+     "Mum said",
+     "Mum told",
+     "Mum tells"
+    ]
+   },
+   {
+    "correct": "if it",
+    "options": [
+     "if it",
+     "if I",
+     "if he",
+     "if she"
+    ]
+   },
+   {
+    "correct": "was raining.",
+    "options": [
+     "was raining.",
+     "is raining.",
+     "rains.",
+     "rained."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Он спросил, где я хотел учиться.",
+  "en": "He asked where I had wanted to study.",
+  "alternatives": [
+   "He asked where I wanted to study."
+  ],
+  "slots": [
+   {
+    "correct": "He asked",
+    "options": [
+     "He asked",
+     "He said",
+     "He told",
+     "He says"
+    ]
+   },
+   {
+    "correct": "where I",
+    "options": [
+     "where I",
+     "where he",
+     "where she",
+     "where they"
+    ]
+   },
+   {
+    "correct": "had wanted",
+    "options": [
+     "had wanted",
+     "wanted",
+     "want",
+     "was wanting"
+    ]
+   },
+   {
+    "correct": "to study.",
+    "options": [
+     "to study.",
+     "studying.",
+     "study."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она сказала, что ей нужно позвонить.",
+  "en": "She said that she needed to call.",
+  "alternatives": [
+   "She said she needed to call."
+  ],
+  "slots": [
+   {
+    "correct": "She said",
+    "options": [
+     "She said",
+     "She told",
+     "She asked",
+     "She says"
+    ]
+   },
+   {
+    "correct": "that she",
+    "options": [
+     "that she",
+     "that I",
+     "that he",
+     "that they"
+    ]
+   },
+   {
+    "correct": "needed",
+    "options": [
+     "needed",
+     "needs",
+     "would need",
+     "has needed"
+    ]
+   },
+   {
+    "correct": "to call.",
+    "options": [
+     "to call.",
+     "calling.",
+     "call."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "reported_speech",
+  "ru": "Она сказала, что хочет есть.",
+  "en": "She said she wanted to eat.",
+  "alternatives": [
+   "She said that she wanted to eat."
+  ],
+  "slots": [
+   {
+    "correct": "She said",
+    "options": [
+     "She said",
+     "She tells",
+     "She asked"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "I",
+     "he"
+    ]
+   },
+   {
+    "correct": "wanted",
+    "options": [
+     "wanted",
+     "wants",
+     "want"
+    ]
+   },
+   {
+    "correct": "to eat.",
+    "options": [
+     "to eat.",
+     "eating.",
+     "eat."
+    ]
+   }
+  ]
+ }
+]

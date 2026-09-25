@@ -42,6 +42,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from scripts.gen_examples import DEFAULT_MODEL, call, read_api_key  # noqa: E402
 
 MIN_WORDS = 2
+# Long enough for one sentence a learner types in full. Raise it per topic
+# with --max-words: the third conditional carries two clauses and an auxiliary
+# stack — «If she had studied, she would have passed the exam» is ten words
+# before it says anything — so a nine-word ceiling rejects the grammar itself.
 MAX_WORDS = 9
 MIN_OPTIONS = 2
 MAX_OPTIONS = 4
@@ -112,7 +116,7 @@ def _norm(text: str) -> str:
     return " ".join(_PUNCT.sub("", (text or "")).split()).lower()
 
 
-def check(row: dict[str, Any]) -> list[str]:
+def check(row: dict[str, Any], max_words: int = MAX_WORDS) -> list[str]:
     """Every reason this exercise is unusable. Empty list means it's good."""
     problems: list[str] = []
     ru = (row.get("ru") or "").strip()
@@ -126,8 +130,8 @@ def check(row: dict[str, Any]) -> list[str]:
         return problems
 
     n = len(en.split())
-    if not (MIN_WORDS <= n <= MAX_WORDS):
-        problems.append(f"en длиной {n} слов, нужно {MIN_WORDS}-{MAX_WORDS}")
+    if not (MIN_WORDS <= n <= max_words):
+        problems.append(f"en длиной {n} слов, нужно {MIN_WORDS}-{max_words}")
     if re.search(r"[А-Яа-яЁё]", en):
         problems.append("в en есть кириллица")
     if not re.search(r"[А-Яа-яЁё]", ru):
@@ -166,8 +170,13 @@ def ask(
     count: int,
     avoid: list[str],
     notes: list[str] | None = None,
+    max_words: int = MAX_WORDS,
 ) -> list[dict[str, Any]]:
     lines = [f"Тема: {spec}", f"Сделай {count} заданий."]
+    if max_words != MAX_WORDS:
+        # The system prompt states the default; without this the model keeps
+        # writing to nine words and everything longer is rejected as too long.
+        lines.append(f"Для этой темы en может быть длиной до {max_words} слов.")
     if avoid:
         lines.append("Эти русские предложения уже есть, не повторяй их:")
         lines.append("; ".join(avoid[-60:]))
@@ -194,6 +203,7 @@ def main() -> None:
     ap.add_argument("--batch", type=int, default=12)
     ap.add_argument("--out", required=True)
     ap.add_argument("--model", default=DEFAULT_MODEL)
+    ap.add_argument("--max-words", type=int, default=MAX_WORDS)
     args = ap.parse_args()
 
     key = read_api_key()
@@ -210,14 +220,14 @@ def main() -> None:
     while len(done) < args.count and stalled < 6:
         want = min(args.batch, args.count - len(done))
         try:
-            rows = ask(args.model, key, args.spec, want, [r["ru"] for r in done])
+            rows = ask(args.model, key, args.spec, want, [r["ru"] for r in done], max_words=args.max_words)
         except RuntimeError as exc:
             print(f"  партия не удалась: {exc}")
             stalled += 1
             continue
         added = 0
         for row in rows:
-            problems = check(row)
+            problems = check(row, args.max_words)
             if problems:
                 rejected += 1
                 continue

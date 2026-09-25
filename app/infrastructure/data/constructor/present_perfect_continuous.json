@@ -1,0 +1,3112 @@
+[
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Я работаю здесь уже два часа.",
+  "en": "I have been working here for two hours.",
+  "alternatives": [
+   "I've been working here for two hours."
+  ],
+  "slots": [
+   {
+    "correct": "I have been working",
+    "options": [
+     "I have been working",
+     "I am working",
+     "I work"
+    ]
+   },
+   {
+    "correct": "here for two hours.",
+    "options": [
+     "here for two hours.",
+     "here since two hours."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она ждет с самого утра.",
+  "en": "She has been waiting since morning.",
+  "alternatives": [
+   "She's been waiting since morning."
+  ],
+  "slots": [
+   {
+    "correct": "She has been waiting",
+    "options": [
+     "She has been waiting",
+     "She have been waiting",
+     "She is waiting"
+    ]
+   },
+   {
+    "correct": "since morning.",
+    "options": [
+     "since morning.",
+     "for morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Мы не изучаем английский три года.",
+  "en": "We haven't been learning English for three years.",
+  "alternatives": [
+   "We have not been learning English for three years."
+  ],
+  "slots": [
+   {
+    "correct": "We haven't been learning",
+    "options": [
+     "We haven't been learning",
+     "We haven't learn",
+     "We didn't learn"
+    ]
+   },
+   {
+    "correct": "English for three years.",
+    "options": [
+     "English for three years.",
+     "English since three years."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Ты долго разговариваешь по телефону?",
+  "en": "Have you been talking on the phone long?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have you been talking",
+    "options": [
+     "Have you been talking",
+     "Has you been talking",
+     "Are you talking"
+    ]
+   },
+   {
+    "correct": "on the phone long?",
+    "options": [
+     "on the phone long?",
+     "on the phone since?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он не живет здесь с прошлого года.",
+  "en": "He hasn't been living here since last year.",
+  "alternatives": [
+   "He has not been living here since last year."
+  ],
+  "slots": [
+   {
+    "correct": "He hasn't been living",
+    "options": [
+     "He hasn't been living",
+     "He haven't been living",
+     "He doesn't live"
+    ]
+   },
+   {
+    "correct": "here since last year.",
+    "options": [
+     "here since last year.",
+     "here for last year."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Дождь идет с самого полудня.",
+  "en": "It has been raining since noon.",
+  "alternatives": [
+   "It's been raining since noon."
+  ],
+  "slots": [
+   {
+    "correct": "It has been raining",
+    "options": [
+     "It has been raining",
+     "It have been raining",
+     "It is raining"
+    ]
+   },
+   {
+    "correct": "since noon.",
+    "options": [
+     "since noon.",
+     "for noon."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Они играют уже целый час.",
+  "en": "They have been playing for an hour.",
+  "alternatives": [
+   "They've been playing for an hour."
+  ],
+  "slots": [
+   {
+    "correct": "They have been playing",
+    "options": [
+     "They have been playing",
+     "They has been playing",
+     "They are playing"
+    ]
+   },
+   {
+    "correct": "for an hour.",
+    "options": [
+     "for an hour.",
+     "since an hour."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она не читает эту книгу.",
+  "en": "She hasn't been reading this book.",
+  "alternatives": [
+   "She has not been reading this book."
+  ],
+  "slots": [
+   {
+    "correct": "She hasn't been reading",
+    "options": [
+     "She hasn't been reading",
+     "She haven't been reading",
+     "She isn't reading"
+    ]
+   },
+   {
+    "correct": "this book.",
+    "options": [
+     "this book.",
+     "for this book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Вы бегаете уже десять минут?",
+  "en": "Have you been running for ten minutes?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have you been running",
+    "options": [
+     "Have you been running",
+     "Has you been running",
+     "Are you running"
+    ]
+   },
+   {
+    "correct": "for ten minutes?",
+    "options": [
+     "for ten minutes?",
+     "since ten minutes?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он готовит еду с десяти часов.",
+  "en": "He has been cooking since ten o'clock.",
+  "alternatives": [
+   "He's been cooking since ten o'clock."
+  ],
+  "slots": [
+   {
+    "correct": "He has been cooking",
+    "options": [
+     "He has been cooking",
+     "He have been cooking",
+     "He is cooking"
+    ]
+   },
+   {
+    "correct": "since ten o'clock.",
+    "options": [
+     "since ten o'clock.",
+     "for ten o'clock."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Я не учусь здесь долго.",
+  "en": "I haven't been studying here long.",
+  "alternatives": [
+   "I have not been studying here long."
+  ],
+  "slots": [
+   {
+    "correct": "I haven't been studying",
+    "options": [
+     "I haven't been studying",
+     "I hasn't been studying",
+     "I am not studying"
+    ]
+   },
+   {
+    "correct": "here long.",
+    "options": [
+     "here long.",
+     "for here long."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она работает с понедельника?",
+  "en": "Has she been working since Monday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Has she been working",
+    "options": [
+     "Has she been working",
+     "Have she been working",
+     "Is she working"
+    ]
+   },
+   {
+    "correct": "since Monday?",
+    "options": [
+     "since Monday?",
+     "for Monday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Я читаю эту книгу два часа.",
+  "en": "I have been reading this book for two hours.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have been reading",
+    "options": [
+     "I have been reading",
+     "I have read",
+     "I am reading",
+     "I had been reading"
+    ]
+   },
+   {
+    "correct": "this book",
+    "options": [
+     "this book",
+     "that book"
+    ]
+   },
+   {
+    "correct": "for two hours.",
+    "options": [
+     "for two hours.",
+     "since two hours."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он не работает здесь с лета.",
+  "en": "He hasn't been working here since summer.",
+  "alternatives": [
+   "He has not been working here since summer."
+  ],
+  "slots": [
+   {
+    "correct": "He hasn't been working",
+    "options": [
+     "He hasn't been working",
+     "He haven't been working",
+     "He isn't working",
+     "He hadn't been working"
+    ]
+   },
+   {
+    "correct": "here",
+    "options": [
+     "here",
+     "there"
+    ]
+   },
+   {
+    "correct": "since summer.",
+    "options": [
+     "since summer.",
+     "for summer."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Ты учишься здесь с сентября?",
+  "en": "Have you been studying here since September?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have you been studying",
+    "options": [
+     "Have you been studying",
+     "Has you been studying",
+     "Are you studying",
+     "Had you been studying"
+    ]
+   },
+   {
+    "correct": "here",
+    "options": [
+     "here",
+     "there"
+    ]
+   },
+   {
+    "correct": "since September?",
+    "options": [
+     "since September?",
+     "for September?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она ждет его целую вечность.",
+  "en": "She has been waiting for him for ages.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She has been waiting",
+    "options": [
+     "She has been waiting",
+     "She have been waiting",
+     "She is waiting",
+     "She had been waiting"
+    ]
+   },
+   {
+    "correct": "for him",
+    "options": [
+     "for him",
+     "for her"
+    ]
+   },
+   {
+    "correct": "for ages.",
+    "options": [
+     "for ages.",
+     "since ages."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Мы не бегаем уже полчаса.",
+  "en": "We haven't been running for half an hour.",
+  "alternatives": [
+   "We have not been running for half an hour."
+  ],
+  "slots": [
+   {
+    "correct": "We haven't been running",
+    "options": [
+     "We haven't been running",
+     "We hasn't been running",
+     "We aren't running",
+     "We hadn't been running"
+    ]
+   },
+   {
+    "correct": "for half an hour.",
+    "options": [
+     "for half an hour.",
+     "since half an hour."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Дождь идет уже весь день.",
+  "en": "It has been raining all day.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It has been raining",
+    "options": [
+     "It has been raining",
+     "It have been raining",
+     "It is raining",
+     "It had been raining"
+    ]
+   },
+   {
+    "correct": "all day.",
+    "options": [
+     "all day.",
+     "since all day."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Они не разговаривают с утра?",
+  "en": "Haven't they been talking since morning?",
+  "alternatives": [
+   "Have they not been talking since morning?"
+  ],
+  "slots": [
+   {
+    "correct": "Haven't they been talking",
+    "options": [
+     "Haven't they been talking",
+     "Hasn't they been talking",
+     "Aren't they talking",
+     "Hadn't they been talking"
+    ]
+   },
+   {
+    "correct": "since morning?",
+    "options": [
+     "since morning?",
+     "for morning?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он учит английский два года.",
+  "en": "He has been learning English for two years.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He has been learning",
+    "options": [
+     "He has been learning",
+     "He have been learning",
+     "He is learning",
+     "He had been learning"
+    ]
+   },
+   {
+    "correct": "English",
+    "options": [
+     "English",
+     "Spanish"
+    ]
+   },
+   {
+    "correct": "for two years.",
+    "options": [
+     "for two years.",
+     "since two years."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Я не готовлю с десяти утра.",
+  "en": "I haven't been cooking since ten am.",
+  "alternatives": [
+   "I have not been cooking since ten am."
+  ],
+  "slots": [
+   {
+    "correct": "I haven't been cooking",
+    "options": [
+     "I haven't been cooking",
+     "I hasn't been cooking",
+     "I am not cooking",
+     "I hadn't been cooking"
+    ]
+   },
+   {
+    "correct": "since ten am.",
+    "options": [
+     "since ten am.",
+     "for ten am."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она играет уже три часа?",
+  "en": "Has she been playing for three hours?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Has she been playing",
+    "options": [
+     "Has she been playing",
+     "Have she been playing",
+     "Is she playing",
+     "Had she been playing"
+    ]
+   },
+   {
+    "correct": "for three hours?",
+    "options": [
+     "for three hours?",
+     "since three hours?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Мы живем здесь с 2020 года.",
+  "en": "We have been living here since 2020.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We have been living",
+    "options": [
+     "We have been living",
+     "We has been living",
+     "We are living",
+     "We had been living"
+    ]
+   },
+   {
+    "correct": "here",
+    "options": [
+     "here",
+     "there"
+    ]
+   },
+   {
+    "correct": "since 2020.",
+    "options": [
+     "since 2020.",
+     "for 2020."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он не читает уже час?",
+  "en": "Hasn't he been reading for an hour?",
+  "alternatives": [
+   "Has he not been reading for an hour?"
+  ],
+  "slots": [
+   {
+    "correct": "Hasn't he been reading",
+    "options": [
+     "Hasn't he been reading",
+     "Haven't he been reading",
+     "Isn't he reading",
+     "Hadn't he been reading"
+    ]
+   },
+   {
+    "correct": "for an hour?",
+    "options": [
+     "for an hour?",
+     "since an hour?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Я работаю здесь уже пять лет.",
+  "en": "I have been working here for five years.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have been working",
+    "options": [
+     "I have been working",
+     "I have working",
+     "I am working",
+     "I have been work"
+    ]
+   },
+   {
+    "correct": "here for five years.",
+    "options": [
+     "here for five years.",
+     "here since five years.",
+     "here from five years."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она не учит английский с зимы.",
+  "en": "She hasn't been learning English since winter.",
+  "alternatives": [
+   "She has not been learning English since winter."
+  ],
+  "slots": [
+   {
+    "correct": "She hasn't been learning",
+    "options": [
+     "She hasn't been learning",
+     "She hasn't learning",
+     "She isn't been learning",
+     "She hasn't been learn"
+    ]
+   },
+   {
+    "correct": "English since winter.",
+    "options": [
+     "English since winter.",
+     "English for winter.",
+     "English from winter."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он ждет ее уже час?",
+  "en": "Has he been waiting for her for an hour?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Has he been waiting",
+    "options": [
+     "Has he been waiting",
+     "Have he been waiting",
+     "Has he waiting",
+     "Is he been waiting"
+    ]
+   },
+   {
+    "correct": "for her for an hour?",
+    "options": [
+     "for her for an hour?",
+     "since her for an hour?",
+     "for her since an hour?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Они живут здесь с того года.",
+  "en": "They have been living here since last year.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They have been living",
+    "options": [
+     "They have been living",
+     "They have living",
+     "They are living",
+     "They have been live"
+    ]
+   },
+   {
+    "correct": "here since last year.",
+    "options": [
+     "here since last year.",
+     "here for last year.",
+     "here from last year."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она не готовит с утра.",
+  "en": "She hasn't been cooking since morning.",
+  "alternatives": [
+   "She has not been cooking since morning."
+  ],
+  "slots": [
+   {
+    "correct": "She hasn't been cooking",
+    "options": [
+     "She hasn't been cooking",
+     "She hasn't cooking",
+     "She isn't been cooking",
+     "She hasn't been cook"
+    ]
+   },
+   {
+    "correct": "since morning.",
+    "options": [
+     "since morning.",
+     "for morning.",
+     "from morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Ты бегаешь уже долго?",
+  "en": "Have you been running for a long time?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have you been running",
+    "options": [
+     "Have you been running",
+     "Has you been running",
+     "Have you running",
+     "Are you been running"
+    ]
+   },
+   {
+    "correct": "for a long time?",
+    "options": [
+     "for a long time?",
+     "since a long time?",
+     "from a long time?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Мы не разговариваем уже два часа.",
+  "en": "We haven't been talking for two hours.",
+  "alternatives": [
+   "We have not been talking for two hours."
+  ],
+  "slots": [
+   {
+    "correct": "We haven't been talking",
+    "options": [
+     "We haven't been talking",
+     "We haven't talking",
+     "We aren't been talking",
+     "We haven't been talk"
+    ]
+   },
+   {
+    "correct": "for two hours.",
+    "options": [
+     "for two hours.",
+     "since two hours.",
+     "from two hours."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он читает эту книгу с обеда?",
+  "en": "Has he been reading this book since lunch?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Has he been reading",
+    "options": [
+     "Has he been reading",
+     "Have he been reading",
+     "Has he reading",
+     "Is he been reading"
+    ]
+   },
+   {
+    "correct": "this book since lunch?",
+    "options": [
+     "this book since lunch?",
+     "this book for lunch?",
+     "this book from lunch?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Я не работаю с понедельника.",
+  "en": "I haven't been working since Monday.",
+  "alternatives": [
+   "I have not been working since Monday."
+  ],
+  "slots": [
+   {
+    "correct": "I haven't been working",
+    "options": [
+     "I haven't been working",
+     "I haven't working",
+     "I am not been working",
+     "I haven't been work"
+    ]
+   },
+   {
+    "correct": "since Monday.",
+    "options": [
+     "since Monday.",
+     "for Monday.",
+     "from Monday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она играет с самого утра.",
+  "en": "She has been playing since morning.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She has been playing",
+    "options": [
+     "She has been playing",
+     "She has playing",
+     "She is been playing",
+     "She has been play"
+    ]
+   },
+   {
+    "correct": "since morning.",
+    "options": [
+     "since morning.",
+     "for morning.",
+     "from morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Вы не учитесь уже три года?",
+  "en": "Haven't you been studying for three years?",
+  "alternatives": [
+   "Have you not been studying for three years?"
+  ],
+  "slots": [
+   {
+    "correct": "Haven't you been studying",
+    "options": [
+     "Haven't you been studying",
+     "Hasn't you been studying",
+     "Haven't you studying",
+     "Aren't you been studying"
+    ]
+   },
+   {
+    "correct": "for three years?",
+    "options": [
+     "for three years?",
+     "since three years?",
+     "from three years?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она работает здесь уже два часа.",
+  "en": "She has been working here for two hours.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has been working",
+    "options": [
+     "has been working",
+     "have been working",
+     "is working",
+     "works"
+    ]
+   },
+   {
+    "correct": "here for two hours.",
+    "options": [
+     "here for two hours.",
+     "here since two hours.",
+     "here for two hour."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он не ждет уже три часа.",
+  "en": "He has not been waiting for three hours.",
+  "alternatives": [
+   "He hasn't been waiting for three hours."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "has not been waiting",
+    "options": [
+     "has not been waiting",
+     "have not been waiting",
+     "is not waiting",
+     "does not wait"
+    ]
+   },
+   {
+    "correct": "for three hours.",
+    "options": [
+     "for three hours.",
+     "since three hours.",
+     "for three hour."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Ты изучаешь английский с сентября?",
+  "en": "Have you been studying English since September?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have you been studying",
+    "options": [
+     "Have you been studying",
+     "Has you been studying",
+     "Are you studying",
+     "Do you study"
+    ]
+   },
+   {
+    "correct": "English since September?",
+    "options": [
+     "English since September?",
+     "English for September?",
+     "English in September?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Я не живу здесь с 2010 года.",
+  "en": "I have not been living here since 2010.",
+  "alternatives": [
+   "I haven't been living here since 2010."
+  ],
+  "slots": [
+   {
+    "correct": "I have not been living",
+    "options": [
+     "I have not been living",
+     "I has not been living",
+     "I am not living",
+     "I do not live"
+    ]
+   },
+   {
+    "correct": "here since 2010.",
+    "options": [
+     "here since 2010.",
+     "here for 2010.",
+     "here in 2010."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он читает уже весь день?",
+  "en": "Has he been reading all day?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Has he been reading",
+    "options": [
+     "Has he been reading",
+     "Have he been reading",
+     "Is he reading",
+     "Does he read"
+    ]
+   },
+   {
+    "correct": "all day?",
+    "options": [
+     "all day?",
+     "for all day?",
+     "since all day?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она не учится с самого утра.",
+  "en": "She has not been learning since morning.",
+  "alternatives": [
+   "She hasn't been learning since morning."
+  ],
+  "slots": [
+   {
+    "correct": "She has not been learning",
+    "options": [
+     "She has not been learning",
+     "She have not been learning",
+     "She is not learning",
+     "She does not learn"
+    ]
+   },
+   {
+    "correct": "since morning.",
+    "options": [
+     "since morning.",
+     "for morning.",
+     "in morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Дождь идет уже пять минут.",
+  "en": "It has been raining for five minutes.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It has been raining",
+    "options": [
+     "It has been raining",
+     "It have been raining",
+     "It is raining",
+     "It rains"
+    ]
+   },
+   {
+    "correct": "for five minutes.",
+    "options": [
+     "for five minutes.",
+     "since five minutes.",
+     "in five minutes."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Мы играем уже десять минут.",
+  "en": "We have been playing for ten minutes.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We have been playing",
+    "options": [
+     "We have been playing",
+     "We has been playing",
+     "We are playing",
+     "We play"
+    ]
+   },
+   {
+    "correct": "for ten minutes.",
+    "options": [
+     "for ten minutes.",
+     "since ten minutes.",
+     "in ten minutes."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он не бегает с самого обеда.",
+  "en": "He has not been running since lunch.",
+  "alternatives": [
+   "He hasn't been running since lunch."
+  ],
+  "slots": [
+   {
+    "correct": "He has not been running",
+    "options": [
+     "He has not been running",
+     "He have not been running",
+     "He is not running",
+     "He does not run"
+    ]
+   },
+   {
+    "correct": "since lunch.",
+    "options": [
+     "since lunch.",
+     "for lunch.",
+     "in lunch."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Они разговаривают с десяти утра?",
+  "en": "Have they been talking since ten o'clock?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have they been talking",
+    "options": [
+     "Have they been talking",
+     "Has they been talking",
+     "Are they talking",
+     "Do they talk"
+    ]
+   },
+   {
+    "correct": "since ten o'clock?",
+    "options": [
+     "since ten o'clock?",
+     "for ten o'clock?",
+     "in ten o'clock?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она не готовит уже час.",
+  "en": "She has not been cooking for an hour.",
+  "alternatives": [
+   "She hasn't been cooking for an hour."
+  ],
+  "slots": [
+   {
+    "correct": "She has not been cooking",
+    "options": [
+     "She has not been cooking",
+     "She have not been cooking",
+     "She is not cooking",
+     "She does not cook"
+    ]
+   },
+   {
+    "correct": "for an hour.",
+    "options": [
+     "for an hour.",
+     "since an hour.",
+     "in an hour."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Вы работаете с понедельника?",
+  "en": "Have you been working since Monday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have you been working",
+    "options": [
+     "Have you been working",
+     "Has you been working",
+     "Are you working",
+     "Do you work"
+    ]
+   },
+   {
+    "correct": "since Monday?",
+    "options": [
+     "since Monday?",
+     "for Monday?",
+     "in Monday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Я читаю эту книгу с утра.",
+  "en": "I have been reading this book since morning.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I have been",
+    "options": [
+     "I have been",
+     "I has been",
+     "I haven't been",
+     "I hasn't been"
+    ]
+   },
+   {
+    "correct": "reading",
+    "options": [
+     "reading",
+     "read",
+     "reads",
+     "readed"
+    ]
+   },
+   {
+    "correct": "this book since morning.",
+    "options": [
+     "this book since morning.",
+     "this book for morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она не работает здесь два года.",
+  "en": "She hasn't been working here for two years.",
+  "alternatives": [
+   "She has not been working here for two years."
+  ],
+  "slots": [
+   {
+    "correct": "She hasn't been",
+    "options": [
+     "She hasn't been",
+     "She have been",
+     "She hasn't",
+     "She have not been"
+    ]
+   },
+   {
+    "correct": "working",
+    "options": [
+     "working",
+     "work",
+     "works",
+     "worked"
+    ]
+   },
+   {
+    "correct": "here for two years.",
+    "options": [
+     "here for two years.",
+     "here since two years."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он учит английский с зимы?",
+  "en": "Has he been learning English since winter?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Has he been",
+    "options": [
+     "Has he been",
+     "Have he been",
+     "Has he",
+     "Have he"
+    ]
+   },
+   {
+    "correct": "learning",
+    "options": [
+     "learning",
+     "learn",
+     "learns",
+     "learned"
+    ]
+   },
+   {
+    "correct": "English since winter?",
+    "options": [
+     "English since winter?",
+     "English for winter?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Мы ждем уже целый час.",
+  "en": "We have been waiting for an hour.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We have been",
+    "options": [
+     "We have been",
+     "We has been",
+     "We have",
+     "We are"
+    ]
+   },
+   {
+    "correct": "waiting",
+    "options": [
+     "waiting",
+     "wait",
+     "waits",
+     "waited"
+    ]
+   },
+   {
+    "correct": "for an hour.",
+    "options": [
+     "for an hour.",
+     "since an hour."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она не готовит с самого обеда.",
+  "en": "She hasn't been cooking since lunch.",
+  "alternatives": [
+   "She has not been cooking since lunch."
+  ],
+  "slots": [
+   {
+    "correct": "She hasn't been",
+    "options": [
+     "She hasn't been",
+     "She haven't been",
+     "She hasn't",
+     "She hasn't working"
+    ]
+   },
+   {
+    "correct": "cooking",
+    "options": [
+     "cooking",
+     "cook",
+     "cooks",
+     "cooked"
+    ]
+   },
+   {
+    "correct": "since lunch.",
+    "options": [
+     "since lunch.",
+     "for lunch."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Ты бегаешь с самого утра?",
+  "en": "Have you been running since morning?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have you been",
+    "options": [
+     "Have you been",
+     "Has you been",
+     "Have you",
+     "Are you"
+    ]
+   },
+   {
+    "correct": "running",
+    "options": [
+     "running",
+     "run",
+     "runs",
+     "ran"
+    ]
+   },
+   {
+    "correct": "since morning?",
+    "options": [
+     "since morning?",
+     "for morning?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он играет уже десять минут.",
+  "en": "He has been playing for ten minutes.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He has been",
+    "options": [
+     "He has been",
+     "He have been",
+     "He is",
+     "He has"
+    ]
+   },
+   {
+    "correct": "playing",
+    "options": [
+     "playing",
+     "play",
+     "plays",
+     "played"
+    ]
+   },
+   {
+    "correct": "for ten minutes.",
+    "options": [
+     "for ten minutes.",
+     "since ten minutes."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Они не живут здесь с 2015 года.",
+  "en": "They haven't been living here since 2015.",
+  "alternatives": [
+   "They have not been living here since 2015."
+  ],
+  "slots": [
+   {
+    "correct": "They haven't been",
+    "options": [
+     "They haven't been",
+     "They hasn't been",
+     "They have been",
+     "They haven't"
+    ]
+   },
+   {
+    "correct": "living",
+    "options": [
+     "living",
+     "live",
+     "lives",
+     "lived"
+    ]
+   },
+   {
+    "correct": "here since 2015.",
+    "options": [
+     "here since 2015.",
+     "here for 2015."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она не учит английский долго.",
+  "en": "She hasn't been learning English for long.",
+  "alternatives": [
+   "She has not been learning English for long."
+  ],
+  "slots": [
+   {
+    "correct": "She hasn't been",
+    "options": [
+     "She hasn't been",
+     "She haven't been",
+     "She hasn't",
+     "She has not"
+    ]
+   },
+   {
+    "correct": "learning",
+    "options": [
+     "learning",
+     "learn",
+     "learns",
+     "learned"
+    ]
+   },
+   {
+    "correct": "English for long.",
+    "options": [
+     "English for long.",
+     "English since long."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Вы работаете уже три часа?",
+  "en": "Have you been working for three hours?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have you been",
+    "options": [
+     "Have you been",
+     "Has you been",
+     "Have you",
+     "Are you"
+    ]
+   },
+   {
+    "correct": "working",
+    "options": [
+     "working",
+     "work",
+     "works",
+     "worked"
+    ]
+   },
+   {
+    "correct": "for three hours?",
+    "options": [
+     "for three hours?",
+     "since three hours?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она учит английский с самого утра.",
+  "en": "She has been learning English since morning.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has been learning",
+    "options": [
+     "has been learning",
+     "have been learning",
+     "is learning",
+     "learns"
+    ]
+   },
+   {
+    "correct": "English since morning.",
+    "options": [
+     "English since morning.",
+     "English for morning.",
+     "English since a hour.",
+     "English for two hours."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он не работает здесь с января.",
+  "en": "He hasn't been working here since January.",
+  "alternatives": [
+   "He has not been working here since January."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "hasn't been working",
+    "options": [
+     "hasn't been working",
+     "haven't been working",
+     "isn't working",
+     "doesn't work"
+    ]
+   },
+   {
+    "correct": "here since January.",
+    "options": [
+     "here since January.",
+     "here for January.",
+     "there since January.",
+     "here in January."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она ждет его уже два часа?",
+  "en": "Has she been waiting for him for two hours?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Has",
+    "options": [
+     "Has",
+     "Have",
+     "Is",
+     "Does"
+    ]
+   },
+   {
+    "correct": "she been waiting",
+    "options": [
+     "she been waiting",
+     "he been waiting",
+     "they been waiting",
+     "she is waiting"
+    ]
+   },
+   {
+    "correct": "for him for two hours?",
+    "options": [
+     "for him for two hours?",
+     "for him since two hours?",
+     "him for two hours?",
+     "for him since morning?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Мы живем здесь уже пять лет.",
+  "en": "We have been living here for five years.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She",
+     "He",
+     "It"
+    ]
+   },
+   {
+    "correct": "have been living",
+    "options": [
+     "have been living",
+     "has been living",
+     "are living",
+     "live"
+    ]
+   },
+   {
+    "correct": "here for five years.",
+    "options": [
+     "here for five years.",
+     "here since five years.",
+     "there for five years.",
+     "here since 2019."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он читает уже три часа.",
+  "en": "He has been reading for three hours.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has been reading",
+    "options": [
+     "has been reading",
+     "have been reading",
+     "is reading",
+     "reads"
+    ]
+   },
+   {
+    "correct": "for three hours.",
+    "options": [
+     "for three hours.",
+     "since three hours.",
+     "for morning.",
+     "since three o'clock."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Ты разговариваешь с ним уже час?",
+  "en": "Have you been talking to him for an hour?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have",
+    "options": [
+     "Have",
+     "Has",
+     "Are",
+     "Do"
+    ]
+   },
+   {
+    "correct": "you been talking",
+    "options": [
+     "you been talking",
+     "she been talking",
+     "he been talking",
+     "you are talking"
+    ]
+   },
+   {
+    "correct": "to him for an hour?",
+    "options": [
+     "to him for an hour?",
+     "with him since an hour?",
+     "to him since an hour?",
+     "to him for morning?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она бегает уже десять минут.",
+  "en": "She has been running for ten minutes.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "We",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "has been running",
+    "options": [
+     "has been running",
+     "have been running",
+     "is running",
+     "runs"
+    ]
+   },
+   {
+    "correct": "for ten minutes.",
+    "options": [
+     "for ten minutes.",
+     "since ten minutes.",
+     "for morning.",
+     "since long time."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Они не играют с самого утра.",
+  "en": "They haven't been playing since morning.",
+  "alternatives": [
+   "They have not been playing since morning."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "She",
+     "He",
+     "It"
+    ]
+   },
+   {
+    "correct": "haven't been playing",
+    "options": [
+     "haven't been playing",
+     "hasn't been playing",
+     "aren't playing",
+     "don't play"
+    ]
+   },
+   {
+    "correct": "since morning.",
+    "options": [
+     "since morning.",
+     "for morning.",
+     "since ten minutes.",
+     "for an hour."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он работает с самого утра?",
+  "en": "Has he been working since morning?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Has",
+    "options": [
+     "Has",
+     "Have",
+     "Is",
+     "Does"
+    ]
+   },
+   {
+    "correct": "he been working",
+    "options": [
+     "he been working",
+     "she been working",
+     "they been working",
+     "he is working"
+    ]
+   },
+   {
+    "correct": "since morning?",
+    "options": [
+     "since morning?",
+     "for morning?",
+     "since two hours?",
+     "for an hour?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Я изучаю это с понедельника.",
+  "en": "I have been studying this since Monday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "have been studying",
+    "options": [
+     "have been studying",
+     "has been studying",
+     "am studying",
+     "study"
+    ]
+   },
+   {
+    "correct": "this since Monday.",
+    "options": [
+     "this since Monday.",
+     "this for Monday.",
+     "it since Monday.",
+     "this for a week."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он работает здесь уже месяц.",
+  "en": "He has been working here for a month.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "has been working",
+    "options": [
+     "has been working",
+     "have been working",
+     "has worked",
+     "is working"
+    ]
+   },
+   {
+    "correct": "here for a month.",
+    "options": [
+     "here for a month.",
+     "here since a month.",
+     "there for a month.",
+     "here since month."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она не учится здесь с января.",
+  "en": "She hasn't been studying here since January.",
+  "alternatives": [
+   "She has not been studying here since January."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "hasn't been studying",
+    "options": [
+     "hasn't been studying",
+     "haven't been studying",
+     "hasn't studied",
+     "isn't studying"
+    ]
+   },
+   {
+    "correct": "here since January.",
+    "options": [
+     "here since January.",
+     "here for January.",
+     "there since January.",
+     "here since a January."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Вы ждете уже два часа?",
+  "en": "Have you been waiting for two hours?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have you",
+    "options": [
+     "Have you",
+     "Has you",
+     "Have they",
+     "Has he"
+    ]
+   },
+   {
+    "correct": "been waiting",
+    "options": [
+     "been waiting",
+     "waiting",
+     "been waited",
+     "wait"
+    ]
+   },
+   {
+    "correct": "for two hours?",
+    "options": [
+     "for two hours?",
+     "since two hours?",
+     "for two hour?",
+     "since two hours ago?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она читает уже полчаса.",
+  "en": "She has been reading for half an hour.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "has been reading",
+    "options": [
+     "has been reading",
+     "have been reading",
+     "is reading",
+     "has read"
+    ]
+   },
+   {
+    "correct": "for half an hour.",
+    "options": [
+     "for half an hour.",
+     "since half an hour.",
+     "for half hour.",
+     "since half hour."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он не живет здесь с 2020 года.",
+  "en": "He hasn't been living here since 2020.",
+  "alternatives": [
+   "He has not been living here since 2020."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "You",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "hasn't been living",
+    "options": [
+     "hasn't been living",
+     "haven't been living",
+     "hasn't lived",
+     "isn't living"
+    ]
+   },
+   {
+    "correct": "here since 2020.",
+    "options": [
+     "here since 2020.",
+     "here for 2020.",
+     "there since 2020.",
+     "here for year 2020."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Они играют с утра?",
+  "en": "Have they been playing since morning?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have they",
+    "options": [
+     "Have they",
+     "Has they",
+     "Have he",
+     "Has she"
+    ]
+   },
+   {
+    "correct": "been playing",
+    "options": [
+     "been playing",
+     "playing",
+     "been played",
+     "play"
+    ]
+   },
+   {
+    "correct": "since morning?",
+    "options": [
+     "since morning?",
+     "for morning?",
+     "since the morning?",
+     "for the morning?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она готовит уже два часа.",
+  "en": "She has been cooking for two hours.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has been cooking",
+    "options": [
+     "has been cooking",
+     "have been cooking",
+     "is cooking",
+     "has cooked"
+    ]
+   },
+   {
+    "correct": "for two hours.",
+    "options": [
+     "for two hours.",
+     "since two hours.",
+     "for two hour.",
+     "since two hour."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Я не бегаю с обеда.",
+  "en": "I haven't been running since lunch.",
+  "alternatives": [
+   "I have not been running since lunch."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She",
+     "It"
+    ]
+   },
+   {
+    "correct": "haven't been running",
+    "options": [
+     "haven't been running",
+     "hasn't been running",
+     "haven't run",
+     "am not running"
+    ]
+   },
+   {
+    "correct": "since lunch.",
+    "options": [
+     "since lunch.",
+     "for lunch.",
+     "since the lunch.",
+     "for a lunch."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он изучает английский с понедельника?",
+  "en": "Has he been learning English since Monday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Has he",
+    "options": [
+     "Has he",
+     "Have he",
+     "Has they",
+     "Have you"
+    ]
+   },
+   {
+    "correct": "been learning",
+    "options": [
+     "been learning",
+     "learning",
+     "been learned",
+     "learn"
+    ]
+   },
+   {
+    "correct": "English since Monday?",
+    "options": [
+     "English since Monday?",
+     "English for Monday?",
+     "English since a Monday?",
+     "English for a Monday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она не работает с самого утра.",
+  "en": "She hasn't been working since morning.",
+  "alternatives": [
+   "She has not been working since morning."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "hasn't been working",
+    "options": [
+     "hasn't been working",
+     "haven't been working",
+     "hasn't worked",
+     "isn't working"
+    ]
+   },
+   {
+    "correct": "since morning.",
+    "options": [
+     "since morning.",
+     "for morning.",
+     "since the morning.",
+     "for the morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Мы разговариваем уже десять минут.",
+  "en": "We have been talking for ten minutes.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "She",
+     "It"
+    ]
+   },
+   {
+    "correct": "have been talking",
+    "options": [
+     "have been talking",
+     "has been talking",
+     "are talking",
+     "have talked"
+    ]
+   },
+   {
+    "correct": "for ten minutes.",
+    "options": [
+     "for ten minutes.",
+     "since ten minutes.",
+     "for ten minute.",
+     "since ten minute."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Дождь идет с самого обеда?",
+  "en": "Has it been raining since lunch?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Has it",
+    "options": [
+     "Has it",
+     "Have it",
+     "Has he",
+     "Have they"
+    ]
+   },
+   {
+    "correct": "been raining",
+    "options": [
+     "been raining",
+     "raining",
+     "been rained",
+     "rain"
+    ]
+   },
+   {
+    "correct": "since lunch?",
+    "options": [
+     "since lunch?",
+     "for lunch?",
+     "since the lunch?",
+     "for the lunch?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она изучает английский два часа.",
+  "en": "She has been studying English for two hours.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has been studying",
+    "options": [
+     "has been studying",
+     "have been studying",
+     "has studied",
+     "is studying"
+    ]
+   },
+   {
+    "correct": "English for two hours.",
+    "options": [
+     "English for two hours.",
+     "English since two hours.",
+     "English since morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Я не работаю с самого утра.",
+  "en": "I haven't been working since morning.",
+  "alternatives": [
+   "I have not been working since morning."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She",
+     "It"
+    ]
+   },
+   {
+    "correct": "haven't been working",
+    "options": [
+     "haven't been working",
+     "hasn't been working",
+     "don't work",
+     "wasn't working"
+    ]
+   },
+   {
+    "correct": "since morning.",
+    "options": [
+     "since morning.",
+     "for morning.",
+     "for an hour."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он играет уже весь день?",
+  "en": "Has he been playing all day?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Has",
+    "options": [
+     "Has",
+     "Have",
+     "Is",
+     "Does"
+    ]
+   },
+   {
+    "correct": "he been playing",
+    "options": [
+     "he been playing",
+     "he playing",
+     "he been played"
+    ]
+   },
+   {
+    "correct": "all day?",
+    "options": [
+     "all day?",
+     "for all day?",
+     "since all day?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он бегает уже сорок минут.",
+  "en": "He has been running for forty minutes.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "You",
+     "We"
+    ]
+   },
+   {
+    "correct": "has been running",
+    "options": [
+     "has been running",
+     "have been running",
+     "is running",
+     "has run"
+    ]
+   },
+   {
+    "correct": "for forty minutes.",
+    "options": [
+     "for forty minutes.",
+     "since forty minutes.",
+     "for morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Мы не разговариваем с самого обеда.",
+  "en": "We haven't been talking since lunch.",
+  "alternatives": [
+   "We have not been talking since lunch."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She",
+     "He",
+     "It"
+    ]
+   },
+   {
+    "correct": "haven't been talking",
+    "options": [
+     "haven't been talking",
+     "hasn't been talking",
+     "don't talk",
+     "won't talk"
+    ]
+   },
+   {
+    "correct": "since lunch.",
+    "options": [
+     "since lunch.",
+     "for lunch.",
+     "since two hours."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она ждет уже полчаса?",
+  "en": "Has she been waiting for half an hour?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Has",
+    "options": [
+     "Has",
+     "Have",
+     "Is",
+     "Does"
+    ]
+   },
+   {
+    "correct": "she been waiting",
+    "options": [
+     "she been waiting",
+     "she waiting",
+     "she been waited"
+    ]
+   },
+   {
+    "correct": "for half an hour?",
+    "options": [
+     "for half an hour?",
+     "since half an hour?",
+     "for an hour?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она читает уже час.",
+  "en": "She has been reading for an hour.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "has been reading",
+    "options": [
+     "has been reading",
+     "have been reading",
+     "is reading",
+     "has read"
+    ]
+   },
+   {
+    "correct": "for an hour.",
+    "options": [
+     "for an hour.",
+     "since an hour.",
+     "for morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Я не учусь с сентября.",
+  "en": "I haven't been studying since September.",
+  "alternatives": [
+   "I have not been studying since September."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She",
+     "It"
+    ]
+   },
+   {
+    "correct": "haven't been studying",
+    "options": [
+     "haven't been studying",
+     "hasn't been studying",
+     "don't study",
+     "didn't study"
+    ]
+   },
+   {
+    "correct": "since September.",
+    "options": [
+     "since September.",
+     "for September.",
+     "since two years."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Они работают с понедельника?",
+  "en": "Have they been working since Monday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Have",
+    "options": [
+     "Have",
+     "Has",
+     "Are",
+     "Do"
+    ]
+   },
+   {
+    "correct": "they been working",
+    "options": [
+     "they been working",
+     "they working",
+     "they been worked"
+    ]
+   },
+   {
+    "correct": "since Monday?",
+    "options": [
+     "since Monday?",
+     "for Monday?",
+     "since two hours?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он готовит уже два часа.",
+  "en": "He has been cooking for two hours.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "You",
+     "They"
+    ]
+   },
+   {
+    "correct": "has been cooking",
+    "options": [
+     "has been cooking",
+     "have been cooking",
+     "is cooking",
+     "has cooked"
+    ]
+   },
+   {
+    "correct": "for two hours.",
+    "options": [
+     "for two hours.",
+     "since two hours.",
+     "for morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она не живет здесь с зимы.",
+  "en": "She hasn't been living here since winter.",
+  "alternatives": [
+   "She has not been living here since winter."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "hasn't been living",
+    "options": [
+     "hasn't been living",
+     "haven't been living",
+     "doesn't live",
+     "isn't living"
+    ]
+   },
+   {
+    "correct": "here since winter.",
+    "options": [
+     "here since winter.",
+     "here for winter.",
+     "here since two years."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Дождь идет с самого утра?",
+  "en": "Has it been raining since morning?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Has",
+    "options": [
+     "Has",
+     "Have",
+     "Is",
+     "Does"
+    ]
+   },
+   {
+    "correct": "it been raining",
+    "options": [
+     "it been raining",
+     "it raining",
+     "it been rained"
+    ]
+   },
+   {
+    "correct": "since morning?",
+    "options": [
+     "since morning?",
+     "for morning?",
+     "since two hours?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она не ждет уже два часа.",
+  "en": "She hasn't been waiting for two hours.",
+  "alternatives": [
+   "She has not been waiting for two hours."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "hasn't been waiting",
+    "options": [
+     "hasn't been waiting",
+     "haven't been waiting",
+     "hasn't waited",
+     "hadn't been waiting"
+    ]
+   },
+   {
+    "correct": "for two hours.",
+    "options": [
+     "for two hours.",
+     "since two hours.",
+     "for morning.",
+     "since two o'clock."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она читает уже весь день.",
+  "en": "She has been reading all day.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "has been reading",
+    "options": [
+     "has been reading",
+     "have been reading",
+     "is reading",
+     "had been reading"
+    ]
+   },
+   {
+    "correct": "all day.",
+    "options": [
+     "all day.",
+     "since all day.",
+     "for all day.",
+     "from all day."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Мы не разговариваем с десяти утра.",
+  "en": "We haven't been talking since ten a.m.",
+  "alternatives": [
+   "We have not been talking since ten a.m."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "She",
+     "It"
+    ]
+   },
+   {
+    "correct": "haven't been talking",
+    "options": [
+     "haven't been talking",
+     "hasn't been talking",
+     "haven't talked",
+     "don't talk"
+    ]
+   },
+   {
+    "correct": "since ten a.m.",
+    "options": [
+     "since ten a.m.",
+     "for ten a.m.",
+     "since ten hours.",
+     "for ten o'clock."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Я живу здесь с 2010 года.",
+  "en": "I have been living here since 2010.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She",
+     "It"
+    ]
+   },
+   {
+    "correct": "have been living",
+    "options": [
+     "have been living",
+     "has been living",
+     "am living",
+     "have lived"
+    ]
+   },
+   {
+    "correct": "here since 2010.",
+    "options": [
+     "here since 2010.",
+     "here for 2010.",
+     "there since 2010.",
+     "there for 2010."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она не читает с самого утра.",
+  "en": "She hasn't been reading since the morning.",
+  "alternatives": [
+   "She has not been reading since the morning."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "hasn't been reading",
+    "options": [
+     "hasn't been reading",
+     "have not been reading",
+     "isn't reading",
+     "doesn't read"
+    ]
+   },
+   {
+    "correct": "since the morning.",
+    "options": [
+     "since the morning.",
+     "for the morning.",
+     "since two hours."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Они не играют с самого обеда.",
+  "en": "They haven't been playing since lunch.",
+  "alternatives": [
+   "They have not been playing since lunch."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "haven't been playing",
+    "options": [
+     "haven't been playing",
+     "hasn't been playing",
+     "aren't playing",
+     "don't play"
+    ]
+   },
+   {
+    "correct": "since lunch.",
+    "options": [
+     "since lunch.",
+     "for lunch.",
+     "since two hours."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Он работает здесь с понедельника?",
+  "en": "Has he been working here since Monday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Has",
+    "options": [
+     "Has",
+     "Have",
+     "Had"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "been working",
+    "options": [
+     "been working",
+     "working",
+     "be working"
+    ]
+   },
+   {
+    "correct": "here since Monday?",
+    "options": [
+     "here since Monday?",
+     "for Monday?",
+     "since two hours?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Она не учит английский уже три часа.",
+  "en": "She has not been studying English for three hours.",
+  "alternatives": [
+   "She hasn't been studying English for three hours."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "has not been studying",
+    "options": [
+     "has not been studying",
+     "have not been studying",
+     "has been studying"
+    ]
+   },
+   {
+    "correct": "English",
+    "options": [
+     "English",
+     "books",
+     "hard"
+    ]
+   },
+   {
+    "correct": "for three hours.",
+    "options": [
+     "for three hours.",
+     "since three hours.",
+     "for morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "present_perfect_continuous",
+  "ru": "Я бегаю уже сорок минут.",
+  "en": "I have been running for forty minutes.",
+  "alternatives": [
+   "I've been running for forty minutes."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "have been running",
+    "options": [
+     "have been running",
+     "has been running",
+     "am running"
+    ]
+   },
+   {
+    "correct": "for forty minutes.",
+    "options": [
+     "for forty minutes.",
+     "since forty minutes.",
+     "for morning."
+    ]
+   }
+  ]
+ }
+]

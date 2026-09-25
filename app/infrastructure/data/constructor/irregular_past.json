@@ -1,0 +1,3788 @@
+[
+ {
+  "topic": "irregular_past",
+  "ru": "Я купил новый телефон вчера.",
+  "en": "I bought a new phone yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "bought",
+    "options": [
+     "bought",
+     "buy",
+     "buys",
+     "buyed"
+    ]
+   },
+   {
+    "correct": "a new phone yesterday.",
+    "options": [
+     "a new phone yesterday.",
+     "the new phone today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Она не видела этот фильм.",
+  "en": "She didn't see this film.",
+  "alternatives": [
+   "She did not see this film."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "saw",
+     "sees",
+     "seeing"
+    ]
+   },
+   {
+    "correct": "this film.",
+    "options": [
+     "this film.",
+     "that book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Ты ходил в магазин?",
+  "en": "Did you go to the shop?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "go",
+    "options": [
+     "go",
+     "went",
+     "goes",
+     "going"
+    ]
+   },
+   {
+    "correct": "to the shop?",
+    "options": [
+     "to the shop?",
+     "to home?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Мы съели весь пирог.",
+  "en": "We ate the whole cake.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "ate",
+    "options": [
+     "ate",
+     "eat",
+     "eats",
+     "eaten"
+    ]
+   },
+   {
+    "correct": "the whole cake.",
+    "options": [
+     "the whole cake.",
+     "the hot soup."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Он не сказал мне правду.",
+  "en": "He didn't tell me the truth.",
+  "alternatives": [
+   "He did not tell me the truth."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "doesn't",
+     "don't",
+     "did"
+    ]
+   },
+   {
+    "correct": "tell",
+    "options": [
+     "tell",
+     "told",
+     "tells",
+     "telling"
+    ]
+   },
+   {
+    "correct": "me the truth.",
+    "options": [
+     "me the truth.",
+     "me his name."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Вы нашли свои ключи?",
+  "en": "Did you find your keys?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "he"
+    ]
+   },
+   {
+    "correct": "find",
+    "options": [
+     "find",
+     "found",
+     "finds",
+     "finding"
+    ]
+   },
+   {
+    "correct": "your keys?",
+    "options": [
+     "your keys?",
+     "your bag?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я получил письмо утром.",
+  "en": "I got a letter in the morning.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "She"
+    ]
+   },
+   {
+    "correct": "got",
+    "options": [
+     "got",
+     "get",
+     "gets",
+     "getting"
+    ]
+   },
+   {
+    "correct": "a letter in the morning.",
+    "options": [
+     "a letter in the morning.",
+     "a book at night."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Она не пила кофе.",
+  "en": "She didn't drink coffee.",
+  "alternatives": [
+   "She did not drink coffee."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "doesn't",
+     "don't"
+    ]
+   },
+   {
+    "correct": "drink",
+    "options": [
+     "drink",
+     "drank",
+     "drinks",
+     "drinking"
+    ]
+   },
+   {
+    "correct": "coffee.",
+    "options": [
+     "coffee.",
+     "water."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Они написали это письмо.",
+  "en": "They wrote this letter.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "wrote",
+    "options": [
+     "wrote",
+     "write",
+     "writes",
+     "writed"
+    ]
+   },
+   {
+    "correct": "this letter.",
+    "options": [
+     "this letter.",
+     "that report."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я не знал его имени.",
+  "en": "I didn't know his name.",
+  "alternatives": [
+   "I did not know his name."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "know",
+    "options": [
+     "know",
+     "knew",
+     "knows",
+     "knowing"
+    ]
+   },
+   {
+    "correct": "his name.",
+    "options": [
+     "his name.",
+     "the answer."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Ты говорил с ним?",
+  "en": "Did you speak to him?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "speak",
+    "options": [
+     "speak",
+     "spoke",
+     "speaks",
+     "speaking"
+    ]
+   },
+   {
+    "correct": "to him?",
+    "options": [
+     "to him?",
+     "to her?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я сделал это сам.",
+  "en": "I made it myself.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "made",
+    "options": [
+     "made",
+     "make",
+     "makes",
+     "making"
+    ]
+   },
+   {
+    "correct": "it myself.",
+    "options": [
+     "it myself.",
+     "it today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я пошел в парк вчера.",
+  "en": "I went to the park yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "went",
+    "options": [
+     "went",
+     "go",
+     "gone"
+    ]
+   },
+   {
+    "correct": "to the park yesterday.",
+    "options": [
+     "to the park yesterday.",
+     "to park yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Она не купила молоко.",
+  "en": "She didn't buy milk.",
+  "alternatives": [
+   "She did not buy milk."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "bought",
+     "buys"
+    ]
+   },
+   {
+    "correct": "milk.",
+    "options": [
+     "milk.",
+     "the milk."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Ты видел его вчера?",
+  "en": "Did you see him yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "saw",
+     "seen"
+    ]
+   },
+   {
+    "correct": "him yesterday?",
+    "options": [
+     "him yesterday?",
+     "her yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Они взяли мою книгу.",
+  "en": "They took my book.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "took",
+    "options": [
+     "took",
+     "take",
+     "taken"
+    ]
+   },
+   {
+    "correct": "my book.",
+    "options": [
+     "my book.",
+     "the book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Он не дал мне денег.",
+  "en": "He didn't give me money.",
+  "alternatives": [
+   "He did not give me money."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "doesn't",
+     "did"
+    ]
+   },
+   {
+    "correct": "give",
+    "options": [
+     "give",
+     "gave",
+     "given"
+    ]
+   },
+   {
+    "correct": "me money.",
+    "options": [
+     "me money.",
+     "the money."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Вы пришли вовремя?",
+  "en": "Did you come on time?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "he"
+    ]
+   },
+   {
+    "correct": "come",
+    "options": [
+     "come",
+     "came",
+     "comes"
+    ]
+   },
+   {
+    "correct": "on time?",
+    "options": [
+     "on time?",
+     "at time?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Мы пили чай утром.",
+  "en": "We drank tea in the morning.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "drank",
+    "options": [
+     "drank",
+     "drink",
+     "drunk"
+    ]
+   },
+   {
+    "correct": "tea in the morning.",
+    "options": [
+     "tea in the morning.",
+     "the tea morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Ты думал об этом?",
+  "en": "Did you think about it?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "think",
+    "options": [
+     "think",
+     "thought",
+     "thinks"
+    ]
+   },
+   {
+    "correct": "about it?",
+    "options": [
+     "about it?",
+     "of it?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Они сказали правду.",
+  "en": "They said the truth.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "He"
+    ]
+   },
+   {
+    "correct": "said",
+    "options": [
+     "said",
+     "say",
+     "sayed"
+    ]
+   },
+   {
+    "correct": "the truth.",
+    "options": [
+     "the truth.",
+     "truth."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Ты не говорил со мной.",
+  "en": "You didn't speak with me.",
+  "alternatives": [
+   "You did not speak with me."
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "speak",
+    "options": [
+     "speak",
+     "spoke",
+     "spoken"
+    ]
+   },
+   {
+    "correct": "with me.",
+    "options": [
+     "with me.",
+     "to me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Она написала мне вчера.",
+  "en": "She wrote to me yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "wrote",
+    "options": [
+     "wrote",
+     "write",
+     "written"
+    ]
+   },
+   {
+    "correct": "to me yesterday.",
+    "options": [
+     "to me yesterday.",
+     "me yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я нашел свои ключи в сумке.",
+  "en": "I found my keys in the bag.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "found",
+    "options": [
+     "found",
+     "find",
+     "finded"
+    ]
+   },
+   {
+    "correct": "my keys in the bag.",
+    "options": [
+     "my keys in the bag.",
+     "my key in the bag."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Он не сделал это задание.",
+  "en": "He did not make this task.",
+  "alternatives": [
+   "He didn't make this task."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "does not"
+    ]
+   },
+   {
+    "correct": "make",
+    "options": [
+     "make",
+     "made",
+     "makes"
+    ]
+   },
+   {
+    "correct": "this task.",
+    "options": [
+     "this task.",
+     "that task."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Ты прочитал эту книгу?",
+  "en": "Did you read this book?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "read",
+    "options": [
+     "read",
+     "readed",
+     "reads"
+    ]
+   },
+   {
+    "correct": "this book?",
+    "options": [
+     "this book?",
+     "that book?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Она дала мне эту книгу.",
+  "en": "She gave me this book.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "gave",
+    "options": [
+     "gave",
+     "give",
+     "gived"
+    ]
+   },
+   {
+    "correct": "me this book.",
+    "options": [
+     "me this book.",
+     "us this book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Мы не пили молоко вчера.",
+  "en": "We did not drink milk yesterday.",
+  "alternatives": [
+   "We didn't drink milk yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "drink",
+    "options": [
+     "drink",
+     "drank",
+     "drinks"
+    ]
+   },
+   {
+    "correct": "milk yesterday.",
+    "options": [
+     "milk yesterday.",
+     "tea yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Они говорили со мной вчера.",
+  "en": "They spoke to me yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "He"
+    ]
+   },
+   {
+    "correct": "spoke",
+    "options": [
+     "spoke",
+     "speak",
+     "speaked"
+    ]
+   },
+   {
+    "correct": "to me yesterday.",
+    "options": [
+     "to me yesterday.",
+     "to him yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Вы думали об этой проблеме?",
+  "en": "Did you think about this problem?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "think",
+    "options": [
+     "think",
+     "thought",
+     "thinks"
+    ]
+   },
+   {
+    "correct": "about this problem?",
+    "options": [
+     "about this problem?",
+     "about that problem?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я пришел домой поздно.",
+  "en": "I came home late.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "came",
+    "options": [
+     "came",
+     "come",
+     "comed"
+    ]
+   },
+   {
+    "correct": "home late.",
+    "options": [
+     "home late.",
+     "to home late."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Он не взял мою ручку.",
+  "en": "He did not take my pen.",
+  "alternatives": [
+   "He didn't take my pen."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "does not",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "take",
+    "options": [
+     "take",
+     "took",
+     "takes"
+    ]
+   },
+   {
+    "correct": "my pen.",
+    "options": [
+     "my pen.",
+     "my book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Она видела его в парке.",
+  "en": "She saw him in the park.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "saw",
+    "options": [
+     "saw",
+     "see",
+     "seed"
+    ]
+   },
+   {
+    "correct": "him in the park.",
+    "options": [
+     "him in the park.",
+     "me in the park."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Они не знали этот ответ.",
+  "en": "They did not know this answer.",
+  "alternatives": [
+   "They didn't know this answer."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "know",
+    "options": [
+     "know",
+     "knew",
+     "knows"
+    ]
+   },
+   {
+    "correct": "this answer.",
+    "options": [
+     "this answer.",
+     "that answer."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Ты рассказал ей историю?",
+  "en": "Did you tell her the story?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "tell",
+    "options": [
+     "tell",
+     "told",
+     "tells"
+    ]
+   },
+   {
+    "correct": "her the story?",
+    "options": [
+     "her the story?",
+     "him the story?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я пошел в школу утром.",
+  "en": "I went to school in the morning.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "went",
+    "options": [
+     "go",
+     "went",
+     "gone"
+    ]
+   },
+   {
+    "correct": "to school in the morning.",
+    "options": [
+     "to school in the morning.",
+     "at school in the morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Она не купила новый стол.",
+  "en": "She did not buy a new table.",
+  "alternatives": [
+   "She didn't buy a new table."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "does not"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "bought",
+     "buying"
+    ]
+   },
+   {
+    "correct": "a new table.",
+    "options": [
+     "a new table.",
+     "the new table."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Ты видел его там?",
+  "en": "Did you see him there?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "saw",
+     "seen"
+    ]
+   },
+   {
+    "correct": "him there?",
+    "options": [
+     "him there?",
+     "them there?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Мы взяли эти яблоки.",
+  "en": "We took these apples.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "took",
+    "options": [
+     "take",
+     "took",
+     "taken"
+    ]
+   },
+   {
+    "correct": "these apples.",
+    "options": [
+     "these apples.",
+     "this apple."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Он не дал мне ключи.",
+  "en": "He did not give me the keys.",
+  "alternatives": [
+   "He didn't give me the keys."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "does not"
+    ]
+   },
+   {
+    "correct": "give",
+    "options": [
+     "give",
+     "gave",
+     "given"
+    ]
+   },
+   {
+    "correct": "me the keys.",
+    "options": [
+     "me the keys.",
+     "us the keys."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Они пришли на вечеринку?",
+  "en": "Did they come to the party?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "we",
+     "you"
+    ]
+   },
+   {
+    "correct": "come",
+    "options": [
+     "come",
+     "came"
+    ]
+   },
+   {
+    "correct": "to the party?",
+    "options": [
+     "to the party?",
+     "at the party?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я сделал это домашнее задание.",
+  "en": "I made this homework.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "made",
+    "options": [
+     "make",
+     "made"
+    ]
+   },
+   {
+    "correct": "this homework.",
+    "options": [
+     "this homework.",
+     "that homework."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Она не ела мясо вчера.",
+  "en": "She did not eat meat yesterday.",
+  "alternatives": [
+   "She didn't eat meat yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "does not"
+    ]
+   },
+   {
+    "correct": "eat",
+    "options": [
+     "eat",
+     "ate",
+     "eaten"
+    ]
+   },
+   {
+    "correct": "meat yesterday.",
+    "options": [
+     "meat yesterday.",
+     "the meat yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Ты пил холодную воду?",
+  "en": "Did you drink cold water?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "drink",
+    "options": [
+     "drink",
+     "drank",
+     "drunk"
+    ]
+   },
+   {
+    "correct": "cold water?",
+    "options": [
+     "cold water?",
+     "the cold water?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Мы написали книгу вместе.",
+  "en": "We wrote a book together.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "wrote",
+    "options": [
+     "write",
+     "wrote",
+     "written"
+    ]
+   },
+   {
+    "correct": "a book together.",
+    "options": [
+     "a book together.",
+     "the book together."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Он не знал ответ на вопрос.",
+  "en": "He did not know the answer.",
+  "alternatives": [
+   "He didn't know the answer."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "does not"
+    ]
+   },
+   {
+    "correct": "know",
+    "options": [
+     "know",
+     "knew",
+     "known"
+    ]
+   },
+   {
+    "correct": "the answer.",
+    "options": [
+     "the answer.",
+     "an answer."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Они говорили с учителем?",
+  "en": "Did they speak with the teacher?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "we",
+     "you"
+    ]
+   },
+   {
+    "correct": "speak",
+    "options": [
+     "speak",
+     "spoke",
+     "spoken"
+    ]
+   },
+   {
+    "correct": "with the teacher?",
+    "options": [
+     "with the teacher?",
+     "to the teacher?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я думал об этой поездке.",
+  "en": "I thought about this trip.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "thought",
+    "options": [
+     "thought",
+     "think",
+     "thinks",
+     "thinking"
+    ]
+   },
+   {
+    "correct": "about this trip.",
+    "options": [
+     "about this trip.",
+     "about this car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Она не брала мой телефон.",
+  "en": "She did not take my phone.",
+  "alternatives": [
+   "She didn't take my phone."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "does not",
+     "do not"
+    ]
+   },
+   {
+    "correct": "take",
+    "options": [
+     "take",
+     "took",
+     "taken"
+    ]
+   },
+   {
+    "correct": "my phone.",
+    "options": [
+     "my phone.",
+     "my book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Ты нашел мой подарок?",
+  "en": "Did you find my present?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "find",
+    "options": [
+     "find",
+     "found",
+     "finds"
+    ]
+   },
+   {
+    "correct": "my present?",
+    "options": [
+     "my present?",
+     "my key?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Мы пили сок на завтрак.",
+  "en": "We drank juice for breakfast.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "drank",
+    "options": [
+     "drank",
+     "drink",
+     "drinks"
+    ]
+   },
+   {
+    "correct": "juice for breakfast.",
+    "options": [
+     "juice for breakfast.",
+     "water for breakfast."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Он не пришел на встречу.",
+  "en": "He did not come to the meeting.",
+  "alternatives": [
+   "He didn't come to the meeting."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "does not",
+     "did"
+    ]
+   },
+   {
+    "correct": "come",
+    "options": [
+     "come",
+     "came",
+     "comes"
+    ]
+   },
+   {
+    "correct": "to the meeting.",
+    "options": [
+     "to the meeting.",
+     "to the park."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Они говорили по-английски вчера.",
+  "en": "They spoke English yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "spoke",
+    "options": [
+     "spoke",
+     "speak",
+     "speaks"
+    ]
+   },
+   {
+    "correct": "English yesterday.",
+    "options": [
+     "English yesterday.",
+     "well yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я не читал эту статью.",
+  "en": "I did not read this article.",
+  "alternatives": [
+   "I didn't read this article."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "does not"
+    ]
+   },
+   {
+    "correct": "read",
+    "options": [
+     "read",
+     "readed",
+     "reads"
+    ]
+   },
+   {
+    "correct": "this article.",
+    "options": [
+     "this article.",
+     "this text."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Вы дали ему мой адрес?",
+  "en": "Did you give him my address?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "he"
+    ]
+   },
+   {
+    "correct": "give",
+    "options": [
+     "give",
+     "gave",
+     "gives"
+    ]
+   },
+   {
+    "correct": "him my address?",
+    "options": [
+     "him my address?",
+     "her my number?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Мы сделали ошибки в тесте.",
+  "en": "We made mistakes in the test.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "made",
+    "options": [
+     "made",
+     "make",
+     "makes"
+    ]
+   },
+   {
+    "correct": "mistakes in the test.",
+    "options": [
+     "mistakes in the test.",
+     "work at home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Она не ела яблоки утром.",
+  "en": "She did not eat apples in the morning.",
+  "alternatives": [
+   "She didn't eat apples in the morning."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "does not",
+     "do not"
+    ]
+   },
+   {
+    "correct": "eat",
+    "options": [
+     "eat",
+     "ate",
+     "eats"
+    ]
+   },
+   {
+    "correct": "apples in the morning.",
+    "options": [
+     "apples in the morning.",
+     "fruit in the morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Ты написал ему письмо?",
+  "en": "Did you write him a letter?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "write",
+    "options": [
+     "write",
+     "wrote",
+     "writes"
+    ]
+   },
+   {
+    "correct": "him a letter?",
+    "options": [
+     "him a letter?",
+     "a long story?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я получил сообщение от него.",
+  "en": "I got a message from him.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "got",
+    "options": [
+     "got",
+     "get",
+     "gets"
+    ]
+   },
+   {
+    "correct": "a message from him.",
+    "options": [
+     "a message from him.",
+     "a gift from her."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я пил чай вчера вечером.",
+  "en": "I drank tea yesterday evening.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "drank",
+    "options": [
+     "drank",
+     "drink",
+     "drunk",
+     "drinks"
+    ]
+   },
+   {
+    "correct": "tea yesterday evening.",
+    "options": [
+     "tea yesterday evening.",
+     "the coffee yesterday.",
+     "some juice."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Он не ходил в кино.",
+  "en": "He didn't go to the cinema.",
+  "alternatives": [
+   "He did not go to the cinema."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "wasn't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "go",
+    "options": [
+     "go",
+     "went",
+     "gone",
+     "goes"
+    ]
+   },
+   {
+    "correct": "to the cinema.",
+    "options": [
+     "to the cinema.",
+     "to school.",
+     "home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Вы читали эту книгу?",
+  "en": "Did you read this book?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Were",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "read",
+    "options": [
+     "read",
+     "readed",
+     "reads",
+     "reading"
+    ]
+   },
+   {
+    "correct": "this book?",
+    "options": [
+     "this book?",
+     "this story?",
+     "my letter?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Они сказали мне правду.",
+  "en": "They told me the truth.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "told",
+    "options": [
+     "told",
+     "tell",
+     "tells",
+     "say"
+    ]
+   },
+   {
+    "correct": "me the truth.",
+    "options": [
+     "me the truth.",
+     "the story.",
+     "me everything."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я не взял твою сумку.",
+  "en": "I didn't take your bag.",
+  "alternatives": [
+   "I did not take your bag."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "won't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "take",
+    "options": [
+     "take",
+     "took",
+     "taken",
+     "takes"
+    ]
+   },
+   {
+    "correct": "your bag.",
+    "options": [
+     "your bag.",
+     "your pen.",
+     "your book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Ты получил мой подарок?",
+  "en": "Did you get my present?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Were",
+     "Have"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "get",
+    "options": [
+     "get",
+     "got",
+     "gets",
+     "getting"
+    ]
+   },
+   {
+    "correct": "my present?",
+    "options": [
+     "my present?",
+     "my letter?",
+     "the message?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Мы думали об этом проекте.",
+  "en": "We thought about this project.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "I",
+     "She"
+    ]
+   },
+   {
+    "correct": "thought",
+    "options": [
+     "thought",
+     "think",
+     "thinks",
+     "thinking"
+    ]
+   },
+   {
+    "correct": "about this project.",
+    "options": [
+     "about this project.",
+     "about it.",
+     "about that."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Она не видела его вчера.",
+  "en": "She didn't see him yesterday.",
+  "alternatives": [
+   "She did not see him yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "doesn't",
+     "don't",
+     "isn't"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "saw",
+     "seen",
+     "sees"
+    ]
+   },
+   {
+    "correct": "him yesterday.",
+    "options": [
+     "him yesterday.",
+     "them today.",
+     "you then."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Они написали это упражнение.",
+  "en": "They wrote this exercise.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "I",
+     "She"
+    ]
+   },
+   {
+    "correct": "wrote",
+    "options": [
+     "wrote",
+     "write",
+     "written",
+     "writes"
+    ]
+   },
+   {
+    "correct": "this exercise.",
+    "options": [
+     "this exercise.",
+     "this letter.",
+     "the book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Ты не съел свой завтрак.",
+  "en": "You didn't eat your breakfast.",
+  "alternatives": [
+   "You did not eat your breakfast."
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "won't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "eat",
+    "options": [
+     "eat",
+     "ate",
+     "eaten",
+     "eats"
+    ]
+   },
+   {
+    "correct": "your breakfast.",
+    "options": [
+     "your breakfast.",
+     "your lunch.",
+     "the cake."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Вы говорили с ним?",
+  "en": "Did you speak with him?",
+  "alternatives": [
+   "Did you speak to him?"
+  ],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Were",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "speak",
+    "options": [
+     "speak",
+     "spoke",
+     "spoken",
+     "speaks"
+    ]
+   },
+   {
+    "correct": "with him?",
+    "options": [
+     "with him?",
+     "to him?",
+     "about it?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я сделал это правильно.",
+  "en": "I made it correctly.",
+  "alternatives": [
+   "I did it correctly."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "made",
+    "options": [
+     "made",
+     "make",
+     "makes",
+     "making"
+    ]
+   },
+   {
+    "correct": "it correctly.",
+    "options": [
+     "it correctly.",
+     "it right.",
+     "the work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Она купила новый телефон.",
+  "en": "She bought a new phone.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "bought",
+    "options": [
+     "bought",
+     "buy",
+     "buys",
+     "buyed"
+    ]
+   },
+   {
+    "correct": "a new phone.",
+    "options": [
+     "a new phone.",
+     "the new phone."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я не пил кофе утром.",
+  "en": "I did not drink coffee in the morning.",
+  "alternatives": [
+   "I didn't drink coffee in the morning."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "does not"
+    ]
+   },
+   {
+    "correct": "drink",
+    "options": [
+     "drink",
+     "drank",
+     "drinks"
+    ]
+   },
+   {
+    "correct": "coffee in the morning.",
+    "options": [
+     "coffee in the morning.",
+     "tea in the morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Ты знал правду об этом?",
+  "en": "Did you know the truth about it?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "he"
+    ]
+   },
+   {
+    "correct": "know",
+    "options": [
+     "know",
+     "knew",
+     "known"
+    ]
+   },
+   {
+    "correct": "the truth about it?",
+    "options": [
+     "the truth about it?",
+     "the story about it?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Он съел весь пирог.",
+  "en": "He ate the whole cake.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "ate",
+    "options": [
+     "ate",
+     "eat",
+     "eats",
+     "eated"
+    ]
+   },
+   {
+    "correct": "the whole cake.",
+    "options": [
+     "the whole cake.",
+     "all the cake."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Они не видели нас вчера.",
+  "en": "They did not see us yesterday.",
+  "alternatives": [
+   "They didn't see us yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "does not"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "saw",
+     "sees"
+    ]
+   },
+   {
+    "correct": "us yesterday.",
+    "options": [
+     "us yesterday.",
+     "me yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Вы получили мой подарок?",
+  "en": "Did you get my present?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "get",
+    "options": [
+     "get",
+     "got",
+     "gets"
+    ]
+   },
+   {
+    "correct": "my present?",
+    "options": [
+     "my present?",
+     "my gift?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я сказал ему правду.",
+  "en": "I told him the truth.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "told",
+    "options": [
+     "told",
+     "tell",
+     "tells",
+     "telled"
+    ]
+   },
+   {
+    "correct": "him the truth.",
+    "options": [
+     "him the truth.",
+     "her the truth."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Она не написала письмо.",
+  "en": "She did not write a letter.",
+  "alternatives": [
+   "She didn't write a letter."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "does not",
+     "do not"
+    ]
+   },
+   {
+    "correct": "write",
+    "options": [
+     "write",
+     "wrote",
+     "writes"
+    ]
+   },
+   {
+    "correct": "a letter.",
+    "options": [
+     "a letter.",
+     "the letter."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Мы нашли это место.",
+  "en": "We found this place.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "found",
+    "options": [
+     "found",
+     "find",
+     "finds",
+     "finded"
+    ]
+   },
+   {
+    "correct": "this place.",
+    "options": [
+     "this place.",
+     "that place."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Она сделала этот выбор.",
+  "en": "She made this choice.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "made",
+    "options": [
+     "made",
+     "make",
+     "makes",
+     "maked"
+    ]
+   },
+   {
+    "correct": "this choice.",
+    "options": [
+     "this choice.",
+     "that choice."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Они не говорили по-английски.",
+  "en": "They did not speak English.",
+  "alternatives": [
+   "They didn't speak English."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "does not"
+    ]
+   },
+   {
+    "correct": "speak",
+    "options": [
+     "speak",
+     "spoke",
+     "speaks"
+    ]
+   },
+   {
+    "correct": "English.",
+    "options": [
+     "English.",
+     "the language."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я купил хлеб в магазине.",
+  "en": "I bought bread at the shop.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "You",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "bought",
+    "options": [
+     "bought",
+     "buy",
+     "buys",
+     "buying"
+    ]
+   },
+   {
+    "correct": "bread at the shop.",
+    "options": [
+     "bread at the shop.",
+     "bread in the shop.",
+     "the bread at shop."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Он не пошел в школу.",
+  "en": "He did not go to school.",
+  "alternatives": [
+   "He didn't go to school."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "does not",
+     "will not"
+    ]
+   },
+   {
+    "correct": "go",
+    "options": [
+     "go",
+     "went",
+     "goes",
+     "gone"
+    ]
+   },
+   {
+    "correct": "to school.",
+    "options": [
+     "to school.",
+     "at school.",
+     "in school."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Ты увидел его в городе?",
+  "en": "Did you see him in town?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Will"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "saw",
+     "seen",
+     "sees"
+    ]
+   },
+   {
+    "correct": "him in town?",
+    "options": [
+     "him in town?",
+     "him at town?",
+     "he in town?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Она взяла мою книгу.",
+  "en": "She took my book.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "took",
+    "options": [
+     "took",
+     "take",
+     "takes",
+     "taking"
+    ]
+   },
+   {
+    "correct": "my book.",
+    "options": [
+     "my book.",
+     "the book.",
+     "a book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Мы не дали им денег.",
+  "en": "We did not give them money.",
+  "alternatives": [
+   "We didn't give them money."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "You",
+     "I"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "does not",
+     "will not"
+    ]
+   },
+   {
+    "correct": "give",
+    "options": [
+     "give",
+     "gave",
+     "given",
+     "gives"
+    ]
+   },
+   {
+    "correct": "them money.",
+    "options": [
+     "them money.",
+     "us money.",
+     "him money."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Они пришли сюда вчера?",
+  "en": "Did they come here yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Were"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "we",
+     "he",
+     "you"
+    ]
+   },
+   {
+    "correct": "come",
+    "options": [
+     "come",
+     "came",
+     "comes",
+     "coming"
+    ]
+   },
+   {
+    "correct": "here yesterday?",
+    "options": [
+     "here yesterday?",
+     "to here yesterday?",
+     "there yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я съел яблоко на завтрак.",
+  "en": "I ate an apple for breakfast.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "You",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "ate",
+    "options": [
+     "ate",
+     "eat",
+     "eats",
+     "eaten"
+    ]
+   },
+   {
+    "correct": "an apple for breakfast.",
+    "options": [
+     "an apple for breakfast.",
+     "the apple for breakfast.",
+     "an apple at breakfast."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Он не пил воду утром.",
+  "en": "He did not drink water in the morning.",
+  "alternatives": [
+   "He didn't drink water in the morning."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "does not",
+     "will not"
+    ]
+   },
+   {
+    "correct": "drink",
+    "options": [
+     "drink",
+     "drank",
+     "drunk",
+     "drinks"
+    ]
+   },
+   {
+    "correct": "water in the morning.",
+    "options": [
+     "water in the morning.",
+     "water at the morning.",
+     "the water in morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Вы написали ей ответ?",
+  "en": "Did you write her an answer?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Have"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "he",
+     "we"
+    ]
+   },
+   {
+    "correct": "write",
+    "options": [
+     "write",
+     "wrote",
+     "written",
+     "writes"
+    ]
+   },
+   {
+    "correct": "her an answer?",
+    "options": [
+     "her an answer?",
+     "to her an answer?",
+     "her the answer?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я нашел работу в Лондоне.",
+  "en": "I found a job in London.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "found",
+    "options": [
+     "found",
+     "find",
+     "finds",
+     "finding"
+    ]
+   },
+   {
+    "correct": "a job in London.",
+    "options": [
+     "a job in London.",
+     "the job in London.",
+     "a job at London."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Она не знала его имени.",
+  "en": "She did not know his name.",
+  "alternatives": [
+   "She didn't know his name."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "do not",
+     "does not",
+     "will not"
+    ]
+   },
+   {
+    "correct": "know",
+    "options": [
+     "know",
+     "knew",
+     "known",
+     "knows"
+    ]
+   },
+   {
+    "correct": "his name.",
+    "options": [
+     "his name.",
+     "her name.",
+     "the name."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Ты рассказал ему историю?",
+  "en": "Did you tell him the story?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Will"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "we",
+     "he"
+    ]
+   },
+   {
+    "correct": "tell",
+    "options": [
+     "tell",
+     "told",
+     "tells",
+     "telling"
+    ]
+   },
+   {
+    "correct": "him the story?",
+    "options": [
+     "him the story?",
+     "to him the story?",
+     "him a story?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Я увидел его в парке.",
+  "en": "I saw him in the park.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "saw",
+    "options": [
+     "saw",
+     "see",
+     "seen",
+     "seeing"
+    ]
+   },
+   {
+    "correct": "him in the park.",
+    "options": [
+     "him in the park.",
+     "her in the park.",
+     "them in the park.",
+     "it in the park."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Ты не купил молоко вчера.",
+  "en": "You didn't buy milk yesterday.",
+  "alternatives": [
+   "You did not buy milk yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "bought",
+     "buying",
+     "buys"
+    ]
+   },
+   {
+    "correct": "milk yesterday.",
+    "options": [
+     "milk yesterday.",
+     "bread yesterday.",
+     "water yesterday.",
+     "juice yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Они не пили кофе утром.",
+  "en": "They didn't drink coffee in the morning.",
+  "alternatives": [
+   "They did not drink coffee in the morning."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "weren't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "drink",
+    "options": [
+     "drink",
+     "drank",
+     "drinking",
+     "drinks"
+    ]
+   },
+   {
+    "correct": "coffee in the morning.",
+    "options": [
+     "coffee in the morning.",
+     "tea in the morning.",
+     "milk in the morning.",
+     "water in the morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Вы прочитали эту книгу?",
+  "en": "Did you read this book?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "read",
+    "options": [
+     "read",
+     "readed",
+     "reading",
+     "reads"
+    ]
+   },
+   {
+    "correct": "this book?",
+    "options": [
+     "this book?",
+     "that book?",
+     "this article?",
+     "this story?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Он сказал мне правду.",
+  "en": "He told me the truth.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "told",
+    "options": [
+     "told",
+     "tell",
+     "telling",
+     "tells"
+    ]
+   },
+   {
+    "correct": "me the truth.",
+    "options": [
+     "me the truth.",
+     "us the truth.",
+     "him the truth.",
+     "her the truth."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "irregular_past",
+  "ru": "Мы не думали об этом.",
+  "en": "We didn't think about it.",
+  "alternatives": [
+   "We did not think about it."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "I",
+     "You"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "won't",
+     "aren't"
+    ]
+   },
+   {
+    "correct": "think",
+    "options": [
+     "think",
+     "thought",
+     "thinking",
+     "thinks"
+    ]
+   },
+   {
+    "correct": "about it.",
+    "options": [
+     "about it.",
+     "about him.",
+     "about her.",
+     "about them."
+    ]
+   }
+  ]
+ }
+]

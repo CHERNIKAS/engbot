@@ -1,0 +1,3350 @@
+[
+ {
+  "topic": "comparatives",
+  "ru": "Этот дом больше того дома.",
+  "en": "This house is bigger than that house.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This house is",
+    "options": [
+     "This house is",
+     "That house is",
+     "The house is"
+    ]
+   },
+   {
+    "correct": "bigger",
+    "options": [
+     "bigger",
+     "more big",
+     "biggest",
+     "more bigger"
+    ]
+   },
+   {
+    "correct": "than",
+    "options": [
+     "than",
+     "that",
+     "then",
+     "as"
+    ]
+   },
+   {
+    "correct": "that house.",
+    "options": [
+     "that house.",
+     "this house.",
+     "the house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Книга была интереснее фильма.",
+  "en": "The book was more interesting than the movie.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The book was",
+    "options": [
+     "The book was",
+     "The book is",
+     "The movie was"
+    ]
+   },
+   {
+    "correct": "more interesting",
+    "options": [
+     "more interesting",
+     "interesting",
+     "most interesting",
+     "more interest"
+    ]
+   },
+   {
+    "correct": "than the movie.",
+    "options": [
+     "than the movie.",
+     "than a movie.",
+     "the movie."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это был самый дорогой подарок.",
+  "en": "It was the most expensive gift.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It was",
+    "options": [
+     "It was",
+     "It is",
+     "They were"
+    ]
+   },
+   {
+    "correct": "the most expensive",
+    "options": [
+     "the most expensive",
+     "the more expensive",
+     "the expensivest"
+    ]
+   },
+   {
+    "correct": "gift.",
+    "options": [
+     "gift.",
+     "present.",
+     "toy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Мой результат лучше твоего.",
+  "en": "My result is better than yours.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My result is",
+    "options": [
+     "My result is",
+     "My result was",
+     "Your result is"
+    ]
+   },
+   {
+    "correct": "better",
+    "options": [
+     "better",
+     "gooder",
+     "best",
+     "more good"
+    ]
+   },
+   {
+    "correct": "than yours.",
+    "options": [
+     "than yours.",
+     "than your.",
+     "than mine."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Погода сегодня хуже, чем вчера.",
+  "en": "The weather is worse today than yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The weather is",
+    "options": [
+     "The weather is",
+     "The weather was"
+    ]
+   },
+   {
+    "correct": "worse",
+    "options": [
+     "worse",
+     "baddest",
+     "more bad",
+     "worst"
+    ]
+   },
+   {
+    "correct": "today than yesterday.",
+    "options": [
+     "today than yesterday.",
+     "than yesterday.",
+     "today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот стул самый старый.",
+  "en": "This chair is the oldest.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This chair is",
+    "options": [
+     "This chair is",
+     "This table is"
+    ]
+   },
+   {
+    "correct": "the oldest.",
+    "options": [
+     "the oldest.",
+     "the older.",
+     "the old."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Ты счастливее меня.",
+  "en": "You are happier than me.",
+  "alternatives": [
+   "You are happier than I am."
+  ],
+  "slots": [
+   {
+    "correct": "You are",
+    "options": [
+     "You are",
+     "You were"
+    ]
+   },
+   {
+    "correct": "happier",
+    "options": [
+     "happier",
+     "more happy",
+     "happyest"
+    ]
+   },
+   {
+    "correct": "than me.",
+    "options": [
+     "than me.",
+     "than I.",
+     "than my."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это самое сложное задание.",
+  "en": "This is the most difficult task.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "That is"
+    ]
+   },
+   {
+    "correct": "the most difficult",
+    "options": [
+     "the most difficult",
+     "the more difficult",
+     "the difficultest"
+    ]
+   },
+   {
+    "correct": "task.",
+    "options": [
+     "task.",
+     "job.",
+     "work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Твой план хуже моего.",
+  "en": "Your plan is worse than mine.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Your plan is",
+    "options": [
+     "Your plan is",
+     "My plan is"
+    ]
+   },
+   {
+    "correct": "worse",
+    "options": [
+     "worse",
+     "bader",
+     "worst",
+     "more bad"
+    ]
+   },
+   {
+    "correct": "than mine.",
+    "options": [
+     "than mine.",
+     "than my.",
+     "than yours."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это лучшая машина в городе.",
+  "en": "This is the best car in town.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "That is"
+    ]
+   },
+   {
+    "correct": "the best",
+    "options": [
+     "the best",
+     "the goodest",
+     "the better"
+    ]
+   },
+   {
+    "correct": "car in town.",
+    "options": [
+     "car in town.",
+     "car here.",
+     "car ever."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот путь самый короткий.",
+  "en": "This way is the shortest.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This way is",
+    "options": [
+     "This way is",
+     "The road is"
+    ]
+   },
+   {
+    "correct": "the shortest.",
+    "options": [
+     "the shortest.",
+     "the shorter.",
+     "the short."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Мой кофе лучше твоего.",
+  "en": "My coffee is better than yours.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My coffee is",
+    "options": [
+     "My coffee is",
+     "The coffee is"
+    ]
+   },
+   {
+    "correct": "better",
+    "options": [
+     "better",
+     "gooder",
+     "best",
+     "more good"
+    ]
+   },
+   {
+    "correct": "than yours.",
+    "options": [
+     "than yours.",
+     "than your.",
+     "than mine."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот мяч больше того.",
+  "en": "This ball is bigger than that.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This ball",
+    "options": [
+     "This ball",
+     "The ball"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "bigger than",
+    "options": [
+     "bigger than",
+     "more big than",
+     "biggest than"
+    ]
+   },
+   {
+    "correct": "that.",
+    "options": [
+     "that.",
+     "this."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Твоя машина новее моей.",
+  "en": "Your car is newer than mine.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Your car",
+    "options": [
+     "Your car",
+     "The car"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "newer than",
+    "options": [
+     "newer than",
+     "more new than",
+     "newest than"
+    ]
+   },
+   {
+    "correct": "mine.",
+    "options": [
+     "mine.",
+     "my."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Самолет быстрее поезда.",
+  "en": "The plane is faster than the train.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The plane",
+    "options": [
+     "The plane",
+     "The train"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "faster than",
+    "options": [
+     "faster than",
+     "more fast than",
+     "fastest than"
+    ]
+   },
+   {
+    "correct": "the train.",
+    "options": [
+     "the train.",
+     "the car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот город самый красивый.",
+  "en": "This is the most beautiful city.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "It is"
+    ]
+   },
+   {
+    "correct": "the most beautiful",
+    "options": [
+     "the most beautiful",
+     "the beautifulest",
+     "more beautiful"
+    ]
+   },
+   {
+    "correct": "city.",
+    "options": [
+     "city.",
+     "place."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Работа сложнее, чем я думал.",
+  "en": "The work is more difficult than I thought.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The work",
+    "options": [
+     "The work",
+     "The task"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "more difficult than",
+    "options": [
+     "more difficult than",
+     "difficultest than",
+     "difficulter than"
+    ]
+   },
+   {
+    "correct": "I thought.",
+    "options": [
+     "I thought.",
+     "I think."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот телефон дороже того.",
+  "en": "This phone is more expensive than that.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This phone",
+    "options": [
+     "This phone",
+     "That phone"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "more expensive than",
+    "options": [
+     "more expensive than",
+     "expensiver than",
+     "most expensive than"
+    ]
+   },
+   {
+    "correct": "that.",
+    "options": [
+     "that.",
+     "this."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Сегодняшний урок лучше вчерашнего.",
+  "en": "Today's lesson is better than yesterday's.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Today's lesson",
+    "options": [
+     "Today's lesson",
+     "This lesson"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "better than",
+    "options": [
+     "better than",
+     "gooder than",
+     "worse than"
+    ]
+   },
+   {
+    "correct": "yesterday's.",
+    "options": [
+     "yesterday's.",
+     "the last."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Его оценка хуже моей.",
+  "en": "His grade is worse than mine.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "His grade",
+    "options": [
+     "His grade",
+     "The mark"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "worse than",
+    "options": [
+     "worse than",
+     "badder than",
+     "better than"
+    ]
+   },
+   {
+    "correct": "mine.",
+    "options": [
+     "mine.",
+     "my."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это самый плохой день.",
+  "en": "This is the worst day.",
+  "alternatives": [
+   "It is the worst day."
+  ],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "It is"
+    ]
+   },
+   {
+    "correct": "the worst",
+    "options": [
+     "the worst",
+     "the baddest",
+     "the best"
+    ]
+   },
+   {
+    "correct": "day.",
+    "options": [
+     "day.",
+     "time."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Твой ответ лучше моего.",
+  "en": "Your answer is better than mine.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Your answer",
+    "options": [
+     "Your answer",
+     "The answer"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "better than",
+    "options": [
+     "better than",
+     "gooder than",
+     "worse than"
+    ]
+   },
+   {
+    "correct": "mine.",
+    "options": [
+     "mine.",
+     "my."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это худшая идея из всех.",
+  "en": "This is the worst idea of all.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "It is"
+    ]
+   },
+   {
+    "correct": "the worst",
+    "options": [
+     "the worst",
+     "the baddest",
+     "the best"
+    ]
+   },
+   {
+    "correct": "idea",
+    "options": [
+     "idea",
+     "plan"
+    ]
+   },
+   {
+    "correct": "of all.",
+    "options": [
+     "of all.",
+     "ever."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Мой день сегодня хуже вчерашнего.",
+  "en": "My day is worse than yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My day",
+    "options": [
+     "My day",
+     "Today"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "worse than",
+    "options": [
+     "worse than",
+     "badder than",
+     "better than"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "the last."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Эта собака быстрее той.",
+  "en": "This dog is faster than that one.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This dog",
+    "options": [
+     "This dog",
+     "That dog",
+     "My dog"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "faster than",
+    "options": [
+     "faster than",
+     "more fast than",
+     "fastest than",
+     "more faster than"
+    ]
+   },
+   {
+    "correct": "that one.",
+    "options": [
+     "that one.",
+     "this one."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот город меньше того.",
+  "en": "This city is smaller than that one.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This city",
+    "options": [
+     "This city",
+     "This house"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "smaller than",
+    "options": [
+     "smaller than",
+     "more small than",
+     "smallest than"
+    ]
+   },
+   {
+    "correct": "that one.",
+    "options": [
+     "that one.",
+     "this one."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот фильм интереснее того.",
+  "en": "This film is more interesting than that one.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This film",
+    "options": [
+     "This film",
+     "That film"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "more interesting than",
+    "options": [
+     "more interesting than",
+     "interesting than",
+     "most interesting than"
+    ]
+   },
+   {
+    "correct": "that one.",
+    "options": [
+     "that one.",
+     "this one."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот телефон дешевле того.",
+  "en": "This phone is cheaper than that one.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This phone",
+    "options": [
+     "This phone",
+     "This car"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "cheaper than",
+    "options": [
+     "cheaper than",
+     "more cheap than",
+     "cheapest than"
+    ]
+   },
+   {
+    "correct": "that one.",
+    "options": [
+     "that one.",
+     "this one."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот мальчик выше меня.",
+  "en": "This boy is taller than me.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This boy",
+    "options": [
+     "This boy",
+     "This girl"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "taller than",
+    "options": [
+     "taller than",
+     "more tall than",
+     "tallest than"
+    ]
+   },
+   {
+    "correct": "me.",
+    "options": [
+     "me.",
+     "I."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Эта работа важнее той.",
+  "en": "This work is more important than that one.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This work",
+    "options": [
+     "This work",
+     "That job"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "more important than",
+    "options": [
+     "more important than",
+     "importanter than",
+     "most important than"
+    ]
+   },
+   {
+    "correct": "that one.",
+    "options": [
+     "that one.",
+     "this one."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Твой друг лучше моего.",
+  "en": "Your friend is better than mine.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Your friend",
+    "options": [
+     "Your friend",
+     "My friend"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "better than",
+    "options": [
+     "better than",
+     "gooder than",
+     "more good than"
+    ]
+   },
+   {
+    "correct": "mine.",
+    "options": [
+     "mine.",
+     "my."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Его оценка хуже твоей.",
+  "en": "His grade is worse than yours.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "His grade",
+    "options": [
+     "His grade",
+     "Her grade"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "worse than",
+    "options": [
+     "worse than",
+     "bader than",
+     "more bad than"
+    ]
+   },
+   {
+    "correct": "yours.",
+    "options": [
+     "yours.",
+     "your."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это самое дешевое яблоко.",
+  "en": "This is the cheapest apple.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "That is"
+    ]
+   },
+   {
+    "correct": "the cheapest",
+    "options": [
+     "the cheapest",
+     "the more cheap",
+     "the most cheap"
+    ]
+   },
+   {
+    "correct": "apple.",
+    "options": [
+     "apple.",
+     "fruit."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это самое красивое платье.",
+  "en": "This is the most beautiful dress.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "That is"
+    ]
+   },
+   {
+    "correct": "the most beautiful",
+    "options": [
+     "the most beautiful",
+     "the beautifulest",
+     "the more beautiful"
+    ]
+   },
+   {
+    "correct": "dress.",
+    "options": [
+     "dress.",
+     "skirt."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это худший результат сегодня.",
+  "en": "This is the worst result today.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "That is"
+    ]
+   },
+   {
+    "correct": "the worst",
+    "options": [
+     "the worst",
+     "the baddest",
+     "the more bad"
+    ]
+   },
+   {
+    "correct": "result today.",
+    "options": [
+     "result today.",
+     "score today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это лучший вариант для нас.",
+  "en": "This is the best option for us.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "That is"
+    ]
+   },
+   {
+    "correct": "the best",
+    "options": [
+     "the best",
+     "the goodest",
+     "the more good"
+    ]
+   },
+   {
+    "correct": "option for us.",
+    "options": [
+     "option for us.",
+     "choice for us."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот отель лучше того отеля.",
+  "en": "This hotel is better than that one.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This hotel",
+    "options": [
+     "This hotel",
+     "That hotel",
+     "This house"
+    ]
+   },
+   {
+    "correct": "is better than",
+    "options": [
+     "is better than",
+     "is good than",
+     "is more good than",
+     "is best than"
+    ]
+   },
+   {
+    "correct": "that one.",
+    "options": [
+     "that one.",
+     "that hotel.",
+     "that house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Эта ситуация хуже той.",
+  "en": "This situation is worse than that one.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This situation",
+    "options": [
+     "This situation",
+     "That situation"
+    ]
+   },
+   {
+    "correct": "is worse than",
+    "options": [
+     "is worse than",
+     "is bad than",
+     "is more bad than",
+     "is worst than"
+    ]
+   },
+   {
+    "correct": "that one.",
+    "options": [
+     "that one.",
+     "that situation."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Мой компьютер быстрее твоего.",
+  "en": "My computer is faster than yours.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My computer",
+    "options": [
+     "My computer",
+     "Your computer"
+    ]
+   },
+   {
+    "correct": "is faster than",
+    "options": [
+     "is faster than",
+     "is fast than",
+     "is more fast than",
+     "is fastest than"
+    ]
+   },
+   {
+    "correct": "yours.",
+    "options": [
+     "yours.",
+     "your computer."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это самое дешевое молоко.",
+  "en": "This is the cheapest milk.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "That is"
+    ]
+   },
+   {
+    "correct": "the cheapest",
+    "options": [
+     "the cheapest",
+     "the cheap",
+     "the more cheap",
+     "the most cheap"
+    ]
+   },
+   {
+    "correct": "milk.",
+    "options": [
+     "milk.",
+     "drink."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это самый трудный вопрос.",
+  "en": "This is the most difficult question.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "That is"
+    ]
+   },
+   {
+    "correct": "the most difficult",
+    "options": [
+     "the most difficult",
+     "the difficulter",
+     "the more difficult"
+    ]
+   },
+   {
+    "correct": "question.",
+    "options": [
+     "question.",
+     "task."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот город старее того.",
+  "en": "This city is older than that one.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This city",
+    "options": [
+     "This city",
+     "That city"
+    ]
+   },
+   {
+    "correct": "is older than",
+    "options": [
+     "is older than",
+     "is old than",
+     "is more old than"
+    ]
+   },
+   {
+    "correct": "that one.",
+    "options": [
+     "that one.",
+     "that city."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Ты кажешься лучше сегодня.",
+  "en": "You look better today.",
+  "alternatives": [
+   "You seem better today."
+  ],
+  "slots": [
+   {
+    "correct": "You look",
+    "options": [
+     "You look",
+     "You seem"
+    ]
+   },
+   {
+    "correct": "better",
+    "options": [
+     "better",
+     "good",
+     "more good",
+     "best"
+    ]
+   },
+   {
+    "correct": "today.",
+    "options": [
+     "today.",
+     "now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Моя работа хуже твоей.",
+  "en": "My work is worse than yours.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My work",
+    "options": [
+     "My work",
+     "My job"
+    ]
+   },
+   {
+    "correct": "is worse than",
+    "options": [
+     "is worse than",
+     "is bad than",
+     "is more bad than"
+    ]
+   },
+   {
+    "correct": "yours.",
+    "options": [
+     "yours.",
+     "your work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот фильм самый интересный.",
+  "en": "This movie is the most interesting.",
+  "alternatives": [
+   "This film is the most interesting."
+  ],
+  "slots": [
+   {
+    "correct": "This movie",
+    "options": [
+     "This movie",
+     "This film"
+    ]
+   },
+   {
+    "correct": "is the most interesting.",
+    "options": [
+     "is the most interesting.",
+     "is the interestingest.",
+     "is the more interesting."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это самое большое здание.",
+  "en": "This is the biggest building.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "That is"
+    ]
+   },
+   {
+    "correct": "the biggest",
+    "options": [
+     "the biggest",
+     "the big",
+     "the more big"
+    ]
+   },
+   {
+    "correct": "building.",
+    "options": [
+     "building.",
+     "house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Ее подарок лучше моего.",
+  "en": "Her gift is better than mine.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Her gift",
+    "options": [
+     "Her gift",
+     "His gift"
+    ]
+   },
+   {
+    "correct": "is better than",
+    "options": [
+     "is better than",
+     "is good than",
+     "is more good than"
+    ]
+   },
+   {
+    "correct": "mine.",
+    "options": [
+     "mine.",
+     "my gift."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это худшее время для нас.",
+  "en": "This is the worst time for us.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "That is"
+    ]
+   },
+   {
+    "correct": "the worst",
+    "options": [
+     "the worst",
+     "the bad",
+     "the more bad"
+    ]
+   },
+   {
+    "correct": "time for us.",
+    "options": [
+     "time for us.",
+     "moment for us."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот дом больше того.",
+  "en": "This house is bigger than that.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This house",
+    "options": [
+     "This house",
+     "That house",
+     "The house"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was",
+     "are"
+    ]
+   },
+   {
+    "correct": "bigger than",
+    "options": [
+     "bigger than",
+     "more big than",
+     "biggest than"
+    ]
+   },
+   {
+    "correct": "that.",
+    "options": [
+     "that.",
+     "this.",
+     "the one."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Эта книга интереснее той.",
+  "en": "This book is more interesting than that.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This book",
+    "options": [
+     "This book",
+     "The book",
+     "That book"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was",
+     "are"
+    ]
+   },
+   {
+    "correct": "more interesting than",
+    "options": [
+     "more interesting than",
+     "interestinger than",
+     "most interesting than"
+    ]
+   },
+   {
+    "correct": "that.",
+    "options": [
+     "that.",
+     "this.",
+     "the one."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Его собака быстрее моей.",
+  "en": "His dog is faster than mine.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "His dog",
+    "options": [
+     "His dog",
+     "The dog",
+     "My dog"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was",
+     "are"
+    ]
+   },
+   {
+    "correct": "faster than",
+    "options": [
+     "faster than",
+     "more fast than",
+     "fastest than"
+    ]
+   },
+   {
+    "correct": "mine.",
+    "options": [
+     "mine.",
+     "my.",
+     "the mine."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это самое красивое место.",
+  "en": "This is the most beautiful place.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "It is",
+     "That is"
+    ]
+   },
+   {
+    "correct": "the most beautiful",
+    "options": [
+     "the most beautiful",
+     "the beautifulest",
+     "more beautiful"
+    ]
+   },
+   {
+    "correct": "place.",
+    "options": [
+     "place.",
+     "city.",
+     "spot."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Твой стул старее моего.",
+  "en": "Your chair is older than mine.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Your chair",
+    "options": [
+     "Your chair",
+     "The chair",
+     "My chair"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are",
+     "was"
+    ]
+   },
+   {
+    "correct": "older than",
+    "options": [
+     "older than",
+     "more old than",
+     "oldest than"
+    ]
+   },
+   {
+    "correct": "mine.",
+    "options": [
+     "mine.",
+     "my.",
+     "the mine."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Мой план лучше твоего.",
+  "en": "My plan is better than yours.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My plan",
+    "options": [
+     "My plan",
+     "The plan",
+     "His plan"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was",
+     "are"
+    ]
+   },
+   {
+    "correct": "better than",
+    "options": [
+     "better than",
+     "gooder than",
+     "best than"
+    ]
+   },
+   {
+    "correct": "yours.",
+    "options": [
+     "yours.",
+     "your.",
+     "the yours."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Твой совет хуже моего.",
+  "en": "Your advice is worse than mine.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Your advice",
+    "options": [
+     "Your advice",
+     "The advice",
+     "His advice"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was",
+     "are"
+    ]
+   },
+   {
+    "correct": "worse than",
+    "options": [
+     "worse than",
+     "badder than",
+     "worst than"
+    ]
+   },
+   {
+    "correct": "mine.",
+    "options": [
+     "mine.",
+     "my.",
+     "the mine."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это самое дорогое яблоко.",
+  "en": "This is the most expensive apple.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "It is",
+     "That is"
+    ]
+   },
+   {
+    "correct": "the most expensive",
+    "options": [
+     "the most expensive",
+     "the expensivest",
+     "more expensive"
+    ]
+   },
+   {
+    "correct": "apple.",
+    "options": [
+     "apple.",
+     "fruit.",
+     "food."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Твой результат лучше моего.",
+  "en": "Your result is better than mine.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Your result",
+    "options": [
+     "Your result",
+     "The result",
+     "His result"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was",
+     "are"
+    ]
+   },
+   {
+    "correct": "better than",
+    "options": [
+     "better than",
+     "gooder than",
+     "more good than"
+    ]
+   },
+   {
+    "correct": "mine.",
+    "options": [
+     "mine.",
+     "my.",
+     "the mine."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это худший выбор сегодня.",
+  "en": "This is the worst choice today.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "It is",
+     "That is"
+    ]
+   },
+   {
+    "correct": "the worst",
+    "options": [
+     "the worst",
+     "the baddest",
+     "worse"
+    ]
+   },
+   {
+    "correct": "choice today.",
+    "options": [
+     "choice today.",
+     "option today.",
+     "decision today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот путь длиннее того.",
+  "en": "This way is longer than that.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This way",
+    "options": [
+     "This way",
+     "The way",
+     "That way"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was",
+     "are"
+    ]
+   },
+   {
+    "correct": "longer than",
+    "options": [
+     "longer than",
+     "more long than",
+     "longest than"
+    ]
+   },
+   {
+    "correct": "that.",
+    "options": [
+     "that.",
+     "this.",
+     "the one."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Его машина хуже моей.",
+  "en": "His car is worse than mine.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "His car",
+    "options": [
+     "His car",
+     "The car",
+     "My car"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was",
+     "are"
+    ]
+   },
+   {
+    "correct": "worse than",
+    "options": [
+     "worse than",
+     "badder than",
+     "worst than"
+    ]
+   },
+   {
+    "correct": "mine.",
+    "options": [
+     "mine.",
+     "my.",
+     "the mine."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это здание выше того.",
+  "en": "This building is taller than that.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This building",
+    "options": [
+     "This building",
+     "That building"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "taller than",
+    "options": [
+     "taller than",
+     "bigger than",
+     "smaller than"
+    ]
+   },
+   {
+    "correct": "that.",
+    "options": [
+     "that.",
+     "this."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Тот самолет быстрее этого.",
+  "en": "That plane is faster than this one.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "That plane",
+    "options": [
+     "That plane",
+     "This plane"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "faster than",
+    "options": [
+     "faster than",
+     "slower than"
+    ]
+   },
+   {
+    "correct": "this one.",
+    "options": [
+     "this one.",
+     "that one."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот урок был самым трудным.",
+  "en": "This lesson was the most difficult.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This lesson",
+    "options": [
+     "This lesson",
+     "That lesson"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "is"
+    ]
+   },
+   {
+    "correct": "the most difficult.",
+    "options": [
+     "the most difficult.",
+     "the most interesting."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Твоя идея хуже моей.",
+  "en": "Your idea is worse than mine.",
+  "alternatives": [
+   "Your idea's worse than mine."
+  ],
+  "slots": [
+   {
+    "correct": "Your idea",
+    "options": [
+     "Your idea",
+     "My idea"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "worse than",
+    "options": [
+     "worse than",
+     "better than"
+    ]
+   },
+   {
+    "correct": "mine.",
+    "options": [
+     "mine.",
+     "yours."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это самое большое дерево.",
+  "en": "This is the biggest tree.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "That is"
+    ]
+   },
+   {
+    "correct": "the biggest",
+    "options": [
+     "the biggest",
+     "the smallest"
+    ]
+   },
+   {
+    "correct": "tree.",
+    "options": [
+     "tree.",
+     "house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Эта книга дороже той.",
+  "en": "This book is more expensive than that one.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This book",
+    "options": [
+     "This book",
+     "That book"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "more expensive than",
+    "options": [
+     "more expensive than",
+     "cheaper than"
+    ]
+   },
+   {
+    "correct": "that one.",
+    "options": [
+     "that one.",
+     "this one."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Он самый счастливый человек.",
+  "en": "He is the happiest person.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He is",
+    "options": [
+     "He is",
+     "She is"
+    ]
+   },
+   {
+    "correct": "the happiest",
+    "options": [
+     "the happiest",
+     "the saddest"
+    ]
+   },
+   {
+    "correct": "person.",
+    "options": [
+     "person.",
+     "boy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Твой результат хуже моего.",
+  "en": "Your result is worse than mine.",
+  "alternatives": [
+   "Your result's worse than mine."
+  ],
+  "slots": [
+   {
+    "correct": "Your result",
+    "options": [
+     "Your result",
+     "My result"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "worse than",
+    "options": [
+     "worse than",
+     "better than"
+    ]
+   },
+   {
+    "correct": "mine.",
+    "options": [
+     "mine.",
+     "yours."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот отель лучше того.",
+  "en": "This hotel is better than that one.",
+  "alternatives": [
+   "This hotel's better than that one."
+  ],
+  "slots": [
+   {
+    "correct": "This hotel",
+    "options": [
+     "This hotel",
+     "That hotel"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "better than",
+    "options": [
+     "better than",
+     "worse than"
+    ]
+   },
+   {
+    "correct": "that one.",
+    "options": [
+     "that one.",
+     "this one."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это был худший день.",
+  "en": "It was the worst day.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "It was",
+    "options": [
+     "It was",
+     "It is"
+    ]
+   },
+   {
+    "correct": "the worst",
+    "options": [
+     "the worst",
+     "the best"
+    ]
+   },
+   {
+    "correct": "day.",
+    "options": [
+     "day.",
+     "time."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот дом самый старый.",
+  "en": "This house is the oldest.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This house",
+    "options": [
+     "This house",
+     "That house",
+     "The house"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "the oldest",
+    "options": [
+     "the oldest",
+     "the older",
+     "oldest"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Она счастливее, чем я.",
+  "en": "She is happier than me.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "happier",
+    "options": [
+     "happier",
+     "more happy",
+     "happy"
+    ]
+   },
+   {
+    "correct": "than me",
+    "options": [
+     "than me",
+     "then me",
+     "than I"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это самое дорогое кольцо.",
+  "en": "This is the most expensive ring.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "It is"
+    ]
+   },
+   {
+    "correct": "the most expensive",
+    "options": [
+     "the most expensive",
+     "the expensive",
+     "more expensive"
+    ]
+   },
+   {
+    "correct": "ring",
+    "options": [
+     "ring",
+     "car",
+     "book"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот тест сложнее, чем тот.",
+  "en": "This test is more difficult than that.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This test",
+    "options": [
+     "This test",
+     "The test"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "more difficult",
+    "options": [
+     "more difficult",
+     "difficultest",
+     "difficult"
+    ]
+   },
+   {
+    "correct": "than that",
+    "options": [
+     "than that",
+     "than this"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это худший фильм в мире.",
+  "en": "This is the worst film in the world.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "It is"
+    ]
+   },
+   {
+    "correct": "the worst",
+    "options": [
+     "the worst",
+     "the bad",
+     "the worse"
+    ]
+   },
+   {
+    "correct": "film in the world",
+    "options": [
+     "film in the world",
+     "movie of all"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Твой кофе хуже моего.",
+  "en": "Your coffee is worse than mine.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Your coffee",
+    "options": [
+     "Your coffee",
+     "My coffee"
+    ]
+   },
+   {
+    "correct": "is worse",
+    "options": [
+     "is worse",
+     "is badder",
+     "is worst"
+    ]
+   },
+   {
+    "correct": "than mine",
+    "options": [
+     "than mine",
+     "than my"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот стул лучше того.",
+  "en": "This chair is better than that one.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This chair",
+    "options": [
+     "This chair",
+     "That chair"
+    ]
+   },
+   {
+    "correct": "is better",
+    "options": [
+     "is better",
+     "is good",
+     "is best"
+    ]
+   },
+   {
+    "correct": "than that one",
+    "options": [
+     "than that one",
+     "than that"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это самое трудное упражнение.",
+  "en": "This is the most difficult exercise.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "It is"
+    ]
+   },
+   {
+    "correct": "the most difficult",
+    "options": [
+     "the most difficult",
+     "the difficultest"
+    ]
+   },
+   {
+    "correct": "exercise",
+    "options": [
+     "exercise",
+     "task"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Мой друг выше твоего.",
+  "en": "My friend is taller than yours.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My friend",
+    "options": [
+     "My friend",
+     "Your friend"
+    ]
+   },
+   {
+    "correct": "is taller",
+    "options": [
+     "is taller",
+     "is more tall"
+    ]
+   },
+   {
+    "correct": "than yours",
+    "options": [
+     "than yours",
+     "than your"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Его работа хуже моей.",
+  "en": "His work is worse than mine.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "His work",
+    "options": [
+     "His work",
+     "Her work"
+    ]
+   },
+   {
+    "correct": "is worse",
+    "options": [
+     "is worse",
+     "is bad",
+     "is worst"
+    ]
+   },
+   {
+    "correct": "than mine",
+    "options": [
+     "than mine",
+     "than my"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это самое красивое дерево.",
+  "en": "This is the most beautiful tree.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "It is"
+    ]
+   },
+   {
+    "correct": "the most beautiful",
+    "options": [
+     "the most beautiful",
+     "the beautifulest"
+    ]
+   },
+   {
+    "correct": "tree",
+    "options": [
+     "tree",
+     "flower"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это самое маленькое животное.",
+  "en": "This is the smallest animal.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "It is"
+    ]
+   },
+   {
+    "correct": "the smallest",
+    "options": [
+     "the smallest",
+     "the smaller",
+     "the most small"
+    ]
+   },
+   {
+    "correct": "animal.",
+    "options": [
+     "animal.",
+     "dog."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Мой брат выше меня.",
+  "en": "My brother is taller than me.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My brother",
+    "options": [
+     "My brother",
+     "My friend"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "taller than",
+    "options": [
+     "taller than",
+     "more tall than",
+     "tallest than"
+    ]
+   },
+   {
+    "correct": "me.",
+    "options": [
+     "me.",
+     "him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Эта машина быстрее той.",
+  "en": "This car is faster than that one.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This car",
+    "options": [
+     "This car",
+     "The car"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "faster than",
+    "options": [
+     "faster than",
+     "more fast than",
+     "fastest than"
+    ]
+   },
+   {
+    "correct": "that one.",
+    "options": [
+     "that one.",
+     "that."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это упражнение сложнее того.",
+  "en": "This exercise is more difficult than that.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This exercise",
+    "options": [
+     "This exercise",
+     "The lesson"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "more difficult than",
+    "options": [
+     "more difficult than",
+     "difficulter than",
+     "most difficult than"
+    ]
+   },
+   {
+    "correct": "that.",
+    "options": [
+     "that.",
+     "this."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Ты кажешься счастливее сегодня.",
+  "en": "You seem happier today.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You seem",
+    "options": [
+     "You seem",
+     "You are"
+    ]
+   },
+   {
+    "correct": "happier",
+    "options": [
+     "happier",
+     "more happy",
+     "happiest"
+    ]
+   },
+   {
+    "correct": "today.",
+    "options": [
+     "today.",
+     "now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это лучший результат в школе.",
+  "en": "This is the best result at school.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "It is"
+    ]
+   },
+   {
+    "correct": "the best",
+    "options": [
+     "the best",
+     "the goodest",
+     "the better"
+    ]
+   },
+   {
+    "correct": "result at school.",
+    "options": [
+     "result at school.",
+     "result here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это худшее кино в городе.",
+  "en": "This is the worst movie in town.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "It is"
+    ]
+   },
+   {
+    "correct": "the worst",
+    "options": [
+     "the worst",
+     "the baddest",
+     "the worse"
+    ]
+   },
+   {
+    "correct": "movie in town.",
+    "options": [
+     "movie in town.",
+     "film here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Эта машина новее твоей.",
+  "en": "This car is newer than yours.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This car is",
+    "options": [
+     "This car is",
+     "That car is",
+     "The car is"
+    ]
+   },
+   {
+    "correct": "newer than",
+    "options": [
+     "newer than",
+     "more new than",
+     "newest than"
+    ]
+   },
+   {
+    "correct": "yours.",
+    "options": [
+     "yours.",
+     "mine.",
+     "theirs."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Твой план лучше моего.",
+  "en": "Your plan is better than mine.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Your plan is",
+    "options": [
+     "Your plan is",
+     "My plan is",
+     "His plan is"
+    ]
+   },
+   {
+    "correct": "better than",
+    "options": [
+     "better than",
+     "gooder than",
+     "best than"
+    ]
+   },
+   {
+    "correct": "mine.",
+    "options": [
+     "mine.",
+     "yours.",
+     "theirs."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Тот путь короче этого.",
+  "en": "That way is shorter than this one.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "That way is",
+    "options": [
+     "That way is",
+     "This way is",
+     "The way is"
+    ]
+   },
+   {
+    "correct": "shorter than",
+    "options": [
+     "shorter than",
+     "more short than",
+     "shortest than"
+    ]
+   },
+   {
+    "correct": "this one.",
+    "options": [
+     "this one.",
+     "that one.",
+     "the one."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот кофе хуже того.",
+  "en": "This coffee is worse than that one.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This coffee is",
+    "options": [
+     "This coffee is",
+     "That coffee is",
+     "The coffee is"
+    ]
+   },
+   {
+    "correct": "worse than",
+    "options": [
+     "worse than",
+     "badder than",
+     "worst than"
+    ]
+   },
+   {
+    "correct": "that one.",
+    "options": [
+     "that one.",
+     "this one.",
+     "my one."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Она счастливее тебя.",
+  "en": "She is happier than you.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She is",
+    "options": [
+     "She is",
+     "He is",
+     "They are"
+    ]
+   },
+   {
+    "correct": "happier than",
+    "options": [
+     "happier than",
+     "more happy than",
+     "happiest than"
+    ]
+   },
+   {
+    "correct": "you.",
+    "options": [
+     "you.",
+     "me.",
+     "her."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Моя машина лучше вашей.",
+  "en": "My car is better than yours.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My car is",
+    "options": [
+     "My car is",
+     "Your car is",
+     "The car is"
+    ]
+   },
+   {
+    "correct": "better than",
+    "options": [
+     "better than",
+     "gooder than",
+     "best than"
+    ]
+   },
+   {
+    "correct": "yours.",
+    "options": [
+     "yours.",
+     "mine.",
+     "theirs."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Твой ответ хуже моего.",
+  "en": "Your answer is worse than mine.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Your answer is",
+    "options": [
+     "Your answer is",
+     "My answer is",
+     "The answer is"
+    ]
+   },
+   {
+    "correct": "worse than",
+    "options": [
+     "worse than",
+     "badder than",
+     "worst than"
+    ]
+   },
+   {
+    "correct": "mine.",
+    "options": [
+     "mine.",
+     "yours.",
+     "theirs."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это здание самое старое.",
+  "en": "This building is the oldest.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This building is",
+    "options": [
+     "This building is",
+     "That building is",
+     "The building is"
+    ]
+   },
+   {
+    "correct": "the oldest.",
+    "options": [
+     "the oldest.",
+     "the most old.",
+     "the older."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Он самый быстрый бегун.",
+  "en": "He is the fastest runner.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He is",
+    "options": [
+     "He is",
+     "She is",
+     "They are"
+    ]
+   },
+   {
+    "correct": "the fastest",
+    "options": [
+     "the fastest",
+     "the more fast",
+     "the most fast"
+    ]
+   },
+   {
+    "correct": "runner.",
+    "options": [
+     "runner.",
+     "player.",
+     "person."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Этот дом дороже того.",
+  "en": "This house is more expensive than that one.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This house",
+    "options": [
+     "This house",
+     "That house",
+     "These houses"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "are"
+    ]
+   },
+   {
+    "correct": "more expensive",
+    "options": [
+     "more expensive",
+     "expensive",
+     "most expensive"
+    ]
+   },
+   {
+    "correct": "than that one.",
+    "options": [
+     "than that one.",
+     "than this one.",
+     "as that one."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Это самое маленькое яблоко.",
+  "en": "This is the smallest apple.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "This is",
+    "options": [
+     "This is",
+     "That is"
+    ]
+   },
+   {
+    "correct": "the smallest",
+    "options": [
+     "the smallest",
+     "smaller",
+     "the smaller"
+    ]
+   },
+   {
+    "correct": "apple.",
+    "options": [
+     "apple.",
+     "apples."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "comparatives",
+  "ru": "Мой результат хуже вашего.",
+  "en": "My result is worse than yours.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "My result",
+    "options": [
+     "My result",
+     "Your result"
+    ]
+   },
+   {
+    "correct": "is",
+    "options": [
+     "is",
+     "was"
+    ]
+   },
+   {
+    "correct": "worse",
+    "options": [
+     "worse",
+     "better",
+     "bad"
+    ]
+   },
+   {
+    "correct": "than yours.",
+    "options": [
+     "than yours.",
+     "than mine."
+    ]
+   }
+  ]
+ }
+]

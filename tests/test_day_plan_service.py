@@ -11,6 +11,7 @@ from datetime import date, datetime, timezone
 import pytest
 
 from app.domain import day_plan as rules
+from app.domain.enums import LearningTrack
 from app.services.day_plan_service import DayPlanService
 
 
@@ -127,3 +128,59 @@ def test_counts_by_kind_describes_the_plan_card():
         rules.GRAMMAR: 1,
         rules.PHRASE: 1,
     }
+
+
+class _FakeUser:
+    id = 1
+    level = "A1"
+
+
+class _FakeWords:
+    """Vocabulary counts, fixed — this group of tests is about grammar slots."""
+
+    async def count_overdue(self, user_id, track):
+        return 5
+
+    async def count_new_startable(self, user_id, track, phrases=False):
+        return 5
+
+
+class _FakeConstructor:
+    def __init__(self, topic):
+        self.topic = topic
+        self.asked = False
+
+    async def active_topic(self, user_id):
+        self.asked = True
+        return self.topic
+
+
+def _composing_service(topic):
+    service = DayPlanService.__new__(DayPlanService)
+    service._plans = _FakeRepo()
+    service._words = _FakeWords()
+    service._constructor = _FakeConstructor(topic)
+    return service
+
+
+@pytest.mark.asyncio
+async def test_grammar_slots_are_booked_from_the_repository_that_serves_them():
+    """The plan must ask whoever will actually produce the card.
+
+    Booking slots off a second, different notion of "active topic" — one based
+    on the old exercise rows rather than on constructor phrases — lets the plan
+    promise four grammar cards that `open_card` then refuses to build. The
+    slots tick off empty, and grammar vanishes from the day with nothing in the
+    log to say so.
+    """
+    service = _composing_service(object())
+    composition = await service._compose(_FakeUser(), LearningTrack.ENGLISH, 28)
+    assert service._constructor.asked is True
+    assert composition.grammar == rules.GRAMMAR_PER_DAY
+
+
+@pytest.mark.asyncio
+async def test_no_serveable_topic_means_no_grammar_slots():
+    service = _composing_service(None)
+    composition = await service._compose(_FakeUser(), LearningTrack.ENGLISH, 28)
+    assert composition.grammar == 0

@@ -1,0 +1,3917 @@
+[
+ {
+  "topic": "tense_future_will",
+  "ru": "Я помогу тебе завтра.",
+  "en": "I will help you tomorrow.",
+  "alternatives": [
+   "I'll help you tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "do",
+     "am",
+     "can"
+    ]
+   },
+   {
+    "correct": "help",
+    "options": [
+     "help",
+     "helps",
+     "helped",
+     "helping"
+    ]
+   },
+   {
+    "correct": "you tomorrow.",
+    "options": [
+     "you tomorrow.",
+     "me tomorrow.",
+     "him tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Она не пойдет на работу.",
+  "en": "She won't go to work.",
+  "alternatives": [
+   "She will not go to work."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "don't",
+     "didn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "go",
+    "options": [
+     "go",
+     "goes",
+     "went",
+     "going"
+    ]
+   },
+   {
+    "correct": "to work.",
+    "options": [
+     "to work.",
+     "home.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Ты придешь завтра?",
+  "en": "Will you come tomorrow?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Do",
+     "Are",
+     "Can"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "come",
+    "options": [
+     "come",
+     "comes",
+     "came",
+     "coming"
+    ]
+   },
+   {
+    "correct": "tomorrow?",
+    "options": [
+     "tomorrow?",
+     "now?",
+     "today?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Он не будет есть это.",
+  "en": "He won't eat it.",
+  "alternatives": [
+   "He will not eat it."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "don't",
+     "didn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "eat",
+    "options": [
+     "eat",
+     "eats",
+     "ate",
+     "eating"
+    ]
+   },
+   {
+    "correct": "it.",
+    "options": [
+     "it.",
+     "them.",
+     "this."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я куплю это сегодня.",
+  "en": "I will buy it today.",
+  "alternatives": [
+   "I'll buy it today."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "can",
+     "must",
+     "do"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buys",
+     "bought",
+     "buying"
+    ]
+   },
+   {
+    "correct": "it today.",
+    "options": [
+     "it today.",
+     "them today.",
+     "this today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Они не будут читать это.",
+  "en": "They won't read it.",
+  "alternatives": [
+   "They will not read it."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "We"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "don't",
+     "didn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "read",
+    "options": [
+     "read",
+     "reads",
+     "reading",
+     "red"
+    ]
+   },
+   {
+    "correct": "it.",
+    "options": [
+     "it.",
+     "books.",
+     "news."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Мы сделаем это завтра.",
+  "en": "We will make it tomorrow.",
+  "alternatives": [
+   "We'll make it tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "You",
+     "They",
+     "She"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "can",
+     "do",
+     "are"
+    ]
+   },
+   {
+    "correct": "make",
+    "options": [
+     "make",
+     "makes",
+     "made",
+     "making"
+    ]
+   },
+   {
+    "correct": "it tomorrow.",
+    "options": [
+     "it tomorrow.",
+     "this today.",
+     "that soon."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Он не позвонит тебе.",
+  "en": "He won't call you.",
+  "alternatives": [
+   "He will not call you."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "don't",
+     "didn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "call",
+    "options": [
+     "call",
+     "calls",
+     "called",
+     "calling"
+    ]
+   },
+   {
+    "correct": "you.",
+    "options": [
+     "you.",
+     "me.",
+     "them."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Она приедет сегодня?",
+  "en": "Will she come today?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Does",
+     "Is",
+     "Can"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "you",
+     "they",
+     "he"
+    ]
+   },
+   {
+    "correct": "come",
+    "options": [
+     "come",
+     "comes",
+     "came",
+     "coming"
+    ]
+   },
+   {
+    "correct": "today?",
+    "options": [
+     "today?",
+     "now?",
+     "tomorrow?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я не буду работать завтра.",
+  "en": "I won't work tomorrow.",
+  "alternatives": [
+   "I will not work tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "don't",
+     "didn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "works",
+     "worked",
+     "working"
+    ]
+   },
+   {
+    "correct": "tomorrow.",
+    "options": [
+     "tomorrow.",
+     "today.",
+     "now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Они начнут работу завтра.",
+  "en": "They will start work tomorrow.",
+  "alternatives": [
+   "They'll start work tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "can",
+     "must",
+     "do"
+    ]
+   },
+   {
+    "correct": "start",
+    "options": [
+     "start",
+     "starts",
+     "started",
+     "starting"
+    ]
+   },
+   {
+    "correct": "work tomorrow.",
+    "options": [
+     "work tomorrow.",
+     "it today.",
+     "here now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Ты будешь пить чай?",
+  "en": "Will you drink tea?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Do",
+     "Are",
+     "Can"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "they",
+     "he"
+    ]
+   },
+   {
+    "correct": "drink",
+    "options": [
+     "drink",
+     "drinks",
+     "drank",
+     "drinking"
+    ]
+   },
+   {
+    "correct": "tea?",
+    "options": [
+     "tea?",
+     "coffee?",
+     "water?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я позвоню тебе вечером.",
+  "en": "I will call you tonight.",
+  "alternatives": [
+   "I'll call you tonight."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "You",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "will call",
+    "options": [
+     "will call",
+     "calls",
+     "called",
+     "calling"
+    ]
+   },
+   {
+    "correct": "you tonight.",
+    "options": [
+     "you tonight.",
+     "him tonight.",
+     "her tonight."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Он не пойдет туда.",
+  "en": "He won't go there.",
+  "alternatives": [
+   "He will not go there."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "don't",
+     "didn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "go there.",
+    "options": [
+     "go there.",
+     "went there.",
+     "goes there.",
+     "going there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Ты поможешь мне завтра?",
+  "en": "Will you help me tomorrow?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Do",
+     "Did",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you help",
+    "options": [
+     "you help",
+     "you helped",
+     "you helps",
+     "you helping"
+    ]
+   },
+   {
+    "correct": "me tomorrow?",
+    "options": [
+     "me tomorrow?",
+     "him tomorrow?",
+     "her tomorrow?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я не буду пить кофе.",
+  "en": "I won't drink coffee.",
+  "alternatives": [
+   "I will not drink coffee."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "don't",
+     "didn't",
+     "haven't"
+    ]
+   },
+   {
+    "correct": "drink coffee.",
+    "options": [
+     "drink coffee.",
+     "drank coffee.",
+     "drinks coffee.",
+     "drinking coffee."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Мы увидимся позже.",
+  "en": "We will see each other later.",
+  "alternatives": [
+   "We'll see each other later."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "will see",
+    "options": [
+     "will see",
+     "saw",
+     "see",
+     "sees"
+    ]
+   },
+   {
+    "correct": "each other later.",
+    "options": [
+     "each other later.",
+     "him later.",
+     "her later."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Они не будут учиться сегодня.",
+  "en": "They won't study today.",
+  "alternatives": [
+   "They will not study today."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "You",
+     "He"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "don't",
+     "didn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "study today.",
+    "options": [
+     "study today.",
+     "studied today.",
+     "studies today.",
+     "studying today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Она приготовит обед?",
+  "en": "Will she make lunch?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Does",
+     "Did",
+     "Is"
+    ]
+   },
+   {
+    "correct": "she make",
+    "options": [
+     "she make",
+     "she makes",
+     "she made",
+     "she making"
+    ]
+   },
+   {
+    "correct": "lunch?",
+    "options": [
+     "lunch?",
+     "dinner?",
+     "breakfast?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Она не будет играть в теннис.",
+  "en": "She won't play tennis.",
+  "alternatives": [
+   "She will not play tennis."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "doesn't",
+     "didn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "play tennis.",
+    "options": [
+     "play tennis.",
+     "played tennis.",
+     "plays tennis.",
+     "playing tennis."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Ты будешь говорить с ним?",
+  "en": "Will you speak with him?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Do",
+     "Did",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you speak",
+    "options": [
+     "you speak",
+     "you spoke",
+     "you speaks",
+     "you speaking"
+    ]
+   },
+   {
+    "correct": "with him?",
+    "options": [
+     "with him?",
+     "with her?",
+     "with them?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я не буду жить здесь.",
+  "en": "I won't live here.",
+  "alternatives": [
+   "I will not live here."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "don't",
+     "didn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "live here.",
+    "options": [
+     "live here.",
+     "lives here.",
+     "lived here.",
+     "living here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Он закончит это быстро.",
+  "en": "He will finish it quickly.",
+  "alternatives": [
+   "He'll finish it quickly."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "will finish",
+    "options": [
+     "will finish",
+     "finishes",
+     "finished",
+     "finishing"
+    ]
+   },
+   {
+    "correct": "it quickly.",
+    "options": [
+     "it quickly.",
+     "it now.",
+     "it today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Они не купят эту машину.",
+  "en": "They won't buy this car.",
+  "alternatives": [
+   "They will not buy this car."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "You",
+     "He"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "don't",
+     "didn't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "buy this car.",
+    "options": [
+     "buy this car.",
+     "bought this car.",
+     "buys this car.",
+     "buying this car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я пойду в магазин.",
+  "en": "I will go to the shop.",
+  "alternatives": [
+   "I'll go to the shop."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "won't"
+    ]
+   },
+   {
+    "correct": "go",
+    "options": [
+     "go",
+     "goes",
+     "going",
+     "went"
+    ]
+   },
+   {
+    "correct": "to the shop.",
+    "options": [
+     "to the shop.",
+     "to home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Он не будет работать здесь.",
+  "en": "He won't work here.",
+  "alternatives": [
+   "He will not work here."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "works",
+     "worked",
+     "working"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Ты увидишь его завтра?",
+  "en": "Will you see him tomorrow?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Do",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "saw",
+     "sees",
+     "seeing"
+    ]
+   },
+   {
+    "correct": "him tomorrow?",
+    "options": [
+     "him tomorrow?",
+     "her today?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Мы не будем начинать это сейчас.",
+  "en": "We won't start this now.",
+  "alternatives": [
+   "We will not start this now."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "start",
+    "options": [
+     "start",
+     "starts",
+     "started",
+     "starting"
+    ]
+   },
+   {
+    "correct": "this now.",
+    "options": [
+     "this now.",
+     "that today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Она купит книгу.",
+  "en": "She will buy a book.",
+  "alternatives": [
+   "She'll buy a book."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "won't"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buys",
+     "bought",
+     "buying"
+    ]
+   },
+   {
+    "correct": "a book.",
+    "options": [
+     "a book.",
+     "a car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Они не будут помогать нам.",
+  "en": "They won't help us.",
+  "alternatives": [
+   "They will not help us."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "help",
+    "options": [
+     "help",
+     "helps",
+     "helped",
+     "helping"
+    ]
+   },
+   {
+    "correct": "us.",
+    "options": [
+     "us.",
+     "me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Он придет вовремя?",
+  "en": "Will he come on time?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Does",
+     "Is"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "come",
+    "options": [
+     "come",
+     "comes",
+     "came",
+     "coming"
+    ]
+   },
+   {
+    "correct": "on time?",
+    "options": [
+     "on time?",
+     "later?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я не буду делать это.",
+  "en": "I won't make it.",
+  "alternatives": [
+   "I will not make it."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "make",
+    "options": [
+     "make",
+     "makes",
+     "made",
+     "making"
+    ]
+   },
+   {
+    "correct": "it.",
+    "options": [
+     "it.",
+     "them."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Она будет учить английский.",
+  "en": "She will study English.",
+  "alternatives": [
+   "She'll study English."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "won't"
+    ]
+   },
+   {
+    "correct": "study",
+    "options": [
+     "study",
+     "studies",
+     "studied",
+     "studying"
+    ]
+   },
+   {
+    "correct": "English.",
+    "options": [
+     "English.",
+     "math."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Ты не будешь есть это?",
+  "en": "Won't you eat this?",
+  "alternatives": [
+   "Will you not eat this?"
+  ],
+  "slots": [
+   {
+    "correct": "Won't",
+    "options": [
+     "Won't",
+     "Will"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "eat",
+    "options": [
+     "eat",
+     "eats",
+     "ate",
+     "eating"
+    ]
+   },
+   {
+    "correct": "this?",
+    "options": [
+     "this?",
+     "that?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Они закончат работу вечером.",
+  "en": "They will finish work tonight.",
+  "alternatives": [
+   "They'll finish work tonight."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "won't"
+    ]
+   },
+   {
+    "correct": "finish",
+    "options": [
+     "finish",
+     "finishes",
+     "finished",
+     "finishing"
+    ]
+   },
+   {
+    "correct": "work tonight.",
+    "options": [
+     "work tonight.",
+     "it today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я не буду пить это молоко.",
+  "en": "I won't drink this milk.",
+  "alternatives": [
+   "I will not drink this milk."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "He"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "drink",
+    "options": [
+     "drink",
+     "drinks",
+     "drank",
+     "drinking"
+    ]
+   },
+   {
+    "correct": "this milk.",
+    "options": [
+     "this milk.",
+     "that tea."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я завтра позвоню тебе.",
+  "en": "I will call you tomorrow.",
+  "alternatives": [
+   "I'll call you tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "won't"
+    ]
+   },
+   {
+    "correct": "call",
+    "options": [
+     "call",
+     "calls",
+     "called",
+     "calling"
+    ]
+   },
+   {
+    "correct": "you tomorrow.",
+    "options": [
+     "you tomorrow.",
+     "me tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Мы не пойдем туда завтра.",
+  "en": "We won't go there tomorrow.",
+  "alternatives": [
+   "We will not go there tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She",
+     "It"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "go",
+    "options": [
+     "go",
+     "goes",
+     "went",
+     "going"
+    ]
+   },
+   {
+    "correct": "there tomorrow.",
+    "options": [
+     "there tomorrow.",
+     "here tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Ты поможешь ему завтра?",
+  "en": "Will you help him tomorrow?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Won't"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "help",
+    "options": [
+     "help",
+     "helps",
+     "helped",
+     "helping"
+    ]
+   },
+   {
+    "correct": "him tomorrow?",
+    "options": [
+     "him tomorrow?",
+     "me tomorrow?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Она приготовит еду завтра.",
+  "en": "She will make food tomorrow.",
+  "alternatives": [
+   "She'll make food tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "won't"
+    ]
+   },
+   {
+    "correct": "make",
+    "options": [
+     "make",
+     "makes",
+     "made",
+     "making"
+    ]
+   },
+   {
+    "correct": "food tomorrow.",
+    "options": [
+     "food tomorrow.",
+     "dinner tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я не буду изучать это.",
+  "en": "I won't study this.",
+  "alternatives": [
+   "I will not study this."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "study",
+    "options": [
+     "study",
+     "studies",
+     "studied",
+     "studying"
+    ]
+   },
+   {
+    "correct": "this.",
+    "options": [
+     "this.",
+     "it."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Ты придешь на вечеринку?",
+  "en": "Will you come to the party?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Won't"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "come",
+    "options": [
+     "come",
+     "comes",
+     "came",
+     "coming"
+    ]
+   },
+   {
+    "correct": "to the party?",
+    "options": [
+     "to the party?",
+     "here?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Они не купят этот дом.",
+  "en": "They won't buy this house.",
+  "alternatives": [
+   "They will not buy this house."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buys",
+     "bought",
+     "buying"
+    ]
+   },
+   {
+    "correct": "this house.",
+    "options": [
+     "this house.",
+     "this car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Он будет жить здесь?",
+  "en": "Will he live here?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Won't"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "live",
+    "options": [
+     "live",
+     "lives",
+     "lived",
+     "living"
+    ]
+   },
+   {
+    "correct": "here?",
+    "options": [
+     "here?",
+     "there?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Мы не начнем это завтра.",
+  "en": "We won't start this tomorrow.",
+  "alternatives": [
+   "We will not start this tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "She"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "start",
+    "options": [
+     "start",
+     "starts",
+     "started",
+     "starting"
+    ]
+   },
+   {
+    "correct": "this tomorrow.",
+    "options": [
+     "this tomorrow.",
+     "it tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я увижу тебя вечером.",
+  "en": "I will see you in the evening.",
+  "alternatives": [
+   "I'll see you in the evening."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "won't"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "sees",
+     "saw",
+     "seeing"
+    ]
+   },
+   {
+    "correct": "you in the evening.",
+    "options": [
+     "you in the evening.",
+     "you tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Она не закончит это сегодня.",
+  "en": "She won't finish this today.",
+  "alternatives": [
+   "She will not finish this today."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "finish",
+    "options": [
+     "finish",
+     "finishes",
+     "finished",
+     "finishing"
+    ]
+   },
+   {
+    "correct": "this today.",
+    "options": [
+     "this today.",
+     "it today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я завтра прочитаю эту книгу.",
+  "en": "I will read this book tomorrow.",
+  "alternatives": [
+   "I'll read this book tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "won't"
+    ]
+   },
+   {
+    "correct": "read",
+    "options": [
+     "read",
+     "reads",
+     "reading"
+    ]
+   },
+   {
+    "correct": "this book tomorrow.",
+    "options": [
+     "this book tomorrow.",
+     "this books tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Они не будут учить это.",
+  "en": "They won't study it.",
+  "alternatives": [
+   "They will not study it."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "study",
+    "options": [
+     "study",
+     "studies",
+     "studying"
+    ]
+   },
+   {
+    "correct": "it.",
+    "options": [
+     "it.",
+     "them."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Ты будешь работать завтра?",
+  "en": "Will you work tomorrow?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Do",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "works",
+     "working"
+    ]
+   },
+   {
+    "correct": "tomorrow?",
+    "options": [
+     "tomorrow?",
+     "today?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я не буду ждать тебя.",
+  "en": "I won't wait for you.",
+  "alternatives": [
+   "I will not wait for you."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "wait",
+    "options": [
+     "wait",
+     "waits",
+     "waiting"
+    ]
+   },
+   {
+    "correct": "for you.",
+    "options": [
+     "for you.",
+     "for me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Она придет вечером.",
+  "en": "She will come in the evening.",
+  "alternatives": [
+   "She'll come in the evening."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "won't"
+    ]
+   },
+   {
+    "correct": "come",
+    "options": [
+     "come",
+     "comes",
+     "coming"
+    ]
+   },
+   {
+    "correct": "in the evening.",
+    "options": [
+     "in the evening.",
+     "tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Он не будет играть здесь.",
+  "en": "He won't play here.",
+  "alternatives": [
+   "He will not play here."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "play",
+    "options": [
+     "play",
+     "plays",
+     "playing"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Они начнут завтра?",
+  "en": "Will they start tomorrow?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Do",
+     "Are"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "start",
+    "options": [
+     "start",
+     "starts",
+     "starting"
+    ]
+   },
+   {
+    "correct": "tomorrow?",
+    "options": [
+     "tomorrow?",
+     "now?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я не буду говорить с ним.",
+  "en": "I won't speak with him.",
+  "alternatives": [
+   "I will not speak with him."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "speak",
+    "options": [
+     "speak",
+     "speaks",
+     "speaking"
+    ]
+   },
+   {
+    "correct": "with him.",
+    "options": [
+     "with him.",
+     "with her."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Мы сделаем это быстро.",
+  "en": "We will make it quickly.",
+  "alternatives": [
+   "We'll make it quickly."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "won't"
+    ]
+   },
+   {
+    "correct": "make",
+    "options": [
+     "make",
+     "makes",
+     "making"
+    ]
+   },
+   {
+    "correct": "it quickly.",
+    "options": [
+     "it quickly.",
+     "it fast."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Она не будет покупать это.",
+  "en": "She won't buy this.",
+  "alternatives": [
+   "She will not buy this."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buys",
+     "buying"
+    ]
+   },
+   {
+    "correct": "this.",
+    "options": [
+     "this.",
+     "that."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Ты поможешь им?",
+  "en": "Will you help them?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Do",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "help",
+    "options": [
+     "help",
+     "helps",
+     "helping"
+    ]
+   },
+   {
+    "correct": "them?",
+    "options": [
+     "them?",
+     "him?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я не буду пить это.",
+  "en": "I won't drink it.",
+  "alternatives": [
+   "I will not drink it."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "drink",
+    "options": [
+     "drink",
+     "drinks",
+     "drinking"
+    ]
+   },
+   {
+    "correct": "it.",
+    "options": [
+     "it.",
+     "that."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я сделаю это для тебя.",
+  "en": "I will do it for you.",
+  "alternatives": [
+   "I'll do it for you."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "won't"
+    ]
+   },
+   {
+    "correct": "do",
+    "options": [
+     "do",
+     "does",
+     "did"
+    ]
+   },
+   {
+    "correct": "it for you.",
+    "options": [
+     "it for you.",
+     "it to you."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Они не будут знать ответ.",
+  "en": "They won't know the answer.",
+  "alternatives": [
+   "They will not know the answer."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will",
+     "don't"
+    ]
+   },
+   {
+    "correct": "know",
+    "options": [
+     "know",
+     "knows",
+     "knew"
+    ]
+   },
+   {
+    "correct": "the answer.",
+    "options": [
+     "the answer.",
+     "the task."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Ты увидишь его вечером?",
+  "en": "Will you see him tonight?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Do",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "see",
+    "options": [
+     "see",
+     "saw",
+     "sees"
+    ]
+   },
+   {
+    "correct": "him tonight?",
+    "options": [
+     "him tonight?",
+     "her today?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я не буду ждать тебя завтра.",
+  "en": "I won't wait for you tomorrow.",
+  "alternatives": [
+   "I will not wait for you tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will",
+     "don't"
+    ]
+   },
+   {
+    "correct": "wait",
+    "options": [
+     "wait",
+     "waits",
+     "waited"
+    ]
+   },
+   {
+    "correct": "for you tomorrow.",
+    "options": [
+     "for you tomorrow.",
+     "for him later."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Он будет работать здесь.",
+  "en": "He will work here.",
+  "alternatives": [
+   "He'll work here."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "won't"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "works",
+     "worked"
+    ]
+   },
+   {
+    "correct": "here.",
+    "options": [
+     "here.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Она не будет говорить об этом.",
+  "en": "She won't speak about it.",
+  "alternatives": [
+   "She will not speak about it."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "speak",
+    "options": [
+     "speak",
+     "speaks",
+     "spoke"
+    ]
+   },
+   {
+    "correct": "about it.",
+    "options": [
+     "about it.",
+     "to him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Они начнут игру завтра?",
+  "en": "Will they start the game tomorrow?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Do",
+     "Are"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "start",
+    "options": [
+     "start",
+     "starts",
+     "started"
+    ]
+   },
+   {
+    "correct": "the game tomorrow?",
+    "options": [
+     "the game tomorrow?",
+     "the work today?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Мы не будем покупать этот дом.",
+  "en": "We won't buy this house.",
+  "alternatives": [
+   "We will not buy this house."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will",
+     "don't"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buys",
+     "bought"
+    ]
+   },
+   {
+    "correct": "this house.",
+    "options": [
+     "this house.",
+     "this car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Ты будешь помогать мне?",
+  "en": "Will you help me?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Do",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "help",
+    "options": [
+     "help",
+     "helps",
+     "helped"
+    ]
+   },
+   {
+    "correct": "me?",
+    "options": [
+     "me?",
+     "him?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я не буду изучать это завтра.",
+  "en": "I won't study it tomorrow.",
+  "alternatives": [
+   "I will not study it tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will",
+     "don't"
+    ]
+   },
+   {
+    "correct": "study",
+    "options": [
+     "study",
+     "studies",
+     "studied"
+    ]
+   },
+   {
+    "correct": "it tomorrow.",
+    "options": [
+     "it tomorrow.",
+     "it today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Она приготовит обед завтра.",
+  "en": "She will make lunch tomorrow.",
+  "alternatives": [
+   "She'll make lunch tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "won't"
+    ]
+   },
+   {
+    "correct": "make",
+    "options": [
+     "make",
+     "makes",
+     "made"
+    ]
+   },
+   {
+    "correct": "lunch tomorrow.",
+    "options": [
+     "lunch tomorrow.",
+     "dinner today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Они не будут пить это молоко.",
+  "en": "They won't drink this milk.",
+  "alternatives": [
+   "They will not drink this milk."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "He"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will",
+     "don't"
+    ]
+   },
+   {
+    "correct": "drink",
+    "options": [
+     "drink",
+     "drinks",
+     "drank"
+    ]
+   },
+   {
+    "correct": "this milk.",
+    "options": [
+     "this milk.",
+     "this water."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я завтра куплю хлеб.",
+  "en": "I will buy bread tomorrow.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "won't"
+    ]
+   },
+   {
+    "correct": "buy",
+    "options": [
+     "buy",
+     "buys",
+     "bought"
+    ]
+   },
+   {
+    "correct": "bread tomorrow.",
+    "options": [
+     "bread tomorrow.",
+     "the bread now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Он не будет работать завтра.",
+  "en": "He won't work tomorrow.",
+  "alternatives": [
+   "He will not work tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "works",
+     "worked"
+    ]
+   },
+   {
+    "correct": "tomorrow.",
+    "options": [
+     "tomorrow.",
+     "today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Ты придешь домой рано?",
+  "en": "Will you come home early?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Won't"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "come",
+    "options": [
+     "come",
+     "comes",
+     "came"
+    ]
+   },
+   {
+    "correct": "home early?",
+    "options": [
+     "home early?",
+     "to work late?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я не буду знать ответ.",
+  "en": "I won't know the answer.",
+  "alternatives": [
+   "I will not know the answer."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "know",
+    "options": [
+     "know",
+     "knows",
+     "knew"
+    ]
+   },
+   {
+    "correct": "the answer.",
+    "options": [
+     "the answer.",
+     "your name."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Она не будет читать книгу.",
+  "en": "She won't read the book.",
+  "alternatives": [
+   "She will not read the book."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "read",
+    "options": [
+     "read",
+     "reads",
+     "reading"
+    ]
+   },
+   {
+    "correct": "the book.",
+    "options": [
+     "the book.",
+     "this paper."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Ты будешь делать это?",
+  "en": "Will you do it?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Won't"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "do",
+    "options": [
+     "do",
+     "does",
+     "did"
+    ]
+   },
+   {
+    "correct": "it?",
+    "options": [
+     "it?",
+     "this?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Мы не будем пить чай.",
+  "en": "We won't drink tea.",
+  "alternatives": [
+   "We will not drink tea."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "drink",
+    "options": [
+     "drink",
+     "drinks",
+     "drank"
+    ]
+   },
+   {
+    "correct": "tea.",
+    "options": [
+     "tea.",
+     "coffee."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Он будет изучать английский.",
+  "en": "He will study English.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "will",
+    "options": [
+     "will",
+     "won't"
+    ]
+   },
+   {
+    "correct": "study",
+    "options": [
+     "study",
+     "studies",
+     "studied"
+    ]
+   },
+   {
+    "correct": "English.",
+    "options": [
+     "English.",
+     "math."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Они не будут играть вместе.",
+  "en": "They won't play together.",
+  "alternatives": [
+   "They will not play together."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "play",
+    "options": [
+     "play",
+     "plays",
+     "played"
+    ]
+   },
+   {
+    "correct": "together.",
+    "options": [
+     "together.",
+     "here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я не буду ждать его.",
+  "en": "I won't wait for him.",
+  "alternatives": [
+   "I will not wait for him."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "will"
+    ]
+   },
+   {
+    "correct": "wait",
+    "options": [
+     "wait",
+     "waits",
+     "waited"
+    ]
+   },
+   {
+    "correct": "for him.",
+    "options": [
+     "for him.",
+     "there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я завтра помогу тебе.",
+  "en": "I will help you tomorrow.",
+  "alternatives": [
+   "I'll help you tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "will help",
+    "options": [
+     "will help",
+     "help",
+     "helped"
+    ]
+   },
+   {
+    "correct": "you tomorrow.",
+    "options": [
+     "you tomorrow.",
+     "him tomorrow.",
+     "them tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Она не будет работать завтра.",
+  "en": "She won't work tomorrow.",
+  "alternatives": [
+   "She will not work tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "don't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "work tomorrow.",
+    "options": [
+     "work tomorrow.",
+     "works tomorrow.",
+     "worked tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Ты пойдешь в кино?",
+  "en": "Will you go to the cinema?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Do",
+     "Did"
+    ]
+   },
+   {
+    "correct": "you go",
+    "options": [
+     "you go",
+     "you went",
+     "you going"
+    ]
+   },
+   {
+    "correct": "to the cinema?",
+    "options": [
+     "to the cinema?",
+     "to the home?",
+     "to the work?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Они не будут есть это.",
+  "en": "They won't eat it.",
+  "alternatives": [
+   "They will not eat it."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "don't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "eat it.",
+    "options": [
+     "eat it.",
+     "ate it.",
+     "eats it."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Он не придет сегодня.",
+  "en": "He won't come today.",
+  "alternatives": [
+   "He will not come today."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "doesn't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "come today.",
+    "options": [
+     "come today.",
+     "comes today.",
+     "came today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Ты прочитаешь это письмо?",
+  "en": "Will you read this letter?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Do",
+     "Are"
+    ]
+   },
+   {
+    "correct": "you read",
+    "options": [
+     "you read",
+     "you reads",
+     "you reading"
+    ]
+   },
+   {
+    "correct": "this letter?",
+    "options": [
+     "this letter?",
+     "these letter?",
+     "the letter?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Она будет учиться здесь?",
+  "en": "Will she study here?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Does",
+     "Is"
+    ]
+   },
+   {
+    "correct": "she study",
+    "options": [
+     "she study",
+     "she studies",
+     "she studied"
+    ]
+   },
+   {
+    "correct": "here?",
+    "options": [
+     "here?",
+     "there?",
+     "home?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Они не будут говорить об этом.",
+  "en": "They won't speak about it.",
+  "alternatives": [
+   "They will not speak about it."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "don't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "speak about it.",
+    "options": [
+     "speak about it.",
+     "spoke about it.",
+     "speaks about it."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Мы не будем покупать это.",
+  "en": "We won't buy it.",
+  "alternatives": [
+   "We will not buy it."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "don't",
+     "can't"
+    ]
+   },
+   {
+    "correct": "buy it.",
+    "options": [
+     "buy it.",
+     "bought it.",
+     "buys it."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я завтра куплю эту машину.",
+  "en": "I will buy this car tomorrow.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "will buy",
+    "options": [
+     "will buy",
+     "will buys",
+     "buy",
+     "buys"
+    ]
+   },
+   {
+    "correct": "this car tomorrow.",
+    "options": [
+     "this car tomorrow.",
+     "that car tomorrow.",
+     "my car tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Она не будет завтра работать.",
+  "en": "She won't work tomorrow.",
+  "alternatives": [
+   "She will not work tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "won't work",
+    "options": [
+     "won't work",
+     "will not works",
+     "don't work",
+     "didn't work"
+    ]
+   },
+   {
+    "correct": "tomorrow.",
+    "options": [
+     "tomorrow.",
+     "today.",
+     "later."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Ты будешь завтра учиться?",
+  "en": "Will you study tomorrow?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Will",
+    "options": [
+     "Will",
+     "Do",
+     "Are",
+     "Did"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "study tomorrow?",
+    "options": [
+     "study tomorrow?",
+     "studies tomorrow?",
+     "studying tomorrow?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Мы не будем ждать их.",
+  "en": "We won't wait for them.",
+  "alternatives": [
+   "We will not wait for them."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "won't wait",
+    "options": [
+     "won't wait",
+     "will not waits",
+     "don't wait",
+     "didn't wait"
+    ]
+   },
+   {
+    "correct": "for them.",
+    "options": [
+     "for them.",
+     "for him.",
+     "for her."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Он поможет мне завтра.",
+  "en": "He will help me tomorrow.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "will help",
+    "options": [
+     "will help",
+     "will helps",
+     "help",
+     "helps"
+    ]
+   },
+   {
+    "correct": "me tomorrow.",
+    "options": [
+     "me tomorrow.",
+     "you tomorrow.",
+     "him tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Ты не будешь играть в футбол?",
+  "en": "Won't you play football?",
+  "alternatives": [
+   "Will you not play football?"
+  ],
+  "slots": [
+   {
+    "correct": "Won't",
+    "options": [
+     "Won't",
+     "Will",
+     "Don't",
+     "Didn't"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "we",
+     "he"
+    ]
+   },
+   {
+    "correct": "play football?",
+    "options": [
+     "play football?",
+     "plays football?",
+     "playing football?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я сделаю это быстро.",
+  "en": "I will do it quickly.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "will do",
+    "options": [
+     "will do",
+     "will does",
+     "do",
+     "does"
+    ]
+   },
+   {
+    "correct": "it quickly.",
+    "options": [
+     "it quickly.",
+     "this slowly.",
+     "it soon."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Она не будет пить кофе.",
+  "en": "She won't drink coffee.",
+  "alternatives": [
+   "She will not drink coffee."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "won't drink",
+    "options": [
+     "won't drink",
+     "will not drinks",
+     "don't drink",
+     "didn't drink"
+    ]
+   },
+   {
+    "correct": "coffee.",
+    "options": [
+     "coffee.",
+     "tea.",
+     "water."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Я не буду есть это завтра.",
+  "en": "I won't eat it tomorrow.",
+  "alternatives": [
+   "I will not eat it tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "don't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "eat",
+    "options": [
+     "eat",
+     "eats",
+     "ate"
+    ]
+   },
+   {
+    "correct": "it tomorrow.",
+    "options": [
+     "it tomorrow.",
+     "this tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_future_will",
+  "ru": "Он не будет изучать это завтра.",
+  "en": "He won't study this tomorrow.",
+  "alternatives": [
+   "He will not study this tomorrow."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "won't",
+    "options": [
+     "won't",
+     "doesn't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "study",
+    "options": [
+     "study",
+     "studies",
+     "studied"
+    ]
+   },
+   {
+    "correct": "this tomorrow.",
+    "options": [
+     "this tomorrow.",
+     "it tomorrow."
+    ]
+   }
+  ]
+ }
+]

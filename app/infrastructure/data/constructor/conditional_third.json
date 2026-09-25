@@ -1,0 +1,4432 @@
+[
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы он знал, он бы пришел.",
+  "en": "If he had known, he would have come.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If he had known,",
+    "options": [
+     "If he had known,",
+     "If he knew,",
+     "If he has known,",
+     "If he would know,"
+    ]
+   },
+   {
+    "correct": "he would have come.",
+    "options": [
+     "he would have come.",
+     "he had come.",
+     "he will come.",
+     "he would come."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она не опоздала, она бы успела на поезд.",
+  "en": "If she hadn't been late, she would have caught the train.",
+  "alternatives": [
+   "If she had not been late, she would have caught the train."
+  ],
+  "slots": [
+   {
+    "correct": "If she hadn't been late,",
+    "options": [
+     "If she hadn't been late,",
+     "If she wasn't late,",
+     "If she hasn't been late,",
+     "If she wouldn't be late,"
+    ]
+   },
+   {
+    "correct": "she would have caught the train.",
+    "options": [
+     "she would have caught the train.",
+     "she caught the train.",
+     "she had caught the train.",
+     "she will catch the train."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы мы не забыли ключи, мы бы вошли в дом.",
+  "en": "If we hadn't forgotten the keys, we would have entered the house.",
+  "alternatives": [
+   "If we had not forgotten the keys, we would have entered the house."
+  ],
+  "slots": [
+   {
+    "correct": "If we hadn't forgotten the keys,",
+    "options": [
+     "If we hadn't forgotten the keys,",
+     "If we didn't forget the keys,",
+     "If we hadn't forgot the keys,",
+     "If we haven't forgotten the keys,"
+    ]
+   },
+   {
+    "correct": "we would have entered the house.",
+    "options": [
+     "we would have entered the house.",
+     "we entered the house.",
+     "we had entered the house.",
+     "we would enter the house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они выиграли матч, они были бы счастливы.",
+  "en": "If they had won the match, they would have been happy.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If they had won the match,",
+    "options": [
+     "If they had won the match,",
+     "If they won the match,",
+     "If they have won the match,",
+     "If they would win the match,"
+    ]
+   },
+   {
+    "correct": "they would have been happy.",
+    "options": [
+     "they would have been happy.",
+     "they had been happy.",
+     "they were happy.",
+     "they would be happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы мой друг позвонил, я бы помог ему.",
+  "en": "If my friend had called, I would have helped him.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If my friend had called,",
+    "options": [
+     "If my friend had called,",
+     "If my friend called,",
+     "If my friend has called,",
+     "If my friend would call,"
+    ]
+   },
+   {
+    "correct": "I would have helped him.",
+    "options": [
+     "I would have helped him.",
+     "I helped him.",
+     "I had helped him.",
+     "I would help him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы я не потерял деньги, я бы купил этот подарок.",
+  "en": "If I hadn't lost the money, I would have bought this gift.",
+  "alternatives": [
+   "If I had not lost the money, I would have bought this gift."
+  ],
+  "slots": [
+   {
+    "correct": "If I hadn't lost the money,",
+    "options": [
+     "If I hadn't lost the money,",
+     "If I didn't lose the money,",
+     "If I hadn't lose the money,",
+     "If I haven't lost the money,"
+    ]
+   },
+   {
+    "correct": "I would have bought this gift.",
+    "options": [
+     "I would have bought this gift.",
+     "I bought this gift.",
+     "I had bought this gift.",
+     "I would buy this gift."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы учитель не объяснил это, мы бы не поняли.",
+  "en": "If the teacher hadn't explained it, we wouldn't have understood.",
+  "alternatives": [
+   "If the teacher had not explained it, we would not have understood."
+  ],
+  "slots": [
+   {
+    "correct": "If the teacher hadn't explained it,",
+    "options": [
+     "If the teacher hadn't explained it,",
+     "If the teacher didn't explain it,",
+     "If the teacher wouldn't explain it,",
+     "If the teacher hadn't explain it,"
+    ]
+   },
+   {
+    "correct": "we wouldn't have understood.",
+    "options": [
+     "we wouldn't have understood.",
+     "we would have understood.",
+     "we didn't understand.",
+     "we haven't understood."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы дети съели завтрак, они бы не были голодны.",
+  "en": "If the kids had eaten breakfast, they wouldn't have been hungry.",
+  "alternatives": [
+   "If the kids had eaten breakfast, they would not have been hungry."
+  ],
+  "slots": [
+   {
+    "correct": "If the kids had eaten breakfast,",
+    "options": [
+     "If the kids had eaten breakfast,",
+     "If the kids ate breakfast,",
+     "If the kids have eaten breakfast,",
+     "If the kids would eat breakfast,"
+    ]
+   },
+   {
+    "correct": "they wouldn't have been hungry.",
+    "options": [
+     "they wouldn't have been hungry.",
+     "they would have been hungry.",
+     "they were not hungry.",
+     "they hadn't been hungry."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она не сломала вазу, она бы не расстроилась.",
+  "en": "If she hadn't broken the vase, she wouldn't have been upset.",
+  "alternatives": [
+   "If she had not broken the vase, she would not have been upset."
+  ],
+  "slots": [
+   {
+    "correct": "If she hadn't broken the vase,",
+    "options": [
+     "If she hadn't broken the vase,",
+     "If she didn't break the vase,",
+     "If she hadn't break the vase,",
+     "If she hasn't broken the vase,"
+    ]
+   },
+   {
+    "correct": "she wouldn't have been upset.",
+    "options": [
+     "she wouldn't have been upset.",
+     "she would have been upset.",
+     "she was not upset.",
+     "she had not been upset."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы он не ушел рано, он бы встретил их.",
+  "en": "If he hadn't left early, he would have met them.",
+  "alternatives": [
+   "If he had not left early, he would have met them."
+  ],
+  "slots": [
+   {
+    "correct": "If he hadn't left early,",
+    "options": [
+     "If he hadn't left early,",
+     "If he didn't leave early,",
+     "If he hasn't left early,",
+     "If he wouldn't leave early,"
+    ]
+   },
+   {
+    "correct": "he would have met them.",
+    "options": [
+     "he would have met them.",
+     "he met them.",
+     "he had met them.",
+     "he would meet them."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы я нашел карту, я бы не заблудился.",
+  "en": "If I had found the map, I wouldn't have gotten lost.",
+  "alternatives": [
+   "If I had found the map, I would not have gotten lost."
+  ],
+  "slots": [
+   {
+    "correct": "If I had found the map,",
+    "options": [
+     "If I had found the map,",
+     "If I found the map,",
+     "If I have found the map,",
+     "If I would find the map,"
+    ]
+   },
+   {
+    "correct": "I wouldn't have gotten lost.",
+    "options": [
+     "I wouldn't have gotten lost.",
+     "I would have gotten lost.",
+     "I didn't get lost.",
+     "I had not gotten lost."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она изучила тему, она бы сдала экзамен.",
+  "en": "If she had studied the topic, she would have passed the exam.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If she had studied the topic,",
+    "options": [
+     "If she had studied the topic,",
+     "If she studied the topic,",
+     "If she has studied the topic,",
+     "If she would study the topic,"
+    ]
+   },
+   {
+    "correct": "she would have passed the exam.",
+    "options": [
+     "she would have passed the exam.",
+     "she passed the exam.",
+     "she had passed the exam.",
+     "she would pass the exam."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они взяли такси, они бы не промокли под дождем.",
+  "en": "If they had taken a taxi, they would not have got wet.",
+  "alternatives": [
+   "If they had taken a taxi, they wouldn't have gotten wet."
+  ],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If he",
+     "If she",
+     "If we"
+    ]
+   },
+   {
+    "correct": "had taken",
+    "options": [
+     "had taken",
+     "took",
+     "have taken",
+     "would take"
+    ]
+   },
+   {
+    "correct": "a taxi,",
+    "options": [
+     "a taxi,",
+     "the bus,",
+     "the car,"
+    ]
+   },
+   {
+    "correct": "they would not have",
+    "options": [
+     "they would not have",
+     "they hadn't",
+     "they would had"
+    ]
+   },
+   {
+    "correct": "got wet.",
+    "options": [
+     "got wet.",
+     "been wet.",
+     "get wet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы он не потерял телефон, он бы позвонил тебе.",
+  "en": "If he hadn't lost the phone, he would have called you.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If he",
+    "options": [
+     "If he",
+     "If she",
+     "If they"
+    ]
+   },
+   {
+    "correct": "hadn't lost",
+    "options": [
+     "hadn't lost",
+     "didn't lose",
+     "wouldn't lose",
+     "had lost"
+    ]
+   },
+   {
+    "correct": "the phone,",
+    "options": [
+     "the phone,",
+     "the keys,",
+     "the ticket,"
+    ]
+   },
+   {
+    "correct": "he would have",
+    "options": [
+     "he would have",
+     "he had",
+     "he would"
+    ]
+   },
+   {
+    "correct": "called you.",
+    "options": [
+     "called you.",
+     "seen you.",
+     "told you."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она принесла еду, мы бы не были голодны.",
+  "en": "If she had brought food, we would not have been hungry.",
+  "alternatives": [
+   "If she had brought food, we wouldn't have been hungry."
+  ],
+  "slots": [
+   {
+    "correct": "If she",
+    "options": [
+     "If she",
+     "If he",
+     "If they"
+    ]
+   },
+   {
+    "correct": "had brought",
+    "options": [
+     "had brought",
+     "brought",
+     "had bring",
+     "would bring"
+    ]
+   },
+   {
+    "correct": "food,",
+    "options": [
+     "food,",
+     "lunch,",
+     "dinner,"
+    ]
+   },
+   {
+    "correct": "we would not have",
+    "options": [
+     "we would not have",
+     "we hadn't",
+     "we would have"
+    ]
+   },
+   {
+    "correct": "been hungry.",
+    "options": [
+     "been hungry.",
+     "got hungry.",
+     "be hungry."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы мы не купили билеты, мы бы пропустили шоу.",
+  "en": "If we hadn't bought tickets, we would have missed the show.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If we",
+    "options": [
+     "If we",
+     "If they",
+     "If she"
+    ]
+   },
+   {
+    "correct": "hadn't bought",
+    "options": [
+     "hadn't bought",
+     "didn't buy",
+     "had bought"
+    ]
+   },
+   {
+    "correct": "tickets,",
+    "options": [
+     "tickets,",
+     "cards,",
+     "gifts,"
+    ]
+   },
+   {
+    "correct": "we would have",
+    "options": [
+     "we would have",
+     "we had",
+     "we would"
+    ]
+   },
+   {
+    "correct": "missed the show.",
+    "options": [
+     "missed the show.",
+     "seen the show.",
+     "lost the show."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они не ушли, они бы встретили его.",
+  "en": "If they hadn't left, they would have met him.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If he",
+     "If she"
+    ]
+   },
+   {
+    "correct": "hadn't left,",
+    "options": [
+     "hadn't left,",
+     "didn't leave,",
+     "had left,"
+    ]
+   },
+   {
+    "correct": "they would have",
+    "options": [
+     "they would have",
+     "they had",
+     "they wouldn't have"
+    ]
+   },
+   {
+    "correct": "met him.",
+    "options": [
+     "met him.",
+     "seen him.",
+     "told him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы он не съел торт, мы бы попробовали его.",
+  "en": "If he hadn't eaten the cake, we would have tasted it.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If he",
+    "options": [
+     "If he",
+     "If she",
+     "If they"
+    ]
+   },
+   {
+    "correct": "hadn't eaten",
+    "options": [
+     "hadn't eaten",
+     "didn't eat",
+     "had eaten"
+    ]
+   },
+   {
+    "correct": "the cake,",
+    "options": [
+     "the cake,",
+     "the food,",
+     "the bread,"
+    ]
+   },
+   {
+    "correct": "we would have",
+    "options": [
+     "we would have",
+     "we had",
+     "we would"
+    ]
+   },
+   {
+    "correct": "tasted it.",
+    "options": [
+     "tasted it.",
+     "eaten it.",
+     "broken it."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы я не забыл слова, я бы рассказал историю.",
+  "en": "If I hadn't forgotten the words, I would have told the story.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If he",
+     "If she"
+    ]
+   },
+   {
+    "correct": "hadn't forgotten",
+    "options": [
+     "hadn't forgotten",
+     "didn't forget",
+     "had forgotten"
+    ]
+   },
+   {
+    "correct": "the words,",
+    "options": [
+     "the words,",
+     "the song,",
+     "the rules,"
+    ]
+   },
+   {
+    "correct": "I would have",
+    "options": [
+     "I would have",
+     "I had",
+     "I would"
+    ]
+   },
+   {
+    "correct": "told the story.",
+    "options": [
+     "told the story.",
+     "written the story.",
+     "seen the story."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они не написали письмо, она бы не узнала новость.",
+  "en": "If they hadn't written the letter, she wouldn't have known the news.",
+  "alternatives": [
+   "If they hadn't written the letter, she would not have known the news."
+  ],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If he",
+     "If we"
+    ]
+   },
+   {
+    "correct": "hadn't written",
+    "options": [
+     "hadn't written",
+     "didn't write",
+     "had written"
+    ]
+   },
+   {
+    "correct": "the letter,",
+    "options": [
+     "the letter,",
+     "the text,",
+     "the book,"
+    ]
+   },
+   {
+    "correct": "she wouldn't have",
+    "options": [
+     "she wouldn't have",
+     "she would have",
+     "she had"
+    ]
+   },
+   {
+    "correct": "known the news.",
+    "options": [
+     "known the news.",
+     "told the news.",
+     "seen the news."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы учитель помог, я бы понял правила.",
+  "en": "If the teacher had helped, I would have understood the rules.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If the teacher",
+    "options": [
+     "If the teacher",
+     "If my friend",
+     "If they"
+    ]
+   },
+   {
+    "correct": "had helped,",
+    "options": [
+     "had helped,",
+     "helped,",
+     "would help,"
+    ]
+   },
+   {
+    "correct": "I would have",
+    "options": [
+     "I would have",
+     "I had",
+     "I would"
+    ]
+   },
+   {
+    "correct": "understood the rules.",
+    "options": [
+     "understood the rules.",
+     "learned the rules.",
+     "written the rules."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы дети не разбили окно, они бы не были наказаны.",
+  "en": "If the kids hadn't broken the window, they wouldn't have been punished.",
+  "alternatives": [
+   "If the kids hadn't broken the window, they would not have been punished."
+  ],
+  "slots": [
+   {
+    "correct": "If the kids",
+    "options": [
+     "If the kids",
+     "If they",
+     "If he"
+    ]
+   },
+   {
+    "correct": "hadn't broken",
+    "options": [
+     "hadn't broken",
+     "didn't break",
+     "had broken"
+    ]
+   },
+   {
+    "correct": "the window,",
+    "options": [
+     "the window,",
+     "the door,",
+     "the vase,"
+    ]
+   },
+   {
+    "correct": "they wouldn't have",
+    "options": [
+     "they wouldn't have",
+     "they would have",
+     "they had"
+    ]
+   },
+   {
+    "correct": "been punished.",
+    "options": [
+     "been punished.",
+     "got punished.",
+     "be punished."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы я не поймал мяч, он бы упал.",
+  "en": "If I hadn't caught the ball, it would have fallen.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If he",
+     "If we"
+    ]
+   },
+   {
+    "correct": "hadn't caught",
+    "options": [
+     "hadn't caught",
+     "didn't catch",
+     "had caught"
+    ]
+   },
+   {
+    "correct": "the ball,",
+    "options": [
+     "the ball,",
+     "the bag,",
+     "the cat,"
+    ]
+   },
+   {
+    "correct": "it would have",
+    "options": [
+     "it would have",
+     "it had",
+     "it would"
+    ]
+   },
+   {
+    "correct": "fallen.",
+    "options": [
+     "fallen.",
+     "broken.",
+     "lost."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она не потеряла ключи, она бы вошла в квартиру.",
+  "en": "If she hadn't lost the keys, she would have entered the apartment.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If she",
+    "options": [
+     "If she",
+     "If he",
+     "If they"
+    ]
+   },
+   {
+    "correct": "hadn't lost",
+    "options": [
+     "hadn't lost",
+     "didn't lose",
+     "had lost"
+    ]
+   },
+   {
+    "correct": "the keys,",
+    "options": [
+     "the keys,",
+     "the bag,",
+     "the money,"
+    ]
+   },
+   {
+    "correct": "she would have",
+    "options": [
+     "she would have",
+     "she had",
+     "she would"
+    ]
+   },
+   {
+    "correct": "entered the apartment.",
+    "options": [
+     "entered the apartment.",
+     "seen the apartment.",
+     "bought the apartment."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы он не пропустил автобус, он бы пришел вовремя.",
+  "en": "If he hadn't missed the bus, he would have arrived on time.",
+  "alternatives": [
+   "If he had not missed the bus, he would have arrived on time."
+  ],
+  "slots": [
+   {
+    "correct": "If he",
+    "options": [
+     "If he",
+     "If they",
+     "If she",
+     "If we"
+    ]
+   },
+   {
+    "correct": "hadn't missed",
+    "options": [
+     "hadn't missed",
+     "had missed",
+     "would have missed",
+     "hadn't been"
+    ]
+   },
+   {
+    "correct": "the bus, he",
+    "options": [
+     "the bus, he",
+     "the train, she",
+     "the show, they"
+    ]
+   },
+   {
+    "correct": "would have arrived",
+    "options": [
+     "would have arrived",
+     "had arrived",
+     "would arrive",
+     "arrived"
+    ]
+   },
+   {
+    "correct": "on time.",
+    "options": [
+     "on time.",
+     "early.",
+     "late."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они встретили его, они бы рассказали правду.",
+  "en": "If they had met him, they would have told the truth.",
+  "alternatives": [
+   "If they had met him, they would have told the truth."
+  ],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If we",
+     "If he"
+    ]
+   },
+   {
+    "correct": "had met",
+    "options": [
+     "had met",
+     "hadn't met",
+     "would have met",
+     "met"
+    ]
+   },
+   {
+    "correct": "him, they",
+    "options": [
+     "him, they",
+     "her, we",
+     "them, he"
+    ]
+   },
+   {
+    "correct": "would have told",
+    "options": [
+     "would have told",
+     "had told",
+     "would tell",
+     "told"
+    ]
+   },
+   {
+    "correct": "the truth.",
+    "options": [
+     "the truth.",
+     "the story.",
+     "the news."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она не забыла камеру, она бы сделала фото.",
+  "en": "If she hadn't forgotten the camera, she would have taken photos.",
+  "alternatives": [
+   "If she had not forgotten the camera, she would have taken photos."
+  ],
+  "slots": [
+   {
+    "correct": "If she",
+    "options": [
+     "If she",
+     "If he",
+     "If they"
+    ]
+   },
+   {
+    "correct": "hadn't forgotten",
+    "options": [
+     "hadn't forgotten",
+     "had forgotten",
+     "would have forgotten",
+     "forgot"
+    ]
+   },
+   {
+    "correct": "the camera, she",
+    "options": [
+     "the camera, she",
+     "the map, he",
+     "the bag, they"
+    ]
+   },
+   {
+    "correct": "would have taken",
+    "options": [
+     "would have taken",
+     "had taken",
+     "would take",
+     "took"
+    ]
+   },
+   {
+    "correct": "photos.",
+    "options": [
+     "photos.",
+     "notes.",
+     "a video."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы мы нашли деньги, мы бы купили еду.",
+  "en": "If we had found the money, we would have bought food.",
+  "alternatives": [
+   "If we had found some money, we would have bought food."
+  ],
+  "slots": [
+   {
+    "correct": "If we",
+    "options": [
+     "If we",
+     "If they",
+     "If I"
+    ]
+   },
+   {
+    "correct": "had found",
+    "options": [
+     "had found",
+     "hadn't found",
+     "would have found",
+     "found"
+    ]
+   },
+   {
+    "correct": "the money, we",
+    "options": [
+     "the money, we",
+     "the bag, they",
+     "the key, I"
+    ]
+   },
+   {
+    "correct": "would have bought",
+    "options": [
+     "would have bought",
+     "had bought",
+     "would buy",
+     "bought"
+    ]
+   },
+   {
+    "correct": "food.",
+    "options": [
+     "food.",
+     "water.",
+     "tickets."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы он не сломал стул, он бы не упал.",
+  "en": "If he hadn't broken the chair, he wouldn't have fallen.",
+  "alternatives": [
+   "If he had not broken the chair, he would not have fallen."
+  ],
+  "slots": [
+   {
+    "correct": "If he",
+    "options": [
+     "If he",
+     "If she",
+     "If they"
+    ]
+   },
+   {
+    "correct": "hadn't broken",
+    "options": [
+     "hadn't broken",
+     "had broken",
+     "would have broken",
+     "broke"
+    ]
+   },
+   {
+    "correct": "the chair, he",
+    "options": [
+     "the chair, he",
+     "the vase, she",
+     "the toy, they"
+    ]
+   },
+   {
+    "correct": "wouldn't have fallen.",
+    "options": [
+     "wouldn't have fallen.",
+     "would have fallen.",
+     "had fallen."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы учитель пришел раньше, он бы начал урок.",
+  "en": "If the teacher had come earlier, he would have started the lesson.",
+  "alternatives": [
+   "If the teacher had come earlier, he would have begun the lesson."
+  ],
+  "slots": [
+   {
+    "correct": "If the teacher",
+    "options": [
+     "If the teacher",
+     "If my friend",
+     "If they"
+    ]
+   },
+   {
+    "correct": "had come",
+    "options": [
+     "had come",
+     "hadn't come",
+     "would have come",
+     "came"
+    ]
+   },
+   {
+    "correct": "earlier, he",
+    "options": [
+     "earlier, he",
+     "later, she",
+     "fast, they"
+    ]
+   },
+   {
+    "correct": "would have started",
+    "options": [
+     "would have started",
+     "had started",
+     "would start",
+     "started"
+    ]
+   },
+   {
+    "correct": "the lesson.",
+    "options": [
+     "the lesson.",
+     "the game.",
+     "the talk."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они не проиграли игру, они бы праздновали.",
+  "en": "If they hadn't lost the game, they would have celebrated.",
+  "alternatives": [
+   "If they had not lost the game, they would have celebrated."
+  ],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If we",
+     "If he"
+    ]
+   },
+   {
+    "correct": "hadn't lost",
+    "options": [
+     "hadn't lost",
+     "had lost",
+     "would have lost",
+     "lost"
+    ]
+   },
+   {
+    "correct": "the game, they",
+    "options": [
+     "the game, they",
+     "the match, we",
+     "the race, he"
+    ]
+   },
+   {
+    "correct": "would have celebrated.",
+    "options": [
+     "would have celebrated.",
+     "had celebrated.",
+     "would celebrate."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы я не съел всё, ты бы попробовал это.",
+  "en": "If I hadn't eaten everything, you would have tried it.",
+  "alternatives": [
+   "If I had not eaten everything, you would have tried it."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If he",
+     "If she"
+    ]
+   },
+   {
+    "correct": "hadn't eaten",
+    "options": [
+     "hadn't eaten",
+     "had eaten",
+     "would have eaten",
+     "ate"
+    ]
+   },
+   {
+    "correct": "everything, you",
+    "options": [
+     "everything, you",
+     "the cake, he",
+     "it all, we"
+    ]
+   },
+   {
+    "correct": "would have tried",
+    "options": [
+     "would have tried",
+     "had tried",
+     "would try",
+     "tried"
+    ]
+   },
+   {
+    "correct": "it.",
+    "options": [
+     "it.",
+     "them.",
+     "this."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она написала мне, я бы знал новости.",
+  "en": "If she had written to me, I would have known the news.",
+  "alternatives": [
+   "If she had written me, I would have known the news."
+  ],
+  "slots": [
+   {
+    "correct": "If she",
+    "options": [
+     "If she",
+     "If he",
+     "If they"
+    ]
+   },
+   {
+    "correct": "had written",
+    "options": [
+     "had written",
+     "hadn't written",
+     "would have written",
+     "wrote"
+    ]
+   },
+   {
+    "correct": "to me, I",
+    "options": [
+     "to me, I",
+     "to us, they",
+     "to him, she"
+    ]
+   },
+   {
+    "correct": "would have known",
+    "options": [
+     "would have known",
+     "had known",
+     "would know",
+     "knew"
+    ]
+   },
+   {
+    "correct": "the news.",
+    "options": [
+     "the news.",
+     "the truth.",
+     "the plan."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы дети не были шумными, они бы уснули.",
+  "en": "If the kids hadn't been noisy, they would have fallen asleep.",
+  "alternatives": [
+   "If the children had not been noisy, they would have fallen asleep."
+  ],
+  "slots": [
+   {
+    "correct": "If the kids",
+    "options": [
+     "If the kids",
+     "If they",
+     "If he"
+    ]
+   },
+   {
+    "correct": "hadn't been",
+    "options": [
+     "hadn't been",
+     "had been",
+     "would have been",
+     "were"
+    ]
+   },
+   {
+    "correct": "noisy, they",
+    "options": [
+     "noisy, they",
+     "loud, we",
+     "tired, he"
+    ]
+   },
+   {
+    "correct": "would have fallen",
+    "options": [
+     "would have fallen",
+     "had fallen",
+     "would fall",
+     "fell"
+    ]
+   },
+   {
+    "correct": "asleep.",
+    "options": [
+     "asleep.",
+     "quiet.",
+     "ready."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы мой друг помог мне, я бы закончил работу.",
+  "en": "If my friend had helped me, I would have finished the work.",
+  "alternatives": [
+   "If my friend had helped me, I would have finished the job."
+  ],
+  "slots": [
+   {
+    "correct": "If my friend",
+    "options": [
+     "If my friend",
+     "If they",
+     "If he"
+    ]
+   },
+   {
+    "correct": "had helped",
+    "options": [
+     "had helped",
+     "hadn't helped",
+     "would have helped",
+     "helped"
+    ]
+   },
+   {
+    "correct": "me, I",
+    "options": [
+     "me, I",
+     "us, we",
+     "him, she"
+    ]
+   },
+   {
+    "correct": "would have finished",
+    "options": [
+     "would have finished",
+     "had finished",
+     "would finish",
+     "finished"
+    ]
+   },
+   {
+    "correct": "the work.",
+    "options": [
+     "the work.",
+     "the task.",
+     "the report."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы мы не ушли, мы бы увидели их.",
+  "en": "If we hadn't left, we would have seen them.",
+  "alternatives": [
+   "If we had not left, we would have seen them."
+  ],
+  "slots": [
+   {
+    "correct": "If we",
+    "options": [
+     "If we",
+     "If they",
+     "If she"
+    ]
+   },
+   {
+    "correct": "hadn't left,",
+    "options": [
+     "hadn't left,",
+     "had left,",
+     "would have left,",
+     "left,"
+    ]
+   },
+   {
+    "correct": "we",
+    "options": [
+     "we",
+     "they",
+     "he"
+    ]
+   },
+   {
+    "correct": "would have seen",
+    "options": [
+     "would have seen",
+     "had seen",
+     "would see",
+     "saw"
+    ]
+   },
+   {
+    "correct": "them.",
+    "options": [
+     "them.",
+     "her.",
+     "him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы Том купил машину, он бы поехал в горы.",
+  "en": "If Tom had bought a car, he would have driven to the mountains.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If Tom",
+    "options": [
+     "If Tom",
+     "If he",
+     "If they"
+    ]
+   },
+   {
+    "correct": "had bought",
+    "options": [
+     "had bought",
+     "bought",
+     "would have bought"
+    ]
+   },
+   {
+    "correct": "a car, he",
+    "options": [
+     "a car, he",
+     "the car, he",
+     "a car, they"
+    ]
+   },
+   {
+    "correct": "would have driven",
+    "options": [
+     "would have driven",
+     "had driven",
+     "would drive"
+    ]
+   },
+   {
+    "correct": "to the mountains.",
+    "options": [
+     "to the mountains.",
+     "to the city.",
+     "home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она не взяла пальто, она бы замерзла.",
+  "en": "If she hadn't taken her coat, she would have frozen.",
+  "alternatives": [
+   "If she had not taken her coat, she would have frozen."
+  ],
+  "slots": [
+   {
+    "correct": "If she",
+    "options": [
+     "If she",
+     "If they",
+     "If he"
+    ]
+   },
+   {
+    "correct": "hadn't taken",
+    "options": [
+     "hadn't taken",
+     "had taken",
+     "would have taken"
+    ]
+   },
+   {
+    "correct": "her coat, she",
+    "options": [
+     "her coat, she",
+     "the coat, she",
+     "her bag, she"
+    ]
+   },
+   {
+    "correct": "would have frozen.",
+    "options": [
+     "would have frozen.",
+     "would freeze.",
+     "had frozen."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы мы не пропустили поезд, мы бы прибыли вовремя.",
+  "en": "If we hadn't missed the train, we would have arrived on time.",
+  "alternatives": [
+   "If we had not missed the train, we would have arrived on time."
+  ],
+  "slots": [
+   {
+    "correct": "If we",
+    "options": [
+     "If we",
+     "If they",
+     "If I"
+    ]
+   },
+   {
+    "correct": "hadn't missed",
+    "options": [
+     "hadn't missed",
+     "had missed",
+     "would have missed"
+    ]
+   },
+   {
+    "correct": "the train, we",
+    "options": [
+     "the train, we",
+     "the bus, we",
+     "the flight, we"
+    ]
+   },
+   {
+    "correct": "would have arrived",
+    "options": [
+     "would have arrived",
+     "had arrived",
+     "would arrive"
+    ]
+   },
+   {
+    "correct": "on time.",
+    "options": [
+     "on time.",
+     "early.",
+     "later."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они не были ленивы, они бы выучили английский.",
+  "en": "If they hadn't been lazy, they would have learned English.",
+  "alternatives": [
+   "If they had not been lazy, they would have learned English."
+  ],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If we",
+     "If you"
+    ]
+   },
+   {
+    "correct": "hadn't been",
+    "options": [
+     "hadn't been",
+     "had been",
+     "would have been"
+    ]
+   },
+   {
+    "correct": "lazy, they",
+    "options": [
+     "lazy, they",
+     "tired, they",
+     "busy, they"
+    ]
+   },
+   {
+    "correct": "would have learned",
+    "options": [
+     "would have learned",
+     "had learned",
+     "would learn"
+    ]
+   },
+   {
+    "correct": "English.",
+    "options": [
+     "English.",
+     "math.",
+     "history."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы он не забыл паспорт, он бы улетел.",
+  "en": "If he hadn't forgotten his passport, he would have flown away.",
+  "alternatives": [
+   "If he had not forgotten his passport, he would have flown away."
+  ],
+  "slots": [
+   {
+    "correct": "If he",
+    "options": [
+     "If he",
+     "If she",
+     "If they"
+    ]
+   },
+   {
+    "correct": "hadn't forgotten",
+    "options": [
+     "hadn't forgotten",
+     "had forgotten",
+     "would have forgotten"
+    ]
+   },
+   {
+    "correct": "his passport, he",
+    "options": [
+     "his passport, he",
+     "the ticket, he",
+     "his bag, he"
+    ]
+   },
+   {
+    "correct": "would have flown",
+    "options": [
+     "would have flown",
+     "had flown",
+     "would fly"
+    ]
+   },
+   {
+    "correct": "away.",
+    "options": [
+     "away.",
+     "out.",
+     "home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она не пришла, мы бы не начали обед.",
+  "en": "If she hadn't come, we wouldn't have started lunch.",
+  "alternatives": [
+   "If she had not come, we would not have started lunch."
+  ],
+  "slots": [
+   {
+    "correct": "If she",
+    "options": [
+     "If she",
+     "If he",
+     "If they"
+    ]
+   },
+   {
+    "correct": "hadn't come,",
+    "options": [
+     "hadn't come,",
+     "had come,",
+     "would have come,"
+    ]
+   },
+   {
+    "correct": "we",
+    "options": [
+     "we",
+     "they",
+     "I"
+    ]
+   },
+   {
+    "correct": "wouldn't have started",
+    "options": [
+     "wouldn't have started",
+     "had started",
+     "would have started"
+    ]
+   },
+   {
+    "correct": "lunch.",
+    "options": [
+     "lunch.",
+     "dinner.",
+     "the party."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы я не потерял ключи, я бы открыл дверь.",
+  "en": "If I hadn't lost my keys, I would have opened the door.",
+  "alternatives": [
+   "If I had not lost my keys, I would have opened the door."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If he",
+     "If we"
+    ]
+   },
+   {
+    "correct": "hadn't lost",
+    "options": [
+     "hadn't lost",
+     "had lost",
+     "would have lost"
+    ]
+   },
+   {
+    "correct": "my keys, I",
+    "options": [
+     "my keys, I",
+     "the keys, I",
+     "my bag, I"
+    ]
+   },
+   {
+    "correct": "would have opened",
+    "options": [
+     "would have opened",
+     "had opened",
+     "would open"
+    ]
+   },
+   {
+    "correct": "the door.",
+    "options": [
+     "the door.",
+     "the box.",
+     "the gate."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они не сломали компьютер, они бы закончили работу.",
+  "en": "If they hadn't broken the computer, they would have finished the work.",
+  "alternatives": [
+   "If they had not broken the computer, they would have finished the work."
+  ],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If we",
+     "If you"
+    ]
+   },
+   {
+    "correct": "hadn't broken",
+    "options": [
+     "hadn't broken",
+     "had broken",
+     "would have broken"
+    ]
+   },
+   {
+    "correct": "the computer, they",
+    "options": [
+     "the computer, they",
+     "the printer, they",
+     "the phone, they"
+    ]
+   },
+   {
+    "correct": "would have finished",
+    "options": [
+     "would have finished",
+     "had finished",
+     "would finish"
+    ]
+   },
+   {
+    "correct": "the work.",
+    "options": [
+     "the work.",
+     "the task.",
+     "the report."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она не нашла деньги, она бы не купила подарок.",
+  "en": "If she hadn't found the money, she wouldn't have bought the gift.",
+  "alternatives": [
+   "If she had not found the money, she would not have bought the gift."
+  ],
+  "slots": [
+   {
+    "correct": "If she",
+    "options": [
+     "If she",
+     "If he",
+     "If they"
+    ]
+   },
+   {
+    "correct": "hadn't found",
+    "options": [
+     "hadn't found",
+     "had found",
+     "would have found"
+    ]
+   },
+   {
+    "correct": "the money, she",
+    "options": [
+     "the money, she",
+     "the cash, she",
+     "the wallet, she"
+    ]
+   },
+   {
+    "correct": "wouldn't have bought",
+    "options": [
+     "wouldn't have bought",
+     "had bought",
+     "would have bought"
+    ]
+   },
+   {
+    "correct": "the gift.",
+    "options": [
+     "the gift.",
+     "the toy.",
+     "the dress."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы он не увидел знака, он бы не остановился.",
+  "en": "If he hadn't seen the sign, he wouldn't have stopped.",
+  "alternatives": [
+   "If he had not seen the sign, he would not have stopped."
+  ],
+  "slots": [
+   {
+    "correct": "If he",
+    "options": [
+     "If he",
+     "If she",
+     "If they"
+    ]
+   },
+   {
+    "correct": "hadn't seen",
+    "options": [
+     "hadn't seen",
+     "had seen",
+     "would have seen"
+    ]
+   },
+   {
+    "correct": "the sign, he",
+    "options": [
+     "the sign, he",
+     "the car, he",
+     "the light, he"
+    ]
+   },
+   {
+    "correct": "wouldn't have stopped.",
+    "options": [
+     "wouldn't have stopped.",
+     "had stopped.",
+     "would have stopped."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы мы не купили билеты, мы бы не увидели шоу.",
+  "en": "If we hadn't bought the tickets, we wouldn't have seen the show.",
+  "alternatives": [
+   "If we had not bought the tickets, we would not have seen the show."
+  ],
+  "slots": [
+   {
+    "correct": "If we",
+    "options": [
+     "If we",
+     "If they",
+     "If you"
+    ]
+   },
+   {
+    "correct": "hadn't bought",
+    "options": [
+     "hadn't bought",
+     "had bought",
+     "would have bought"
+    ]
+   },
+   {
+    "correct": "the tickets, we",
+    "options": [
+     "the tickets, we",
+     "the passes, we",
+     "the seats, we"
+    ]
+   },
+   {
+    "correct": "wouldn't have seen",
+    "options": [
+     "wouldn't have seen",
+     "had seen",
+     "would have seen"
+    ]
+   },
+   {
+    "correct": "the show.",
+    "options": [
+     "the show.",
+     "the movie.",
+     "the play."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы учитель не рассказал историю, дети бы не улыбнулись.",
+  "en": "If the teacher hadn't told the story, the kids wouldn't have smiled.",
+  "alternatives": [
+   "If the teacher had not told the story, the kids would not have smiled."
+  ],
+  "slots": [
+   {
+    "correct": "If the teacher",
+    "options": [
+     "If the teacher",
+     "If my friend",
+     "If they"
+    ]
+   },
+   {
+    "correct": "hadn't told",
+    "options": [
+     "hadn't told",
+     "had told",
+     "would have told"
+    ]
+   },
+   {
+    "correct": "the story, the kids",
+    "options": [
+     "the story, the kids",
+     "the joke, the kids",
+     "the news, the kids"
+    ]
+   },
+   {
+    "correct": "wouldn't have smiled.",
+    "options": [
+     "wouldn't have smiled.",
+     "had smiled.",
+     "would have smiled."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они не пропустили сигнал, они бы не упали.",
+  "en": "If they hadn't missed the signal, they would have fallen.",
+  "alternatives": [
+   "If they had not missed the signal, they would have fallen."
+  ],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If he",
+     "If she",
+     "If we"
+    ]
+   },
+   {
+    "correct": "hadn't missed",
+    "options": [
+     "hadn't missed",
+     "had missed",
+     "would have missed",
+     "haven't missed"
+    ]
+   },
+   {
+    "correct": "the signal, they",
+    "options": [
+     "the signal, they",
+     "the sign, he",
+     "the test, she",
+     "the bus, we"
+    ]
+   },
+   {
+    "correct": "would have fallen.",
+    "options": [
+     "would have fallen.",
+     "would fall.",
+     "had fallen.",
+     "will have fallen."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы мы не взяли зонты, мы бы промокли.",
+  "en": "If we hadn't taken umbrellas, we would have got wet.",
+  "alternatives": [
+   "If we had not taken umbrellas, we would have gotten wet."
+  ],
+  "slots": [
+   {
+    "correct": "If we",
+    "options": [
+     "If we",
+     "If they",
+     "If she",
+     "If he"
+    ]
+   },
+   {
+    "correct": "hadn't taken",
+    "options": [
+     "hadn't taken",
+     "had taken",
+     "would have taken",
+     "haven't taken"
+    ]
+   },
+   {
+    "correct": "umbrellas, we",
+    "options": [
+     "umbrellas, we",
+     "coats, they",
+     "food, he",
+     "money, she"
+    ]
+   },
+   {
+    "correct": "would have got wet.",
+    "options": [
+     "would have got wet.",
+     "would get wet.",
+     "had got wet.",
+     "will have got wet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы он не забыл книгу, он бы прочитал её.",
+  "en": "If he hadn't forgotten the book, he would have read it.",
+  "alternatives": [
+   "If he had not forgotten the book, he would have read it."
+  ],
+  "slots": [
+   {
+    "correct": "If he",
+    "options": [
+     "If he",
+     "If she",
+     "If they",
+     "If I"
+    ]
+   },
+   {
+    "correct": "hadn't forgotten",
+    "options": [
+     "hadn't forgotten",
+     "had forgotten",
+     "would have forgotten",
+     "didn't forget"
+    ]
+   },
+   {
+    "correct": "the book, he",
+    "options": [
+     "the book, he",
+     "the key, she",
+     "the map, they",
+     "the note, I"
+    ]
+   },
+   {
+    "correct": "would have read it.",
+    "options": [
+     "would have read it.",
+     "would read it.",
+     "had read it.",
+     "will have read it."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она не потеряла очки, она бы увидела дорогу.",
+  "en": "If she hadn't lost her glasses, she would have seen the road.",
+  "alternatives": [
+   "If she had not lost her glasses, she would have seen the road."
+  ],
+  "slots": [
+   {
+    "correct": "If she",
+    "options": [
+     "If she",
+     "If he",
+     "If they",
+     "If I"
+    ]
+   },
+   {
+    "correct": "hadn't lost",
+    "options": [
+     "hadn't lost",
+     "had lost",
+     "would have lost",
+     "haven't lost"
+    ]
+   },
+   {
+    "correct": "her glasses, she",
+    "options": [
+     "her glasses, she",
+     "his bag, he",
+     "their keys, they",
+     "my phone, I"
+    ]
+   },
+   {
+    "correct": "would have seen the road.",
+    "options": [
+     "would have seen the road.",
+     "would see the road.",
+     "had seen the road.",
+     "will have seen the road."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они не купили дом, они бы не были здесь.",
+  "en": "If they hadn't bought the house, they wouldn't have been here.",
+  "alternatives": [
+   "If they had not bought the house, they would not have been here."
+  ],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If we",
+     "If she",
+     "If he"
+    ]
+   },
+   {
+    "correct": "hadn't bought",
+    "options": [
+     "hadn't bought",
+     "had bought",
+     "would have bought",
+     "didn't buy"
+    ]
+   },
+   {
+    "correct": "the house, they",
+    "options": [
+     "the house, they",
+     "the car, we",
+     "the bike, she",
+     "the flat, he"
+    ]
+   },
+   {
+    "correct": "wouldn't have been here.",
+    "options": [
+     "wouldn't have been here.",
+     "would have been here.",
+     "had been here.",
+     "will be here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы я не позвонил, он бы не пришел.",
+  "en": "If I had called, he wouldn't have come.",
+  "alternatives": [
+   "If I had called, he would not have come."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If they",
+     "If she",
+     "If we"
+    ]
+   },
+   {
+    "correct": "had called,",
+    "options": [
+     "had called,",
+     "hadn't called,",
+     "would have called,",
+     "called,"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "she",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "wouldn't have come.",
+    "options": [
+     "wouldn't have come.",
+     "would have come.",
+     "had come.",
+     "will have come."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы он не сломал дверь, он бы не был наказан.",
+  "en": "If he hadn't broken the door, he wouldn't have been punished.",
+  "alternatives": [
+   "If he had not broken the door, he would not have been punished."
+  ],
+  "slots": [
+   {
+    "correct": "If he",
+    "options": [
+     "If he",
+     "If she",
+     "If they",
+     "If we"
+    ]
+   },
+   {
+    "correct": "hadn't broken",
+    "options": [
+     "hadn't broken",
+     "had broken",
+     "would have broken",
+     "didn't break"
+    ]
+   },
+   {
+    "correct": "the door, he",
+    "options": [
+     "the door, he",
+     "the toy, she",
+     "the cup, they",
+     "the box, we"
+    ]
+   },
+   {
+    "correct": "wouldn't have been punished.",
+    "options": [
+     "wouldn't have been punished.",
+     "would have been punished.",
+     "had been punished.",
+     "will be punished."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы мы не нашли деньги, мы бы не купили обед.",
+  "en": "If we had found money, we would have bought lunch.",
+  "alternatives": [
+   "If we had found the money, we would have bought lunch."
+  ],
+  "slots": [
+   {
+    "correct": "If we",
+    "options": [
+     "If we",
+     "If they",
+     "If she",
+     "If he"
+    ]
+   },
+   {
+    "correct": "had found",
+    "options": [
+     "had found",
+     "hadn't found",
+     "would have found",
+     "found"
+    ]
+   },
+   {
+    "correct": "money, we",
+    "options": [
+     "money, we",
+     "keys, they",
+     "food, she",
+     "tickets, he"
+    ]
+   },
+   {
+    "correct": "would have bought lunch.",
+    "options": [
+     "would have bought lunch.",
+     "would buy lunch.",
+     "had bought lunch.",
+     "will have bought lunch."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она не рассказала правду, он бы не узнал это.",
+  "en": "If she hadn't told the truth, he wouldn't have known it.",
+  "alternatives": [
+   "If she had not told the truth, he would not have known it."
+  ],
+  "slots": [
+   {
+    "correct": "If she",
+    "options": [
+     "If she",
+     "If he",
+     "If they",
+     "If I"
+    ]
+   },
+   {
+    "correct": "hadn't told",
+    "options": [
+     "hadn't told",
+     "had told",
+     "would have told",
+     "didn't tell"
+    ]
+   },
+   {
+    "correct": "the truth, he",
+    "options": [
+     "the truth, he",
+     "the secret, she",
+     "the story, they",
+     "the news, I"
+    ]
+   },
+   {
+    "correct": "wouldn't have known it.",
+    "options": [
+     "wouldn't have known it.",
+     "would have known it.",
+     "had known it.",
+     "will have known it."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они не выиграли приз, они бы не были рады.",
+  "en": "If they hadn't won the prize, they wouldn't have been happy.",
+  "alternatives": [
+   "If they had not won the prize, they would not have been happy."
+  ],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If we",
+     "If she",
+     "If he"
+    ]
+   },
+   {
+    "correct": "hadn't won",
+    "options": [
+     "hadn't won",
+     "had won",
+     "would have won",
+     "didn't win"
+    ]
+   },
+   {
+    "correct": "the prize, they",
+    "options": [
+     "the prize, they",
+     "the game, we",
+     "the race, she",
+     "the match, he"
+    ]
+   },
+   {
+    "correct": "wouldn't have been happy.",
+    "options": [
+     "wouldn't have been happy.",
+     "would have been happy.",
+     "had been happy.",
+     "will have been happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы я не написал письмо, она бы не приехала.",
+  "en": "If I had written the letter, she would have come.",
+  "alternatives": [
+   "If I had written a letter, she would have come."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If they",
+     "If he",
+     "If we"
+    ]
+   },
+   {
+    "correct": "had written",
+    "options": [
+     "had written",
+     "hadn't written",
+     "would have written",
+     "wrote"
+    ]
+   },
+   {
+    "correct": "the letter, she",
+    "options": [
+     "the letter, she",
+     "the note, he",
+     "the email, they",
+     "the book, we"
+    ]
+   },
+   {
+    "correct": "would have come.",
+    "options": [
+     "would have come.",
+     "would come.",
+     "had come.",
+     "will have come."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы учитель не помог, я бы не сдал тест.",
+  "en": "If the teacher hadn't helped, I wouldn't have passed the test.",
+  "alternatives": [
+   "If the teacher had not helped, I would not have passed the test."
+  ],
+  "slots": [
+   {
+    "correct": "If the teacher",
+    "options": [
+     "If the teacher",
+     "If my friend",
+     "If they",
+     "If he"
+    ]
+   },
+   {
+    "correct": "hadn't helped,",
+    "options": [
+     "hadn't helped,",
+     "had helped,",
+     "would have helped,",
+     "didn't help,"
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "we",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "wouldn't have passed the test.",
+    "options": [
+     "wouldn't have passed the test.",
+     "would have passed the test.",
+     "had passed the test.",
+     "will have passed the test."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она купила билет, она бы улетела.",
+  "en": "If she had bought a ticket, she would have flown.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If she",
+    "options": [
+     "If she",
+     "If he",
+     "If they",
+     "If we"
+    ]
+   },
+   {
+    "correct": "had bought",
+    "options": [
+     "had bought",
+     "would have bought",
+     "has bought",
+     "bought"
+    ]
+   },
+   {
+    "correct": "a ticket, she",
+    "options": [
+     "a ticket, she",
+     "the bus, he",
+     "the keys, they"
+    ]
+   },
+   {
+    "correct": "would have flown.",
+    "options": [
+     "would have flown.",
+     "had flown.",
+     "will have flown.",
+     "would fly."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они не уехали, они бы увидели нас.",
+  "en": "If they hadn't left, they would have seen us.",
+  "alternatives": [
+   "If they had not left, they would have seen us."
+  ],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If we",
+     "If he",
+     "If she"
+    ]
+   },
+   {
+    "correct": "hadn't left,",
+    "options": [
+     "hadn't left,",
+     "had left,",
+     "wouldn't have left,",
+     "haven't left,"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "we",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "would have seen us.",
+    "options": [
+     "would have seen us.",
+     "would see us.",
+     "had seen us.",
+     "will have seen us."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы он не потерял сумку, он бы нашел деньги.",
+  "en": "If he hadn't lost the bag, he would have found the money.",
+  "alternatives": [
+   "If he had not lost the bag, he would have found the money."
+  ],
+  "slots": [
+   {
+    "correct": "If he",
+    "options": [
+     "If he",
+     "If she",
+     "If they",
+     "If we"
+    ]
+   },
+   {
+    "correct": "hadn't lost",
+    "options": [
+     "hadn't lost",
+     "had lost",
+     "would have lost",
+     "didn't lose"
+    ]
+   },
+   {
+    "correct": "the bag, he",
+    "options": [
+     "the bag, he",
+     "the keys, she",
+     "the map, they"
+    ]
+   },
+   {
+    "correct": "would have found the money.",
+    "options": [
+     "would have found the money.",
+     "would find the money.",
+     "had found the money.",
+     "will have found the money."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы мы не проиграли, мы бы отпраздновали победу.",
+  "en": "If we hadn't lost, we would have celebrated.",
+  "alternatives": [
+   "If we had not lost, we would have celebrated."
+  ],
+  "slots": [
+   {
+    "correct": "If we",
+    "options": [
+     "If we",
+     "If they",
+     "If he",
+     "If she"
+    ]
+   },
+   {
+    "correct": "hadn't lost,",
+    "options": [
+     "hadn't lost,",
+     "had lost,",
+     "would have lost,",
+     "didn't lose,"
+    ]
+   },
+   {
+    "correct": "we",
+    "options": [
+     "we",
+     "they",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "would have celebrated.",
+    "options": [
+     "would have celebrated.",
+     "would celebrate.",
+     "had celebrated.",
+     "will have celebrated."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они не принесли еду, мы бы проголодались.",
+  "en": "If they hadn't brought food, we would have been hungry.",
+  "alternatives": [
+   "If they had not brought food, we would have been hungry."
+  ],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If we",
+     "If he",
+     "If she"
+    ]
+   },
+   {
+    "correct": "hadn't brought",
+    "options": [
+     "hadn't brought",
+     "had brought",
+     "would have brought",
+     "didn't bring"
+    ]
+   },
+   {
+    "correct": "food, we",
+    "options": [
+     "food, we",
+     "the cake, he",
+     "the bags, they"
+    ]
+   },
+   {
+    "correct": "would have been hungry.",
+    "options": [
+     "would have been hungry.",
+     "would be hungry.",
+     "had been hungry.",
+     "will have been hungry."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы он не сломал телефон, он бы позвонил тебе.",
+  "en": "If he hadn't broken the phone, he would have called you.",
+  "alternatives": [
+   "If he had not broken the phone, he would have called you."
+  ],
+  "slots": [
+   {
+    "correct": "If he",
+    "options": [
+     "If he",
+     "If she",
+     "If they",
+     "If we"
+    ]
+   },
+   {
+    "correct": "hadn't broken",
+    "options": [
+     "hadn't broken",
+     "had broken",
+     "would have broken",
+     "didn't break"
+    ]
+   },
+   {
+    "correct": "the phone, he",
+    "options": [
+     "the phone, he",
+     "the chair, she",
+     "the gate, they"
+    ]
+   },
+   {
+    "correct": "would have called you.",
+    "options": [
+     "would have called you.",
+     "would call you.",
+     "had called you.",
+     "will have called you."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы мы не поймали мяч, он бы упал.",
+  "en": "If we hadn't caught the ball, it would have fallen.",
+  "alternatives": [
+   "If we had not caught the ball, it would have fallen."
+  ],
+  "slots": [
+   {
+    "correct": "If we",
+    "options": [
+     "If we",
+     "If they",
+     "If he",
+     "If she"
+    ]
+   },
+   {
+    "correct": "hadn't caught",
+    "options": [
+     "hadn't caught",
+     "had caught",
+     "would have caught",
+     "didn't catch"
+    ]
+   },
+   {
+    "correct": "the ball, it",
+    "options": [
+     "the ball, it",
+     "the cat, he",
+     "the dog, she"
+    ]
+   },
+   {
+    "correct": "would have fallen.",
+    "options": [
+     "would have fallen.",
+     "would fall.",
+     "had fallen.",
+     "will have fallen."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она не написала письмо, он бы не узнал новость.",
+  "en": "If she hadn't written the letter, he wouldn't have known the news.",
+  "alternatives": [
+   "If she had not written the letter, he would not have known the news."
+  ],
+  "slots": [
+   {
+    "correct": "If she",
+    "options": [
+     "If she",
+     "If he",
+     "If they",
+     "If we"
+    ]
+   },
+   {
+    "correct": "hadn't written",
+    "options": [
+     "hadn't written",
+     "had written",
+     "would have written",
+     "didn't write"
+    ]
+   },
+   {
+    "correct": "the letter, he",
+    "options": [
+     "the letter, he",
+     "the report, they",
+     "the note, we"
+    ]
+   },
+   {
+    "correct": "wouldn't have known the news.",
+    "options": [
+     "wouldn't have known the news.",
+     "would have known the news.",
+     "would know the news.",
+     "had known the news."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они не пропустили автобус, они бы пришли вовремя.",
+  "en": "If they hadn't missed the bus, they would have arrived on time.",
+  "alternatives": [
+   "If they had not missed the bus, they would have arrived on time."
+  ],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If we",
+     "If he",
+     "If she"
+    ]
+   },
+   {
+    "correct": "hadn't missed",
+    "options": [
+     "hadn't missed",
+     "had missed",
+     "would have missed",
+     "didn't miss"
+    ]
+   },
+   {
+    "correct": "the bus, they",
+    "options": [
+     "the bus, they",
+     "the train, he",
+     "the class, she"
+    ]
+   },
+   {
+    "correct": "would have arrived on time.",
+    "options": [
+     "would have arrived on time.",
+     "would arrive on time.",
+     "had arrived on time.",
+     "will have arrived on time."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она не забыла карту, она бы нашла дорогу.",
+  "en": "If she hadn't forgotten the map, she would have found the way.",
+  "alternatives": [
+   "If she had not forgotten the map, she would have found the way."
+  ],
+  "slots": [
+   {
+    "correct": "If she",
+    "options": [
+     "If she",
+     "If he",
+     "If they",
+     "If we"
+    ]
+   },
+   {
+    "correct": "hadn't forgotten",
+    "options": [
+     "hadn't forgotten",
+     "had forgotten",
+     "would have forgotten",
+     "didn't forget"
+    ]
+   },
+   {
+    "correct": "the map, she would have found",
+    "options": [
+     "the map, she would have found",
+     "the map, she had found",
+     "the map, she would find",
+     "the map, she found"
+    ]
+   },
+   {
+    "correct": "the way.",
+    "options": [
+     "the way.",
+     "the road.",
+     "the path.",
+     "the house."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они выиграли, они бы устроили вечеринку.",
+  "en": "If they had won, they would have had a party.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If we",
+     "If he",
+     "If she"
+    ]
+   },
+   {
+    "correct": "had won,",
+    "options": [
+     "had won,",
+     "won,",
+     "would have won,",
+     "have won,"
+    ]
+   },
+   {
+    "correct": "they would have had",
+    "options": [
+     "they would have had",
+     "they had had",
+     "they would have",
+     "they had"
+    ]
+   },
+   {
+    "correct": "a party.",
+    "options": [
+     "a party.",
+     "a dinner.",
+     "a game.",
+     "a meeting."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы мы не купили продукты, мы бы не приготовили ужин.",
+  "en": "If we hadn't bought food, we wouldn't have cooked dinner.",
+  "alternatives": [
+   "If we had not bought food, we would not have cooked dinner."
+  ],
+  "slots": [
+   {
+    "correct": "If we",
+    "options": [
+     "If we",
+     "If they",
+     "If he",
+     "If I"
+    ]
+   },
+   {
+    "correct": "hadn't bought",
+    "options": [
+     "hadn't bought",
+     "had bought",
+     "didn't buy",
+     "wouldn't buy"
+    ]
+   },
+   {
+    "correct": "food, we wouldn't have cooked",
+    "options": [
+     "food, we wouldn't have cooked",
+     "food, we would have cooked",
+     "food, we had cooked",
+     "food, we cooked"
+    ]
+   },
+   {
+    "correct": "dinner.",
+    "options": [
+     "dinner.",
+     "lunch.",
+     "breakfast.",
+     "supper."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы он не сломал окно, он бы не был наказан.",
+  "en": "If he hadn't broken the window, he wouldn't have been punished.",
+  "alternatives": [
+   "If he had not broken the window, he would not have been punished."
+  ],
+  "slots": [
+   {
+    "correct": "If he",
+    "options": [
+     "If he",
+     "If she",
+     "If they",
+     "If we"
+    ]
+   },
+   {
+    "correct": "hadn't broken",
+    "options": [
+     "hadn't broken",
+     "had broken",
+     "wouldn't break",
+     "didn't break"
+    ]
+   },
+   {
+    "correct": "the window, he wouldn't have been",
+    "options": [
+     "the window, he wouldn't have been",
+     "the window, he would have been",
+     "the window, he had been",
+     "the window, he was"
+    ]
+   },
+   {
+    "correct": "punished.",
+    "options": [
+     "punished.",
+     "scolded.",
+     "sad.",
+     "happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она пришла вовремя, она бы увидела шоу.",
+  "en": "If she had come on time, she would have seen the show.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If she",
+    "options": [
+     "If she",
+     "If he",
+     "If they",
+     "If we"
+    ]
+   },
+   {
+    "correct": "had come",
+    "options": [
+     "had come",
+     "came",
+     "would have come",
+     "has come"
+    ]
+   },
+   {
+    "correct": "on time, she would have seen",
+    "options": [
+     "on time, she would have seen",
+     "on time, she had seen",
+     "on time, she would see",
+     "on time, she saw"
+    ]
+   },
+   {
+    "correct": "the show.",
+    "options": [
+     "the show.",
+     "the film.",
+     "the play.",
+     "the game."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы я не встретил его, я бы не узнал правду.",
+  "en": "If I hadn't met him, I wouldn't have known the truth.",
+  "alternatives": [
+   "If I had not met him, I would not have known the truth."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If we",
+     "If they",
+     "If he"
+    ]
+   },
+   {
+    "correct": "hadn't met",
+    "options": [
+     "hadn't met",
+     "had met",
+     "wouldn't meet",
+     "didn't meet"
+    ]
+   },
+   {
+    "correct": "him, I wouldn't have known",
+    "options": [
+     "him, I wouldn't have known",
+     "him, I would have known",
+     "him, I had known",
+     "him, I knew"
+    ]
+   },
+   {
+    "correct": "the truth.",
+    "options": [
+     "the truth.",
+     "the story.",
+     "the news.",
+     "the facts."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они не потеряли деньги, они бы купили билеты.",
+  "en": "If they hadn't lost the money, they would have bought tickets.",
+  "alternatives": [
+   "If they had not lost the money, they would have bought tickets."
+  ],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If we",
+     "If she",
+     "If he"
+    ]
+   },
+   {
+    "correct": "hadn't lost",
+    "options": [
+     "hadn't lost",
+     "had lost",
+     "wouldn't lose",
+     "didn't lose"
+    ]
+   },
+   {
+    "correct": "the money, they would have bought",
+    "options": [
+     "the money, they would have bought",
+     "the money, they had bought",
+     "the money, they would buy",
+     "the money, they bought"
+    ]
+   },
+   {
+    "correct": "tickets.",
+    "options": [
+     "tickets.",
+     "food.",
+     "gifts.",
+     "books."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы учитель рассказал нам, мы бы не провалили тест.",
+  "en": "If the teacher had told us, we wouldn't have failed the test.",
+  "alternatives": [
+   "If the teacher had told us, we would not have failed the test."
+  ],
+  "slots": [
+   {
+    "correct": "If the teacher",
+    "options": [
+     "If the teacher",
+     "If the kids",
+     "If my friend",
+     "If they"
+    ]
+   },
+   {
+    "correct": "had told",
+    "options": [
+     "had told",
+     "told",
+     "would have told",
+     "has told"
+    ]
+   },
+   {
+    "correct": "us, we wouldn't have failed",
+    "options": [
+     "us, we wouldn't have failed",
+     "us, we would have failed",
+     "us, we had failed",
+     "us, we failed"
+    ]
+   },
+   {
+    "correct": "the test.",
+    "options": [
+     "the test.",
+     "the exam.",
+     "the quiz.",
+     "the task."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы он не съел завтрак, он бы был голоден.",
+  "en": "If he hadn't eaten breakfast, he would have been hungry.",
+  "alternatives": [
+   "If he had not eaten breakfast, he would have been hungry."
+  ],
+  "slots": [
+   {
+    "correct": "If he",
+    "options": [
+     "If he",
+     "If she",
+     "If they",
+     "If I"
+    ]
+   },
+   {
+    "correct": "hadn't eaten",
+    "options": [
+     "hadn't eaten",
+     "had eaten",
+     "wouldn't eat",
+     "didn't eat"
+    ]
+   },
+   {
+    "correct": "breakfast, he would have been",
+    "options": [
+     "breakfast, he would have been",
+     "breakfast, he had been",
+     "breakfast, he would be",
+     "breakfast, he was"
+    ]
+   },
+   {
+    "correct": "hungry.",
+    "options": [
+     "hungry.",
+     "tired.",
+     "sad.",
+     "bored."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы мы не ушли, мы бы встретили их.",
+  "en": "If we hadn't left, we would have met them.",
+  "alternatives": [
+   "If we had not left, we would have met them."
+  ],
+  "slots": [
+   {
+    "correct": "If we",
+    "options": [
+     "If we",
+     "If they",
+     "If he",
+     "If she"
+    ]
+   },
+   {
+    "correct": "hadn't left,",
+    "options": [
+     "hadn't left,",
+     "had left,",
+     "wouldn't have left,",
+     "didn't leave,"
+    ]
+   },
+   {
+    "correct": "we would have met",
+    "options": [
+     "we would have met",
+     "we had met",
+     "we would meet",
+     "we met"
+    ]
+   },
+   {
+    "correct": "them.",
+    "options": [
+     "them.",
+     "him.",
+     "her.",
+     "them all."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы я не проспал, я бы поймал автобус.",
+  "en": "If I hadn't overslept, I would have caught the bus.",
+  "alternatives": [
+   "If I had not overslept, I would have caught the bus."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If he",
+     "If they",
+     "If we"
+    ]
+   },
+   {
+    "correct": "hadn't overslept,",
+    "options": [
+     "hadn't overslept,",
+     "had overslept,",
+     "wouldn't have overslept,",
+     "didn't oversleep,"
+    ]
+   },
+   {
+    "correct": "I would have caught",
+    "options": [
+     "I would have caught",
+     "I had caught",
+     "I would catch",
+     "I caught"
+    ]
+   },
+   {
+    "correct": "the bus.",
+    "options": [
+     "the bus.",
+     "the train.",
+     "the taxi.",
+     "the flight."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она приготовила ужин, мы бы поели.",
+  "en": "If she had cooked dinner, we would have eaten.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If she had cooked",
+    "options": [
+     "If she had cooked",
+     "If she cooked",
+     "If she has cooked",
+     "If she would have cooked"
+    ]
+   },
+   {
+    "correct": "dinner,",
+    "options": [
+     "dinner,",
+     "the dinner,",
+     "a dinner,"
+    ]
+   },
+   {
+    "correct": "we would have eaten.",
+    "options": [
+     "we would have eaten.",
+     "we had eaten.",
+     "we would eat.",
+     "we ate."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы он не взял зонт, он бы промок.",
+  "en": "If he hadn't taken an umbrella, he would have got wet.",
+  "alternatives": [
+   "If he had not taken an umbrella, he would have got wet."
+  ],
+  "slots": [
+   {
+    "correct": "If he hadn't taken",
+    "options": [
+     "If he hadn't taken",
+     "If he didn't take",
+     "If he hasn't taken",
+     "If he wouldn't have taken"
+    ]
+   },
+   {
+    "correct": "an umbrella,",
+    "options": [
+     "an umbrella,",
+     "the umbrella,",
+     "umbrella,"
+    ]
+   },
+   {
+    "correct": "he would have got wet.",
+    "options": [
+     "he would have got wet.",
+     "he had got wet.",
+     "he would get wet.",
+     "he got wet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она не забыла ключи, она бы открыла дверь.",
+  "en": "If she hadn't forgotten the keys, she would have opened the door.",
+  "alternatives": [
+   "If she had not forgotten the keys, she would have opened the door."
+  ],
+  "slots": [
+   {
+    "correct": "If she hadn't forgotten",
+    "options": [
+     "If she hadn't forgotten",
+     "If she didn't forget",
+     "If she hasn't forgotten",
+     "If she would have forgotten"
+    ]
+   },
+   {
+    "correct": "the keys,",
+    "options": [
+     "the keys,",
+     "a key,",
+     "keys,"
+    ]
+   },
+   {
+    "correct": "she would have opened the door.",
+    "options": [
+     "she would have opened the door.",
+     "she had opened the door.",
+     "she would open the door.",
+     "she opened the door."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они не выиграли приз, они бы не радовались.",
+  "en": "If they hadn't won the prize, they wouldn't have been happy.",
+  "alternatives": [
+   "If they had not won the prize, they would not have been happy."
+  ],
+  "slots": [
+   {
+    "correct": "If they hadn't won",
+    "options": [
+     "If they hadn't won",
+     "If they didn't win",
+     "If they haven't won",
+     "If they would have won"
+    ]
+   },
+   {
+    "correct": "the prize,",
+    "options": [
+     "the prize,",
+     "a prize,",
+     "prizes,"
+    ]
+   },
+   {
+    "correct": "they wouldn't have been happy.",
+    "options": [
+     "they wouldn't have been happy.",
+     "they hadn't been happy.",
+     "they wouldn't be happy.",
+     "they weren't happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы он не потерял работу, он бы купил машину.",
+  "en": "If he hadn't lost his job, he would have bought a car.",
+  "alternatives": [
+   "If he had not lost his job, he would have bought a car."
+  ],
+  "slots": [
+   {
+    "correct": "If he",
+    "options": [
+     "If he",
+     "If she",
+     "If they"
+    ]
+   },
+   {
+    "correct": "hadn't lost",
+    "options": [
+     "hadn't lost",
+     "hasn't lost",
+     "would have lost"
+    ]
+   },
+   {
+    "correct": "his job, he",
+    "options": [
+     "his job, he",
+     "his job, she",
+     "the job, he"
+    ]
+   },
+   {
+    "correct": "would have bought",
+    "options": [
+     "would have bought",
+     "had bought",
+     "would buy"
+    ]
+   },
+   {
+    "correct": "a car.",
+    "options": [
+     "a car.",
+     "the car."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они не съели торт, они бы не заболели.",
+  "en": "If they hadn't eaten the cake, they wouldn't have been sick.",
+  "alternatives": [
+   "If they had not eaten the cake, they would not have been sick."
+  ],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If we",
+     "If he"
+    ]
+   },
+   {
+    "correct": "hadn't eaten",
+    "options": [
+     "hadn't eaten",
+     "didn't eat",
+     "would have eaten"
+    ]
+   },
+   {
+    "correct": "the cake, they",
+    "options": [
+     "the cake, they",
+     "the cake, we",
+     "a cake, they"
+    ]
+   },
+   {
+    "correct": "wouldn't have been",
+    "options": [
+     "wouldn't have been",
+     "would have been",
+     "had been"
+    ]
+   },
+   {
+    "correct": "sick.",
+    "options": [
+     "sick.",
+     "ill."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она не пропустила урок, она бы поняла тему.",
+  "en": "If she hadn't missed the lesson, she would have understood the topic.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If she",
+    "options": [
+     "If she",
+     "If he",
+     "If they"
+    ]
+   },
+   {
+    "correct": "hadn't missed",
+    "options": [
+     "hadn't missed",
+     "didn't miss",
+     "would have missed"
+    ]
+   },
+   {
+    "correct": "the lesson, she",
+    "options": [
+     "the lesson, she",
+     "the lesson, he",
+     "a lesson, she"
+    ]
+   },
+   {
+    "correct": "would have understood",
+    "options": [
+     "would have understood",
+     "would understand",
+     "had understood"
+    ]
+   },
+   {
+    "correct": "the topic.",
+    "options": [
+     "the topic.",
+     "the task."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы мой друг не пришел, я бы не узнал правду.",
+  "en": "If my friend hadn't come, I wouldn't have known the truth.",
+  "alternatives": [
+   "If my friend had not come, I would not have known the truth."
+  ],
+  "slots": [
+   {
+    "correct": "If my friend",
+    "options": [
+     "If my friend",
+     "If my friends",
+     "If he"
+    ]
+   },
+   {
+    "correct": "hadn't come,",
+    "options": [
+     "hadn't come,",
+     "didn't come,",
+     "would have come,"
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "we"
+    ]
+   },
+   {
+    "correct": "wouldn't have known",
+    "options": [
+     "wouldn't have known",
+     "would have known",
+     "had known"
+    ]
+   },
+   {
+    "correct": "the truth.",
+    "options": [
+     "the truth.",
+     "the news."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они не взяли деньги, они бы не купили билеты.",
+  "en": "If they hadn't taken the money, they wouldn't have bought the tickets.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If we",
+     "If she"
+    ]
+   },
+   {
+    "correct": "hadn't taken",
+    "options": [
+     "hadn't taken",
+     "didn't take",
+     "would have taken"
+    ]
+   },
+   {
+    "correct": "the money, they",
+    "options": [
+     "the money, they",
+     "the money, we",
+     "some money, they"
+    ]
+   },
+   {
+    "correct": "wouldn't have bought",
+    "options": [
+     "wouldn't have bought",
+     "would have bought",
+     "had bought"
+    ]
+   },
+   {
+    "correct": "the tickets.",
+    "options": [
+     "the tickets.",
+     "the gift."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они не выиграли, они бы не устроили вечеринку.",
+  "en": "If they hadn't won, they wouldn't have had a party.",
+  "alternatives": [
+   "If they had not won, they would not have had a party."
+  ],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If we",
+     "If she"
+    ]
+   },
+   {
+    "correct": "hadn't won,",
+    "options": [
+     "hadn't won,",
+     "didn't win,",
+     "would have won,"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "wouldn't have had",
+    "options": [
+     "wouldn't have had",
+     "would have had",
+     "had had"
+    ]
+   },
+   {
+    "correct": "a party.",
+    "options": [
+     "a party.",
+     "the party."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она не видела его, она бы не позвонила.",
+  "en": "If she hadn't seen him, she wouldn't have called.",
+  "alternatives": [
+   "If she had not seen him, she would not have called."
+  ],
+  "slots": [
+   {
+    "correct": "If she",
+    "options": [
+     "If she",
+     "If he",
+     "If they",
+     "If we"
+    ]
+   },
+   {
+    "correct": "hadn't seen",
+    "options": [
+     "hadn't seen",
+     "hadn't told",
+     "hadn't met",
+     "hadn't lost"
+    ]
+   },
+   {
+    "correct": "him, she",
+    "options": [
+     "him, she",
+     "her, he",
+     "them, they",
+     "us, we"
+    ]
+   },
+   {
+    "correct": "wouldn't have called.",
+    "options": [
+     "wouldn't have called.",
+     "wouldn't have told.",
+     "wouldn't have seen.",
+     "wouldn't have met."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы мы нашли карту, мы бы не заблудились.",
+  "en": "If we had found the map, we wouldn't have been lost.",
+  "alternatives": [
+   "If we had found the map, we would not have been lost."
+  ],
+  "slots": [
+   {
+    "correct": "If we",
+    "options": [
+     "If we",
+     "If they",
+     "If she",
+     "If he"
+    ]
+   },
+   {
+    "correct": "had found",
+    "options": [
+     "had found",
+     "had taken",
+     "had brought",
+     "had bought"
+    ]
+   },
+   {
+    "correct": "the map, we",
+    "options": [
+     "the map, we",
+     "the path, they",
+     "the key, she",
+     "the note, he"
+    ]
+   },
+   {
+    "correct": "wouldn't have been lost.",
+    "options": [
+     "wouldn't have been lost.",
+     "wouldn't have been sad.",
+     "wouldn't have been late.",
+     "wouldn't have been tired."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы он выучил урок, он бы ответил правильно.",
+  "en": "If he had studied the lesson, he would have answered correctly.",
+  "alternatives": [
+   "If he had studied the lesson, he would have answered right."
+  ],
+  "slots": [
+   {
+    "correct": "If he",
+    "options": [
+     "If he",
+     "If she",
+     "If they",
+     "If we"
+    ]
+   },
+   {
+    "correct": "had studied",
+    "options": [
+     "had studied",
+     "had passed",
+     "had brought",
+     "had written"
+    ]
+   },
+   {
+    "correct": "the lesson, he",
+    "options": [
+     "the lesson, he",
+     "the test, she",
+     "the book, they",
+     "the task, we"
+    ]
+   },
+   {
+    "correct": "would have answered correctly.",
+    "options": [
+     "would have answered correctly.",
+     "would have passed correctly.",
+     "would have written correctly.",
+     "would have spoken correctly."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы они не съели обед, они бы были голодны.",
+  "en": "If they hadn't eaten lunch, they would have been hungry.",
+  "alternatives": [
+   "If they had not eaten lunch, they would have been hungry."
+  ],
+  "slots": [
+   {
+    "correct": "If they",
+    "options": [
+     "If they",
+     "If we",
+     "If he",
+     "If she"
+    ]
+   },
+   {
+    "correct": "hadn't eaten",
+    "options": [
+     "hadn't eaten",
+     "hadn't cooked",
+     "hadn't bought",
+     "hadn't taken"
+    ]
+   },
+   {
+    "correct": "lunch, they",
+    "options": [
+     "lunch, they",
+     "dinner, we",
+     "breakfast, he",
+     "food, she"
+    ]
+   },
+   {
+    "correct": "would have been hungry.",
+    "options": [
+     "would have been hungry.",
+     "would have been happy.",
+     "would have been tired.",
+     "would have been sad."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы я не рассказал секрет, он бы не знал.",
+  "en": "If I hadn't told the secret, he wouldn't have known.",
+  "alternatives": [
+   "If I had not told the secret, he would not have known."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If she",
+     "If he",
+     "If they"
+    ]
+   },
+   {
+    "correct": "hadn't told",
+    "options": [
+     "hadn't told",
+     "hadn't given",
+     "hadn't brought",
+     "hadn't spoken"
+    ]
+   },
+   {
+    "correct": "the secret, he",
+    "options": [
+     "the secret, he",
+     "the news, she",
+     "the story, they",
+     "the truth, we"
+    ]
+   },
+   {
+    "correct": "wouldn't have known.",
+    "options": [
+     "wouldn't have known.",
+     "wouldn't have seen.",
+     "wouldn't have called.",
+     "wouldn't have come."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы она пришла рано, она бы встретила его.",
+  "en": "If she had come early, she would have met him.",
+  "alternatives": [
+   "If she had arrived early, she would have met him."
+  ],
+  "slots": [
+   {
+    "correct": "If she",
+    "options": [
+     "If she",
+     "If he",
+     "If they",
+     "If we"
+    ]
+   },
+   {
+    "correct": "had come",
+    "options": [
+     "had come",
+     "had gone",
+     "had arrived",
+     "had taken"
+    ]
+   },
+   {
+    "correct": "early, she",
+    "options": [
+     "early, she",
+     "late, he",
+     "fast, they",
+     "soon, we"
+    ]
+   },
+   {
+    "correct": "would have met him.",
+    "options": [
+     "would have met him.",
+     "would have seen him.",
+     "would have called him.",
+     "would have told him."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы мы не забыли деньги, мы бы купили хлеб.",
+  "en": "If we hadn't forgotten the money, we would have bought bread.",
+  "alternatives": [
+   "If we had not forgotten the money, we would have bought bread."
+  ],
+  "slots": [
+   {
+    "correct": "If we",
+    "options": [
+     "If we",
+     "If they",
+     "If he",
+     "If she"
+    ]
+   },
+   {
+    "correct": "hadn't forgotten",
+    "options": [
+     "hadn't forgotten",
+     "hadn't lost",
+     "hadn't taken",
+     "hadn't broken"
+    ]
+   },
+   {
+    "correct": "the money, we",
+    "options": [
+     "the money, we",
+     "the keys, they",
+     "the tickets, he",
+     "the bag, she"
+    ]
+   },
+   {
+    "correct": "would have bought bread.",
+    "options": [
+     "would have bought bread.",
+     "would have bought milk.",
+     "would have bought food.",
+     "would have bought cake."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы он не сломал телефон, он бы позвонил.",
+  "en": "If he hadn't broken his phone, he would have called.",
+  "alternatives": [
+   "If he had not broken his phone, he would have called."
+  ],
+  "slots": [
+   {
+    "correct": "If he",
+    "options": [
+     "If he",
+     "If she",
+     "If they",
+     "If we"
+    ]
+   },
+   {
+    "correct": "hadn't broken",
+    "options": [
+     "hadn't broken",
+     "hadn't lost",
+     "hadn't taken",
+     "hadn't sold"
+    ]
+   },
+   {
+    "correct": "his phone, he",
+    "options": [
+     "his phone, he",
+     "her bike, she",
+     "their car, they",
+     "our toy, we"
+    ]
+   },
+   {
+    "correct": "would have called.",
+    "options": [
+     "would have called.",
+     "would have spoken.",
+     "would have come.",
+     "would have left."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы дети не были ленивы, они бы сдали тест.",
+  "en": "If the kids hadn't been lazy, they would have passed the test.",
+  "alternatives": [
+   "If the kids had not been lazy, they would have passed the test."
+  ],
+  "slots": [
+   {
+    "correct": "If the kids",
+    "options": [
+     "If the kids",
+     "If the students",
+     "If the boys",
+     "If the girls"
+    ]
+   },
+   {
+    "correct": "hadn't been",
+    "options": [
+     "hadn't been",
+     "hadn't become",
+     "hadn't stayed",
+     "hadn't felt"
+    ]
+   },
+   {
+    "correct": "lazy, they",
+    "options": [
+     "lazy, they",
+     "tired, we",
+     "fast, he",
+     "busy, she"
+    ]
+   },
+   {
+    "correct": "would have passed the test.",
+    "options": [
+     "would have passed the test.",
+     "would have finished the work.",
+     "would have done the task.",
+     "would have written the story."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "conditional_third",
+  "ru": "Если бы я не помог им, они бы не выиграли.",
+  "en": "If I hadn't helped them, they wouldn't have won.",
+  "alternatives": [
+   "If I had not helped them, they would not have won."
+  ],
+  "slots": [
+   {
+    "correct": "If I",
+    "options": [
+     "If I",
+     "If she",
+     "If he",
+     "If we"
+    ]
+   },
+   {
+    "correct": "hadn't helped",
+    "options": [
+     "hadn't helped",
+     "hadn't seen",
+     "hadn't told",
+     "hadn't called"
+    ]
+   },
+   {
+    "correct": "them, they",
+    "options": [
+     "them, they",
+     "him, he",
+     "her, she",
+     "us, we"
+    ]
+   },
+   {
+    "correct": "wouldn't have won.",
+    "options": [
+     "wouldn't have won.",
+     "wouldn't have passed.",
+     "wouldn't have come.",
+     "wouldn't have seen."
+    ]
+   }
+  ]
+ }
+]

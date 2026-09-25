@@ -1,0 +1,3165 @@
+[
+ {
+  "topic": "relative_clauses",
+  "ru": "Мужчина, который живет здесь, мой друг.",
+  "en": "The man who lives here is my friend.",
+  "alternatives": [
+   "The man that lives here is my friend."
+  ],
+  "slots": [
+   {
+    "correct": "The man",
+    "options": [
+     "The man",
+     "The book"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "lives here",
+    "options": [
+     "lives here",
+     "live here"
+    ]
+   },
+   {
+    "correct": "is my friend.",
+    "options": [
+     "is my friend.",
+     "are my friends."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Я купил машину, которая была дорогой.",
+  "en": "I bought the car which was expensive.",
+  "alternatives": [
+   "I bought the car that was expensive."
+  ],
+  "slots": [
+   {
+    "correct": "I bought the car",
+    "options": [
+     "I bought the car",
+     "I bought the man"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "was expensive.",
+    "options": [
+     "was expensive.",
+     "were expensive."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Девушка, которая говорит по-французски, учится здесь.",
+  "en": "The girl who speaks French studies here.",
+  "alternatives": [
+   "The girl that speaks French studies here."
+  ],
+  "slots": [
+   {
+    "correct": "The girl",
+    "options": [
+     "The girl",
+     "The house"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "speaks French",
+    "options": [
+     "speaks French",
+     "speak French"
+    ]
+   },
+   {
+    "correct": "studies here.",
+    "options": [
+     "studies here.",
+     "study here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Книга, которую я читаю, очень интересная.",
+  "en": "The book which I am reading is interesting.",
+  "alternatives": [
+   "The book that I am reading is interesting."
+  ],
+  "slots": [
+   {
+    "correct": "The book",
+    "options": [
+     "The book",
+     "The woman"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I am reading",
+    "options": [
+     "I am reading",
+     "I reading"
+    ]
+   },
+   {
+    "correct": "is interesting.",
+    "options": [
+     "is interesting.",
+     "are interesting."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Фильм, который мы посмотрели, был скучным.",
+  "en": "The film which we saw was boring.",
+  "alternatives": [
+   "The film that we saw was boring."
+  ],
+  "slots": [
+   {
+    "correct": "The film",
+    "options": [
+     "The film",
+     "The boy"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "we saw",
+    "options": [
+     "we saw",
+     "we see"
+    ]
+   },
+   {
+    "correct": "was boring.",
+    "options": [
+     "was boring.",
+     "were boring."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Ты знаешь доктора, который помог мне?",
+  "en": "Do you know the doctor who helped me?",
+  "alternatives": [
+   "Do you know the doctor that helped me?"
+  ],
+  "slots": [
+   {
+    "correct": "Do you know the doctor",
+    "options": [
+     "Do you know the doctor",
+     "Do you know the phone"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "helped me?",
+    "options": [
+     "helped me?",
+     "help me?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Это дом, который построили в прошлом году.",
+  "en": "This is the house which they built last year.",
+  "alternatives": [
+   "This is the house that they built last year."
+  ],
+  "slots": [
+   {
+    "correct": "This is the house",
+    "options": [
+     "This is the house",
+     "This is the teacher"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "they built last year.",
+    "options": [
+     "they built last year.",
+     "they build last year."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Собака, которая бегает в саду, моя.",
+  "en": "The dog which runs in the garden is mine.",
+  "alternatives": [
+   "The dog that runs in the garden is mine."
+  ],
+  "slots": [
+   {
+    "correct": "The dog",
+    "options": [
+     "The dog",
+     "The boy"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "runs in the garden",
+    "options": [
+     "runs in the garden",
+     "run in the garden"
+    ]
+   },
+   {
+    "correct": "is mine.",
+    "options": [
+     "is mine.",
+     "are mine."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Учитель, который объяснил правило, был добр.",
+  "en": "The teacher who explained the rule was kind.",
+  "alternatives": [
+   "The teacher that explained the rule was kind."
+  ],
+  "slots": [
+   {
+    "correct": "The teacher",
+    "options": [
+     "The teacher",
+     "The bag"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "explained the rule",
+    "options": [
+     "explained the rule",
+     "explain the rule"
+    ]
+   },
+   {
+    "correct": "was kind.",
+    "options": [
+     "was kind.",
+     "were kind."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Сумка, которую я нашел, пуста.",
+  "en": "The bag which I found is empty.",
+  "alternatives": [
+   "The bag that I found is empty."
+  ],
+  "slots": [
+   {
+    "correct": "The bag",
+    "options": [
+     "The bag",
+     "The woman"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I found",
+    "options": [
+     "I found",
+     "I find"
+    ]
+   },
+   {
+    "correct": "is empty.",
+    "options": [
+     "is empty.",
+     "are empty."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Ты видел женщину, которая здесь работает?",
+  "en": "Did you see the woman who works here?",
+  "alternatives": [
+   "Did you see the woman that works here?"
+  ],
+  "slots": [
+   {
+    "correct": "Did you see the woman",
+    "options": [
+     "Did you see the woman",
+     "Did you see the car"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "works here?",
+    "options": [
+     "works here?",
+     "work here?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Письмо, которое пришло сегодня, очень важное.",
+  "en": "The letter which arrived today is important.",
+  "alternatives": [
+   "The letter that arrived today is important."
+  ],
+  "slots": [
+   {
+    "correct": "The letter",
+    "options": [
+     "The letter",
+     "The man"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "arrived today",
+    "options": [
+     "arrived today",
+     "arrive today"
+    ]
+   },
+   {
+    "correct": "is important.",
+    "options": [
+     "is important.",
+     "are important."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Мальчик, который поет эту песню, мой брат.",
+  "en": "The boy who sings this song is my brother.",
+  "alternatives": [
+   "The boy that sings this song is my brother."
+  ],
+  "slots": [
+   {
+    "correct": "The boy",
+    "options": [
+     "The boy",
+     "The house"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "sings this song is my brother.",
+    "options": [
+     "sings this song is my brother.",
+     "sing this song is my brother."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Я купил телефон, который ты продал.",
+  "en": "I bought the phone which you sold.",
+  "alternatives": [
+   "I bought the phone that you sold."
+  ],
+  "slots": [
+   {
+    "correct": "I bought the phone",
+    "options": [
+     "I bought the phone",
+     "I bought the man"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "you sold.",
+    "options": [
+     "you sold.",
+     "you sell."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Город, который я посетил, был очень красивым.",
+  "en": "The city which I visited was very beautiful.",
+  "alternatives": [
+   "The city that I visited was very beautiful."
+  ],
+  "slots": [
+   {
+    "correct": "The city",
+    "options": [
+     "The city",
+     "The doctor"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I visited was very beautiful.",
+    "options": [
+     "I visited was very beautiful.",
+     "I visit was very beautiful."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Ты знаешь учителя, который учит математике?",
+  "en": "Do you know the teacher who teaches math?",
+  "alternatives": [
+   "Do you know the teacher that teaches math?"
+  ],
+  "slots": [
+   {
+    "correct": "Do you know the teacher",
+    "options": [
+     "Do you know the teacher",
+     "Do you know the book"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "teaches math?",
+    "options": [
+     "teaches math?",
+     "teach math?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "История, которую он рассказал, была смешной.",
+  "en": "The story which he told was funny.",
+  "alternatives": [
+   "The story that he told was funny."
+  ],
+  "slots": [
+   {
+    "correct": "The story",
+    "options": [
+     "The story",
+     "The woman"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "he told was funny.",
+    "options": [
+     "he told was funny.",
+     "he tell was funny."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Девушка, которая звонила мне, моя подруга.",
+  "en": "The girl who called me is my friend.",
+  "alternatives": [
+   "The girl that called me is my friend."
+  ],
+  "slots": [
+   {
+    "correct": "The girl",
+    "options": [
+     "The girl",
+     "The car"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "called me is my friend.",
+    "options": [
+     "called me is my friend.",
+     "call me is my friend."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Машина, которую я видел, была красной.",
+  "en": "The car which I saw was red.",
+  "alternatives": [
+   "The car that I saw was red."
+  ],
+  "slots": [
+   {
+    "correct": "The car",
+    "options": [
+     "The car",
+     "The boy"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I saw was red.",
+    "options": [
+     "I saw was red.",
+     "I see was red."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Это магазин, который открылся вчера.",
+  "en": "This is the shop which opened yesterday.",
+  "alternatives": [
+   "This is the shop that opened yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "This is the shop",
+    "options": [
+     "This is the shop",
+     "This is the doctor"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "opened yesterday.",
+    "options": [
+     "opened yesterday.",
+     "open yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Улица, которая ведет к парку, узкая.",
+  "en": "The street which leads to the park is narrow.",
+  "alternatives": [
+   "The street that leads to the park is narrow."
+  ],
+  "slots": [
+   {
+    "correct": "The street",
+    "options": [
+     "The street",
+     "The teacher"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "leads to the park is narrow.",
+    "options": [
+     "leads to the park is narrow.",
+     "lead to the park is narrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Сумка, которую я купил, очень удобная.",
+  "en": "The bag which I bought is very comfortable.",
+  "alternatives": [
+   "The bag that I bought is very comfortable."
+  ],
+  "slots": [
+   {
+    "correct": "The bag",
+    "options": [
+     "The bag",
+     "The woman"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I bought is very comfortable.",
+    "options": [
+     "I bought is very comfortable.",
+     "I buy is very comfortable."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Врач, который лечит меня, очень опытный.",
+  "en": "The doctor who treats me is very experienced.",
+  "alternatives": [
+   "The doctor that treats me is very experienced."
+  ],
+  "slots": [
+   {
+    "correct": "The doctor",
+    "options": [
+     "The doctor",
+     "The film"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "treats me is very experienced.",
+    "options": [
+     "treats me is very experienced.",
+     "treat me is very experienced."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Человек, который звонил, мой учитель.",
+  "en": "The man who called is my teacher.",
+  "alternatives": [
+   "The man that called is my teacher."
+  ],
+  "slots": [
+   {
+    "correct": "The man",
+    "options": [
+     "The man",
+     "The book"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "called is my teacher.",
+    "options": [
+     "called is my teacher.",
+     "calls is my teacher."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Телефон, который лежит на столе, мой.",
+  "en": "The phone which is on the table is mine.",
+  "alternatives": [
+   "The phone that is on the table is mine."
+  ],
+  "slots": [
+   {
+    "correct": "The phone",
+    "options": [
+     "The phone",
+     "The boy"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "is on the table is mine.",
+    "options": [
+     "is on the table is mine.",
+     "are on the table is mine."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Я нашел сумку, которую ты искал.",
+  "en": "I found the bag that you looked for.",
+  "alternatives": [
+   "I found the bag which you looked for."
+  ],
+  "slots": [
+   {
+    "correct": "I found the bag",
+    "options": [
+     "I found the bag",
+     "I found the man"
+    ]
+   },
+   {
+    "correct": "that",
+    "options": [
+     "that",
+     "who"
+    ]
+   },
+   {
+    "correct": "you looked for.",
+    "options": [
+     "you looked for.",
+     "he looked for."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Женщина, которая купила дом, моя подруга.",
+  "en": "The woman who bought the house is my friend.",
+  "alternatives": [
+   "The woman that bought the house is my friend."
+  ],
+  "slots": [
+   {
+    "correct": "The woman",
+    "options": [
+     "The woman",
+     "The car"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "bought the house is my friend.",
+    "options": [
+     "bought the house is my friend.",
+     "buys the house is my friend."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Ты знаешь собаку, которая громко лает?",
+  "en": "Do you know the dog that barks loudly?",
+  "alternatives": [
+   "Do you know the dog which barks loudly?"
+  ],
+  "slots": [
+   {
+    "correct": "Do you know the dog",
+    "options": [
+     "Do you know the dog",
+     "Do you know the girl"
+    ]
+   },
+   {
+    "correct": "that",
+    "options": [
+     "that",
+     "who"
+    ]
+   },
+   {
+    "correct": "barks loudly?",
+    "options": [
+     "barks loudly?",
+     "bark loudly?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Улица, которую мы перешли, очень тихая.",
+  "en": "The street which we crossed is very quiet.",
+  "alternatives": [
+   "The street that we crossed is very quiet."
+  ],
+  "slots": [
+   {
+    "correct": "The street",
+    "options": [
+     "The street",
+     "The teacher"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "we crossed is very quiet.",
+    "options": [
+     "we crossed is very quiet.",
+     "we cross is very quiet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Мальчик, который любит эту песню, мой брат.",
+  "en": "The boy who likes this song is my brother.",
+  "alternatives": [
+   "The boy that likes this song is my brother."
+  ],
+  "slots": [
+   {
+    "correct": "The boy",
+    "options": [
+     "The boy",
+     "The film"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "likes this song is my brother.",
+    "options": [
+     "likes this song is my brother.",
+     "like this song is my brother."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Город, который я посетил, был большой.",
+  "en": "The city that I visited was big.",
+  "alternatives": [
+   "The city which I visited was big."
+  ],
+  "slots": [
+   {
+    "correct": "The city",
+    "options": [
+     "The city",
+     "The doctor"
+    ]
+   },
+   {
+    "correct": "that",
+    "options": [
+     "that",
+     "who"
+    ]
+   },
+   {
+    "correct": "I visited was big.",
+    "options": [
+     "I visited was big.",
+     "I visit was big."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Я встретил учителя, который учит меня.",
+  "en": "I met the teacher who teaches me.",
+  "alternatives": [
+   "I met the teacher that teaches me."
+  ],
+  "slots": [
+   {
+    "correct": "I met the teacher",
+    "options": [
+     "I met the teacher",
+     "I met the car"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "teaches me.",
+    "options": [
+     "teaches me.",
+     "teach me."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Фильм, который я смотрел, был длинным.",
+  "en": "The film which I watched was long.",
+  "alternatives": [
+   "The film that I watched was long."
+  ],
+  "slots": [
+   {
+    "correct": "The film",
+    "options": [
+     "The film",
+     "The man"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I watched was long.",
+    "options": [
+     "I watched was long.",
+     "I watch was long."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Девушка, которая живет там, моя сестра.",
+  "en": "The girl who lives there is my sister.",
+  "alternatives": [
+   "The girl that lives there is my sister."
+  ],
+  "slots": [
+   {
+    "correct": "The girl",
+    "options": [
+     "The girl",
+     "The phone"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "lives there is my sister.",
+    "options": [
+     "lives there is my sister.",
+     "live there is my sister."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Письмо, которое ты написал, пришло.",
+  "en": "The letter that you wrote arrived.",
+  "alternatives": [
+   "The letter which you wrote arrived."
+  ],
+  "slots": [
+   {
+    "correct": "The letter",
+    "options": [
+     "The letter",
+     "The doctor"
+    ]
+   },
+   {
+    "correct": "that",
+    "options": [
+     "that",
+     "who"
+    ]
+   },
+   {
+    "correct": "you wrote arrived.",
+    "options": [
+     "you wrote arrived.",
+     "you write arrived."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Человек, который пришел, мой друг.",
+  "en": "The man who came is my friend.",
+  "alternatives": [
+   "The man that came is my friend."
+  ],
+  "slots": [
+   {
+    "correct": "The man",
+    "options": [
+     "The man",
+     "The book"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "came is my friend.",
+    "options": [
+     "came is my friend.",
+     "is my friend."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Я нашел телефон, который ты потерял.",
+  "en": "I found the phone which you lost.",
+  "alternatives": [
+   "I found the phone that you lost."
+  ],
+  "slots": [
+   {
+    "correct": "I found the phone",
+    "options": [
+     "I found the phone",
+     "I found the man"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "you lost.",
+    "options": [
+     "you lost.",
+     "is lost."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Женщина, которая работает там, врач.",
+  "en": "The woman who works there is a doctor.",
+  "alternatives": [
+   "The woman that works there is a doctor."
+  ],
+  "slots": [
+   {
+    "correct": "The woman",
+    "options": [
+     "The woman",
+     "The car"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "works there is a doctor.",
+    "options": [
+     "works there is a doctor.",
+     "lives there."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Книга, которую я купил, была интересной.",
+  "en": "The book which I bought was interesting.",
+  "alternatives": [
+   "The book that I bought was interesting."
+  ],
+  "slots": [
+   {
+    "correct": "The book",
+    "options": [
+     "The book",
+     "The girl"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I bought was interesting.",
+    "options": [
+     "I bought was interesting.",
+     "I read."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Ты знаешь мальчика, который звонил?",
+  "en": "Do you know the boy who called?",
+  "alternatives": [
+   "Do you know the boy that called?"
+  ],
+  "slots": [
+   {
+    "correct": "Do you know the boy",
+    "options": [
+     "Do you know the boy",
+     "Do you know the house"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "called?",
+    "options": [
+     "called?",
+     "is here?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Фильм, который я видел, был плохим.",
+  "en": "The film which I saw was bad.",
+  "alternatives": [
+   "The film that I saw was bad."
+  ],
+  "slots": [
+   {
+    "correct": "The film",
+    "options": [
+     "The film",
+     "The boy"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I saw was bad.",
+    "options": [
+     "I saw was bad.",
+     "is good."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Я видел девушку, которая бежала.",
+  "en": "I saw the girl who was running.",
+  "alternatives": [
+   "I saw the girl that was running."
+  ],
+  "slots": [
+   {
+    "correct": "I saw the girl",
+    "options": [
+     "I saw the girl",
+     "I saw the bag"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "was running.",
+    "options": [
+     "was running.",
+     "is here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Дом, который я купил, очень большой.",
+  "en": "The house which I bought is very big.",
+  "alternatives": [
+   "The house that I bought is very big."
+  ],
+  "slots": [
+   {
+    "correct": "The house",
+    "options": [
+     "The house",
+     "The man"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I bought is very big.",
+    "options": [
+     "I bought is very big.",
+     "is red."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Учитель, который учит меня, добрый.",
+  "en": "The teacher who teaches me is kind.",
+  "alternatives": [
+   "The teacher that teaches me is kind."
+  ],
+  "slots": [
+   {
+    "correct": "The teacher",
+    "options": [
+     "The teacher",
+     "The dog"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "teaches me is kind.",
+    "options": [
+     "teaches me is kind.",
+     "is here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Сумка, которую ты нашел, моя.",
+  "en": "The bag which you found is mine.",
+  "alternatives": [
+   "The bag that you found is mine."
+  ],
+  "slots": [
+   {
+    "correct": "The bag",
+    "options": [
+     "The bag",
+     "The woman"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "you found is mine.",
+    "options": [
+     "you found is mine.",
+     "is new."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Собака, которая ест, очень голодная.",
+  "en": "The dog which is eating is very hungry.",
+  "alternatives": [
+   "The dog that is eating is very hungry."
+  ],
+  "slots": [
+   {
+    "correct": "The dog",
+    "options": [
+     "The dog",
+     "The boy"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "is eating is very hungry.",
+    "options": [
+     "is eating is very hungry.",
+     "is small."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Я знаю человека, который живет здесь.",
+  "en": "I know the man who lives here.",
+  "alternatives": [
+   "I know the man that lives here."
+  ],
+  "slots": [
+   {
+    "correct": "I know the man",
+    "options": [
+     "I know the man",
+     "I know the street"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "lives here.",
+    "options": [
+     "lives here.",
+     "is nice."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Друг, который пришел, ждет меня.",
+  "en": "The friend who came is waiting.",
+  "alternatives": [
+   "The friend that came is waiting."
+  ],
+  "slots": [
+   {
+    "correct": "The friend",
+    "options": [
+     "The friend",
+     "The book"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "came is waiting.",
+    "options": [
+     "came is waiting.",
+     "came are waiting."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Я нашел книгу, которую ты хотел.",
+  "en": "I found the book which you wanted.",
+  "alternatives": [
+   "I found the book that you wanted."
+  ],
+  "slots": [
+   {
+    "correct": "I found the book",
+    "options": [
+     "I found the book",
+     "I found the friend"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "you wanted.",
+    "options": [
+     "you wanted.",
+     "you were wanting."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Машина, которую я продал, была новой.",
+  "en": "The car which I sold was new.",
+  "alternatives": [
+   "The car that I sold was new."
+  ],
+  "slots": [
+   {
+    "correct": "The car",
+    "options": [
+     "The car",
+     "The boy"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I sold was new.",
+    "options": [
+     "I sold was new.",
+     "I sold were new."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Ты видел врача, который помог мне?",
+  "en": "Did you see the doctor who helped me?",
+  "alternatives": [
+   "Did you see the doctor that helped me?"
+  ],
+  "slots": [
+   {
+    "correct": "Did you see the doctor",
+    "options": [
+     "Did you see the doctor",
+     "Did you see the bag"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "helped me?",
+    "options": [
+     "helped me?",
+     "helps me?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Песня, которую она спела, была длинной.",
+  "en": "The song which she sang was long.",
+  "alternatives": [
+   "The song that she sang was long."
+  ],
+  "slots": [
+   {
+    "correct": "The song",
+    "options": [
+     "The song",
+     "The teacher"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "she sang was long.",
+    "options": [
+     "she sang was long.",
+     "she sang were long."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Женщина, которая купила телефон, моя сестра.",
+  "en": "The woman who bought the phone is my sister.",
+  "alternatives": [
+   "The woman that bought the phone is my sister."
+  ],
+  "slots": [
+   {
+    "correct": "The woman",
+    "options": [
+     "The woman",
+     "The city"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "bought the phone is my sister.",
+    "options": [
+     "bought the phone is my sister.",
+     "bought the phone are my sister."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Я купил сумку, которая была дорогой.",
+  "en": "I bought the bag which was expensive.",
+  "alternatives": [
+   "I bought the bag that was expensive."
+  ],
+  "slots": [
+   {
+    "correct": "I bought the bag",
+    "options": [
+     "I bought the bag",
+     "I bought the man"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "was expensive.",
+    "options": [
+     "was expensive.",
+     "were expensive."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Мальчик, который играет здесь, мой друг.",
+  "en": "The boy who plays here is my friend.",
+  "alternatives": [
+   "The boy that plays here is my friend."
+  ],
+  "slots": [
+   {
+    "correct": "The boy",
+    "options": [
+     "The boy",
+     "The film"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "plays here is my friend.",
+    "options": [
+     "plays here is my friend.",
+     "plays here are my friend."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Ты знаешь магазин, который открылся поздно?",
+  "en": "Do you know the shop which opened late?",
+  "alternatives": [
+   "Do you know the shop that opened late?"
+  ],
+  "slots": [
+   {
+    "correct": "Do you know the shop",
+    "options": [
+     "Do you know the shop",
+     "Do you know the girl"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "opened late?",
+    "options": [
+     "opened late?",
+     "opens late?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "История, которую он рассказал, интересная.",
+  "en": "The story which he told is interesting.",
+  "alternatives": [
+   "The story that he told is interesting."
+  ],
+  "slots": [
+   {
+    "correct": "The story",
+    "options": [
+     "The story",
+     "The doctor"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "he told is interesting.",
+    "options": [
+     "he told is interesting.",
+     "he told are interesting."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Девушка, которая живет на улице, добрая.",
+  "en": "The girl who lives on the street is kind.",
+  "alternatives": [
+   "The girl that lives on the street is kind."
+  ],
+  "slots": [
+   {
+    "correct": "The girl",
+    "options": [
+     "The girl",
+     "The house"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "lives on the street is kind.",
+    "options": [
+     "lives on the street is kind.",
+     "lives on the street are kind."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Письмо, которое я получил, было важным.",
+  "en": "The letter which I received was important.",
+  "alternatives": [
+   "The letter that I received was important."
+  ],
+  "slots": [
+   {
+    "correct": "The letter",
+    "options": [
+     "The letter",
+     "The boy"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I received was important.",
+    "options": [
+     "I received was important.",
+     "I received were important."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Человек, который звонит, мой друг.",
+  "en": "The man who is calling is my friend.",
+  "alternatives": [
+   "The man that is calling is my friend."
+  ],
+  "slots": [
+   {
+    "correct": "The man",
+    "options": [
+     "The man",
+     "The book"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "is calling is my friend.",
+    "options": [
+     "is calling is my friend.",
+     "are calling is my friend."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Я знаю врача, который работает здесь.",
+  "en": "I know the doctor who works here.",
+  "alternatives": [
+   "I know the doctor that works here."
+  ],
+  "slots": [
+   {
+    "correct": "I know the doctor",
+    "options": [
+     "I know the doctor",
+     "I know the house"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "works here.",
+    "options": [
+     "works here.",
+     "work here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Ты видел машину, которую я купил?",
+  "en": "Did you see the car which I bought?",
+  "alternatives": [
+   "Did you see the car that I bought?"
+  ],
+  "slots": [
+   {
+    "correct": "Did you see the car",
+    "options": [
+     "Did you see the car",
+     "Did you see the girl"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I bought?",
+    "options": [
+     "I bought?",
+     "I buy?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Девушка, которая поет, моя сестра.",
+  "en": "The girl who is singing is my sister.",
+  "alternatives": [
+   "The girl that is singing is my sister."
+  ],
+  "slots": [
+   {
+    "correct": "The girl",
+    "options": [
+     "The girl",
+     "The book"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "is singing is my sister.",
+    "options": [
+     "is singing is my sister.",
+     "are singing is my sister."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Фильм, который мы смотрели, очень старый.",
+  "en": "The film which we watched is very old.",
+  "alternatives": [
+   "The film that we watched is very old."
+  ],
+  "slots": [
+   {
+    "correct": "The film",
+    "options": [
+     "The film",
+     "The teacher"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "we watched is very old.",
+    "options": [
+     "we watched is very old.",
+     "we watch is very old."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Я нашел сумку, которая была пуста.",
+  "en": "I found the bag which was empty.",
+  "alternatives": [
+   "I found the bag that was empty."
+  ],
+  "slots": [
+   {
+    "correct": "I found the bag",
+    "options": [
+     "I found the bag",
+     "I found the boy"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "was empty.",
+    "options": [
+     "was empty.",
+     "were empty."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Мальчик, который учится, мой друг.",
+  "en": "The boy who is studying is my friend.",
+  "alternatives": [
+   "The boy that is studying is my friend."
+  ],
+  "slots": [
+   {
+    "correct": "The boy",
+    "options": [
+     "The boy",
+     "The city"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "is studying is my friend.",
+    "options": [
+     "is studying is my friend.",
+     "are studying is my friend."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Улица, которую мы выбрали, тихая.",
+  "en": "The street which we chose is quiet.",
+  "alternatives": [
+   "The street that we chose is quiet."
+  ],
+  "slots": [
+   {
+    "correct": "The street",
+    "options": [
+     "The street",
+     "The woman"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "we chose is quiet.",
+    "options": [
+     "we chose is quiet.",
+     "we choose is quiet."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Ты знаешь женщину, которая здесь живет?",
+  "en": "Do you know the woman who lives here?",
+  "alternatives": [
+   "Do you know the woman that lives here?"
+  ],
+  "slots": [
+   {
+    "correct": "Do you know the woman",
+    "options": [
+     "Do you know the woman",
+     "Do you know the shop"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "lives here?",
+    "options": [
+     "lives here?",
+     "live here?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Песня, которую ты спел, хорошая.",
+  "en": "The song which you sang is good.",
+  "alternatives": [
+   "The song that you sang is good."
+  ],
+  "slots": [
+   {
+    "correct": "The song",
+    "options": [
+     "The song",
+     "The doctor"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "you sang is good.",
+    "options": [
+     "you sang is good.",
+     "you sing is good."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Учитель, который объяснил, очень добр.",
+  "en": "The teacher who explained is very kind.",
+  "alternatives": [
+   "The teacher that explained is very kind."
+  ],
+  "slots": [
+   {
+    "correct": "The teacher",
+    "options": [
+     "The teacher",
+     "The letter"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "explained is very kind.",
+    "options": [
+     "explained is very kind.",
+     "explain is very kind."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Книга, которую я читал, интересная.",
+  "en": "The book which I read is interesting.",
+  "alternatives": [
+   "The book that I read is interesting."
+  ],
+  "slots": [
+   {
+    "correct": "The book",
+    "options": [
+     "The book",
+     "The boy"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I read is interesting.",
+    "options": [
+     "I read is interesting.",
+     "I reading is interesting."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Друг, который живет здесь, мой брат.",
+  "en": "The friend who lives here is my brother.",
+  "alternatives": [
+   "The friend that lives here is my brother."
+  ],
+  "slots": [
+   {
+    "correct": "The friend",
+    "options": [
+     "The friend",
+     "The house"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "lives here is my brother.",
+    "options": [
+     "lives here is my brother.",
+     "live here is my brother."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Дом, который я купил, большой.",
+  "en": "The house which I bought is big.",
+  "alternatives": [
+   "The house that I bought is big."
+  ],
+  "slots": [
+   {
+    "correct": "The house",
+    "options": [
+     "The house",
+     "The doctor"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I bought is big.",
+    "options": [
+     "I bought is big.",
+     "I buy is big."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Ты знаешь врача, который помогает нам?",
+  "en": "Do you know the doctor who helps us?",
+  "alternatives": [
+   "Do you know the doctor that helps us?"
+  ],
+  "slots": [
+   {
+    "correct": "Do you know the doctor",
+    "options": [
+     "Do you know the doctor",
+     "Do you know the car"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "helps us?",
+    "options": [
+     "helps us?",
+     "help us?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Фильм, который я видел, плохой.",
+  "en": "The film which I saw was bad.",
+  "alternatives": [
+   "The film that I saw was bad."
+  ],
+  "slots": [
+   {
+    "correct": "The film",
+    "options": [
+     "The film",
+     "The girl"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I saw was bad.",
+    "options": [
+     "I saw was bad.",
+     "I see was bad."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Мальчик, который учится, очень умный.",
+  "en": "The boy who studies is very smart.",
+  "alternatives": [
+   "The boy that studies is very smart."
+  ],
+  "slots": [
+   {
+    "correct": "The boy",
+    "options": [
+     "The boy",
+     "The shop"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "studies is very smart.",
+    "options": [
+     "studies is very smart.",
+     "study is very smart."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Это телефон, который я нашел.",
+  "en": "This is the phone which I found.",
+  "alternatives": [
+   "This is the phone that I found."
+  ],
+  "slots": [
+   {
+    "correct": "This is the phone",
+    "options": [
+     "This is the phone",
+     "This is the teacher"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I found.",
+    "options": [
+     "I found.",
+     "I find."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Девушка, которая звонила, моя подруга.",
+  "en": "The girl who called is my friend.",
+  "alternatives": [
+   "The girl that called is my friend."
+  ],
+  "slots": [
+   {
+    "correct": "The girl",
+    "options": [
+     "The girl",
+     "The bag"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "called is my friend.",
+    "options": [
+     "called is my friend.",
+     "calls is my friend."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Магазин, который открылся, новый.",
+  "en": "The shop which opened is new.",
+  "alternatives": [
+   "The shop that opened is new."
+  ],
+  "slots": [
+   {
+    "correct": "The shop",
+    "options": [
+     "The shop",
+     "The man"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "opened is new.",
+    "options": [
+     "opened is new.",
+     "open is new."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Я знаю учителя, который здесь работает.",
+  "en": "I know the teacher who works here.",
+  "alternatives": [
+   "I know the teacher that works here."
+  ],
+  "slots": [
+   {
+    "correct": "I know the teacher",
+    "options": [
+     "I know the teacher",
+     "I know the song"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "works here.",
+    "options": [
+     "works here.",
+     "work here."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Сумка, которую я купил, удобная.",
+  "en": "The bag which I bought is comfortable.",
+  "alternatives": [
+   "The bag that I bought is comfortable."
+  ],
+  "slots": [
+   {
+    "correct": "The bag",
+    "options": [
+     "The bag",
+     "The woman"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I bought is comfortable.",
+    "options": [
+     "I bought is comfortable.",
+     "I buy is comfortable."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Человек, который работает здесь, доктор.",
+  "en": "The man who works here is a doctor.",
+  "alternatives": [
+   "The man that works here is a doctor."
+  ],
+  "slots": [
+   {
+    "correct": "The man",
+    "options": [
+     "The man",
+     "The book"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "works here is a doctor.",
+    "options": [
+     "works here is a doctor.",
+     "work here is a doctor."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Машина, которую ты водишь, очень быстрая.",
+  "en": "The car which you drive is very fast.",
+  "alternatives": [
+   "The car that you drive is very fast."
+  ],
+  "slots": [
+   {
+    "correct": "The car",
+    "options": [
+     "The car",
+     "The woman"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "you drive is very fast.",
+    "options": [
+     "you drive is very fast.",
+     "you drives is very fast."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Я знаю девушку, которая пишет истории.",
+  "en": "I know the girl who writes stories.",
+  "alternatives": [
+   "I know the girl that writes stories."
+  ],
+  "slots": [
+   {
+    "correct": "I know the girl",
+    "options": [
+     "I know the girl",
+     "I know the bag"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "writes stories.",
+    "options": [
+     "writes stories.",
+     "write stories."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Ты знаешь мальчика, который играет на улице?",
+  "en": "Do you know the boy who plays outside?",
+  "alternatives": [
+   "Do you know the boy that plays outside?"
+  ],
+  "slots": [
+   {
+    "correct": "Do you know the boy",
+    "options": [
+     "Do you know the boy",
+     "Do you know the house"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "plays outside?",
+    "options": [
+     "plays outside?",
+     "play outside?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Фильм, который мы видели, не понравился мне.",
+  "en": "The film which we saw was not good.",
+  "alternatives": [
+   "The film that we saw was not good."
+  ],
+  "slots": [
+   {
+    "correct": "The film",
+    "options": [
+     "The film",
+     "The teacher"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "we saw was not good.",
+    "options": [
+     "we saw was not good.",
+     "we see was not good."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Врач, который помог мне, был добр.",
+  "en": "The doctor who helped me was kind.",
+  "alternatives": [
+   "The doctor that helped me was kind."
+  ],
+  "slots": [
+   {
+    "correct": "The doctor",
+    "options": [
+     "The doctor",
+     "The letter"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "helped me was kind.",
+    "options": [
+     "helped me was kind.",
+     "help me was kind."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Я купил телефон, который стоил дорого.",
+  "en": "I bought the phone which cost a lot.",
+  "alternatives": [
+   "I bought the phone that cost a lot."
+  ],
+  "slots": [
+   {
+    "correct": "I bought the phone",
+    "options": [
+     "I bought the phone",
+     "I bought the girl"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "cost a lot.",
+    "options": [
+     "cost a lot.",
+     "costs a lot."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Магазин, который я посетил, был закрыт.",
+  "en": "The shop which I visited was closed.",
+  "alternatives": [
+   "The shop that I visited was closed."
+  ],
+  "slots": [
+   {
+    "correct": "The shop",
+    "options": [
+     "The shop",
+     "The woman"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I visited was closed.",
+    "options": [
+     "I visited was closed.",
+     "I visit was closed."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Друг, который живет в городе, приехал.",
+  "en": "The friend who lives in the city arrived.",
+  "alternatives": [
+   "The friend that lives in the city arrived."
+  ],
+  "slots": [
+   {
+    "correct": "The friend",
+    "options": [
+     "The friend",
+     "The bag"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "lives in the city arrived.",
+    "options": [
+     "lives in the city arrived.",
+     "live in the city arrived."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Женщина, которая написала письмо, ушла.",
+  "en": "The woman who wrote the letter left.",
+  "alternatives": [
+   "The woman that wrote the letter left."
+  ],
+  "slots": [
+   {
+    "correct": "The woman",
+    "options": [
+     "The woman",
+     "The street"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "wrote the letter left.",
+    "options": [
+     "wrote the letter left.",
+     "write the letter left."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Песня, которую ты поешь, очень грустная.",
+  "en": "The song which you sing is very sad.",
+  "alternatives": [
+   "The song that you sing is very sad."
+  ],
+  "slots": [
+   {
+    "correct": "The song",
+    "options": [
+     "The song",
+     "The boy"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "you sing is very sad.",
+    "options": [
+     "you sing is very sad.",
+     "you sings is very sad."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Я встретил мужчину, который знает врача.",
+  "en": "I met the man who knows the doctor.",
+  "alternatives": [
+   "I met a man who knows the doctor."
+  ],
+  "slots": [
+   {
+    "correct": "I met the man",
+    "options": [
+     "I met the man",
+     "I met the book"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which",
+     "that"
+    ]
+   },
+   {
+    "correct": "knows the doctor.",
+    "options": [
+     "knows the doctor.",
+     "knows the book."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Город, который я посетил, очень красивый.",
+  "en": "The city which I visited is beautiful.",
+  "alternatives": [
+   "The city that I visited is beautiful."
+  ],
+  "slots": [
+   {
+    "correct": "The city",
+    "options": [
+     "The city",
+     "The doctor"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I visited is beautiful.",
+    "options": [
+     "I visited is beautiful.",
+     "I visited are beautiful."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Ты знаешь девушку, которая пишет истории?",
+  "en": "Do you know the girl who writes stories?",
+  "alternatives": [
+   "Do you know the girl that writes stories?"
+  ],
+  "slots": [
+   {
+    "correct": "Do you know the girl",
+    "options": [
+     "Do you know the girl",
+     "Do you know the house"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "writes stories?",
+    "options": [
+     "writes stories?",
+     "write stories?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Улица, которую мы выбрали, очень шумная.",
+  "en": "The street which we chose is noisy.",
+  "alternatives": [
+   "The street that we chose is noisy."
+  ],
+  "slots": [
+   {
+    "correct": "The street",
+    "options": [
+     "The street",
+     "The teacher"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "we chose is noisy.",
+    "options": [
+     "we chose is noisy.",
+     "we chose are noisy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Я купил телефон, который работал плохо.",
+  "en": "I bought the phone which worked badly.",
+  "alternatives": [
+   "I bought the phone that worked badly."
+  ],
+  "slots": [
+   {
+    "correct": "I bought the phone",
+    "options": [
+     "I bought the phone",
+     "I bought the boy"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "worked badly.",
+    "options": [
+     "worked badly.",
+     "working badly."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Учитель, который объяснил урок, очень умный.",
+  "en": "The teacher who explained the lesson is smart.",
+  "alternatives": [
+   "The teacher that explained the lesson is smart."
+  ],
+  "slots": [
+   {
+    "correct": "The teacher",
+    "options": [
+     "The teacher",
+     "The bag"
+    ]
+   },
+   {
+    "correct": "who",
+    "options": [
+     "who",
+     "which"
+    ]
+   },
+   {
+    "correct": "explained the lesson is smart.",
+    "options": [
+     "explained the lesson is smart.",
+     "explains the lesson is smart."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Собака, которую я кормил, была голодной.",
+  "en": "The dog which I fed was hungry.",
+  "alternatives": [
+   "The dog that I fed was hungry."
+  ],
+  "slots": [
+   {
+    "correct": "The dog",
+    "options": [
+     "The dog",
+     "The boy"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who"
+    ]
+   },
+   {
+    "correct": "I fed was hungry.",
+    "options": [
+     "I fed was hungry.",
+     "I feed was hungry."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "relative_clauses",
+  "ru": "Город, который я посетил, очень большой.",
+  "en": "The city which I visited is very big.",
+  "alternatives": [
+   "The city that I visited is very big."
+  ],
+  "slots": [
+   {
+    "correct": "The city",
+    "options": [
+     "The city",
+     "The man",
+     "The doctor",
+     "The boy"
+    ]
+   },
+   {
+    "correct": "which",
+    "options": [
+     "which",
+     "who",
+     "where",
+     "when"
+    ]
+   },
+   {
+    "correct": "I visited is very big.",
+    "options": [
+     "I visited is very big.",
+     "visited I is very big.",
+     "I visit is very big.",
+     "I was visited is very big."
+    ]
+   }
+  ]
+ }
+]

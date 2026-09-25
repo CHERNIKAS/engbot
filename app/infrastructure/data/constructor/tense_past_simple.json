@@ -1,0 +1,3812 @@
+[
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я работал вчера.",
+  "en": "I worked yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "You",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "worked",
+    "options": [
+     "worked",
+     "work",
+     "works",
+     "working"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "last week.",
+     "in 2020."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Она смотрела фильм вчера.",
+  "en": "She watched a film yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "We",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "watched",
+    "options": [
+     "watched",
+     "watch",
+     "watches",
+     "watching"
+    ]
+   },
+   {
+    "correct": "a film yesterday.",
+    "options": [
+     "a film yesterday.",
+     "the film yesterday.",
+     "a movie yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Мы играли неделю назад.",
+  "en": "We played a week ago.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "played",
+    "options": [
+     "played",
+     "play",
+     "plays",
+     "playing"
+    ]
+   },
+   {
+    "correct": "a week ago.",
+    "options": [
+     "a week ago.",
+     "yesterday.",
+     "last week."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Они открыли дверь вчера.",
+  "en": "They opened the door yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "opened",
+    "options": [
+     "opened",
+     "open",
+     "opens",
+     "opening"
+    ]
+   },
+   {
+    "correct": "the door yesterday.",
+    "options": [
+     "the door yesterday.",
+     "the window yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я не готовил вчера.",
+  "en": "I didn't cook yesterday.",
+  "alternatives": [
+   "I did not cook yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "cook",
+    "options": [
+     "cook",
+     "cooked",
+     "cooks",
+     "cooking"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "last week.",
+     "now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Он не звонил мне вчера.",
+  "en": "He didn't call me yesterday.",
+  "alternatives": [
+   "He did not call me yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "call",
+    "options": [
+     "call",
+     "called",
+     "calls",
+     "calling"
+    ]
+   },
+   {
+    "correct": "me yesterday.",
+    "options": [
+     "me yesterday.",
+     "her yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Она не хотела идти вчера.",
+  "en": "She didn't want to go yesterday.",
+  "alternatives": [
+   "She did not want to go yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "want",
+    "options": [
+     "want",
+     "wanted",
+     "wants",
+     "wanting"
+    ]
+   },
+   {
+    "correct": "to go yesterday.",
+    "options": [
+     "to go yesterday.",
+     "to stay yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Мы не убирали дом вчера.",
+  "en": "We didn't clean the house yesterday.",
+  "alternatives": [
+   "We did not clean the house yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "clean",
+    "options": [
+     "clean",
+     "cleaned",
+     "cleans",
+     "cleaning"
+    ]
+   },
+   {
+    "correct": "the house yesterday.",
+    "options": [
+     "the house yesterday.",
+     "the room yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Ты работал вчера?",
+  "en": "Did you work yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Will"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "worked",
+     "works",
+     "working"
+    ]
+   },
+   {
+    "correct": "yesterday?",
+    "options": [
+     "yesterday?",
+     "last week?",
+     "in 2020?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Он звонил тебе вчера?",
+  "en": "Did he call you yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Will"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "call",
+    "options": [
+     "call",
+     "called",
+     "calls",
+     "calling"
+    ]
+   },
+   {
+    "correct": "you yesterday?",
+    "options": [
+     "you yesterday?",
+     "me yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Они начали урок вчера?",
+  "en": "Did they start the lesson yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Will"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "we",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "start",
+    "options": [
+     "start",
+     "started",
+     "starts",
+     "starting"
+    ]
+   },
+   {
+    "correct": "the lesson yesterday?",
+    "options": [
+     "the lesson yesterday?",
+     "the work yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Вы ждали их вчера?",
+  "en": "Did you wait for them yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Will"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "wait",
+    "options": [
+     "wait",
+     "waited",
+     "waits",
+     "waiting"
+    ]
+   },
+   {
+    "correct": "for them yesterday?",
+    "options": [
+     "for them yesterday?",
+     "for me yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я закончил работу два дня назад.",
+  "en": "I finished work two days ago.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "finished",
+    "options": [
+     "finish",
+     "finished",
+     "finishes"
+    ]
+   },
+   {
+    "correct": "work two days ago.",
+    "options": [
+     "work two days ago.",
+     "to work yesterday.",
+     "working last week."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Она убрала квартиру в 2020 году.",
+  "en": "She cleaned the flat in 2020.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "cleaned",
+    "options": [
+     "clean",
+     "cleaned",
+     "cleans"
+    ]
+   },
+   {
+    "correct": "the flat in 2020.",
+    "options": [
+     "the flat in 2020.",
+     "the house yesterday.",
+     "my room last week."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Мы смотрели телевизор вчера.",
+  "en": "We watched TV yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "watched",
+    "options": [
+     "watch",
+     "watched",
+     "watches"
+    ]
+   },
+   {
+    "correct": "TV yesterday.",
+    "options": [
+     "TV yesterday.",
+     "a film last week.",
+     "the news two days ago."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Он не открыл окно вчера.",
+  "en": "He didn't open the window yesterday.",
+  "alternatives": [
+   "He did not open the window yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "open",
+    "options": [
+     "open",
+     "opened",
+     "opens"
+    ]
+   },
+   {
+    "correct": "the window yesterday.",
+    "options": [
+     "the window yesterday.",
+     "the door last week.",
+     "the box two days ago."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Они не работали неделю назад.",
+  "en": "They didn't work last week.",
+  "alternatives": [
+   "They did not work last week."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "worked",
+     "works"
+    ]
+   },
+   {
+    "correct": "last week.",
+    "options": [
+     "last week.",
+     "yesterday.",
+     "two days ago."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я не хотел играть вчера.",
+  "en": "I didn't want to play yesterday.",
+  "alternatives": [
+   "I did not want to play yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "didn't to"
+    ]
+   },
+   {
+    "correct": "want to play",
+    "options": [
+     "want to play",
+     "wanted to play",
+     "wants to play"
+    ]
+   },
+   {
+    "correct": "yesterday.",
+    "options": [
+     "yesterday.",
+     "last week.",
+     "two days ago."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Ты ответил на вопрос вчера?",
+  "en": "Did you answer the question yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "answer",
+    "options": [
+     "answer",
+     "answered",
+     "answers"
+    ]
+   },
+   {
+    "correct": "the question yesterday?",
+    "options": [
+     "the question yesterday?",
+     "the call last week?",
+     "the email two days ago?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Она училась в 2020 году?",
+  "en": "Did she study in 2020?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "study",
+    "options": [
+     "study",
+     "studied",
+     "studies"
+    ]
+   },
+   {
+    "correct": "in 2020?",
+    "options": [
+     "in 2020?",
+     "last week?",
+     "yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Вы помогли им вчера?",
+  "en": "Did you help them yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "help",
+    "options": [
+     "help",
+     "helped",
+     "helps"
+    ]
+   },
+   {
+    "correct": "them yesterday?",
+    "options": [
+     "them yesterday?",
+     "him last week?",
+     "her two days ago?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Они не закончили игру вчера.",
+  "en": "They didn't finish the game yesterday.",
+  "alternatives": [
+   "They did not finish the game yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "didn't to"
+    ]
+   },
+   {
+    "correct": "finish",
+    "options": [
+     "finish",
+     "finished",
+     "finishes"
+    ]
+   },
+   {
+    "correct": "the game yesterday.",
+    "options": [
+     "the game yesterday.",
+     "the work last week.",
+     "the task two days ago."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Она не жила здесь два года назад.",
+  "en": "She didn't live here two years ago.",
+  "alternatives": [
+   "She did not live here two years ago."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "live",
+    "options": [
+     "live",
+     "lived",
+     "lives"
+    ]
+   },
+   {
+    "correct": "here two years ago.",
+    "options": [
+     "here two years ago.",
+     "there last year.",
+     "here yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Мы спросили его вчера?",
+  "en": "Did we ask him yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "we",
+    "options": [
+     "we",
+     "you",
+     "they"
+    ]
+   },
+   {
+    "correct": "ask",
+    "options": [
+     "ask",
+     "asked",
+     "asks"
+    ]
+   },
+   {
+    "correct": "him yesterday?",
+    "options": [
+     "him yesterday?",
+     "her last week?",
+     "them two days ago?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я вчера почистил кухню.",
+  "en": "I cleaned the kitchen yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "cleaned",
+    "options": [
+     "cleaned",
+     "clean",
+     "cleans"
+    ]
+   },
+   {
+    "correct": "the kitchen yesterday.",
+    "options": [
+     "the kitchen yesterday.",
+     "the room yesterday.",
+     "the house yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Она вчера смотрела телевизор.",
+  "en": "She watched TV yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "watched",
+    "options": [
+     "watched",
+     "watch",
+     "watches"
+    ]
+   },
+   {
+    "correct": "TV yesterday.",
+    "options": [
+     "TV yesterday.",
+     "a movie yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Мы открыли окно вчера.",
+  "en": "We opened the window yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "opened",
+    "options": [
+     "opened",
+     "open",
+     "opens"
+    ]
+   },
+   {
+    "correct": "the window yesterday.",
+    "options": [
+     "the window yesterday.",
+     "the door yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я не работал вчера.",
+  "en": "I didn't work yesterday.",
+  "alternatives": [
+   "I did not work yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "work yesterday.",
+    "options": [
+     "work yesterday.",
+     "worked yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Она не смотрела это вчера.",
+  "en": "She didn't watch it yesterday.",
+  "alternatives": [
+   "She did not watch it yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "watch it yesterday.",
+    "options": [
+     "watch it yesterday.",
+     "watched it yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Они не играли неделю назад.",
+  "en": "They didn't play a week ago.",
+  "alternatives": [
+   "They did not play a week ago."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "play a week ago.",
+    "options": [
+     "play a week ago.",
+     "played a week ago."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Ты звонил ей вчера?",
+  "en": "Did you call her yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "call",
+    "options": [
+     "call",
+     "called"
+    ]
+   },
+   {
+    "correct": "her yesterday?",
+    "options": [
+     "her yesterday?",
+     "him yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Он начал работу вчера.",
+  "en": "He started work yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "started",
+    "options": [
+     "started",
+     "start",
+     "starts"
+    ]
+   },
+   {
+    "correct": "work yesterday.",
+    "options": [
+     "work yesterday.",
+     "working yesterday.",
+     "to work yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я не убирал кухню вчера.",
+  "en": "I didn't clean the kitchen yesterday.",
+  "alternatives": [
+   "I did not clean the kitchen yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "clean",
+    "options": [
+     "clean",
+     "cleaned",
+     "cleans"
+    ]
+   },
+   {
+    "correct": "the kitchen yesterday.",
+    "options": [
+     "the kitchen yesterday.",
+     "my kitchen yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Ты смотрел фильм вчера?",
+  "en": "Did you watch a movie yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Will"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "watch",
+    "options": [
+     "watch",
+     "watched",
+     "watches"
+    ]
+   },
+   {
+    "correct": "a movie yesterday?",
+    "options": [
+     "a movie yesterday?",
+     "the film yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Она помогла мне вчера.",
+  "en": "She helped me yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "helped",
+    "options": [
+     "helped",
+     "help",
+     "helps"
+    ]
+   },
+   {
+    "correct": "me yesterday.",
+    "options": [
+     "me yesterday.",
+     "him yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Мы не ждали их вчера.",
+  "en": "We didn't wait for them yesterday.",
+  "alternatives": [
+   "We did not wait for them yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "wait",
+    "options": [
+     "wait",
+     "waited",
+     "waiting"
+    ]
+   },
+   {
+    "correct": "for them yesterday.",
+    "options": [
+     "for them yesterday.",
+     "for him yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Они закончили работу неделю назад.",
+  "en": "They finished work a week ago.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "finished",
+    "options": [
+     "finished",
+     "finish",
+     "finishes"
+    ]
+   },
+   {
+    "correct": "work a week ago.",
+    "options": [
+     "work a week ago.",
+     "the task a week ago."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Вы ответили на вопрос вчера?",
+  "en": "Did you answer the question yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "she"
+    ]
+   },
+   {
+    "correct": "answer",
+    "options": [
+     "answer",
+     "answered",
+     "answering"
+    ]
+   },
+   {
+    "correct": "the question yesterday?",
+    "options": [
+     "the question yesterday?",
+     "his question yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Он не закрыл дверь вчера.",
+  "en": "He didn't close the door yesterday.",
+  "alternatives": [
+   "He did not close the door yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "doesn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "close",
+    "options": [
+     "close",
+     "closed",
+     "closes"
+    ]
+   },
+   {
+    "correct": "the door yesterday.",
+    "options": [
+     "the door yesterday.",
+     "his door yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я не спросил его вчера.",
+  "en": "I didn't ask him yesterday.",
+  "alternatives": [
+   "I did not ask him yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "ask",
+    "options": [
+     "ask",
+     "asked",
+     "asks"
+    ]
+   },
+   {
+    "correct": "him yesterday.",
+    "options": [
+     "him yesterday.",
+     "her yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Они готовили обед вчера?",
+  "en": "Did they cook dinner yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Were"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "you",
+     "we"
+    ]
+   },
+   {
+    "correct": "cook",
+    "options": [
+     "cook",
+     "cooked",
+     "cooking"
+    ]
+   },
+   {
+    "correct": "dinner yesterday?",
+    "options": [
+     "dinner yesterday?",
+     "lunch yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Мы жили здесь два года назад.",
+  "en": "We lived here two years ago.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "lived",
+    "options": [
+     "lived",
+     "live",
+     "lives"
+    ]
+   },
+   {
+    "correct": "here two years ago.",
+    "options": [
+     "here two years ago.",
+     "there two years ago."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я вчера хотел спать.",
+  "en": "I wanted to sleep yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "wanted",
+    "options": [
+     "wanted",
+     "want",
+     "wants",
+     "is wanting"
+    ]
+   },
+   {
+    "correct": "to sleep yesterday.",
+    "options": [
+     "to sleep yesterday.",
+     "sleep yesterday.",
+     "sleeping yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Он не смотрел телевизор вчера.",
+  "en": "He didn't watch TV yesterday.",
+  "alternatives": [
+   "He did not watch TV yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I",
+     "You"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "watch",
+    "options": [
+     "watch",
+     "watched",
+     "watching",
+     "watches"
+    ]
+   },
+   {
+    "correct": "TV yesterday.",
+    "options": [
+     "TV yesterday.",
+     "a TV yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Ты играл в футбол вчера?",
+  "en": "Did you play football yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she",
+     "they"
+    ]
+   },
+   {
+    "correct": "play",
+    "options": [
+     "play",
+     "played",
+     "playing",
+     "plays"
+    ]
+   },
+   {
+    "correct": "football yesterday?",
+    "options": [
+     "football yesterday?",
+     "the football yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Мы не открыли дверь вчера.",
+  "en": "We didn't open the door yesterday.",
+  "alternatives": [
+   "We did not open the door yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't",
+     "aren't"
+    ]
+   },
+   {
+    "correct": "open",
+    "options": [
+     "open",
+     "opened",
+     "opening",
+     "opens"
+    ]
+   },
+   {
+    "correct": "the door yesterday.",
+    "options": [
+     "the door yesterday.",
+     "a door yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Она работала в 2020 году.",
+  "en": "She worked in 2020.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "worked",
+    "options": [
+     "worked",
+     "work",
+     "works",
+     "is working"
+    ]
+   },
+   {
+    "correct": "in 2020.",
+    "options": [
+     "in 2020.",
+     "at 2020.",
+     "on 2020."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Они не закончили работу вчера.",
+  "en": "They didn't finish work yesterday.",
+  "alternatives": [
+   "They did not finish work yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "finish",
+    "options": [
+     "finish",
+     "finished",
+     "finishing",
+     "finishes"
+    ]
+   },
+   {
+    "correct": "work yesterday.",
+    "options": [
+     "work yesterday.",
+     "the work yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Вы звонили ему вчера?",
+  "en": "Did you call him yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "call",
+    "options": [
+     "call",
+     "called",
+     "calling",
+     "calls"
+    ]
+   },
+   {
+    "correct": "him yesterday?",
+    "options": [
+     "him yesterday?",
+     "he yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я не готовил ужин вчера.",
+  "en": "I didn't cook dinner yesterday.",
+  "alternatives": [
+   "I did not cook dinner yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't",
+     "did"
+    ]
+   },
+   {
+    "correct": "cook",
+    "options": [
+     "cook",
+     "cooked",
+     "cooking",
+     "cooks"
+    ]
+   },
+   {
+    "correct": "dinner yesterday.",
+    "options": [
+     "dinner yesterday.",
+     "the dinner yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Он не ждал меня вчера.",
+  "en": "He didn't wait for me yesterday.",
+  "alternatives": [
+   "He did not wait for me yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "wait",
+    "options": [
+     "wait",
+     "waited",
+     "waiting",
+     "waits"
+    ]
+   },
+   {
+    "correct": "for me yesterday.",
+    "options": [
+     "for me yesterday.",
+     "me yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Они начали игру вчера?",
+  "en": "Did they start the game yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Were"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "she",
+     "you"
+    ]
+   },
+   {
+    "correct": "start",
+    "options": [
+     "start",
+     "started",
+     "starting",
+     "starts"
+    ]
+   },
+   {
+    "correct": "the game yesterday?",
+    "options": [
+     "the game yesterday?",
+     "a game yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Мы убрали дом вчера.",
+  "en": "We cleaned the house yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "cleaned",
+    "options": [
+     "cleaned",
+     "clean",
+     "cleans",
+     "is cleaning"
+    ]
+   },
+   {
+    "correct": "the house yesterday.",
+    "options": [
+     "the house yesterday.",
+     "a house yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я вчера хотел пить.",
+  "en": "I wanted to drink yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "You",
+     "He"
+    ]
+   },
+   {
+    "correct": "wanted",
+    "options": [
+     "wanted",
+     "want",
+     "wants"
+    ]
+   },
+   {
+    "correct": "to drink yesterday.",
+    "options": [
+     "to drink yesterday.",
+     "drink yesterday.",
+     "to drank yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Он не смотрел этот фильм вчера.",
+  "en": "He didn't watch this film yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "watch",
+    "options": [
+     "watch",
+     "watched",
+     "watching"
+    ]
+   },
+   {
+    "correct": "this film yesterday.",
+    "options": [
+     "this film yesterday.",
+     "the film yesterday.",
+     "that film yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Вы начали этот проект в 2020 году?",
+  "en": "Did you start this project in 2020?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "start",
+    "options": [
+     "start",
+     "started",
+     "starting"
+    ]
+   },
+   {
+    "correct": "this project in 2020?",
+    "options": [
+     "this project in 2020?",
+     "the project in 2020?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Они работали в офисе неделю назад.",
+  "en": "They worked in the office last week.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "worked",
+    "options": [
+     "worked",
+     "work",
+     "working"
+    ]
+   },
+   {
+    "correct": "in the office last week.",
+    "options": [
+     "in the office last week.",
+     "at the office last week."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я не ответил на звонок вчера.",
+  "en": "I didn't answer the call yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "did",
+     "don't"
+    ]
+   },
+   {
+    "correct": "answer",
+    "options": [
+     "answer",
+     "answered",
+     "answering"
+    ]
+   },
+   {
+    "correct": "the call yesterday.",
+    "options": [
+     "the call yesterday.",
+     "my call yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Она помогла тебе вчера?",
+  "en": "Did she help you yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Does",
+     "Do"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "help",
+    "options": [
+     "help",
+     "helped",
+     "helping"
+    ]
+   },
+   {
+    "correct": "you yesterday?",
+    "options": [
+     "you yesterday?",
+     "me yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Мы ждали автобус два дня назад.",
+  "en": "We waited for the bus two days ago.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "waited",
+    "options": [
+     "waited",
+     "wait",
+     "waiting"
+    ]
+   },
+   {
+    "correct": "for the bus two days ago.",
+    "options": [
+     "for the bus two days ago.",
+     "for a bus two days ago."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Он не закрыл окно вчера.",
+  "en": "He didn't close the window yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "close",
+    "options": [
+     "close",
+     "closed",
+     "closing"
+    ]
+   },
+   {
+    "correct": "the window yesterday.",
+    "options": [
+     "the window yesterday.",
+     "this window yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я почистил кухню вчера.",
+  "en": "I cleaned the kitchen yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "cleaned",
+    "options": [
+     "cleaned",
+     "clean",
+     "cleaning"
+    ]
+   },
+   {
+    "correct": "the kitchen yesterday.",
+    "options": [
+     "the kitchen yesterday.",
+     "my kitchen yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Вы спросили его вчера?",
+  "en": "Did you ask him yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "ask",
+    "options": [
+     "ask",
+     "asked",
+     "asking"
+    ]
+   },
+   {
+    "correct": "him yesterday?",
+    "options": [
+     "him yesterday?",
+     "her yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я вчера смотрел фильм.",
+  "en": "I watched a movie yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "watched",
+    "options": [
+     "watched",
+     "watch",
+     "watches",
+     "watching"
+    ]
+   },
+   {
+    "correct": "a movie yesterday.",
+    "options": [
+     "a movie yesterday.",
+     "the movie now.",
+     "movies every day."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Они не начали работу вчера.",
+  "en": "They didn't start work yesterday.",
+  "alternatives": [
+   "They did not start work yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "start",
+    "options": [
+     "start",
+     "started",
+     "starts"
+    ]
+   },
+   {
+    "correct": "work yesterday.",
+    "options": [
+     "work yesterday.",
+     "the work yesterday.",
+     "to work yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Вы играли в игры в 2020 году?",
+  "en": "Did you play games in 2020?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "play",
+    "options": [
+     "play",
+     "played",
+     "playing"
+    ]
+   },
+   {
+    "correct": "games in 2020?",
+    "options": [
+     "games in 2020?",
+     "the game now?",
+     "games every day?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Она помогла мне два дня назад.",
+  "en": "She helped me two days ago.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "helped",
+    "options": [
+     "helped",
+     "help",
+     "helps"
+    ]
+   },
+   {
+    "correct": "me two days ago.",
+    "options": [
+     "me two days ago.",
+     "him now.",
+     "us every day."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Ты закрыл дверь вчера?",
+  "en": "Did you close the door yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "close",
+    "options": [
+     "close",
+     "closed",
+     "closing"
+    ]
+   },
+   {
+    "correct": "the door yesterday?",
+    "options": [
+     "the door yesterday?",
+     "the window now?",
+     "doors every day?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Мы не убрали дом неделю назад.",
+  "en": "We didn't clean the house a week ago.",
+  "alternatives": [
+   "We did not clean the house a week ago."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "clean",
+    "options": [
+     "clean",
+     "cleaned",
+     "cleans"
+    ]
+   },
+   {
+    "correct": "the house a week ago.",
+    "options": [
+     "the house a week ago.",
+     "the flat today.",
+     "the house now."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Он учился здесь в 2020 году.",
+  "en": "He studied here in 2020.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "studied",
+    "options": [
+     "studied",
+     "study",
+     "studies"
+    ]
+   },
+   {
+    "correct": "here in 2020.",
+    "options": [
+     "here in 2020.",
+     "there now.",
+     "in the office today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Они не ответили на вопрос вчера.",
+  "en": "They didn't answer the question yesterday.",
+  "alternatives": [
+   "They did not answer the question yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "answer",
+    "options": [
+     "answer",
+     "answered",
+     "answers"
+    ]
+   },
+   {
+    "correct": "the question yesterday.",
+    "options": [
+     "the question yesterday.",
+     "a question now.",
+     "questions every day."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Она приготовила ужин два дня назад.",
+  "en": "She cooked dinner two days ago.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "cooked",
+    "options": [
+     "cooked",
+     "cook",
+     "cooks"
+    ]
+   },
+   {
+    "correct": "dinner two days ago.",
+    "options": [
+     "dinner two days ago.",
+     "lunch now.",
+     "food every day."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я готовил обед вчера.",
+  "en": "I cooked lunch yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "cooked",
+    "options": [
+     "cooked",
+     "cook",
+     "cooks"
+    ]
+   },
+   {
+    "correct": "lunch yesterday.",
+    "options": [
+     "lunch yesterday.",
+     "the dinner today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Она не ответила на звонок вчера.",
+  "en": "She didn't answer the call yesterday.",
+  "alternatives": [
+   "She did not answer the call yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "did",
+     "don't"
+    ]
+   },
+   {
+    "correct": "answer",
+    "options": [
+     "answer",
+     "answered",
+     "answers"
+    ]
+   },
+   {
+    "correct": "the call yesterday.",
+    "options": [
+     "the call yesterday.",
+     "the question today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Ты начал этот проект в 2020 году?",
+  "en": "Did you start this project in 2020?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "start",
+    "options": [
+     "start",
+     "started",
+     "starts"
+    ]
+   },
+   {
+    "correct": "this project in 2020?",
+    "options": [
+     "this project in 2020?",
+     "that game yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я не хотел спать вчера.",
+  "en": "I didn't want to sleep yesterday.",
+  "alternatives": [
+   "I did not want to sleep yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "did",
+     "don't"
+    ]
+   },
+   {
+    "correct": "want",
+    "options": [
+     "want",
+     "wanted",
+     "wants"
+    ]
+   },
+   {
+    "correct": "to sleep yesterday.",
+    "options": [
+     "to sleep yesterday.",
+     "to play today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Вы готовили обед вчера?",
+  "en": "Did you cook lunch yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "he"
+    ]
+   },
+   {
+    "correct": "cook",
+    "options": [
+     "cook",
+     "cooked",
+     "cooks"
+    ]
+   },
+   {
+    "correct": "lunch yesterday?",
+    "options": [
+     "lunch yesterday?",
+     "dinner today?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я вчера почистил окно.",
+  "en": "I cleaned the window yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "cleaned",
+    "options": [
+     "cleaned",
+     "clean",
+     "cleans",
+     "cleaning"
+    ]
+   },
+   {
+    "correct": "the window yesterday.",
+    "options": [
+     "the window yesterday.",
+     "the windows yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Она не смотрела этот фильм вчера.",
+  "en": "She didn't watch this film yesterday.",
+  "alternatives": [
+   "She did not watch this film yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "watch",
+    "options": [
+     "watch",
+     "watched",
+     "watches",
+     "watching"
+    ]
+   },
+   {
+    "correct": "this film yesterday.",
+    "options": [
+     "this film yesterday.",
+     "that film yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Он не помог мне вчера.",
+  "en": "He didn't help me yesterday.",
+  "alternatives": [
+   "He did not help me yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "doesn't",
+     "don't",
+     "did"
+    ]
+   },
+   {
+    "correct": "help",
+    "options": [
+     "help",
+     "helped",
+     "helps",
+     "helping"
+    ]
+   },
+   {
+    "correct": "me yesterday.",
+    "options": [
+     "me yesterday.",
+     "us yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я вчера почистил машину.",
+  "en": "I cleaned the car yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "cleaned",
+    "options": [
+     "cleaned",
+     "clean",
+     "cleans",
+     "cleaning"
+    ]
+   },
+   {
+    "correct": "the car yesterday.",
+    "options": [
+     "the car yesterday.",
+     "the cars yesterday.",
+     "my car today."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Она не смотрела этот фильм.",
+  "en": "She didn't watch this movie.",
+  "alternatives": [
+   "She did not watch this movie."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't",
+     "won't"
+    ]
+   },
+   {
+    "correct": "watch",
+    "options": [
+     "watch",
+     "watched",
+     "watching",
+     "watches"
+    ]
+   },
+   {
+    "correct": "this movie.",
+    "options": [
+     "this movie.",
+     "that film.",
+     "this show."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Вы ждали их в 2020 году?",
+  "en": "Did you wait for them in 2020?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "he"
+    ]
+   },
+   {
+    "correct": "wait",
+    "options": [
+     "wait",
+     "waited",
+     "waiting",
+     "waits"
+    ]
+   },
+   {
+    "correct": "for them in 2020?",
+    "options": [
+     "for them in 2020?",
+     "for him in 2020?",
+     "for us last year?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Они не открыли коробку вчера.",
+  "en": "They didn't open the box yesterday.",
+  "alternatives": [
+   "They did not open the box yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "did",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "open",
+    "options": [
+     "open",
+     "opened",
+     "opening",
+     "opens"
+    ]
+   },
+   {
+    "correct": "the box yesterday.",
+    "options": [
+     "the box yesterday.",
+     "the door yesterday.",
+     "the window yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я спросил его два дня назад.",
+  "en": "I asked him two days ago.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "asked",
+    "options": [
+     "asked",
+     "ask",
+     "asking",
+     "asks"
+    ]
+   },
+   {
+    "correct": "him two days ago.",
+    "options": [
+     "him two days ago.",
+     "her yesterday.",
+     "them last week."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Он не играл в футбол.",
+  "en": "He didn't play football.",
+  "alternatives": [
+   "He did not play football."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "won't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "play",
+    "options": [
+     "play",
+     "played",
+     "playing",
+     "plays"
+    ]
+   },
+   {
+    "correct": "football.",
+    "options": [
+     "football.",
+     "games.",
+     "tennis."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Она начала работу неделю назад.",
+  "en": "She started work a week ago.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "started",
+    "options": [
+     "started",
+     "start",
+     "starting",
+     "starts"
+    ]
+   },
+   {
+    "correct": "work a week ago.",
+    "options": [
+     "work a week ago.",
+     "the job two days ago.",
+     "it yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Мы не работали в офисе.",
+  "en": "We didn't work in the office.",
+  "alternatives": [
+   "We did not work in the office."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "weren't",
+     "did"
+    ]
+   },
+   {
+    "correct": "work",
+    "options": [
+     "work",
+     "worked",
+     "working",
+     "works"
+    ]
+   },
+   {
+    "correct": "in the office.",
+    "options": [
+     "in the office.",
+     "at home.",
+     "in the park."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Ты хотел пить вчера?",
+  "en": "Did you want a drink yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "want",
+    "options": [
+     "want",
+     "wanted",
+     "wants",
+     "wanting"
+    ]
+   },
+   {
+    "correct": "a drink yesterday?",
+    "options": [
+     "a drink yesterday?",
+     "water yesterday?",
+     "coffee yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Он не убрал свою комнату.",
+  "en": "He didn't clean his room.",
+  "alternatives": [
+   "He did not clean his room."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "doesn't",
+     "don't",
+     "did"
+    ]
+   },
+   {
+    "correct": "clean",
+    "options": [
+     "clean",
+     "cleaned",
+     "cleaning",
+     "cleans"
+    ]
+   },
+   {
+    "correct": "his room.",
+    "options": [
+     "his room.",
+     "the house.",
+     "the kitchen."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Они закончили проект в 2020 году?",
+  "en": "Did they finish the project in 2020?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Were"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "you",
+     "we"
+    ]
+   },
+   {
+    "correct": "finish",
+    "options": [
+     "finish",
+     "finished",
+     "finishing",
+     "finishes"
+    ]
+   },
+   {
+    "correct": "the project in 2020?",
+    "options": [
+     "the project in 2020?",
+     "the work in 2020?",
+     "the game yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я вчера почистил обувь.",
+  "en": "I cleaned my shoes yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "cleaned",
+    "options": [
+     "cleaned",
+     "clean",
+     "cleans"
+    ]
+   },
+   {
+    "correct": "my shoes yesterday.",
+    "options": [
+     "my shoes yesterday.",
+     "my shoes tomorrow."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Ты звонил ему вчера?",
+  "en": "Did you call him yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "he"
+    ]
+   },
+   {
+    "correct": "call",
+    "options": [
+     "call",
+     "called",
+     "calling"
+    ]
+   },
+   {
+    "correct": "him yesterday?",
+    "options": [
+     "him yesterday?",
+     "him now?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Она училась здесь в 2020 году.",
+  "en": "She studied here in 2020.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "studied",
+    "options": [
+     "studied",
+     "study",
+     "studies"
+    ]
+   },
+   {
+    "correct": "here in 2020.",
+    "options": [
+     "here in 2020.",
+     "here yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Я вчера смотрел этот фильм.",
+  "en": "I watched this film yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "She",
+     "He"
+    ]
+   },
+   {
+    "correct": "watched",
+    "options": [
+     "watched",
+     "watch",
+     "watches"
+    ]
+   },
+   {
+    "correct": "this film yesterday.",
+    "options": [
+     "this film yesterday.",
+     "a film last week.",
+     "the film two days ago."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Он не играл в игру вчера.",
+  "en": "He didn't play the game yesterday.",
+  "alternatives": [
+   "He did not play the game yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "doesn't"
+    ]
+   },
+   {
+    "correct": "play",
+    "options": [
+     "play",
+     "played",
+     "playing"
+    ]
+   },
+   {
+    "correct": "the game yesterday.",
+    "options": [
+     "the game yesterday.",
+     "football last week.",
+     "games two days ago."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Вы начали этот урок вчера?",
+  "en": "Did you start this lesson yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Do",
+     "Does"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "they",
+     "he"
+    ]
+   },
+   {
+    "correct": "start",
+    "options": [
+     "start",
+     "started",
+     "starting"
+    ]
+   },
+   {
+    "correct": "this lesson yesterday?",
+    "options": [
+     "this lesson yesterday?",
+     "the work last week?",
+     "the game two days ago?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Они убрали комнату в 2020 году.",
+  "en": "They cleaned the room in 2020.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "We",
+     "She"
+    ]
+   },
+   {
+    "correct": "cleaned",
+    "options": [
+     "cleaned",
+     "clean",
+     "cleans"
+    ]
+   },
+   {
+    "correct": "the room in 2020.",
+    "options": [
+     "the room in 2020.",
+     "the house yesterday.",
+     "the office last week."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Мы не ответили на вопрос вчера.",
+  "en": "We didn't answer the question yesterday.",
+  "alternatives": [
+   "We did not answer the question yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "don't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "answer",
+    "options": [
+     "answer",
+     "answered",
+     "answering"
+    ]
+   },
+   {
+    "correct": "the question yesterday.",
+    "options": [
+     "the question yesterday.",
+     "the call last week.",
+     "the message two days ago."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "tense_past_simple",
+  "ru": "Она позвонила ему два дня назад?",
+  "en": "Did she call him two days ago?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Did",
+    "options": [
+     "Did",
+     "Does",
+     "Do"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "call",
+    "options": [
+     "call",
+     "called",
+     "calls"
+    ]
+   },
+   {
+    "correct": "him two days ago?",
+    "options": [
+     "him two days ago?",
+     "them yesterday?",
+     "me last week?"
+    ]
+   }
+  ]
+ }
+]

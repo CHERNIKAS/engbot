@@ -1,0 +1,3187 @@
+[
+ {
+  "topic": "was_were",
+  "ru": "Я был уставшим вчера.",
+  "en": "I was tired yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "tired yesterday.",
+    "options": [
+     "tired yesterday.",
+     "busy yesterday.",
+     "happy yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Они опоздали вчера.",
+  "en": "They were late yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "late yesterday.",
+    "options": [
+     "late yesterday.",
+     "ready yesterday.",
+     "cold yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я не был готов вчера.",
+  "en": "I wasn't ready yesterday.",
+  "alternatives": [
+   "I was not ready yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "ready yesterday.",
+    "options": [
+     "ready yesterday.",
+     "at home yesterday.",
+     "at work yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Мы не были дома вчера.",
+  "en": "We weren't at home yesterday.",
+  "alternatives": [
+   "We were not at home yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "at home yesterday.",
+    "options": [
+     "at home yesterday.",
+     "at work yesterday.",
+     "busy yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Ты был там?",
+  "en": "Were you there?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she",
+     "he"
+    ]
+   },
+   {
+    "correct": "there?",
+    "options": [
+     "there?",
+     "happy?",
+     "busy?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Она была счастлива?",
+  "en": "Was she happy?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Were"
+    ]
+   },
+   {
+    "correct": "she",
+    "options": [
+     "she",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "happy?",
+    "options": [
+     "happy?",
+     "ready?",
+     "cold?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я не был занят вчера.",
+  "en": "I wasn't busy yesterday.",
+  "alternatives": [
+   "I was not busy yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "You"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "busy yesterday.",
+    "options": [
+     "busy yesterday.",
+     "go yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я не ходил туда вчера.",
+  "en": "I didn't go there yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "go there yesterday.",
+    "options": [
+     "go there yesterday.",
+     "busy yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Мы не были на работе.",
+  "en": "We weren't at work.",
+  "alternatives": [
+   "We were not at work."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "at work.",
+    "options": [
+     "at work.",
+     "work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Мы не работали вчера.",
+  "en": "We didn't work yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "work yesterday.",
+    "options": [
+     "work yesterday.",
+     "at work yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Он не был готов.",
+  "en": "He wasn't ready.",
+  "alternatives": [
+   "He was not ready."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "ready.",
+    "options": [
+     "ready.",
+     "go."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Он не пришел вчера.",
+  "en": "He didn't come yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "come yesterday.",
+    "options": [
+     "come yesterday.",
+     "ready yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я был занят вчера.",
+  "en": "I was busy yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "busy yesterday.",
+    "options": [
+     "busy yesterday.",
+     "at home yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Они были на работе вчера.",
+  "en": "They were at work yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "at work yesterday.",
+    "options": [
+     "at work yesterday.",
+     "at home yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Магазин был открыт вчера.",
+  "en": "The shop was open yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The shop",
+    "options": [
+     "The shop",
+     "The shops"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "open yesterday.",
+    "options": [
+     "open yesterday.",
+     "closed yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Они не были заняты вчера.",
+  "en": "They weren't busy yesterday.",
+  "alternatives": [
+   "They were not busy yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "busy yesterday.",
+    "options": [
+     "busy yesterday.",
+     "at home yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Мы не были уставшими сегодня утром.",
+  "en": "We weren't tired this morning.",
+  "alternatives": [
+   "We were not tired this morning."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "I",
+     "We",
+     "She"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "tired this morning.",
+    "options": [
+     "tired this morning.",
+     "late this morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Был ли ты занят вчера?",
+  "en": "Were you busy yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Was",
+     "Were"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she"
+    ]
+   },
+   {
+    "correct": "busy yesterday?",
+    "options": [
+     "busy yesterday?",
+     "at home yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Она не была на работе вчера.",
+  "en": "She wasn't at work yesterday.",
+  "alternatives": [
+   "She was not at work yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "I",
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "at work yesterday.",
+    "options": [
+     "at work yesterday.",
+     "at home yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я не купил это вчера.",
+  "en": "I didn't buy it yesterday.",
+  "alternatives": [
+   "I did not buy it yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "wasn't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "buy it yesterday.",
+    "options": [
+     "buy it yesterday.",
+     "work yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Магазины не были закрыты вчера.",
+  "en": "The shops weren't closed yesterday.",
+  "alternatives": [
+   "The shops were not closed yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "The shops",
+    "options": [
+     "The shop",
+     "The shops"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "closed yesterday.",
+    "options": [
+     "closed yesterday.",
+     "open yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Он не работал в прошлую ночь.",
+  "en": "He didn't work last night.",
+  "alternatives": [
+   "He did not work last night."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "wasn't",
+     "weren't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "work last night.",
+    "options": [
+     "work last night.",
+     "at home last night."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Было ли холодно вчера?",
+  "en": "Was it cold yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Were"
+    ]
+   },
+   {
+    "correct": "it",
+    "options": [
+     "it",
+     "you"
+    ]
+   },
+   {
+    "correct": "cold yesterday?",
+    "options": [
+     "cold yesterday?",
+     "hot yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Мы не были уставшими вчера вечером.",
+  "en": "We weren't tired last night.",
+  "alternatives": [
+   "We were not tired last night."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "tired last night.",
+    "options": [
+     "tired last night.",
+     "ready last night."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я был дома вчера.",
+  "en": "I was at home yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "at home yesterday.",
+    "options": [
+     "at home yesterday.",
+     "at work yesterday.",
+     "busy yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Они были заняты вчера.",
+  "en": "They were busy yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "busy yesterday.",
+    "options": [
+     "busy yesterday.",
+     "at home yesterday.",
+     "tired yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Они не были дома вчера.",
+  "en": "They were not at home yesterday.",
+  "alternatives": [
+   "They weren't at home yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "were not",
+    "options": [
+     "were not",
+     "was not",
+     "did not"
+    ]
+   },
+   {
+    "correct": "at home yesterday.",
+    "options": [
+     "at home yesterday.",
+     "busy yesterday.",
+     "tired yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Они не работали вчера.",
+  "en": "They did not work yesterday.",
+  "alternatives": [
+   "They didn't work yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "were not",
+     "was not"
+    ]
+   },
+   {
+    "correct": "work yesterday.",
+    "options": [
+     "work yesterday.",
+     "at work yesterday.",
+     "busy yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Он не был готов вчера.",
+  "en": "He was not ready yesterday.",
+  "alternatives": [
+   "He wasn't ready yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "was not",
+    "options": [
+     "was not",
+     "were not",
+     "did not"
+    ]
+   },
+   {
+    "correct": "ready yesterday.",
+    "options": [
+     "ready yesterday.",
+     "busy yesterday.",
+     "at home yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Он не работал вчера.",
+  "en": "He did not work yesterday.",
+  "alternatives": [
+   "He didn't work yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "was not",
+     "were not"
+    ]
+   },
+   {
+    "correct": "work yesterday.",
+    "options": [
+     "work yesterday.",
+     "ready yesterday.",
+     "at work yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Было ли жарко вчера?",
+  "en": "Was it hot yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Were",
+     "Did"
+    ]
+   },
+   {
+    "correct": "it",
+    "options": [
+     "it",
+     "you",
+     "they"
+    ]
+   },
+   {
+    "correct": "hot yesterday?",
+    "options": [
+     "hot yesterday?",
+     "cold yesterday?",
+     "ready yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Были ли они там вчера?",
+  "en": "Were they there yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was",
+     "Did"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "it"
+    ]
+   },
+   {
+    "correct": "there yesterday?",
+    "options": [
+     "there yesterday?",
+     "at home yesterday?",
+     "busy yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Магазин был закрыт вчера.",
+  "en": "The shop was closed yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "The shop",
+    "options": [
+     "The shop",
+     "The shops",
+     "They"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "closed yesterday.",
+    "options": [
+     "closed yesterday.",
+     "open yesterday.",
+     "busy yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Магазины не были открыты вчера.",
+  "en": "The shops were not open yesterday.",
+  "alternatives": [
+   "The shops weren't open yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "The shops",
+    "options": [
+     "The shops",
+     "The shop",
+     "It"
+    ]
+   },
+   {
+    "correct": "were not",
+    "options": [
+     "were not",
+     "was not",
+     "did not"
+    ]
+   },
+   {
+    "correct": "open yesterday.",
+    "options": [
+     "open yesterday.",
+     "closed yesterday.",
+     "busy yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Она не купила это вчера.",
+  "en": "She did not buy it yesterday.",
+  "alternatives": [
+   "She didn't buy it yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "did not",
+    "options": [
+     "did not",
+     "was not",
+     "were not"
+    ]
+   },
+   {
+    "correct": "buy it yesterday.",
+    "options": [
+     "buy it yesterday.",
+     "ready yesterday.",
+     "at home yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я был дома вчера вечером.",
+  "en": "I was at home last night.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "at home last night.",
+    "options": [
+     "at home last night.",
+     "at work last night."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Они были заняты сегодня утром.",
+  "en": "They were busy this morning.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "busy this morning.",
+    "options": [
+     "busy this morning.",
+     "late this morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Ты не был готов вчера.",
+  "en": "You weren't ready yesterday.",
+  "alternatives": [
+   "You were not ready yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "ready yesterday.",
+    "options": [
+     "ready yesterday.",
+     "at home yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Были ли они дома вчера?",
+  "en": "Were they at home yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "it"
+    ]
+   },
+   {
+    "correct": "at home yesterday?",
+    "options": [
+     "at home yesterday?",
+     "busy yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Был ли он занят вчера?",
+  "en": "Was he busy yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Were"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "they",
+     "you"
+    ]
+   },
+   {
+    "correct": "busy yesterday?",
+    "options": [
+     "busy yesterday?",
+     "ready yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я не читал вчера.",
+  "en": "I didn't read yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "read yesterday.",
+    "options": [
+     "read yesterday.",
+     "study yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я не был уставшим вчера.",
+  "en": "I wasn't tired yesterday.",
+  "alternatives": [
+   "I was not tired yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "tired yesterday.",
+    "options": [
+     "tired yesterday.",
+     "ready yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Мы не были дома сегодня утром.",
+  "en": "We weren't at home this morning.",
+  "alternatives": [
+   "We were not at home this morning."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "at home this morning.",
+    "options": [
+     "at home this morning.",
+     "at work this morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Он не ходил на работу вчера.",
+  "en": "He didn't go to work yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "I"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "go to work yesterday.",
+    "options": [
+     "go to work yesterday.",
+     "be at work yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Они не были счастливы вчера.",
+  "en": "They weren't happy yesterday.",
+  "alternatives": [
+   "They were not happy yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "happy yesterday.",
+    "options": [
+     "happy yesterday.",
+     "busy yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Он не купил это вчера.",
+  "en": "He didn't buy it yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "buy it yesterday.",
+    "options": [
+     "buy it yesterday.",
+     "get it yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я был дома.",
+  "en": "I was at home.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "at home.",
+    "options": [
+     "at home.",
+     "at work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Мы были уставшие.",
+  "en": "We were tired.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "She"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "tired.",
+    "options": [
+     "tired.",
+     "ready."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Они не были заняты.",
+  "en": "They weren't busy.",
+  "alternatives": [
+   "They were not busy."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "busy.",
+    "options": [
+     "busy.",
+     "happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Она не была готова.",
+  "en": "She wasn't ready.",
+  "alternatives": [
+   "She was not ready."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "ready.",
+    "options": [
+     "ready.",
+     "late."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Были ли вы на работе?",
+  "en": "Were you at work?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she"
+    ]
+   },
+   {
+    "correct": "at work?",
+    "options": [
+     "at work?",
+     "at home?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Был ли магазин открыт?",
+  "en": "Was the shop open?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Were"
+    ]
+   },
+   {
+    "correct": "the shop",
+    "options": [
+     "the shop",
+     "the shops"
+    ]
+   },
+   {
+    "correct": "open?",
+    "options": [
+     "open?",
+     "closed?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я не ходил на работу.",
+  "en": "I didn't go to work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "go to work.",
+    "options": [
+     "go to work.",
+     "at work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я не был на работе.",
+  "en": "I wasn't at work.",
+  "alternatives": [
+   "I was not at work."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "at work.",
+    "options": [
+     "at work.",
+     "go to work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Мы не были счастливы.",
+  "en": "We weren't happy.",
+  "alternatives": [
+   "We were not happy."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "happy.",
+    "options": [
+     "happy.",
+     "work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Мы не работали.",
+  "en": "We didn't work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "work.",
+    "options": [
+     "work.",
+     "at work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Он не работал.",
+  "en": "He didn't work.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "work.",
+    "options": [
+     "work.",
+     "ready."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я был очень занят вчера.",
+  "en": "I was very busy yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "very busy yesterday.",
+    "options": [
+     "very busy yesterday.",
+     "very tired yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Они были дома вчера вечером.",
+  "en": "They were at home last night.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "I",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "at home last night.",
+    "options": [
+     "at home last night.",
+     "at work last night."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я не был готов сегодня утром.",
+  "en": "I wasn't ready this morning.",
+  "alternatives": [
+   "I was not ready this morning."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "ready this morning.",
+    "options": [
+     "ready this morning.",
+     "happy this morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Мы не были уставшими вчера.",
+  "en": "We weren't tired yesterday.",
+  "alternatives": [
+   "We were not tired yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "tired yesterday.",
+    "options": [
+     "tired yesterday.",
+     "busy yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Магазин не был открыт вчера.",
+  "en": "The shop wasn't open yesterday.",
+  "alternatives": [
+   "The shop was not open yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "The shop",
+    "options": [
+     "The shop",
+     "They"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "open yesterday.",
+    "options": [
+     "open yesterday.",
+     "closed yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я не пил кофе вчера.",
+  "en": "I didn't drink coffee yesterday.",
+  "alternatives": [
+   "I did not drink coffee yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "drink coffee yesterday.",
+    "options": [
+     "drink coffee yesterday.",
+     "eat yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Они не видели его вчера.",
+  "en": "They didn't see him yesterday.",
+  "alternatives": [
+   "They did not see him yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "weren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "see him yesterday.",
+    "options": [
+     "see him yesterday.",
+     "go yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Он не был занят вчера.",
+  "en": "He wasn't busy yesterday.",
+  "alternatives": [
+   "He was not busy yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "didn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "busy yesterday.",
+    "options": [
+     "busy yesterday.",
+     "ready yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Она не работала вчера.",
+  "en": "She didn't work yesterday.",
+  "alternatives": [
+   "She did not work yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "work yesterday.",
+    "options": [
+     "work yesterday.",
+     "go yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Было ли холодно вчера вечером?",
+  "en": "Was it cold last night?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Were"
+    ]
+   },
+   {
+    "correct": "it",
+    "options": [
+     "it",
+     "they",
+     "we"
+    ]
+   },
+   {
+    "correct": "cold last night?",
+    "options": [
+     "cold last night?",
+     "hot last night?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Мы не видели их вчера.",
+  "en": "We didn't see them yesterday.",
+  "alternatives": [
+   "We did not see them yesterday."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "weren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "see them yesterday.",
+    "options": [
+     "see them yesterday.",
+     "go yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Они были дома вчера.",
+  "en": "They were at home yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "at home yesterday.",
+    "options": [
+     "at home yesterday.",
+     "at work yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Мы были счастливы вчера.",
+  "en": "We were happy yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I",
+     "He"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "happy yesterday.",
+    "options": [
+     "happy yesterday.",
+     "busy yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Она не была готова сегодня утром.",
+  "en": "She wasn't ready this morning.",
+  "alternatives": [
+   "She was not ready this morning."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "ready this morning.",
+    "options": [
+     "ready this morning.",
+     "tired this morning."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Они не были на работе.",
+  "en": "They weren't at work.",
+  "alternatives": [
+   "They were not at work."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "at work.",
+    "options": [
+     "at work.",
+     "at home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Были ли вы уставшими вчера?",
+  "en": "Were you tired yesterday?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "you",
+    "options": [
+     "you",
+     "she"
+    ]
+   },
+   {
+    "correct": "tired yesterday?",
+    "options": [
+     "tired yesterday?",
+     "busy yesterday?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Был ли он на работе?",
+  "en": "Was he at work?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Was",
+    "options": [
+     "Was",
+     "Were"
+    ]
+   },
+   {
+    "correct": "he",
+    "options": [
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "at work?",
+    "options": [
+     "at work?",
+     "at home?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я не был занят, я работал.",
+  "en": "I wasn't busy, I worked.",
+  "alternatives": [
+   "I was not busy, I worked."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "busy, I",
+    "options": [
+     "busy, I",
+     "ready, I"
+    ]
+   },
+   {
+    "correct": "worked.",
+    "options": [
+     "worked.",
+     "didn't work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Мы не были уставшими, мы работали.",
+  "en": "We weren't tired, we worked.",
+  "alternatives": [
+   "We were not tired, we worked."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "tired, we",
+    "options": [
+     "tired, we",
+     "busy, we"
+    ]
+   },
+   {
+    "correct": "worked.",
+    "options": [
+     "worked.",
+     "didn't work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Он не был дома, он работал.",
+  "en": "He wasn't at home, he worked.",
+  "alternatives": [
+   "He was not at home, he worked."
+  ],
+  "slots": [
+   {
+    "correct": "He",
+    "options": [
+     "He",
+     "They"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "at home, he",
+    "options": [
+     "at home, he",
+     "at work, he"
+    ]
+   },
+   {
+    "correct": "worked.",
+    "options": [
+     "worked.",
+     "didn't work."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я не был занят вчера вечером.",
+  "en": "I wasn't busy last night.",
+  "alternatives": [
+   "I was not busy last night."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "busy last night.",
+    "options": [
+     "busy last night.",
+     "ready last night."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я не был готов.",
+  "en": "I wasn't ready.",
+  "alternatives": [
+   "I was not ready."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "ready.",
+    "options": [
+     "ready.",
+     "tired.",
+     "busy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Они не были уставшими.",
+  "en": "They weren't tired.",
+  "alternatives": [
+   "They were not tired."
+  ],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "I"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "tired.",
+    "options": [
+     "tired.",
+     "ready.",
+     "happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Ты не был занят.",
+  "en": "You weren't busy.",
+  "alternatives": [
+   "You were not busy."
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "She",
+     "It"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "busy.",
+    "options": [
+     "busy.",
+     "late.",
+     "at home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Она не была счастлива.",
+  "en": "She wasn't happy.",
+  "alternatives": [
+   "She was not happy."
+  ],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "We",
+     "They"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "happy.",
+    "options": [
+     "happy.",
+     "tired.",
+     "ready."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я не был дома.",
+  "en": "I wasn't at home.",
+  "alternatives": [
+   "I was not at home."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "You",
+     "They"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "at home.",
+    "options": [
+     "at home.",
+     "at work.",
+     "ready."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Мы не были уставшими.",
+  "en": "We weren't tired.",
+  "alternatives": [
+   "We were not tired."
+  ],
+  "slots": [
+   {
+    "correct": "We",
+    "options": [
+     "We",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't",
+     "didn't"
+    ]
+   },
+   {
+    "correct": "tired.",
+    "options": [
+     "tired.",
+     "busy.",
+     "happy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я не работал вчера.",
+  "en": "I didn't work yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "work yesterday.",
+    "options": [
+     "work yesterday.",
+     "be tired.",
+     "be ready."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Ты не работал вчера.",
+  "en": "You didn't work yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "She",
+     "It"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "weren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "work yesterday.",
+    "options": [
+     "work yesterday.",
+     "be happy.",
+     "be ready."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Она была занята вчера.",
+  "en": "She was busy yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We",
+     "I"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "busy yesterday.",
+    "options": [
+     "busy yesterday.",
+     "at home yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Они были уставшими вчера.",
+  "en": "They were tired yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "It"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "tired yesterday.",
+    "options": [
+     "tired yesterday.",
+     "ready yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Ты не был готов.",
+  "en": "You weren't ready.",
+  "alternatives": [
+   "You were not ready."
+  ],
+  "slots": [
+   {
+    "correct": "You",
+    "options": [
+     "You",
+     "He",
+     "She"
+    ]
+   },
+   {
+    "correct": "weren't",
+    "options": [
+     "weren't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "ready.",
+    "options": [
+     "ready.",
+     "busy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Были ли они счастливы?",
+  "en": "Were they happy?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "she"
+    ]
+   },
+   {
+    "correct": "happy?",
+    "options": [
+     "happy?",
+     "ready?"
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я не был занят, я отдыхал.",
+  "en": "I wasn't busy, I rested.",
+  "alternatives": [
+   "I was not busy, I rested."
+  ],
+  "slots": [
+   {
+    "correct": "I wasn't",
+    "options": [
+     "I wasn't",
+     "I didn't"
+    ]
+   },
+   {
+    "correct": "busy,",
+    "options": [
+     "busy,",
+     "rested,"
+    ]
+   },
+   {
+    "correct": "I rested.",
+    "options": [
+     "I rested.",
+     "I was busy."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Они не были дома, они гуляли.",
+  "en": "They weren't at home, they walked.",
+  "alternatives": [
+   "They were not at home, they walked."
+  ],
+  "slots": [
+   {
+    "correct": "They weren't",
+    "options": [
+     "They weren't",
+     "They didn't"
+    ]
+   },
+   {
+    "correct": "at home,",
+    "options": [
+     "at home,",
+     "walked,"
+    ]
+   },
+   {
+    "correct": "they walked.",
+    "options": [
+     "they walked.",
+     "they at home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Он не был готов, он спал.",
+  "en": "He wasn't ready, he slept.",
+  "alternatives": [
+   "He was not ready, he slept."
+  ],
+  "slots": [
+   {
+    "correct": "He wasn't",
+    "options": [
+     "He wasn't",
+     "He didn't"
+    ]
+   },
+   {
+    "correct": "ready,",
+    "options": [
+     "ready,",
+     "slept,"
+    ]
+   },
+   {
+    "correct": "he slept.",
+    "options": [
+     "he slept.",
+     "he ready."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Мы не были уставшими, мы играли.",
+  "en": "We weren't tired, we played.",
+  "alternatives": [
+   "We were not tired, we played."
+  ],
+  "slots": [
+   {
+    "correct": "We weren't",
+    "options": [
+     "We weren't",
+     "We didn't"
+    ]
+   },
+   {
+    "correct": "tired,",
+    "options": [
+     "tired,",
+     "played,"
+    ]
+   },
+   {
+    "correct": "we played.",
+    "options": [
+     "we played.",
+     "we tired."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Магазин не был открыт, он закрылся.",
+  "en": "The shop wasn't open, it closed.",
+  "alternatives": [
+   "The shop was not open, it closed."
+  ],
+  "slots": [
+   {
+    "correct": "The shop wasn't",
+    "options": [
+     "The shop wasn't",
+     "The shop didn't"
+    ]
+   },
+   {
+    "correct": "open,",
+    "options": [
+     "open,",
+     "closed,"
+    ]
+   },
+   {
+    "correct": "it closed.",
+    "options": [
+     "it closed.",
+     "it open."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я не был дома, я работал.",
+  "en": "I wasn't at home, I worked.",
+  "alternatives": [
+   "I was not at home, I worked."
+  ],
+  "slots": [
+   {
+    "correct": "I wasn't",
+    "options": [
+     "I wasn't",
+     "I didn't"
+    ]
+   },
+   {
+    "correct": "at home,",
+    "options": [
+     "at home,",
+     "worked,"
+    ]
+   },
+   {
+    "correct": "I worked.",
+    "options": [
+     "I worked.",
+     "I at home."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Она была дома вчера вечером.",
+  "en": "She was at home last night.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "She",
+    "options": [
+     "She",
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "was",
+    "options": [
+     "was",
+     "were"
+    ]
+   },
+   {
+    "correct": "at home last night.",
+    "options": [
+     "at home last night.",
+     "at work last night.",
+     "ready last night."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Они были в магазине вчера.",
+  "en": "They were at the shop yesterday.",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "They",
+    "options": [
+     "They",
+     "He",
+     "She",
+     "I"
+    ]
+   },
+   {
+    "correct": "were",
+    "options": [
+     "were",
+     "was"
+    ]
+   },
+   {
+    "correct": "at the shop yesterday.",
+    "options": [
+     "at the shop yesterday.",
+     "busy yesterday.",
+     "tired yesterday."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Я не был готов, я не спал.",
+  "en": "I wasn't ready, I didn't sleep.",
+  "alternatives": [
+   "I was not ready, I did not sleep."
+  ],
+  "slots": [
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "They",
+     "We",
+     "You"
+    ]
+   },
+   {
+    "correct": "wasn't",
+    "options": [
+     "wasn't",
+     "weren't"
+    ]
+   },
+   {
+    "correct": "ready,",
+    "options": [
+     "ready,",
+     "tired,",
+     "busy,"
+    ]
+   },
+   {
+    "correct": "I",
+    "options": [
+     "I",
+     "he",
+     "they"
+    ]
+   },
+   {
+    "correct": "didn't",
+    "options": [
+     "didn't",
+     "wasn't"
+    ]
+   },
+   {
+    "correct": "sleep.",
+    "options": [
+     "sleep.",
+     "work.",
+     "play."
+    ]
+   }
+  ]
+ },
+ {
+  "topic": "was_were",
+  "ru": "Были ли они заняты сегодня утром?",
+  "en": "Were they busy this morning?",
+  "alternatives": [],
+  "slots": [
+   {
+    "correct": "Were",
+    "options": [
+     "Were",
+     "Was"
+    ]
+   },
+   {
+    "correct": "they",
+    "options": [
+     "they",
+     "he",
+     "she",
+     "it"
+    ]
+   },
+   {
+    "correct": "busy",
+    "options": [
+     "busy",
+     "ready",
+     "happy"
+    ]
+   },
+   {
+    "correct": "this morning?",
+    "options": [
+     "this morning?",
+     "yesterday?"
+    ]
+   }
+  ]
+ }
+]

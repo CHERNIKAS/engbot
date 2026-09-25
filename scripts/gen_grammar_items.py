@@ -34,7 +34,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from scripts.gen_examples import DEFAULT_MODEL, call, read_api_key  # noqa: E402
 
 MIN_WORDS = 4
-MAX_WORDS = 14
+# Room for the clause that fixes the polarity — «… because they had waited so
+# long» does not fit inside fourteen words together with the main sentence.
+MAX_WORDS = 17
 BLANK = "___"
 
 SYSTEM = """Ты составляешь упражнения с пропуском для тренажёра английской грамматики.
@@ -45,7 +47,7 @@ SYSTEM = """Ты составляешь упражнения с пропуско
 
 1. prompt — английское предложение, в котором РОВНО ОДИН пропуск, обозначенный
    тремя подчёркиваниями: ___
-   От 4 до 14 слов. Простая бытовая ситуация.
+   От 4 до 17 слов. Простая бытовая ситуация.
 
 2. Пропущенное слово — это ровно целевое слово, которое тебе дали.
 
@@ -61,6 +63,16 @@ SYSTEM = """Ты составляешь упражнения с пропуско
    дистрактор тоже подходит. Это главное требование.
 
 6. Никаких редких слов в самом предложении — уровень A2.
+
+7. Если ответ отличается от дистрактора только отрицанием (was / wasn't,
+   are / aren't, do / don't), предложение ОБЯЗАНО содержать причину, по которой
+   верна именно эта полярность: продолжение с because / but / so / yet /
+   still / that's why / anymore, либо факт, который делает второй вариант
+   бессмысленным.
+   Плохо: «They ___ happy to see us.» — подходит и were, и weren't.
+   Хорошо: «They ___ happy to see us because they had waited so long.»
+   Это самая частая ошибка в таких наборах: без контекста упражнение
+   проверяет угадывание, а не понимание.
 
 Отвечай строго JSON-массивом того же размера и в том же порядке, что и вход."""
 
@@ -78,6 +90,33 @@ SCHEMA: dict[str, Any] = {
 }
 
 _WORD = re.compile(r"[A-Za-z']+")
+
+# Words that can carry the reason one polarity is right and the other is not.
+# Crude on purpose: the check cannot judge meaning, so it insists on the kind
+# of clause that supplies it and leaves the judgement to the model.
+POLARITY_MARKERS = {
+    "because", "but", "so", "yet", "still", "although", "though", "since",
+    "anymore", "instead", "however", "while",
+}
+
+
+QUESTION_WORDS = {"how", "what", "when", "where", "why", "who", "which", "whose"}
+
+
+def _polarity_fixed_by_question(prompt: str) -> bool:
+    """A wh-question already decides the polarity: «How don't you spend your
+    weekend?» is not a sentence anyone says at this level. Without this the
+    check would demand a `because` clause bolted onto a perfectly clear
+    question. A yes/no question is not covered — «Don't you need help?» is
+    ordinary English, so there the ambiguity is real."""
+    first = prompt.strip().split()[:1]
+    return bool(first) and first[0].strip("?,").lower() in QUESTION_WORDS and prompt.rstrip().endswith("?")
+
+
+def _negation_pair(a: str, b: str) -> bool:
+    """True when two options differ only by the contraction: was / wasn't."""
+    a, b = a.lower().replace("’", "'"), b.lower().replace("’", "'")
+    return a == b + "n't" or b == a + "n't"
 
 
 def check(row: dict[str, Any], target: dict[str, Any]) -> list[str]:
@@ -107,6 +146,20 @@ def check(row: dict[str, Any], target: dict[str, Any]) -> list[str]:
         problems.append(f"среди дистракторов сам ответ '{correct}'")
     if len(set(lowered)) != len(lowered):
         problems.append("дистракторы повторяются")
+
+    # An option that differs from the answer only by the negation is a second
+    # correct answer unless the sentence says which polarity it means. Nothing
+    # else in this check looks at meaning, so it demands the clause that
+    # carries it rather than trying to judge the meaning itself.
+    opposite = next((d for d in distractors if _negation_pair(correct, d)), None)
+    if opposite is not None and not _polarity_fixed_by_question(prompt):
+        words = {w.lower() for w in _WORD.findall(rest)}
+        if not (words & POLARITY_MARKERS):
+            problems.append(
+                f"'{opposite}' подходит в этот пропуск не хуже '{correct}' — "
+                "добавь продолжение (because / but / so / yet …), из которого видно, "
+                "почему верно именно это, или смысл, делающий второй вариант неверным"
+            )
     return problems
 
 
