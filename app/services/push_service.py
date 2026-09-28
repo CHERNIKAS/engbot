@@ -625,6 +625,13 @@ class PushService:
                     state["last"] = {"kind": inflight.get("kind", "word"), "id": int(inflight.get("id", 0))}
                     state["inflight"] = None
                     state["next_ts"] = now_ts + _minutes(self._s.push_gap_min_minutes, self._s.push_gap_max_minutes)
+                    log.info(
+                        "push_card_abandoned",
+                        uid=user.id,
+                        kind=inflight.get("kind"),
+                        id=inflight.get("id"),
+                        attempts=attempts - 1,
+                    )
                     await self._save(user.id, state)
                     return False
                 inflight["attempts"] = attempts
@@ -635,6 +642,7 @@ class PushService:
                     options_override=inflight.get("options"),
                     prefix=nudge_line(attempts),
                     card_type=inflight.get("ctype", CARD_RECOGNITION),
+                    attempt=attempts,
                 )
                 if new_msg_id:
                     old_msg_id = inflight.get("msg_id")
@@ -646,11 +654,28 @@ class PushService:
                     inflight["sent_ts"] = now_ts
                     inflight["retry_ts"] = now_ts + _retry_after(attempts)
                     sent = True
+            if not sent:
+                self._log_idle(
+                    user,
+                    state,
+                    "awaiting_answer",
+                    kind=inflight.get("kind"),
+                    id=inflight.get("id"),
+                    retry_in_s=round(inflight.get("retry_ts", 0) - now_ts),
+                )
             await self._save(user.id, state)
             return sent
 
         # ---- no card pending: gated by the window + the post-answer gap ----
         if not win or now_ts < state.get("next_ts", 0.0):
+            # Silence has to be distinguishable from breakage. Without this line
+            # a quiet hour and a dead worker look identical from the outside.
+            self._log_idle(
+                user,
+                state,
+                "outside_window" if not win else "gap",
+                wait_s=0 if not win else round(state.get("next_ts", 0.0) - now_ts),
+            )
             await self._save(user.id, state)
             return False
 
@@ -661,6 +686,9 @@ class PushService:
                 user.telegram_id,
                 PUSH_RULE_CARD.format(title=html.escape(rule_topic.title), rule=rule_topic.rule),
                 push_rule_kb(),
+                uid=user.id,
+                kind="rule",
+                obj_id=rule_topic.id,
             )
             if msg_id:
                 await self._grammar.mark_rule_seen(user.id, rule_topic.id)
@@ -679,6 +707,7 @@ class PushService:
         plan_service = DayPlanService(self._session)
         plan, opened = await plan_service.ensure_plan(user, _TRACK, date.fromisoformat(today))
         if plan is None:
+            self._log_idle(user, state, "nothing_to_study")
             await self._save(user.id, state)
             return False
         await self._session.commit()
@@ -687,7 +716,9 @@ class PushService:
             # The plan card is the day's only announcement. It is sent before
             # the first exercise so the learner agrees to a known amount of
             # work rather than discovering its size by reaching the end.
-            await self._raw_send(user.telegram_id, self._plan_card(plan), None)
+            await self._raw_send(
+                user.telegram_id, self._plan_card(plan), None, uid=user.id, kind="plan", obj_id=plan.id
+            )
             state["next_ts"] = now_ts + _minutes(
                 self._s.push_gap_min_minutes, self._s.push_gap_max_minutes
             )
@@ -696,12 +727,14 @@ class PushService:
 
         progress = plan_service.progress(plan)
         if progress.closed:
+            self._log_idle(user, state, "plan_closed", done=progress.done, total=progress.total)
             await self._close_day(user, plan, plan_service)
             await self._save(user.id, state)
             return False
 
         kind = plan_service.next_kind(plan)
         if kind is None:
+            self._log_idle(user, state, "plan_exhausted", done=progress.done, total=progress.total)
             await self._save(user.id, state)
             return False
 
@@ -711,6 +744,7 @@ class PushService:
             # passed, nothing is due. Tick it off rather than retrying forever:
             # an unfillable slot holds the plan open, and an open plan is never
             # replaced.
+            log.info("push_slot_unfillable", uid=user.id, kind=kind, done=progress.done, total=progress.total)
             await plan_service.mark_done(plan, kind)
             await self._session.commit()
         await self._save(user.id, state)
@@ -860,6 +894,7 @@ class PushService:
         options_override: list[str] | None = None,
         prefix: str = "",
         card_type: str = CARD_RECOGNITION,
+        attempt: int = 0,
     ) -> tuple[int | None, list[str] | None, str | None]:
         """Build and send a card (word or grammar). Returns (msg_id, options,
         correct). On a re-push pass options_override so the button order matches
@@ -886,18 +921,105 @@ class PushService:
             kb = push_cloze_card_kb(item_id, built[3])
         else:
             kb = push_card_kb(options, item_id, built[3])
-        msg_id = await self._raw_send(user.telegram_id, text, kb)
+        msg_id = await self._raw_send(
+            user.telegram_id,
+            text,
+            kb,
+            uid=user.id,
+            kind=kind,
+            obj_id=item_id,
+            attempt=attempt,
+            # A prefix only ever carries the nudge line, so its presence is what
+            # separates "the card arrived again" from "a new card arrived" —
+            # the exact question the duplicate-card report could not answer.
+            reason="nudge" if prefix else "new",
+        )
         return msg_id, options, correct
 
-    async def _raw_send(self, telegram_id: int, text: str, reply_markup) -> int | None:
+    # A user cannot receive more than twelve cards an hour by design: the worker
+    # ticks every five minutes and sends at most one card per tick. Normal load
+    # is far lower — a 28-card plan spread over a twelve-hour window is two or
+    # three an hour. Eight sits between the two: high enough that an ordinary
+    # busy evening does not trip it, low enough to catch the failure we have
+    # actually had. July's bug sent ~40 cards in three and a half hours, about
+    # 11 an hour, and was noticed by a human three hours in.
+    #
+    # A warning, not a block: the July bug was a wiped inflight, and refusing to
+    # send would have hidden it rather than fixed it. This makes it findable.
+    SEND_RATE_WINDOW_SECONDS = 3600
+    SEND_RATE_WARN = 8
+
+    async def _note_send_rate(self, uid: int) -> None:
+        """Count sends per user per hour and shout once the count looks wrong.
+
+        Deliberately its own key: it must never touch `push:{uid}`. The July bug
+        was one writer clobbering that state with a stale snapshot, and a
+        counter that opened it would join the same class of problem.
+        """
+        if self._redis is None:
+            return
+        key = f"pushrate:{uid}"
+        try:
+            count = await self._redis.incr(key)
+            if count == 1:
+                await self._redis.expire(key, self.SEND_RATE_WINDOW_SECONDS)
+            elif count == self.SEND_RATE_WARN:
+                log.warning("push_rate_high", uid=uid, sent=count, window_s=self.SEND_RATE_WINDOW_SECONDS)
+        except Exception:  # noqa: BLE001 — telemetry must never break delivery
+            pass
+
+    def _log_idle(self, user: User, state: dict, why: str, **extra) -> None:
+        """Say why this tick sent nothing — but only when the answer changes.
+
+        A line per tick would be ~2300 a day for eight users, which is a stream
+        nobody reads, and an unread log is the situation this is meant to end.
+        Logging transitions keeps it to a handful of lines: "outside_window" at
+        dusk, "gap" after an answer, "plan_closed" when the day is done.
+        """
+        if state.get("idle_why") == why:
+            return
+        state["idle_why"] = why
+        log.info("push_idle", uid=user.id, why=why, **extra)
+
+    async def _raw_send(
+        self,
+        telegram_id: int,
+        text: str,
+        reply_markup,
+        *,
+        uid: int | None = None,
+        kind: str = "unknown",
+        obj_id: int | None = None,
+        attempt: int = 0,
+        reason: str = "new",
+    ) -> int | None:
         """Send a push card with a prebuilt keyboard; return the new message_id
-        (so retries can delete the previous one), or None on failure."""
+        (so retries can delete the previous one), or None on failure.
+
+        Every send is logged, one line, because the alternative is what we had:
+        a user reported the same card arriving twice five minutes apart and
+        there was nothing to check it against — the last log line predated the
+        cards by a day. Live Redis state looked healthy, so the report could be
+        neither reproduced nor ruled out. `reason` separates a fresh card from
+        a nudge, which is exactly the distinction that report turned on.
+        """
         if self._bot is None:
             return None
         try:
             msg = await self._bot.send_message(
                 telegram_id, text, reply_markup=reply_markup, parse_mode="HTML"
             )
+            log.info(
+                "push_sent",
+                uid=uid,
+                kind=kind,
+                id=obj_id,
+                msg_id=msg.message_id,
+                attempt=attempt,
+                reason=reason,
+            )
+            if uid is not None:
+                await self._note_send_rate(uid)
             return msg.message_id
         except TelegramForbiddenError:
             # User blocked the bot (or deleted the chat) — bubble up so run_all
@@ -1917,7 +2039,9 @@ class PushService:
             if view.typing
             else constructor_slots_kb(view.options, view.phrase_id, view.can_undo)
         )
-        msg_id = await self._raw_send(user.telegram_id, view.text, kb)
+        msg_id = await self._raw_send(
+            user.telegram_id, view.text, kb, uid=user.id, kind="constructor", obj_id=view.phrase_id
+        )
         if msg_id is None:
             return False
 
