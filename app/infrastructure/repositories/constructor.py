@@ -178,3 +178,26 @@ class ConstructorRepository:
             row.score = min(float(row.score or 0.0), _FAILED_TEST_SCORE)
         await self.session.flush()
         return row
+
+    async def topics_with_progress(
+        self, user_id: int
+    ) -> list[tuple[GrammarTopic, UserGrammarTopic | None]]:
+        """Every topic that has phrases, in teaching order, with the learner's
+        row beside it.
+
+        Topics without phrases are left out for the same reason `active_topic`
+        skips them: they cannot be taught yet, and listing a lesson that never
+        opens reads as something broken.
+        """
+        has_phrases = select(GrammarPhrase.id).where(GrammarPhrase.topic_id == GrammarTopic.id)
+        q = (
+            select(GrammarTopic, UserGrammarTopic)
+            .outerjoin(
+                UserGrammarTopic,
+                (UserGrammarTopic.topic_id == GrammarTopic.id)
+                & (UserGrammarTopic.user_id == user_id),
+            )
+            .where(has_phrases.exists())
+            .order_by(GrammarTopic.position.asc(), GrammarTopic.id.asc())
+        )
+        return [(row[0], row[1]) for row in (await self.session.execute(q)).all()]

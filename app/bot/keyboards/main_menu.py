@@ -10,11 +10,12 @@ from aiogram.types import (
 from app.bot.callbacks.schema import CourseCB, MainMenuCB, SearchCB
 from app.bot.keyboards.common import home_button
 from app.bot.texts import (
-    BTN_HELP,
+    BTN_COLLECTIONS,
+    BTN_GRAMMAR,
+    BTN_MY_WORDS,
     BTN_PROGRESS,
     BTN_SETTINGS,
-    BTN_STUDY,
-    BTN_WORDS,
+    BTN_TODAY,
     MENU_PLACEHOLDER,
 )
 
@@ -28,9 +29,9 @@ def main_menu_reply_kb() -> ReplyKeyboardMarkup:
     """
     return ReplyKeyboardMarkup(
         keyboard=[
-            [KeyboardButton(text=BTN_WORDS), KeyboardButton(text=BTN_STUDY)],
+            [KeyboardButton(text=BTN_TODAY), KeyboardButton(text=BTN_MY_WORDS)],
+            [KeyboardButton(text=BTN_COLLECTIONS), KeyboardButton(text=BTN_GRAMMAR)],
             [KeyboardButton(text=BTN_PROGRESS), KeyboardButton(text=BTN_SETTINGS)],
-            [KeyboardButton(text=BTN_HELP)],
         ],
         resize_keyboard=True,
         input_field_placeholder=MENU_PLACEHOLDER,
@@ -47,10 +48,10 @@ def words_menu_kb() -> InlineKeyboardMarkup:
                 InlineKeyboardButton(text="📚 Мои слова", callback_data=MainMenuCB(section="words").pack()),
                 InlineKeyboardButton(text="🔎 Поиск", callback_data=SearchCB(action="open").pack()),
             ],
-            [
-                InlineKeyboardButton(text="➕ Добавить слова", callback_data=MainMenuCB(section="add").pack()),
-                InlineKeyboardButton(text="📂 Импорт TXT", callback_data=MainMenuCB(section="import").pack()),
-            ],
+            # TXT import is hidden rather than removed: it ran twice in sixty
+            # days, and a file upload is a lot of surface for that. The handler
+            # still works for anyone who sends a .txt, so nothing is lost.
+            [InlineKeyboardButton(text="➕ Добавить слова", callback_data=MainMenuCB(section="add").pack())],
             [InlineKeyboardButton(text="📦 Готовые паки", callback_data=MainMenuCB(section="packs").pack())],
             [home_button()],
         ]

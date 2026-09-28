@@ -163,3 +163,43 @@ def remaining_percent(done: int, total: int) -> int:
         return 0
     left = total - done
     return max(1, round(100 * left / total))
+
+
+# What each slot kind is called when the plan is shown. Declared here, next to
+# the kinds themselves, so the push card and the «Сегодня» screen cannot drift
+# into describing the same day differently.
+KIND_LABELS: tuple[tuple[str, str], ...] = (
+    (REPEAT, "🔁 Повторить"),
+    (GRAMMAR, "📖 Грамматика"),
+    (NEW_THEME_WORD, "🆕 Слова по теме"),
+    (NEW_WORD, "🆕 Новые слова"),
+    (PHRASE, "💬 Фразы"),
+    (TRIAGE, "🗂 Разбор темы"),
+    (TEST, "📝 Проверка темы"),
+)
+
+
+def render(counts: dict[str, int], done: int | None = None) -> str:
+    """The day as a list of what is in it.
+
+    `done` turns the announcement into a progress view: the same text the
+    learner was shown in the morning, with how far they have got. Kept as one
+    function because two renderers would eventually disagree about what the
+    day contains, and the learner would notice before we did.
+    """
+    total = sum(counts.values())
+    head = f"📅 <b>План на сегодня</b> · {total} карточек"
+    if done is not None:
+        head += f"\n<b>{done}</b> из <b>{total}</b> сделано"
+    parts = [head, ""]
+    parts.extend(
+        f"{label} — {counts[kind]}" for kind, label in KIND_LABELS if counts.get(kind)
+    )
+    parts.append("")
+    if done is not None and is_closed(done, total):
+        parts.append("<i>План на сегодня закрыт. Новый соберётся завтра 🌿</i>")
+    elif done is not None:
+        parts.append(f"<i>Осталось добить {remaining_percent(done, total)}%.</i>")
+    else:
+        parts.append("<i>Можно растянуть на весь день, можно закрыть за раз.</i>")
+    return "\n".join(parts)

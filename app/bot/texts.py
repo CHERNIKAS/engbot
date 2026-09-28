@@ -52,15 +52,12 @@ PLACEMENT_DONT_KNOW = "🤷 Не знаю"
 # Settings → «📏 Мой уровень»
 LEVEL_SCREEN = (
     "📏 Твой уровень: <b>{level}</b>\n\n"
-    "По нему подбираются новые слова и считается, сколько повторений нужно, "
-    "чтобы слово стало выученным.\n\n"
-    "Уровень сам растёт, когда ты осваиваешь слова, — но можно перепройти тест."
+    "Первая тысяча частотных слов: <b>{band1}</b> из {band1_total}\n"
+    "Вторая тысяча: <b>{band2}</b> из {band2_total}\n\n"
+    "Уровень считается по этим числам — по нему подбираются новые слова.\n\n"
+    "<i>Отдельно настраивать его не нужно: бот пересчитывает сам, раз в день.</i>"
 )
-LEVEL_SCREEN_UNSET = (
-    "📏 Уровень ещё не определён.\n\n"
-    "Пока подбираю слова по среднему. Пройди тест — станет точнее."
-)
-LEVEL_RETAKE = "🔄 Пройти тест заново"
+LEVEL_SCREEN_UNSET = LEVEL_SCREEN
 LEVEL_UPDATED = "Готово! Теперь твой уровень — <b>{level}</b> ✨"
 
 # Placement gate — shown to users who predate the test and haven't taken it.
@@ -81,21 +78,43 @@ PLACEMENT_GATE_DONE = (
 MAIN_MENU = "Главное меню 🌸"
 
 # Persistent bottom reply-keyboard buttons (main navigation).
-BTN_WORDS = "🗂 Слова"  # opens the "Настройки слов" submenu (my words / add / import / packs)
-BTN_MY_WORDS = "📚 Мои слова"
+#
+# Named after what the learner came to do, not after the machinery: the day is
+# «Сегодня», not «Курс», because the plan is the thing they finish. The pack
+# browser is «Коллекции» because a «пак» is our word, not theirs.
+BTN_TODAY = "📅 Сегодня"
+BTN_MY_WORDS = "📚 Мой словарь"
+BTN_COLLECTIONS = "🗂 Коллекции"
+BTN_GRAMMAR = "📖 Грамматика"
+BTN_PROGRESS = "📊 Прогресс"
+BTN_SETTINGS = "⚙️ Настройки"
+
+# Superseded labels. Telegram keeps a reply keyboard on the client until the
+# next one is sent, so whoever last opened the bot still has the old buttons on
+# screen — these keep those taps working instead of falling through to
+# "add a word".
+BTN_WORDS = "🗂 Слова"
 BTN_STUDY = "🔥 Учить"
 BTN_ADD = "➕ Добавить слова"
 BTN_IMPORT = "📂 Импорт TXT"
 BTN_PACKS = "📦 Паки"
-BTN_PROGRESS = "📊 Прогресс"
-BTN_SETTINGS = "⚙️ Настройки"
 BTN_HELP = "❓ Справка"
+BTN_MY_WORDS_OLD = "📚 Мои слова"
 # Bottom-menu taps allowed in any state (treated as a reset). Includes the
 # legacy single-action labels so older messages / deep links still navigate.
 MENU_BUTTON_TEXTS: frozenset[str] = frozenset(
-    {BTN_WORDS, BTN_MY_WORDS, BTN_STUDY, BTN_ADD, BTN_IMPORT, BTN_PACKS, BTN_PROGRESS, BTN_SETTINGS, BTN_HELP}
+    {
+        BTN_TODAY, BTN_MY_WORDS, BTN_COLLECTIONS, BTN_GRAMMAR, BTN_PROGRESS, BTN_SETTINGS,
+        BTN_WORDS, BTN_STUDY, BTN_ADD, BTN_IMPORT, BTN_PACKS, BTN_HELP, BTN_MY_WORDS_OLD,
+    }
 )
 MENU_PLACEHOLDER = "Выбери действие 🌸"
+
+TODAY_NO_PLAN = (
+    "📅 <b>Сегодня</b>\n\n"
+    "План ещё не собран — он появится с первой карточкой дня 🌿\n"
+    "<i>Карточки приходят сами, в твоё окно из настроек.</i>"
+)
 
 WORDS_MENU_TITLE = (
     "🗂 <b>Настройки слов</b>\n"

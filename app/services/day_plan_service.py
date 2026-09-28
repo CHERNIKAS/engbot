@@ -27,6 +27,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain import day_plan as plan_rules
 from app.domain.enums import LearningTrack, WordSource
+from app.domain.levels import level_from_coverage
 from app.domain.models import DayPlan, User
 from app.infrastructure.repositories.constructor import ConstructorRepository
 from app.infrastructure.repositories.day_plans import DayPlanRepository
@@ -112,6 +113,11 @@ class DayPlanService:
         if existing is not None:
             return existing, False
 
+        # Once a day, before anything is chosen: the level is an axis over
+        # frequency in both pickers, so it has to be settled before they run.
+        # Here and nowhere else — recomputing it on every answer would reorder
+        # the queue under the learner mid-day.
+        await self.refresh_level(user, track)
         # Stock the vocabulary before measuring it: composing first would size
         # the day against what was left over from yesterday.
         await self._top_up(user, track)
@@ -129,6 +135,36 @@ class DayPlanService:
             opened_on=push_day,
         )
         return plan, True
+
+    async def refresh_level(self, user: User, track: LearningTrack) -> str:
+        """Derive the learner's level from what they have mastered, and store it.
+
+        This is what replaced the placement test: twelve questions answered once
+        used to decide the level forever, and for most users it decided it
+        wrongly — one had B2 on record with 36 words of the first thousand
+        actually mastered.
+
+        The write is unconditional and moves in both directions, including down
+        when a stored level is higher than the evidence supports — that B2 drops
+        to A1 on the next plan. The level is the bot's own reading, not a
+        setting: nothing in the interface writes it, so there is no hand-set
+        value here to preserve.
+
+        Called once a day, when the plan is built. Anywhere more often would
+        reorder the queue under the learner mid-day, since `level_rank` sorts
+        above `ngsl_rank` in both pickers.
+        """
+        band1, band2, _t1, _t2 = await self._words.band_coverage(user.id, track)
+        derived = level_from_coverage(band1, band2)
+        if user.level != derived:
+            user.level = derived
+            await self._session.flush()
+        return derived
+
+    async def open_plan_or_none(self, user_id: int, track: LearningTrack) -> DayPlan | None:
+        """The plan in flight, if there is one. Read-only: the «Сегодня» screen
+        must not open a plan, or looking at the day would start it."""
+        return await self._plans.open_plan(user_id, track)
 
     async def _compose(
         self, user: User, track: LearningTrack, size: int

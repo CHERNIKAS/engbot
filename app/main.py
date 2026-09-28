@@ -12,7 +12,6 @@ from app.bot.handlers import register_handlers
 from app.bot.middlewares.auth_gate import AuthGateMiddleware
 from app.bot.middlewares.db import DbSessionMiddleware
 from app.bot.middlewares.interaction_guard import InteractionGuardMiddleware
-from app.bot.middlewares.placement_gate import PlacementGateMiddleware
 from app.bot.middlewares.logging_context import LoggingContextMiddleware
 from app.bot.middlewares.rate_limit import RateLimitMiddleware
 from app.bot.middlewares.services import ServicesMiddleware
@@ -25,7 +24,6 @@ from app.infrastructure.redis_client import build_redis
 from app.logging_setup import get_logger, setup_logging
 from app.services.digest_service import DigestService
 from app.services.level_tagger import LevelTaggerService
-from app.services.placement_reminder import PlacementReminderService
 from app.services.regrade import RegradeService
 from app.services.interaction_state_service import InteractionStateService
 from app.services.push_service import PushService
@@ -138,22 +136,6 @@ async def _regrade_worker(sessionmaker, redis, bot) -> None:
 
 
 
-async def _placement_reminder_worker(sessionmaker, redis, bot) -> None:
-    """Reminds the users the gate is holding, once a day, inside their window."""
-    settings = get_settings()
-    log = get_logger("placement_reminder")
-    while True:
-        await asyncio.sleep(settings.placement_reminder_interval_seconds)
-        try:
-            async with sessionmaker() as session:
-                await PlacementReminderService(session, redis, bot).run()
-                await session.commit()
-        except asyncio.CancelledError:
-            raise
-        except Exception:  # noqa: BLE001 — never let the worker die
-            log.exception("placement_reminder_worker_error")
-
-
 async def run() -> None:
     settings = get_settings()
     setup_logging(settings.log_level, settings.log_format)
@@ -191,7 +173,6 @@ async def run() -> None:
         state_service=state_service,
     )
     guard_mw = InteractionGuardMiddleware(state_service)
-    placement_gate = PlacementGateMiddleware()
 
     for observer in (dp.message, dp.callback_query):
         observer.outer_middleware.register(logging_ctx)
@@ -200,9 +181,9 @@ async def run() -> None:
         observer.outer_middleware.register(user_mw)
         observer.outer_middleware.register(services_mw)
         observer.outer_middleware.register(auth_gate)
-        # After the password gate (an unauthorised user shouldn't even see
-        # the level prompt) and before the state guard.
-        observer.outer_middleware.register(placement_gate)
+        # The placement gate used to sit here, holding the whole bot closed
+        # until the user had a level. The level is now derived from mastered
+        # words when the day's plan is built, so there is nothing to wait for.
         observer.outer_middleware.register(guard_mw)
 
     register_handlers(dp)
@@ -214,10 +195,6 @@ async def run() -> None:
     background.append(asyncio.create_task(_push_worker(sessionmaker, redis, bot)))
     if settings.digest_enabled:
         background.append(asyncio.create_task(_digest_worker(sessionmaker, redis, bot)))
-    if settings.placement_reminder_enabled:
-        background.append(
-            asyncio.create_task(_placement_reminder_worker(sessionmaker, redis, bot))
-        )
     if settings.gemini_api_key:
         background.append(asyncio.create_task(_level_tagger_worker(sessionmaker)))
         background.append(asyncio.create_task(_regrade_worker(sessionmaker, redis, bot)))

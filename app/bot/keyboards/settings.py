@@ -4,8 +4,7 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from app.bot.callbacks.schema import NoopCB, SettingsCB
 from app.bot.keyboards.common import home_button
-from app.bot.texts import LEVEL_RETAKE, PACE_LABELS
-from app.domain.pacing import PACE_OPTIONS, label_for
+from app.bot.texts import PACE_LABELS
 from app.domain.push import window_hours
 
 
@@ -13,17 +12,15 @@ def _back_to_settings_button() -> InlineKeyboardButton:
     return InlineKeyboardButton(text="↩️ Назад", callback_data=SettingsCB(action="open").pack())
 
 
-def level_screen_kb() -> InlineKeyboardMarkup:
-    return InlineKeyboardMarkup(
-        inline_keyboard=[
-            [
-                InlineKeyboardButton(
-                    text=LEVEL_RETAKE, callback_data=SettingsCB(action="level_test").pack()
-                )
-            ],
-            [_back_to_settings_button()],
-        ]
-    )
+def level_screen_kb(current: str | None = None) -> InlineKeyboardMarkup:
+    """The level screen is read-only.
+
+    It briefly had a row for picking a level by hand. That was a mistake:
+    `refresh_level` rewrites the level from mastered words when the next plan
+    is built, so any hand-set value survived less than a day and the row was
+    decorative. The level is a measurement the bot takes, not a setting.
+    """
+    return InlineKeyboardMarkup(inline_keyboard=[[_back_to_settings_button()]])
 
 
 def settings_kb() -> InlineKeyboardMarkup:
@@ -91,32 +88,9 @@ def push_settings_kb(ws: int, we: int, pace: int) -> InlineKeyboardMarkup:
                     callback_data=SettingsCB(action="push_win").pack(),
                 )
             ],
-            [
-                InlineKeyboardButton(
-                    text=f"🚀 Новые слова: {label_for(pace)}",
-                    callback_data=SettingsCB(action="newpace").pack(),
-                )
-            ],
             [_back_to_settings_button(), home_button()],
         ]
     )
-
-
-def new_pace_kb(current: int) -> InlineKeyboardMarkup:
-    """Pick how many NEW words/day the push introduces (3 / 7 / 15 / 25)."""
-    rows = [
-        [
-            InlineKeyboardButton(
-                text=f"{'✅ ' if value == current else ''}{emoji} {name} — {value}/день",
-                callback_data=SettingsCB(action="newpace_set", value=str(value)).pack(),
-            )
-        ]
-        for value, emoji, name in PACE_OPTIONS
-    ]
-    rows.append(
-        [InlineKeyboardButton(text="↩️ Назад", callback_data=SettingsCB(action="push_open").pack())]
-    )
-    return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
 def push_window_kb(ws: int, we: int, min_hours: int, step: str = "ws") -> InlineKeyboardMarkup:

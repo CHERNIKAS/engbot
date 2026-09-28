@@ -140,7 +140,19 @@ def recalibrated_level(
     attempts_at_level: int,
     correct_at_level: int,
 ) -> str | None:
-    """The user's level revised from their actual record, or None to leave it.
+    """SUPERSEDED by `level_from_coverage` — do not wire this up again.
+
+    Kept only because the manual study session still calls it, and that screen
+    is itself on the way out. Three reasons it lost:
+
+    * the level is now derived in one place, `refresh_level`, once a day. Two
+      mechanisms moving one axis by different rules is the opacity v2 was built
+      to remove;
+    * it reasons from CEFR tags, which v2 demoted beneath corpus frequency;
+    * it steps *down* on accuracy below 35%, which makes the axis that outranks
+      frequency jump after a bad evening.
+
+    The user's level revised from their actual record, or None to leave it.
 
     Only ever moves one step at a time: the counters that justify a jump are the
     same ones a single step will change, so stepping keeps the next decision
@@ -196,3 +208,36 @@ def next_test_level(
 def block_passed(flags: list[bool]) -> bool:
     """Whether one level's block of questions counts as held."""
     return bool(flags) and sum(flags) / len(flags) >= TEST_PASS_RATIO
+
+
+# Deriving the level from what the learner has actually mastered, band by band.
+#
+# This replaces the placement test. The test asked twelve questions once and
+# then the answer stood forever; this asks the vocabulary, which keeps moving.
+#
+# Thresholds are counts, not ratios, and that is deliberate. A ratio moves when
+# the catalogue grows — add four hundred words to the first band and everyone's
+# level drops overnight through no fault of theirs. A count only ever goes up,
+# because `mastered` only ever goes up, so the level cannot oscillate and needs
+# no hysteresis to hold it still.
+#
+# Calibration is cautious on purpose. `level_rank` sorts above `ngsl_rank` in
+# both pickers, so the level is an axis over frequency, not a tiebreak under it:
+# one step too high and the learner meets B1 words before the first thousand,
+# which is the complaint v2 exists to fix. One step too low costs them easy
+# words for a while — recoverable. So the bar to move up is set high.
+LEVEL_FROM_BAND1 = 500   # half of the first thousand — the band that carries ~85% of text
+LEVEL_FROM_BAND2 = 200   # and a real start on the second
+
+
+def level_from_coverage(band1_mastered: int, band2_mastered: int) -> str:
+    """The level implied by mastered words in the first two frequency bands.
+
+    Monotonic by construction: both inputs only grow, and each threshold is a
+    plain `>=`, so the answer never moves backwards while the learner studies.
+    """
+    if band1_mastered >= 850 and band2_mastered >= LEVEL_FROM_BAND2:
+        return "B1"
+    if band1_mastered >= LEVEL_FROM_BAND1:
+        return "A2"
+    return "A1"

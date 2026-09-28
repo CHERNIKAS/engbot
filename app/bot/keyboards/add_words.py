@@ -47,9 +47,12 @@ def add_choose_category_kb(
 
 
 def post_add_kb() -> InlineKeyboardMarkup:
+    """After words are added. «Учить сейчас» used to head this list and no
+    longer does: the added words join the day's plan and arrive by push, so
+    offering a manual drill here taught that the plan is something you have to
+    push past."""
     return InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="🔥 Учить сейчас", callback_data=MainMenuCB(section="study").pack())],
             [InlineKeyboardButton(text="➕ Добавить ещё", callback_data=AddWordsCB(action="start").pack())],
             [home_button()],
         ]

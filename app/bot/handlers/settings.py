@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import html
 
 from aiogram import F, Router
 from aiogram.exceptions import TelegramBadRequest
@@ -10,7 +9,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.bot.callbacks.schema import SettingsCB
 from app.bot.keyboards.settings import (
     TZ_ZONES,
-    new_pace_kb,
     pace_kb,
     push_settings_kb,
     level_screen_kb,
@@ -20,13 +18,8 @@ from app.bot.keyboards.settings import (
 )
 from app.bot.texts import (
     LEVEL_SCREEN,
-    LEVEL_SCREEN_UNSET,
     PACE_LABELS,
     PACE_TITLE,
-    PLACEMENT_CARD,
-    PLACEMENT_UNAVAILABLE_SHORT,
-    PUSH_PACE_SET,
-    PUSH_PACE_TITLE,
     PUSH_TITLE,
     PUSH_WINDOW_TITLE,
     PUSH_WINDOW_PENDING,
@@ -37,12 +30,12 @@ from app.bot.texts import (
 from app.config import get_settings
 from app.logging_setup import get_logger
 from app.domain.enums import LearningPace, LearningTrack, TRACK_LABELS
-from app.domain.pacing import PACE_VALUES, label_for, pace_of
+from app.domain.pacing import pace_of
 from app.domain.push import window_hours
+from app.domain.levels import level_from_coverage
 from app.domain.models import User, UserTrack
-from app.bot.keyboards.onboarding import placement_card_kb
+from app.infrastructure.repositories.user_words import UserWordRepository
 from app.services.interaction_state_service import InteractionStateService
-from app.services.placement_service import ORIGIN_SETTINGS, PlacementService
 from app.services.user_track_service import UserTrackService
 
 log = get_logger("settings")
@@ -157,42 +150,6 @@ async def on_push_open(
             parse_mode="HTML",
         )
     await query.answer()
-
-
-@router.callback_query(SettingsCB.filter(F.action == "newpace"))
-async def on_newpace_open(query: CallbackQuery, user_track: UserTrack) -> None:
-    pace = pace_of(user_track.settings)
-    if query.message:
-        await query.message.edit_text(
-            PUSH_PACE_TITLE.format(current=label_for(pace)),
-            reply_markup=new_pace_kb(pace),
-            parse_mode="HTML",
-        )
-    await query.answer()
-
-
-@router.callback_query(SettingsCB.filter(F.action == "newpace_set"))
-async def on_newpace_set(
-    query: CallbackQuery,
-    callback_data: SettingsCB,
-    user: User,
-    current_track: LearningTrack,
-    user_track: UserTrack,
-    user_track_service: UserTrackService,
-) -> None:
-    try:
-        value = int(callback_data.value or "")
-    except ValueError:
-        await query.answer()
-        return
-    if value not in PACE_VALUES:
-        await query.answer()
-        return
-    await user_track_service.update_settings(user.id, current_track, {"new_pace": value})
-    user_track.settings = {**(user_track.settings or {}), "new_pace": value}
-    if query.message:
-        await query.message.edit_reply_markup(reply_markup=new_pace_kb(value))
-    await query.answer(PUSH_PACE_SET.format(label=label_for(value)))
 
 
 @router.callback_query(SettingsCB.filter(F.action == "push_win"))
@@ -326,32 +283,28 @@ async def on_tz_set(
 async def on_level_open(
     query: CallbackQuery,
     user: User,
+    current_track: LearningTrack,
+    session: AsyncSession,
     state_service: InteractionStateService,
 ) -> None:
+    """The level shown next to the numbers it comes from.
+
+    A bare «A1» reads as a verdict; «первая тысяча: 340 из 1044» reads as a
+    measurement, and makes it obvious what moves it.
+    """
     await state_service.clear(user.id)
-    text = LEVEL_SCREEN.format(level=user.level) if user.level else LEVEL_SCREEN_UNSET
-    if query.message:
-        await query.message.edit_text(text, reply_markup=level_screen_kb(), parse_mode="HTML")
-    await query.answer()
-
-
-@router.callback_query(SettingsCB.filter(F.action == "level_test"))
-async def on_level_test(
-    query: CallbackQuery,
-    user: User,
-    current_track: LearningTrack,
-    placement: PlacementService,
-) -> None:
-    """Retake the placement test from settings. The test itself is the same as
-    in onboarding — only the ending differs, which the stored origin decides."""
-    card = await placement.start(user.id, current_track, origin=ORIGIN_SETTINGS)
-    if card is None:
-        await query.answer(PLACEMENT_UNAVAILABLE_SHORT, show_alert=True)
-        return
+    band1, band2, total1, total2 = await UserWordRepository(session).band_coverage(
+        user.id, current_track
+    )
+    text = LEVEL_SCREEN.format(
+        level=user.level or level_from_coverage(band1, band2),
+        band1=band1,
+        band1_total=total1,
+        band2=band2,
+        band2_total=total2,
+    )
     if query.message:
         await query.message.edit_text(
-            PLACEMENT_CARD.format(writing=html.escape(card.writing), position=card.position),
-            reply_markup=placement_card_kb(card.options),
-            parse_mode="HTML",
+            text, reply_markup=level_screen_kb(user.level), parse_mode="HTML"
         )
     await query.answer()

@@ -397,3 +397,35 @@ def place(state: CardState, piece: str) -> CardState:
     if not piece:
         return state
     return replace(state, chosen=state.chosen + (piece,))
+
+
+def render_topic_list(rows: list[tuple[str, float | None, bool, bool]]) -> str:
+    """The grammar syllabus with where the learner stands on each topic.
+
+    `rows` is (title, score, typing, passed). Three states are worth telling
+    apart and only three: passed, in progress, not started. A score on an
+    untouched topic would read as «you scored zero», which is not what an
+    unopened lesson means.
+    """
+    lines = ["📖 <b>Грамматика</b>", ""]
+    current_marked = False
+    for title, score, typing, passed in rows:
+        if passed:
+            lines.append(f"✅ {title} · {stars(score)}")
+        elif score is not None:
+            mode = "печать" if typing else "блоки"
+            mark = "▶️" if not current_marked else "•"
+            current_marked = True
+            lines.append(f"{mark} <b>{title}</b> · {stars(score)} · {mode}")
+        else:
+            mark = "▶️" if not current_marked else "🔒"
+            if not current_marked:
+                current_marked = True
+                lines.append(f"{mark} <b>{title}</b> · не начата")
+            else:
+                lines.append(f"{mark} {title}")
+    lines.append("")
+    lines.append(
+        f"<i>Тема сдана при {stars(PASSED)} из {MAX_STARS} в режиме печати.</i>"
+    )
+    return "\n".join(lines)

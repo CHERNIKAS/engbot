@@ -18,19 +18,24 @@ from app.bot.states import InteractionState
 from app.bot.texts import (
     ADD_WORDS_PROMPT,
     BTN_ADD,
+    BTN_COLLECTIONS,
+    BTN_GRAMMAR,
     BTN_HELP,
     BTN_IMPORT,
     BTN_MY_WORDS,
+    BTN_MY_WORDS_OLD,
     BTN_PACKS,
     BTN_PROGRESS,
     BTN_SETTINGS,
     BTN_STUDY,
+    BTN_TODAY,
     BTN_WORDS,
     HELP_TEXT,
     MAIN_MENU,
     MY_WORDS_EMPTY,
     PACE_LABELS,
     SETTINGS_TITLE,
+    TODAY_NO_PLAN,
     STUDY_MENU_TITLE,
     TXT_PROMPT,
     WORDS_MENU_TITLE,
@@ -134,7 +139,91 @@ async def msg_study(
     )
 
 
-@router.message(F.text.in_({BTN_MY_WORDS, BTN_ADD, BTN_IMPORT, BTN_PACKS}))
+@router.message(F.text == BTN_TODAY)
+async def msg_today(
+    message: Message,
+    user: User,
+    current_track: LearningTrack,
+    session: AsyncSession,
+    state_service: InteractionStateService,
+    redis: Redis,
+) -> None:
+    """The day's plan and how much of it is done.
+
+    Read-only on purpose: the cards arrive by push, and a «начать» button here
+    would be a second way to serve the same slot, racing the one in flight.
+    """
+    from app.domain import day_plan as plan_rules
+    from app.services.day_plan_service import DayPlanService
+
+    await state_service.clear(user.id)
+    plan = await DayPlanService(session).open_plan_or_none(user.id, current_track)
+    if plan is None:
+        text = TODAY_NO_PLAN
+    else:
+        counts = DayPlanService.counts_by_kind(plan)
+        done = sum(1 for i in (plan.items or []) if i.get("done"))
+        text = plan_rules.render(counts, done)
+    await send_menu_card(message, redis, user.id, text, parse_mode="HTML")
+
+
+@router.message(F.text == BTN_MY_WORDS)
+async def msg_my_words(
+    message: Message,
+    user: User,
+    current_track: LearningTrack,
+    session: AsyncSession,
+    state_service: InteractionStateService,
+    redis: Redis,
+) -> None:
+    await _open_my_words(message, user, current_track, session, state_service, redis)
+
+
+@router.message(F.text == BTN_COLLECTIONS)
+async def msg_collections(
+    message: Message,
+    user: User,
+    current_track: LearningTrack,
+    session: AsyncSession,
+    state_service: InteractionStateService,
+    redis: Redis,
+) -> None:
+    from app.bot.handlers.packs import open_packs
+
+    await open_packs(message, user, current_track, session, state_service, redis)
+
+
+@router.message(F.text == BTN_GRAMMAR)
+async def msg_grammar(
+    message: Message,
+    user: User,
+    session: AsyncSession,
+    state_service: InteractionStateService,
+    redis: Redis,
+) -> None:
+    """The syllabus with a mark per topic. No way in from here — grammar is a
+    sequence, and letting the learner open topic 20 on a whim is exactly the
+    out-of-order teaching the ordering exists to prevent."""
+    from app.domain import constructor as ctor
+    from app.infrastructure.repositories.constructor import ConstructorRepository
+
+    await state_service.clear(user.id)
+    rows = await ConstructorRepository(session).topics_with_progress(user.id)
+    text = ctor.render_topic_list(
+        [
+            (
+                topic.title,
+                None if state is None else float(state.score or 0.0),
+                bool(state.typing) if state else False,
+                bool(state and state.passed_at),
+            )
+            for topic, state in rows
+        ]
+    )
+    await send_menu_card(message, redis, user.id, text, parse_mode="HTML")
+
+
+@router.message(F.text.in_({BTN_MY_WORDS_OLD, BTN_ADD, BTN_IMPORT, BTN_PACKS}))
 async def msg_legacy_word_buttons(
     message: Message,
     user: User,

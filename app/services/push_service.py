@@ -558,11 +558,13 @@ class PushService:
                 continue
             if (ut.settings or {}).get("push_blocked"):
                 continue  # user blocked the bot — stop trying (cleared on /start)
-            if not user.level:
-                # Held by the placement gate. Cards picked without a level would
-                # be picked from a guess, which is what the gate is there to
-                # stop — and pushing them anyway would make the block look broken.
-                continue
+            # No placement gate any more. It used to hold everyone without a
+            # level, on the grounds that cards picked without one are picked
+            # from a guess — true, but the guess it protected against was
+            # `DEFAULT_LEVEL = "A2"`, which is what an empty level still reads
+            # as everywhere else. The level is now derived from mastered words
+            # at the start of `ensure_plan`, before anything is chosen, so a
+            # learner arrives here with A1 rather than with nothing.
             # Commit per user: a tick can write (e.g. marking a grammar rule
             # seen), so one user's failure must not poison the shared transaction.
             try:
@@ -781,23 +783,7 @@ class PushService:
         return batch[0] if batch else None
 
     def _plan_card(self, plan) -> str:
-        counts = DayPlanService.counts_by_kind(plan)
-        total = sum(counts.values())
-        parts = [f"📅 <b>План на сегодня</b> · {total} карточек", ""]
-        for kind, label in (
-            (plan_rules.REPEAT, "🔁 Повторить"),
-            (plan_rules.GRAMMAR, "📖 Грамматика"),
-            (plan_rules.NEW_THEME_WORD, "🆕 Слова по теме"),
-            (plan_rules.NEW_WORD, "🆕 Новые слова"),
-            (plan_rules.PHRASE, "💬 Фразы"),
-            (plan_rules.TRIAGE, "🗂 Разбор темы"),
-            (plan_rules.TEST, "📝 Проверка темы"),
-        ):
-            if counts.get(kind):
-                parts.append(f"{label} — {counts[kind]}")
-        parts.append("")
-        parts.append("<i>Можно растянуть на весь день, можно закрыть за раз.</i>")
-        return "\n".join(parts)
+        return plan_rules.render(DayPlanService.counts_by_kind(plan))
 
     async def _close_day(self, user: User, plan, plan_service: DayPlanService) -> None:
         """Close the plan and say so, exactly once."""

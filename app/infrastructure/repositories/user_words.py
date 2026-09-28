@@ -1205,3 +1205,51 @@ class UserWordRepository:
             .limit(limit)
         )
         return list((await self.session.execute(q)).scalars().all())
+
+    async def band_coverage(
+        self, user_id: int, track: LearningTrack
+    ) -> tuple[int, int, int, int]:
+        """(band1 mastered, band2 mastered, band1 in catalogue, band2 in catalogue).
+
+        The mastered counts drive the level; the catalogue totals are only for
+        showing it — «340 из 1044» reads as a measurement, a bare «A1» reads as
+        a verdict. The level itself must not depend on the totals: they grow
+        when the catalogue does, and a level computed as a ratio would fall for
+        everyone the day new words are imported.
+        """
+        teachable = and_(
+            Word.track == track.value,
+            Word.translation.isnot(None),
+            Word.is_function_word.is_(False),
+            Word.is_inflection.is_(False),
+            Word.is_phrase.is_(False),
+        )
+        band1 = Word.ngsl_rank.between(1, 1000)
+        band2 = Word.ngsl_rank.between(1001, 2000)
+
+        totals = (
+            await self.session.execute(
+                select(
+                    func.count(Word.id).filter(band1),
+                    func.count(Word.id).filter(band2),
+                ).where(teachable)
+            )
+        ).one()
+
+        mastered = (
+            await self.session.execute(
+                select(
+                    func.count(UserWord.id).filter(band1),
+                    func.count(UserWord.id).filter(band2),
+                )
+                .select_from(UserWord)
+                .join(Word, Word.id == UserWord.word_id)
+                .where(
+                    UserWord.user_id == user_id,
+                    UserWord.track == track.value,
+                    UserWord.status == WordStatus.MASTERED.value,
+                    teachable,
+                )
+            )
+        ).one()
+        return int(mastered[0]), int(mastered[1]), int(totals[0]), int(totals[1])
