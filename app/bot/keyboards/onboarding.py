@@ -3,7 +3,6 @@ from __future__ import annotations
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from app.bot.callbacks.schema import OnboardingCB
-from app.bot.texts import PLACEMENT_DONT_KNOW, PLACEMENT_GATE_START
 from app.domain.enums import LearningTrack, TRACK_LABELS
 
 
@@ -13,59 +12,6 @@ def onboarding_intro_kb() -> InlineKeyboardMarkup:
             [InlineKeyboardButton(text="Начать ▶️", callback_data=OnboardingCB(action="start").pack())]
         ]
     )
-
-
-def placement_intro_kb() -> InlineKeyboardMarkup:
-    return InlineKeyboardMarkup(
-        inline_keyboard=[
-            [
-                InlineKeyboardButton(
-                    text="Поехали ▶️", callback_data=OnboardingCB(action="lvl_start").pack()
-                )
-            ],
-        ]
-    )
-
-
-def placement_gate_kb() -> InlineKeyboardMarkup:
-    """The only way forward for a user blocked by the placement gate — no skip:
-    a skipped test would hand them the default level, which is exactly the
-    guess the gate exists to replace."""
-    return InlineKeyboardMarkup(
-        inline_keyboard=[
-            [
-                InlineKeyboardButton(
-                    text=PLACEMENT_GATE_START,
-                    callback_data=OnboardingCB(action="lvl_gate").pack(),
-                )
-            ]
-        ]
-    )
-
-
-def placement_card_kb(options: list[str]) -> InlineKeyboardMarkup:
-    """One row per option — translations are long enough that a 2x2 grid
-    truncates them, and a truncated option is an unfair question.
-
-    "Не знаю" is a real button rather than an invitation to guess: a guess that
-    lands would place the user a level too high, which is the failure this test
-    exists to prevent. It scores as wrong (-1 matches no option index).
-    """
-    rows = [
-        [InlineKeyboardButton(text=text, callback_data=OnboardingCB(action="lvl", value=i).pack())]
-        for i, text in enumerate(options)
-    ]
-    rows.append(
-        [
-            InlineKeyboardButton(
-                text=PLACEMENT_DONT_KNOW,
-                callback_data=OnboardingCB(action="lvl", value=-1).pack(),
-            )
-        ]
-    )
-    return InlineKeyboardMarkup(inline_keyboard=rows)
-
-
 
 
 def tracks_picker_kb(

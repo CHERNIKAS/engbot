@@ -184,3 +184,58 @@ async def test_no_serveable_topic_means_no_grammar_slots():
     service = _composing_service(None)
     composition = await service._compose(_FakeUser(), LearningTrack.ENGLISH, 28)
     assert composition.grammar == 0
+
+
+class _EmptyVocabWords:
+    """A learner who owns nothing yet — the state a new user is in the moment
+    onboarding ends."""
+
+    def __init__(self):
+        self.topped_up = False
+        self.stocked = 0
+
+    async def count_overdue(self, user_id, track):
+        return 0
+
+    async def count_new_startable(self, user_id, track, phrases=False):
+        return self.stocked
+
+    async def band_coverage(self, user_id, track):
+        return 0, 0, 1044, 495
+
+
+@pytest.mark.asyncio
+async def test_a_brand_new_learner_gets_a_plan_not_an_empty_day():
+    """Onboarding no longer ends in a placement test, so the first plan is the
+    first thing that happens. If `_top_up` did not run before composing, a new
+    user would get `(None, False)` — no plan, no cards, and nothing on screen
+    saying why.
+    """
+    service = DayPlanService.__new__(DayPlanService)
+    service._plans = _FakeRepo()
+    words = _EmptyVocabWords()
+    service._words = words
+    service._constructor = _FakeConstructor(object())
+
+    async def _top_up(user, track):
+        words.stocked = 40  # what the catalogue top-up would put there
+
+    service._top_up = _top_up
+    service.refresh_level = lambda user, track: _noop()
+
+    # Grammar alone would still make a plan — it comes from the topic list, not
+    # from the learner's vocabulary — so an empty day would be four grammar
+    # cards and no words at all.
+    composition = await service._compose(_FakeUser(), LearningTrack.ENGLISH, 28)
+    assert composition.total == rules.GRAMMAR_PER_DAY
+    assert composition.new_frequency + composition.new_theme == 0
+
+    await _top_up(None, None)
+    composition = await service._compose(_FakeUser(), LearningTrack.ENGLISH, 28)
+    assert composition.total > 0
+    assert composition.new_frequency + composition.new_theme > 0, "новых слов нет"
+    assert composition.grammar == rules.GRAMMAR_PER_DAY
+
+
+async def _noop():
+    return "A1"

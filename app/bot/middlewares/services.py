@@ -9,11 +9,8 @@ from redis.asyncio import Redis
 from app.domain.enums import LearningTrack
 from app.infrastructure.repositories.analytics import AnalyticsRepository
 from app.infrastructure.repositories.user_tracks import UserTrackRepository
-from app.infrastructure.repositories.words import WordRepository
 from app.services.analytics import Analytics
 from app.services.answer_check import AnswerCheckService
-from app.services.interaction_state_service import InteractionStateService
-from app.services.placement_service import PlacementService
 from app.services.study_session_service import StudySessionService
 from app.services.track_context_service import TrackContextService
 from app.services.user_track_service import UserTrackService
@@ -55,9 +52,6 @@ class ServicesMiddleware(BaseMiddleware):
         if session is not None:
             data["analytics"] = Analytics(AnalyticsRepository(session))
             data["study_session"] = StudySessionService(session, self._redis)
-            data["placement"] = PlacementService(
-                WordRepository(session), InteractionStateService(self._redis)
-            )
         data["answer_check"] = AnswerCheckService(self._redis)
 
         return await handler(event, data)
