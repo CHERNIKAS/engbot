@@ -884,9 +884,9 @@
  {
   "w": "tire",
   "ngsl_rank": 1331,
-  "translation": "шина / уставать",
+  "translation": "шина",
   "level": "A2",
-  "polysemous": true
+  "polysemous": false
  },
  {
   "w": "spirit",

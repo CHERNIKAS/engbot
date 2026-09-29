@@ -79,7 +79,69 @@ BAND2_FILE = (
     / "app" / "infrastructure" / "data" / "ngsl_band2.json"
 )
 
-INFLECTIONS = ["saw", "found"]
+
+# ---- ranks held by the wrong word ----------------------------------------- #
+#
+# A derived form was given its headword's corpus rank: `thought` carries 47,
+# which belongs to `think`; `known` carries 41, which belongs to `know`. Measured
+# 2026-09-30 across the whole catalogue: 59 ranks were occupied more than once,
+# 27 of them by teachable words, and this migration's own new words would have
+# added six more — `camp` beside `camping`, `freeze` beside `freezing`.
+#
+# The learner sees the consequence: two spellings of one idea arriving days
+# apart, which is the complaint v2 started from.
+#
+# The rank goes to the headword — the lemma NGSL actually lists — and the
+# derived word keeps its place in the catalogue with `ngsl_rank` cleared. It is
+# not marked an inflection: `tired`, `interesting`, `building` all have meanings
+# of their own, and the criterion is "no frequent meaning of its own", not
+# "looks like a form of something".
+#
+# Without a corpus rank they fall through to `freq_rank`, which is exactly what
+# that column is for, so the two with none get one.
+# (derived, rank it wrongly held, freq_rank to set — None keeps what is there)
+STOLEN_RANKS: list[tuple[str, int, int | None]] = [
+    ("known", 41, 2),  # → know
+    ("thought", 47, 1),  # → think
+    ("given", 77, 1),  # → give
+    ("needed", 90, 1),  # → need
+    ("children", 102, 1),  # → child
+    ("meeting", 135, 1),  # → meet
+    ("interesting", 142, None),  # → interest
+    ("later", 147, 1),  # → late
+    ("running", 192, 2),  # → run
+    ("opening", 214, 2),  # → open
+    ("building", 221, 1),  # → build
+    ("holding", 222, 1),  # → hold
+    ("lost", 305, 1),  # → lose
+    ("broken", 368, 2),  # → break
+    ("killed", 533, 2),  # → kill
+    ("feet", 576, 2),  # → foot
+    ("surprised", 634, 2),  # → surprise
+    ("painting", 672, 2),  # → paint
+    ("fishing", 828, 3),  # → fish
+    ("dancing", 959, 2),  # → dance
+    ("excited", 1142, 2),  # → excite
+    ("swimming", 1391, 2),  # → swim
+    ("shoes", 1476, 1),  # → shoe
+    ("amazing", 1524, None),  # → amaze
+    ("bored", 1690, 2),  # → bore
+    ("confused", 1919, 2),  # → confuse
+    # Added by this migration's own new words, same problem:
+    ("camping", 1165, 3),
+    ("tired", 1331, 1),
+    ("cycling", 1394, 3),
+    ("complicated", 1851, 3),
+    ("disappointed", 1853, 2),
+    ("freezing", 1856, 2),
+]
+
+# `children` and `feet` have no meaning of their own — they are the plural and
+# nothing else, and the «Множественное число» topic drills them as a table. A
+# word whose entire content is another word's plural is a form by the criterion,
+# so they leave the vocabulary rotation the same way `drove` did. `shoes` stays
+# a word: «обувь» is how it is actually used, not merely the plural of a shoe.
+INFLECTIONS = ["saw", "found", "children", "feet"]
 EXCLUDED = ["fuck", "ah"]
 
 THOUGHT_NEW = "мысль"
@@ -101,6 +163,24 @@ def upgrade() -> None:
             ),
             {"rank": rank, "w": writing},
         )
+
+
+    for derived, rank, freq in STOLEN_RANKS:
+        bind.execute(
+            sa.text(
+                "UPDATE words SET ngsl_rank = NULL"
+                " WHERE track = 'en' AND lower(writing) = :w AND ngsl_rank = :rank"
+            ),
+            {"w": derived, "rank": rank},
+        )
+        if freq is not None:
+            bind.execute(
+                sa.text(
+                    "UPDATE words SET freq_rank = :freq"
+                    " WHERE track = 'en' AND lower(writing) = :w AND freq_rank IS NULL"
+                ),
+                {"freq": freq, "w": derived},
+            )
 
     bind.execute(
         sa.text(
@@ -148,6 +228,14 @@ def upgrade() -> None:
 
 def downgrade() -> None:
     bind = op.get_bind()
+    for derived, rank, _freq in STOLEN_RANKS:
+        bind.execute(
+            sa.text(
+                "UPDATE words SET ngsl_rank = :rank"
+                " WHERE track = 'en' AND lower(writing) = :w AND ngsl_rank IS NULL"
+            ),
+            {"w": derived, "rank": rank},
+        )
     rows = json.loads(BAND2_FILE.read_text(encoding="utf-8"))
     # Only the rows this migration created: a word someone has since started
     # learning keeps its progress, and deleting it would take that with it.
