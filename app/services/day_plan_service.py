@@ -113,11 +113,6 @@ class DayPlanService:
         if existing is not None:
             return existing, False
 
-        # Once a day, before anything is chosen: the level is an axis over
-        # frequency in both pickers, so it has to be settled before they run.
-        # Here and nowhere else — recomputing it on every answer would reorder
-        # the queue under the learner mid-day.
-        await self.refresh_level(user, track)
         # Stock the vocabulary before measuring it: composing first would size
         # the day against what was left over from yesterday.
         await self._top_up(user, track)

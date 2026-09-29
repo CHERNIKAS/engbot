@@ -551,12 +551,20 @@ class PushService:
         # first blocked user. Fresh fetch by plain id avoids the expired access.
         user_ids = [u.id for u in await user_repo.list_for_push()]
         pushed = 0
+        skipped: list[int] = []
         for uid in user_ids:
             user = await user_repo.get(uid)
             ut = await ut_repo.get(uid, _TRACK)
             if user is None or ut is None:
+                log.info("push_skipped", uid=uid, why="no_track")
+                skipped.append(uid)
                 continue
             if (ut.settings or {}).get("push_blocked"):
+                # Blocked users vanished from the log entirely, so «this user
+                # gets nothing» and «the worker is broken» looked identical
+                # while reading it. Counted here and reported once per tick
+                # rather than per user, to stay one line.
+                skipped.append(uid)
                 continue  # user blocked the bot — stop trying (cleared on /start)
             # No placement gate any more. It used to hold everyone without a
             # level, on the grounds that cards picked without one are picked
@@ -585,6 +593,8 @@ class PushService:
                 # silently disables one user's pushes every tick must be
                 # diagnosable (this blind spot hid the recent MissingGreenlet).
                 log.exception("push_tick_failed", uid=uid)
+        if skipped:
+            log.info("push_skipped_users", uids=skipped, count=len(skipped))
         return pushed
 
     async def run_tick(self, user: User, ut: UserTrack) -> bool:
@@ -605,6 +615,14 @@ class PushService:
                 if mid:
                     await self._delete(user.telegram_id, int(mid))
             state = {"day": today, "next_ts": 0.0, "inflight": None, "new_today": 0}
+            # The level is re-derived here rather than inside `ensure_plan`,
+            # which is where it used to live. `ensure_plan` returns an open plan
+            # before reaching that point, so a learner whose plan stayed open —
+            # one had an unfinished plan from six days earlier — never had their
+            # level recomputed at all. Production showed it: a stored B2 sat
+            # untouched while every newly-created plan derived A1 correctly.
+            await DayPlanService(self._session).refresh_level(user, _TRACK)
+            await self._session.commit()
 
         win = in_window(local.hour, ws, we)
         inflight = state.get("inflight")
@@ -623,6 +641,27 @@ class PushService:
                     if old_msg_id:
                         await self._delete(user.telegram_id, old_msg_id)
                     state["last"] = {"kind": inflight.get("kind", "word"), "id": int(inflight.get("id", 0))}
+                    # An abandoned card has to count as shown, or it is chosen
+                    # again on the next turn and the "give up after three
+                    # nudges" rule becomes a counter reset. Word cards are
+                    # covered by `state["last"]` above; the constructor keeps
+                    # its own recency list in the database.
+                    dropped = inflight.get("kind")
+                    if dropped == "phrase" and inflight.get("topic_id"):
+                        await ConstructorRepository(self._session).note_shown(
+                            user.id, int(inflight["topic_id"]), int(inflight.get("id", 0))
+                        )
+                        await self._session.commit()
+                    elif dropped == "test" and inflight.get("topic_id"):
+                        await ConstructorRepository(self._session).defer_test(
+                            user.id, int(inflight["topic_id"])
+                        )
+                        await self._session.commit()
+                    elif dropped == "triage":
+                        # The batch is rebuilt from the same unmarked words, so
+                        # an ignored one comes straight back. Hold it off until
+                        # tomorrow rather than re-offering the same screenful.
+                        state["triage_skip_day"] = state.get("day")
                     state["inflight"] = None
                     state["next_ts"] = now_ts + _minutes(self._s.push_gap_min_minutes, self._s.push_gap_max_minutes)
                     log.info(
@@ -1686,6 +1725,9 @@ class PushService:
 
         Writes into the caller's `state`; see `_send_constructor` for why
         loading a private copy here silently wipes the card."""
+        if state.get("triage_skip_day") == state.get("day"):
+            # Already offered and ignored today — see the abandon branch.
+            return False
         theme = await self._uw.current_theme(user.id, _TRACK)
         if theme is None:
             return False

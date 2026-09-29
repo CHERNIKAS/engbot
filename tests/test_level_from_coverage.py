@@ -130,3 +130,28 @@ async def test_a_stored_level_above_the_evidence_comes_down():
     user = _FakeUser("B2")
     await service.refresh_level(user, LearningTrack.ENGLISH)
     assert user.level == "A1"
+
+
+@pytest.mark.asyncio
+async def test_a_plan_left_open_for_days_does_not_freeze_the_level():
+    """The bug this pins, found in production six days after the level started
+    being derived: `refresh_level` used to be called inside `ensure_plan`,
+    *after* it returns an already-open plan. A learner who never finishes a
+    plan never creates a new one — so the call was never reached and their
+    level stayed whatever it was, while everyone with a fresh plan got a
+    correct one. It now runs when the push day rolls over, which happens
+    whether or not yesterday's plan was closed.
+    """
+    from app.domain.enums import LearningTrack
+
+    service = _service(0, 0)
+    user = _FakeUser("B2")
+
+    # Day one: derived, stored.
+    assert await service.refresh_level(user, LearningTrack.ENGLISH) == "A1"
+    # Someone sets it back — a stale row, a manual fix, an old migration.
+    user.level = "B2"
+    # Day two, with yesterday's plan still open and no new plan created:
+    # the level must still be re-derived.
+    assert await service.refresh_level(user, LearningTrack.ENGLISH) == "A1"
+    assert user.level == "A1"

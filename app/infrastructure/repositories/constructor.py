@@ -95,6 +95,25 @@ class ConstructorRepository:
         await self.session.flush()
         return row
 
+    async def note_shown(self, user_id: int, topic_id: int, phrase_id: int) -> None:
+        """Remember a phrase that was shown but never answered.
+
+        Without this an abandoned card is invisible to `pick_phrase`, which
+        reads the same `recent` list that only `record_answer` used to write —
+        so the next card is the same phrase, and `PUSH_MAX_ATTEMPTS` stops
+        being a limit at all: it resets the counter and the phrase starts
+        another round of three nudges. Production showed one learner receiving
+        a single sentence six times in a day, up to 24 messages about it.
+
+        Only the recency list is touched. An ignored card is "not now", not a
+        wrong answer, so the score and the answer count stay where they were.
+        """
+        row = await self.ensure_state(user_id, topic_id)
+        recent = [int(i) for i in (row.recent or [])]
+        recent.append(int(phrase_id))
+        row.recent = recent[-RECENT_MEMORY:]
+        await self.session.flush()
+
     async def active_topic(self, user_id: int) -> GrammarTopic | None:
         """The topic being learned: the first in teaching order the learner has
         not passed. Order comes from `position`, which is the curriculum — a
@@ -161,6 +180,18 @@ class ConstructorRepository:
             .limit(1)
         )
         return (await self.session.execute(q)).scalars().first()
+
+    async def defer_test(self, user_id: int, topic_id: int, days: int = 1) -> None:
+        """Push a check that was offered and ignored out to a later day.
+
+        Same failure as the phrase cycle: `due_test_topic` looks at
+        `test_due_at`, and an ignored offer leaves it in the past — so the same
+        check is offered again on the next turn, forever, and "at most one
+        check a day" stops holding.
+        """
+        row = await self.ensure_state(user_id, topic_id)
+        row.test_due_at = datetime.now(timezone.utc) + timedelta(days=days)
+        await self.session.flush()
 
     async def record_test(
         self, user_id: int, topic_id: int, correct: int, held: bool, next_in_days: int
