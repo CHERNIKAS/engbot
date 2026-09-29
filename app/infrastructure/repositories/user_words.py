@@ -382,6 +382,7 @@ class UserWordRepository:
                 # `drove` teaches nothing `drive` does not; the irregular-verb
                 # collection drills the form as a table instead.
                 Word.is_inflection.is_(False),
+                Word.is_excluded.is_(False),
                 Word.is_phrase.is_(False),
             )
             .order_by(
@@ -585,6 +586,7 @@ class UserWordRepository:
                 # `drove` teaches nothing `drive` does not; the irregular-verb
                 # collection drills the form as a table instead.
                 Word.is_inflection.is_(False),
+                Word.is_excluded.is_(False),
                 Word.is_phrase.is_(False),
             )
             .order_by(
@@ -661,6 +663,7 @@ class UserWordRepository:
                 # `drove` teaches nothing `drive` does not; the irregular-verb
                 # collection drills the form as a table instead.
                 Word.is_inflection.is_(False),
+                Word.is_excluded.is_(False),
                 Word.is_phrase.is_(False),
             )
             .order_by(UserWord.next_review_at.asc(), UserWord.mastery_score.asc())
@@ -796,6 +799,7 @@ class UserWordRepository:
                 Word.translation.isnot(None),
                 Word.is_function_word.is_(False),
                 Word.is_inflection.is_(False),
+                Word.is_excluded.is_(False),
                 Word.is_phrase.is_(phrases),
             )
         )
@@ -1096,6 +1100,7 @@ class UserWordRepository:
                 Word.translation.isnot(None),
                 Word.is_function_word.is_(False),
                 Word.is_inflection.is_(False),
+                Word.is_excluded.is_(False),
                 Word.is_phrase.is_(False),
             )
             .order_by(Pack.position.asc(), Pack.id.asc())
@@ -1125,6 +1130,7 @@ class UserWordRepository:
                 Word.translation.isnot(None),
                 Word.is_function_word.is_(False),
                 Word.is_inflection.is_(False),
+                Word.is_excluded.is_(False),
                 Word.is_phrase.is_(False),
             )
             .order_by(PackWord.position.asc())
@@ -1163,6 +1169,7 @@ class UserWordRepository:
                 Word.translation.isnot(None),
                 Word.is_function_word.is_(False),
                 Word.is_inflection.is_(False),
+                Word.is_excluded.is_(False),
                 Word.is_phrase.is_(False),
             )
             .order_by(
@@ -1200,6 +1207,7 @@ class UserWordRepository:
                 Word.translation.isnot(None),
                 Word.is_function_word.is_(False),
                 Word.is_inflection.is_(False),
+                Word.is_excluded.is_(False),
             )
             .order_by(Pack.position.asc(), Pack.id.asc(), PackWord.position.asc())
             .limit(limit)
@@ -1222,6 +1230,7 @@ class UserWordRepository:
             Word.translation.isnot(None),
             Word.is_function_word.is_(False),
             Word.is_inflection.is_(False),
+            Word.is_excluded.is_(False),
             Word.is_phrase.is_(False),
         )
         band1 = Word.ngsl_rank.between(1, 1000)

@@ -1,0 +1,3551 @@
+[
+ {
+  "w": "difficulty",
+  "ngsl_rank": 1001,
+  "translation": "трудность / сложность",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "purchase",
+  "ngsl_rank": 1002,
+  "translation": "покупка / покупать",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "independent",
+  "ngsl_rank": 1006,
+  "translation": "независимый",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "majority",
+  "ngsl_rank": 1009,
+  "translation": "большинство",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "request",
+  "ngsl_rank": 1011,
+  "translation": "запрос / просить",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "scene",
+  "ngsl_rank": 1023,
+  "translation": "сцена / место действия",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "writer",
+  "ngsl_rank": 1024,
+  "translation": "писатель",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "content",
+  "ngsl_rank": 1025,
+  "translation": "содержание / довольный",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "element",
+  "ngsl_rank": 1030,
+  "translation": "элемент / стихия",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "effective",
+  "ngsl_rank": 1031,
+  "translation": "эффективный / действенный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "correct",
+  "ngsl_rank": 1032,
+  "translation": "правильный / исправлять",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "medical",
+  "ngsl_rank": 1033,
+  "translation": "медицинский",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "copy",
+  "ngsl_rank": 1037,
+  "translation": "копия / экземпляр / копировать",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "committee",
+  "ngsl_rank": 1038,
+  "translation": "комитет / комиссия",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "trial",
+  "ngsl_rank": 1043,
+  "translation": "судебный процесс / испытание",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "stress",
+  "ngsl_rank": 1044,
+  "translation": "стресс / ударение / напряжение",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "administration",
+  "ngsl_rank": 1046,
+  "translation": "администрация / управление",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "directly",
+  "ngsl_rank": 1051,
+  "translation": "напрямую / непосредственно",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "equipment",
+  "ngsl_rank": 1055,
+  "translation": "оборудование / снаряжение",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "otherwise",
+  "ngsl_rank": 1056,
+  "translation": "иначе / в противном случае",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "extra",
+  "ngsl_rank": 1058,
+  "translation": "лишний / добавочный",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "executive",
+  "ngsl_rank": 1059,
+  "translation": "исполнительный / руководитель",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "sample",
+  "ngsl_rank": 1062,
+  "translation": "образец / проба",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "sex",
+  "ngsl_rank": 1063,
+  "translation": "пол (мужской/женский)",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "video",
+  "ngsl_rank": 1065,
+  "translation": "видео",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "connection",
+  "ngsl_rank": 1066,
+  "translation": "связь / соединение",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "inform",
+  "ngsl_rank": 1070,
+  "translation": "информировать / сообщать",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "appeal",
+  "ngsl_rank": 1073,
+  "translation": "призыв / обращение / привлекательность",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "highly",
+  "ngsl_rank": 1074,
+  "translation": "высоко / очень",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "wonderful",
+  "ngsl_rank": 1076,
+  "translation": "замечательный / чудесный",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "flat",
+  "ngsl_rank": 1077,
+  "translation": "квартира / плоский",
+  "level": "A1",
+  "polysemous": true
+ },
+ {
+  "w": "absolutely",
+  "ngsl_rank": 1078,
+  "translation": "абсолютно / безусловно",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "flow",
+  "ngsl_rank": 1079,
+  "translation": "поток / течь",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "additional",
+  "ngsl_rank": 1081,
+  "translation": "дополнительный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "farm",
+  "ngsl_rank": 1083,
+  "translation": "ферма / хозяйство",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "collection",
+  "ngsl_rank": 1084,
+  "translation": "коллекция / собрание",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "negative",
+  "ngsl_rank": 1086,
+  "translation": "отрицательный / негативный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "tour",
+  "ngsl_rank": 1089,
+  "translation": "тур / экскурсия / поездка",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "double",
+  "ngsl_rank": 1096,
+  "translation": "двойной / удваивать",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "politics",
+  "ngsl_rank": 1107,
+  "translation": "политика",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "display",
+  "ngsl_rank": 1109,
+  "translation": "дисплей / отображение / показывать",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "slightly",
+  "ngsl_rank": 1112,
+  "translation": "слегка / немного",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "overall",
+  "ngsl_rank": 1113,
+  "translation": "в целом / общий",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "user",
+  "ngsl_rank": 1115,
+  "translation": "пользователь",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "regular",
+  "ngsl_rank": 1119,
+  "translation": "регулярный / обычный",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "apart",
+  "ngsl_rank": 1121,
+  "translation": "отдельно / в стороне",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "federal",
+  "ngsl_rank": 1123,
+  "translation": "федеральный",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "percentage",
+  "ngsl_rank": 1125,
+  "translation": "процент / доля",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "status",
+  "ngsl_rank": 1127,
+  "translation": "статус / состояние",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "launch",
+  "ngsl_rank": 1131,
+  "translation": "запуск / начинать",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "consumer",
+  "ngsl_rank": 1133,
+  "translation": "потребитель",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "favor",
+  "ngsl_rank": 1134,
+  "translation": "одолжение / предпочтение",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "institution",
+  "ngsl_rank": 1137,
+  "translation": "учреждение / институт",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "spot",
+  "ngsl_rank": 1138,
+  "translation": "место / пятно / заметить",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "heat",
+  "ngsl_rank": 1141,
+  "translation": "жара / нагревать",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "reader",
+  "ngsl_rank": 1143,
+  "translation": "читатель / устройство для чтения",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "importance",
+  "ngsl_rank": 1144,
+  "translation": "важность / значимость",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "guide",
+  "ngsl_rank": 1146,
+  "translation": "гид / руководство / направлять",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "grant",
+  "ngsl_rank": 1147,
+  "translation": "грант / предоставлять",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "chief",
+  "ngsl_rank": 1155,
+  "translation": "главный / начальник",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "expert",
+  "ngsl_rank": 1157,
+  "translation": "эксперт / специалист",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "labor",
+  "ngsl_rank": 1160,
+  "translation": "труд / работа",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "camp",
+  "ngsl_rank": 1165,
+  "translation": "лагерь / стоять лагерем",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "audience",
+  "ngsl_rank": 1166,
+  "translation": "аудитория / публика",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "global",
+  "ngsl_rank": 1170,
+  "translation": "глобальный / мировой",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "advertise",
+  "ngsl_rank": 1172,
+  "translation": "рекламировать",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "select",
+  "ngsl_rank": 1173,
+  "translation": "выбирать (из списка)",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "surround",
+  "ngsl_rank": 1174,
+  "translation": "окружать",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "extent",
+  "ngsl_rank": 1175,
+  "translation": "степень / масштаб",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "fully",
+  "ngsl_rank": 1178,
+  "translation": "полностью / целиком",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "reality",
+  "ngsl_rank": 1181,
+  "translation": "реальность / действительность",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "photograph",
+  "ngsl_rank": 1182,
+  "translation": "фотография / фотографировать",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "artist",
+  "ngsl_rank": 1183,
+  "translation": "художник / артист",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "presence",
+  "ngsl_rank": 1186,
+  "translation": "присутствие",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "gas",
+  "ngsl_rank": 1189,
+  "translation": "газ / бензин",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "net",
+  "ngsl_rank": 1191,
+  "translation": "сеть / чистый доход",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "secretary",
+  "ngsl_rank": 1193,
+  "translation": "секретарь",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "defense",
+  "ngsl_rank": 1194,
+  "translation": "оборона / защита",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "spread",
+  "ngsl_rank": 1197,
+  "translation": "распространение / размах",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "nuclear",
+  "ngsl_rank": 1198,
+  "translation": "ядерный",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "driver",
+  "ngsl_rank": 1200,
+  "translation": "водитель",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "introduction",
+  "ngsl_rank": 1203,
+  "translation": "введение / представление",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "requirement",
+  "ngsl_rank": 1204,
+  "translation": "требование / условие",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "senior",
+  "ngsl_rank": 1207,
+  "translation": "старший / пожилой",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "transport",
+  "ngsl_rank": 1210,
+  "translation": "транспорт / перевозка",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "reform",
+  "ngsl_rank": 1215,
+  "translation": "реформа / преобразование",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "improvement",
+  "ngsl_rank": 1226,
+  "translation": "улучшение",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "reaction",
+  "ngsl_rank": 1231,
+  "translation": "реакция",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "mass",
+  "ngsl_rank": 1236,
+  "translation": "масса / множество",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "speaker",
+  "ngsl_rank": 1241,
+  "translation": "оратор / динамик",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "marriage",
+  "ngsl_rank": 1248,
+  "translation": "брак",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "plus",
+  "ngsl_rank": 1256,
+  "translation": "плюс / преимущество",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "extremely",
+  "ngsl_rank": 1257,
+  "translation": "чрезвычайно",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "owner",
+  "ngsl_rank": 1258,
+  "translation": "владелец",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "commercial",
+  "ngsl_rank": 1260,
+  "translation": "коммерческий / торговый",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "duty",
+  "ngsl_rank": 1262,
+  "translation": "долг / обязанность",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "strength",
+  "ngsl_rank": 1263,
+  "translation": "сила / прочность",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "cultural",
+  "ngsl_rank": 1265,
+  "translation": "культурный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "scheme",
+  "ngsl_rank": 1267,
+  "translation": "схема / план",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "payment",
+  "ngsl_rank": 1268,
+  "translation": "оплата / платеж",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "unfortunately",
+  "ngsl_rank": 1269,
+  "translation": "к сожалению",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "chapter",
+  "ngsl_rank": 1275,
+  "translation": "глава / раздел",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "novel",
+  "ngsl_rank": 1278,
+  "translation": "роман / новый",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "union",
+  "ngsl_rank": 1279,
+  "translation": "союз / объединение",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "suggestion",
+  "ngsl_rank": 1284,
+  "translation": "предложение / совет",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "critical",
+  "ngsl_rank": 1285,
+  "translation": "критический / решающий",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "mostly",
+  "ngsl_rank": 1287,
+  "translation": "преимущественно / в основном",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "earth",
+  "ngsl_rank": 1288,
+  "translation": "земля / почва",
+  "level": "A1",
+  "polysemous": true
+ },
+ {
+  "w": "pop",
+  "ngsl_rank": 1289,
+  "translation": "хлопок / поп-музыка",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "desire",
+  "ngsl_rank": 1291,
+  "translation": "желание / желать",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "currently",
+  "ngsl_rank": 1293,
+  "translation": "в настоящее время",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "engage",
+  "ngsl_rank": 1299,
+  "translation": "вовлекать / заниматься",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "powerful",
+  "ngsl_rank": 1300,
+  "translation": "мощный / влиятельный",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "boat",
+  "ngsl_rank": 1304,
+  "translation": "лодка / судно",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "aid",
+  "ngsl_rank": 1305,
+  "translation": "помощь / поддержка",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "fan",
+  "ngsl_rank": 1306,
+  "translation": "вентилятор / поклонник",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "twice",
+  "ngsl_rank": 1308,
+  "translation": "дважды",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "engineer",
+  "ngsl_rank": 1312,
+  "translation": "инженер / проектировать",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "insurance",
+  "ngsl_rank": 1314,
+  "translation": "страхование",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "investigation",
+  "ngsl_rank": 1318,
+  "translation": "расследование",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "package",
+  "ngsl_rank": 1319,
+  "translation": "посылка / пакет",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "somewhere",
+  "ngsl_rank": 1320,
+  "translation": "где-то",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "weapon",
+  "ngsl_rank": 1325,
+  "translation": "оружие (любое)",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "relatively",
+  "ngsl_rank": 1326,
+  "translation": "относительно",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "host",
+  "ngsl_rank": 1327,
+  "translation": "хозяин / ведущий",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "district",
+  "ngsl_rank": 1329,
+  "translation": "район / округ",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "tire",
+  "ngsl_rank": 1331,
+  "translation": "шина / уставать",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "spirit",
+  "ngsl_rank": 1333,
+  "translation": "дух / настроение",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "actual",
+  "ngsl_rank": 1335,
+  "translation": "фактический / реальный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "pool",
+  "ngsl_rank": 1336,
+  "translation": "бассейн / общий фонд",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "battle",
+  "ngsl_rank": 1337,
+  "translation": "битва / сражение",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "tradition",
+  "ngsl_rank": 1338,
+  "translation": "традиция",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "hardly",
+  "ngsl_rank": 1340,
+  "translation": "едва / вряд ли",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "award",
+  "ngsl_rank": 1341,
+  "translation": "награда / присуждать",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "experiment",
+  "ngsl_rank": 1343,
+  "translation": "эксперимент / опыт",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "consideration",
+  "ngsl_rank": 1344,
+  "translation": "рассмотрение / внимание",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "code",
+  "ngsl_rank": 1346,
+  "translation": "код / кодекс",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "possibly",
+  "ngsl_rank": 1347,
+  "translation": "возможно / может быть",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "threat",
+  "ngsl_rank": 1348,
+  "translation": "угроза",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "accident",
+  "ngsl_rank": 1349,
+  "translation": "авария / случайность",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "active",
+  "ngsl_rank": 1354,
+  "translation": "активный",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "conclude",
+  "ngsl_rank": 1355,
+  "translation": "заключать / завершать",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "religious",
+  "ngsl_rank": 1356,
+  "translation": "религиозный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "cancer",
+  "ngsl_rank": 1357,
+  "translation": "рак",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "environmental",
+  "ngsl_rank": 1360,
+  "translation": "экологический",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "blow",
+  "ngsl_rank": 1363,
+  "translation": "удар / дуть",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "location",
+  "ngsl_rank": 1365,
+  "translation": "местоположение",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "proceed",
+  "ngsl_rank": 1367,
+  "translation": "продолжать / приступать",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "actor",
+  "ngsl_rank": 1369,
+  "translation": "актер",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "tape",
+  "ngsl_rank": 1371,
+  "translation": "лента / скотч / записывать",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "sum",
+  "ngsl_rank": 1375,
+  "translation": "сумма / итог",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "soldier",
+  "ngsl_rank": 1378,
+  "translation": "солдат / военный",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "finance",
+  "ngsl_rank": 1379,
+  "translation": "финансы / финансировать",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "concert",
+  "ngsl_rank": 1382,
+  "translation": "концерт",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "pack",
+  "ngsl_rank": 1387,
+  "translation": "паковать / стая / пачка",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "camera",
+  "ngsl_rank": 1390,
+  "translation": "камера / фотоаппарат",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "manufacture",
+  "ngsl_rank": 1392,
+  "translation": "производство / производить",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "theater",
+  "ngsl_rank": 1393,
+  "translation": "театр",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "cycle",
+  "ngsl_rank": 1394,
+  "translation": "цикл / велосипед",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "totally",
+  "ngsl_rank": 1396,
+  "translation": "полностью / совершенно",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "museum",
+  "ngsl_rank": 1397,
+  "translation": "музей",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "visitor",
+  "ngsl_rank": 1398,
+  "translation": "посетитель / гость",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "construction",
+  "ngsl_rank": 1400,
+  "translation": "строительство / конструкция",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "moreover",
+  "ngsl_rank": 1403,
+  "translation": "более того / кроме того",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "historical",
+  "ngsl_rank": 1405,
+  "translation": "исторический",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "oppose",
+  "ngsl_rank": 1406,
+  "translation": "противостоять / возражать",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "vehicle",
+  "ngsl_rank": 1408,
+  "translation": "транспортное средство",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "scientist",
+  "ngsl_rank": 1409,
+  "translation": "ученый",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "route",
+  "ngsl_rank": 1410,
+  "translation": "маршрут / путь",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "bind",
+  "ngsl_rank": 1411,
+  "translation": "связывать / переплетать",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "fashion",
+  "ngsl_rank": 1415,
+  "translation": "мода / образ",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "bomb",
+  "ngsl_rank": 1417,
+  "translation": "бомба / провал",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "army",
+  "ngsl_rank": 1418,
+  "translation": "армия",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "council",
+  "ngsl_rank": 1422,
+  "translation": "совет / муниципальный орган",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "editor",
+  "ngsl_rank": 1423,
+  "translation": "редактор",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "normally",
+  "ngsl_rank": 1424,
+  "translation": "обычно",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "delivery",
+  "ngsl_rank": 1428,
+  "translation": "доставка",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "anybody",
+  "ngsl_rank": 1431,
+  "translation": "кто-нибудь / любой",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "quote",
+  "ngsl_rank": 1433,
+  "translation": "цитата / расценка",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "basically",
+  "ngsl_rank": 1435,
+  "translation": "в основном / по сути",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "violence",
+  "ngsl_rank": 1436,
+  "translation": "насилие",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "minister",
+  "ngsl_rank": 1437,
+  "translation": "министр / священник",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "mainly",
+  "ngsl_rank": 1438,
+  "translation": "главным образом",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "manner",
+  "ngsl_rank": 1441,
+  "translation": "манера / способ",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "occasion",
+  "ngsl_rank": 1444,
+  "translation": "случай / повод",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "affair",
+  "ngsl_rank": 1448,
+  "translation": "дело / роман",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "civil",
+  "ngsl_rank": 1449,
+  "translation": "гражданский / вежливый",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "locate",
+  "ngsl_rank": 1450,
+  "translation": "находить / располагать",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "citizen",
+  "ngsl_rank": 1451,
+  "translation": "гражданин",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "load",
+  "ngsl_rank": 1455,
+  "translation": "груз / нагрузка",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "troop",
+  "ngsl_rank": 1457,
+  "translation": "войска / отряд",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "technical",
+  "ngsl_rank": 1458,
+  "translation": "технический",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "arrangement",
+  "ngsl_rank": 1460,
+  "translation": "договоренность / устройство",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "switch",
+  "ngsl_rank": 1463,
+  "translation": "переключатель / менять",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "corporate",
+  "ngsl_rank": 1465,
+  "translation": "корпоративный",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "fairly",
+  "ngsl_rank": 1466,
+  "translation": "довольно / справедливо",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "tough",
+  "ngsl_rank": 1469,
+  "translation": "жесткий / трудный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "representative",
+  "ngsl_rank": 1471,
+  "translation": "представитель",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "border",
+  "ngsl_rank": 1473,
+  "translation": "граница / край",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "assessment",
+  "ngsl_rank": 1475,
+  "translation": "оценка",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "ad",
+  "ngsl_rank": 1478,
+  "translation": "объявление (реклама)",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "fee",
+  "ngsl_rank": 1479,
+  "translation": "плата / взнос",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "regulation",
+  "ngsl_rank": 1481,
+  "translation": "регулирование / правило",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "studio",
+  "ngsl_rank": 1483,
+  "translation": "студия / мастерская",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "proper",
+  "ngsl_rank": 1484,
+  "translation": "правильный / надлежащий",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "component",
+  "ngsl_rank": 1487,
+  "translation": "компонент / составляющая",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "lawyer",
+  "ngsl_rank": 1489,
+  "translation": "юрист / адвокат",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "suspect",
+  "ngsl_rank": 1490,
+  "translation": "подозревать / подозреваемый",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "description",
+  "ngsl_rank": 1492,
+  "translation": "описание",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "confidence",
+  "ngsl_rank": 1493,
+  "translation": "уверенность / доверие",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "industrial",
+  "ngsl_rank": 1494,
+  "translation": "промышленный",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "error",
+  "ngsl_rank": 1497,
+  "translation": "ошибка / погрешность",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "asset",
+  "ngsl_rank": 1501,
+  "translation": "актив / ценность",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "signal",
+  "ngsl_rank": 1502,
+  "translation": "сигнал / знак",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "leadership",
+  "ngsl_rank": 1506,
+  "translation": "лидерство / руководство",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "commitment",
+  "ngsl_rank": 1507,
+  "translation": "обязательство / приверженность",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "necessarily",
+  "ngsl_rank": 1509,
+  "translation": "обязательно / неизбежно",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "frame",
+  "ngsl_rank": 1511,
+  "translation": "рама / кадр / структура",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "slowly",
+  "ngsl_rank": 1512,
+  "translation": "медленно",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "bond",
+  "ngsl_rank": 1513,
+  "translation": "связь / узы / облигация",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "hole",
+  "ngsl_rank": 1515,
+  "translation": "дыра / отверстие",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "internal",
+  "ngsl_rank": 1517,
+  "translation": "внутренний",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "chain",
+  "ngsl_rank": 1518,
+  "translation": "цепь / сеть",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "literature",
+  "ngsl_rank": 1519,
+  "translation": "литература",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "victim",
+  "ngsl_rank": 1520,
+  "translation": "жертва / пострадавший",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "threaten",
+  "ngsl_rank": 1521,
+  "translation": "угрожать",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "division",
+  "ngsl_rank": 1522,
+  "translation": "деление / подразделение / отдел",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "secure",
+  "ngsl_rank": 1523,
+  "translation": "безопасный / обеспечивать / закреплять",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "birth",
+  "ngsl_rank": 1526,
+  "translation": "рождение",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "label",
+  "ngsl_rank": 1528,
+  "translation": "этикетка / ярлык / помечать",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "factory",
+  "ngsl_rank": 1530,
+  "translation": "фабрика / завод",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "recommendation",
+  "ngsl_rank": 1534,
+  "translation": "рекомендация",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "rank",
+  "ngsl_rank": 1535,
+  "translation": "звание / ранг / ряд",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "resident",
+  "ngsl_rank": 1539,
+  "translation": "житель",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "provision",
+  "ngsl_rank": 1540,
+  "translation": "обеспечение / положение / условие",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "plenty",
+  "ngsl_rank": 1542,
+  "translation": "множество / изобилие",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "entirely",
+  "ngsl_rank": 1544,
+  "translation": "всецело / совершенно",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "strongly",
+  "ngsl_rank": 1545,
+  "translation": "сильно / решительно",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "graduate",
+  "ngsl_rank": 1548,
+  "translation": "выпускник / заканчивать вуз",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "brand",
+  "ngsl_rank": 1549,
+  "translation": "бренд / марка / клеймо",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "moral",
+  "ngsl_rank": 1550,
+  "translation": "моральный / нравственный",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "insist",
+  "ngsl_rank": 1551,
+  "translation": "настаивать",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "combination",
+  "ngsl_rank": 1552,
+  "translation": "комбинация / сочетание",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "abuse",
+  "ngsl_rank": 1553,
+  "translation": "злоупотребление / оскорбление / жестокое обращение",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "principal",
+  "ngsl_rank": 1555,
+  "translation": "главный / директор школы",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "master",
+  "ngsl_rank": 1556,
+  "translation": "мастер / хозяин / осваивать",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "session",
+  "ngsl_rank": 1558,
+  "translation": "сессия / заседание / занятие",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "nevertheless",
+  "ngsl_rank": 1560,
+  "translation": "тем не менее",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "previously",
+  "ngsl_rank": 1562,
+  "translation": "ранее",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "protection",
+  "ngsl_rank": 1563,
+  "translation": "защита",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "largely",
+  "ngsl_rank": 1564,
+  "translation": "в значительной степени / преимущественно",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "wed",
+  "ngsl_rank": 1565,
+  "translation": "сочетаться браком",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "shot",
+  "ngsl_rank": 1567,
+  "translation": "выстрел / попытка / снимок",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "appearance",
+  "ngsl_rank": 1568,
+  "translation": "внешность / появление",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "reasonable",
+  "ngsl_rank": 1569,
+  "translation": "разумный / приемлемый",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "till",
+  "ngsl_rank": 1571,
+  "translation": "до / пока не",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "theme",
+  "ngsl_rank": 1572,
+  "translation": "тема / мотив",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "judgment",
+  "ngsl_rank": 1573,
+  "translation": "суждение / решение суда",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "odd",
+  "ngsl_rank": 1574,
+  "translation": "странный / нечетный",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "definition",
+  "ngsl_rank": 1577,
+  "translation": "определение",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "elect",
+  "ngsl_rank": 1578,
+  "translation": "избирать",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "atmosphere",
+  "ngsl_rank": 1579,
+  "translation": "атмосфера / обстановка",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "farmer",
+  "ngsl_rank": 1580,
+  "translation": "фермер / крестьянин",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "comparison",
+  "ngsl_rank": 1581,
+  "translation": "сравнение",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "characteristic",
+  "ngsl_rank": 1582,
+  "translation": "характеристика / особенность",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "license",
+  "ngsl_rank": 1583,
+  "translation": "лицензия / разрешение",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "identity",
+  "ngsl_rank": 1587,
+  "translation": "личность / идентичность",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "permit",
+  "ngsl_rank": 1589,
+  "translation": "разрешение / позволять",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "seriously",
+  "ngsl_rank": 1590,
+  "translation": "серьезно",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "commission",
+  "ngsl_rank": 1593,
+  "translation": "комиссия / поручение",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "unique",
+  "ngsl_rank": 1594,
+  "translation": "уникальный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "association",
+  "ngsl_rank": 1595,
+  "translation": "ассоциация / объединение",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "instrument",
+  "ngsl_rank": 1596,
+  "translation": "инструмент / прибор",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "investor",
+  "ngsl_rank": 1597,
+  "translation": "инвестор",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "practical",
+  "ngsl_rank": 1598,
+  "translation": "практичный / прикладной",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "lovely",
+  "ngsl_rank": 1600,
+  "translation": "прелестный / красивый",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "youth",
+  "ngsl_rank": 1603,
+  "translation": "молодость / молодежь",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "fuel",
+  "ngsl_rank": 1605,
+  "translation": "топливо / подпитывать",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "expectation",
+  "ngsl_rank": 1606,
+  "translation": "ожидание",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "employment",
+  "ngsl_rank": 1607,
+  "translation": "занятость / трудоустройство",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "sexual",
+  "ngsl_rank": 1609,
+  "translation": "сексуальный / половой",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "increasingly",
+  "ngsl_rank": 1612,
+  "translation": "все более / все чаще",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "engine",
+  "ngsl_rank": 1617,
+  "translation": "двигатель",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "cast",
+  "ngsl_rank": 1618,
+  "translation": "бросать / актерский состав / литье",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "conservative",
+  "ngsl_rank": 1620,
+  "translation": "консервативный",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "opposition",
+  "ngsl_rank": 1622,
+  "translation": "оппозиция / сопротивление",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "relief",
+  "ngsl_rank": 1623,
+  "translation": "облегчение / помощь",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "honor",
+  "ngsl_rank": 1625,
+  "translation": "честь / почет",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "explanation",
+  "ngsl_rank": 1628,
+  "translation": "объяснение",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "arise",
+  "ngsl_rank": 1629,
+  "translation": "возникать / появляться",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "musical",
+  "ngsl_rank": 1630,
+  "translation": "музыкальный",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "stretch",
+  "ngsl_rank": 1633,
+  "translation": "растягивать / тянуться",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "retire",
+  "ngsl_rank": 1635,
+  "translation": "уходить на пенсию / удаляться",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "suitable",
+  "ngsl_rank": 1638,
+  "translation": "подходящий / пригодный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "native",
+  "ngsl_rank": 1639,
+  "translation": "родной / местный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "witness",
+  "ngsl_rank": 1642,
+  "translation": "свидетель / быть свидетелем",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "mail",
+  "ngsl_rank": 1643,
+  "translation": "почта / отправлять почту",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "terrible",
+  "ngsl_rank": 1644,
+  "translation": "ужасный / жуткий",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "researcher",
+  "ngsl_rank": 1645,
+  "translation": "исследователь",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "ordinary",
+  "ngsl_rank": 1646,
+  "translation": "обычный / простой",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "selection",
+  "ngsl_rank": 1647,
+  "translation": "выбор / отбор",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "anywhere",
+  "ngsl_rank": 1648,
+  "translation": "где угодно / куда угодно",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "participant",
+  "ngsl_rank": 1650,
+  "translation": "участник",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "vision",
+  "ngsl_rank": 1651,
+  "translation": "зрение / видение",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "personality",
+  "ngsl_rank": 1652,
+  "translation": "личность / характер",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "specifically",
+  "ngsl_rank": 1653,
+  "translation": "конкретно / специально",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "entry",
+  "ngsl_rank": 1655,
+  "translation": "вход / запись",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "fellow",
+  "ngsl_rank": 1656,
+  "translation": "товарищ / приятель",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "chemical",
+  "ngsl_rank": 1657,
+  "translation": "химический",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "capture",
+  "ngsl_rank": 1658,
+  "translation": "захват / пленение",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "tip",
+  "ngsl_rank": 1659,
+  "translation": "кончик / совет / чаевые",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "chairman",
+  "ngsl_rank": 1662,
+  "translation": "председатель",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "significantly",
+  "ngsl_rank": 1669,
+  "translation": "значительно",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "instruction",
+  "ngsl_rank": 1672,
+  "translation": "инструкция / указание",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "intelligence",
+  "ngsl_rank": 1673,
+  "translation": "интеллект / разведка",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "folk",
+  "ngsl_rank": 1675,
+  "translation": "люди / народ",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "surely",
+  "ngsl_rank": 1676,
+  "translation": "несомненно / конечно",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "somewhat",
+  "ngsl_rank": 1679,
+  "translation": "отчасти / несколько",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "presentation",
+  "ngsl_rank": 1681,
+  "translation": "презентация / представление",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "joint",
+  "ngsl_rank": 1682,
+  "translation": "совместный / сустав",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "poll",
+  "ngsl_rank": 1684,
+  "translation": "опрос / голосование",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "faith",
+  "ngsl_rank": 1686,
+  "translation": "вера / доверие",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "reduction",
+  "ngsl_rank": 1687,
+  "translation": "сокращение / уменьшение",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "complaint",
+  "ngsl_rank": 1689,
+  "translation": "жалоба",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "mission",
+  "ngsl_rank": 1691,
+  "translation": "миссия / задание",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "somehow",
+  "ngsl_rank": 1692,
+  "translation": "как-нибудь / почему-то",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "tone",
+  "ngsl_rank": 1693,
+  "translation": "тон / оттенок",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "neighborhood",
+  "ngsl_rank": 1694,
+  "translation": "район / окрестности",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "passenger",
+  "ngsl_rank": 1695,
+  "translation": "пассажир",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "justice",
+  "ngsl_rank": 1696,
+  "translation": "справедливость / правосудие",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "rush",
+  "ngsl_rank": 1699,
+  "translation": "спешка / натиск",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "religion",
+  "ngsl_rank": 1701,
+  "translation": "религия",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "employer",
+  "ngsl_rank": 1702,
+  "translation": "работодатель",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "latter",
+  "ngsl_rank": 1704,
+  "translation": "последний из упомянутых",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "ban",
+  "ngsl_rank": 1706,
+  "translation": "запрет",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "protest",
+  "ngsl_rank": 1708,
+  "translation": "протест",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "index",
+  "ngsl_rank": 1709,
+  "translation": "индекс / указатель",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "frequently",
+  "ngsl_rank": 1711,
+  "translation": "часто / регулярно",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "circle",
+  "ngsl_rank": 1712,
+  "translation": "круг",
+  "level": "A1",
+  "polysemous": true
+ },
+ {
+  "w": "helpful",
+  "ngsl_rank": 1713,
+  "translation": "полезный / отзывчивый",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "command",
+  "ngsl_rank": 1714,
+  "translation": "команда / приказ",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "attractive",
+  "ngsl_rank": 1715,
+  "translation": "привлекательный",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "impression",
+  "ngsl_rank": 1717,
+  "translation": "впечатление",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "unable",
+  "ngsl_rank": 1718,
+  "translation": "неспособный",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "column",
+  "ngsl_rank": 1721,
+  "translation": "колонна / столбец",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "electronic",
+  "ngsl_rank": 1722,
+  "translation": "электронный",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "criminal",
+  "ngsl_rank": 1724,
+  "translation": "преступник / преступный",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "properly",
+  "ngsl_rank": 1726,
+  "translation": "правильно / должным образом",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "closely",
+  "ngsl_rank": 1731,
+  "translation": "близко / внимательно",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "multiple",
+  "ngsl_rank": 1732,
+  "translation": "многочисленный / множественный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "county",
+  "ngsl_rank": 1736,
+  "translation": "графство / округ",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "mobile",
+  "ngsl_rank": 1738,
+  "translation": "мобильный / подвижный",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "assistant",
+  "ngsl_rank": 1739,
+  "translation": "помощник / ассистент",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "chart",
+  "ngsl_rank": 1741,
+  "translation": "график / диаграмма / карта",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "everywhere",
+  "ngsl_rank": 1744,
+  "translation": "везде / повсюду",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "household",
+  "ngsl_rank": 1746,
+  "translation": "домохозяйство / семья",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "reward",
+  "ngsl_rank": 1748,
+  "translation": "награда / вознаграждение",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "east",
+  "ngsl_rank": 1749,
+  "translation": "восток",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "academic",
+  "ngsl_rank": 1751,
+  "translation": "академический / учебный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "voter",
+  "ngsl_rank": 1752,
+  "translation": "избиратель",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "meanwhile",
+  "ngsl_rank": 1753,
+  "translation": "тем временем / между тем",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "furthermore",
+  "ngsl_rank": 1754,
+  "translation": "более того / к тому же",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "scientific",
+  "ngsl_rank": 1756,
+  "translation": "научный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "wage",
+  "ngsl_rank": 1757,
+  "translation": "заработная плата",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "absence",
+  "ngsl_rank": 1758,
+  "translation": "отсутствие",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "construct",
+  "ngsl_rank": 1759,
+  "translation": "строить / конструировать",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "remark",
+  "ngsl_rank": 1760,
+  "translation": "замечание / высказывание",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "professor",
+  "ngsl_rank": 1762,
+  "translation": "профессор / преподаватель",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "intention",
+  "ngsl_rank": 1764,
+  "translation": "намерение / цель",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "dozen",
+  "ngsl_rank": 1765,
+  "translation": "дюжина",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "settlement",
+  "ngsl_rank": 1766,
+  "translation": "поселение / урегулирование",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "gap",
+  "ngsl_rank": 1767,
+  "translation": "пробел / разрыв / щель",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "widely",
+  "ngsl_rank": 1768,
+  "translation": "широко",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "minimum",
+  "ngsl_rank": 1769,
+  "translation": "минимум / минимальный",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "northern",
+  "ngsl_rank": 1770,
+  "translation": "северный",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "estate",
+  "ngsl_rank": 1771,
+  "translation": "имущество / поместье",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "equally",
+  "ngsl_rank": 1772,
+  "translation": "равно / одинаково",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "resolve",
+  "ngsl_rank": 1777,
+  "translation": "решать / разрешать",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "critic",
+  "ngsl_rank": 1778,
+  "translation": "критик",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "permanent",
+  "ngsl_rank": 1782,
+  "translation": "постоянный / неизменный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "urge",
+  "ngsl_rank": 1786,
+  "translation": "побуждать / настоятельно призывать",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "enemy",
+  "ngsl_rank": 1787,
+  "translation": "враг",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "appoint",
+  "ngsl_rank": 1788,
+  "translation": "назначать",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "talent",
+  "ngsl_rank": 1790,
+  "translation": "талант",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "phrase",
+  "ngsl_rank": 1795,
+  "translation": "фраза / выражение",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "pilot",
+  "ngsl_rank": 1796,
+  "translation": "пилот / летчик",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "stable",
+  "ngsl_rank": 1797,
+  "translation": "стабильный / устойчивый",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "merely",
+  "ngsl_rank": 1798,
+  "translation": "просто / лишь",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "resolution",
+  "ngsl_rank": 1799,
+  "translation": "решение / резолюция",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "communicate",
+  "ngsl_rank": 1800,
+  "translation": "общаться / сообщать",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "exhibition",
+  "ngsl_rank": 1803,
+  "translation": "выставка",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "producer",
+  "ngsl_rank": 1804,
+  "translation": "производитель / продюсер",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "regional",
+  "ngsl_rank": 1805,
+  "translation": "региональный",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "immediate",
+  "ngsl_rank": 1806,
+  "translation": "немедленный / непосредственный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "incident",
+  "ngsl_rank": 1807,
+  "translation": "инцидент / случай",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "childhood",
+  "ngsl_rank": 1808,
+  "translation": "детство",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "draft",
+  "ngsl_rank": 1809,
+  "translation": "черновик / проект",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "accompany",
+  "ngsl_rank": 1811,
+  "translation": "сопровождать",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "politician",
+  "ngsl_rank": 1812,
+  "translation": "политик",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "seed",
+  "ngsl_rank": 1815,
+  "translation": "семя",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "temporary",
+  "ngsl_rank": 1820,
+  "translation": "временный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "liberal",
+  "ngsl_rank": 1821,
+  "translation": "либеральный / щедрый",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "qualify",
+  "ngsl_rank": 1823,
+  "translation": "квалифицироваться / соответствовать требованиям",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "competitive",
+  "ngsl_rank": 1824,
+  "translation": "конкурентоспособный",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "truly",
+  "ngsl_rank": 1825,
+  "translation": "по-настоящему / искренне",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "disk",
+  "ngsl_rank": 1829,
+  "translation": "диск / пластинка",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "core",
+  "ngsl_rank": 1830,
+  "translation": "ядро / суть",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "emotional",
+  "ngsl_rank": 1831,
+  "translation": "эмоциональный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "aircraft",
+  "ngsl_rank": 1832,
+  "translation": "воздушное судно / самолет",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "self",
+  "ngsl_rank": 1833,
+  "translation": "сам / личность",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "metal",
+  "ngsl_rank": 1834,
+  "translation": "металл",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "existence",
+  "ngsl_rank": 1835,
+  "translation": "существование",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "bone",
+  "ngsl_rank": 1836,
+  "translation": "кость",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "panel",
+  "ngsl_rank": 1837,
+  "translation": "панель / комиссия",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "prime",
+  "ngsl_rank": 1838,
+  "translation": "основной / главный",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "maximum",
+  "ngsl_rank": 1841,
+  "translation": "максимум",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "effectively",
+  "ngsl_rank": 1842,
+  "translation": "эффективно",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "elsewhere",
+  "ngsl_rank": 1843,
+  "translation": "в другом месте",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "diet",
+  "ngsl_rank": 1847,
+  "translation": "диета / рацион",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "motion",
+  "ngsl_rank": 1848,
+  "translation": "движение / ходатайство",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "complicate",
+  "ngsl_rank": 1851,
+  "translation": "усложнять",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "disappoint",
+  "ngsl_rank": 1853,
+  "translation": "разочаровывать",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "freeze",
+  "ngsl_rank": 1856,
+  "translation": "замерзать / замораживать",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "extreme",
+  "ngsl_rank": 1857,
+  "translation": "крайний / экстремальный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "passage",
+  "ngsl_rank": 1858,
+  "translation": "проход / отрывок",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "reputation",
+  "ngsl_rank": 1859,
+  "translation": "репутация",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "forth",
+  "ngsl_rank": 1860,
+  "translation": "вперед / далее",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "negotiation",
+  "ngsl_rank": 1861,
+  "translation": "переговоры",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "democracy",
+  "ngsl_rank": 1864,
+  "translation": "демократия",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "crash",
+  "ngsl_rank": 1867,
+  "translation": "авария / крах / грохот",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "observation",
+  "ngsl_rank": 1868,
+  "translation": "наблюдение",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "concentration",
+  "ngsl_rank": 1870,
+  "translation": "концентрация",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "unusual",
+  "ngsl_rank": 1873,
+  "translation": "необычный",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "classic",
+  "ngsl_rank": 1875,
+  "translation": "классический",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "interaction",
+  "ngsl_rank": 1877,
+  "translation": "взаимодействие",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "dish",
+  "ngsl_rank": 1882,
+  "translation": "блюдо / посуда",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "soul",
+  "ngsl_rank": 1884,
+  "translation": "душа",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "defeat",
+  "ngsl_rank": 1886,
+  "translation": "поражение / побеждать",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "presidential",
+  "ngsl_rank": 1887,
+  "translation": "президентский",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "perfectly",
+  "ngsl_rank": 1888,
+  "translation": "идеально",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "emergency",
+  "ngsl_rank": 1891,
+  "translation": "чрезвычайная ситуация",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "educational",
+  "ngsl_rank": 1892,
+  "translation": "образовательный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "distinguish",
+  "ngsl_rank": 1893,
+  "translation": "различать",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "nearby",
+  "ngsl_rank": 1895,
+  "translation": "поблизости",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "manufacturer",
+  "ngsl_rank": 1896,
+  "translation": "производитель",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "slide",
+  "ngsl_rank": 1897,
+  "translation": "скользить / горка",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "valuable",
+  "ngsl_rank": 1898,
+  "translation": "ценный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "personally",
+  "ngsl_rank": 1899,
+  "translation": "лично",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "breast",
+  "ngsl_rank": 1900,
+  "translation": "грудь (женская)",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "accommodation",
+  "ngsl_rank": 1903,
+  "translation": "жилье / размещение",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "reporter",
+  "ngsl_rank": 1905,
+  "translation": "репортер / корреспондент",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "climate",
+  "ngsl_rank": 1906,
+  "translation": "климат",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "exception",
+  "ngsl_rank": 1908,
+  "translation": "исключение",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "corporation",
+  "ngsl_rank": 1909,
+  "translation": "корпорация",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "chip",
+  "ngsl_rank": 1910,
+  "translation": "чип / осколок / фишка",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "winner",
+  "ngsl_rank": 1911,
+  "translation": "победитель",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "partly",
+  "ngsl_rank": 1916,
+  "translation": "частично",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "urban",
+  "ngsl_rank": 1918,
+  "translation": "городской",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "southern",
+  "ngsl_rank": 1920,
+  "translation": "южный",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "output",
+  "ngsl_rank": 1921,
+  "translation": "выпуск / продукция / выход",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "beauty",
+  "ngsl_rank": 1922,
+  "translation": "красота",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "massive",
+  "ngsl_rank": 1923,
+  "translation": "массивный / огромный",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "install",
+  "ngsl_rank": 1924,
+  "translation": "устанавливать",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "calculate",
+  "ngsl_rank": 1925,
+  "translation": "вычислять / рассчитывать",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "mathematics",
+  "ngsl_rank": 1927,
+  "translation": "математика",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "upper",
+  "ngsl_rank": 1928,
+  "translation": "верхний",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "creation",
+  "ngsl_rank": 1929,
+  "translation": "создание / творение",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "outline",
+  "ngsl_rank": 1931,
+  "translation": "план / контур / очертание",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "split",
+  "ngsl_rank": 1936,
+  "translation": "разделять / раскалывать",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "swing",
+  "ngsl_rank": 1937,
+  "translation": "качаться / размах",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "journalist",
+  "ngsl_rank": 1939,
+  "translation": "журналист",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "advertisement",
+  "ngsl_rank": 1941,
+  "translation": "реклама",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "originally",
+  "ngsl_rank": 1943,
+  "translation": "первоначально",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "aside",
+  "ngsl_rank": 1944,
+  "translation": "в стороне / в сторону",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "comfort",
+  "ngsl_rank": 1945,
+  "translation": "комфорт / утешение",
+  "level": "A2",
+  "polysemous": true
+ },
+ {
+  "w": "secondly",
+  "ngsl_rank": 1946,
+  "translation": "во-вторых",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "severe",
+  "ngsl_rank": 1947,
+  "translation": "суровый / тяжелый",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "gene",
+  "ngsl_rank": 1948,
+  "translation": "ген",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "plot",
+  "ngsl_rank": 1951,
+  "translation": "сюжет / участок / заговор",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "primarily",
+  "ngsl_rank": 1954,
+  "translation": "прежде всего",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "criticism",
+  "ngsl_rank": 1956,
+  "translation": "критика",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "convention",
+  "ngsl_rank": 1957,
+  "translation": "соглашение / съезд / условность",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "bet",
+  "ngsl_rank": 1958,
+  "translation": "пари / ставка",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "plain",
+  "ngsl_rank": 1961,
+  "translation": "простой / ясный / равнина",
+  "level": "B1",
+  "polysemous": true
+ },
+ {
+  "w": "volunteer",
+  "ngsl_rank": 1962,
+  "translation": "доброволец",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "rural",
+  "ngsl_rank": 1963,
+  "translation": "сельский",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "examination",
+  "ngsl_rank": 1966,
+  "translation": "экзамен / обследование / осмотр",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "rapidly",
+  "ngsl_rank": 1968,
+  "translation": "стремительно",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "revolution",
+  "ngsl_rank": 1970,
+  "translation": "революция",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "delight",
+  "ngsl_rank": 1971,
+  "translation": "восторг / радость",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "premise",
+  "ngsl_rank": 1973,
+  "translation": "предпосылка / помещение",
+  "level": "C1",
+  "polysemous": true
+ },
+ {
+  "w": "lean",
+  "ngsl_rank": 1974,
+  "translation": "наклоняться / худой",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "differ",
+  "ngsl_rank": 1976,
+  "translation": "отличаться",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "protein",
+  "ngsl_rank": 1978,
+  "translation": "белок",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "intellectual",
+  "ngsl_rank": 1981,
+  "translation": "интеллектуальный",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "unemployment",
+  "ngsl_rank": 1984,
+  "translation": "безработица",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "wheel",
+  "ngsl_rank": 1985,
+  "translation": "колесо / руль",
+  "level": "A1",
+  "polysemous": false
+ },
+ {
+  "w": "crop",
+  "ngsl_rank": 1986,
+  "translation": "урожай / посев",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "minority",
+  "ngsl_rank": 1987,
+  "translation": "меньшинство",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "origin",
+  "ngsl_rank": 1988,
+  "translation": "происхождение / источник",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "interpretation",
+  "ngsl_rank": 1989,
+  "translation": "интерпретация / толкование",
+  "level": "B2",
+  "polysemous": false
+ },
+ {
+  "w": "gentleman",
+  "ngsl_rank": 1990,
+  "translation": "джентльмен / господин",
+  "level": "A2",
+  "polysemous": false
+ },
+ {
+  "w": "drama",
+  "ngsl_rank": 1991,
+  "translation": "драма / театральное искусство",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "landscape",
+  "ngsl_rank": 1992,
+  "translation": "пейзаж / ландшафт",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "educate",
+  "ngsl_rank": 1993,
+  "translation": "обучать / просвещать",
+  "level": "B1",
+  "polysemous": false
+ },
+ {
+  "w": "exhibit",
+  "ngsl_rank": 1996,
+  "translation": "выставлять / экспонат",
+  "level": "B2",
+  "polysemous": true
+ },
+ {
+  "w": "hunt",
+  "ngsl_rank": 1998,
+  "translation": "охота / охотиться",
+  "level": "A2",
+  "polysemous": false
+ }
+]

@@ -141,6 +141,12 @@ class Word(Base):
     # stream instead. Not the same as "spelled with a space" — `post office` is
     # an ordinary word.
     is_phrase: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    # Deliberately withheld from teaching — vulgar, interjections, anything the
+    # owner decided should not be a card. Separate from `is_function_word`,
+    # which means "grammar teaches this instead": these are not taught anywhere.
+    # A flag rather than a delete, so the decision is visible and reversible and
+    # nobody's progress on the word disappears with the row.
+    is_excluded: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
     # Coarse part of speech ('verb' | 'noun' | 'adj'), used to pick quiz
     # distractors of the same kind. Nullable: not every word can be tagged.
     part_of_speech: Mapped[str | None] = mapped_column(String(16), nullable=True)
