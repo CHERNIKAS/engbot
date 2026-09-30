@@ -674,15 +674,7 @@ class PushService:
                     await self._save(user.id, state)
                     return False
                 inflight["attempts"] = attempts
-                new_msg_id, _o, _c = await self._send_card(
-                    user,
-                    inflight.get("kind", "word"),
-                    int(inflight.get("id", inflight.get("uw_id", 0))),
-                    options_override=inflight.get("options"),
-                    prefix=nudge_line(attempts),
-                    card_type=inflight.get("ctype", CARD_RECOGNITION),
-                    attempt=attempts,
-                )
+                new_msg_id = await self._renudge(user, inflight, attempts, now_ts)
                 if new_msg_id:
                     old_msg_id = inflight.get("msg_id")
                     if old_msg_id:
@@ -925,6 +917,73 @@ class PushService:
             "retry_ts": now_ts + _retry_after(1),
         }
 
+    # Which sender owns each inflight kind. A nudge has to go through the same
+    # one that produced the card: the id in `inflight` means something only to
+    # that sender.
+    _WORD_KINDS = frozenset({"word", "grammar"})
+
+    async def _renudge(
+        self, user: User, inflight: dict, attempts: int, now_ts: float
+    ) -> int | None:
+        """Re-send the card in flight, in its own shape.
+
+        This used to call `_send_card` for every kind, which builds a word card
+        for anything but grammar — so a constructor nudge looked up its phrase
+        id in `user_words` and rendered a stranger's word. Each kind now goes
+        back through the sender that made it.
+        """
+        kind = inflight.get("kind", "word")
+        if kind in self._WORD_KINDS:
+            msg_id, _options, _correct = await self._send_card(
+                user,
+                kind,
+                int(inflight.get("id", inflight.get("uw_id", 0))),
+                options_override=inflight.get("options"),
+                prefix=nudge_line(attempts),
+                card_type=inflight.get("ctype", CARD_RECOGNITION),
+                attempt=attempts,
+            )
+            return msg_id
+        if kind == "phrase":
+            return await self._renudge_constructor(user, inflight, attempts, now_ts)
+        # Triage and the topic check are offers, not questions: re-sending the
+        # same screenful adds nothing the learner has not already declined, and
+        # both are dropped after the usual number of attempts anyway. Keeping the
+        # card as it is costs nothing and avoids inventing a second render for a
+        # screen nobody asked twice for.
+        log.info("push_nudge_skipped", uid=user.id, kind=kind, attempt=attempts)
+        return inflight.get("msg_id")
+
+    async def _renudge_constructor(
+        self, user: User, inflight: dict, attempts: int, now_ts: float
+    ) -> int | None:
+        """The construction card again, with the pieces already tapped intact."""
+        phrase_id = int(inflight.get("id", 0))
+        topic_id = int(inflight.get("topic_id", 0))
+        if not phrase_id or not topic_id:
+            log.error("push_nudge_constructor_incomplete", uid=user.id, inflight_keys=sorted(inflight))
+            return None
+        view = await ConstructorService(self._session).rebuild_card(
+            user.id, topic_id, phrase_id, ctor.CardState.from_dict(inflight.get("state") or {})
+        )
+        if view is None:
+            return None
+        kb = (
+            constructor_typing_kb(view.phrase_id)
+            if view.typing
+            else constructor_slots_kb(view.options, view.phrase_id, view.can_undo)
+        )
+        return await self._raw_send(
+            user.telegram_id,
+            f"{nudge_line(attempts)}\n\n{view.text}",
+            kb,
+            uid=user.id,
+            kind="constructor",
+            obj_id=view.phrase_id,
+            attempt=attempts,
+            reason="nudge",
+        )
+
     async def _send_card(
         self,
         user: User,
@@ -939,13 +998,22 @@ class PushService:
         correct). On a re-push pass options_override so the button order matches
         the stored inflight (otherwise a re-shuffle would break answer checking);
         `card_type` is likewise carried over so the prompt stays stable."""
-        built = (
-            await self._build_grammar(item_id)
-            if kind == "grammar"
-            else await self._build_card(
+        # Only two kinds are word-shaped. Everything else has its own sender and
+        # must not arrive here: `item_id` is then an id from another table, and
+        # `_build_card` would look it up in `user_words` — where the same number
+        # is somebody else's word. That is exactly what happened with the
+        # constructor: nudges for phrase 1 rendered `borrow`, user 1's word, to
+        # user 2. Refusing loudly rather than guessing is the same lesson the
+        # catch-all in `_serve` taught.
+        if kind == "grammar":
+            built = await self._build_grammar(item_id)
+        elif kind == "word":
+            built = await self._build_card(
                 user.id, item_id, card_type=card_type, user_level=user.level
             )
-        )
+        else:
+            log.error("push_card_wrong_sender", uid=user.id, kind=kind, id=item_id)
+            return None, None, None
         if built is None:
             return None, None, None
         text = built[0]
@@ -1128,7 +1196,11 @@ class PushService:
         card_type: str = CARD_RECOGNITION,
         user_level: str | None = None,
     ) -> tuple[str, list[str], str, str] | None:
-        pair = await self._uw.get_with_word(uw_id)
+        # Scoped by owner even though the routing fix above should make a
+        # foreign id impossible: an id that means something in another table is
+        # how a stranger's word got rendered in the first place, and a defence
+        # that depends on one call site staying correct is not a defence.
+        pair = await self._uw.get_with_word(uw_id, owner_id=user_id)
         if pair is None:
             return None
         uw, word = pair
@@ -1486,7 +1558,7 @@ class PushService:
         if not correct:
             # One extra read, and only on a miss: the checker needs the meaning
             # to tell a valid synonym from a different word.
-            pair = await self._uw.get_with_word(iid)
+            pair = await self._uw.get_with_word(iid, owner_id=user.id)
             translation = ""
             if pair is not None:
                 uw_row, word_row = pair
@@ -1635,7 +1707,7 @@ class PushService:
         with the recap block for the reveal — built here because this is the
         only place holding the word both before and after the review.
         """
-        pair = await self._uw.get_with_word(uw_id)
+        pair = await self._uw.get_with_word(uw_id, owner_id=user.id)
         if pair is None:
             return AnswerOutcome()
         uw, word = pair

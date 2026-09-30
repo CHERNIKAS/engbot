@@ -83,6 +83,27 @@ class ConstructorService:
         )
         return view, phrase, topic
 
+    async def rebuild_card(
+        self, user_id: int, topic_id: int, phrase_id: int, state: c.CardState
+    ) -> CardView | None:
+        """The same card again, with the pieces already tapped still in place.
+
+        Used by the nudge path. It takes the phrase and topic by id instead of
+        choosing them, because a nudge must re-send what is in flight — picking
+        again would quietly swap the sentence under the learner mid-card.
+        """
+        topic = await self._session.get(GrammarTopic, topic_id)
+        phrase = await self._repo.get_phrase(phrase_id)
+        if topic is None or phrase is None or phrase.topic_id != topic_id:
+            return None
+        row = await self._repo.state(user_id, topic_id)
+        return self._render(
+            topic=topic,
+            phrase=phrase,
+            score=float(row.score) if row else 0.0,
+            state=state,
+        )
+
     def _render(
         self,
         *,
