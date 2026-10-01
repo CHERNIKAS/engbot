@@ -306,22 +306,22 @@ REMINDER_STREAK = "🔥 Streak {streak} дн. под угрозой! Позан�
 REMINDER_DAILY = "🎯 Сегодня {studied}/{goal}. Закроем цель? Осталось {left}."
 REMINDER_INACTIVE = "👋 Давно не виделись. Вернись и повтори слова — даже 5 минут в день работают."
 
-PUSH_CARD = "🔔 Что значит <b>{word}</b>?"
-PUSH_CARD_REVERSE = "🔤 Как сказать по-английски «<b>{translation}</b>»?"
+PUSH_CARD = "Что значит <b>{word}</b>?"
+PUSH_CARD_REVERSE = "Как сказать по-английски «<b>{translation}</b>»?"
 # Typed production for words a cloze can't reach — phrasebook entries, and
 # anything still lacking a maskable example. Same question as the reverse card,
 # but written out instead of picked from four options.
 PUSH_CARD_TYPE_IN = (
-    "✍️ Напиши по-английски:\n"
+    "Напиши по-английски:\n"
     "<b>{translation}</b>\n\n"
     "Ответь сообщением 👇"
 )
 PUSH_CARD_CLOZE = (
-    "✍️ Впиши пропущенное слово (<b>{translation}</b>):\n\n"
+    "Впиши пропущенное слово (<b>{translation}</b>):\n\n"
     "{sentence}\n\n"
     "<i>Ответь сообщением 👇</i>"
 )
-PUSH_GRAMMAR_CARD = "📖 Выбери верную форму:\n\n{prompt}"
+PUSH_GRAMMAR_CARD = "Выбери верную форму:\n\n{prompt}"
 PUSH_RULE_CARD = "📖 <b>{title}</b>\n\n{rule}"
 PUSH_RULE_OK = "👍 Поехали — лови упражнения."
 PUSH_ANSWER_CORRECT = "✅ Верно! 🎉"

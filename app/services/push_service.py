@@ -793,9 +793,9 @@ class PushService:
     ) -> bool:
         """Send the card this slot calls for. False when it cannot be filled."""
         if kind == plan_rules.TRIAGE:
-            return await self._send_triage(user, state, now_ts)
+            return await self._send_triage(user, state, now_ts, plan_done=done, plan_total=total)
         if kind == plan_rules.TEST:
-            return await self._send_test(user, state, now_ts)
+            return await self._send_test(user, state, now_ts, plan_done=done, plan_total=total)
         if kind == plan_rules.GRAMMAR:
             return await self._send_constructor(
                 user, state, now_ts, plan_done=done, plan_total=total
@@ -831,7 +831,10 @@ class PushService:
             return False
         uw, word = pick
         ctype = self._card_type(uw, word, user.level)
-        msg_id, options, correct = await self._send_card(user, "word", uw.id, card_type=ctype)
+        msg_id, options, correct = await self._send_card(
+            user, "word", uw.id, card_type=ctype,
+            plan_kind=kind, plan_done=done, plan_total=total,
+        )
         if not msg_id:
             return False
         inflight = self._inflight("word", uw.id, options, correct, now_ts, msg_id, ctype=ctype)
@@ -993,9 +996,19 @@ class PushService:
         prefix: str = "",
         card_type: str = CARD_RECOGNITION,
         attempt: int = 0,
+        plan_kind: str = "",
+        plan_done: int = 0,
+        plan_total: int = 0,
     ) -> tuple[int | None, list[str] | None, str | None]:
         """Build and send a card (word or grammar). Returns (msg_id, options,
-        correct). On a re-push pass options_override so the button order matches
+        correct).
+
+        `plan_kind` / `plan_done` / `plan_total` put the card in the day. Only
+        the constructor used to show them, so a word card read as a ping from
+        nowhere while a grammar card looked like part of a lesson. The counters
+        are passed in, never read here: this method must not touch push state —
+        see `test_card_senders_do_not_load_their_own_push_state` for the bug
+        that rule comes from. On a re-push pass options_override so the button order matches
         the stored inflight (otherwise a re-shuffle would break answer checking);
         `card_type` is likewise carried over so the prompt stays stable."""
         # Only two kinds are word-shaped. Everything else has its own sender and
@@ -1019,6 +1032,8 @@ class PushService:
         text = built[0]
         options = options_override or built[1]
         correct = built[2]
+        if plan_kind:
+            text = f"{plan_rules.card_head(plan_kind, plan_done, plan_total)}\n\n{text}"
         if prefix:
             text = f"{prefix}\n\n{text}"
         if kind == "grammar":
@@ -1790,7 +1805,9 @@ class PushService:
     # Claiming to know a word is not proof, and being asked about it in a month
     # is the cheapest way to find out otherwise.
 
-    async def _send_triage(self, user: User, state: dict, now_ts: float) -> bool:
+    async def _send_triage(
+        self, user: User, state: dict, now_ts: float, plan_done: int = 0, plan_total: int = 0
+    ) -> bool:
         """Offer the next screenful of the current theme. False if there is
         nothing to offer — the caller ticks the slot rather than holding the
         day open for a screen that will never come.
@@ -1814,7 +1831,8 @@ class PushService:
         ]
         msg_id = await self._raw_send(
             user.telegram_id,
-            triage.render(theme.title, offered=len(rows), known=0),
+            f"{plan_rules.card_head(plan_rules.TRIAGE, plan_done, plan_total, extra=theme.title)}\n\n"
+            f"{triage.render(theme.title, offered=len(rows), known=0)}",
             triage_kb(rows, TRIAGE_DONE),
         )
         if msg_id is None:
@@ -1938,7 +1956,9 @@ class PushService:
     # One message for the whole thing: the offer becomes question one, each
     # answer replaces it with the next, and the last becomes the report.
 
-    async def _send_test(self, user: User, state: dict, now_ts: float) -> bool:
+    async def _send_test(
+        self, user: User, state: dict, now_ts: float, plan_done: int = 0, plan_total: int = 0
+    ) -> bool:
         """Offer a due check. False when none is due.
 
         Writes into the caller's `state`; see `_send_constructor`."""
@@ -1955,7 +1975,8 @@ class PushService:
 
         msg_id = await self._raw_send(
             user.telegram_id,
-            topic_test.render_offer(topic.title),
+            f"{plan_rules.card_head(plan_rules.TEST, plan_done, plan_total, extra=topic.title)}\n\n"
+            f"{topic_test.render_offer(topic.title)}",
             test_offer_kb(topic.id),
         )
         if msg_id is None:

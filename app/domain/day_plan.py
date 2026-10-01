@@ -203,3 +203,35 @@ def render(counts: dict[str, int], done: int | None = None) -> str:
     else:
         parts.append("<i>Можно растянуть на весь день, можно закрыть за раз.</i>")
     return "\n".join(parts)
+
+
+# What a card says about its place in the day, above everything else on it.
+#
+# Only the constructor used to carry this, so a word card arrived as a ping from
+# nowhere while a grammar card looked like part of a lesson. One function builds
+# it for every kind, because two of them would drift and the learner would be
+# told two different things about the same day.
+SLOT_HEADS: dict[str, str] = {
+    REPEAT: "🔁 Повтор",
+    NEW_WORD: "🆕 Новое слово",
+    NEW_THEME_WORD: "🆕 Слово по теме",
+    PHRASE: "💬 Фраза",
+    GRAMMAR: "📖 Грамматика",
+    TRIAGE: "🗂 Разбор темы",
+    TEST: "📝 Проверка",
+}
+
+
+def card_head(kind: str, done: int = 0, total: int = 0, extra: str = "") -> str:
+    """The one-line header: what this card is, and where it sits in the day.
+
+    `extra` is for whatever only one kind has — the constructor's topic title
+    and mark. Absent counters render the label alone rather than «0 / 0», which
+    would read as a plan that lost its contents.
+    """
+    parts = [SLOT_HEADS.get(kind, "🔔 Карточка")]
+    if extra:
+        parts.append(extra)
+    if total > 0:
+        parts.append(f"{done} / {total}")
+    return " · ".join(parts)

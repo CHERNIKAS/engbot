@@ -71,8 +71,9 @@ def render_offer(topic_title: str) -> str:
     when it lands mid-commute, and the learner's guess at how long it takes is
     what decides whether they start it at all.
     """
+    # The topic name rides in the card head; repeating it here under the same
+    # icon read as a formatting slip.
     return (
-        f"📝 <b>Проверка: {html.escape(topic_title)}</b>\n\n"
         f"{TEST_SIZE} заданий подряд, одна попытка на каждое, подсказок не будет.\n"
         "Примерно пять минут.\n\n"
         "<i>Не сейчас — придёт завтра.</i>"

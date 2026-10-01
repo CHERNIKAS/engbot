@@ -126,3 +126,63 @@ def test_serve_hands_its_state_to_every_sender():
     src = _source(PushService._serve)
     for call in ("_send_triage(user, state", "_send_test(user, state", "_send_constructor(\n"):
         assert call in src, call
+
+
+def test_every_card_sender_takes_the_day_counters():
+    """A card has to say where it sits in the day, and only the constructor used
+    to. Passing counters through four senders is the operation that produced the
+    spam bug once already — state handed to the wrong place — so this asserts
+    every sender accepts them rather than one of them being retrofitted and the
+    rest quietly left as pings from nowhere.
+    """
+    import inspect
+
+    for fn in (
+        PushService._send_card,
+        PushService._send_constructor,
+        PushService._send_triage,
+        PushService._send_test,
+    ):
+        params = inspect.signature(fn).parameters
+        assert "plan_done" in params, fn.__name__
+        assert "plan_total" in params, fn.__name__
+
+
+def test_the_counters_are_arguments_never_looked_up():
+    """The counters must arrive as arguments. A sender that fetches the plan
+    itself would be reading state mid-send — the same shape as loading its own
+    push state, which is what wiped the inflight every tick.
+    """
+    for fn in (
+        PushService._send_card,
+        PushService._send_triage,
+        PushService._send_test,
+    ):
+        src = _source(fn)
+        assert "ensure_plan" not in src, fn.__name__
+        assert "open_plan" not in src, fn.__name__
+        assert "DayPlanService(" not in src, fn.__name__
+
+
+def test_the_head_is_built_in_one_place():
+    """Two renderers for the header would drift, and the learner would be told
+    two different things about the same day."""
+    from app.domain import day_plan as rules
+
+    assert rules.card_head(rules.REPEAT, 7, 16) == "🔁 Повтор · 7 / 16"
+    # No counters yet: the label alone, not «0 / 0», which reads as a plan that
+    # lost its contents.
+    assert rules.card_head(rules.REPEAT) == "🔁 Повтор"
+    assert "Present Simple" in rules.card_head(rules.GRAMMAR, 1, 2, extra="Present Simple · 3.1")
+
+
+def test_every_slot_kind_has_a_head():
+    """A kind added to the plan without a label would render «🔔 Карточка» and
+    nobody would notice until a learner saw it."""
+    from app.domain import day_plan as rules
+
+    for kind in (
+        rules.REPEAT, rules.GRAMMAR, rules.PHRASE, rules.NEW_WORD,
+        rules.NEW_THEME_WORD, rules.TRIAGE, rules.TEST,
+    ):
+        assert kind in rules.SLOT_HEADS, kind

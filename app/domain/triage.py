@@ -68,9 +68,12 @@ def button_label(writing: str, translation: str, marked: bool) -> str:
 
 def render(theme_title: str, offered: int, known: int) -> str:
     """The batch screen's text. The buttons carry the words; this carries only
-    what the screen is for, because the keyboard is already tall."""
+    what the screen is for, because the keyboard is already tall.
+
+    The theme name is not repeated here — it rides in the card head now, and
+    printing it twice with the same icon read as a formatting slip.
+    """
     return (
-        f"🗂 <b>{html.escape(theme_title)}</b>\n\n"
         "Отметь слова, которые уже знаешь — их учить не будем.\n"
         f"<i>Отмечено {known} из {offered}.</i>"
     )
