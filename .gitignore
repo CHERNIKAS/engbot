@@ -3,8 +3,13 @@ __pycache__/
 *.egg-info/
 .venv/
 venv/
-.env
-.env.local
+.env*
+# Everything that looks like an env file is ignored, and the sample is let back
+# in explicitly. The previous list named `.env` and `.env.local` one by one, and
+# a `.env.bak-…` written during a config change sat outside it — one `git add .`
+# from putting the bot token and the database password into the history, where
+# deleting the file does not remove them.
+!.env.example
 *.log
 .idea/
 .vscode/
