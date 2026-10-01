@@ -80,6 +80,11 @@ BAND2_FILE = (
 )
 
 
+# Matching is on `normalized_word`, never on `lower(writing)`. It already holds
+# the lower-cased form (verified: 2273 of 2273 rows agree), it is indexed, and
+# it keeps a bind out of `lower()` — which is what asyncpg refuses when the same
+# bind also feeds a varchar column.
+
 # ---- ranks held by the wrong word ----------------------------------------- #
 #
 # A derived form was given its headword's corpus rank: `thought` carries 47,
@@ -159,7 +164,7 @@ def upgrade() -> None:
         bind.execute(
             sa.text(
                 "UPDATE words SET ngsl_rank = :rank"
-                " WHERE track = 'en' AND lower(writing) = :w AND ngsl_rank IS NULL"
+                " WHERE track = 'en' AND normalized_word = :w AND ngsl_rank IS NULL"
             ),
             {"rank": rank, "w": writing},
         )
@@ -169,7 +174,7 @@ def upgrade() -> None:
         bind.execute(
             sa.text(
                 "UPDATE words SET ngsl_rank = NULL"
-                " WHERE track = 'en' AND lower(writing) = :w AND ngsl_rank = :rank"
+                " WHERE track = 'en' AND normalized_word = :w AND ngsl_rank = :rank"
             ),
             {"w": derived, "rank": rank},
         )
@@ -177,7 +182,7 @@ def upgrade() -> None:
             bind.execute(
                 sa.text(
                     "UPDATE words SET freq_rank = :freq"
-                    " WHERE track = 'en' AND lower(writing) = :w AND freq_rank IS NULL"
+                    " WHERE track = 'en' AND normalized_word = :w AND freq_rank IS NULL"
                 ),
                 {"freq": freq, "w": derived},
             )
@@ -185,20 +190,20 @@ def upgrade() -> None:
     bind.execute(
         sa.text(
             "UPDATE words SET is_inflection = true"
-            " WHERE track = 'en' AND lower(writing) = ANY(:ws)"
+            " WHERE track = 'en' AND normalized_word = ANY(:ws)"
         ),
         {"ws": INFLECTIONS},
     )
     bind.execute(
         sa.text(
-            "UPDATE words SET is_excluded = true WHERE track = 'en' AND lower(writing) = ANY(:ws)"
+            "UPDATE words SET is_excluded = true WHERE track = 'en' AND normalized_word = ANY(:ws)"
         ),
         {"ws": EXCLUDED},
     )
     bind.execute(
         sa.text(
             "UPDATE words SET translation = :new"
-            " WHERE track = 'en' AND lower(writing) = 'thought'"
+            " WHERE track = 'en' AND normalized_word = 'thought'"
         ),
         {"new": THOUGHT_NEW},
     )
@@ -211,9 +216,15 @@ def upgrade() -> None:
             sa.text(
                 "INSERT INTO words (track, writing, normalized_word, translation, level,"
                 " ngsl_rank, polysemous, is_function_word, is_inflection, is_phrase, is_excluded)"
-                " SELECT 'en', :w, :norm, :tr, :lvl, :rank, :poly, false, false, false, false"
-                " WHERE NOT EXISTS ("
-                "   SELECT 1 FROM words WHERE track = 'en' AND lower(writing) = :norm)"
+                " VALUES ('en', :w, :norm, :tr, :lvl, :rank, :poly, false, false, false, false)"
+                # Skipping duplicates via the unique index, not via
+                # `WHERE NOT EXISTS (… lower(writing) = :norm)`. That form reuses
+                # one bind both as a varchar column value and inside lower(),
+                # and asyncpg refuses it: «inconsistent types deduced for
+                # parameter». It is the same trap 0047 hit; a rehearsal here
+                # failed on the very first word, which would have aborted the
+                # whole deploy on migration.
+                " ON CONFLICT (track, normalized_word) DO NOTHING"
             ),
             {
                 "w": row["w"],
@@ -232,7 +243,7 @@ def downgrade() -> None:
         bind.execute(
             sa.text(
                 "UPDATE words SET ngsl_rank = :rank"
-                " WHERE track = 'en' AND lower(writing) = :w AND ngsl_rank IS NULL"
+                " WHERE track = 'en' AND normalized_word = :w AND ngsl_rank IS NULL"
             ),
             {"w": derived, "rank": rank},
         )
@@ -241,7 +252,7 @@ def downgrade() -> None:
     # learning keeps its progress, and deleting it would take that with it.
     bind.execute(
         sa.text(
-            "DELETE FROM words WHERE track = 'en' AND lower(writing) = ANY(:ws)"
+            "DELETE FROM words WHERE track = 'en' AND normalized_word = ANY(:ws)"
             " AND id NOT IN (SELECT word_id FROM user_words)"
         ),
         {"ws": [r["w"].lower() for r in rows]},
@@ -249,20 +260,20 @@ def downgrade() -> None:
     bind.execute(
         sa.text(
             "UPDATE words SET translation = :old"
-            " WHERE track = 'en' AND lower(writing) = 'thought'"
+            " WHERE track = 'en' AND normalized_word = 'thought'"
         ),
         {"old": THOUGHT_OLD},
     )
     bind.execute(
         sa.text(
             "UPDATE words SET is_inflection = false"
-            " WHERE track = 'en' AND lower(writing) = ANY(:ws)"
+            " WHERE track = 'en' AND normalized_word = ANY(:ws)"
         ),
         {"ws": INFLECTIONS},
     )
     for writing, _rank in MISSING_RANK:
         bind.execute(
-            sa.text("UPDATE words SET ngsl_rank = NULL WHERE track = 'en' AND lower(writing) = :w"),
+            sa.text("UPDATE words SET ngsl_rank = NULL WHERE track = 'en' AND normalized_word = :w"),
             {"w": writing},
         )
     op.drop_column("words", "is_excluded")

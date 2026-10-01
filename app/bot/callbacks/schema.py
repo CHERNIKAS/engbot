@@ -64,6 +64,17 @@ class PacksCB(CallbackData, prefix="pk"):
     v: str = ""  # screen version — checked on rem_ok (destructive removal)
 
 
+# Pack admin. Hidden behind ADMIN_IDS; not reachable from the main menu.
+class PackAdminCB(CallbackData, prefix="pa"):
+    # Categories travel as an index into `KNOWN_CATEGORIES`, never as text: a
+    # name is user-supplied length inside a 64-byte budget, and a colon in one
+    # would break aiogram's field separator. Same reason the constructor
+    # addresses its options by index.
+    action: str  # cats | list | open | toggle | up | down | rename | cat | cat_set | reset
+    cat: int = -1
+    pack_id: int = 0
+
+
 # Study session.
 class StudyCB(CallbackData, prefix="st"):
     action: str  # menu | start | show_translation | answer | example | skip | delete | finish

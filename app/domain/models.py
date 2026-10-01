@@ -231,6 +231,11 @@ class Pack(Base):
     position: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     words_count: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
+    # Who may edit this pack: "migration" or "admin". A pack edited through the
+    # admin moves to "admin" and migrations stop touching it — otherwise a hand
+    # fix disappears on the next deploy, or a shipped fix is reverted by a stale
+    # hand edit, and neither leaves a trace.
+    origin: Mapped[str] = mapped_column(String(16), default="migration", nullable=False)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False
     )

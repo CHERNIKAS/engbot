@@ -92,6 +92,20 @@ class Settings(BaseSettings):
     # Pre-shared password required to use the bot. Empty string disables gating.
     access_password: str = Field("", alias="ACCESS_PASSWORD")
 
+    # Telegram ids allowed into the pack admin, comma-separated. Empty means the
+    # admin does not exist — no implicit owner, because "the first user" is a
+    # rule that silently hands the catalogue to whoever registered first.
+    admin_ids: str = Field("", alias="ADMIN_IDS")
+
+    @property
+    def admin_id_set(self) -> frozenset[int]:
+        out = set()
+        for chunk in self.admin_ids.replace(";", ",").split(","):
+            chunk = chunk.strip()
+            if chunk.lstrip("-").isdigit():
+                out.add(int(chunk))
+        return frozenset(out)
+
     # Feature flag — Japanese track is foundation-only right now (parser is Latin-only,
     # no JA content). Keep it hidden from onboarding & main-menu switcher until the
     # full Japanese flow ships.

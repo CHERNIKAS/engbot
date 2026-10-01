@@ -13,6 +13,7 @@ class InteractionState(StrEnum):
     WAITING_CATEGORY_FOR_WORDS = "waiting_category_for_words"
     WAITING_NEW_CATEGORY_NAME = "waiting_new_category_name"
     WAITING_CATEGORY_RENAME = "waiting_category_rename"
+    WAITING_PACK_RENAME = "waiting_pack_rename"
 
     WAITING_TXT_FILE = "waiting_txt_file"
     WAITING_TXT_CATEGORY = "waiting_txt_category"

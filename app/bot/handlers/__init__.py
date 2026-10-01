@@ -10,6 +10,7 @@ from app.bot.handlers import (
     main_menu,
     my_words,
     onboarding,
+    pack_admin,
     packs,
     progress,
     push,
@@ -30,6 +31,7 @@ def register_handlers(dp: Dispatcher) -> None:
     dp.include_router(txt_import.router)
     dp.include_router(categories.router)
     dp.include_router(packs.router)
+    dp.include_router(pack_admin.router)
     dp.include_router(study.router)
     dp.include_router(progress.router)
     dp.include_router(search.router)
