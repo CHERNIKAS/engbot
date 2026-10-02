@@ -144,6 +144,9 @@ class _FakeWords:
     async def count_new_startable(self, user_id, track, phrases=False):
         return 5
 
+    async def current_theme(self, user_id, track):
+        return None  # no theme — these tests are about grammar slots
+
 
 class _FakeConstructor:
     def __init__(self, topic):
@@ -153,6 +156,9 @@ class _FakeConstructor:
     async def active_topic(self, user_id):
         self.asked = True
         return self.topic
+
+    async def due_test_topic(self, user_id):
+        return None
 
 
 def _composing_service(topic):
@@ -196,6 +202,9 @@ class _EmptyVocabWords:
 
     async def count_overdue(self, user_id, track):
         return 0
+
+    async def current_theme(self, user_id, track):
+        return None  # owns nothing, so there is no theme to triage
 
     async def count_new_startable(self, user_id, track, phrases=False):
         return self.stocked

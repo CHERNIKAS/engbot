@@ -176,12 +176,28 @@ class DayPlanService:
         # somewhere else, because grammar is a sequence and borrowing from the
         # next topic would teach it out of order.
         grammar = plan_rules.GRAMMAR_PER_DAY if topic is not None else 0
+        # How many words the triage screen could actually offer. It works a
+        # theme at a time, so the count is that theme's unstarted words — not
+        # the whole backlog, which would book a slot the screen cannot fill.
+        theme = await self._words.current_theme(user.id, track)
+        triage_available = (
+            len(
+                await self._words.theme_batch(
+                    user.id, track, theme.id, plan_rules.TRIAGE_THRESHOLD
+                )
+            )
+            if theme is not None
+            else 0
+        )
+        test_due = await self._constructor.due_test_topic(user.id) is not None
         return plan_rules.compose(
             size=size,
             due_repeats=due,
             grammar_available=grammar,
             phrases_available=phrases,
             new_available=new_words,
+            triage_available=triage_available,
+            test_due=test_due,
         )
 
     @staticmethod
@@ -195,8 +211,14 @@ class DayPlanService:
         """
         items: list[dict] = []
         for kind, count in (
+            # Triage leads: it is the one slot that makes the rest of the day
+            # smaller. Clearing fifteen already-known words before the new ones
+            # are served is the difference between studying and tapping through
+            # «one, two, fourteen» one card at a time.
+            (plan_rules.TRIAGE, composition.triage),
             (plan_rules.REPEAT, composition.repeats),
             (plan_rules.GRAMMAR, composition.grammar),
+            (plan_rules.TEST, composition.test),
             (plan_rules.NEW_THEME_WORD, composition.new_theme),
             (plan_rules.NEW_WORD, composition.new_frequency),
             (plan_rules.PHRASE, composition.phrases),

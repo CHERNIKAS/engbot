@@ -9,6 +9,8 @@ from __future__ import annotations
 
 from app.domain.day_plan import (
     DEFAULT_SIZE,
+    TRIAGE,
+    TRIAGE_THRESHOLD,
     GRAMMAR_PER_DAY,
     MAX_NEW_WORDS,
     MAX_SIZE,
@@ -118,3 +120,64 @@ def test_one_unanswered_card_never_reports_as_nothing_left():
     assert remaining_percent(0, 28) == 100
     assert remaining_percent(28, 28) == 0
     assert remaining_percent(0, 0) == 0
+
+
+def test_a_full_batch_of_known_words_books_a_triage_slot():
+    """The triage screen is the only slot that makes the rest of the day
+    smaller, and it was never reachable: `_items_for` built five kinds and
+    neither triage nor the topic test was among them. The learner's recourse was
+    the «я это знаю» button, one card at a time, on words like «one» and
+    «fourteen»."""
+    c = compose(
+        size=28, due_repeats=5, grammar_available=4, phrases_available=2,
+        new_available=10, triage_available=TRIAGE_THRESHOLD,
+    )
+    assert c.triage == 1
+    assert TRIAGE in [i["kind"] for i in _items(c)]
+
+
+def test_a_short_batch_does_not_book_one():
+    """Fewer than a screenful is what the card button is for; spending a slot
+    there costs a card and clears a handful."""
+    c = compose(
+        size=28, due_repeats=5, grammar_available=4, phrases_available=2,
+        new_available=10, triage_available=TRIAGE_THRESHOLD - 1,
+    )
+    assert c.triage == 0
+
+
+def test_a_due_topic_books_exactly_one_test():
+    c = compose(
+        size=28, due_repeats=5, grammar_available=4, phrases_available=2,
+        new_available=10, test_due=True,
+    )
+    assert c.test == 1
+
+
+def test_the_two_offers_yield_to_the_new_words_on_a_small_day():
+    """Booked ahead of the floor they produced a day of four grammar cards, a
+    screen, a test and nothing new to learn. They are taken out of what is left
+    after grammar, phrases and the new words, so the smallest day still teaches."""
+    small = compose(
+        size=MIN_SIZE, due_repeats=99, grammar_available=4,
+        phrases_available=2, new_available=10,
+        triage_available=TRIAGE_THRESHOLD, test_due=True,
+    )
+    assert (small.triage, small.test) == (0, 0)
+    assert small.new_words > 0
+    assert small.total <= MIN_SIZE
+
+    roomy = compose(
+        size=DEFAULT_SIZE, due_repeats=99, grammar_available=4,
+        phrases_available=2, new_available=10,
+        triage_available=TRIAGE_THRESHOLD, test_due=True,
+    )
+    assert (roomy.triage, roomy.test) == (1, 1)
+    assert roomy.new_words >= MIN_NEW_WORDS
+    assert roomy.total <= DEFAULT_SIZE
+
+
+def _items(c):
+    from app.services.day_plan_service import DayPlanService
+
+    return DayPlanService._items_for(c)

@@ -64,6 +64,9 @@ PHRASE = "phrase"
 NEW_WORD = "new_word"
 NEW_THEME_WORD = "new_theme_word"
 TRIAGE = "triage"
+# A triage screen holds triage.BATCH_SIZE words; offering one with fewer than a
+# full batch spends a slot to clear a handful the card button already handles.
+TRIAGE_THRESHOLD = 15
 TEST = "test"
 
 
@@ -76,10 +79,23 @@ class Composition:
     phrases: int
     new_frequency: int
     new_theme: int
+    # At most one of each per day, and both are offers rather than drills: a
+    # triage screen clears a backlog of words the learner already knows, a test
+    # checks a topic that has come round again.
+    triage: int = 0
+    test: int = 0
 
     @property
     def total(self) -> int:
-        return self.repeats + self.grammar + self.phrases + self.new_frequency + self.new_theme
+        return (
+            self.repeats
+            + self.grammar
+            + self.phrases
+            + self.new_frequency
+            + self.new_theme
+            + self.triage
+            + self.test
+        )
 
     @property
     def new_words(self) -> int:
@@ -92,6 +108,8 @@ def compose(
     grammar_available: int,
     phrases_available: int,
     new_available: int,
+    triage_available: int = 0,
+    test_due: bool = False,
 ) -> Composition:
     """Today's plan, given what there is to draw from.
 
@@ -112,11 +130,22 @@ def compose(
     size = max(MIN_SIZE, min(MAX_SIZE, size))
     grammar = min(GRAMMAR_PER_DAY, max(0, grammar_available))
     phrases = min(PHRASES_PER_DAY, max(0, phrases_available))
+    # One screen clears fifteen words at once, so it is worth a slot only when
+    # there are fifteen to clear. Below that the learner is better served by the
+    # «я это знаю» button on the cards themselves.
+    #
+    # Both offers yield to the floor of new words: on a small day grammar,
+    # phrases and that floor come first, and a triage screen or a test is taken
+    # only out of what is left. Booking them ahead of it produced a day of four
+    # grammar cards, a screen, a test and nothing new to learn.
+    spare = size - grammar - phrases - MIN_NEW_WORDS
+    triage = 1 if triage_available >= TRIAGE_THRESHOLD and spare >= 1 else 0
+    test = 1 if test_due and spare - triage >= 1 else 0
 
-    reserved = grammar + phrases + MIN_NEW_WORDS
+    reserved = grammar + phrases + triage + test + MIN_NEW_WORDS
     repeats = max(0, min(due_repeats, size - reserved))
 
-    room_for_new = size - grammar - phrases - repeats
+    room_for_new = size - grammar - phrases - triage - test - repeats
     new_total = max(0, min(MAX_NEW_WORDS, room_for_new, new_available))
 
     new_theme = min(new_total // THEME_SHARE if new_total >= THEME_SHARE else 0, new_total)
@@ -130,6 +159,8 @@ def compose(
         phrases=phrases,
         new_frequency=new_frequency,
         new_theme=new_theme,
+        triage=triage,
+        test=test,
     )
 
 
