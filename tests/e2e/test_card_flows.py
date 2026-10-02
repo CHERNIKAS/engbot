@@ -283,6 +283,24 @@ async def test_triage_marks_and_settles_once(h):
     await h.check_invariants()
 
 
+async def test_knowing_a_whole_screen_brings_the_next_one(h):
+    await h.fresh_day(["triage", "new_word"])
+    card = await h.card()
+    mid = card["msg_id"]
+    for i in range(len(card["rows"])):
+        await h.act(mid, "trg", i)
+    await h.act(mid, "trgok")
+    nxt = (await h.state())["inflight"]
+    assert nxt and nxt["kind"] == "triage" and nxt["msg_id"] != mid, "no second screen"
+    assert not {r[0] for r in nxt["rows"]} & {r[0] for r in card["rows"]}
+    assert await h.done_kinds() == ["triage"]  # still one slot; the extra screen is a bonus
+    # Knowing little of the next one ends the run.
+    await h.act(nxt["msg_id"], "trg", 0)
+    await h.act(nxt["msg_id"], "trgok")
+    assert (await h.state())["inflight"] is None
+    await h.check_invariants()
+
+
 # ---- the topic check -------------------------------------------------------- #
 
 

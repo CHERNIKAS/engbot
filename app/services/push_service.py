@@ -2303,10 +2303,40 @@ class PushService:
         now_ts = datetime.now(timezone.utc).timestamp()
         await self._tick_plan(user, plan_rules.TRIAGE)
         push_state["inflight"] = None
-        push_state["next_ts"] = now_ts + _minutes(
-            self._s.push_gap_min_minutes, self._s.push_gap_max_minutes
-        )
+        known = len([u for u in state.known if int(u) in offered])
+        more = False
+        if triage.wants_another(known, len(offered)):
+            # The next screen goes out from inside the tap; handlers build the
+            # service without a bot.
+            if self._bot is None:
+                self._bot = query.bot
+            plan = await DayPlanService(self._session).open_plan_or_none(user.id, _TRACK)
+            progress = DayPlanService.progress(plan) if plan is not None else None
+            more = await self._send_triage(
+                user,
+                push_state,
+                now_ts,
+                plan_done=progress.done if progress else 0,
+                plan_total=progress.total if progress else 0,
+            )
+        if not more:
+            push_state["next_ts"] = now_ts + _minutes(
+                self._s.push_gap_min_minutes, self._s.push_gap_max_minutes
+            )
         await self._save(user.id, push_state)
+        if more:
+            try:
+                await query.message.edit_text(
+                    triage.render_summary(
+                        str(inflight.get("title") or ""),
+                        known=len(state.known),
+                        learning=len(offered) - len(state.known),
+                    )
+                    + "\n\n👇 Почти всё знакомо — держи следующую пачку.",
+                    parse_mode="HTML",
+                )
+            except Exception:  # noqa: BLE001
+                pass
         await query.answer()
 
     async def _graduate_known(self, user: User, uw_id: int) -> None:

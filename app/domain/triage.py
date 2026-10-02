@@ -25,6 +25,21 @@ from dataclasses import dataclass, replace
 # is several short screens rather than one endless list.
 BATCH_SIZE = 15
 
+# A learner who already knows most of a screen gets the next one straight away
+# instead of waiting for tomorrow's single triage slot: one screen a day is the
+# right dose for a beginner and a week of «one, two, three» for someone who is
+# not. 0.8 is 12 of a full screen — knowing that much means the theme's easy
+# end is still ahead of them; below it they have reached words they do not know,
+# and those are better met one card at a time.
+NEXT_BATCH_SHARE = 0.8
+
+
+def wants_another(known: int, offered: int) -> bool:
+    """Whether to offer the next screen of the theme right now."""
+    import math
+
+    return offered > 0 and known >= math.ceil(offered * NEXT_BATCH_SHARE)
+
 
 @dataclass(frozen=True)
 class TriageState:
