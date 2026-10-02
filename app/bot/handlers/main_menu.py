@@ -8,6 +8,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.bot.callbacks.schema import MainMenuCB, NavCB, NoopCB
 from app.bot.keyboards.common import cancel_only_kb
+from aiogram.types import InlineKeyboardMarkup
+from app.bot.keyboards.common import home_button
 from app.bot.keyboards.main_menu import main_menu_reply_kb, words_menu_kb
 from app.bot.menu_nav import clear_menu_card, send_menu_card
 from app.bot.keyboards.my_words import categories_overview_kb
@@ -220,7 +222,18 @@ async def msg_grammar(
             for topic, state in rows
         ]
     )
-    await send_menu_card(message, redis, user.id, text, parse_mode="HTML")
+    # The syllabus is thirty lines with nothing to tap, so without this the card
+    # stays open and the learner scrolls past it every time. There is still no
+    # way INTO a topic from here — the button closes the card, it does not pick
+    # a lesson.
+    await send_menu_card(
+        message,
+        redis,
+        user.id,
+        text,
+        reply_markup=InlineKeyboardMarkup(inline_keyboard=[[home_button()]]),
+        parse_mode="HTML",
+    )
 
 
 @router.message(F.text.in_({BTN_MY_WORDS_OLD, BTN_ADD, BTN_IMPORT, BTN_PACKS}))

@@ -406,13 +406,19 @@ def render_topic_list(rows: list[tuple[str, float | None, bool, bool]]) -> str:
     apart and only three: passed, in progress, not started. A score on an
     untouched topic would read as «you scored zero», which is not what an
     unopened lesson means.
+
+    A score of exactly zero counts as not started, whatever the database says.
+    The gap-fill era left progress rows on topics nobody has built a sentence
+    in, and reading those rows literally drew topic 4 as open while topics 2
+    and 3 sat locked — an order the curriculum does not have and the learner
+    cannot act on, since the next card is always the first unpassed topic.
     """
     lines = ["📖 <b>Грамматика</b>", ""]
     current_marked = False
     for title, score, typing, passed in rows:
         if passed:
             lines.append(f"✅ {title} · {stars(score)}")
-        elif score is not None:
+        elif score and score > 0:
             mode = "печать" if typing else "блоки"
             mark = "▶️" if not current_marked else "•"
             current_marked = True
