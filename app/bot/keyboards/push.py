@@ -260,3 +260,16 @@ def lesson_ping_kb() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         inline_keyboard=[[InlineKeyboardButton(text="🙋 Да", callback_data=PushCB(action="here").pack())]]
     )
+
+
+def extra_offer_kb(with_new: bool = True) -> InlineKeyboardMarkup:
+    """After the plan: practise, take new words (when the pool has room), or stop."""
+    first = [InlineKeyboardButton(text="🔁 Тренировка", callback_data=PushCB(action="practice").pack())]
+    if with_new:
+        first.append(InlineKeyboardButton(text="➕ Новые слова", callback_data=PushCB(action="more").pack()))
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            first,
+            [InlineKeyboardButton(text="😴 Хватит", callback_data=PushCB(action="enough").pack())],
+        ]
+    )

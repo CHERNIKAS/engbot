@@ -12,6 +12,20 @@ from app.services.push_service import PushService
 router = Router(name="push")
 
 
+@router.callback_query(PushCB.filter(F.action.in_({"practice", "more", "enough"})))
+async def on_after_plan(
+    query: CallbackQuery,
+    callback_data: PushCB,
+    user: User,
+    user_track: UserTrack,
+    session: AsyncSession,
+    redis: Redis,
+) -> None:
+    await PushService(session, redis, query.bot).handle_after_plan(
+        user, user_track, callback_data.action, query
+    )
+
+
 @router.callback_query(PushCB.filter(F.action == "here"))
 async def on_lesson_here(
     query: CallbackQuery,

@@ -424,20 +424,115 @@ async def test_a_lesson_runs_cards_back_to_back_and_ends_on_the_button(h, monkey
     await h.check_invariants()
 
 
-async def test_a_lesson_that_finishes_the_plan_praises_and_waits_for_tomorrow(h, monkeypatch):
+async def test_a_lesson_that_finishes_the_plan_offers_more(h, monkeypatch):
     _force_card_type(monkeypatch, ps.CARD_RECOGNITION)
     await h.fresh_day(["new_word"])
     await h.say(BTN_LESSON)
     card = (await h.state())["inflight"]
     await h.tap_text(card["msg_id"], card["correct"])
-    assert any(e["text"] == LESSON_DAY_DONE for e in h.tg.sent)
-    assert "lesson" not in await h.state()
+    offer = h.tg.last_with_buttons()
+    assert "Хочешь ещё" in offer["text"]
+    assert "lesson" in await h.state()  # waiting for the choice
+    # Practice: a card at once, then another after answering it.
+    await h.act(offer["id"], "practice")
+    first = (await h.state())["inflight"]
+    assert first and first.get("extra") == "practice"
+    await h.tap_text(first["msg_id"], first["correct"])
+    second = (await h.state())["inflight"]
+    assert second and second["msg_id"] != first["msg_id"] and second["id"] != first["id"]
+    assert await h.plan() == []  # practice never opens a plan
     await h.say(BTN_TODAY)
     assert h.tg.sent[-1]["text"] == TODAY_DONE
+    await h.say(BTN_LESSON_END)
+    assert "lesson" not in await h.state() and "extra" not in await h.state()
+    await h.check_invariants()
+
+
+def _pool_room(monkeypatch, room: int, active: int) -> None:
+    from app.services.backlog_service import BacklogService
+
+    async def fake(self, user_id, track):
+        return room, active
+
+    monkeypatch.setattr(BacklogService, "room", fake)
+
+
+async def test_more_new_words_after_the_plan_then_the_offer_again(h, monkeypatch):
+    _force_card_type(monkeypatch, ps.CARD_RECOGNITION)
+    monkeypatch.setattr(ps, "EXTRA_NEW_WORDS", 2)
+    _pool_room(monkeypatch, room=10, active=3)
+    await h.fresh_day(["new_word"])
+    await h.say(BTN_LESSON)
+    card = (await h.state())["inflight"]
+    await h.tap_text(card["msg_id"], card["correct"])
+    await h.act(h.tg.last_with_buttons()["id"], "more")
+    for _ in range(2):
+        nxt = (await h.state())["inflight"]
+        assert nxt and nxt.get("extra") == "new", "no extra new word"
+        await h.tap_text(nxt["msg_id"], nxt["correct"])
+    # Two given: the choice comes back instead of a third.
+    assert (await h.state())["inflight"] is None
+    assert "Хочешь ещё" in h.tg.last_with_buttons()["text"]
+    await h.act(h.tg.last_with_buttons()["id"], "enough")
+    assert "lesson" not in await h.state()
+    await h.check_invariants()
+
+
+async def test_no_new_words_offered_when_the_pool_is_full(h, monkeypatch):
+    _force_card_type(monkeypatch, ps.CARD_RECOGNITION)
+    _pool_room(monkeypatch, room=0, active=13)
+    await h.fresh_day(["new_word"])
+    await h.say(BTN_LESSON)
+    card = (await h.state())["inflight"]
+    await h.tap_text(card["msg_id"], card["correct"])
+    offer = h.tg.last_with_buttons()
+    assert "13 слов в работе" in offer["text"]
+    assert not any(action_of(d) == "more" for _t, d in h.tg.buttons(offer["id"]))
+    # A stale «➕» from an older offer is still answered honestly.
+    await h.tap(offer["id"], "pu:more:0:0:0")
+    assert "слов в работе" in (h.tg.toasts[-1] or "")
+    await h.check_invariants()
+
+
+async def test_after_the_plan_by_push_practice_runs_until_ignored(h, monkeypatch):
+    _force_card_type(monkeypatch, ps.CARD_RECOGNITION)
+    await h.fresh_day(["new_word"])
+    card = await h.card()
+    await h.tap_text(card["msg_id"], card["correct"])
     st = await h.state()
     st["next_ts"] = 0.0
     await h.put_state(st)
-    assert await h.tick() is False and await h.plan() == []  # no second plan today
+    await h.tick()  # closes the day: summary + offer
+    offer = h.tg.last_with_buttons()
+    assert "Хочешь ещё" in offer["text"]
+    await h.act(offer["id"], "practice")
+    first = (await h.state())["inflight"]
+    assert first and first.get("extra") == "practice"
+    # Ignored past the nudges: practice stops, the evening goes quiet.
+    for _ in range(ps.PUSH_MAX_ATTEMPTS + 1):
+        await h.patch_inflight(retry_ts=0)
+        await h.tick()
+    st = await h.state()
+    assert st["inflight"] is None and "extra" not in st
+    st["next_ts"] = 0.0
+    await h.put_state(st)
+    assert await h.tick() is False
+    await h.check_invariants()
+
+
+async def test_back_in_a_lesson_after_the_plan_gets_the_offer(h, monkeypatch):
+    _force_card_type(monkeypatch, ps.CARD_RECOGNITION)
+    await h.fresh_day(["new_word"])
+    card = await h.card()
+    await h.tap_text(card["msg_id"], card["correct"])
+    st = await h.state()
+    st["next_ts"] = 0.0
+    await h.put_state(st)
+    await h.tick()
+    await h.say(BTN_LESSON)
+    assert "Хочешь ещё" in h.tg.last_with_buttons()["text"]
+    await h.act(h.tg.last_with_buttons()["id"], "practice")
+    assert ((await h.state())["inflight"] or {}).get("extra") == "practice"
     await h.check_invariants()
 
 

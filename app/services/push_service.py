@@ -28,9 +28,16 @@ from app.bot.keyboards.push import (
     push_leech_kb,
     push_rule_kb,
     lesson_ping_kb,
+    extra_offer_kb,
 )
 from app.bot.keyboards.main_menu import lesson_reply_kb, main_menu_reply_kb
 from app.bot.texts import (
+    EXTRA_NEW_LINE,
+    EXTRA_NEW_LINE_FULL,
+    EXTRA_NOTHING_TO_PRACTISE,
+    EXTRA_OFFER,
+    EXTRA_POOL_FULL,
+    EXTRA_REST,
     LESSON_ALREADY,
     LESSON_CONTINUE_ABOVE,
     LESSON_DAY_DONE,
@@ -170,6 +177,16 @@ _LESSON_SET = "lesson:active"
 # repeat what they just did.
 _LESSON_SELF = frozenset({"start_lesson", "end_lesson"})
 
+
+# After the day's plan. A practice answer given before the word was due still
+# moves its schedule, a little less: the learner did recall it, but a few hours
+# after the last review that proves less than recalling it on time — and
+# counting it fully would let an evening of practice push a word a month out.
+EARLY_REVIEW_WEIGHT = 0.75
+# «➕ Новые слова» — how many, at most; fewer when the active pool has less room.
+EXTRA_NEW_WORDS = 5
+# Last practice cards kept out of the next pick, so a small pool does not loop.
+PRACTICE_RECENT = 6
 
 # A card the learner touched this recently is being worked on: nudging it would
 # delete the message under their finger and post a copy.
@@ -736,7 +753,11 @@ class PushService:
                             user.id, int(inflight["topic_id"])
                         )
                         await self._session.commit()
-                    elif dropped == "triage":
+                    if inflight.get("extra"):
+                        # Ignored after the plan was done: back to the quiet
+                        # evening the learner would have had without it.
+                        state.pop("extra", None)
+                    if dropped == "triage":
                         # The batch is rebuilt from the same unmarked words, so
                         # an ignored one comes straight back. Hold it off until
                         # tomorrow rather than re-offering the same screenful.
@@ -817,6 +838,12 @@ class PushService:
         plan_service = DayPlanService(self._session)
         plan, opened = await plan_service.ensure_plan(user, _TRACK, date.fromisoformat(today))
         if plan is None:
+            if state.get("extra"):
+                outcome = await self._extra_step(user, ut, state, now_ts)
+                if outcome == "empty":
+                    await self._raw_send(user.telegram_id, EXTRA_NOTHING_TO_PRACTISE, None)
+                await self._save(user.id, state)
+                return outcome == "sent"
             self._log_idle(user, state, "nothing_to_study")
             await self._save(user.id, state)
             return False
@@ -965,6 +992,7 @@ class PushService:
             ),
             None,
         )
+        await self._offer_extra(user)
 
     async def _tick_plan(self, user: User, kind: str | None) -> None:
         """Mark one slot done after a card settles.
@@ -1539,6 +1567,7 @@ class PushService:
             outcome = await self._apply_word_answer(
                 user, ut, iid, correct, card_type=inflight.get("ctype"),
                 response_ms=response_ms, attempts=attempts,
+                early_weight=bool(inflight.get("extra")),
             )
             leech_writing, recap = outcome.leech_writing, outcome.recap
 
@@ -1625,6 +1654,7 @@ class PushService:
             card_type=inflight.get("ctype") or CARD_CLOZE,
             kind_override=verdict.kind if verdict is not None else None,
             response_ms=response_ms, attempts=attempts,
+            early_weight=bool(inflight.get("extra")),
         )
         state["inflight"] = None
         state["last"] = {"kind": "word", "id": iid}
@@ -1813,8 +1843,12 @@ class PushService:
         kind_override: str | None = None,
         response_ms: int | None = None,
         attempts: int | None = None,
+        early_weight: bool = False,
     ) -> AnswerOutcome:
         """Apply the SR result and leech tracking.
+
+        `early_weight`: a practice card. A correct answer on a word not yet due
+        grows its interval by EARLY_REVIEW_WEIGHT of the usual step.
 
         Returns the leech writing (set only when this wrong answer just crossed
         the threshold, so the caller can offer to postpone the word) together
@@ -1829,6 +1863,14 @@ class PushService:
         target = mastery.target_for(word.level, user.level)
         before_percent = _percent(uw, target)
         kind = kind_override or _answer_kind(card_type, correct)
+        now = datetime.now(timezone.utc)
+        early = (
+            early_weight
+            and correct
+            and uw.next_review_at is not None
+            and uw.next_review_at > now
+        )
+        interval_before = float(uw.interval_days or 0.0)
         apply_review(
             uw,
             ReviewResult.CORRECT if correct else ReviewResult.WRONG,
@@ -1840,6 +1882,9 @@ class PushService:
             # sentence allows it, the whole thing written out where it doesn't.
             production_possible=bool(uw.custom_translation or word.translation),
         )
+        if early and uw.interval_days and uw.interval_days > interval_before:
+            uw.interval_days = interval_before + (uw.interval_days - interval_before) * EARLY_REVIEW_WEIGHT
+            uw.next_review_at = now + timedelta(days=uw.interval_days)
         await self._record(user, uw, word, kind, card_type, was_mastered)
 
         # Leech tracking: count consecutive misses on words still being learned.
@@ -1991,9 +2036,10 @@ class PushService:
             return
         today = self._today(user, ut)
         plan_service = DayPlanService(self._session)
-        if await plan_service.open_plan_or_none(user.id, _TRACK) is None and await self.today_done(user, ut):
-            await self._raw_send(user.telegram_id, LESSON_DAY_DONE, main_menu_reply_kb())
-            return
+        day_done = (
+            await plan_service.open_plan_or_none(user.id, _TRACK) is None
+            and await self.today_done(user, ut)
+        )
         if state.get("day") != today.isoformat():
             # The same roll-over the tick does at the window's start: a lesson
             # opened before the first tick of the day must not carry yesterday's
@@ -2015,6 +2061,10 @@ class PushService:
         inflight = state.get("inflight")
         if inflight is not None:
             await self._lesson_bring_down(user, state, inflight, now_ts)
+        elif day_done and not state.get("extra"):
+            # Back after the plan: the same choice the summary offered.
+            state["lesson"]["offered"] = True
+            await self._offer_extra(user)
         else:
             await self._lesson_step(user, state)
         await self._save(user.id, state)
@@ -2097,8 +2147,17 @@ class PushService:
             plan, opened = await plan_service.ensure_plan(user, _TRACK, today)
             await self._session.commit()
             if plan is None:
-                done = await self.today_done(user, ut)
-                await self._end_lesson(user, state, "done" if done else "empty")
+                if not await self.today_done(user, ut):
+                    await self._end_lesson(user, state, "empty")
+                    return
+                if not state.get("extra"):
+                    # The offer went out with the day's summary; the lesson
+                    # waits for the choice (or for «Ты тут?» to time out).
+                    state["lesson"]["offered"] = True
+                    return
+                outcome = await self._extra_step(user, ut, state, now_ts)
+                if outcome == "empty":
+                    await self._end_lesson(user, state, "practice_empty")
                 return
             if opened:
                 await self._raw_send(
@@ -2122,6 +2181,7 @@ class PushService:
         """Back to pushes. `reason`: done (today's plan closed), user (the
         button), idle (no answer to «Ты тут?»), empty (nothing to study)."""
         lesson = state.pop("lesson", None) or {}
+        state.pop("extra", None)
         await self._clear_ping(user, lesson)
         await self._redis.srem(_LESSON_SET, user.id)
         now_ts = _now_ts()
@@ -2135,6 +2195,10 @@ class PushService:
             text = LESSON_DAY_DONE
         elif reason == "empty":
             text = LESSON_NOTHING
+        elif reason == "practice_empty":
+            text = EXTRA_NOTHING_TO_PRACTISE
+        elif reason == "rest":
+            text = EXTRA_REST
         else:
             left = await self._plan_left(user)
             text = (LESSON_ENDED_IDLE if reason == "idle" else LESSON_ENDED_LEFT).format(left=left)
@@ -2209,6 +2273,118 @@ class PushService:
                 except Exception:  # noqa: BLE001 — one learner must not stop the others
                     await self._session.rollback()
                     log.exception("lesson_tick_failed", uid=uid)
+
+    # ---- after the plan: practice and extra new words ----
+
+    async def _offer_extra(self, user: User) -> None:
+        """The choice after the plan. «➕» is offered only when the active pool
+        has room — a button that answers «not now» is a button that lied."""
+        from app.services.backlog_service import BacklogService
+
+        room, active = await BacklogService(self._session).room(user.id, _TRACK)
+        new_line = (
+            EXTRA_NEW_LINE.format(bonus=min(EXTRA_NEW_WORDS, room))
+            if room > 0
+            else EXTRA_NEW_LINE_FULL.format(active=active)
+        )
+        await self._raw_send(
+            user.telegram_id,
+            EXTRA_OFFER.format(new_line=new_line),
+            extra_offer_kb(with_new=room > 0),
+            uid=user.id,
+            kind="extra_offer",
+        )
+
+    async def _serve_practice(self, user: User, ut: UserTrack, state: dict, now_ts: float) -> bool:
+        recent = [int(i) for i in (state.get("extra") or {}).get("recent", [])]
+        pick = await self._uw.pick_practice(user.id, _TRACK, exclude=recent)
+        if pick is None and recent:
+            pick = await self._uw.pick_practice(user.id, _TRACK, exclude=[])
+        if pick is None:
+            return False
+        uw, word = pick
+        ctype = self._card_type(uw, word, user.level)
+        msg_id, options, correct = await self._send_card(
+            user, "word", uw.id, card_type=ctype, plan_kind=plan_rules.REPEAT
+        )
+        if not msg_id:
+            return False
+        if ctype in _TYPED_CARDS and options:
+            ctype = CARD_REVERSE
+        inflight = self._inflight("word", uw.id, options, correct, now_ts, msg_id, ctype=ctype)
+        inflight["extra"] = "practice"
+        state["inflight"] = inflight
+        state["extra"]["recent"] = (recent + [uw.id])[-PRACTICE_RECENT:]
+        return True
+
+    async def _extra_step(self, user: User, ut: UserTrack, state: dict, now_ts: float) -> str:
+        """One card of whatever the learner chose after the plan.
+
+        Returns "sent", "offer" (the extra new words ran out; the choice is
+        offered again) or "empty" (nothing left to practise; the mode is over).
+        """
+        extra = state.get("extra") or {}
+        if extra.get("mode") == "new":
+            if int(extra.get("left", 0)) > 0:
+                sent = await self._serve(user, ut, plan_rules.NEW_WORD, 0, 0, state, now_ts)
+                if sent:
+                    extra["left"] = int(extra["left"]) - 1
+                    state["inflight"]["extra"] = "new"
+                    state["inflight"]["plan_kind"] = None  # not a plan slot
+                    return "sent"
+            state.pop("extra", None)
+            if state.get("lesson"):
+                state["lesson"]["offered"] = True
+            await self._offer_extra(user)
+            return "offer"
+        if await self._serve_practice(user, ut, state, now_ts):
+            return "sent"
+        state.pop("extra", None)
+        return "empty"
+
+    @_serialized
+    async def handle_after_plan(self, user: User, ut: UserTrack, choice: str, query: CallbackQuery) -> None:
+        """«🔁 Тренировка» / «➕ Новые слова» / «😴 Хватит» under the offer."""
+        state = await self._load(user.id)
+        now_ts = _now_ts()
+        if choice == "more":
+            from app.services.backlog_service import BacklogService
+
+            room, active = await BacklogService(self._session).room(user.id, _TRACK)
+            if room <= 0:
+                await query.answer(EXTRA_POOL_FULL.format(active=active), show_alert=True)
+                return
+            state["extra"] = {"mode": "new", "left": min(EXTRA_NEW_WORDS, room)}
+            toast = "➕ Погнали"
+        elif choice == "practice":
+            state["extra"] = {"mode": "practice", "recent": []}
+            toast = "🔁 Погнали"
+        else:
+            state.pop("extra", None)
+            toast = "😴"
+        if query.message is not None:
+            try:
+                await query.message.edit_reply_markup(reply_markup=None)
+            except Exception:  # noqa: BLE001
+                pass
+        await query.answer(toast)
+
+        if choice == "enough":
+            if state.get("lesson"):
+                await self._end_lesson(user, state, "rest")
+            else:
+                await self._raw_send(user.telegram_id, EXTRA_REST, None)
+            await self._save(user.id, state)
+            return
+        if state.get("lesson") or state.get("inflight") is not None:
+            # In a lesson the post-tap hook serves the first card; with a card
+            # already waiting, the choice applies after it.
+            await self._save(user.id, state)
+            return
+        outcome = await self._extra_step(user, ut, state, now_ts)
+        if outcome == "empty":
+            await self._raw_send(user.telegram_id, EXTRA_NOTHING_TO_PRACTISE, None)
+        await self._save(user.id, state)
 
     async def _triage_context(self, user: User, query: CallbackQuery):
         push_state = await self._load(user.id)

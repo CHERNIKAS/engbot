@@ -54,6 +54,12 @@ class BacklogService:
         target = max(MIN_POOL, round(ceiling * POOL_TARGET_SHARE))
         return BacklogOffer(active=active, target=target, count=overflow(active, ceiling))
 
+    async def room(self, user_id: int, track: LearningTrack) -> tuple[int, int]:
+        """(free places in the active pool, words active now)."""
+        active = await self._uw.count_active(user_id, track)
+        throughput = await self._reviews.typical_daily_answers(user_id, track)
+        return max(0, pool_ceiling(throughput) - active), active
+
     async def park(
         self, user_id: int, track: LearningTrack, now: datetime | None = None
     ) -> tuple[int, int]:

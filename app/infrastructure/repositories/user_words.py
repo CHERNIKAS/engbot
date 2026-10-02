@@ -4,7 +4,7 @@ import random
 from collections.abc import Iterable
 from datetime import datetime, timezone
 
-from sqlalchemy import and_, case, delete, func, or_, select, update
+from sqlalchemy import and_, case, delete, func, or_, select, true, update
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -626,6 +626,48 @@ class UserWordRepository:
             .limit(limit)
         )
         return [(r[0], r[1]) for r in (await self.session.execute(q)).all()]
+
+    async def pick_practice(
+        self, user_id: int, track: LearningTrack, exclude: list[int], now: datetime | None = None
+    ) -> tuple[UserWord, Word] | None:
+        """A word to practise once the day's plan is done — never a new one.
+
+        In order: anything due (most overdue first), then the words missed most,
+        then learned or learning words not seen for longest. `exclude` holds the
+        last few cards so a small pool does not repeat back to back.
+        """
+        now = now or datetime.now(timezone.utc)
+        base = [
+            UserWord.user_id == user_id,
+            UserWord.track == track.value,
+            UserWord.archived.is_(False),
+            or_(UserWord.snooze_until.is_(None), UserWord.snooze_until <= now),
+            UserWord.status.in_(
+                [WordStatus.LEARNING.value, WordStatus.REVIEW.value, WordStatus.MASTERED.value]
+            ),
+        ]
+        if exclude:
+            base.append(UserWord.id.notin_(exclude))
+        tiers = (
+            (UserWord.next_review_at <= now, (UserWord.next_review_at.asc(),)),
+            (
+                UserWord.mistakes_count > 0,
+                (UserWord.mistakes_count.desc(), UserWord.last_reviewed_at.asc().nullsfirst()),
+            ),
+            (true(), (UserWord.last_reviewed_at.asc().nullsfirst(),)),
+        )
+        for cond, order in tiers:
+            q = (
+                select(UserWord, Word)
+                .join(Word, Word.id == UserWord.word_id)
+                .where(*base, cond)
+                .order_by(*order)
+                .limit(1)
+            )
+            row = (await self.session.execute(q)).first()
+            if row is not None:
+                return row[0], row[1]
+        return None
 
     async def pick_review_mastered(
         self, user_id: int, track: LearningTrack, now: datetime | None = None, exclude_uw_id: int = 0

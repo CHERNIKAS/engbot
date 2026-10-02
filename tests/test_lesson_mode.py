@@ -15,7 +15,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from app.bot.texts import LESSON_DAY_DONE, LESSON_PING
+from app.bot.texts import LESSON_DAY_DONE, LESSON_PING  # noqa: F401
 from app.services import day_plan_service as dps
 from app.services import push_service as ps
 from app.services.push_service import PushService
@@ -262,7 +262,9 @@ async def test_a_settled_card_is_followed_by_the_next_one_at_once(monkeypatch):
 
 
 @pytest.mark.asyncio
-async def test_a_finished_day_ends_the_lesson_with_praise(monkeypatch):
+async def test_a_finished_day_keeps_the_lesson_waiting_for_the_choice(monkeypatch):
+    """The plan done inside a lesson no longer ends it: the offer of practice
+    or more words went out with the day's summary, and the lesson waits."""
     served: list = []
     svc = _step_service(monkeypatch, served)
     _PlanService.plan, _PlanService.closed_today = None, True
@@ -271,8 +273,7 @@ async def test_a_finished_day_ends_the_lesson_with_praise(monkeypatch):
     await svc._lesson_after(_USER, None)
 
     assert served == []
-    assert "lesson" not in _state(svc)
-    assert svc.sent[-1][0] == LESSON_DAY_DONE
+    assert _state(svc)["lesson"]["offered"] is True
     _PlanService.closed_today = False
 
 
