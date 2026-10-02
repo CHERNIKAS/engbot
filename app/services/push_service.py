@@ -1990,6 +1990,9 @@ class PushService:
             f"{plan_rules.card_head(plan_rules.TEST, plan_done, plan_total, extra=topic.title)}\n\n"
             f"{topic_test.render_offer(topic.title)}",
             test_offer_kb(topic.id),
+            uid=user.id,
+            kind="test",
+            obj_id=topic.id,
         )
         if msg_id is None:
             return False
