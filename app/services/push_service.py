@@ -2662,11 +2662,18 @@ class PushService:
         state, inflight, phrase, topic, card = ctx
 
         service = ConstructorService(self._session)
+        attempt_before = card.attempt
         card, view = await service.tap_slot(user.id, phrase, topic, card, idx)
         if view is not None:
             await self._store_card_state(user, state, inflight, card)
             await self._edit_constructor(query, view)
-            await query.answer()
+            if card.attempt > attempt_before:
+                await query.answer(
+                    f"❌ Не то — попыток осталось: {ctor.attempts_left(card.attempt - 1)}",
+                    show_alert=False,
+                )
+            else:
+                await query.answer()
             return
         # The claim belongs here and not at the top. It is keyed on the message,
         # and a word card is answered once — but a constructor card is tapped

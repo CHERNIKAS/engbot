@@ -220,6 +220,11 @@ def render_card(
         # card does not jump when the first word appears.
         parts.append("")
         parts.append(f"<b>{html.escape(built)}</b>" if built else "‎")
+        # Without this a wrong tap re-rendered the card unchanged: Telegram
+        # refuses an edit that changes nothing, the refusal is swallowed, and
+        # the learner saw the button do nothing at all.
+        if attempt > 1:
+            parts.append(f"<i>Попытка {attempt} из {MAX_ATTEMPTS}.</i>")
     return "\n".join(parts)
 
 
