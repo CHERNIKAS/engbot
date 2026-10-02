@@ -34,6 +34,15 @@ up() {
     echo "!! migrations failed on the copy — full log: /tmp/englshbot-e2e-migrate.log"
     exit 1
   fi
+  # The newest migration must also come back out: a downgrade that fails is
+  # found here, not on the night it is needed.
+  if ! { DATABASE_URL="$E2E_DATABASE_URL" REDIS_URL="$E2E_REDIS_URL" .venv/bin/alembic downgrade -1 \
+         && DATABASE_URL="$E2E_DATABASE_URL" REDIS_URL="$E2E_REDIS_URL" .venv/bin/alembic upgrade head; } \
+       >> /tmp/englshbot-e2e-migrate.log 2>&1; then
+    tail -5 /tmp/englshbot-e2e-migrate.log
+    echo "!! the newest migration does not round-trip — full log: /tmp/englshbot-e2e-migrate.log"
+    exit 1
+  fi
 }
 
 case "${1:-}" in
