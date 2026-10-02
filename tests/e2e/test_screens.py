@@ -298,21 +298,7 @@ async def test_an_old_collections_list_says_it_expired(h):
 
 # Handlers no scenario here can reach, each with the reason. Revisit when one of
 # these flows changes — or delete the handler.
-NOT_REACHED_BY_DESIGN = {
-    # Onboarding has had a single track since v2: «Начать» finishes it, and the
-    # track picker / «В меню» keyboards are never sent (tracks_picker_kb is
-    # imported but unused, onboarding_done_kb is not imported at all).
-    "app.bot.handlers.onboarding.on_toggle_track",
-    "app.bot.handlers.onboarding.on_tracks_done",
-    "app.bot.handlers.onboarding.on_done",
-    # Manual «🔥 Учить» is a legacy label no longer in the menu; hint and skip
-    # appear only on its typing stage, which a fresh session does not reach.
-    "app.bot.handlers.study.on_hint",
-    "app.bot.handlers.study.on_skip",
-    "app.bot.handlers.study.on_typing_answer",
-    # Offered only when the active pool is oversized (BacklogService.offer).
-    "app.bot.handlers.progress.on_backlog_park",
-}
+NOT_REACHED_BY_DESIGN: set[str] = set()  # conditional flows: test_dormant_flows.py
 
 
 def test_zz_every_handler_ran():

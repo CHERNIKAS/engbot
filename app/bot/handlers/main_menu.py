@@ -361,8 +361,18 @@ async def msg_progress(
     course = await course_progress_or_none(session, redis, user, active)
     text = format_progress(user.streak_days, views, course=course)
     has_managed = await UserWordRepository(session).has_managed(user.id, LearningTrack.ENGLISH)
+    # The offer to rest an oversized pool lived only on the screen reached by
+    # «Назад» from the archive — the menu entry itself never showed it.
+    from app.services.backlog_service import BacklogService
+
+    offer = await BacklogService(session).offer(user.id, LearningTrack.ENGLISH)
     await send_menu_card(
-        message, redis, user.id, text, parse_mode="HTML", reply_markup=progress_kb(has_managed)
+        message,
+        redis,
+        user.id,
+        text,
+        parse_mode="HTML",
+        reply_markup=progress_kb(has_managed, backlog=offer.count),
     )
 
 

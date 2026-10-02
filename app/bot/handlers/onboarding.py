@@ -255,16 +255,3 @@ async def on_tracks_done(
         tracks=_selected_tracks(payload.data) or {LearningTrack.ENGLISH},
     )
 
-
-@router.callback_query(OnboardingCB.filter(F.action == "done"))
-async def on_done(
-    query: CallbackQuery,
-    user: User,
-    state_service: InteractionStateService,
-) -> None:
-    await state_service.clear(user.id)
-    if query.message:
-        await query.message.answer(MAIN_MENU, reply_markup=main_menu_reply_kb())
-    await query.answer()
-
-

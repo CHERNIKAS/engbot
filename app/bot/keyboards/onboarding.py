@@ -39,11 +39,3 @@ def tracks_picker_kb(
         ]
     )
     return InlineKeyboardMarkup(inline_keyboard=rows)
-
-
-def onboarding_done_kb() -> InlineKeyboardMarkup:
-    return InlineKeyboardMarkup(
-        inline_keyboard=[
-            [InlineKeyboardButton(text="В меню ▶️", callback_data=OnboardingCB(action="done").pack())]
-        ]
-    )
