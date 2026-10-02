@@ -154,6 +154,17 @@ async def on_constructor_hint(
     await PushService(session, redis).handle_constructor_hint(user, callback_data.uw_id, query)
 
 
+@router.callback_query(PushCB.filter(F.action == "prule"))
+async def on_constructor_rule(
+    query: CallbackQuery,
+    callback_data: PushCB,
+    user: User,
+    session: AsyncSession,
+    redis: Redis,
+) -> None:
+    await PushService(session, redis).handle_constructor_rule(user, callback_data.uw_id, query)
+
+
 @router.callback_query(PushCB.filter(F.action == "pgiveup"))
 async def on_constructor_giveup(
     query: CallbackQuery,

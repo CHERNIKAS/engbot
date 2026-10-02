@@ -1899,6 +1899,12 @@ class PushService:
         if ctx is None:
             return
         push_state, inflight, state = ctx
+        # Settling marks every word in the batch, so a double tap would apply
+        # the screen twice. Harmless today because the marks are idempotent, but
+        # it is the same shape as the constructor bug and the same guard fits.
+        if not await self._claim_answer(user.id, inflight.get("msg_id")):
+            await query.answer()
+            return
         rows = inflight.get("rows") or []
         offered = {int(r[0]) for r in rows}
 
@@ -2329,6 +2335,21 @@ class PushService:
         await self._store_card_state(user, state, inflight, card)
         await self._edit_constructor(query, view)
         await query.answer()
+
+    async def handle_constructor_rule(self, user: User, phrase_id: int, query: CallbackQuery) -> None:
+        """Show the topic's rule without disturbing the card.
+
+        An alert rather than a message: the card is mid-answer, and a second
+        message would push it up the chat and leave the learner scrolling back
+        to the buttons. Telegram caps an alert at 200 characters, so a rule
+        longer than that is trimmed rather than silently dropped.
+        """
+        ctx = await self._constructor_context(user, phrase_id, query)
+        if ctx is None:
+            return
+        _state, _inflight, _phrase, topic, _card = ctx
+        rule = re.sub(r"<[^>]+>", "", topic.rule or "").strip()
+        await query.answer(rule[:195] or "Правило для этой темы ещё не записано.", show_alert=True)
 
     async def handle_constructor_giveup(self, user: User, phrase_id: int, query: CallbackQuery) -> None:
         ctx = await self._constructor_context(user, phrase_id, query)

@@ -162,7 +162,13 @@ def constructor_slots_kb(options: list[str], phrase_id: int, can_undo: bool) -> 
     tail = [
         InlineKeyboardButton(
             text="💡 Подсказка", callback_data=PushCB(action="phint", uw_id=phrase_id).pack()
-        )
+        ),
+        # The rule was pushed once, when the topic opened, and scrolled away
+        # within the hour. A method built on a table needs the table in reach
+        # while the sentence is being built, not five months up the chat.
+        InlineKeyboardButton(
+            text="📖 Правило", callback_data=PushCB(action="prule", uw_id=phrase_id).pack()
+        ),
     ]
     if can_undo:
         tail.insert(
@@ -189,6 +195,10 @@ def constructor_typing_kb(phrase_id: int) -> InlineKeyboardMarkup:
                 InlineKeyboardButton(
                     text="💡 Подсказка",
                     callback_data=PushCB(action="phint", uw_id=phrase_id).pack(),
+                ),
+                InlineKeyboardButton(
+                    text="📖 Правило",
+                    callback_data=PushCB(action="prule", uw_id=phrase_id).pack(),
                 ),
                 InlineKeyboardButton(
                     text="🤷 Не помню",

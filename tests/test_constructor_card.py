@@ -50,7 +50,16 @@ def test_typing_mode_offers_no_answers():
 
 def test_a_slot_with_an_odd_number_of_options_still_renders():
     kb = constructor_slots_kb(["a", "b", "c"], 1, can_undo=False)
-    assert len([b for row in kb.inline_keyboard for b in row]) == 3 + 1  # + hint
+    # three options, plus the hint and the rule
+    assert len([b for row in kb.inline_keyboard for b in row]) == 3 + 2
+
+
+def test_the_rule_is_reachable_from_the_card_in_both_modes():
+    """The rule used to be a one-off card shown when the topic opened; it
+    scrolled away and the mechanism never showed it again, so a learner building
+    sentences had the grammar nowhere in sight."""
+    for kb in (constructor_slots_kb(["a", "b"], 1, can_undo=False), constructor_typing_kb(1)):
+        assert any("prule" in c for c in _callbacks(kb))
 
 
 def test_generated_content_cannot_break_the_message():

@@ -64,9 +64,12 @@ PHRASE = "phrase"
 NEW_WORD = "new_word"
 NEW_THEME_WORD = "new_theme_word"
 TRIAGE = "triage"
-# A triage screen holds triage.BATCH_SIZE words; offering one with fewer than a
-# full batch spends a slot to clear a handful the card button already handles.
-TRIAGE_THRESHOLD = 15
+# Not the screen's capacity but the point where a batch beats tapping one card
+# at a time. A screen can show thirteen as happily as fifteen, and pinning the
+# threshold to the batch size locked out the one learner who needed it most:
+# having already dismissed some numbers by hand, he was left below his own
+# screenful and had to keep dismissing them by hand.
+TRIAGE_THRESHOLD = 10
 TEST = "test"
 
 
