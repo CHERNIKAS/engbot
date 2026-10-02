@@ -190,12 +190,6 @@ LEECH_PARK_DAYS = 7
 # back off so one card can't monopolise the window.
 PUSH_MAX_ATTEMPTS = 3  # nudges before giving up (then move on)
 
-# Per-user push-window overrides, keyed by telegram_id. A hand-set schedule for
-# a specific user that wins over their in-app window setting. (start, end) in
-# local hours, [start, end). Remove an entry to hand the window back to the user.
-PUSH_WINDOW_OVERRIDES: dict[int, tuple[int, int]] = {
-    553133186: (14, 21),  # @tannache — custom 14:00–21:00
-}
 
 
 def _retry_after(attempts: int) -> float:
@@ -601,13 +595,6 @@ class PushService:
         return bool(await self._redis.set(key, "1", nx=True, ex=600))
 
     def _window(self, user: User, ut: UserTrack) -> tuple[int, int]:
-        override = PUSH_WINDOW_OVERRIDES.get(user.telegram_id)
-        if override is not None:
-            return normalize_window(
-                override[0], override[1],
-                min_hours=self._s.push_min_window_hours,
-                default=(self._s.push_default_window_start, self._s.push_default_window_end),
-            )
         s = ut.settings or {}
         return normalize_window(
             int(s.get("push_ws", self._s.push_default_window_start)),
