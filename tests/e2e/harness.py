@@ -74,6 +74,55 @@ def action_of(data: str) -> str:
     return parts[1] if len(parts) > 1 and parts[0] == "pu" else parts[0]
 
 
+# Telegram's own limits. Breaking one is not an exception on our side: the API
+# refuses the call, the send helper logs a warning, and the learner simply gets
+# nothing — a card that "did not arrive".
+MAX_TEXT = 4096
+MAX_CALLBACK_BYTES = 64
+# The HTML subset Telegram accepts; anything else, or unbalanced, is refused.
+ALLOWED_TAGS = {"b", "strong", "i", "em", "u", "ins", "s", "strike", "del", "a", "code", "pre",
+                "tg-spoiler", "span", "blockquote", "tg-emoji"}
+
+
+def telegram_problems(text: str | None, markup, parse_mode: str | None) -> list[str]:
+    from html.parser import HTMLParser
+
+    problems: list[str] = []
+    if text is not None and len(text) > MAX_TEXT:
+        problems.append(f"text is {len(text)} chars (> {MAX_TEXT}): {text[:60]!r}")
+    if text and parse_mode == "HTML":
+        stack: list[str] = []
+        bad: list[str] = []
+
+        class _P(HTMLParser):
+            def handle_starttag(self, tag, attrs):
+                if tag not in ALLOWED_TAGS:
+                    bad.append(f"<{tag}>")
+                stack.append(tag)
+
+            def handle_endtag(self, tag):
+                if not stack or stack[-1] != tag:
+                    bad.append(f"</{tag}> unbalanced")
+                else:
+                    stack.pop()
+
+        parser = _P(convert_charrefs=True)
+        parser.feed(text)
+        parser.close()
+        if stack:
+            bad.append(f"unclosed {stack}")
+        if bad:
+            problems.append(f"HTML {bad}: {text[:80]!r}")
+    rows = getattr(markup, "inline_keyboard", None) or []
+    for row in rows:
+        for b in row:
+            if b.callback_data and len(b.callback_data.encode()) > MAX_CALLBACK_BYTES:
+                problems.append(f"callback_data {len(b.callback_data.encode())} bytes: {b.callback_data!r}")
+            if not (b.text or "").strip():
+                problems.append(f"empty button text for {b.callback_data!r}")
+    return problems
+
+
 class FakeTelegram(BaseSession):
     def __init__(self) -> None:
         super().__init__()
@@ -84,6 +133,7 @@ class FakeTelegram(BaseSession):
         self.edits: list[int] = []
         self.toasts: list[str | None] = []
         self.files: dict[str, bytes] = {}  # file_path → content, for downloads
+        self.refused: list[str] = []  # what real Telegram would have rejected
 
     async def close(self) -> None:
         pass
@@ -99,6 +149,16 @@ class FakeTelegram(BaseSession):
 
     async def make_request(self, bot: Bot, method, timeout=None):
         name = type(method).__name__
+        if name in ("SendMessage", "EditMessageText", "EditMessageReplyMarkup"):
+            from aiogram.client.default import Default
+
+            mode = getattr(method, "parse_mode", None)
+            if isinstance(mode, Default):
+                mode = None  # the bot is built with parse_mode=None
+            self.refused += [
+                f"{name}: {p}"
+                for p in telegram_problems(getattr(method, "text", None), getattr(method, "reply_markup", None), mode)
+            ]
         if name == "SendMessage":
             mid = next(self.next_msg)
             markup = method.reply_markup if isinstance(method.reply_markup, InlineKeyboardMarkup) else None
@@ -152,7 +212,8 @@ class FakeTelegram(BaseSession):
         raise AssertionError("no live message with buttons")
 
     def errors(self) -> list[str]:
-        out = [t for t in self.toasts if t and GENERIC_ERROR in t]
+        out = list(self.refused)
+        out += [t for t in self.toasts if t and GENERIC_ERROR in t]
         out += [e["text"] for e in self.sent if e["text"] and GENERIC_ERROR in e["text"]]
         return out
 
