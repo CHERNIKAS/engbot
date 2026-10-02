@@ -36,9 +36,11 @@ def main_menu_reply_kb() -> ReplyKeyboardMarkup:
             # arrived through `_top_up`, and the only pack anyone picks by hand
             # is a narrow one — 17 words across three learners. A top-level
             # button for that competes with the five things people do daily.
-            [KeyboardButton(text=BTN_TODAY), KeyboardButton(text=BTN_MY_WORDS)],
-            [KeyboardButton(text=BTN_GRAMMAR), KeyboardButton(text=BTN_PROGRESS)],
-            [KeyboardButton(text=BTN_LESSON), KeyboardButton(text=BTN_SETTINGS)],
+            # The lesson leads: it is the way to sit down and do the day, and
+            # the owner wanted it first (2026-10-02).
+            [KeyboardButton(text=BTN_LESSON), KeyboardButton(text=BTN_TODAY)],
+            [KeyboardButton(text=BTN_MY_WORDS), KeyboardButton(text=BTN_GRAMMAR)],
+            [KeyboardButton(text=BTN_PROGRESS), KeyboardButton(text=BTN_SETTINGS)],
         ],
         resize_keyboard=True,
         input_field_placeholder=MENU_PLACEHOLDER,
