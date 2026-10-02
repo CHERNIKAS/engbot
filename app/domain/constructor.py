@@ -179,6 +179,7 @@ def render_card(
     hinted_prefix: str = "",
     plan_done: int = 0,
     plan_total: int = 0,
+    rule: str = "",
 ) -> str:
     """The constructor card, HTML-escaped.
 
@@ -198,6 +199,14 @@ def render_card(
         head += f" · {plan_done} / {plan_total}"
 
     parts = [head, "", html.escape(ru.strip())]
+
+    # The rule unfolds into the card rather than arriving as its own message:
+    # the learner is mid-sentence, and anything sent separately pushes the
+    # buttons up the chat. It is pre-formatted, so it is trusted as written and
+    # not escaped — these texts are ours, not generated.
+    if rule:
+        parts.append("")
+        parts.append(rule.strip())
 
     if typing:
         parts.append("")
@@ -249,6 +258,9 @@ class CardState:
     attempt: int = 1
     hinted: bool = False
     typing: bool = False
+    # Opening the rule is free and costs no credit: looking something up is not
+    # a hint, it is how a table is meant to be used.
+    rule_open: bool = False
 
     @property
     def slot_index(self) -> int:

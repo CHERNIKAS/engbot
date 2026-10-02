@@ -13,7 +13,7 @@ recently — lives in `user_grammar_topics`.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -132,6 +132,7 @@ class ConstructorService:
             hinted_prefix=hinted_prefix,
             plan_done=plan_done,
             plan_total=plan_total,
+            rule=(topic.rule or "") if state.rule_open else "",
         )
         return CardView(
             text=text,
@@ -182,6 +183,32 @@ class ConstructorService:
     ) -> tuple[c.CardState, CardView]:
         new_state = c.undo(state)
         return new_state, await self._rerender(user_id, topic, phrase, new_state, plan_done, plan_total)
+
+    async def toggle_rule(
+        self,
+        user_id: int,
+        phrase: GrammarPhrase,
+        topic: GrammarTopic,
+        state: c.CardState,
+        plan_done: int = 0,
+        plan_total: int = 0,
+    ) -> tuple[c.CardState, CardView]:
+        """Unfold the rule into the card, or fold it away again.
+
+        It costs nothing — no credit, no attempt. Reading the table is how the
+        method works, and charging for it would push the learner to guess
+        instead, which is the behaviour the whole format exists to remove.
+        """
+        state = replace(state, rule_open=not state.rule_open)
+        row = await self._repo.state(user_id, topic.id)
+        return state, self._render(
+            topic=topic,
+            phrase=phrase,
+            score=float(row.score) if row else 0.0,
+            state=state,
+            plan_done=plan_done,
+            plan_total=plan_total,
+        )
 
     async def hint(
         self,
