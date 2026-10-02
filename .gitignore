@@ -26,3 +26,4 @@ backups/
 # mutmut working copy
 mutants/
 mutants.db
+reports/
