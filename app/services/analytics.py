@@ -30,6 +30,10 @@ EVENT_PACK_ADDED = "pack_added"
 # answers people actually give, and whether the level we assign holds up. Each
 # one exists to answer a question that was asked and couldn't be.
 EVENT_ANSWER_GRADED = "answer_graded"  # every answer, with what it proved
+# A constructor sentence or a topic-check answer. Word answers live in
+# word_reviews; these had no dated record at all, so a day spent on grammar
+# looked like a day off to everything that measures how much someone does.
+EVENT_PHRASE_ANSWERED = "phrase_answered"
 EVENT_WORD_MASTERED = "word_mastered"  # the outcome the rework was for
 EVENT_PLACEMENT_COMPLETED = "placement_completed"  # what the test decides
 EVENT_LEVEL_CHANGED = "level_changed"  # whether that decision survives contact

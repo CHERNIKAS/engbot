@@ -182,6 +182,24 @@ async def test_a_constructor_sentence_built_right(h):
     await h.check_invariants()
 
 
+async def test_grammar_answers_count_toward_the_daily_pace(h):
+    """A day of grammar is not a day off: the pace that sizes the word pool
+    counts constructor sentences as well as word cards."""
+    from app.infrastructure.repositories.reviews import WordReviewRepository
+
+    async def pace() -> float:
+        async with h.sm() as session:
+            return await WordReviewRepository(session).typical_daily_answers(UID, ps._TRACK, days=1) or 0.0
+
+    await h.sql("delete from word_reviews where user_id=:u", u=UID)
+    before = await pace()
+    card = await _constructor(h)
+    for slot in await _phrase_slots(h, card["id"]):
+        await h.tap_text(card["msg_id"], slot["correct"])
+    assert await pace() == before + 1
+    await h.check_invariants()
+
+
 async def test_every_wrong_constructor_tap_is_visible_until_attempts_run_out(h):
     card = await _constructor(h)
     slot0 = (await _phrase_slots(h, card["id"]))[0]

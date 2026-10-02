@@ -2,11 +2,11 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
 
-from sqlalchemy import func, select
+from sqlalchemy import func, literal_column, select, union_all
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.enums import LearningTrack
-from app.domain.models import GrammarReview, WordReview
+from app.domain.models import AnalyticsEvent, GrammarReview, WordReview
 
 
 class WordReviewRepository:
@@ -49,16 +49,31 @@ class WordReviewRepository:
         described by someone's good days than by their average one.
 
         Days with no answers are excluded, so time off shrinks nothing.
+
+        Every answer counts — word cards, constructor sentences and topic-check
+        answers alike. Counting only words read a day spent on grammar as a day
+        off, and sized that learner's pool (and their new words) for someone
+        who barely studies.
         """
+        from app.services.analytics import EVENT_PHRASE_ANSWERED
+
         since = datetime.now(timezone.utc) - timedelta(days=days)
-        per_day = (
-            select(func.count(WordReview.id).label("c"))
-            .where(
+        answers = union_all(
+            select(WordReview.reviewed_at.label("at")).where(
                 WordReview.user_id == user_id,
                 WordReview.track == track.value,
                 WordReview.reviewed_at >= since,
-            )
-            .group_by(func.date_trunc("day", WordReview.reviewed_at))
+            ),
+            select(AnalyticsEvent.created_at.label("at")).where(
+                AnalyticsEvent.user_id == user_id,
+                AnalyticsEvent.name == EVENT_PHRASE_ANSWERED,
+                AnalyticsEvent.created_at >= since,
+            ),
+        ).subquery()
+        per_day = (
+            select(func.count(literal_column("1")).label("c"))
+            .select_from(answers)
+            .group_by(func.date_trunc("day", answers.c.at))
             .subquery()
         )
         value = (

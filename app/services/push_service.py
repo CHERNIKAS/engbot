@@ -92,6 +92,7 @@ from app.infrastructure.repositories.user_words import UserWordRepository
 from app.logging_setup import get_logger
 from app.services.analytics import (
     EVENT_ANSWER_GRADED,
+    EVENT_PHRASE_ANSWERED,
     EVENT_WORD_MASTERED,
     Analytics,
 )
@@ -2671,6 +2672,8 @@ class PushService:
         inflight["idx"] = idx + 1
         push_state["inflight"] = inflight
         await self._save(user.id, push_state)
+        await self._analytics.emit(EVENT_PHRASE_ANSWERED, user_id=user.id, source="test", correct=bool(ok))
+        await self._session.commit()
 
         try:
             await message.delete()
@@ -2830,6 +2833,9 @@ class PushService:
         """Grade the finished sentence, show it, and free the card."""
         result = await ConstructorService(self._session).settle(
             user.id, phrase, topic, card, answer=answer
+        )
+        await self._analytics.emit(
+            EVENT_PHRASE_ANSWERED, user_id=user.id, source="constructor", correct=bool(result.correct)
         )
         await self._session.commit()
 
