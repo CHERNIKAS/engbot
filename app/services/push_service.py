@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import asyncio
+import functools
 import html
 import json
 import random
@@ -93,6 +95,44 @@ log = get_logger("push")
 
 _KEY = "push:{user_id}"
 _TTL = 172_800  # 2 days
+
+# One learner's push state is read, changed and written back by the worker tick
+# and by every tap, and aiogram runs updates concurrently. Unserialised, they
+# overwrite each other: on 2026-10-02 a nudge read the constructor card, the
+# learner tapped two slots, and the nudge then saved its older copy and replaced
+# the message — the taps on the old one were refused as stale, and the ones that
+# raced each other filled the sentence wrong. Bot and worker share one process,
+# so a per-user asyncio lock is enough.
+_USER_LOCKS: dict[int, asyncio.Lock] = {}
+
+
+def _user_lock(user_id: int) -> asyncio.Lock:
+    lock = _USER_LOCKS.get(user_id)
+    if lock is None:
+        lock = _USER_LOCKS[user_id] = asyncio.Lock()
+    return lock
+
+
+def _serialized(fn):
+    """Run a handler under its learner's lock. Every public entry point that
+    touches the push state goes through this; private helpers must not, as the
+    lock is not re-entrant."""
+
+    @functools.wraps(fn)
+    async def wrapper(self, user, *args, **kwargs):
+        async with _user_lock(user.id):
+            return await fn(self, user, *args, **kwargs)
+
+    return wrapper
+
+
+# A card the learner touched this recently is being worked on: nudging it would
+# delete the message under their finger and post a copy.
+TOUCH_GRACE_SECONDS = 300
+
+
+def _touch(inflight: dict) -> None:
+    inflight["touched_ts"] = datetime.now(timezone.utc).timestamp()
 _TRACK = LearningTrack.ENGLISH
 
 # Consecutive wrong answers before the bot offers to postpone a word (leech
@@ -576,7 +616,9 @@ class PushService:
             # Commit per user: a tick can write (e.g. marking a grammar rule
             # seen), so one user's failure must not poison the shared transaction.
             try:
-                if await self.run_tick(user, ut):
+                async with _user_lock(uid):
+                    ticked = await self.run_tick(user, ut)
+                if ticked:
                     pushed += 1
                 await self._session.commit()
             except TelegramForbiddenError:
@@ -632,7 +674,8 @@ class PushService:
         #      Each re-push carries an escalating "stop ignoring me" line.
         if inflight is not None:
             sent = False
-            if win and now_ts >= inflight.get("retry_ts", 0):
+            busy = now_ts - float(inflight.get("touched_ts", 0)) < TOUCH_GRACE_SECONDS
+            if win and not busy and now_ts >= inflight.get("retry_ts", 0):
                 attempts = int(inflight.get("attempts", 0)) + 1
                 if attempts > PUSH_MAX_ATTEMPTS:
                     # Given up nagging this card — drop it and move on. An ignore
@@ -1280,6 +1323,7 @@ class PushService:
         )
         return text, options, ru, uw.status
 
+    @_serialized
     async def show_rule(self, user: User, ugi_id: int, query: CallbackQuery) -> None:
         """Show the rule behind a grammar exercise (the "📖 Правило" button), as a
         separate message tied to the current card so it's cleaned up on answer.
@@ -1329,6 +1373,7 @@ class PushService:
 
     # ---- card controls (handler path): я знаю / перестать показывать / отложить ----
 
+    @_serialized
     async def handle_remove(self, user: User, uw_id: int, query: CallbackQuery) -> None:
         """«Убрать из обучения» — out of rotation, no credit, recoverable from
         the archive. Distinct from «Я это знаю», which credits the word: mixing
@@ -1340,6 +1385,7 @@ class PushService:
         await self._advance_after_card(user.id, uw_id)
         await self._finish_card(query, PUSH_HIDDEN)
 
+    @_serialized
     async def handle_snooze(self, user: User, uw_id: int, days: int, query: CallbackQuery) -> None:
         uw = await self._uw.get(uw_id, owner_id=user.id)  # scope: forged id can't hit another user
         if uw is not None:
@@ -1348,6 +1394,7 @@ class PushService:
         await self._advance_after_card(user.id, uw_id)
         await self._finish_card(query, PUSH_SNOOZED.format(label=SNOOZE_LABELS.get(days, f"{days} дн.")))
 
+    @_serialized
     async def handle_master(self, user: User, ut: UserTrack, uw_id: int, query: CallbackQuery) -> None:
         """«✅ Уже уверенно знаю» — graduate a word straight to mastered without
         grinding out the remaining reps. For a word the user genuinely knows but
@@ -1397,6 +1444,7 @@ class PushService:
 
     # ---- answer (handler path) ----
 
+    @_serialized
     async def handle_answer(
         self, user: User, ut: UserTrack, uw_id: int, idx: int, query: CallbackQuery
     ) -> None:
@@ -1541,6 +1589,7 @@ class PushService:
         await self._save(user.id, state)
         return outcome
 
+    @_serialized
     async def handle_typed_answer(self, user: User, ut: UserTrack, message) -> bool:
         """A free-text message while a cloze card is in flight = the typed answer.
         Returns True if it consumed the message (so the caller skips quick-add)."""
@@ -1626,6 +1675,7 @@ class PushService:
                 pass
         return True
 
+    @_serialized
     async def handle_giveup(self, user: User, ut: UserTrack, uw_id: int, query: CallbackQuery) -> None:
         """The "🤷 Не помню" button on a cloze card — count it wrong and reveal."""
         state = await self._load(user.id)
@@ -1660,6 +1710,7 @@ class PushService:
             except Exception:  # noqa: BLE001
                 pass
 
+    @_serialized
     async def handle_leech_park(self, user: User, uw_id: int, query: CallbackQuery) -> None:
         """Postpone a stuck word: snooze it for LEECH_PARK_DAYS (out of rotation,
         frees its slot, auto-returns) and clear the miss streak."""
@@ -1670,6 +1721,7 @@ class PushService:
             await self._session.flush()
         await self._finish_card(query, PUSH_LEECH_PARKED)
 
+    @_serialized
     async def handle_leech_keep(self, user: User, uw_id: int, query: CallbackQuery) -> None:
         """Keep drilling a stuck word — just reset the miss streak so we don't
         nag again on the very next miss."""
@@ -1864,8 +1916,10 @@ class PushService:
         if inflight.get("kind") != "triage" or tapped != int(inflight.get("msg_id") or 0):
             await query.answer(PUSH_STALE, show_alert=False)
             return None
+        _touch(inflight)
         return push_state, inflight, triage.TriageState.from_dict(inflight.get("state"))
 
+    @_serialized
     async def handle_triage_toggle(self, user: User, uw_id: int, query: CallbackQuery) -> None:
         ctx = await self._triage_context(user, query)
         if ctx is None:
@@ -1900,6 +1954,7 @@ class PushService:
             pass
         await query.answer()
 
+    @_serialized
     async def handle_triage_done(self, user: User, ut: UserTrack, query: CallbackQuery) -> None:
         ctx = await self._triage_context(user, query)
         if ctx is None:
@@ -2022,8 +2077,10 @@ class PushService:
         ):
             await query.answer(PUSH_STALE, show_alert=False)
             return None
+        _touch(inflight)
         return push_state, inflight
 
+    @_serialized
     async def handle_test_start(self, user: User, topic_id: int, query: CallbackQuery) -> None:
         ctx = await self._test_context(user, topic_id, query)
         if ctx is None:
@@ -2035,6 +2092,7 @@ class PushService:
         await self._show_test_question(user, inflight, query.message)
         await query.answer()
 
+    @_serialized
     async def handle_test_later(self, user: User, topic_id: int, query: CallbackQuery) -> None:
         """Defer without penalty. A check that starts the moment it arrives is
         a trap when it lands mid-commute, and a trap gets ignored rather than
@@ -2081,6 +2139,7 @@ class PushService:
         except Exception:  # noqa: BLE001
             pass
 
+    @_serialized
     async def handle_test_typed(self, user: User, message) -> bool:
         """A typed message while a check is running."""
         push_state = await self._load(user.id)
@@ -2231,6 +2290,7 @@ class PushService:
         if phrase is None or topic is None:
             await query.answer(PUSH_STALE, show_alert=False)
             return None
+        _touch(inflight)
         return state, inflight, phrase, topic, ctor.CardState.from_dict(inflight.get("state"))
 
     async def _edit_constructor(self, query: CallbackQuery, view) -> None:
@@ -2290,6 +2350,7 @@ class PushService:
         )
         await self._save(user.id, state)
 
+    @_serialized
     async def handle_slot(self, user: User, phrase_id: int, idx: int, query: CallbackQuery) -> None:
         ctx = await self._constructor_context(user, phrase_id, query)
         if ctx is None:
@@ -2316,6 +2377,7 @@ class PushService:
         )
         await query.answer()
 
+    @_serialized
     async def handle_constructor_undo(self, user: User, phrase_id: int, query: CallbackQuery) -> None:
         ctx = await self._constructor_context(user, phrase_id, query)
         if ctx is None:
@@ -2326,6 +2388,7 @@ class PushService:
         await self._edit_constructor(query, view)
         await query.answer()
 
+    @_serialized
     async def handle_constructor_hint(self, user: User, phrase_id: int, query: CallbackQuery) -> None:
         ctx = await self._constructor_context(user, phrase_id, query)
         if ctx is None:
@@ -2345,6 +2408,7 @@ class PushService:
         await self._edit_constructor(query, view)
         await query.answer()
 
+    @_serialized
     async def handle_constructor_rule(self, user: User, phrase_id: int, query: CallbackQuery) -> None:
         """Unfold the topic's rule into the card, or fold it away.
 
@@ -2364,6 +2428,7 @@ class PushService:
         await self._edit_constructor(query, view)
         await query.answer()
 
+    @_serialized
     async def handle_constructor_giveup(self, user: User, phrase_id: int, query: CallbackQuery) -> None:
         ctx = await self._constructor_context(user, phrase_id, query)
         if ctx is None:
@@ -2380,6 +2445,7 @@ class PushService:
         )
         await query.answer()
 
+    @_serialized
     async def handle_constructor_typed(self, user: User, message) -> bool:
         """A free-text message while a constructor card is in flight.
 
