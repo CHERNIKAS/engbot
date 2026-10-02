@@ -338,7 +338,6 @@ async def msg_settings(
     await state_service.clear(user.id)
     text = SETTINGS_TITLE.format(
         track=TRACK_LABELS[current_track],
-        goal=user_track.daily_goal_words,
         pace=PACE_LABELS.get(user_track.learning_pace, user_track.learning_pace),
     )
     await send_menu_card(message, redis, user.id, text, reply_markup=settings_kb(), parse_mode="HTML")

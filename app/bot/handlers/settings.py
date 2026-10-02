@@ -46,7 +46,6 @@ router = Router(name="settings")
 def _settings_text(user_track: UserTrack, current_track: LearningTrack) -> str:
     return SETTINGS_TITLE.format(
         track=TRACK_LABELS[current_track],
-        goal=user_track.daily_goal_words,
         pace=PACE_LABELS.get(user_track.learning_pace, user_track.learning_pace),
     )
 

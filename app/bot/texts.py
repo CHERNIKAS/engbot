@@ -148,7 +148,7 @@ HELP_TEXT = (
     "учишь и сколько выучил, покрытие частотного словаря и твой уровень.\n\n"
     "⚙️ <b>Настройки</b>:\n"
     "• ⚡ <b>Темп повторений</b> — как быстро выученное возвращается на проверку\n"
-    "• 🔔 <b>Пуш-обучение</b> — окно времени, когда можно беспокоить\n"
+    "• 🔔 <b>Время пушей</b> — окно, когда боту можно слать карточки\n"
     "• 📏 <b>Мой уровень</b> — считается по твоему прогрессу, вручную не задаётся\n"
     "• 🕐 <b>Часовой пояс</b> — чтобы окно и «сегодня» считались по тебе"
 )
@@ -373,10 +373,13 @@ PUSH_PACE_TITLE = (
     "выбирай по силам.</i>"
 )
 PUSH_PACE_SET = "🚀 Темп: {label}."
+# Named for what it holds. «Пуш-обучение» described a mode you could configure
+# back when there was something to configure; all that is left behind this entry
+# is the window, and a title promising more sends the learner looking for it.
 PUSH_TITLE = (
-    "🔔 <b>Пуш-обучение</b>\n"
-    "Бот сам присылает карточки в течение дня — это основной режим, он всегда включён.\n"
-    "Настрой только окно: когда можно беспокоить 🌙"
+    "🔔 <b>Время пушей</b>\n"
+    "Карточки приходят сами в течение дня — это основной режим, он всегда включён.\n"
+    "Настроить можно одно: когда тебя можно беспокоить 🌙"
 )
 # The minimum is a setting, so these take it as an argument rather than naming
 # a number that quietly stops being true the moment the setting changes.
@@ -388,11 +391,14 @@ PUSH_WINDOW_TITLE = (
 PUSH_WINDOW_PENDING = "🌅 {ws:02d}:00 → 🌙 {we:02d}:00  ·  {hours} ч"
 PUSH_WINDOW_TOO_SHORT = "🙅 Окно должно быть не меньше {min_hours} ч."
 
+# The daily goal is gone from here because nothing in the menu can change it:
+# the dial was removed when the day plan took over sizing the day, and the
+# stored number now only feeds the reminder worker. A figure shown but not
+# settable reads as a control the learner has lost, not as information.
 SETTINGS_TITLE = (
     "⚙️ <b>Настройки</b> 🌸\n"
     "Трек: {track}\n\n"
-    "🎯 Цель в день: <b>{goal}</b>\n"
-    "⚡ Темп: <b>{pace}</b>"
+    "⚡ Темп повторений: <b>{pace}</b>"
 )
 SETTINGS_GOAL_PROMPT = "🎯 Новая дневная цель (1–100):"
 SETTINGS_GOAL_UPDATED = "🌸 Цель: {goal} слов в день"
