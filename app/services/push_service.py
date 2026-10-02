@@ -1727,11 +1727,15 @@ class PushService:
 
     @_serialized
     async def handle_giveup(self, user: User, ut: UserTrack, uw_id: int, query: CallbackQuery) -> None:
-        """The "🤷 Не помню" button on a cloze card — count it wrong and reveal."""
+        """The "🤷 Не помню" button on a typed card — count it wrong and reveal.
+
+        Both typed cards carry the button (cloze and type-in), and both are
+        settled by `_settle_cloze`; accepting only cloze answered every type-in
+        tap with «карточка устарела» and left the card hanging."""
         state = await self._load(user.id)
         inflight = state.get("inflight")
         iid = int(inflight.get("id", inflight.get("uw_id", 0))) if inflight else 0
-        if not inflight or iid != uw_id or inflight.get("ctype") != CARD_CLOZE:
+        if not inflight or iid != uw_id or inflight.get("ctype") not in _TYPED_CARDS:
             await query.answer(PUSH_STALE, show_alert=False)
             return
         # Claim atomically — give-up racing a typed answer must settle once.

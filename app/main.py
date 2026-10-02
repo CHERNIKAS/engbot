@@ -152,24 +152,16 @@ async def _regrade_worker(sessionmaker, redis, bot) -> None:
 
 
 
-async def run() -> None:
-    settings = get_settings()
-    setup_logging(settings.log_level, settings.log_format)
-    log = get_logger("main")
+def build_dispatcher(settings, redis, sessionmaker) -> Dispatcher:
+    """Routers, middlewares and workflow data, exactly as production runs them.
 
-    engine = build_engine()
-    sessionmaker = build_sessionmaker(engine)
-    redis = build_redis()
-
+    Separate from `run` so the end-to-end tests drive the same dispatcher the
+    bot polls with, instead of a hand-assembled copy that could drift."""
     state_service = InteractionStateService(redis)
     screen_service = ScreenVersionService(redis)
     track_context = TrackContextService(redis)
     example_provider = LocalJsonExampleProvider()
 
-    bot = Bot(
-        token=settings.bot_token,
-        default=DefaultBotProperties(parse_mode=None),
-    )
     dp = Dispatcher()
 
     # Workflow data — handlers pull these by kwarg name.
@@ -204,6 +196,23 @@ async def run() -> None:
 
     register_handlers(dp)
     register_error_handler(dp)
+    return dp
+
+
+async def run() -> None:
+    settings = get_settings()
+    setup_logging(settings.log_level, settings.log_format)
+    log = get_logger("main")
+
+    engine = build_engine()
+    sessionmaker = build_sessionmaker(engine)
+    redis = build_redis()
+
+    bot = Bot(
+        token=settings.bot_token,
+        default=DefaultBotProperties(parse_mode=None),
+    )
+    dp = build_dispatcher(settings, redis, sessionmaker)
 
     background: list[asyncio.Task] = []
     if settings.reminders_enabled:

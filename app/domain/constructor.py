@@ -281,6 +281,11 @@ class CardState:
             "attempt": self.attempt,
             "hinted": self.hinted,
             "typing": self.typing,
+            # Was missing: the open rule was dropped on the way through Redis,
+            # so «📖 Правило» could never fold it back (the second tap opened it
+            # again — an edit that changed nothing) and the next slot tap
+            # re-rendered the card without it, mid-thought.
+            "rule_open": self.rule_open,
         }
 
     @classmethod
@@ -291,6 +296,7 @@ class CardState:
             attempt=int(data.get("attempt") or 1),
             hinted=bool(data.get("hinted")),
             typing=bool(data.get("typing")),
+            rule_open=bool(data.get("rule_open")),
         )
 
 
