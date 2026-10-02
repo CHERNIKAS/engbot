@@ -63,7 +63,7 @@ async def h(monkeypatch):
     # 24-hour window is not a valid setting (normalize_window falls back to
     # 10–22), so the window itself is pinned.
     monkeypatch.setattr(ps.PushService, "_window", lambda self, user, ut: (0, 24))
-    from tests.e2e.harness import FakeTelegram, Harness
+    from tests.e2e.harness import FakeTelegram, Harness, install_handler_tracking
 
     assert "55481" in DB or os.environ.get("E2E_I_KNOW"), "refusing: E2E_DATABASE_URL does not look disposable"
     url = await _fresh_clone(DB)
@@ -73,7 +73,17 @@ async def h(monkeypatch):
     tg = FakeTelegram()
     bot = Bot(token="123456:E2E", session=tg)
     dp = build_dispatcher(SimpleNamespace(rate_limit_per_second=1000, access_password=""), redis, sm)
+    install_handler_tracking(dp)
     harness = Harness(dp, bot, tg, sm, redis)
+
+    async def reset() -> None:
+        """A fresh clone and an empty Redis, mid-test: the crawler isolates
+        each entry point so one path's side effects do not hide another's."""
+        await engine.dispose()
+        await _fresh_clone(DB)
+        await redis.flushdb()
+
+    harness.reset = reset
     try:
         yield harness
     finally:

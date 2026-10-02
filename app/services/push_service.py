@@ -929,6 +929,12 @@ class PushService:
         )
         if not msg_id:
             return False
+        if ctype in _TYPED_CARDS and options:
+            # `_build_card` fell back to a choice card (no usable example for a
+            # cloze). Record what was sent, not what was asked for: a typed
+            # ctype on a card with buttons would grade the learner's next
+            # message against it and offer «Не помню» on a card without one.
+            ctype = CARD_REVERSE
         inflight = self._inflight("word", uw.id, options, correct, now_ts, msg_id, ctype=ctype)
         inflight["plan_kind"] = kind
         state["inflight"] = inflight

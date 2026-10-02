@@ -171,7 +171,12 @@ async def on_move(
         return
     moved = await service.move(pack, -1 if callback_data.action == "up" else 1)
     await session.commit()
-    await query.answer("" if moved else "Уже крайний")
+    # The pack card does not show its position, so a silent success looked
+    # exactly like a dead button.
+    if not moved:
+        await query.answer("Уже крайний")
+    else:
+        await query.answer("⬆️ Выше" if callback_data.action == "up" else "⬇️ Ниже")
     await _show_pack(query, session, pack.id)
 
 

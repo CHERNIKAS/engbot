@@ -27,6 +27,46 @@ UID = 1
 _ids = itertools.count(5_000_000)
 # Every push action tapped in this session; the coverage test reads it.
 TAPPED: set[str] = set()
+# Every handler that ran in this session, as "module.function".
+HANDLERS_RUN: set[str] = set()
+
+
+def handler_name(fn) -> str:
+    return f"{fn.__module__}.{fn.__qualname__}"
+
+
+class _HandlerSeen:
+    """Inner middleware: notes which handler an update reached."""
+
+    async def __call__(self, handler, event, data):
+        obj = data.get("handler")
+        if obj is not None:
+            HANDLERS_RUN.add(handler_name(obj.callback))
+        return await handler(event, data)
+
+
+_seen_installed = False
+
+
+def install_handler_tracking(dp) -> None:
+    """Once per process: routers are module-level, and so are their middlewares."""
+    global _seen_installed
+    if _seen_installed:
+        return
+    seen = _HandlerSeen()
+    for router in dp.sub_routers:
+        router.message.middleware(seen)
+        router.callback_query.middleware(seen)
+    _seen_installed = True
+
+
+def all_handlers(dp) -> set[str]:
+    return {
+        handler_name(h.callback)
+        for router in dp.sub_routers
+        for obs in (router.message, router.callback_query)
+        for h in obs.handlers
+    }
 
 
 def action_of(data: str) -> str:
@@ -43,12 +83,19 @@ class FakeTelegram(BaseSession):
         self.deleted: list[int] = []
         self.edits: list[int] = []
         self.toasts: list[str | None] = []
+        self.files: dict[str, bytes] = {}  # file_path → content, for downloads
 
     async def close(self) -> None:
         pass
 
-    async def stream_content(self, *args, **kwargs):  # pragma: no cover
-        yield b""
+    async def stream_content(self, url, headers=None, timeout=30, chunk_size=65536, raise_for_status=True):
+        yield self.files.get(url.rsplit("/", 1)[-1], b"")
+
+    def dummy(self) -> int:
+        """A message to tap a hand-built button from."""
+        mid = next(self.next_msg)
+        self.live[mid] = {"id": mid, "text": "·", "markup": None, "reply_kb": None}
+        return mid
 
     async def make_request(self, bot: Bot, method, timeout=None):
         name = type(method).__name__
@@ -84,6 +131,10 @@ class FakeTelegram(BaseSession):
         if name == "AnswerCallbackQuery":
             self.toasts.append(method.text)
             return True
+        if name == "GetFile":
+            from aiogram.types import File
+
+            return File(file_id=method.file_id, file_unique_id=method.file_id, file_path=f"{method.file_id}.txt")
         return True
 
     # ---- reading the chat ----
@@ -112,8 +163,10 @@ class Harness:
 
     # ---- driving the bot like a learner ----
 
+    tg_id = TG_ID
+
     def _from(self) -> dict:
-        return {"id": TG_ID, "is_bot": False, "first_name": "E2E"}
+        return {"id": self.tg_id, "is_bot": False, "first_name": "E2E"}
 
     def _view(self):
         return (
@@ -152,7 +205,7 @@ class Harness:
                 "message": {
                     "message_id": mid,
                     "date": int(datetime.now(timezone.utc).timestamp()),
-                    "chat": {"id": TG_ID, "type": "private"},
+                    "chat": {"id": self.tg_id, "type": "private"},
                     "text": msg.get("text") or "",
                 },
             },
@@ -178,17 +231,34 @@ class Harness:
             assert self._view() != before, f"message {words!r} gave no visible response"
 
     async def _say(self, words: str) -> None:
+        await self._send_message({"text": words})
+
+    async def _send_message(self, body: dict) -> None:
         update = {
             "update_id": next(_ids),
             "message": {
                 "message_id": next(_ids),
                 "date": int(datetime.now(timezone.utc).timestamp()),
-                "chat": {"id": TG_ID, "type": "private"},
+                "chat": {"id": self.tg_id, "type": "private"},
                 "from": self._from(),
-                "text": words,
+                **body,
             },
         }
         await self.dp.feed_raw_update(self.bot, update)
+
+    async def send_document(self, name: str, content: bytes) -> None:
+        file_id = f"doc{next(_ids)}"
+        self.tg.files[f"{file_id}.txt"] = content
+        await self._send_message({"document": {
+            "file_id": file_id, "file_unique_id": file_id, "file_name": name,
+            "mime_type": "text/plain", "file_size": len(content),
+        }})
+
+    async def send_sticker(self) -> None:
+        await self._send_message({"sticker": {
+            "file_id": "st", "file_unique_id": "st", "type": "regular",
+            "width": 512, "height": 512, "is_animated": False, "is_video": False,
+        }})
 
     async def tick(self) -> bool:
         """One worker tick for the learner, as `run_all` does it."""

@@ -36,7 +36,10 @@ UNIVERSAL_PREFIXES: frozenset[str] = frozenset({"nav", "noop", "pu"})
 # Per-state allowlist of callback prefixes (in addition to UNIVERSAL_PREFIXES).
 STATE_CALLBACK_PREFIXES: dict[InteractionState, frozenset[str]] = {
     InteractionState.IDLE: frozenset(
-        {"mm", "mw", "cat", "add", "imp", "pk", "st", "pg", "set", "ob", "qa", "del", "cr", "sr"}
+        # "pa" (pack admin) was missing: the guard answered every admin-panel
+        # button with CONFLICT_STATE, so the panel opened and did nothing. The
+        # handlers check admin rights themselves.
+        {"mm", "mw", "cat", "add", "imp", "pk", "st", "pg", "set", "ob", "qa", "del", "cr", "sr", "pa"}
     ),
     InteractionState.WAITING_PASSWORD: frozenset(),
     InteractionState.ONBOARDING_TRACKS: frozenset({"ob"}),
@@ -54,6 +57,7 @@ STATE_CALLBACK_PREFIXES: dict[InteractionState, frozenset[str]] = {
     # Search results mix own words (word cards open via "mw", delete via "del")
     # with catalog words (added via "sr").
     InteractionState.WAITING_SEARCH_QUERY: frozenset({"sr", "mw", "del", "mm"}),
+    InteractionState.WAITING_PACK_RENAME: frozenset({"pa"}),
 }
 
 
@@ -67,6 +71,9 @@ TEXT_ACCEPTING_STATES: frozenset[InteractionState] = frozenset(
         InteractionState.WAITING_CATEGORY_RENAME,
         InteractionState.STUDY_ACTIVE,  # typing-stage answers
         InteractionState.WAITING_SEARCH_QUERY,
+        # Was missing: the new pack title was refused before reaching the
+        # handler that waits for it.
+        InteractionState.WAITING_PACK_RENAME,
     }
 )
 
