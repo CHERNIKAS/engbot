@@ -181,6 +181,10 @@ async def msg_my_words(
     await _open_my_words(message, user, current_track, session, state_service, redis)
 
 
+# The button is gone from the menu, but Telegram keeps a reply keyboard on the
+# client until a message replaces it — so a tap on a stale «🗂 Коллекции» must
+# still land here rather than falling through to «add a word», which is what
+# the next matching handler would do with it.
 @router.message(F.text == BTN_COLLECTIONS)
 async def msg_collections(
     message: Message,

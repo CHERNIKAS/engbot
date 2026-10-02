@@ -35,8 +35,15 @@ def categories_overview_kb(
             ]
         )
 
+    # Only folders that hold something. In v2 words arrive through `_top_up`
+    # with no category at all, so the folders stopped filling: 59 of 65 were
+    # empty and the screen was two scrolls of «(0)» around one real row. An
+    # empty folder is not a place to put something — nothing here puts words in
+    # folders any more — it is a row that has to be read and skipped.
     for cat in categories:
         count = counts.get(cat.id, 0)
+        if not count:
+            continue
         rows.append(
             [
                 InlineKeyboardButton(
@@ -46,6 +53,14 @@ def categories_overview_kb(
             ]
         )
 
+    rows.append(
+        [
+            InlineKeyboardButton(
+                text="📦 Коллекции",
+                callback_data=MainMenuCB(section="packs").pack(),
+            )
+        ]
+    )
     rows.append(
         [
             InlineKeyboardButton(

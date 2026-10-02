@@ -29,9 +29,14 @@ def main_menu_reply_kb() -> ReplyKeyboardMarkup:
     """
     return ReplyKeyboardMarkup(
         keyboard=[
+            # Collections left the menu and moved inside «Мой словарь». In v2
+            # the bot stocks the vocabulary itself: 448 of the last 497 words
+            # arrived through `_top_up`, and the only pack anyone picks by hand
+            # is a narrow one — 17 words across three learners. A top-level
+            # button for that competes with the five things people do daily.
             [KeyboardButton(text=BTN_TODAY), KeyboardButton(text=BTN_MY_WORDS)],
-            [KeyboardButton(text=BTN_COLLECTIONS), KeyboardButton(text=BTN_GRAMMAR)],
-            [KeyboardButton(text=BTN_PROGRESS), KeyboardButton(text=BTN_SETTINGS)],
+            [KeyboardButton(text=BTN_GRAMMAR), KeyboardButton(text=BTN_PROGRESS)],
+            [KeyboardButton(text=BTN_SETTINGS)],
         ],
         resize_keyboard=True,
         input_field_placeholder=MENU_PLACEHOLDER,
