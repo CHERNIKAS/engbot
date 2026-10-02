@@ -282,6 +282,20 @@ async def test_every_reachable_button_answers(h, monkeypatch):
     assert crawler.problems == [], "\n".join(crawler.problems)
 
 
+async def test_an_old_collections_list_says_it_expired(h):
+    """/start resets the state but leaves the list in the chat; a tap on it
+    used to do nothing at all."""
+    await h.fresh_day(["new_word"])
+    await h.say(T.BTN_COLLECTIONS)
+    groups = h.tg.last_with_buttons()["id"]
+    await h.tap(groups, "pk:group:Темы:0:0:")
+    listing = h.tg.last_with_buttons()["id"]
+    data = next(d for _t, d in h.tg.buttons(listing) if d.startswith("pk:toggle"))
+    await h.say("/start")
+    await h.tap(listing, data)  # must visibly answer
+    assert h.tg.toasts[-1] == T.LIST_EXPIRED
+
+
 # Handlers no scenario here can reach, each with the reason. Revisit when one of
 # these flows changes — or delete the handler.
 NOT_REACHED_BY_DESIGN = {

@@ -15,6 +15,7 @@ from app.bot.keyboards.packs import (
 from app.bot.menu_nav import send_menu_card
 from app.bot.states import InteractionState
 from app.bot.texts import (
+    LIST_EXPIRED,
     PACK_COURSE_MANAGED,
     PACK_REMOVE_CONFIRM,
     PACK_REMOVED,
@@ -186,14 +187,17 @@ async def on_toggle(
     analytics: Analytics,
     screen_service,
 ) -> None:
+    # Both early returns used to answer with nothing: open collections, step
+    # into another section (which clears the state), come back to the old list
+    # and tap — the button did nothing at all.
     category = (await state_service.get(user.id)).data.get("category")
     if not category:
-        await query.answer()
+        await query.answer(LIST_EXPIRED, show_alert=False)
         return
     cache = await _cache(category, current_track, user.id, session)
     row = _pack_row(cache, callback_data.pack_id)
     if row is None:
-        await query.answer()
+        await query.answer(LIST_EXPIRED, show_alert=False)
         return
     _pid, title, wc, _pct, owned = int(row[0]), str(row[1]), int(row[2]), int(row[3]), int(row[4])
 
