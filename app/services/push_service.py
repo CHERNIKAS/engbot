@@ -2280,15 +2280,20 @@ class PushService:
         if ctx is None:
             return
         state, inflight, phrase, topic, card = ctx
-        if not await self._claim_answer(user.id, inflight.get("msg_id")):
-            await query.answer()
-            return
 
         service = ConstructorService(self._session)
         card, view = await service.tap_slot(user.id, phrase, topic, card, idx)
         if view is not None:
             await self._store_card_state(user, state, inflight, card)
             await self._edit_constructor(query, view)
+            await query.answer()
+            return
+        # The claim belongs here and not at the top. It is keyed on the message,
+        # and a word card is answered once — but a constructor card is tapped
+        # once per slot, so claiming on entry let the first tap through and
+        # silently dropped every tap after it. What must not happen twice is the
+        # settling, which is where the score and the plan move.
+        if not await self._claim_answer(user.id, inflight.get("msg_id")):
             await query.answer()
             return
         await self._settle_constructor(

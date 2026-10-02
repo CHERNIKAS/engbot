@@ -252,3 +252,29 @@ async def test_active_topic_still_follows_the_curriculum_order():
     await ConstructorRepository(session).active_topic(user_id=1)
     sql = str(session.statements[-1]).lower()
     assert "order by grammar_topics.position asc" in sql
+
+
+def test_the_answer_claim_guards_settling_not_every_tap():
+    """A constructor card is tapped once per slot, and the claim is keyed on the
+    message — so claiming on entry let the first tap through and dropped every
+    one after it. Production showed it: a card sat with `chosen: []` while the
+    learner tapped and nothing moved.
+
+    This reads the handler rather than calling it, because reproducing the real
+    failure needs Redis, a Telegram query and a loaded card; what went wrong was
+    structural, and the structure is what the test pins. `_claim_answer` must be
+    reached only after the branch that re-renders an unfinished card returns.
+    """
+    import inspect
+
+    from app.services.push_service import PushService
+
+    src = inspect.getsource(PushService.handle_slot)
+    claim = src.index("_claim_answer")
+    early_return = src.index("await query.answer()\n            return")
+    assert early_return < claim, (
+        "handle_slot claims the message before the re-render branch returns: "
+        "every tap after the first will be silently dropped"
+    )
+    settle = src.index("_settle_constructor")
+    assert claim < settle, "the claim must still guard settling"
