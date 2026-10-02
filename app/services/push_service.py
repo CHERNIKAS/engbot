@@ -27,8 +27,19 @@ from app.bot.keyboards.push import (
     push_grammar_card_kb,
     push_leech_kb,
     push_rule_kb,
+    lesson_ping_kb,
 )
+from app.bot.keyboards.main_menu import lesson_reply_kb, main_menu_reply_kb
 from app.bot.texts import (
+    LESSON_ALREADY,
+    LESSON_CONTINUE_ABOVE,
+    LESSON_DAY_DONE,
+    LESSON_ENDED_IDLE,
+    LESSON_ENDED_LEFT,
+    LESSON_NOT_RUNNING,
+    LESSON_NOTHING,
+    LESSON_PING,
+    LESSON_STARTED,
     PUSH_ANSWER_ALMOST,
     PUSH_ANSWER_CORRECT,
     PUSH_ANSWER_DEGRADED,
@@ -121,9 +132,43 @@ def _serialized(fn):
     @functools.wraps(fn)
     async def wrapper(self, user, *args, **kwargs):
         async with _user_lock(user.id):
-            return await fn(self, user, *args, **kwargs)
+            result = await fn(self, user, *args, **kwargs)
+            if fn.__name__ not in _LESSON_SELF:
+                await self._lesson_after(user, _bot_of(args))
+            return result
 
     return wrapper
+
+
+def _bot_of(args) -> Bot | None:
+    """The bot a handler's update came through. Handlers build the service
+    without one, and a lesson has to send the next card from inside the tap."""
+    for arg in args:
+        try:
+            bot = getattr(arg, "bot", None)
+        except Exception:  # noqa: BLE001 — an unbound aiogram object raises
+            bot = None
+        if isinstance(bot, Bot):
+            return bot
+    return None
+
+
+def _now_ts() -> float:
+    return datetime.now(timezone.utc).timestamp()
+
+
+# ---- lesson mode ----
+#
+# The plan done as a sitting instead of across the day: the next card follows
+# each answer at once and pushes stay paused until the learner ends it. Silence
+# for LESSON_IDLE_SECONDS asks «Ты тут?»; no answer to that within
+# LESSON_PING_TIMEOUT_SECONDS hands the rest of the plan back to pushes.
+LESSON_IDLE_SECONDS = 600
+LESSON_PING_TIMEOUT_SECONDS = 300
+_LESSON_SET = "lesson:active"
+# Entry points that manage the lesson themselves; the post-tap hook would only
+# repeat what they just did.
+_LESSON_SELF = frozenset({"start_lesson", "end_lesson"})
 
 
 # A card the learner touched this recently is being worked on: nudging it would
@@ -647,6 +692,10 @@ class PushService:
         today = _push_day(local, ws)  # rolls at window start, not midnight
 
         state = await self._load(user.id)
+        if state.get("lesson"):
+            # A lesson sets its own pace (`_lesson_step`, `run_lessons`); a push
+            # here would be a second card racing the one in front of the learner.
+            return False
         if state.get("day") != today:
             # Yesterday's card (+ any rule message) stays in chat with live
             # buttons after the day rolls over — tidy it so the user doesn't tap
@@ -1001,7 +1050,7 @@ class PushService:
         return inflight.get("msg_id")
 
     async def _renudge_constructor(
-        self, user: User, inflight: dict, attempts: int, now_ts: float
+        self, user: User, inflight: dict, attempts: int, now_ts: float, lead: str | None = None
     ) -> int | None:
         """The construction card again, with the pieces already tapped intact."""
         phrase_id = int(inflight.get("id", 0))
@@ -1019,9 +1068,10 @@ class PushService:
             if view.typing
             else constructor_slots_kb(view.options, view.phrase_id, view.can_undo)
         )
+        lead = nudge_line(attempts) if lead is None else lead
         return await self._raw_send(
             user.telegram_id,
-            f"{nudge_line(attempts)}\n\n{view.text}",
+            f"{lead}\n\n{view.text}" if lead else view.text,
             kb,
             uid=user.id,
             kind="constructor",
@@ -1908,6 +1958,260 @@ class PushService:
             "retry_ts": now_ts + _retry_after(1),
         }
         return True
+
+    # ---- lesson mode ----
+
+    def _today(self, user: User, ut: UserTrack) -> date:
+        ws, _we = self._window(user, ut)
+        local = datetime.now(timezone.utc).astimezone(_tz(user.timezone))
+        return date.fromisoformat(_push_day(local, ws))
+
+    async def today_done(self, user: User, ut: UserTrack) -> bool:
+        """Whether today's plan is already finished — for «Сегодня» and the
+        lesson button, which would otherwise offer a day that is over."""
+        from app.infrastructure.repositories.day_plans import DayPlanRepository
+
+        return await DayPlanRepository(self._session).closed_on(user.id, _TRACK, self._today(user, ut))
+
+    async def _plan_left(self, user: User) -> int:
+        plan = await DayPlanService(self._session).open_plan_or_none(user.id, _TRACK)
+        if plan is None:
+            return 0
+        progress = DayPlanService.progress(plan)
+        return max(0, progress.total - progress.done)
+
+    async def _clear_ping(self, user: User, lesson: dict) -> None:
+        msg_id = lesson.pop("ping_msg_id", None)
+        lesson.pop("ping_ts", None)
+        if msg_id:
+            await self._delete(user.telegram_id, int(msg_id))
+
+    @_serialized
+    async def start_lesson(self, user: User, ut: UserTrack) -> None:
+        state = await self._load(user.id)
+        if state.get("lesson"):
+            await self._raw_send(user.telegram_id, LESSON_ALREADY, lesson_reply_kb())
+            return
+        today = self._today(user, ut)
+        plan_service = DayPlanService(self._session)
+        if await plan_service.open_plan_or_none(user.id, _TRACK) is None and await self.today_done(user, ut):
+            await self._raw_send(user.telegram_id, LESSON_DAY_DONE, main_menu_reply_kb())
+            return
+        if state.get("day") != today.isoformat():
+            # The same roll-over the tick does at the window's start: a lesson
+            # opened before the first tick of the day must not carry yesterday's
+            # card into it.
+            prev = state.get("inflight") or {}
+            for k in ("msg_id", "rule_msg_id"):
+                if prev.get(k):
+                    await self._delete(user.telegram_id, int(prev[k]))
+            state = {"day": today.isoformat(), "next_ts": 0.0, "inflight": None, "new_today": 0}
+            await plan_service.refresh_level(user, _TRACK)
+            await self._session.commit()
+
+        now_ts = _now_ts()
+        state["lesson"] = {"since": now_ts, "active_ts": now_ts}
+        await self._redis.sadd(_LESSON_SET, user.id)
+        log.info("lesson_started", uid=user.id)
+        await self._raw_send(user.telegram_id, LESSON_STARTED, lesson_reply_kb(), uid=user.id, kind="lesson")
+
+        inflight = state.get("inflight")
+        if inflight is not None:
+            await self._lesson_bring_down(user, state, inflight, now_ts)
+        else:
+            await self._lesson_step(user, state)
+        await self._save(user.id, state)
+
+    async def _lesson_bring_down(self, user: User, state: dict, inflight: dict, now_ts: float) -> None:
+        """Start the lesson on the card already waiting, moved to the bottom of
+        the chat — it may be hours up — and without the «повтор» scolding a
+        nudge carries. Offers (triage, topic check) have one render; they stay
+        where they are."""
+        kind = inflight.get("kind", "word")
+        new_id = None
+        if kind in self._WORD_KINDS:
+            new_id, _o, _c = await self._send_card(
+                user,
+                kind,
+                int(inflight.get("id", inflight.get("uw_id", 0))),
+                options_override=inflight.get("options"),
+                card_type=inflight.get("ctype", CARD_RECOGNITION),
+                plan_kind=inflight.get("plan_kind", ""),
+            )
+        elif kind == "phrase":
+            new_id = await self._renudge_constructor(user, inflight, 0, now_ts, lead="")
+        if not new_id:
+            await self._raw_send(user.telegram_id, LESSON_CONTINUE_ABOVE, None)
+            return
+        if inflight.get("msg_id"):
+            await self._delete(user.telegram_id, int(inflight["msg_id"]))
+        inflight["msg_id"] = new_id
+        inflight["sent_ts"] = now_ts
+        inflight["retry_ts"] = now_ts + _retry_after(1)
+        state["inflight"] = inflight
+
+    async def _lesson_after(self, user: User, bot: Bot | None) -> None:
+        """After every tap or typed answer: during a lesson, note the learner is
+        here, take back an open «Ты тут?», and if the card is settled put the
+        next one in front of them."""
+        state = await self._load(user.id)
+        lesson = state.get("lesson")
+        if not lesson:
+            return
+        if self._bot is None:
+            self._bot = bot
+        lesson["active_ts"] = _now_ts()
+        await self._clear_ping(user, lesson)
+        if state.get("inflight") is None:
+            await self._lesson_step(user, state)
+        await self._save(user.id, state)
+
+    async def _lesson_step(self, user: User, state: dict) -> None:
+        """Serve the next card of the plan now — the whole difference between a
+        lesson and pushes. Ends the lesson once today's plan is done."""
+        from app.infrastructure.repositories.user_tracks import UserTrackRepository
+
+        ut = await UserTrackRepository(self._session).get(user.id, _TRACK)
+        if ut is None:
+            return
+        today = self._today(user, ut)
+        plan_service = DayPlanService(self._session)
+        # An unfillable slot is ticked off and the next one tried; a closed
+        # carried-over plan is followed by today's. Bounded, so a plan of dead
+        # slots cannot spin here.
+        for _ in range(12):
+            now_ts = _now_ts()
+            rule_topic = await self._grammar.pending_rule(user.id, _TRACK)
+            if rule_topic is not None:
+                msg_id = await self._raw_send(
+                    user.telegram_id,
+                    PUSH_RULE_CARD.format(title=html.escape(rule_topic.title), rule=rule_topic.rule),
+                    push_rule_kb(),
+                    uid=user.id,
+                    kind="rule",
+                    obj_id=rule_topic.id,
+                )
+                if msg_id is None:
+                    return
+                await self._grammar.mark_rule_seen(user.id, rule_topic.id)
+                await self._session.commit()
+                continue
+
+            plan, opened = await plan_service.ensure_plan(user, _TRACK, today)
+            await self._session.commit()
+            if plan is None:
+                done = await self.today_done(user, ut)
+                await self._end_lesson(user, state, "done" if done else "empty")
+                return
+            if opened:
+                await self._raw_send(
+                    user.telegram_id, self._plan_card(plan), None, uid=user.id, kind="plan", obj_id=plan.id
+                )
+            progress = plan_service.progress(plan)
+            if progress.closed:
+                await self._close_day(user, plan, plan_service)
+                continue
+            kind = plan_service.next_kind(plan)
+            if kind is None:
+                await self._end_lesson(user, state, "empty")
+                return
+            if await self._serve(user, ut, kind, progress.done, progress.total, state, now_ts):
+                return
+            log.info("push_slot_unfillable", uid=user.id, kind=kind, done=progress.done, total=progress.total)
+            await plan_service.mark_done(plan, kind)
+            await self._session.commit()
+
+    async def _end_lesson(self, user: User, state: dict, reason: str) -> None:
+        """Back to pushes. `reason`: done (today's plan closed), user (the
+        button), idle (no answer to «Ты тут?»), empty (nothing to study)."""
+        lesson = state.pop("lesson", None) or {}
+        await self._clear_ping(user, lesson)
+        await self._redis.srem(_LESSON_SET, user.id)
+        now_ts = _now_ts()
+        state["next_ts"] = now_ts + _minutes(self._s.push_gap_min_minutes, self._s.push_gap_max_minutes)
+        inflight = state.get("inflight")
+        if inflight is not None:
+            # The card left unanswered is the first thing pushes bring back —
+            # on the push clock, not at once.
+            inflight["retry_ts"] = now_ts + _retry_after(1)
+        if reason == "done":
+            text = LESSON_DAY_DONE
+        elif reason == "empty":
+            text = LESSON_NOTHING
+        else:
+            left = await self._plan_left(user)
+            text = (LESSON_ENDED_IDLE if reason == "idle" else LESSON_ENDED_LEFT).format(left=left)
+        await self._raw_send(user.telegram_id, text, main_menu_reply_kb(), uid=user.id, kind="lesson_end")
+        log.info(
+            "lesson_ended",
+            uid=user.id,
+            reason=reason,
+            minutes=round((now_ts - float(lesson.get("since", now_ts))) / 60, 1),
+        )
+
+    @_serialized
+    async def end_lesson(self, user: User) -> None:
+        state = await self._load(user.id)
+        if not state.get("lesson"):
+            await self._raw_send(user.telegram_id, LESSON_NOT_RUNNING, main_menu_reply_kb())
+            return
+        left = await self._plan_left(user)
+        await self._end_lesson(user, state, "user" if left else "done")
+        await self._save(user.id, state)
+
+    @_serialized
+    async def handle_lesson_here(self, user: User, query: CallbackQuery) -> None:
+        """«Да» on «Ты тут?». The hook that runs after this takes the question
+        back and serves a card if none is waiting."""
+        state = await self._load(user.id)
+        if state.get("lesson"):
+            await query.answer("Погнали 💪")
+            return
+        await query.answer("Урок уже закрыт")
+        if query.message is not None:
+            try:
+                await query.message.delete()
+            except Exception:  # noqa: BLE001
+                pass
+
+    async def run_lessons(self) -> None:
+        """Every running lesson's clock, called by its own fast worker."""
+        from app.infrastructure.repositories.users import UserRepository
+
+        if self._bot is None:
+            return
+        users = UserRepository(self._session)
+        for raw in await self._redis.smembers(_LESSON_SET):
+            uid = int(raw)
+            async with _user_lock(uid):
+                try:
+                    state = await self._load(uid)
+                    lesson = state.get("lesson")
+                    if not lesson:
+                        await self._redis.srem(_LESSON_SET, uid)
+                        continue
+                    user = await users.get(uid)
+                    if user is None:
+                        continue
+                    now_ts = _now_ts()
+                    if lesson.get("ping_ts"):
+                        if now_ts - float(lesson["ping_ts"]) >= LESSON_PING_TIMEOUT_SECONDS:
+                            await self._end_lesson(user, state, "idle")
+                            await self._save(uid, state)
+                    elif now_ts - float(lesson.get("active_ts", 0)) >= LESSON_IDLE_SECONDS:
+                        lesson["ping_msg_id"] = await self._raw_send(
+                            user.telegram_id, LESSON_PING, lesson_ping_kb(), uid=uid, kind="lesson_ping"
+                        )
+                        lesson["ping_ts"] = now_ts
+                        await self._save(uid, state)
+                    await self._session.commit()
+                except TelegramForbiddenError:
+                    state.pop("lesson", None)
+                    await self._redis.srem(_LESSON_SET, uid)
+                    await self._save(uid, state)
+                except Exception:  # noqa: BLE001 — one learner must not stop the others
+                    await self._session.rollback()
+                    log.exception("lesson_tick_failed", uid=uid)
 
     async def _triage_context(self, user: User, query: CallbackQuery):
         push_state = await self._load(user.id)

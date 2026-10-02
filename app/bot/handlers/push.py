@@ -12,6 +12,16 @@ from app.services.push_service import PushService
 router = Router(name="push")
 
 
+@router.callback_query(PushCB.filter(F.action == "here"))
+async def on_lesson_here(
+    query: CallbackQuery,
+    user: User,
+    session: AsyncSession,
+    redis: Redis,
+) -> None:
+    await PushService(session, redis, query.bot).handle_lesson_here(user, query)
+
+
 @router.callback_query(PushCB.filter(F.action == "ans"))
 async def on_push_answer(
     query: CallbackQuery,

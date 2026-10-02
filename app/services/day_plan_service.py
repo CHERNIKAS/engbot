@@ -112,6 +112,11 @@ class DayPlanService:
         existing = await self._plans.open_plan(user.id, track)
         if existing is not None:
             return existing, False
+        # A finished day stays finished until the next one. Without this the
+        # tick after a plan closed composed a second plan for the same day, and
+        # «план пройден — жди завтра» was never true.
+        if await self._plans.closed_on(user.id, track, push_day):
+            return None, False
 
         # Stock the vocabulary before measuring it: composing first would size
         # the day against what was left over from yesterday.

@@ -39,6 +39,9 @@ async def test_two_taps_on_one_learner_run_one_after_the_other():
     trace: list[str] = []
 
     class Svc:
+        async def _lesson_after(self, user, bot):
+            pass
+
         @ps._serialized
         async def tap(self, user, name):
             trace.append(f"{name}:in")
@@ -55,6 +58,9 @@ async def test_different_learners_do_not_wait_for_each_other():
     trace: list[str] = []
 
     class Svc:
+        async def _lesson_after(self, user, bot):
+            pass
+
         @ps._serialized
         async def tap(self, user):
             trace.append(f"{user.id}:in")

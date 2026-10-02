@@ -64,6 +64,22 @@ async def _push_worker(sessionmaker, redis, bot) -> None:
             log.exception("push_worker_error")
 
 
+async def _lesson_worker(sessionmaker, redis, bot) -> None:
+    """The lesson clock («Ты тут?», back to pushes). Its own loop because the
+    push worker ticks every five minutes and a lesson counts in minutes."""
+    log = get_logger("push")
+    while True:
+        await asyncio.sleep(30)
+        try:
+            async with sessionmaker() as session:
+                await PushService(session, redis, bot).run_lessons()
+                await session.commit()
+        except asyncio.CancelledError:
+            raise
+        except Exception:  # noqa: BLE001 — never let the worker die
+            log.exception("lesson_worker_error")
+
+
 async def _digest_worker(sessionmaker, redis, bot) -> None:
     settings = get_settings()
     log = get_logger("digest")
@@ -193,6 +209,7 @@ async def run() -> None:
     if settings.reminders_enabled:
         background.append(asyncio.create_task(_reminder_worker(sessionmaker, redis, bot)))
     background.append(asyncio.create_task(_push_worker(sessionmaker, redis, bot)))
+    background.append(asyncio.create_task(_lesson_worker(sessionmaker, redis, bot)))
     if settings.digest_enabled:
         background.append(asyncio.create_task(_digest_worker(sessionmaker, redis, bot)))
     if settings.gemini_api_key:

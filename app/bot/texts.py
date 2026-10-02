@@ -88,6 +88,9 @@ BTN_COLLECTIONS = "🗂 Коллекции"
 BTN_GRAMMAR = "📖 Грамматика"
 BTN_PROGRESS = "📊 Прогресс"
 BTN_SETTINGS = "⚙️ Настройки"
+# The plan as a lesson: cards back to back, pushes paused until it ends.
+BTN_LESSON = "🎓 Урок"
+BTN_LESSON_END = "⏹ Закончить обучение"
 
 # Superseded labels. Telegram keeps a reply keyboard on the client until the
 # next one is sent, so whoever last opened the bot still has the old buttons on
@@ -105,6 +108,7 @@ BTN_MY_WORDS_OLD = "📚 Мои слова"
 MENU_BUTTON_TEXTS: frozenset[str] = frozenset(
     {
         BTN_TODAY, BTN_MY_WORDS, BTN_COLLECTIONS, BTN_GRAMMAR, BTN_PROGRESS, BTN_SETTINGS,
+        BTN_LESSON, BTN_LESSON_END,
         BTN_WORDS, BTN_STUDY, BTN_ADD, BTN_IMPORT, BTN_PACKS, BTN_HELP, BTN_MY_WORDS_OLD,
     }
 )
@@ -115,6 +119,24 @@ TODAY_NO_PLAN = (
     "План ещё не собран — он появится с первой карточкой дня 🌿\n"
     "<i>Карточки приходят сами, в твоё окно из настроек.</i>"
 )
+
+TODAY_DONE = (
+    "📅 <b>Сегодня</b>\n\n"
+    "🏆 План на сегодня закрыт. Новый — завтра 🌙"
+)
+
+LESSON_STARTED = (
+    "🎓 <b>Урок пошёл.</b> Карточки идут подряд, без пауз — пуши на стопе.\n"
+    "Хватит — жми «⏹ Закончить обучение» внизу."
+)
+LESSON_ALREADY = "🎓 Урок и так идёт — отвечай на карточку. Выйти — кнопка внизу."
+LESSON_CONTINUE_ABOVE = "👆 Начинаем с карточки выше."
+LESSON_DAY_DONE = "🏆 <b>Красава!</b> План на сегодня закрыт. Отдыхай — завтра новый 🌙"
+LESSON_ENDED_LEFT = "👌 Урок закрыт. Осталось {left} — добью пушами, не расслабляйся 📬"
+LESSON_ENDED_IDLE = "😴 Пропал — урок закрыл, пуши вернул. Осталось {left}, пришлю сам 📬"
+LESSON_NOTHING = "🌿 Сегодня учить нечего — карточки кончились."
+LESSON_NOT_RUNNING = "Урок не идёт. Начать — «🎓 Урок» в меню."
+LESSON_PING = "👀 Ты тут?"
 
 WORDS_MENU_TITLE = (
     "🗂 <b>Настройки слов</b>\n"
@@ -136,6 +158,9 @@ HELP_TEXT = (
     "📅 <b>Сегодня</b> — план на день: сколько карточек осталось и из чего они. "
     "Карточки приходят сами в течение дня, отвечать можно прямо из чата. Новый "
     "план не появится, пока не закрыт текущий.\n\n"
+    "🎓 <b>Урок</b> — пройти план подряд, как в приложении: карточки идут сразу "
+    "одна за другой, пуши на паузе. «⏹ Закончить обучение» — и остаток добьют "
+    "пуши. Пропал на 10 минут — спрошу, тут ли ты.\n\n"
     "📚 <b>Мой словарь</b> — слова, которые ты учишь, по папкам. Тап на слово → "
     "карточка, оттуда же можно убрать его из обучения. Свои слова добавляются "
     "сообщением: <code>word</code> / <code>word - перевод</code>.\n\n"

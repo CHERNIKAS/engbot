@@ -12,6 +12,8 @@ from app.bot.keyboards.common import home_button
 from app.bot.texts import (
     BTN_COLLECTIONS,
     BTN_GRAMMAR,
+    BTN_LESSON,
+    BTN_LESSON_END,
     BTN_MY_WORDS,
     BTN_PROGRESS,
     BTN_SETTINGS,
@@ -36,10 +38,20 @@ def main_menu_reply_kb() -> ReplyKeyboardMarkup:
             # button for that competes with the five things people do daily.
             [KeyboardButton(text=BTN_TODAY), KeyboardButton(text=BTN_MY_WORDS)],
             [KeyboardButton(text=BTN_GRAMMAR), KeyboardButton(text=BTN_PROGRESS)],
-            [KeyboardButton(text=BTN_SETTINGS)],
+            [KeyboardButton(text=BTN_LESSON), KeyboardButton(text=BTN_SETTINGS)],
         ],
         resize_keyboard=True,
         input_field_placeholder=MENU_PLACEHOLDER,
+    )
+
+
+def lesson_reply_kb() -> ReplyKeyboardMarkup:
+    """The bottom keyboard while a lesson runs: one way out. The menu comes
+    back with the message that ends the lesson."""
+    return ReplyKeyboardMarkup(
+        keyboard=[[KeyboardButton(text=BTN_LESSON_END)]],
+        resize_keyboard=True,
+        input_field_placeholder="Ответ — сюда ✍️",
     )
 
 

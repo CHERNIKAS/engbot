@@ -24,6 +24,8 @@ from app.bot.texts import (
     BTN_GRAMMAR,
     BTN_HELP,
     BTN_IMPORT,
+    BTN_LESSON,
+    BTN_LESSON_END,
     BTN_MY_WORDS,
     BTN_MY_WORDS_OLD,
     BTN_PACKS,
@@ -37,6 +39,7 @@ from app.bot.texts import (
     MY_WORDS_EMPTY,
     PACE_LABELS,
     SETTINGS_TITLE,
+    TODAY_DONE,
     TODAY_NO_PLAN,
     STUDY_MENU_TITLE,
     TXT_PROMPT,
@@ -141,11 +144,41 @@ async def msg_study(
     )
 
 
+@router.message(F.text == BTN_LESSON)
+async def msg_lesson(
+    message: Message,
+    user: User,
+    user_track: UserTrack,
+    session: AsyncSession,
+    state_service: InteractionStateService,
+    redis: Redis,
+) -> None:
+    from app.services.push_service import PushService
+
+    await state_service.clear(user.id)
+    await PushService(session, redis, message.bot).start_lesson(user, user_track)
+
+
+@router.message(F.text == BTN_LESSON_END)
+async def msg_lesson_end(
+    message: Message,
+    user: User,
+    session: AsyncSession,
+    state_service: InteractionStateService,
+    redis: Redis,
+) -> None:
+    from app.services.push_service import PushService
+
+    await state_service.clear(user.id)
+    await PushService(session, redis, message.bot).end_lesson(user)
+
+
 @router.message(F.text == BTN_TODAY)
 async def msg_today(
     message: Message,
     user: User,
     current_track: LearningTrack,
+    user_track: UserTrack,
     session: AsyncSession,
     state_service: InteractionStateService,
     redis: Redis,
@@ -159,9 +192,12 @@ async def msg_today(
     from app.services.day_plan_service import DayPlanService
 
     await state_service.clear(user.id)
+    from app.services.push_service import PushService
+
     plan = await DayPlanService(session).open_plan_or_none(user.id, current_track)
     if plan is None:
-        text = TODAY_NO_PLAN
+        done = await PushService(session, redis).today_done(user, user_track)
+        text = TODAY_DONE if done else TODAY_NO_PLAN
     else:
         counts = DayPlanService.counts_by_kind(plan)
         done = sum(1 for i in (plan.items or []) if i.get("done"))

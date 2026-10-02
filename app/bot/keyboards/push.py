@@ -253,3 +253,10 @@ def test_offer_kb(topic_id: int) -> InlineKeyboardMarkup:
             ]
         ]
     )
+
+
+def lesson_ping_kb() -> InlineKeyboardMarkup:
+    """«Ты тут?» during a lesson. One answer: the other is silence."""
+    return InlineKeyboardMarkup(
+        inline_keyboard=[[InlineKeyboardButton(text="🙋 Да", callback_data=PushCB(action="here").pack())]]
+    )

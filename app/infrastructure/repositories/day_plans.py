@@ -26,6 +26,20 @@ class DayPlanRepository:
         )
         return (await self.session.execute(q)).scalars().first()
 
+    async def closed_on(self, user_id: int, track: LearningTrack, day: date) -> bool:
+        """Whether the plan made for `day` is already finished."""
+        q = (
+            select(DayPlan.id)
+            .where(
+                DayPlan.user_id == user_id,
+                DayPlan.track == track.value,
+                DayPlan.opened_on == day,
+                DayPlan.closed_at.isnot(None),
+            )
+            .limit(1)
+        )
+        return (await self.session.execute(q)).first() is not None
+
     async def create(
         self, user_id: int, track: LearningTrack, size: int, items: list[dict], opened_on: date
     ) -> DayPlan:

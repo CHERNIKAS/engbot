@@ -128,6 +128,7 @@ class PushCB(CallbackData, prefix="pu"):
     action: str  # ans | giveup | know | hide | master | snooze | rule | rule_ok
     #      | leech_park | leech_keep | unarchive | unsnooze
     #      | slot | pundo | phint | pgiveup  (sentence constructor)
+    #      | here  (lesson: «Ты тут?» → «Да»)
     uw_id: int = 0
     idx: int = 0
     days: int = 0  # snooze duration for action == "snooze"
