@@ -1824,7 +1824,10 @@ class PushService:
         if not batch:
             return False
 
-        state = triage.TriageState()
+        # Not `state`: that name is the tick's push state, which this writes the
+        # inflight into. Shadowing it sent the screen, then crashed on the write,
+        # so the next tick found nothing in flight and sent it again.
+        screen = triage.TriageState()
         rows = [
             (uw.id, triage.button_label(word.writing, word.translation or "", False))
             for uw, word in batch
@@ -1834,6 +1837,9 @@ class PushService:
             f"{plan_rules.card_head(plan_rules.TRIAGE, plan_done, plan_total, extra=theme.title)}\n\n"
             f"{triage.render(theme.title, offered=len(rows), known=0)}",
             triage_kb(rows, TRIAGE_DONE),
+            uid=user.id,
+            kind="triage",
+            obj_id=theme.id,
         )
         if msg_id is None:
             return False
@@ -1843,7 +1849,7 @@ class PushService:
             "id": theme.id,
             "title": theme.title,
             "rows": [[uw.id, word.writing, word.translation or ""] for uw, word in batch],
-            "state": state.to_dict(),
+            "state": screen.to_dict(),
             "msg_id": msg_id,
             "attempts": 0,
             "sent_ts": now_ts,
