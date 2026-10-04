@@ -343,24 +343,8 @@ class UserWordRepository:
         await self.session.flush()
         return result.rowcount or 0
 
-    async def pick_new_for_push(
-        self, user_id: int, track: LearningTrack, user_level: str | None = None
-    ) -> tuple[UserWord, Word] | None:
-        """One brand-new (unstudied) quizzable word to introduce when a slot
-        frees up — chosen by how well it fits the user, not by when it arrived.
-
-        This used to be `order_by(created_at)`, which handed words out in
-        whatever order they were imported: a TXT file's line order, or a pack's
-        migration order. With ~4k words sitting in NEW that meant the queue was
-        effectively arbitrary, and nothing ever looked at difficulty.
-
-        Ordering now: distance from the user's level first (see
-        `levels.selection_rank`), then common words before rare ones, then the
-        user's own additions ahead of catalogue filler, then age as a stable
-        tiebreak. The final pick is random inside a small head window so the
-        same word doesn't sit at the front of the queue forever — the ordering
-        decides the band, not the exact word.
-        """
+    def _new_words_query(self, user_id: int, track: LearningTrack, user_level: str | None):
+        """Unstarted words in the order they are introduced (see pick_new_for_push)."""
         level_rank = case(
             {lv: selection_rank(lv, user_level) for lv in LEVELS},
             value=Word.level,
@@ -407,13 +391,41 @@ class UserWordRepository:
                 source_priority,
                 UserWord.created_at.asc(),
             )
-            .limit(NEW_PICK_WINDOW)
         )
+        return q
+
+    async def pick_new_for_push(
+        self, user_id: int, track: LearningTrack, user_level: str | None = None
+    ) -> tuple[UserWord, Word] | None:
+        """One brand-new (unstudied) quizzable word to introduce when a slot
+        frees up — chosen by how well it fits the user, not by when it arrived.
+
+        This used to be `order_by(created_at)`, which handed words out in
+        whatever order they were imported: a TXT file's line order, or a pack's
+        migration order. With ~4k words sitting in NEW that meant the queue was
+        effectively arbitrary, and nothing ever looked at difficulty.
+
+        Ordering now: distance from the user's level first (see
+        `levels.selection_rank`), then common words before rare ones, then the
+        user's own additions ahead of catalogue filler, then age as a stable
+        tiebreak. The final pick is random inside a small head window so the
+        same word doesn't sit at the front of the queue forever — the ordering
+        decides the band, not the exact word.
+        """
+        q = self._new_words_query(user_id, track, user_level).limit(NEW_PICK_WINDOW)
         rows = (await self.session.execute(q)).all()
         if not rows:
             return None
         row = random.choice(rows)
         return (row[0], row[1])
+
+    async def frequency_batch(
+        self, user_id: int, track: LearningTrack, user_level: str | None, limit: int
+    ) -> list[tuple[UserWord, Word]]:
+        """The next unstarted words of the frequency stream, in the order they
+        would arrive one card at a time — for a triage screen over them."""
+        q = self._new_words_query(user_id, track, user_level).limit(limit)
+        return [(r[0], r[1]) for r in (await self.session.execute(q)).all()]
 
     async def pick_new_phrase(
         self, user_id: int, track: LearningTrack

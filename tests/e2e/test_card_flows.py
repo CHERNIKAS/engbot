@@ -126,12 +126,62 @@ async def test_a_word_put_aside_frees_the_card_and_the_day_goes_on(h, monkeypatc
     await h.act(card["msg_id"], action)
     st = await h.state()
     assert st["inflight"] is None, action
+    # The slot is used up — otherwise the next tick deals another word into the
+    # same slot, forever (2026-10-04: fifteen «знаю» in an evening, plan frozen).
+    assert await h.done_kinds() == ["new_word"], action
     await h.check_invariants()
     # Not stuck: the next tick brings a different card.
     st["next_ts"] = 0.0
     await h.put_state(st)
     nxt = await h.card()
     assert nxt["msg_id"] != card["msg_id"]
+    await h.check_invariants()
+
+
+async def _next_card(h) -> dict:
+    st = await h.state()
+    st["next_ts"] = 0.0
+    await h.put_state(st)
+    await h.tick()
+    return (await h.state())["inflight"]
+
+
+async def test_three_known_in_a_row_brings_a_screen_to_mark_in_bulk(h, monkeypatch):
+    _force_card_type(monkeypatch, ps.CARD_RECOGNITION)
+    await h.fresh_day(["new_word"] * 6)
+    known = []
+    card = await h.card()
+    for _ in range(3):
+        assert card["kind"] == "word"
+        known.append(card["id"])
+        await h.act(card["msg_id"], "master")
+        card = (await h.state())["inflight"] or await _next_card(h)
+    screen = (await h.state())["inflight"]
+    assert screen["kind"] == "triage" and screen["source"] == "frequency", screen
+    assert "многое уже знаешь" in h.tg.live[screen["msg_id"]]["text"]
+    assert not {r[0] for r in screen["rows"]} & set(known)
+    assert await h.done_kinds() == ["new_word"] * 3  # the three, not the screen
+    # Knows all of it: the next screen of the same stream follows.
+    for i in range(len(screen["rows"])):
+        await h.act(screen["msg_id"], "trg", i)
+    await h.act(screen["msg_id"], "trgok")
+    nxt = (await h.state())["inflight"]
+    assert nxt and nxt["kind"] == "triage" and nxt["source"] == "frequency"
+    assert await h.done_kinds() == ["new_word"] * 3  # bulk screens take no slot
+    await h.check_invariants()
+
+
+async def test_an_answered_card_breaks_the_known_streak(h, monkeypatch):
+    _force_card_type(monkeypatch, ps.CARD_RECOGNITION)
+    await h.fresh_day(["new_word"] * 6)
+    card = await h.card()
+    for step in ("master", "master", "answer", "master"):
+        if step == "answer":
+            await h.tap_text(card["msg_id"], card["correct"])
+        else:
+            await h.act(card["msg_id"], "master")
+        card = await _next_card(h)
+    assert card["kind"] == "word"  # no screen: the streak was broken
     await h.check_invariants()
 
 

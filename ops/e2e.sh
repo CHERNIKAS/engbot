@@ -16,7 +16,7 @@ RD_PORT=55482
 export E2E_DATABASE_URL="postgresql+asyncpg://englsh:e2e@127.0.0.1:${PG_PORT}/pristine"
 export E2E_REDIS_URL="redis://127.0.0.1:${RD_PORT}/0"
 
-down() { docker rm -f "$PG" "$RD" >/dev/null 2>&1 || true; }
+down() { docker rm -fv "$PG" "$RD" >/dev/null 2>&1 || true; }
 
 up() {
   down

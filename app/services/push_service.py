@@ -1454,7 +1454,7 @@ class PushService:
         if uw is not None:
             uw.archived = True
             await self._session.flush()
-        await self._advance_after_card(user.id, uw_id)
+        await self._advance_after_card(user, uw_id)
         await self._finish_card(query, PUSH_HIDDEN)
 
     @_serialized
@@ -1463,7 +1463,7 @@ class PushService:
         if uw is not None:
             uw.snooze_until = datetime.now(timezone.utc) + timedelta(days=days)
             await self._session.flush()
-        await self._advance_after_card(user.id, uw_id)
+        await self._advance_after_card(user, uw_id)
         await self._finish_card(query, PUSH_SNOOZED.format(label=SNOOZE_LABELS.get(days, f"{days} дн.")))
 
     @_serialized
@@ -1487,24 +1487,53 @@ class PushService:
             uw.next_review_at = datetime.now(timezone.utc) + timedelta(days=7)
             await self._session.flush()
             await ProgressService(self._session).update_streak(user)
-        await self._advance_after_card(user.id, uw_id)
         await self._finish_card(query, PUSH_MASTERED_KNOWN)
+        await self._advance_after_card(user, uw_id, known=True, bot=query.bot)
 
-    async def _advance_after_card(self, user_id: int, uw_id: int) -> None:
-        """Drop the current WORD card and let the next one come on the next tick.
-        Only clears a word inflight of the same id — a hide/snooze (word-only
-        action) must never clear a grammar card that happens to share the id
-        (word and grammar ids are independent sequences)."""
-        state = await self._load(user_id)
+    async def _advance_after_card(
+        self, user: User, uw_id: int, known: bool = False, bot: Bot | None = None
+    ) -> None:
+        """Drop the current WORD card, tick its plan slot, and let the next one
+        come after the usual gap. Only clears a word inflight of the same id — a
+        hide/snooze (word-only action) must never clear a grammar card that
+        happens to share the id (word and grammar ids are independent sequences).
+
+        The slot used not to be ticked: «Я это знаю» left the plan exactly where
+        it was, so the next tick — at once, the gap was zero — dealt the next
+        new word into the same slot. A learner who knew them got one card every
+        five minutes all evening and a plan that never moved.
+
+        `known`: three in a row on new words → a triage screen over the stream
+        the word came from, instead of the next card."""
+        state = await self._load(user.id)
         inflight = state.get("inflight")
-        if (
+        now_ts = datetime.now(timezone.utc).timestamp()
+        current = (
             inflight
             and inflight.get("kind", "word") == "word"
             and int(inflight.get("uw_id", 0)) == uw_id
-        ):
+        )
+        plan_kind = inflight.get("plan_kind") if current else None
+        if current:
             state["inflight"] = None
-        state["next_ts"] = datetime.now(timezone.utc).timestamp()
-        await self._save(user_id, state)
+            await self._tick_plan(user, plan_kind)
+        state["next_ts"] = now_ts + _minutes(self._s.push_gap_min_minutes, self._s.push_gap_max_minutes)
+
+        new_word_kinds = (plan_rules.NEW_WORD, plan_rules.NEW_THEME_WORD)
+        if known and current and plan_kind in new_word_kinds:
+            state["known_streak"] = int(state.get("known_streak", 0)) + 1
+        elif current:
+            state.pop("known_streak", None)
+        if int(state.get("known_streak", 0)) >= triage.CALIBRATE_AFTER_KNOWN and state.get("inflight") is None:
+            if self._bot is None:
+                self._bot = bot
+            source = "theme" if plan_kind == plan_rules.NEW_THEME_WORD else "frequency"
+            if await self._send_triage(
+                user, state, now_ts, source=source, lead=triage.CALIBRATE_LEAD, from_plan=False
+            ):
+                state["inflight"]["plan_slot"] = False
+                state.pop("known_streak", None)
+        await self._save(user.id, state)
 
     async def _finish_card(self, query: CallbackQuery, text: str) -> None:
         if query.message:
@@ -1573,6 +1602,7 @@ class PushService:
             leech_writing, recap = outcome.leech_writing, outcome.recap
 
         state["inflight"] = None
+        state.pop("known_streak", None)
         # Remember this card so the next pick skips it (no back-to-back repeats).
         state["last"] = {"kind": inflight.get("kind", "word"), "id": iid}
         state["next_ts"] = now_ts + _minutes(self._s.push_gap_min_minutes, self._s.push_gap_max_minutes)
@@ -1658,6 +1688,7 @@ class PushService:
             early_weight=bool(inflight.get("extra")),
         )
         state["inflight"] = None
+        state.pop("known_streak", None)
         state["last"] = {"kind": "word", "id": iid}
         state["next_ts"] = now_ts + _minutes(self._s.push_gap_min_minutes, self._s.push_gap_max_minutes)
         await self._save(user.id, state)
@@ -1951,7 +1982,15 @@ class PushService:
     # is the cheapest way to find out otherwise.
 
     async def _send_triage(
-        self, user: User, state: dict, now_ts: float, plan_done: int = 0, plan_total: int = 0
+        self,
+        user: User,
+        state: dict,
+        now_ts: float,
+        plan_done: int = 0,
+        plan_total: int = 0,
+        source: str = "theme",
+        lead: str = "",
+        from_plan: bool = True,
     ) -> bool:
         """Offer the next screenful of the current theme. False if there is
         nothing to offer — the caller ticks the slot rather than holding the
@@ -1959,13 +1998,20 @@ class PushService:
 
         Writes into the caller's `state`; see `_send_constructor` for why
         loading a private copy here silently wipes the card."""
-        if state.get("triage_skip_day") == state.get("day"):
+        if from_plan and state.get("triage_skip_day") == state.get("day"):
             # Already offered and ignored today — see the abandon branch.
             return False
-        theme = await self._uw.current_theme(user.id, _TRACK)
-        if theme is None:
-            return False
-        batch = await self._uw.theme_batch(user.id, _TRACK, theme.id, triage.BATCH_SIZE)
+        if source == "frequency":
+            # The frequency stream has no theme; the screen covers the next
+            # words it would have sent one at a time.
+            theme_id, title = 0, triage.FREQUENCY_TITLE
+            batch = await self._uw.frequency_batch(user.id, _TRACK, user.level, triage.BATCH_SIZE)
+        else:
+            theme = await self._uw.current_theme(user.id, _TRACK)
+            if theme is None:
+                return False
+            theme_id, title = theme.id, theme.title
+            batch = await self._uw.theme_batch(user.id, _TRACK, theme.id, triage.BATCH_SIZE)
         if not batch:
             return False
 
@@ -1977,22 +2023,24 @@ class PushService:
             (uw.id, triage.button_label(word.writing, word.translation or "", False))
             for uw, word in batch
         ]
+        head = plan_rules.card_head(plan_rules.TRIAGE, plan_done, plan_total, extra=title)
         msg_id = await self._raw_send(
             user.telegram_id,
-            f"{plan_rules.card_head(plan_rules.TRIAGE, plan_done, plan_total, extra=theme.title)}\n\n"
-            f"{triage.render(theme.title, offered=len(rows), known=0)}",
+            (f"{lead}\n\n" if lead else "")
+            + f"{head}\n\n{triage.render(title, offered=len(rows), known=0)}",
             triage_kb(rows, TRIAGE_DONE),
             uid=user.id,
             kind="triage",
-            obj_id=theme.id,
+            obj_id=theme_id,
         )
         if msg_id is None:
             return False
 
         state["inflight"] = {
             "kind": "triage",
-            "id": theme.id,
-            "title": theme.title,
+            "source": source,
+            "id": theme_id,
+            "title": title,
             "rows": [[uw.id, word.writing, word.translation or ""] for uw, word in batch],
             "state": screen.to_dict(),
             "msg_id": msg_id,
@@ -2465,7 +2513,8 @@ class PushService:
             pass
 
         now_ts = datetime.now(timezone.utc).timestamp()
-        await self._tick_plan(user, plan_rules.TRIAGE)
+        if inflight.get("plan_slot", True):
+            await self._tick_plan(user, plan_rules.TRIAGE)
         push_state["inflight"] = None
         known = len([u for u in state.known if int(u) in offered])
         more = False
@@ -2482,6 +2531,8 @@ class PushService:
                 now_ts,
                 plan_done=progress.done if progress else 0,
                 plan_total=progress.total if progress else 0,
+                source=inflight.get("source", "theme"),
+                from_plan=False,
             )
         if not more:
             push_state["next_ts"] = now_ts + _minutes(

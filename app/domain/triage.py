@@ -33,6 +33,14 @@ BATCH_SIZE = 15
 # and those are better met one card at a time.
 NEXT_BATCH_SHARE = 0.8
 
+# «Я это знаю» this many times in a row on new words means the stream is pitched
+# below the learner: offer the next screenful at once instead of the next card.
+# Found on 2026-10-04 — a learner tapped it fifteen times in an evening, one card
+# every five minutes, and nothing ever asked what else they already knew.
+CALIBRATE_AFTER_KNOWN = 3
+FREQUENCY_TITLE = "Частые слова"
+CALIBRATE_LEAD = "🎯 Похоже, ты многое уже знаешь — отметь пачкой, что знакомо, учить не будем."
+
 
 def wants_another(known: int, offered: int) -> bool:
     """Whether to offer the next screen of the theme right now."""
