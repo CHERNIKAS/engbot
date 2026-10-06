@@ -39,7 +39,7 @@ from app.services.pack_service import PackService
 router = Router(name="packs")
 
 PACK_REMOVE_KIND = "pack_remove"  # screen-version guard for destructive removal
-_GROUP_ORDER = {"Уровни": 0, "Грамматика": 1, "Темы": 2, "Фразы": 3, "Экзамены": 4}
+_GROUP_ORDER = {"Уровни": 0, "Грамматика": 1, "Темы": 2, "Фразы": 3, "Живой английский": 4, "Экзамены": 5}
 _LEVELS_GROUP = "Уровни"
 
 

@@ -69,7 +69,7 @@ def pack_remove_confirm_kb(pack_id: int, page: int, version: str = "") -> Inline
     )
 
 
-_GROUP_EMOJI = {"Уровни": "🎯", "Грамматика": "🔤", "Темы": "🗂", "Фразы": "💬", "Экзамены": "🎓"}
+_GROUP_EMOJI = {"Уровни": "🎯", "Грамматика": "🔤", "Темы": "🗂", "Фразы": "💬", "Живой английский": "🗣", "Экзамены": "🎓"}
 
 
 def pack_groups_kb(groups: list[tuple[str, int]]) -> InlineKeyboardMarkup:
