@@ -401,8 +401,8 @@ async def test_knowing_a_whole_screen_brings_the_next_one(h):
     assert nxt and nxt["kind"] == "triage" and nxt["msg_id"] != mid, "no second screen"
     assert not {r[0] for r in nxt["rows"]} & {r[0] for r in card["rows"]}
     assert await h.done_kinds() == ["triage"]  # still one slot; the extra screen is a bonus
-    # Knowing little of the next one ends the run.
-    await h.act(nxt["msg_id"], "trg", 0)
+    # Knowing none of the next one ends the run. (Not «one of them»: a theme
+    # near its end leaves a one-word screen, and 1 of 1 rightly asks for more.)
     await h.act(nxt["msg_id"], "trgok")
     assert (await h.state())["inflight"] is None
     await h.check_invariants()
