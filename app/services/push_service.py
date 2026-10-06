@@ -28,10 +28,15 @@ from app.bot.keyboards.push import (
     push_leech_kb,
     push_rule_kb,
     lesson_ping_kb,
+    phrase_style_kb,
+    PHRASE_STYLES,
     extra_offer_kb,
 )
 from app.bot.keyboards.main_menu import lesson_reply_kb, main_menu_reply_kb
 from app.bot.texts import (
+    PHRASE_STYLE_ASK,
+    PHRASE_STYLE_CHOSEN,
+    PHRASE_STYLE_LABELS,
     EXTRA_NEW_LINE,
     EXTRA_NEW_LINE_FULL,
     EXTRA_NOTHING_TO_PRACTISE,
@@ -477,6 +482,21 @@ class AnswerOutcome:
 
     leech_writing: str | None = None
     recap: str = ""
+
+
+def _style_line(uw, word) -> str:
+    """Under a phrase's verdict: the rendering the learner is not drilling, so
+    they still recognise it when they hear it."""
+    if not getattr(word, "colloquial", None):
+        return ""
+    style = uw.phrase_style or "neutral"
+    neutral, casual = html.escape(word.writing), html.escape(word.colloquial)
+    if style == "casual":
+        return f"\n🗣 Нейтрально: <b>{neutral}</b>"
+    if style == "both":
+        return f"\n🗣 Оба варианта: <b>{neutral}</b> / <b>{casual}</b>"
+    note = f" — {html.escape(word.colloquial_note)}" if word.colloquial_note else ""
+    return f"\n🗣 Ещё говорят: <b>{casual}</b>{note}"
 
 
 def _recap(
@@ -937,6 +957,12 @@ class PushService:
         if pick is None:
             return False
         uw, word = pick
+        if word.colloquial and uw.phrase_style is None:
+            default = ((ut.settings or {}).get("phrase_style") if ut is not None else None) or "ask"
+            if default == "ask":
+                return await self._ask_phrase_style(user, uw, word, kind, done, total, state, now_ts)
+            uw.phrase_style = default
+            await self._session.flush()
         ctype = self._card_type(uw, word, user.level)
         msg_id, options, correct = await self._send_card(
             user, "word", uw.id, card_type=ctype,
@@ -1338,6 +1364,17 @@ class PushService:
         if not ru:
             return None
         target = mastery.target_for(word.level, user_level)
+        # The rendering this card asks for: the phrase as written, its
+        # colloquial form, or either, as the learner chose.
+        english = word.writing
+        if word.colloquial:
+            style = uw.phrase_style or "neutral"
+            if style == "casual":
+                english = word.colloquial
+            elif style == "both":
+                english = random.choice([word.writing, word.colloquial])
+            if english != word.writing and card_type == CARD_CLOZE:
+                card_type = CARD_TYPE_IN  # the example sentence holds the neutral form
         # Pre-answer surfaces must not leak English inside the RU gloss
         # («не могу (сокращение от cannot)» on a can't card = free answer).
         ru = strip_latin_hints(ru)
@@ -1361,16 +1398,22 @@ class PushService:
                 f"\n<i>{_progress_line(uw, target=target, typing_now=True)}</i>"
             )
             # options=[] — answered by typing, like a cloze.
-            return text, [], word.writing, uw.status
+            return text, [], english, uw.status
 
         if card_type == CARD_REVERSE:
             # RU prompt → pick the English word. Answer is the writing; distractors
             # are other English words. Closes the recognition→production gap.
-            distractors = await self._uw.reverse_distractors(
-                user_id, track=_TRACK, exclude_word_id=word.id, limit=3,
-                correct_pos=word.part_of_speech, correct_level=word.level,
-            )
-            answer = word.writing
+            distractors = []
+            if word.is_phrase:
+                distractors = await self._uw.phrase_distractors(
+                    word.id, "writing", exclude=[word.writing, word.colloquial or ""]
+                )
+            if len(distractors) < 3:
+                distractors = await self._uw.reverse_distractors(
+                    user_id, track=_TRACK, exclude_word_id=word.id, limit=3,
+                    correct_pos=word.part_of_speech, correct_level=word.level,
+                )
+            answer = english
             options = [answer, *distractors[:3]]
             random.shuffle(options)
             text = (
@@ -1381,14 +1424,20 @@ class PushService:
 
         # Recognition (default): EN→RU, pick the translation. Carries the abstract
         # example as a context hint.
-        distractors = await self._uw.quiz_distractors(
-            user_id, track=_TRACK, exclude_user_word_id=uw_id, limit=3, exclude_translations=[ru],
-            correct_pos=word.part_of_speech, correct_level=word.level,
-        )
+        distractors = []
+        if word.is_phrase:
+            distractors = [
+                strip_latin_hints(d) for d in await self._uw.phrase_distractors(word.id, "translation", exclude=[ru])
+            ]
+        if len(distractors) < 3:
+            distractors = await self._uw.quiz_distractors(
+                user_id, track=_TRACK, exclude_user_word_id=uw_id, limit=3, exclude_translations=[ru],
+                correct_pos=word.part_of_speech, correct_level=word.level,
+            )
         options = [ru, *distractors[:3]]
         random.shuffle(options)
         text = _format_word_card(
-            writing=word.writing,
+            writing=english,
             abstract_en=word.abstract_example_en,
             abstract_ru=word.abstract_example_ru,
             progress=_progress_line(uw, target=target),
@@ -1732,8 +1781,11 @@ class PushService:
             if pair is not None:
                 uw_row, word_row = pair
                 translation = uw_row.custom_translation or word_row.translation or ""
-            verdict = await self._checker.classify(answer, translation, typed)
-            if verdict is None:
+                # A phrase's other rendering is a right answer too.
+                if any(is_typing_correct(typed, v) for v in (word_row.writing, word_row.colloquial) if v):
+                    correct = True
+            verdict = None if correct else await self._checker.classify(answer, translation, typed)
+            if verdict is None and not correct:
                 # Scored strictly because the checker was unreachable. Park it so
                 # the credit is delayed, not lost.
                 await self._regrade.park(
@@ -1747,7 +1799,7 @@ class PushService:
                         at=datetime.now(timezone.utc).timestamp(),
                     )
                 )
-            elif verdict.credited:
+            elif verdict is not None and verdict.credited:
                 correct = True
 
         outcome = await self._settle_cloze(
@@ -1943,7 +1995,8 @@ class PushService:
                 was_mastered=was_mastered,
                 correct=correct,
                 target=target,
-            ),
+            )
+            + _style_line(uw, word),
         )
 
     async def _apply_grammar_answer(
@@ -2434,6 +2487,102 @@ class PushService:
         if outcome == "empty":
             await self._raw_send(user.telegram_id, EXTRA_NOTHING_TO_PRACTISE, None)
         await self._save(user.id, state)
+
+    # ---- a phrase's neutral / colloquial rendering ----
+
+    def _style_question(self, uw, word) -> str:
+        return PHRASE_STYLE_ASK.format(
+            ru=html.escape(strip_latin_hints(uw.custom_translation or word.translation or "")),
+            neutral=html.escape(word.writing),
+            casual=html.escape(word.colloquial or ""),
+            note=html.escape(word.colloquial_note or "разговорно"),
+        )
+
+    async def _ask_phrase_style(
+        self, user: User, uw, word, kind: str, done: int, total: int, state: dict, now_ts: float
+    ) -> bool:
+        """The first time a phrase with a colloquial rendering comes up: which
+        one to learn. The card itself follows the answer."""
+        msg_id = await self._raw_send(
+            user.telegram_id, self._style_question(uw, word), phrase_style_kb(uw.id),
+            uid=user.id, kind="phrase_style", obj_id=uw.id,
+        )
+        if not msg_id:
+            return False
+        state["inflight"] = {
+            "kind": "style",
+            "id": uw.id,
+            "plan_kind": kind,
+            "plan_done": done,
+            "plan_total": total,
+            "msg_id": msg_id,
+            "attempts": 0,
+            "sent_ts": now_ts,
+            "retry_ts": now_ts + _retry_after(1),
+        }
+        return True
+
+    @_serialized
+    async def handle_phrase_style(self, user: User, uw_id: int, idx: int, query: CallbackQuery) -> None:
+        pair = await self._uw.get_with_word(uw_id, owner_id=user.id)
+        if pair is None or not (0 <= idx < len(PHRASE_STYLES)):
+            await query.answer(PUSH_STALE, show_alert=False)
+            return
+        uw, word = pair
+        style = PHRASE_STYLES[idx]
+        uw.phrase_style = style
+        await self._session.flush()
+        if query.message is not None:
+            try:
+                await query.message.edit_text(
+                    PHRASE_STYLE_CHOSEN.format(
+                        ru=html.escape(strip_latin_hints(uw.custom_translation or word.translation or "")),
+                        label=PHRASE_STYLE_LABELS[style],
+                    )
+                )
+            except Exception:  # noqa: BLE001
+                pass
+        await query.answer(PHRASE_STYLE_LABELS[style])
+
+        state = await self._load(user.id)
+        inflight = state.get("inflight") or {}
+        if inflight.get("kind") != "style" or int(inflight.get("id", 0)) != uw_id:
+            await self._session.commit()
+            return  # changed from «Мой словарь»: nothing waits on it
+        # The question stood in for the phrase's card; send that card now.
+        if self._bot is None:
+            self._bot = query.bot
+        now_ts = _now_ts()
+        ctype = self._card_type(uw, word, user.level)
+        plan_kind = inflight.get("plan_kind") or plan_rules.PHRASE
+        msg_id, options, correct = await self._send_card(
+            user, "word", uw.id, card_type=ctype, plan_kind=plan_kind,
+            plan_done=int(inflight.get("plan_done", 0)), plan_total=int(inflight.get("plan_total", 0)),
+        )
+        if msg_id:
+            if ctype in _TYPED_CARDS and options:
+                ctype = CARD_REVERSE
+            card = self._inflight("word", uw.id, options, correct, now_ts, msg_id, ctype=ctype)
+            card["plan_kind"] = plan_kind
+            state["inflight"] = card
+        else:
+            state["inflight"] = None
+        await self._session.commit()
+        await self._save(user.id, state)
+
+    @_serialized
+    async def handle_phrase_style_ask(self, user: User, uw_id: int, query: CallbackQuery) -> None:
+        """«🗣 Вариант фразы» in «Мой словарь»: ask again."""
+        pair = await self._uw.get_with_word(uw_id, owner_id=user.id)
+        if pair is None or not pair[1].colloquial:
+            await query.answer(PUSH_STALE, show_alert=False)
+            return
+        uw, word = pair
+        if query.message is not None:
+            await query.message.answer(
+                self._style_question(uw, word), reply_markup=phrase_style_kb(uw.id), parse_mode="HTML"
+            )
+        await query.answer()
 
     async def _triage_context(self, user: User, query: CallbackQuery):
         push_state = await self._load(user.id)

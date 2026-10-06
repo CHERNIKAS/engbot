@@ -279,3 +279,19 @@ def extra_offer_kb(with_new: bool = True) -> InlineKeyboardMarkup:
             [InlineKeyboardButton(text="😴 Хватит", callback_data=PushCB(action="enough").pack())],
         ]
     )
+
+
+PHRASE_STYLES = ("neutral", "casual", "both")
+
+
+def phrase_style_kb(uw_id: int) -> InlineKeyboardMarkup:
+    """Which rendering of a phrase to learn."""
+    from app.bot.texts import PHRASE_STYLE_LABELS
+
+    buttons = [
+        InlineKeyboardButton(
+            text=PHRASE_STYLE_LABELS[style], callback_data=PushCB(action="style", uw_id=uw_id, idx=i).pack()
+        )
+        for i, style in enumerate(PHRASE_STYLES)
+    ]
+    return InlineKeyboardMarkup(inline_keyboard=[buttons[:2], buttons[2:]])

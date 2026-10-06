@@ -29,6 +29,7 @@ def settings_kb() -> InlineKeyboardMarkup:
         [InlineKeyboardButton(text="🔔 Время пушей", callback_data=SettingsCB(action="push_open").pack())],
         [InlineKeyboardButton(text="🕐 Часовой пояс", callback_data=SettingsCB(action="tz_open").pack())],
         [InlineKeyboardButton(text="📏 Мой уровень", callback_data=SettingsCB(action="level").pack())],
+        [InlineKeyboardButton(text="🗣 Стиль фраз", callback_data=SettingsCB(action="style_open").pack())],
         [home_button()],
     ]
     return InlineKeyboardMarkup(inline_keyboard=rows)
@@ -188,4 +189,20 @@ def pace_kb(current: str, version: str = "") -> InlineKeyboardMarkup:
             ]
         )
     rows.append([_back_to_settings_button(), home_button()])
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+def phrase_style_settings_kb(current: str) -> InlineKeyboardMarkup:
+    from app.bot.texts import PHRASE_STYLE_DEFAULTS
+
+    rows = [
+        [
+            InlineKeyboardButton(
+                text=("✅ " if key == current else "") + label,
+                callback_data=SettingsCB(action="style_set", value=key).pack(),
+            )
+        ]
+        for key, label in PHRASE_STYLE_DEFAULTS.items()
+    ]
+    rows.append([InlineKeyboardButton(text="↩️ Назад", callback_data=SettingsCB(action="open").pack())])
     return InlineKeyboardMarkup(inline_keyboard=rows)

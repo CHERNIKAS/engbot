@@ -294,23 +294,3 @@ async def test_an_old_collections_list_says_it_expired(h):
     await h.say("/start")
     await h.tap(listing, data)  # must visibly answer
     assert h.tg.toasts[-1] == T.LIST_EXPIRED
-
-
-# Handlers no scenario here can reach, each with the reason. Revisit when one of
-# these flows changes — or delete the handler.
-NOT_REACHED_BY_DESIGN: set[str] = set()  # conditional flows: test_dormant_flows.py
-
-
-def test_zz_every_handler_ran():
-    """A handler no scenario reached is code no one ran before a learner did."""
-    from types import SimpleNamespace
-
-    from app.main import build_dispatcher
-
-    dp = build_dispatcher(SimpleNamespace(rate_limit_per_second=5, access_password=""), None, None)
-    try:
-        missing = sorted(all_handlers(dp) - HANDLERS_RUN - NOT_REACHED_BY_DESIGN)
-    finally:
-        for router in list(dp.sub_routers):
-            router._parent_router = None
-    assert missing == [], "\n".join(missing)

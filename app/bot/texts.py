@@ -138,6 +138,26 @@ LESSON_NOTHING = "🌿 Сегодня учить нечего — карточк
 LESSON_NOT_RUNNING = "Урок не идёт. Начать — «🎓 Урок» в меню."
 LESSON_PING = "👀 Ты тут?"
 
+PHRASE_STYLE_ASK = (
+    "💬 <b>Новая фраза:</b> «{ru}»\n\n"
+    "• <b>{neutral}</b> — нейтрально, уместно везде\n"
+    "• <b>{casual}</b> — {note}\n\n"
+    "Какой вариант учить?"
+)
+PHRASE_STYLE_LABELS = {"neutral": "🎩 Нейтральный", "casual": "😎 Разговорный", "both": "Оба"}
+PHRASE_STYLE_CHOSEN = "💬 «{ru}» — учим: {label}"
+PHRASE_STYLE_SETTINGS = (
+    "🗣 <b>Стиль фраз</b>\n\n"
+    "У части фраз есть разговорный вариант: «Could you repeat that?» → «Come again?».\n"
+    "Что делать, когда такая фраза приходит впервые?"
+)
+PHRASE_STYLE_DEFAULTS = {
+    "ask": "Спрашивать каждый раз",
+    "neutral": "Всегда нейтральный",
+    "casual": "Всегда разговорный",
+    "both": "Всегда оба",
+}
+
 # After the day's plan: what more there is, said so the choice is clear.
 EXTRA_OFFER = (
     "🏆 <b>План на сегодня закрыт.</b> Хочешь ещё?\n\n"

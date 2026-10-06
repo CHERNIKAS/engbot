@@ -113,7 +113,9 @@ async def on_word_detail(
     if query.message:
         await query.message.edit_text(
             text,
-            reply_markup=word_detail_kb(uw.id, callback_data.category_id, callback_data.page),
+            reply_markup=word_detail_kb(
+                uw.id, callback_data.category_id, callback_data.page, phrase_style=bool(word.colloquial)
+            ),
             parse_mode="HTML",
         )
     await query.answer()

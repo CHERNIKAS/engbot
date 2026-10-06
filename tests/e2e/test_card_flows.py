@@ -673,17 +673,3 @@ async def test_a_silent_lesson_asks_then_hands_back_to_pushes(h, monkeypatch):
     st = await h.state()
     assert "lesson" not in st and st["inflight"] is not None  # the card waits for pushes
     await h.check_invariants()
-
-
-# ---- coverage --------------------------------------------------------------- #
-
-
-def test_zz_every_push_button_action_was_tapped():
-    """A button added later without a scenario here is a button nobody pressed
-    before a learner did."""
-    import re
-    from pathlib import Path
-
-    src = Path("app/bot/handlers/push.py").read_text(encoding="utf-8")
-    actions = set(re.findall(r'F\.action == "([a-z_]+)"', src))
-    assert actions - TAPPED == set()

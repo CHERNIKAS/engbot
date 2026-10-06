@@ -141,6 +141,10 @@ class Word(Base):
     # stream instead. Not the same as "spelled with a space" — `post office` is
     # an ordinary word.
     is_phrase: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    # A phrase's colloquial rendering («Come again?» beside «Could you repeat
+    # that?») and a few words on its tone; NULL when there is none worth it.
+    colloquial: Mapped[str | None] = mapped_column(Text, nullable=True)
+    colloquial_note: Mapped[str | None] = mapped_column(Text, nullable=True)
     # Deliberately withheld from teaching — vulgar, interjections, anything the
     # owner decided should not be a card. Separate from `is_function_word`,
     # which means "grammar teaches this instead": these are not taught anywhere.
@@ -175,6 +179,9 @@ class UserWord(Base):
         Integer, ForeignKey("categories.id", ondelete="SET NULL"), nullable=True
     )
     custom_translation: Mapped[str | None] = mapped_column(String(256), nullable=True)
+    # For a phrase with a colloquial rendering: neutral / casual / both, as the
+    # learner chose. NULL until they are asked.
+    phrase_style: Mapped[str | None] = mapped_column(String(8), nullable=True)
     source: Mapped[str] = mapped_column(String(16), default="manual", nullable=False)
     # "Teach this one first" — set by the user on their own imports. Ordered
     # ahead of level fit, because a list someone assembled for a deadline is

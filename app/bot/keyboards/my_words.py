@@ -243,9 +243,18 @@ def category_target_kb(
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
-def word_detail_kb(user_word_id: int, category_id: int, page: int) -> InlineKeyboardMarkup:
+def word_detail_kb(
+    user_word_id: int, category_id: int, page: int, phrase_style: bool = False
+) -> InlineKeyboardMarkup:
+    from app.bot.callbacks.schema import PushCB
+
+    style_row = (
+        [[InlineKeyboardButton(text="🗣 Вариант фразы", callback_data=PushCB(action="style_ask", uw_id=user_word_id).pack())]]
+        if phrase_style
+        else []
+    )
     return InlineKeyboardMarkup(
-        inline_keyboard=[
+        inline_keyboard=style_row + [
             [
                 InlineKeyboardButton(
                     text="🗑 Удалить",

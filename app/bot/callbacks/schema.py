@@ -130,6 +130,7 @@ class PushCB(CallbackData, prefix="pu"):
     #      | slot | pundo | phint | pgiveup  (sentence constructor)
     #      | here  (lesson: «Ты тут?» → «Да»)
     #      | practice | more | enough  (after the plan: what next)
+    #      | style | style_ask  (a phrase's neutral / colloquial rendering)
     uw_id: int = 0
     idx: int = 0
     days: int = 0  # snooze duration for action == "snooze"

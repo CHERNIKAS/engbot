@@ -427,6 +427,32 @@ class UserWordRepository:
         q = self._new_words_query(user_id, track, user_level).limit(limit)
         return [(r[0], r[1]) for r in (await self.session.execute(q)).all()]
 
+    async def phrase_distractors(
+        self, word_id: int, field: str, exclude: list[str], limit: int = 3
+    ) -> list[str]:
+        """Wrong options for a phrase card, drawn from other phrases.
+
+        A phrase among single words gives itself away by its shape — «Could you
+        repeat that?» beside «december» and «blue» needs no English at all.
+        `field` is "writing" (English options) or "translation" (Russian)."""
+        column = Word.writing if field == "writing" else Word.translation
+        q = (
+            select(column)
+            .where(Word.is_phrase.is_(True), Word.id != word_id, column.isnot(None))
+            .order_by(func.random())
+            .limit(limit * 4)
+        )
+        seen = {e.strip().lower() for e in exclude if e}
+        out: list[str] = []
+        for (value,) in (await self.session.execute(q)).all():
+            key = (value or "").strip().lower()
+            if key and key not in seen:
+                seen.add(key)
+                out.append(value)
+            if len(out) == limit:
+                break
+        return out
+
     async def pick_new_phrase(
         self, user_id: int, track: LearningTrack
     ) -> tuple[UserWord, Word] | None:

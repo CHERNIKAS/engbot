@@ -307,3 +307,40 @@ async def on_level_open(
             text, reply_markup=level_screen_kb(user.level), parse_mode="HTML"
         )
     await query.answer()
+
+
+@router.callback_query(SettingsCB.filter(F.action == "style_open"))
+async def on_phrase_style_open(query: CallbackQuery, user_track: UserTrack) -> None:
+    from app.bot.keyboards.settings import phrase_style_settings_kb
+    from app.bot.texts import PHRASE_STYLE_SETTINGS
+
+    current = (user_track.settings or {}).get("phrase_style", "ask")
+    if query.message:
+        await query.message.edit_text(
+            PHRASE_STYLE_SETTINGS, reply_markup=phrase_style_settings_kb(current), parse_mode="HTML"
+        )
+    await query.answer()
+
+
+@router.callback_query(SettingsCB.filter(F.action == "style_set"))
+async def on_phrase_style_set(
+    query: CallbackQuery,
+    callback_data: SettingsCB,
+    user: User,
+    user_track: UserTrack,
+    current_track: LearningTrack,
+    user_track_service: UserTrackService,
+) -> None:
+    from app.bot.keyboards.settings import phrase_style_settings_kb
+    from app.bot.texts import PHRASE_STYLE_DEFAULTS, PHRASE_STYLE_SETTINGS
+
+    value = callback_data.value if callback_data.value in PHRASE_STYLE_DEFAULTS else "ask"
+    await user_track_service.update_settings(user.id, current_track, {"phrase_style": value})
+    if query.message:
+        try:
+            await query.message.edit_text(
+                PHRASE_STYLE_SETTINGS, reply_markup=phrase_style_settings_kb(value), parse_mode="HTML"
+            )
+        except Exception:  # noqa: BLE001 — unchanged when the same option is tapped
+            pass
+    await query.answer(f"🗣 {PHRASE_STYLE_DEFAULTS[value]}")

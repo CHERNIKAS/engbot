@@ -26,6 +26,30 @@ async def on_after_plan(
     )
 
 
+@router.callback_query(PushCB.filter(F.action == "style"))
+async def on_phrase_style(
+    query: CallbackQuery,
+    callback_data: PushCB,
+    user: User,
+    session: AsyncSession,
+    redis: Redis,
+) -> None:
+    await PushService(session, redis, query.bot).handle_phrase_style(
+        user, callback_data.uw_id, callback_data.idx, query
+    )
+
+
+@router.callback_query(PushCB.filter(F.action == "style_ask"))
+async def on_phrase_style_ask(
+    query: CallbackQuery,
+    callback_data: PushCB,
+    user: User,
+    session: AsyncSession,
+    redis: Redis,
+) -> None:
+    await PushService(session, redis, query.bot).handle_phrase_style_ask(user, callback_data.uw_id, query)
+
+
 @router.callback_query(PushCB.filter(F.action == "here"))
 async def on_lesson_here(
     query: CallbackQuery,
