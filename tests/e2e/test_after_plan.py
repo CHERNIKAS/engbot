@@ -165,7 +165,10 @@ async def test_topic_check_answers_count_toward_the_pace(h):
         async with h.sm() as session:
             return await WordReviewRepository(session).typical_daily_answers(UID, ps._TRACK, days=1) or 0.0
 
+    # Start from a clean day: the restored copy carries the learner's real
+    # answers from today.
     await h.sql("delete from word_reviews where user_id=:u", u=UID)
+    await h.sql("delete from analytics_events where user_id=:u and name='phrase_answered'", u=UID)
     await h.sql(
         "update user_grammar_topics set passed_at = now() - interval '10 days',"
         " test_due_at = now() - interval '1 day' where user_id=:u and topic_id=1", u=UID,

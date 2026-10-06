@@ -170,13 +170,16 @@ def constructor_slots_kb(options: list[str], phrase_id: int, can_undo: bool) -> 
             text="📖 Правило", callback_data=PushCB(action="prule", uw_id=phrase_id).pack()
         ),
     ]
+    # Two to a row at most. Buttons take the width of the message, and a short
+    # sentence makes a narrow bubble: three across were cut to «…зка», «…ило».
     if can_undo:
-        tail.insert(
-            0,
-            InlineKeyboardButton(
-                text="↩️ Ой, ошибся",
-                callback_data=PushCB(action="pundo", uw_id=phrase_id).pack(),
-            ),
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    text="↩️ Ой, ошибся",
+                    callback_data=PushCB(action="pundo", uw_id=phrase_id).pack(),
+                )
+            ]
         )
     rows.append(tail)
     return InlineKeyboardMarkup(inline_keyboard=rows)
@@ -200,11 +203,14 @@ def constructor_typing_kb(phrase_id: int) -> InlineKeyboardMarkup:
                     text="📖 Правило",
                     callback_data=PushCB(action="prule", uw_id=phrase_id).pack(),
                 ),
+            ],
+            # Its own row: three across are cut to «…мню» under a short sentence.
+            [
                 InlineKeyboardButton(
                     text="🤷 Не помню",
                     callback_data=PushCB(action="pgiveup", uw_id=phrase_id).pack(),
                 ),
-            ]
+            ],
         ]
     )
 
