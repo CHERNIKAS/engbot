@@ -2965,6 +2965,12 @@ class PushService:
         if ctx is None:
             return
         state, inflight, phrase, topic, card = ctx
+        if card.typing and card.hinted:
+            # Typing mode has one hint, the opening of the sentence; a second
+            # tap re-rendered the same card and Telegram dropped the no-op edit,
+            # so the button looked dead.
+            await query.answer("Начало уже открыто — дальше только ответ или «🤷 Не помню»", show_alert=False)
+            return
         service = ConstructorService(self._session)
         card, view = await service.hint(user.id, phrase, topic, card)
         # A hint on the last slot finishes the sentence, so the card has to
@@ -3030,8 +3036,6 @@ class PushService:
         card = ctor.CardState.from_dict(inflight.get("state"))
         if not card.typing:
             return False
-        if not await self._claim_answer(user.id, inflight.get("msg_id")):
-            return True
 
         repo = ConstructorRepository(self._session)
         phrase = await repo.get_phrase(int(inflight.get("id", 0)))
@@ -3051,6 +3055,13 @@ class PushService:
 
         bot_message = _EditTarget(message.bot, message.chat.id, int(inflight.get("msg_id") or 0))
         if correct or card.attempt >= ctor.MAX_ATTEMPTS:
+            # The claim belongs here, at settling, not at entry. Claimed on
+            # entry, a miss took the card's claim for ten minutes and every
+            # later attempt on it was swallowed in silence — three attempts in
+            # name, one in practice (2026-10-06: a right answer typed after a
+            # wrong one did nothing). The same mistake the slot taps had.
+            if not await self._claim_answer(user.id, inflight.get("msg_id")):
+                return True
             await self._settle_constructor(
                 user, state, inflight, phrase, topic, card, typed, bot_message
             )

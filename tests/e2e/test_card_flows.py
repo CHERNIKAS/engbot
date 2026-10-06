@@ -319,6 +319,45 @@ async def test_fast_constructor_taps_are_applied_in_order(h):
     await h.check_invariants()
 
 
+async def test_typing_mode_takes_a_right_answer_after_a_wrong_one(h):
+    """2026-10-06: a wrong typed answer claimed the card for ten minutes, and
+    the right one typed next was swallowed in silence — the chat «froze»."""
+    await h.sql("update user_grammar_topics set typing=true where user_id=:u", u=UID)
+    await h.fresh_day(["grammar", "grammar"])
+    card = await h.card()
+    await h.say("definitely not it")
+    st = (await h.state())["inflight"]
+    assert st and st["state"]["attempt"] == 2  # a miss, the card still open
+    await h.say(await _phrase_en(h, card["id"]))
+    assert (await h.state())["inflight"] is None, "the right answer after a miss was ignored"
+    assert await h.done_kinds() == ["grammar"]
+    await _assisted(h)
+    await h.check_invariants()
+
+
+async def test_typing_mode_runs_out_of_attempts_and_settles(h):
+    await h.sql("update user_grammar_topics set typing=true where user_id=:u", u=UID)
+    await h.fresh_day(["grammar", "grammar"])
+    await h.card()
+    for _ in range(3):
+        await h.say("still not it")
+    assert (await h.state())["inflight"] is None
+    assert await h.done_kinds() == ["grammar"]
+    await _assisted(h)
+    await h.check_invariants()
+
+
+async def test_a_second_hint_in_typing_mode_says_so(h):
+    await h.sql("update user_grammar_topics set typing=true where user_id=:u", u=UID)
+    await h.fresh_day(["grammar", "grammar"])
+    card = await h.card()
+    await h.act(card["msg_id"], "phint")
+    await h.act(card["msg_id"], "phint")  # must visibly respond
+    assert "Начало уже открыто" in (h.tg.toasts[-1] or "")
+    await _assisted(h)
+    await h.check_invariants()
+
+
 async def test_constructor_typing_mode(h):
     await h.sql("update user_grammar_topics set typing=true where user_id=:u", u=UID)
     await h.fresh_day(["grammar", "grammar"])
