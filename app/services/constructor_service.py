@@ -117,7 +117,9 @@ class ConstructorService:
         slots = list(phrase.slots or [])
         hinted_prefix = ""
         if state.typing and state.hinted:
-            hinted_prefix = c.hint_prefix(phrase.en)
+            hinted_prefix = c.hint_prefix(
+                phrase.en, reveal=state.hint_words or c.FIRST_HINT_WORDS
+            )
 
         text = c.render_card(
             topic_title=topic.title,
@@ -226,6 +228,10 @@ class ConstructorService:
         In the typing mode it is the opening of the sentence.
         """
         new_state = c.use_hint(state)
+        if new_state.typing:
+            words = c.next_hint_words(state, phrase.en)
+            if words is not None:
+                new_state = replace(new_state, hint_words=words)
         if not new_state.typing:
             slots = list(phrase.slots or [])
             new_state = c.place(new_state, c.slot_correct(slots, new_state.slot_index))
@@ -272,7 +278,9 @@ class ConstructorService:
         slots = list(phrase.slots or [])
         given = answer if answer is not None else c.assembled(slots, list(state.chosen))
         correct = c.matches(given, phrase.en, list(phrase.alternatives or []))
-        answer_credit = c.credit(state.attempt, hinted=state.hinted) if correct else 0.0
+        answer_credit = (
+            c.credit(state.attempt, hinted=state.hinted, hint_words=state.hint_words) if correct else 0.0
+        )
 
         row = await self._repo.ensure_state(user_id, topic.id)
         before = float(row.score or 0.0)

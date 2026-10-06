@@ -48,6 +48,11 @@ _ATTEMPT_CREDIT = {1: 1.0, 2: 0.5, 3: 0.25}
 # The ladder now only ever goes down: 1.0 clean, 0.7 hinted, 0.5 second try,
 # 0.35 hinted second, 0.25 third.
 HINT_MULTIPLIER = 0.7
+# Typing mode hints step by step: the first shows FIRST_HINT_WORDS, each further
+# tap one more word, never the last one — that would be the answer, not a hint.
+# Every word past the first hint costs a little more of the credit.
+FIRST_HINT_WORDS = 2
+EXTRA_HINT_MULTIPLIER = 0.85
 
 # Never zero for an answer that eventually landed. Someone who needs the third
 # attempt and a hint on every sentence would otherwise sit at a flat zero
@@ -94,18 +99,30 @@ def matches(answer: str | None, expected: str, alternatives: list[str] | None = 
     return got in accepted
 
 
-def credit(attempt: int, hinted: bool = False) -> float:
+def credit(attempt: int, hinted: bool = False, hint_words: int = 0) -> float:
     """What an answer landed on this attempt is worth, from 0 to 1.
 
     An attempt past the last one scores nothing: the sentence was shown, so
-    there is nothing left to prove.
+    there is nothing left to prove. `hint_words` past the first hint's
+    FIRST_HINT_WORDS each take EXTRA_HINT_MULTIPLIER more.
     """
     base = _ATTEMPT_CREDIT.get(attempt)
     if base is None:
         return 0.0
     if hinted:
         base *= HINT_MULTIPLIER
+        base *= EXTRA_HINT_MULTIPLIER ** max(0, hint_words - FIRST_HINT_WORDS)
     return max(MIN_CREDIT, round(base, 2))
+
+
+def next_hint_words(state: "CardState", expected: str) -> int | None:
+    """How many words the next typing-mode hint shows, or None when the only
+    thing left to reveal is the last word."""
+    total = len((expected or "").split())
+    shown = state.hint_words or (FIRST_HINT_WORDS if state.hinted else 0)
+    want = FIRST_HINT_WORDS if shown == 0 else shown + 1
+    want = min(want, total - 1)
+    return want if want > shown else None
 
 
 def attempts_left(attempt: int) -> int:
@@ -266,6 +283,8 @@ class CardState:
     # Opening the rule is free and costs no credit: looking something up is not
     # a hint, it is how a table is meant to be used.
     rule_open: bool = False
+    # Typing mode: words of the answer the hints have shown so far.
+    hint_words: int = 0
 
     @property
     def slot_index(self) -> int:
@@ -286,6 +305,7 @@ class CardState:
             # again — an edit that changed nothing) and the next slot tap
             # re-rendered the card without it, mid-thought.
             "rule_open": self.rule_open,
+            "hint_words": self.hint_words,
         }
 
     @classmethod
@@ -297,6 +317,7 @@ class CardState:
             hinted=bool(data.get("hinted")),
             typing=bool(data.get("typing")),
             rule_open=bool(data.get("rule_open")),
+            hint_words=int(data.get("hint_words") or 0),
         )
 
 

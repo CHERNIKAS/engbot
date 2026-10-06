@@ -2965,11 +2965,10 @@ class PushService:
         if ctx is None:
             return
         state, inflight, phrase, topic, card = ctx
-        if card.typing and card.hinted:
-            # Typing mode has one hint, the opening of the sentence; a second
-            # tap re-rendered the same card and Telegram dropped the no-op edit,
-            # so the button looked dead.
-            await query.answer("Начало уже открыто — дальше только ответ или «🤷 Не помню»", show_alert=False)
+        if card.typing and ctor.next_hint_words(card, phrase.en) is None:
+            # Everything but the last word is showing. Re-rendering the same
+            # card would be a no-op edit Telegram drops — a dead button.
+            await query.answer("Дальше только ответ — или «🤷 Не помню»", show_alert=False)
             return
         service = ConstructorService(self._session)
         card, view = await service.hint(user.id, phrase, topic, card)

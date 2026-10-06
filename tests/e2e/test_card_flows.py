@@ -347,13 +347,19 @@ async def test_typing_mode_runs_out_of_attempts_and_settles(h):
     await h.check_invariants()
 
 
-async def test_a_second_hint_in_typing_mode_says_so(h):
+async def test_typing_hints_open_a_word_at_a_time(h):
     await h.sql("update user_grammar_topics set typing=true where user_id=:u", u=UID)
     await h.fresh_day(["grammar", "grammar"])
     card = await h.card()
-    await h.act(card["msg_id"], "phint")
-    await h.act(card["msg_id"], "phint")  # must visibly respond
-    assert "Начало уже открыто" in (h.tg.toasts[-1] or "")
+    en = await _phrase_en(h, card["id"])
+    words = en.split()
+    for n in range(2, len(words)):
+        await h.act(card["msg_id"], "phint")  # each one visibly changes the card
+        assert " ".join(words[:n]) in h.tg.live[card["msg_id"]]["text"]
+    await h.act(card["msg_id"], "phint")  # nothing left but the answer: says so
+    assert "Дальше только ответ" in (h.tg.toasts[-1] or "")
+    await h.say(en)
+    assert (await h.state())["inflight"] is None
     await _assisted(h)
     await h.check_invariants()
 
