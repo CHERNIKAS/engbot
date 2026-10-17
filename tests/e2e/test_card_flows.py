@@ -375,6 +375,34 @@ async def test_a_typed_miss_is_shown_back_marked_with_a_copy_button(h):
     await h.check_invariants()
 
 
+async def test_every_typed_attempt_is_kept_with_its_text(h, monkeypatch):
+    """2026-10-17: grading turned lenient and there was nothing to regrade —
+    the sentences had been deleted and only right/wrong kept."""
+    async def grammar(self, expected, ru, answer, alternatives=None):
+        return AnswerVerdict(mastery.TYPED_GRAMMAR, "не та форма")
+
+    monkeypatch.setattr(AnswerCheckService, "classify_sentence", grammar)
+    await h.sql("update user_grammar_topics set typing=true where user_id=:u", u=UID)
+    await h.sql("delete from analytics_events where user_id=:u and name='typed_answer'", u=UID)
+    await h.fresh_day(["grammar", "grammar"])
+    card = await h.card()
+    en = await _phrase_en(h, card["id"])
+    await h.say("she do not likes it")
+    await h.say(en)
+    rows = await h.sql(
+        "select props from analytics_events where user_id=:u and name='typed_answer' order by id",
+        u=UID,
+    )
+    props = [r[0] for r in rows]
+    assert [p["given"] for p in props] == ["she do not likes it", en]
+    assert [p["ok"] for p in props] == [False, True]
+    assert props[0]["verdict"] == mastery.TYPED_GRAMMAR and props[0]["hint"] == "не та форма"
+    assert [p["attempt"] for p in props] == [1, 2]
+    assert all(p["source"] == "constructor" and p["phrase_id"] == card["id"] for p in props)
+    await _assisted(h)
+    await h.check_invariants()
+
+
 async def test_the_last_miss_shows_what_was_written_under_the_answer(h):
     await h.sql("update user_grammar_topics set typing=true where user_id=:u", u=UID)
     await h.fresh_day(["grammar", "grammar"])

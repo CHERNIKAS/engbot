@@ -26,7 +26,12 @@ from app.bot.texts import (
 from app.domain.enums import LearningTrack, StudyScope
 from app.domain.models import User, UserTrack
 from app.domain.study_drill import STAGE_QUIZ, is_typing_correct
-from app.services.analytics import EVENT_STUDY_COMPLETED, EVENT_STUDY_STARTED, Analytics
+from app.services.analytics import (
+    EVENT_STUDY_COMPLETED,
+    EVENT_STUDY_STARTED,
+    EVENT_TYPED_ANSWER,
+    Analytics,
+)
 from app.services.answer_check import AnswerCheckService
 from app.services.interaction_state_service import InteractionStateService
 from app.services.progress_service import ProgressService
@@ -340,6 +345,16 @@ async def on_typing_answer(
         verdict = await answer_check.classify(view.writing or "", view.translation or "", typed)
         if verdict is not None and verdict.credited:
             correct = True
+    await analytics.emit(
+        EVENT_TYPED_ANSWER,
+        user_id=user.id,
+        source="study",
+        given=typed[:300],
+        expected=view.writing or "",
+        ok=bool(correct),
+        verdict=verdict.kind if verdict is not None else None,
+        hint=verdict.hint if verdict is not None else "",
+    )
     prefix = _typed_prefix(correct, view.writing or "", verdict)
     new_view = await study_session.answer(user.id, correct)
     # Capture the live card before finalize clears the session, then drop the

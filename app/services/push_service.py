@@ -98,6 +98,7 @@ from app.logging_setup import get_logger
 from app.services.analytics import (
     EVENT_ANSWER_GRADED,
     EVENT_PHRASE_ANSWERED,
+    EVENT_TYPED_ANSWER,
     EVENT_WORD_MASTERED,
     Analytics,
 )
@@ -1801,6 +1802,7 @@ class PushService:
                 )
             elif verdict is not None and verdict.credited:
                 correct = True
+        await self._log_typed(user, "word", typed, answer, correct, verdict, user_word_id=iid)
 
         outcome = await self._settle_cloze(
             user, ut, iid, correct, state, inflight, verdict=verdict,
@@ -2872,6 +2874,9 @@ class PushService:
             # Forgiven the same way as on a card.
             verdict = await self._checker.classify_sentence(phrase.en, phrase.ru, typed, alternatives)
             ok = verdict is not None and verdict.kind == mastery.TYPED_TYPO
+        else:
+            verdict = None
+        await self._log_typed(user, "test", typed, phrase.en, ok, verdict, phrase_id=phrase.id)
         results = list(inflight.get("results") or [])
         results.append(
             {
@@ -3195,6 +3200,22 @@ class PushService:
         )
         await query.answer()
 
+    async def _log_typed(
+        self, user: User, source: str, given: str, expected: str, ok: bool, verdict, **ids
+    ) -> None:
+        """One typed answer, kept with its text — see EVENT_TYPED_ANSWER."""
+        await self._analytics.emit(
+            EVENT_TYPED_ANSWER,
+            user_id=user.id,
+            source=source,
+            given=(given or "")[:300],
+            expected=expected or "",
+            ok=bool(ok),
+            verdict=verdict.kind if verdict is not None else None,
+            hint=verdict.hint if verdict is not None else "",
+            **ids,
+        )
+
     @_serialized
     async def handle_constructor_typed(self, user: User, message) -> bool:
         """A free-text message while a constructor card is in flight.
@@ -3235,6 +3256,10 @@ class PushService:
         if not correct:
             verdict = await self._checker.classify_sentence(phrase.en, phrase.ru, typed, alternatives)
         typo = verdict is not None and verdict.kind == mastery.TYPED_TYPO
+        await self._log_typed(
+            user, "constructor", typed, phrase.en, correct or typo, verdict,
+            attempt=card.attempt, phrase_id=phrase.id,
+        )
 
         bot_message = _EditTarget(message.bot, message.chat.id, int(inflight.get("msg_id") or 0))
         if correct or typo or card.attempt >= ctor.MAX_ATTEMPTS:

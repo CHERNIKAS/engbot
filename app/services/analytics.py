@@ -34,6 +34,13 @@ EVENT_ANSWER_GRADED = "answer_graded"  # every answer, with what it proved
 # word_reviews; these had no dated record at all, so a day spent on grammar
 # looked like a day off to everything that measures how much someone does.
 EVENT_PHRASE_ANSWERED = "phrase_answered"
+# Every typed answer, with its text and what the checker made of it. Until
+# 2026-10-17 a typed sentence was deleted from the chat and only right/wrong
+# was kept, so when grading became lenient there was nothing to regrade — and
+# no way to see which mistakes people actually make. Props: source
+# (constructor / test / word / study), given, expected, ok, verdict, hint, and
+# attempt + phrase_id for grammar or user_word_id for words.
+EVENT_TYPED_ANSWER = "typed_answer"
 EVENT_WORD_MASTERED = "word_mastered"  # the outcome the rework was for
 EVENT_PLACEMENT_COMPLETED = "placement_completed"  # what the test decides
 EVENT_LEVEL_CHANGED = "level_changed"  # whether that decision survives contact
