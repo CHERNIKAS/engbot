@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
+from app.domain.constructor import normalize as _normalize_text
+
 # Pure, I/O-free drill engine. The study session stores this in Redis and wraps
 # it with cards/quiz options + spaced-repetition persistence.
 #
@@ -20,8 +22,13 @@ REQUEUE_GAP = 3
 
 
 def normalize_answer(text: str) -> str:
-    """Forgiving normalization for typed answers (case / spacing / leading 'to ')."""
-    s = " ".join(text.strip().lower().split())
+    """Forgiving normalization for typed answers (case / spacing / leading 'to ').
+
+    Punctuation and the phone keyboard's curly apostrophe go too, by the same
+    rule as grammar sentences: a phrase answered without its «?», plus one real
+    slip, was two edits and failed (2026-10-17).
+    """
+    s = _normalize_text(text)
     if s.startswith("to "):
         s = s[3:].strip()
     return s

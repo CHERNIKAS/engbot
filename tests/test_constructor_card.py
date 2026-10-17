@@ -8,7 +8,16 @@ message and the card never arrives). Both are cheap to pin here.
 from __future__ import annotations
 
 from app.bot.keyboards.push import constructor_slots_kb, constructor_typing_kb
-from app.domain.constructor import MAX_ATTEMPTS, render_card, render_result
+from app.domain.constructor import (
+    LAST_TYPED_MAX,
+    MAX_ATTEMPTS,
+    CardState,
+    mark_mistakes,
+    matches,
+    miss,
+    render_card,
+    render_result,
+)
 
 TELEGRAM_CALLBACK_LIMIT = 64
 
@@ -133,3 +142,87 @@ def test_a_miss_shows_the_checkers_explanation():
     )
     assert text.startswith("❌")
     assert "начальная форма" in text
+
+
+# ---- a typed miss, shown back (2026-10-17) -------------------------------- #
+#
+# The learner's message is deleted, and the card said only «Попытка 2 из 3»:
+# a one-letter slip had to be found by retyping the whole sentence.
+
+
+def _copies(kb):
+    return [b.copy_text.text for row in kb.inline_keyboard for b in row if b.copy_text]
+
+
+def test_the_wrong_word_is_marked_and_the_rest_is_not():
+    marked = mark_mistakes("she doesn'n like cold coffee", "She does not like cold coffee.",
+                           ["She doesn't like cold coffee."])
+    assert marked == "she <u><b>doesn&#x27;n</b></u> like cold coffee"
+
+
+def test_marking_is_against_the_nearest_accepted_rendering():
+    """«doesn't» is right; against «does not» it would be marked as well."""
+    marked = mark_mistakes("She doesn't likes cold coffee", "She does not like cold coffee.",
+                           ["She doesn't like cold coffee."])
+    assert "<u><b>likes</b></u>" in marked
+    assert "<u><b>doesn&#x27;t</b></u>" not in marked
+
+
+def test_a_missing_word_shows_where_it_goes():
+    marked = mark_mistakes("She like coffee", "She doesn't like coffee.")
+    assert marked == "She <u>…</u> like coffee"
+    assert mark_mistakes("She doesn't like", "She doesn't like coffee.").endswith("<u>…</u>")
+
+
+def test_marking_ignores_case_and_punctuation():
+    assert "<u>" not in mark_mistakes("she doesn’t like cold coffee", "She doesn't like cold coffee.")
+
+
+def test_marking_escapes_what_was_typed():
+    assert "<script>" not in mark_mistakes("<script> x", "She works.")
+
+
+def test_punctuation_is_not_the_lesson():
+    """A forgotten «?» or comma failed a sentence whose words were right."""
+    assert matches("do you like coffee", "Do you like coffee?")
+    assert matches("Yes I do", "Yes, I do.")
+    assert matches("is it yours?", "Is it yours?")
+    assert not matches("Do you likes coffee?", "Do you like coffee?")
+
+
+def test_a_miss_keeps_what_was_typed():
+    state = miss(CardState(typing=True), "  she   doesn'n like  ")
+    assert state.attempt == 2
+    assert state.last_typed == "she doesn'n like"
+    assert CardState.from_dict(state.to_dict()).last_typed == "she doesn'n like"
+
+
+def test_a_pasted_wall_of_text_is_capped():
+    """Past Telegram's limits the edit — or the copy button — is refused and
+    the miss does not show at all."""
+    state = miss(CardState(typing=True), "word " * 400)
+    assert len(state.last_typed) <= 256
+    assert len(state.last_typed) <= LAST_TYPED_MAX + 1
+
+
+def test_the_card_shows_the_marked_miss_and_says_how_to_fix_it():
+    text = render_card(
+        topic_title="T", score=None, ru="Фраза.", typing=True, attempt=2,
+        last_miss_html="she <u><b>doesn&#x27;n</b></u> like",
+    )
+    assert "<u><b>doesn&#x27;n</b></u>" in text
+    assert "скопирует" in text
+    assert "Попытка 2 из 3" in text
+
+
+def test_the_copy_button_appears_only_after_a_miss():
+    assert _copies(constructor_typing_kb(7)) == []
+    assert _copies(constructor_typing_kb(7, "she doesn'n like")) == ["she doesn'n like"]
+
+
+def test_the_result_shows_the_learners_answer_marked():
+    text = render_result(
+        ru="Ф.", en="She doesn't live here.", correct=False, answer_credit=0.0,
+        given_html="She <u><b>don&#x27;t</b></u> live here",
+    )
+    assert "ты: She <u><b>don&#x27;t</b></u> live here" in text

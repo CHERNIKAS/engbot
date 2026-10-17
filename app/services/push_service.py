@@ -1112,7 +1112,7 @@ class PushService:
         if view is None:
             return None
         kb = (
-            constructor_typing_kb(view.phrase_id)
+            constructor_typing_kb(view.phrase_id, view.copy_text)
             if view.typing
             else constructor_slots_kb(view.options, view.phrase_id, view.can_undo)
         )
@@ -2865,9 +2865,20 @@ class PushService:
             return True
 
         typed = message.text or ""
-        ok = ctor.matches(typed, phrase.en, list(phrase.alternatives or []))
+        alternatives = list(phrase.alternatives or [])
+        ok = ctor.matches(typed, phrase.en, alternatives)
+        if not ok:
+            # One attempt per question here, so a typo cost the whole sentence.
+            # Forgiven the same way as on a card.
+            verdict = await self._checker.classify_sentence(phrase.en, phrase.ru, typed, alternatives)
+            ok = verdict is not None and verdict.kind == mastery.TYPED_TYPO
         results = list(inflight.get("results") or [])
-        results.append({"id": phrase.id, "ok": ok, "given": typed, "ru": phrase.ru, "en": phrase.en})
+        results.append(
+            {
+                "id": phrase.id, "ok": ok, "given": typed, "ru": phrase.ru, "en": phrase.en,
+                "alts": alternatives,
+            }
+        )
         inflight["results"] = results
         inflight["idx"] = idx + 1
         push_state["inflight"] = inflight
@@ -2901,7 +2912,7 @@ class PushService:
         await self._session.commit()
 
         mistakes = [
-            (r.get("ru", ""), r.get("given", ""), r.get("en", ""))
+            (r.get("ru", ""), r.get("given", ""), r.get("en", ""), list(r.get("alts") or []))
             for r in results
             if not r.get("ok")
         ]
@@ -2954,7 +2965,7 @@ class PushService:
             return False
         view, phrase, topic = opened
         kb = (
-            constructor_typing_kb(view.phrase_id)
+            constructor_typing_kb(view.phrase_id, view.copy_text)
             if view.typing
             else constructor_slots_kb(view.options, view.phrase_id, view.can_undo)
         )
@@ -3005,7 +3016,7 @@ class PushService:
 
     async def _edit_constructor(self, query: CallbackQuery, view) -> None:
         kb = (
-            constructor_typing_kb(view.phrase_id)
+            constructor_typing_kb(view.phrase_id, view.copy_text)
             if view.typing
             else constructor_slots_kb(view.options, view.phrase_id, view.can_undo)
         )
@@ -3029,21 +3040,35 @@ class PushService:
         card: ctor.CardState,
         answer: str | None,
         message,
+        typo: bool = False,
+        hint: str = "",
     ) -> None:
-        """Grade the finished sentence, show it, and free the card."""
+        """Grade the finished sentence, show it, and free the card.
+
+        `hint` is the checker's note on a typed answer that did not match — the
+        typo it forgave, or what was wrong on the last attempt.
+        """
         result = await ConstructorService(self._session).settle(
-            user.id, phrase, topic, card, answer=answer
+            user.id, phrase, topic, card, answer=answer, typo=typo
         )
         await self._analytics.emit(
             EVENT_PHRASE_ANSWERED, user_id=user.id, source="constructor", correct=bool(result.correct)
         )
         await self._session.commit()
 
+        # Their own answer goes back under the right one whenever the two
+        # differ, marked where — a typed one only; a «Не помню» has none.
+        given_html = ""
+        alternatives = list(phrase.alternatives or [])
+        if answer and not ctor.matches(answer, phrase.en, alternatives):
+            given_html = ctor.mark_mistakes(answer, phrase.en, alternatives)
         text = ctor.render_result(
             ru=phrase.ru,
             en=result.expected,
             correct=result.correct,
             answer_credit=result.answer_credit,
+            hint=hint,
+            given_html=given_html,
         )
         if result.switched_to_typing:
             text += "\n\n<i>Дальше без подсказок — пишешь сам.</i>"
@@ -3192,17 +3217,27 @@ class PushService:
             return True
 
         typed = message.text or ""
-        correct = ctor.matches(typed, phrase.en, list(phrase.alternatives or []))
+        alternatives = list(phrase.alternatives or [])
+        correct = ctor.matches(typed, phrase.en, alternatives)
         # The learner's own message is removed either way: the card carries the
-        # verdict, and leaving the attempt behind turns the chat into a log of
-        # half-remembered sentences.
+        # verdict and echoes the answer back, and leaving the attempt behind
+        # turns the chat into a log of half-remembered sentences.
         try:
             await message.delete()
         except Exception:  # noqa: BLE001
             pass
 
+        # Only a miss is sent to the checker, so a right answer stays instant.
+        # A typo is scored as right: the strict check alone cost the attempt for
+        # «doesn'n», exactly like a wrong tense (2026-10-17). Unreachable, it
+        # falls back to the strict verdict.
+        verdict = None
+        if not correct:
+            verdict = await self._checker.classify_sentence(phrase.en, phrase.ru, typed, alternatives)
+        typo = verdict is not None and verdict.kind == mastery.TYPED_TYPO
+
         bot_message = _EditTarget(message.bot, message.chat.id, int(inflight.get("msg_id") or 0))
-        if correct or card.attempt >= ctor.MAX_ATTEMPTS:
+        if correct or typo or card.attempt >= ctor.MAX_ATTEMPTS:
             # The claim belongs here, at settling, not at entry. Claimed on
             # entry, a miss took the card's claim for ten minutes and every
             # later attempt on it was swallowed in silence — three attempts in
@@ -3211,18 +3246,21 @@ class PushService:
             if not await self._claim_answer(user.id, inflight.get("msg_id")):
                 return True
             await self._settle_constructor(
-                user, state, inflight, phrase, topic, card, typed, bot_message
+                user, state, inflight, phrase, topic, card, typed, bot_message,
+                typo=typo, hint=verdict.hint if verdict is not None else "",
             )
             return True
 
-        card = ctor.miss(card)
+        card = ctor.miss(card, typed)
         await self._store_card_state(user, state, inflight, card)
         view = await ConstructorService(self._session)._rerender(
             user.id, topic, phrase, card, 0, 0
         )
         try:
             await bot_message.edit_text(
-                view.text, parse_mode="HTML", reply_markup=constructor_typing_kb(phrase.id)
+                view.text,
+                parse_mode="HTML",
+                reply_markup=constructor_typing_kb(phrase.id, view.copy_text),
             )
         except Exception:  # noqa: BLE001
             pass

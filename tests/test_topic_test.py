@@ -62,7 +62,7 @@ def test_the_report_lists_what_went_wrong_beside_what_was_expected():
         mistakes=[("Она работает.", "She work.", "She works.")],
         next_in_days=3,
     )
-    assert "She work." in text and "She works." in text
+    assert "She <u><b>work.</b></u>" in text and "She works." in text
     assert "просело" in text
 
 
@@ -82,3 +82,17 @@ def test_generated_content_cannot_break_the_report():
     text = render_result("T", correct=0, mistakes=[("<b>ru", "<i>x", "<u>en")], next_in_days=3)
     assert "<b>ru" not in text
     assert "&lt;b&gt;ru" in text
+
+
+def test_the_wrong_word_is_marked_against_the_accepted_renderings():
+    """The verdict listed the two sentences side by side and left the learner
+    to find the difference (2026-10-17)."""
+    text = render_result(
+        "T",
+        correct=0,
+        mistakes=[("Она не любит кофе.", "She doesn't likes coffee", "She does not like coffee.",
+                   ["She doesn't like coffee."])],
+        next_in_days=3,
+    )
+    assert "<u><b>likes</b></u>" in text
+    assert "<u><b>doesn&#x27;t</b></u>" not in text

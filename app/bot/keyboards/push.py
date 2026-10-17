@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.types import CopyTextButton, InlineKeyboardButton, InlineKeyboardMarkup
 
 from app.bot.callbacks.schema import PushCB
 from app.domain.enums import WordStatus
@@ -185,34 +185,47 @@ def constructor_slots_kb(options: list[str], phrase_id: int, can_undo: bool) -> 
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
-def constructor_typing_kb(phrase_id: int) -> InlineKeyboardMarkup:
+def constructor_typing_kb(phrase_id: int, copy_text: str = "") -> InlineKeyboardMarkup:
     """The typing mode: no answer buttons at all — that is the point of it.
 
     «Не помню» is the honest way out. Without it the only exits are typing
     something wrong on purpose or ignoring the card, and an ignored card is
     the one thing the plan cannot tell apart from being busy.
+
+    `copy_text` is the last wrong answer. A bot cannot put text into the
+    learner's input field, so the next best thing is the clipboard: one tap,
+    paste, fix the slip — instead of retyping the sentence for one letter.
     """
-    return InlineKeyboardMarkup(
-        inline_keyboard=[
+    rows = [
+        [
+            InlineKeyboardButton(
+                text="💡 Подсказка",
+                callback_data=PushCB(action="phint", uw_id=phrase_id).pack(),
+            ),
+            InlineKeyboardButton(
+                text="📖 Правило",
+                callback_data=PushCB(action="prule", uw_id=phrase_id).pack(),
+            ),
+        ],
+        # Its own row: three across are cut to «…мню» under a short sentence.
+        [
+            InlineKeyboardButton(
+                text="🤷 Не помню",
+                callback_data=PushCB(action="pgiveup", uw_id=phrase_id).pack(),
+            ),
+        ],
+    ]
+    if copy_text:
+        rows.insert(
+            0,
             [
                 InlineKeyboardButton(
-                    text="💡 Подсказка",
-                    callback_data=PushCB(action="phint", uw_id=phrase_id).pack(),
-                ),
-                InlineKeyboardButton(
-                    text="📖 Правило",
-                    callback_data=PushCB(action="prule", uw_id=phrase_id).pack(),
-                ),
+                    text="📋 Скопировать мой ответ",
+                    copy_text=CopyTextButton(text=copy_text[:256]),
+                )
             ],
-            # Its own row: three across are cut to «…мню» under a short sentence.
-            [
-                InlineKeyboardButton(
-                    text="🤷 Не помню",
-                    callback_data=PushCB(action="pgiveup", uw_id=phrase_id).pack(),
-                ),
-            ],
-        ]
-    )
+        )
+    return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
 def triage_kb(rows: list[tuple[int, str]], done_label: str) -> InlineKeyboardMarkup:

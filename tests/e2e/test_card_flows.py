@@ -22,7 +22,9 @@ from app.bot.texts import (
     PUSH_STALE,
     TODAY_DONE,
 )
+from app.domain import mastery
 from app.services import push_service as ps
+from app.services.answer_check import AnswerCheckService, AnswerVerdict
 from tests.e2e.harness import TAPPED, UID, action_of
 
 
@@ -343,6 +345,85 @@ async def test_typing_mode_runs_out_of_attempts_and_settles(h):
         await h.say("still not it")
     assert (await h.state())["inflight"] is None
     assert await h.done_kinds() == ["grammar"]
+    await _assisted(h)
+    await h.check_invariants()
+
+
+def _copies(h, mid: int) -> list[str]:
+    markup = h.tg.live[mid]["markup"]
+    rows = markup.inline_keyboard if markup else []
+    return [b.copy_text.text for row in rows for b in row if b.copy_text]
+
+
+async def test_a_typed_miss_is_shown_back_marked_with_a_copy_button(h):
+    """2026-10-17: a miss deleted the sentence and said only «Попытка 2 из 3»;
+    a one-letter slip was found by retyping the whole thing."""
+    await h.sql("update user_grammar_topics set typing=true where user_id=:u", u=UID)
+    await h.fresh_day(["grammar", "grammar"])
+    card = await h.card()
+    mid = card["msg_id"]
+    await h.say("definitely not it")
+    assert "definitely" in h.tg.live[mid]["text"] and "<u>" in h.tg.live[mid]["text"]
+    assert _copies(h, mid) == ["definitely not it"]
+    # A free tap re-renders the card; the answer and its button stay.
+    await h.act(mid, "prule")
+    assert _copies(h, mid) == ["definitely not it"]
+    await h.say(await _phrase_en(h, card["id"]))
+    assert (await h.state())["inflight"] is None
+    assert h.tg.live[mid]["text"].startswith("✅")
+    await _assisted(h)
+    await h.check_invariants()
+
+
+async def test_the_last_miss_shows_what_was_written_under_the_answer(h):
+    await h.sql("update user_grammar_topics set typing=true where user_id=:u", u=UID)
+    await h.fresh_day(["grammar", "grammar"])
+    card = await h.card()
+    for _ in range(3):
+        await h.say("still not it")
+    text = h.tg.live[card["msg_id"]]["text"]
+    assert text.startswith("❌") and "ты: " in text and "still" in text
+    await _assisted(h)
+    await h.check_invariants()
+
+
+async def test_a_typo_in_a_typed_sentence_counts_as_right(h, monkeypatch):
+    """«doesn'n» cost the attempt exactly like a wrong tense (2026-10-17)."""
+    seen = []
+
+    async def typo(self, expected, ru, answer, alternatives=None):
+        seen.append(answer)
+        return AnswerVerdict(mastery.TYPED_TYPO, "опечатка: doesn'n → doesn't")
+
+    monkeypatch.setattr(AnswerCheckService, "classify_sentence", typo)
+    await h.sql("update user_grammar_topics set typing=true where user_id=:u", u=UID)
+    await h.fresh_day(["grammar", "grammar"])
+    card = await h.card()
+    en = await _phrase_en(h, card["id"])
+    await h.say(en)  # an exact answer never reaches the checker
+    assert seen == []
+    await h.fresh_day(["grammar", "grammar"])
+    card = await h.card()
+    await h.say("zz" + await _phrase_en(h, card["id"]))
+    assert seen, "a miss was not sent to the checker"
+    assert (await h.state())["inflight"] is None
+    text = h.tg.live[card["msg_id"]]["text"]
+    assert text.startswith("✅") and "опечатка" in text
+    await _assisted(h)
+    await h.check_invariants()
+
+
+async def test_a_grammar_miss_still_costs_the_attempt(h, monkeypatch):
+    async def grammar(self, expected, ru, answer, alternatives=None):
+        return AnswerVerdict(mastery.TYPED_GRAMMAR, "после she нужно doesn't")
+
+    monkeypatch.setattr(AnswerCheckService, "classify_sentence", grammar)
+    await h.sql("update user_grammar_topics set typing=true where user_id=:u", u=UID)
+    await h.fresh_day(["grammar", "grammar"])
+    await h.card()
+    await h.say("she don't like it")
+    st = (await h.state())["inflight"]
+    assert st and st["state"]["attempt"] == 2
     await _assisted(h)
     await h.check_invariants()
 

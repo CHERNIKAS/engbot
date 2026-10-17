@@ -475,3 +475,54 @@ async def test_zero_retries_means_exactly_one_attempt():
     svc._ask = slow
     assert await svc.classify("explain", "объяснять", "explane") is None
     assert len(calls) == 1
+
+
+# ---- whole sentences (grammar cards) ----
+
+
+def test_a_sentence_verdict_never_reads_as_a_synonym():
+    """A sentence built some other way is not the construction being drilled."""
+    from app.services.answer_check import SENTENCE_VERDICT_TO_KIND
+
+    parse = AnswerCheckService._parse
+    assert parse(_response("typo"), SENTENCE_VERDICT_TO_KIND).kind == mastery.TYPED_TYPO
+    assert parse(_response("grammar"), SENTENCE_VERDICT_TO_KIND).kind == mastery.TYPED_GRAMMAR
+    assert parse(_response("synonym"), SENTENCE_VERDICT_TO_KIND).kind == mastery.WRONG
+
+
+async def test_a_sentence_in_russian_is_wrong_without_asking():
+    verdict = await _svc().classify_sentence("She works.", "Она работает.", "она работает")
+    assert verdict.kind == mastery.WRONG
+
+
+async def test_a_sentence_check_without_a_key_returns_none():
+    assert await _svc(key="").classify_sentence("She works.", "Она работает.", "She wroks") is None
+
+
+async def test_a_sentence_verdict_is_asked_once_then_cached():
+    svc = _svc()
+    calls = []
+
+    async def ask(expected, ru, answer, alternatives):
+        calls.append(answer)
+        return AnswerVerdict(mastery.TYPED_TYPO, "опечатка: wroks → works")
+
+    svc._ask_sentence = ask
+    first = await svc.classify_sentence("She works.", "Она работает.", "She wroks")
+    again = await svc.classify_sentence("She works.", "Она работает.", "she WROKS")
+    assert first.kind == again.kind == mastery.TYPED_TYPO
+    assert calls == ["She wroks"]
+
+
+async def test_sentence_and_word_verdicts_do_not_share_a_cache_entry():
+    """«works» typed as «wroks» for a word card and for a sentence card are
+    different questions."""
+    redis = FakeRedis()
+    svc = _svc(redis=redis)
+    redis.store[svc._key("works", "wroks")] = json.dumps({"kind": mastery.WRONG, "hint": ""})
+
+    async def ask(expected, ru, answer, alternatives):
+        return AnswerVerdict(mastery.TYPED_TYPO, "опечатка")
+
+    svc._ask_sentence = ask
+    assert (await svc.classify_sentence("works", "", "wroks")).kind == mastery.TYPED_TYPO

@@ -140,6 +140,10 @@ def test_serialization_roundtrip():
         ("car", "cat", False),
         ("", "hello", False),
         ("bye", "hello", False),
+        # punctuation and the phone's curly apostrophe are not the answer
+        ("how are you", "How are you?", True),
+        ("how are yu", "How are you?", True),  # one slip plus no «?»
+        ("don’t worry", "don't worry", True),
     ],
 )
 def test_is_typing_correct(typed: str, writing: str, ok: bool):

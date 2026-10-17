@@ -23,6 +23,8 @@ from __future__ import annotations
 
 import html
 
+from app.domain.constructor import mark_mistakes
+
 # Ten is a compromise. Fewer, and one unlucky sentence swings the verdict;
 # more, and a check that is meant to be a five-minute interruption becomes a
 # session people postpone. At a minute a sentence this is the upper end of what
@@ -94,7 +96,7 @@ def render_question(topic_title: str, ru: str, index: int, correct_so_far: int) 
 def render_result(
     topic_title: str,
     correct: int,
-    mistakes: list[tuple[str, str, str]],
+    mistakes: list[tuple],
     next_in_days: int,
 ) -> str:
     """The verdict, and every sentence that went wrong.
@@ -112,8 +114,11 @@ def render_result(
     if mistakes:
         parts.append("")
         parts.append("<b>Ошибки:</b>")
-        for ru, given, expected in mistakes:
-            written = html.escape(given.strip()) if given.strip() else "—"
+        # (ru, given, expected) or with the accepted alternatives as a fourth:
+        # the wrong words are underlined against the nearest of them.
+        for ru, given, expected, *rest in mistakes:
+            alternatives = list(rest[0]) if rest else []
+            written = mark_mistakes(given.strip(), expected, alternatives) if given.strip() else "—"
             parts.append(
                 f"· {html.escape(ru.strip())}\n"
                 f"  ты: <i>{written}</i>\n"

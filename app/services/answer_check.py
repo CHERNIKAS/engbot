@@ -78,12 +78,59 @@ RESPONSE_SCHEMA: dict[str, Any] = {
     "required": ["verdict", "hint"],
 }
 
+SENTENCE_PROMPT = """Ты проверяешь ответ ученика в тренажёре английской грамматики.
+
+Дано: русское предложение, правильный английский перевод (и допустимые
+варианты) и то, что написал ученик. Дословно ответ не совпал.
+Определи, что произошло:
+
+- "typo" — то же самое предложение, но с опечаткой: пропущенная, лишняя или
+  перепутанная буква, из-за которой получилось НЕСУЩЕСТВУЮЩЕЕ слово
+  (doesn'n → doesn't, coffe → coffee, teh → the), или пропущен апостроф
+  (dont → don't).
+- "grammar" — ошибка в том, чему учит задание: форма глагола, окончание,
+  время, вспомогательный глагол, артикль, порядок слов, пропущенное или
+  лишнее слово (she like → she likes, he don't → he doesn't).
+- "wrong" — другое по смыслу предложение или бессмыслица.
+
+ЖЕЛЕЗНОЕ ПРАВИЛО: если из-за ошибки получилось другое настоящее слово или
+другая форма (like/likes, work/worked, is/are, a/the, its/it's) — это
+"grammar", а не "typo", даже если отличается одна буква. Именно это задание
+и проверяет.
+
+hint — что именно не так, по-русски, максимум 12 слов, без похвалы. Для
+"typo" — само исправление: «опечатка: doesn'n → doesn't». Для "grammar" —
+какое правило нарушено, не переписывая предложение целиком.
+
+hint ПИШЕТСЯ ТОЛЬКО ПО-РУССКИ. Английскими могут быть только разбираемые слова.
+
+Отвечай строго JSON."""
+
+SENTENCE_VERDICT_TO_KIND = {
+    "typo": mastery.TYPED_TYPO,
+    "grammar": mastery.TYPED_GRAMMAR,
+    "wrong": mastery.WRONG,
+}
+
+# No "synonym" here: a sentence put together some other way is not the
+# construction the card is drilling, however well it reads.
+SENTENCE_SCHEMA: dict[str, Any] = {
+    "type": "OBJECT",
+    "properties": {
+        "verdict": {"type": "STRING", "enum": list(SENTENCE_VERDICT_TO_KIND)},
+        "hint": {"type": "STRING"},
+    },
+    "required": ["verdict", "hint"],
+}
+
 # Wrong answers repeat — the same misspelling comes back from the same person
 # and from different ones. A month is long enough to make that pay and short
 # enough that a prompt change works through.
 _CACHE_KEY = "ansck:{word}:{answer}"
+_SENTENCE_CACHE_KEY = "ansck:s:{expected}:{answer}"
 _CACHE_TTL = 2_592_000
 _MAX_ANSWER_LEN = 64
+_MAX_SENTENCE_LEN = 250
 
 
 @dataclass(frozen=True)
@@ -127,8 +174,34 @@ class AnswerCheckService:
             return AnswerVerdict(mastery.WRONG, "Нужно английское слово, не перевод.")
         if not self.enabled:
             return None
+        return await self._run(
+            self._key(word, answer), lambda: self._ask(word, translation, answer)
+        )
 
-        cached = await self._cached(word, answer)
+    async def classify_sentence(
+        self, expected: str, ru: str, answer: str, alternatives: list[str] | None = None
+    ) -> AnswerVerdict | None:
+        """The same question for a whole sentence typed at a grammar card.
+
+        Tells a slip of the fingers («doesn'n») from the error the card is
+        drilling («she like»). Before this the constructor graded strictly, and
+        a one-letter typo cost the attempt exactly like a wrong tense
+        (2026-10-17). None means the API did not answer, as for words.
+        """
+        answer = (answer or "").strip()[:_MAX_SENTENCE_LEN]
+        if not answer or not expected:
+            return AnswerVerdict(mastery.WRONG, "")
+        if _has_cyrillic(answer):
+            return AnswerVerdict(mastery.WRONG, "Нужно по-английски, не по-русски.")
+        if not self.enabled:
+            return None
+        key = _SENTENCE_CACHE_KEY.format(expected=expected.lower(), answer=answer.lower())
+        return await self._run(
+            key, lambda: self._ask_sentence(expected, ru, answer, alternatives or [])
+        )
+
+    async def _run(self, key: str, ask) -> AnswerVerdict | None:
+        cached = await self._cached(key)
         if cached is not None:
             return cached
         # One retry before giving up. A timeout here is usually a single slow
@@ -138,23 +211,23 @@ class AnswerCheckService:
         attempts = 1 + max(0, self._settings.answer_check_retries)
         for attempt in range(1, attempts + 1):
             try:
-                verdict = await self._ask(word, translation, answer)
+                verdict = await ask()
             except (TimeoutError, aiohttp.ClientError, ValueError) as exc:
                 if attempt < attempts:
                     log.info("answer_check_retry", error=type(exc).__name__, attempt=attempt)
                     continue
                 log.warning("answer_check_failed", error=type(exc).__name__, attempts=attempt)
                 return None
-            await self._remember(word, answer, verdict)
+            await self._remember(key, verdict)
             return verdict
         return None
 
     def _key(self, word: str, answer: str) -> str:
         return _CACHE_KEY.format(word=word.lower(), answer=answer.lower())
 
-    async def _cached(self, word: str, answer: str) -> AnswerVerdict | None:
+    async def _cached(self, key: str) -> AnswerVerdict | None:
         try:
-            raw = await self._redis.get(self._key(word, answer))
+            raw = await self._redis.get(key)
         except Exception:  # noqa: BLE001 — a cache miss must never break an answer
             return None
         if not raw:
@@ -165,10 +238,10 @@ class AnswerCheckService:
         except (json.JSONDecodeError, KeyError, TypeError):
             return None
 
-    async def _remember(self, word: str, answer: str, verdict: AnswerVerdict) -> None:
+    async def _remember(self, key: str, verdict: AnswerVerdict) -> None:
         try:
             await self._redis.set(
-                self._key(word, answer),
+                key,
                 json.dumps({"kind": verdict.kind, "hint": verdict.hint}, ensure_ascii=False),
                 ex=_CACHE_TTL,
             )
@@ -197,6 +270,36 @@ class AnswerCheckService:
                 "temperature": 0,
             },
         }
+        return self._parse(await self._post(payload))
+
+    async def _ask_sentence(
+        self, expected: str, ru: str, answer: str, alternatives: list[str]
+    ) -> AnswerVerdict:
+        others = " / ".join(a for a in alternatives if a and a != expected)
+        payload = {
+            "system_instruction": {"parts": [{"text": SENTENCE_PROMPT}]},
+            "contents": [
+                {
+                    "role": "user",
+                    "parts": [
+                        {
+                            "text": (
+                                f"По-русски: {ru or '—'} | Правильно: {expected} "
+                                f"| Тоже верно: {others or '—'} | Ученик написал: {answer}"
+                            )
+                        }
+                    ],
+                }
+            ],
+            "generationConfig": {
+                "responseMimeType": "application/json",
+                "responseSchema": SENTENCE_SCHEMA,
+                "temperature": 0,
+            },
+        }
+        return self._parse(await self._post(payload), SENTENCE_VERDICT_TO_KIND)
+
+    async def _post(self, payload: dict[str, Any]) -> dict[str, Any]:
         timeout = aiohttp.ClientTimeout(total=self._settings.answer_check_timeout_seconds)
         url = API_URL.format(model=self._settings.ai_model)
         async with aiohttp.ClientSession(timeout=timeout) as http:
@@ -206,17 +309,16 @@ class AnswerCheckService:
                 if resp.status in (429, 500, 503):
                     raise aiohttp.ClientError(f"HTTP {resp.status}")
                 resp.raise_for_status()
-                data = await resp.json()
-        return self._parse(data)
+                return await resp.json()
 
     @staticmethod
-    def _parse(data: dict[str, Any]) -> AnswerVerdict:
+    def _parse(data: dict[str, Any], kinds: dict[str, str] = VERDICT_TO_KIND) -> AnswerVerdict:
         try:
             text = data["candidates"][0]["content"]["parts"][0]["text"]
             row = json.loads(text)
         except (KeyError, IndexError, TypeError, json.JSONDecodeError) as exc:
             raise ValueError("unparseable response") from exc
-        kind = VERDICT_TO_KIND.get(str(row.get("verdict")))
+        kind = kinds.get(str(row.get("verdict")))
         if kind is None:
             # An unknown verdict is a model slip; the safe reading of a failed
             # strict check is that the answer was wrong.

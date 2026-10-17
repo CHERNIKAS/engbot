@@ -79,6 +79,7 @@ def action_of(data: str) -> str:
 # nothing — a card that "did not arrive".
 MAX_TEXT = 4096
 MAX_CALLBACK_BYTES = 64
+MAX_COPY_TEXT = 256
 # The HTML subset Telegram accepts; anything else, or unbalanced, is refused.
 ALLOWED_TAGS = {"b", "strong", "i", "em", "u", "ins", "s", "strike", "del", "a", "code", "pre",
                 "tg-spoiler", "span", "blockquote", "tg-emoji"}
@@ -120,6 +121,9 @@ def telegram_problems(text: str | None, markup, parse_mode: str | None) -> list[
                 problems.append(f"callback_data {len(b.callback_data.encode())} bytes: {b.callback_data!r}")
             if not (b.text or "").strip():
                 problems.append(f"empty button text for {b.callback_data!r}")
+            copy = getattr(b, "copy_text", None)
+            if copy is not None and not 1 <= len(copy.text) <= MAX_COPY_TEXT:
+                problems.append(f"copy_text {len(copy.text)} chars: {copy.text[:40]!r}")
     return problems
 
 

@@ -30,8 +30,16 @@ from __future__ import annotations
 import html
 import re
 from dataclasses import dataclass, replace
+from difflib import SequenceMatcher
 
 MAX_ATTEMPTS = 3
+
+# How much of a wrong typed answer the card echoes back. Sentences here are a
+# line or two; anything longer is not an attempt at this one. Also Telegram's
+# cap on a copy button's text (256), so the button never gets refused.
+LAST_TYPED_MAX = 250
+
+MISS_HELP = "Подчёркнуто, где ошибка. 📋 Кнопка ниже скопирует твой ответ — вставь и исправь."
 
 # What one answer is worth, by the attempt it landed on. A first-attempt answer
 # is the only one that proves unaided recall; the rest proves progressively
@@ -67,21 +75,24 @@ DECAY = 0.15
 
 MAX_STARS = 5.0
 
-_TRAILING_PUNCT = re.compile(r"[.!?,;:]+$")
-_APOSTROPHES = str.maketrans({"’": "'", "‘": "'", "`": "'"})
+# Every mark that is not part of a word. Apostrophes and hyphens stay: «it's»
+# and «its» are different words, and so are «well-known» and «well known» on
+# the page — those go to the checker, not through here.
+_PUNCT = re.compile(r"[.!?,;:…«»\"“”„()\[\]—–]+")
+_APOSTROPHES = str.maketrans({"’": "'", "‘": "'", "`": "'", "ʼ": "'", "´": "'"})
 
 
 def normalize(text: str | None) -> str:
     """A sentence reduced to what actually has to match.
 
-    Case, spacing, the curly apostrophe a phone keyboard inserts, and a missing
-    full stop are not the lesson. Word choice and word order are, and this
-    leaves both untouched.
+    Case, spacing, the curly apostrophe a phone keyboard inserts, and
+    punctuation are not the lesson. Word choice and word order are, and this
+    leaves both untouched. It used to keep inner punctuation: a forgotten
+    comma, or a «?» typed mid-line, failed a sentence whose words were right.
     """
     if not text:
         return ""
-    cleaned = text.strip().translate(_APOSTROPHES)
-    cleaned = _TRAILING_PUNCT.sub("", cleaned)
+    cleaned = _PUNCT.sub(" ", text.translate(_APOSTROPHES))
     return " ".join(cleaned.lower().split())
 
 
@@ -97,6 +108,63 @@ def matches(answer: str | None, expected: str, alternatives: list[str] | None = 
     accepted = {normalize(expected)} | {normalize(a) for a in (alternatives or [])}
     accepted.discard("")
     return got in accepted
+
+
+def closest(answer: str | None, expected: str, alternatives: list[str] | None = None) -> str:
+    """The accepted rendering nearest to what was written.
+
+    A miss is shown against this one, not always against `expected`: someone
+    who wrote «doesn't» and slipped elsewhere would otherwise see «doesn't»
+    marked wrong only because the main rendering says «does not».
+    """
+    got = normalize(answer).split()
+    best, best_ratio = expected, -1.0
+    for candidate in [expected, *(alternatives or [])]:
+        ratio = SequenceMatcher(None, got, normalize(candidate).split(), autojunk=False).ratio()
+        if ratio > best_ratio:
+            best, best_ratio = candidate, ratio
+    return best
+
+
+def mark_mistakes(answer: str | None, expected: str, alternatives: list[str] | None = None) -> str:
+    """The learner's answer as HTML, with the words that are wrong underlined
+    and «…» where a word is missing.
+
+    The answer itself is deleted from the chat and the verdict alone said
+    nothing about where it went wrong — a one-letter slip and a wrong tense
+    looked the same, and the learner hunted for it by retyping (2026-10-17).
+    Marks whole words, not letters: the place is the help, the fix is theirs.
+    """
+    words = (answer or "").split()
+    tokens: list[str] = []
+    owner: list[int] = []  # the written word each normalized token came from
+    for i, word in enumerate(words):
+        for token in normalize(word).split():
+            tokens.append(token)
+            owner.append(i)
+    target = normalize(closest(answer, expected, alternatives)).split()
+
+    wrong: set[int] = set()
+    gap_before: set[int] = set()
+    gap_at_end = False
+    matcher = SequenceMatcher(None, tokens, target, autojunk=False)
+    for tag, i1, i2, _j1, _j2 in matcher.get_opcodes():
+        if tag in ("replace", "delete"):
+            wrong.update(owner[i1:i2])
+        elif tag == "insert":
+            if i1 < len(owner):
+                gap_before.add(owner[i1])
+            else:
+                gap_at_end = True
+
+    out: list[str] = []
+    for i, word in enumerate(words):
+        if i in gap_before:
+            out.append("<u>…</u>")
+        out.append(f"<u><b>{html.escape(word)}</b></u>" if i in wrong else html.escape(word))
+    if gap_at_end:
+        out.append("<u>…</u>")
+    return " ".join(out)
 
 
 def credit(attempt: int, hinted: bool = False, hint_words: int = 0) -> float:
@@ -197,12 +265,19 @@ def render_card(
     plan_done: int = 0,
     plan_total: int = 0,
     rule: str = "",
+    last_miss_html: str = "",
 ) -> str:
     """The constructor card, HTML-escaped.
 
     `built` is what the learner has assembled so far in the assisted mode; it
     is echoed back so the sentence stays visible as it grows, which is the
     whole reason tapping through slots is not just a slower multiple choice.
+
+    `last_miss_html` is the typing mode's last wrong answer, already marked by
+    `mark_mistakes`. The learner's own message is deleted, so without it they
+    saw only «Попытка 2 из 3» — not what they wrote, not where it was wrong —
+    and retyped the whole sentence to find a one-letter slip (2026-10-17). The
+    keyboard carries a copy button for the same text.
 
     Everything interpolated here can contain `<`, `>` or `&` — the Russian
     prompt and the English come from generated content, and a single unescaped
@@ -232,6 +307,10 @@ def render_card(
             parts.append(f"<i>Начало: {html.escape(hinted_prefix)}…</i>")
         if attempt > 1:
             parts.append(f"<i>Попытка {attempt} из {MAX_ATTEMPTS}.</i>")
+        if last_miss_html:
+            parts.append("")
+            parts.append(f"❌ {last_miss_html}")
+            parts.append(f"<i>{MISS_HELP}</i>")
     else:
         # A blank line holds the answer's place before the first tap, so the
         # card does not jump when the first word appears.
@@ -246,16 +325,25 @@ def render_card(
 
 
 def render_result(
-    *, ru: str, en: str, correct: bool, answer_credit: float, hint: str = ""
+    *,
+    ru: str,
+    en: str,
+    correct: bool,
+    answer_credit: float,
+    hint: str = "",
+    given_html: str = "",
 ) -> str:
     """What replaces the card once it is settled.
 
     Always shows the right sentence, including after a correct answer: the
     learner may have reached it on the third attempt, and seeing it whole is
-    the part that sticks.
+    the part that sticks. `given_html` is their own last answer, marked — the
+    right sentence alone left them comparing the two word by word.
     """
     mark = "✅" if correct else "❌"
     parts = [f"{mark} {html.escape(ru.strip())}", f"<b>{html.escape(en.strip())}</b>"]
+    if given_html:
+        parts.append(f"ты: {given_html}")
     if hint:
         parts.append(f"<i>{html.escape(hint)}</i>")
     if correct and answer_credit < 1.0:
@@ -285,6 +373,9 @@ class CardState:
     rule_open: bool = False
     # Typing mode: words of the answer the hints have shown so far.
     hint_words: int = 0
+    # Typing mode: the last wrong answer, echoed back so a typo is fixed, not
+    # retyped.
+    last_typed: str = ""
 
     @property
     def slot_index(self) -> int:
@@ -306,6 +397,7 @@ class CardState:
             # re-rendered the card without it, mid-thought.
             "rule_open": self.rule_open,
             "hint_words": self.hint_words,
+            "last_typed": self.last_typed,
         }
 
     @classmethod
@@ -318,6 +410,7 @@ class CardState:
             typing=bool(data.get("typing")),
             rule_open=bool(data.get("rule_open")),
             hint_words=int(data.get("hint_words") or 0),
+            last_typed=str(data.get("last_typed") or ""),
         )
 
 
@@ -354,9 +447,16 @@ def use_hint(state: CardState) -> CardState:
     return state if state.hinted else replace(state, hinted=True)
 
 
-def miss(state: CardState) -> CardState:
-    """A wrong typed answer — spend one attempt."""
-    return replace(state, attempt=state.attempt + 1)
+def miss(state: CardState, typed: str = "") -> CardState:
+    """A wrong typed answer — spend one attempt and keep the answer to echo.
+
+    Capped so a pasted wall of text cannot push the card past Telegram's
+    message limit: the edit would be refused and the miss would not show.
+    """
+    typed = " ".join(typed.split())
+    if len(typed) > LAST_TYPED_MAX:
+        typed = typed[:LAST_TYPED_MAX] + "…"
+    return replace(state, attempt=state.attempt + 1, last_typed=typed)
 
 
 def to_typing(state: CardState) -> CardState:

@@ -31,6 +31,8 @@ class CardView:
     options: list[str]
     typing: bool
     can_undo: bool
+    # The last wrong typed answer, for the keyboard's copy button.
+    copy_text: str = ""
 
 
 @dataclass(frozen=True)
@@ -121,6 +123,12 @@ class ConstructorService:
                 phrase.en, reveal=state.hint_words or c.FIRST_HINT_WORDS
             )
 
+        last_miss_html = ""
+        if state.typing and state.last_typed:
+            last_miss_html = c.mark_mistakes(
+                state.last_typed, phrase.en, list(phrase.alternatives or [])
+            )
+
         text = c.render_card(
             topic_title=topic.title,
             # The figure is withheld until the topic has been answered enough
@@ -135,6 +143,7 @@ class ConstructorService:
             plan_done=plan_done,
             plan_total=plan_total,
             rule=(topic.rule or "") if state.rule_open else "",
+            last_miss_html=last_miss_html,
         )
         return CardView(
             text=text,
@@ -142,6 +151,7 @@ class ConstructorService:
             options=[] if state.typing else c.slot_options(slots, state.slot_index),
             typing=state.typing,
             can_undo=bool(state.chosen),
+            copy_text=state.last_typed if last_miss_html else "",
         )
 
     @staticmethod
@@ -268,16 +278,19 @@ class ConstructorService:
         topic: GrammarTopic,
         state: c.CardState,
         answer: str | None = None,
+        typo: bool = False,
     ) -> Settlement:
         """Score the finished exercise and write the topic's new standing.
 
         `answer` is what was typed; in the assisted mode it is the assembled
         sentence. Both are checked against the same expectation, so the two
-        modes cannot drift into grading different things.
+        modes cannot drift into grading different things. `typo` is the
+        checker's word that the sentence is right but for a slip of the
+        fingers — scored as right on this attempt, like a mistyped word.
         """
         slots = list(phrase.slots or [])
         given = answer if answer is not None else c.assembled(slots, list(state.chosen))
-        correct = c.matches(given, phrase.en, list(phrase.alternatives or []))
+        correct = typo or c.matches(given, phrase.en, list(phrase.alternatives or []))
         answer_credit = (
             c.credit(state.attempt, hinted=state.hinted, hint_words=state.hint_words) if correct else 0.0
         )
