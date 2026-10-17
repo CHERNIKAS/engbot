@@ -99,6 +99,13 @@ async def main() -> None:
         action="store_true",
         help="attach the bottom menu — the only way to replace a stale one",
     )
+    ap.add_argument(
+        "--exclude",
+        type=int,
+        nargs="*",
+        default=[],
+        help="user ids (users.id) to leave out — e.g. the owner's own test accounts",
+    )
     args = ap.parse_args()
 
     text = Path(args.text_file).read_text(encoding="utf-8").strip()
@@ -111,8 +118,11 @@ async def main() -> None:
 
     async with maker() as session:
         people = await audience(session)
+        excluded = set(args.exclude)
         pending = [
-            (u, t) for u, t in people if not already_sent(t, args.slug) and not blocked(t)
+            (u, t)
+            for u, t in people
+            if not already_sent(t, args.slug) and not blocked(t) and u.id not in excluded
         ]
         skipped_sent = [u.id for u, t in people if already_sent(t, args.slug)]
         skipped_blocked = [u.id for u, t in people if blocked(t) and not already_sent(t, args.slug)]
@@ -121,6 +131,7 @@ async def main() -> None:
         print(f"получат сейчас:      {len(pending)} → {[u.id for u, _ in pending]}")
         print(f"уже получали:        {len(skipped_sent)} → {skipped_sent}")
         print(f"заблокировали бота:  {len(skipped_blocked)} → {skipped_blocked}")
+        print(f"исключены вручную:   {len(excluded)} → {sorted(excluded)}")
         print(f"пауза между:         {args.delay} c")
         print("-" * 60)
         print(text)
