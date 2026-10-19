@@ -521,6 +521,13 @@ def _recap(
     says when the word comes back. The example sentence appears only on a miss:
     that is when the context is worth reading, and on a hit it is just length.
 
+    A phrase is the exception: its usage example and translation come after
+    every answer. They used to sit on the card itself, before the answer, and
+    the Russian half gave it away — «I'm so hungry. — Same here.» over «Я
+    такой голодный. — У меня так же.», in two phrases of three (owner,
+    2026-10-18). When to say it is half of knowing a phrase, so it moved here
+    instead of going away.
+
     Pure so the formatting is testable without a bot or a session.
     """
     lines: list[str] = []
@@ -529,7 +536,12 @@ def _recap(
         lines.append(PUSH_RECAP_WORD.format(writing=html.escape(word.writing or "")))
     elif translation:
         lines.append(PUSH_RECAP_TRANSLATION.format(translation=html.escape(translation)))
-    if not correct and (word.example_sentence or "").strip():
+    usage_en = (getattr(word, "abstract_example_en", None) or "").strip()
+    usage_ru = (getattr(word, "abstract_example_ru", None) or "").strip()
+    if getattr(word, "is_phrase", False) and usage_en and usage_ru:
+        lines.append(PUSH_RECAP_EXAMPLE.format(sentence=html.escape(usage_en)))
+        lines.append(f"<i>↳ {html.escape(usage_ru)}</i>")
+    elif not correct and (word.example_sentence or "").strip():
         lines.append(PUSH_RECAP_EXAMPLE.format(sentence=html.escape(word.example_sentence.strip())))
 
     mastered_now = uw.status == WordStatus.MASTERED.value
@@ -579,16 +591,15 @@ def _mask_target(sentence: str, target: str) -> str | None:
     return masked if n > 0 else None
 
 
-def _format_word_card(writing: str, abstract_en: str | None, abstract_ru: str | None, progress: str) -> str:
-    """Render the word push card. Includes a paired EN/RU abstract example
-    underneath the question when both are present — these use synonyms /
-    paraphrase so the target word isn't in the sentence (no spoilers). If
-    either side is missing the example is skipped: better no hint than a
-    half-baked one."""
+def _format_word_card(writing: str, progress: str) -> str:
+    """Render the word push card: the question and the progress line, nothing
+    else.
+
+    It used to carry a paired EN/RU example under the question, meant to be
+    spoiler-free. For phrases it was not — the Russian half translated the
+    phrase, so the card answered itself — and the owner chose no hints at all
+    before the answer (2026-10-18). A phrase's example shows in the recap."""
     parts = [PUSH_CARD.format(word=html.escape(writing))]
-    if abstract_en and abstract_ru:
-        parts.append(f"📝 <i>{html.escape(abstract_en)}</i>")
-        parts.append(f"<i>↳ {html.escape(abstract_ru)}</i>")
     parts.append(f"<i>{progress}</i>")
     return "\n".join(parts)
 
@@ -1423,8 +1434,8 @@ class PushService:
             )
             return text, options, answer, uw.status
 
-        # Recognition (default): EN→RU, pick the translation. Carries the abstract
-        # example as a context hint.
+        # Recognition (default): EN→RU, pick the translation. No example before
+        # the answer — see _format_word_card.
         distractors = []
         if word.is_phrase:
             distractors = [
@@ -1437,12 +1448,7 @@ class PushService:
             )
         options = [ru, *distractors[:3]]
         random.shuffle(options)
-        text = _format_word_card(
-            writing=english,
-            abstract_en=word.abstract_example_en,
-            abstract_ru=word.abstract_example_ru,
-            progress=_progress_line(uw, target=target),
-        )
+        text = _format_word_card(writing=english, progress=_progress_line(uw, target=target))
         return text, options, ru, uw.status
 
     @_serialized

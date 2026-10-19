@@ -9,7 +9,7 @@ from datetime import datetime, timedelta, timezone
 from types import SimpleNamespace
 
 from app.domain.enums import WordStatus
-from app.services.push_service import _in_days_phrase, _percent, _recap
+from app.services.push_service import _format_word_card, _in_days_phrase, _percent, _recap
 
 NOW = datetime(2026, 9, 5, 12, 0, tzinfo=timezone.utc)
 TARGET = (9.5, 5)  # score bar, typed answers required
@@ -26,8 +26,18 @@ def _uw(score=5.0, typed=0, status=WordStatus.REVIEW.value, mastery=0.0, due_in=
     )
 
 
-def _word(writing="report", translation="отчёт", example="The report is on your desk."):
-    return SimpleNamespace(writing=writing, translation=translation, example_sentence=example, level="A2")
+def _word(writing="report", translation="отчёт", example="The report is on your desk.", **extra):
+    return SimpleNamespace(
+        writing=writing, translation=translation, example_sentence=example, level="A2", **extra
+    )
+
+
+def _phrase():
+    return _word(
+        writing="Same here", translation="У меня так же", example=None, is_phrase=True,
+        abstract_example_en="I'm so hungry. — Same here.",
+        abstract_example_ru="Я такой голодный. — У меня так же.",
+    )
 
 
 def _lines(text: str) -> list[str]:
@@ -150,3 +160,31 @@ def test_the_block_starts_on_its_own_line_and_stays_short():
     out = _recap(_uw(), _word(), before_percent=42, was_mastered=False, correct=False, target=TARGET, now=NOW)
     assert out.startswith("\n")
     assert len(_lines(out)) <= 4  # translation, example, progress, next
+
+
+# ---- no hint before the answer (2026-10-18) ---- #
+
+
+def test_the_card_carries_no_example_before_the_answer():
+    """The Russian half of a phrase's example was its translation: the card
+    answered itself."""
+    text = _format_word_card(writing="Same here", progress="🌱 0%")
+    assert "📝" not in text and "↳" not in text
+    assert "Same here" in text
+
+
+def test_a_phrase_shows_its_example_after_any_answer():
+    for correct in (True, False):
+        out = _recap(_uw(), _phrase(), before_percent=0, was_mastered=False, correct=correct,
+                     target=TARGET, now=NOW)
+        assert "I&#x27;m so hungry. — Same here." in out
+        assert "↳ Я такой голодный. — У меня так же." in out
+
+
+def test_a_words_paraphrase_is_not_shown_in_the_recap():
+    """A word's abstract example avoids the word on purpose; after a miss the
+    real example, with the word in it, is what is worth reading."""
+    word = _word(abstract_example_en="It sits on your desk.", abstract_example_ru="Лежит на столе.")
+    out = _recap(_uw(), word, before_percent=42, was_mastered=False, correct=False, target=TARGET, now=NOW)
+    assert "The report is on your desk." in out
+    assert "Лежит на столе" not in out

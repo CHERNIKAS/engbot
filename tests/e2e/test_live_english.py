@@ -43,5 +43,9 @@ async def test_added_from_collections_its_phrases_come_through_the_phrase_slot(h
     writing = (await h.sql("select w.writing from user_words uw join words w on w.id=uw.word_id where uw.id=:i",
                            i=card["id"]))[0][0]
     assert writing == "No way!"
-    assert "You met Taylor Swift" in h.tg.live[card["msg_id"]]["text"]  # the usage example rides along
+    # The usage example comes after the answer, not on the card: its Russian
+    # half translated the phrase, so the card answered itself (2026-10-18).
+    assert "You met Taylor Swift" not in h.tg.live[card["msg_id"]]["text"]
+    await h.tap_text(card["msg_id"], card["correct"])
+    assert "You met Taylor Swift" in h.tg.live[card["msg_id"]]["text"]
     await h.check_invariants()
