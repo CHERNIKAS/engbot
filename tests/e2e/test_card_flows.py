@@ -523,6 +523,43 @@ async def test_knowing_a_whole_screen_brings_the_next_one(h):
     await h.check_invariants()
 
 
+async def test_a_nudge_leaves_the_triage_screen_in_place(h):
+    """2026-10-27: the nudge kept the screen as it was, then deleted «the old
+    message» — the screen itself. Ten minutes after it was sent it was gone
+    from the chat, while the day and a lesson waited on it."""
+    await h.fresh_day(["triage", "new_word"])
+    card = await h.card()
+    mid = card["msg_id"]
+    await h.patch_inflight(retry_ts=0)
+    await h.tick()
+    assert mid in h.tg.live and mid not in h.tg.deleted, "the nudge deleted the screen"
+    assert (await h.state())["inflight"]["msg_id"] == mid
+    await h.act(mid, "trgok")  # and it still works
+    assert (await h.state())["inflight"] is None or (await h.state())["inflight"]["msg_id"] != mid
+    await h.check_invariants()
+
+
+async def test_a_lesson_starting_on_a_triage_screen_brings_it_down(h):
+    """«Начинаем с карточки выше» pointed at a screen hours up the chat — or,
+    with the nudge bug above, at nothing at all."""
+    await h.fresh_day(["triage", "new_word"])
+    card = await h.card()
+    mid = card["msg_id"]
+    rows = card["rows"]
+    await h.act(mid, "trg", 0)  # a mark made before the lesson
+    await h.say(BTN_LESSON)
+    screen = (await h.state())["inflight"]
+    assert screen["kind"] == "triage" and screen["msg_id"] != mid
+    assert mid not in h.tg.live
+    assert h.tg.sent[-1]["id"] == screen["msg_id"], "the screen is not at the bottom"
+    await h.act(screen["msg_id"], "trgok")
+    status = (await h.sql("select status from user_words where id=:i", i=rows[0][0]))[0][0]
+    assert status == "mastered", "the mark made before the lesson was lost"
+    assert await h.done_kinds() == ["triage"]
+    await h.say(BTN_LESSON_END)
+    await h.check_invariants()
+
+
 # ---- the topic check -------------------------------------------------------- #
 
 

@@ -810,7 +810,12 @@ class PushService:
                 new_msg_id = await self._renudge(user, inflight, attempts, now_ts)
                 if new_msg_id:
                     old_msg_id = inflight.get("msg_id")
-                    if old_msg_id:
+                    # An offer is kept as it is: _renudge hands back the same
+                    # message. Deleting «the old one» then deleted the screen
+                    # itself — a triage screen vanished ten minutes after it was
+                    # sent while the day and a lesson waited on it (2026-10-27,
+                    # «Начинаем с карточки выше» over an empty chat).
+                    if old_msg_id and int(old_msg_id) != int(new_msg_id):
                         await self._delete(user.telegram_id, old_msg_id)
                     inflight["msg_id"] = new_msg_id
                     # Restart the answer clock: this re-push is the card the
@@ -2182,11 +2187,14 @@ class PushService:
     async def _lesson_bring_down(self, user: User, state: dict, inflight: dict, now_ts: float) -> None:
         """Start the lesson on the card already waiting, moved to the bottom of
         the chat — it may be hours up — and without the «повтор» scolding a
-        nudge carries. Offers (triage, topic check) have one render; they stay
-        where they are."""
+        nudge carries. A triage screen comes down too, its marks intact: hours
+        up, it was as good as missing, and the lesson pointed at an empty chat
+        (2026-10-27). The topic check stays where it is."""
         kind = inflight.get("kind", "word")
         new_id = None
-        if kind in self._WORD_KINDS:
+        if kind == "triage":
+            new_id = await self._resend_triage(user, inflight)
+        elif kind in self._WORD_KINDS:
             new_id, _o, _c = await self._send_card(
                 user,
                 kind,
@@ -2206,6 +2214,26 @@ class PushService:
         inflight["sent_ts"] = now_ts
         inflight["retry_ts"] = now_ts + _retry_after(1)
         state["inflight"] = inflight
+
+    async def _resend_triage(self, user: User, inflight: dict) -> int | None:
+        """The triage screen in flight, sent again with the marks it has."""
+        rows = inflight.get("rows") or []
+        if not rows:
+            return None
+        screen = triage.TriageState.from_dict(inflight.get("state"))
+        labelled = [
+            (int(r[0]), triage.button_label(r[1], r[2], screen.marked(int(r[0])))) for r in rows
+        ]
+        return await self._raw_send(
+            user.telegram_id,
+            triage.render(
+                str(inflight.get("title") or ""), offered=len(rows), known=len(screen.known)
+            ),
+            triage_kb(labelled, TRIAGE_DONE),
+            uid=user.id,
+            kind="triage",
+            obj_id=int(inflight.get("id", 0)),
+        )
 
     async def _lesson_after(self, user: User, bot: Bot | None) -> None:
         """After every tap or typed answer: during a lesson, note the learner is
