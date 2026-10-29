@@ -415,6 +415,9 @@ PUSH_RECAP_TYPED_LEFT = "✍️ напечатать ещё {n} {times}"
 PUSH_RECAP_NEXT = "🔁 вернусь {when}"
 
 PUSH_STALE = "⌛ Эта карточка уже неактуальна."
+# The learner's own message is deleted the moment it is read, so the card has
+# to say what was answered — otherwise a slow check looks like a lost answer.
+PUSH_TYPED_ECHO = "✍️ <b>{answer}</b>"
 PUSH_HIDDEN = "🙈 Больше не показываю это слово."
 PUSH_MASTERED_KNOWN = "✅ Отметил как выученное — буду лишь изредка повторять."
 PUSH_SNOOZED = "😴 Отложил на {label}."

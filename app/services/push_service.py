@@ -79,6 +79,7 @@ from app.bot.texts import (
     PUSH_RULE_CARD,
     PUSH_SNOOZED,
     PUSH_STALE,
+    PUSH_TYPED_ECHO,
     TRIAGE_DONE,
 )
 from app.config import get_settings
@@ -115,6 +116,7 @@ from app.infrastructure.repositories.constructor import ConstructorRepository
 from app.services.constructor_service import ConstructorService
 from app.services.day_plan_service import DayPlanService
 from app.services.repetition_service import MASTERED_REPS_NORMAL, apply_review
+from app.services import waiting
 
 log = get_logger("push")
 
@@ -1796,7 +1798,23 @@ class PushService:
                 # A phrase's other rendering is a right answer too.
                 if any(is_typing_correct(typed, v) for v in (word_row.writing, word_row.colloquial) if v):
                     correct = True
-            verdict = None if correct else await self._checker.classify(answer, translation, typed)
+            if correct:
+                verdict = None
+            else:
+                # The learner's own message goes now, not after the verdict: the
+                # echo below is the copy that stays, and leaving both up means
+                # the answer is on screen twice for the length of the call.
+                try:
+                    await message.delete()
+                except Exception:  # noqa: BLE001
+                    pass
+                async with waiting.checking(
+                    message.bot,
+                    message.chat.id,
+                    inflight.get("msg_id"),
+                    head=PUSH_TYPED_ECHO.format(answer=html.escape(typed)),
+                ):
+                    verdict = await self._checker.classify(answer, translation, typed)
             if verdict is None and not correct:
                 # Scored strictly because the checker was unreachable. Park it so
                 # the credit is delayed, not lost.
@@ -1829,7 +1847,8 @@ class PushService:
                 )
             except Exception:  # noqa: BLE001
                 pass
-        # Tidy the user's typed answer out of the chat.
+        # Tidy the user's typed answer out of the chat. Already gone when the
+        # checker was consulted; harmless to ask twice.
         try:
             await message.delete()
         except Exception:  # noqa: BLE001
@@ -2906,7 +2925,19 @@ class PushService:
         if not ok:
             # One attempt per question here, so a typo cost the whole sentence.
             # Forgiven the same way as on a card.
-            verdict = await self._checker.classify_sentence(phrase.en, phrase.ru, typed, alternatives)
+            try:
+                await message.delete()
+            except Exception:  # noqa: BLE001
+                pass
+            async with waiting.checking(
+                message.bot,
+                message.chat.id,
+                inflight.get("msg_id"),
+                head=PUSH_TYPED_ECHO.format(answer=html.escape(typed)),
+            ):
+                verdict = await self._checker.classify_sentence(
+                    phrase.en, phrase.ru, typed, alternatives
+                )
             ok = verdict is not None and verdict.kind == mastery.TYPED_TYPO
         else:
             verdict = None
@@ -3288,7 +3319,15 @@ class PushService:
         # falls back to the strict verdict.
         verdict = None
         if not correct:
-            verdict = await self._checker.classify_sentence(phrase.en, phrase.ru, typed, alternatives)
+            async with waiting.checking(
+                message.bot,
+                message.chat.id,
+                inflight.get("msg_id"),
+                head=PUSH_TYPED_ECHO.format(answer=html.escape(typed)),
+            ):
+                verdict = await self._checker.classify_sentence(
+                    phrase.en, phrase.ru, typed, alternatives
+                )
         typo = verdict is not None and verdict.kind == mastery.TYPED_TYPO
         await self._log_typed(
             user, "constructor", typed, phrase.en, correct or typo, verdict,
