@@ -29,3 +29,18 @@ def test_quiz_card_escapes_writing():
     text = _card_text(_view(STAGE_QUIZ, "A&B", "перевод"), romaji_enabled=True)
     assert "A&amp;B" in text
     assert "<b>A&B</b>" not in text
+
+
+def test_the_card_never_puts_its_own_question_mark_on_the_english():
+    """«Что значит <b>Sounds good</b>?» read as a question about "Sounds good?"
+    — the card's punctuation looked like the phrase's own, and on a phrase that
+    really is a question the two were indistinguishable (2026-10-29)."""
+    from app.bot.texts import PUSH_CARD
+
+    assert not PUSH_CARD.rstrip().endswith("?")
+    assert "{word}</b>?" not in PUSH_CARD
+    rendered = PUSH_CARD.format(word="Sounds good")
+    assert "?" not in rendered
+    # A phrase that is itself a question keeps its own mark, and it is the only
+    # one on the card.
+    assert PUSH_CARD.format(word="How are you?").count("?") == 1

@@ -24,13 +24,13 @@ def _source(fn) -> str:
 def test_the_tick_no_longer_draws_a_random_stream():
     """`_weighted_order` is what made the day unpredictable. If a later change
     reaches for it again inside the tick, the plan becomes decoration."""
-    src = _source(PushService.run_tick)
+    src = _source(PushService._run_tick)
     assert "_weighted_order" not in src
     assert "next_kind" in src
 
 
 def test_the_tick_asks_the_plan_what_comes_next():
-    src = _source(PushService.run_tick)
+    src = _source(PushService._run_tick)
     assert "ensure_plan" in src
     assert "DayPlanService" in src
 
@@ -55,14 +55,14 @@ def test_every_plan_slot_kind_can_actually_be_served():
 def test_an_unfillable_slot_is_ticked_off_rather_than_retried():
     """The theme runs out, every topic is passed, nothing is due. Retrying
     forever holds the plan open, and an open plan blocks every day after it."""
-    src = _source(PushService.run_tick)
+    src = _source(PushService._run_tick)
     assert "mark_done" in src
 
 
 def test_the_plan_card_is_sent_before_the_first_exercise():
     """The learner agrees to a known amount of work rather than discovering the
     size of the day by reaching the end of it."""
-    src = _source(PushService.run_tick)
+    src = _source(PushService._run_tick)
     opened = src.index("opened")
     assert "_plan_card" in src
     assert src.index("_plan_card") > opened
@@ -114,7 +114,7 @@ def test_the_tick_saves_state_exactly_once():
     inflight, the tick's own save replaced it with a snapshot from before, and
     every tick re-sent the card.
     """
-    src = _source(PushService.run_tick)
+    src = _source(PushService._run_tick)
     # Each branch saves and returns; what must not happen is a save that runs
     # after a helper has already written to the same key behind the tick's back.
     assert "_send_constructor(" not in src or "state" in src

@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import pytest
 
+from app.services import push_service as ps
 from app.services.push_service import PushService
 
 
@@ -35,6 +36,14 @@ def _service(redis=None):
     service._redis = redis
     service._bot = None
     return service
+
+
+@pytest.fixture(autouse=True)
+def _as_a_worker_tick():
+    """These pin the worker's own alarm, which only counts the worker's sends."""
+    token = ps._FROM_TICK.set(True)
+    yield
+    ps._FROM_TICK.reset(token)
 
 
 @pytest.mark.asyncio
@@ -83,3 +92,19 @@ async def test_telemetry_failure_never_stops_a_card():
 @pytest.mark.asyncio
 async def test_a_service_without_redis_still_sends():
     await _service(None)._note_send_rate(1)  # must not raise
+
+
+@pytest.mark.asyncio
+async def test_a_lesson_is_not_counted_as_a_runaway(monkeypatch):
+    """A lesson sends the next card only in answer to the last, so its pace is
+    the learner's own and has no ceiling to breach. Counting it fired the alarm
+    on uid 1 (2026-10-29) for sitting down and doing the day's plan — eleven
+    answers in the hour it complained about eight cards."""
+    redis = _FakeRedis()
+    token = ps._FROM_TICK.set(False)
+    try:
+        for _ in range(20):
+            await _service(redis)._note_send_rate(7)
+    finally:
+        ps._FROM_TICK.reset(token)
+    assert redis.counters == {}

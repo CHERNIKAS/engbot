@@ -6,6 +6,7 @@ import html
 import json
 import random
 import re
+from contextvars import ContextVar
 from dataclasses import dataclass, replace
 from datetime import date, datetime, timedelta, timezone
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
@@ -119,6 +120,11 @@ from app.services.repetition_service import MASTERED_REPS_NORMAL, apply_review
 from app.services import waiting
 
 log = get_logger("push")
+
+# True only while a worker tick is running. The send-rate warning below counts
+# what the BOT decided to send on its own; a lesson is paced by the learner, and
+# counting their taps as a runaway makes the one alarm we have cry wolf.
+_FROM_TICK: ContextVar[bool] = ContextVar("push_from_tick", default=False)
 
 _KEY = "push:{user_id}"
 _TTL = 172_800  # 2 days
@@ -724,6 +730,13 @@ class PushService:
         return pushed
 
     async def run_tick(self, user: User, ut: UserTrack) -> bool:
+        token = _FROM_TICK.set(True)
+        try:
+            return await self._run_tick(user, ut)
+        finally:
+            _FROM_TICK.reset(token)
+
+    async def _run_tick(self, user: User, ut: UserTrack) -> bool:
         ws, we = self._window(user, ut)
         now = datetime.now(timezone.utc)
         local = now.astimezone(_tz(user.timezone))
@@ -1218,13 +1231,20 @@ class PushService:
         )
         return msg_id, options, correct
 
-    # A user cannot receive more than twelve cards an hour by design: the worker
-    # ticks every five minutes and sends at most one card per tick. Normal load
-    # is far lower — a 28-card plan spread over a twelve-hour window is two or
-    # three an hour. Eight sits between the two: high enough that an ordinary
-    # busy evening does not trip it, low enough to catch the failure we have
-    # actually had. July's bug sent ~40 cards in three and a half hours, about
-    # 11 an hour, and was noticed by a human three hours in.
+    # Counts only what the worker sent on its own — see `_FROM_TICK`. A tick
+    # cannot exceed twelve cards an hour by design: it runs every five minutes
+    # and sends at most one card. Normal load is far lower — a 28-card plan
+    # spread over a twelve-hour window is two or three an hour. Eight sits
+    # between the two: high enough that an ordinary busy evening does not trip
+    # it, low enough to catch the failure we have actually had. July's bug sent
+    # ~40 cards in three and a half hours, about 11 an hour, and was noticed by
+    # a human three hours in.
+    #
+    # A lesson is excluded because it has no such ceiling and needs none: it
+    # sends the next card only in answer to the last one, so its pace is the
+    # learner's own. Counting it fired the warning at eight cards on someone
+    # simply sitting down and doing their plan (uid 1, 2026-10-29: eleven
+    # answers in the same hour), which is the alarm describing healthy use.
     #
     # A warning, not a block: the July bug was a wiped inflight, and refusing to
     # send would have hidden it rather than fixed it. This makes it findable.
@@ -1238,7 +1258,7 @@ class PushService:
         was one writer clobbering that state with a stale snapshot, and a
         counter that opened it would join the same class of problem.
         """
-        if self._redis is None:
+        if self._redis is None or not _FROM_TICK.get():
             return
         key = f"pushrate:{uid}"
         try:

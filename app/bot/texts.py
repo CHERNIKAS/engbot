@@ -366,7 +366,13 @@ REMINDER_STREAK = "🔥 Streak {streak} дн. под угрозой! Позан�
 REMINDER_DAILY = "🎯 Сегодня {studied}/{goal}. Закроем цель? Осталось {left}."
 REMINDER_INACTIVE = "👋 Давно не виделись. Вернись и повтори слова — даже 5 минут в день работают."
 
-PUSH_CARD = "Что значит <b>{word}</b>?"
+# The question mark used to sit straight after the phrase — «Что значит
+# <b>Sounds good</b>?» — and read as part of it, as though the card were
+# asking about "Sounds good?" rather than about "Sounds good". Worse for
+# the phrases that ARE questions: there the real mark and the card's own
+# were indistinguishable. The emoji asks just as clearly and belongs to
+# the card, not to the English.
+PUSH_CARD = "Что значит <b>{word}</b> 🤔"
 PUSH_CARD_REVERSE = "Как сказать по-английски «<b>{translation}</b>»?"
 # Typed production for words a cloze can't reach — phrasebook entries, and
 # anything still lacking a maskable example. Same question as the reverse card,
