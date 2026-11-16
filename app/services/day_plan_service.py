@@ -235,32 +235,58 @@ class DayPlanService:
         previous = await self._plans.last_size(user.id, track)
         if previous is None:
             return plan_rules.DEFAULT_SIZE
-        closes, misses = await self._streaks(user, track)
-        return plan_rules.next_size(previous, closes, misses)
+        closes = await self._on_time_streak(user, track, previous)
+        return plan_rules.next_size(previous, closes)
 
-    async def _streaks(self, user: User, track: LearningTrack) -> tuple[int, int]:
-        """(consecutive closes, consecutive misses) over recent plans.
+    async def _on_time_streak(self, user: User, track: LearningTrack, size: int) -> int:
+        """Consecutive plans of this size closed on the day they were opened.
 
-        A miss is a plan that took more than one push day to close — that is
-        what "did not finish it that day" means once plans are allowed to carry
-        over. Counting unclosed plans instead would never see a miss, since a
-        carried plan eventually closes too.
+        Only plans of the current size count, so a step up starts a new week:
+        counting across sizes would grow the plan again every day after the
+        seventh.
         """
-        recent = await self._plans.recent_closed(user.id, track, limit=14)
-        closes = misses = 0
+        recent = await self._plans.recent_closed(
+            user.id, track, limit=plan_rules.GROW_AFTER_CLOSES
+        )
+        closes = 0
         for plan in recent:
-            if plan.closed_at is None:
+            if plan.closed_at is None or plan.size != size:
                 break
-            same_day = plan.closed_at.date() == plan.opened_on
-            if same_day:
-                if misses:
-                    break
-                closes += 1
-            else:
-                if closes:
-                    break
-                misses += 1
-        return closes, misses
+            if plan.closed_at.date() != plan.opened_on:
+                break
+            closes += 1
+        return closes
+
+    async def grow_open_plan(
+        self, user: User, track: LearningTrack, plan: DayPlan, size: int
+    ) -> int:
+        """Enlarge a plan already in flight to `size`. Returns slots added.
+
+        The extra slots are exactly what composing at `size` adds over composing
+        at the plan's own size, against what the vocabulary offers now — so the
+        day keeps the shape it would have had if it had been opened this big.
+        Done slots stay done.
+        """
+        if size <= plan.size:
+            return 0
+        old = await self._compose(user, track, plan.size)
+        new = await self._compose(user, track, size)
+        added: list[dict] = []
+        for kind, attr in (
+            (plan_rules.REPEAT, "repeats"),
+            (plan_rules.GRAMMAR, "grammar"),
+            (plan_rules.NEW_THEME_WORD, "new_theme"),
+            (plan_rules.NEW_WORD, "new_frequency"),
+            (plan_rules.PHRASE, "phrases"),
+        ):
+            extra = max(0, getattr(new, attr) - getattr(old, attr))
+            added.extend({"kind": kind, "done": False} for _ in range(extra))
+        items = [dict(item) for item in (plan.items or [])] + added
+        plan.items = items
+        plan.size = size
+        await self._plans.save_items(plan.id, items)
+        await self._session.flush()
+        return len(added)
 
     # ---- serving ----
 

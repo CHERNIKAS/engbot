@@ -216,6 +216,13 @@ async def _arrange(h) -> None:
         "update user_words set snooze_until = now() + interval '30 days' where id = (select id"
         " from user_words where user_id=:u and status in ('new', 'learning') order by id desc limit 1)", u=UID,
     )
+    # The walker searches «apple» and needs a catalog hit the learner does not
+    # own, or «➕ добавить» never appears. The catalog has one apple, and by
+    # 2026-11 the prod learner this copy is taken from had added it.
+    await h.sql(
+        "delete from user_words where user_id=:u and word_id in (select id from words"
+        " where writing ilike '%apple%' or translation ilike '%apple%')", u=UID,
+    )
 
 
 async def test_every_reachable_button_answers(h, monkeypatch):

@@ -47,15 +47,19 @@ MAX_NEW_WORDS = 10
 # not contain `apple` at all.
 THEME_SHARE = 3
 
-DEFAULT_SIZE = 28
+DEFAULT_SIZE = 30
 MIN_SIZE = 8
 MAX_SIZE = 40
 
-# How the plan resizes itself. Deliberately asymmetric: growth needs a week of
-# evidence, shrinking needs three days. Being too big is the failure that makes
-# someone quit; being too small only costs a little progress.
+# How the plan resizes itself: it only grows, by a step, after a week of plans
+# closed the day they were opened.
+#
+# It used to shrink too — by two after three late closes. In practice the late
+# streak never reset, so every late plan after the third cut it again: the
+# owner's plan went 28 → 16 in two weeks without a word from the bot, and a week
+# of on-time closes needed to win it back never came. A late day is not a
+# signal that the day is too big; the floor is `DEFAULT_SIZE`.
 GROW_AFTER_CLOSES = 7
-SHRINK_AFTER_MISSES = 3
 RESIZE_STEP = 2
 
 REPEAT = "repeat"
@@ -167,15 +171,14 @@ def compose(
     )
 
 
-def next_size(size: int, consecutive_closes: int, consecutive_misses: int) -> int:
-    """The plan size for tomorrow.
+def next_size(size: int, consecutive_closes: int) -> int:
+    """The plan size for tomorrow: never below `DEFAULT_SIZE`, one step bigger
+    after a week of on-time closes.
 
-    Reads streaks rather than a rolling average so the change is explainable:
-    "you have closed it a week running, adding two" is something the bot can
-    say out loud, which matters — a plan that resizes silently looks broken.
+    The caller counts the streak only at the current size, so each step needs
+    its own week — otherwise day eight, nine, ten would each add another step.
     """
-    if consecutive_misses >= SHRINK_AFTER_MISSES:
-        return max(MIN_SIZE, size - RESIZE_STEP)
+    size = max(DEFAULT_SIZE, min(MAX_SIZE, size))
     if consecutive_closes >= GROW_AFTER_CLOSES:
         return min(MAX_SIZE, size + RESIZE_STEP)
     return size

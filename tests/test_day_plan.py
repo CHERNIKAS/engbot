@@ -95,22 +95,21 @@ def test_size_is_clamped_however_it_is_called():
     assert compose(1, PLENTY, PLENTY, PLENTY, PLENTY).total == MIN_SIZE
 
 
-def test_growth_needs_a_week_and_shrinking_needs_three_days():
-    """Asymmetric on purpose: too big is what makes someone quit, too small
-    only costs a little progress."""
-    assert next_size(28, consecutive_closes=6, consecutive_misses=0) == 28
-    assert next_size(28, consecutive_closes=7, consecutive_misses=0) == 30
-    assert next_size(28, consecutive_closes=0, consecutive_misses=2) == 28
-    assert next_size(28, consecutive_closes=0, consecutive_misses=3) == 26
+def test_the_plan_grows_after_a_week_and_never_shrinks():
+    """Shrinking was removed: a late streak never reset, so each late plan
+    after the third cut two more cards — 28 → 16 in two weeks."""
+    assert next_size(30, consecutive_closes=6) == 30
+    assert next_size(30, consecutive_closes=7) == 32
+    assert next_size(30, consecutive_closes=0) == 30
 
 
-def test_shrinking_wins_when_both_streaks_somehow_apply():
-    assert next_size(28, consecutive_closes=99, consecutive_misses=99) == 26
+def test_a_plan_shrunk_by_the_old_rule_comes_back_to_the_default():
+    assert DEFAULT_SIZE == 30
+    assert next_size(16, consecutive_closes=0) == DEFAULT_SIZE
 
 
 def test_resizing_respects_the_bounds():
-    assert next_size(MAX_SIZE, consecutive_closes=99, consecutive_misses=0) == MAX_SIZE
-    assert next_size(MIN_SIZE, consecutive_closes=0, consecutive_misses=99) == MIN_SIZE
+    assert next_size(MAX_SIZE, consecutive_closes=99) == MAX_SIZE
 
 
 def test_one_unanswered_card_never_reports_as_nothing_left():
