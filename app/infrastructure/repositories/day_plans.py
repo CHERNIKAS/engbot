@@ -92,6 +92,16 @@ class DayPlanRepository:
         )
         return list((await self.session.execute(q)).scalars().all())
 
+    async def latest(self, user_id: int, track: LearningTrack) -> DayPlan | None:
+        """The most recent plan, open or closed."""
+        q = (
+            select(DayPlan)
+            .where(DayPlan.user_id == user_id, DayPlan.track == track.value)
+            .order_by(DayPlan.opened_on.desc(), DayPlan.id.desc())
+            .limit(1)
+        )
+        return (await self.session.execute(q)).scalar()
+
     async def last_size(self, user_id: int, track: LearningTrack) -> int | None:
         """Size of the most recent plan, open or closed."""
         q = (

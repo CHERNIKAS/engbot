@@ -10,6 +10,17 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.enums import TRACK_LABELS, LearningTrack, WordStatus
 from app.domain.models import GrammarReview, User, WordReview
+from app.domain.levels import (
+    LEVEL_B1_BAND1,
+    LEVEL_FROM_BAND1,
+    LEVEL_FROM_BAND2,
+    STAGE_CHOOSE,
+    STAGE_RECOGNIZE,
+    STAGE_WRITE,
+    level_from_coverage,
+    word_stage,
+)
+from app.infrastructure.repositories.day_plans import DayPlanRepository
 from app.infrastructure.repositories.grammar import GrammarRepository
 from app.infrastructure.repositories.reviews import WordReviewRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
@@ -18,29 +29,31 @@ if TYPE_CHECKING:
     from app.services.course_service import CourseProgress
 
 
-# Floor and fallback for the self-referential daily bar.
-MIN_DAILY_GOAL = 3
-DEFAULT_DAILY_GOAL = 6
 
 
 @dataclass
 class TrackProgress:
     track: LearningTrack
-    studied_today: int          # answers today: words + grammar
-    studied_today_words: int
-    studied_today_grammar: int
-    daily_goal: int
     total_words: int
     new_words: int              # not started, in rotation
     learning_words: int         # actively learning (learning + review)
     mastered_words: int
-    weak_words: int             # answered wrong at least once
     snoozed_words: int          # active but temporarily parked (snoozed leech)
     archived_words: int
     grammar_topics_total: int
     grammar_topics_done: int
-    grammar_items_mastered: int
-    grammar_items_in_progress: int
+    # The words in work, by the card they get now (see `word_stage`). Sums to
+    # `learning_words` — it is the same set, split by step.
+    stage_recognize: int = 0
+    stage_choose: int = 0
+    stage_write: int = 0
+    # Today's plan: None when there is none in flight and none closed today.
+    plan_done: int | None = None
+    plan_total: int | None = None
+    # The level as the frequency bands give it, and the way to the next one.
+    level: str = "A1"
+    band1_mastered: int = 0
+    band2_mastered: int = 0
 
 
 @dataclass
@@ -68,52 +81,87 @@ def _plural(n: int, one: str, few: str, many: str) -> str:
     return many
 
 
+STAGE_LEGEND = "Каждое слово идёт по шагам:\n👀 узнаёшь → 👆 выбираешь → ✍️ пишешь сам → ⭐ выучено"
+
+
+def _level_lines(t: TrackProgress) -> str:
+    """«На каком лвле и сколько до следующего» — the thresholds are the ones
+    `level_from_coverage` uses, so the bar fills exactly as the level moves."""
+    head = f"🎓 Уровень {t.level}"
+    if t.level == "A1":
+        need = LEVEL_FROM_BAND1
+        return (
+            f"{head}\nДо A2: {t.band1_mastered} из {need} частых слов\n"
+            f"{_bar(t.band1_mastered, need)}"
+        )
+    if t.level == "A2":
+        return (
+            f"{head}\nДо B1: {t.band1_mastered} из {LEVEL_B1_BAND1} частых слов"
+            f" и {t.band2_mastered} из {LEVEL_FROM_BAND2} следующих\n"
+            f"{_bar(t.band1_mastered + t.band2_mastered, LEVEL_B1_BAND1 + LEVEL_FROM_BAND2)}"
+        )
+    return head
+
+
 def format_progress(
     streak_days: int,
     tracks: list[TrackProgress],
     course: "CourseProgress | None" = None,
 ) -> str:
-    """Render the 📊 Прогресс card (pure, so it's unit-testable). `course` adds
-    a course line to the English block when the user is enrolled."""
+    """Render the 📊 Прогресс card (pure, so it's unit-testable).
+
+    Rewritten 2026-11-16 after a learner forwarded the old one asking what any
+    of it meant: «Сегодня 2 / 4» was a self-measured daily bar unrelated to the
+    plan, «учу: 31» hid that fourteen of those words were already at the typing
+    step (so typed cards seemed to come from nowhere), and the level was not
+    shown at all. Now: the plan, the words split by step, the level with the
+    distance to the next, and one line saying how a word moves.
+    """
     head = (
         "🌸 <b>Твой прогресс</b>\n"
-        f"🔥 Серия: <b>{streak_days}</b> {_plural(streak_days, 'день', 'дня', 'дней')} подряд"
+        f"🔥 <b>{streak_days}</b> {_plural(streak_days, 'день', 'дня', 'дней')} подряд"
     )
     if not tracks:
         return head + "\n\nПока пусто — начни учить, и тут появится статистика 🌱"
 
     blocks: list[str] = []
     for t in tracks:
-        pct = 0 if t.daily_goal <= 0 else min(100, round(100 * t.studied_today / t.daily_goal))
-        today_detail = f"🔤 слова: {t.studied_today_words} · 📖 грамматика: {t.studied_today_grammar}"
-        block = (
-            f"{TRACK_LABELS[t.track]}\n"
-            f"🎯 Сегодня: <b>{t.studied_today}</b> / {t.daily_goal}  ({pct}%)\n"
-            f"{_bar(t.studied_today, t.daily_goal)}\n"
-            f"   {today_detail}\n\n"
-            f"📚 Словарь — всего <b>{t.total_words}</b>\n"
-            f"   🌱 учу: {t.learning_words} · ⭐ выучено: {t.mastered_words}\n"
-            f"   🆕 новые: {t.new_words} · 🩹 с ошибками: {t.weak_words}"
+        parts: list[str] = []
+        if len(tracks) > 1:
+            parts.append(TRACK_LABELS[t.track])
+        if t.plan_total:
+            done = min(t.plan_done or 0, t.plan_total)
+            title = "✅ План на сегодня пройден" if done >= t.plan_total else "📅 План на сегодня"
+            parts.append(f"{title}: <b>{done}</b> из {t.plan_total}\n{_bar(done, t.plan_total)}")
+        words = (
+            "📚 <b>Слова</b>\n"
+            f"⭐ выучено — {t.mastered_words}\n"
+            f"✍️ пишешь сам — {t.stage_write}\n"
+            f"👆 выбираешь из вариантов — {t.stage_choose}\n"
+            f"👀 узнаёшь — {t.stage_recognize}\n"
+            f"🆕 ещё впереди — {t.new_words}"
         )
         if t.snoozed_words:
-            block += f" · 😴 отложено: {t.snoozed_words}"
+            words += f"\n😴 отложено — {t.snoozed_words}"
         if t.archived_words:
-            block += f" · 💤 архив: {t.archived_words}"
-        block += (
-            f"\n\n📖 Грамматика — <b>{t.grammar_topics_done}</b> / {t.grammar_topics_total} "
-            f"{_plural(t.grammar_topics_total, 'тема', 'темы', 'тем')}\n"
-            f"   ⭐ упражнений: {t.grammar_items_mastered} · 🌱 в работе: {t.grammar_items_in_progress}"
+            words += f"\n💤 в архиве — {t.archived_words}"
+        parts.append(words)
+        if t.track == LearningTrack.ENGLISH:
+            parts.append(_level_lines(t))
+        parts.append(
+            f"📖 Грамматика: {t.grammar_topics_done} из {t.grammar_topics_total} "
+            f"{_plural(t.grammar_topics_total, 'темы', 'тем', 'тем')}"
         )
         if course is not None and course.enrolled and t.track == LearningTrack.ENGLISH:
             if course.finished:
-                block += "\n\n🎓 Курс: <b>пройден</b> 🎉"
+                parts.append("🎓 Курс: <b>пройден</b> 🎉")
             else:
-                block += (
-                    f"\n\n🎓 Курс: урок <b>{course.current_lesson}</b> / {course.total_lessons}"
-                    f" · {course.level} · ⭐ {course.mastered_words}/{course.total_words}"
+                parts.append(
+                    f"🎓 Курс: урок <b>{course.current_lesson}</b> / {course.total_lessons}"
+                    f" · ⭐ {course.mastered_words}/{course.total_words}"
                 )
-        blocks.append(block)
-    return head + "\n\n" + "\n\n".join(blocks)
+        blocks.append("\n\n".join(parts))
+    return head + "\n\n" + "\n\n".join(blocks) + "\n\n" + STAGE_LEGEND
 
 
 def _resolve_tz(tz_name: str | None) -> ZoneInfo:
@@ -142,56 +190,55 @@ class ProgressService:
         self._user_words = UserWordRepository(session)
         self._grammar = GrammarRepository(session)
         self._reviews = WordReviewRepository(session)
-
-    async def typical_goal(self, user_id: int, track: LearningTrack) -> int:
-        """The bar the progress line measures against: what this user manages on
-        a normal day.
-
-        Replaces the goal they picked once at signup. Prod showed that number
-        was aspiration, not plan — the two users who chose 50 averaged 8.9 and
-        3.9 answers a day and never came close, while everyone who chose 5
-        cleared it comfortably. A target nobody meets stops being a target.
-        Measuring someone against their own recent self is a bar they can
-        actually move.
-        """
-        typical = await self._reviews.typical_daily_answers(user_id, track)
-        return max(MIN_DAILY_GOAL, round(typical or DEFAULT_DAILY_GOAL))
+        self._plans = DayPlanRepository(session)
 
     async def track_view(
         self,
-        user_id: int,
+        user: User,
         track: LearningTrack,
-        daily_goal: int,
         *,
-        tz_name: str = "UTC",
+        today: date | None = None,
     ) -> TrackProgress:
-        words_today = await self.studied_today_count(user_id, track, tz_name=tz_name)
-        grammar_today = await self.grammar_studied_today_count(user_id, track, tz_name=tz_name)
-        total = await self._user_words.total_for_user(user_id, track)
-        new = await self._user_words.count_new(user_id, track)
-        learning = await self._user_words.count_active(user_id, track)
-        mastered = await self._user_words.count_status(user_id, track, WordStatus.MASTERED)
-        weak = await self._user_words.count_weak(user_id, track)
-        snoozed = await self._user_words.count_snoozed(user_id, track)
-        archived = await self._user_words.count_archived(user_id, track)
-        g = await self._grammar.progress_counts(user_id, track)
+        uid = user.id
+        total = await self._user_words.total_for_user(uid, track)
+        new = await self._user_words.count_new(uid, track)
+        learning = await self._user_words.count_active(uid, track)
+        mastered = await self._user_words.count_status(uid, track, WordStatus.MASTERED)
+        snoozed = await self._user_words.count_snoozed(uid, track)
+        archived = await self._user_words.count_archived(uid, track)
+        g = await self._grammar.progress_counts(uid, track)
+        stages = {STAGE_RECOGNIZE: 0, STAGE_CHOOSE: 0, STAGE_WRITE: 0}
+        for reps, word_level in await self._user_words.active_reps_and_levels(uid, track):
+            stages[word_stage(reps, word_level, user.level)] += 1
+        band1, band2, _t1, _t2 = await self._user_words.band_coverage(uid, track)
+        plan_done = plan_total = None
+        plan = await self._plans.latest(uid, track)
+        today = today or _local_today(user.timezone)
+        if plan is not None and (
+            plan.closed_at is None
+            or plan.closed_at.astimezone(_resolve_tz(user.timezone)).date() == today
+        ):
+            items = plan.items or []
+            plan_total = len(items)
+            plan_done = sum(1 for i in items if i.get("done"))
         return TrackProgress(
             track=track,
-            studied_today=words_today + grammar_today,
-            studied_today_words=words_today,
-            studied_today_grammar=grammar_today,
-            daily_goal=daily_goal,
             total_words=total,
             new_words=new,
             learning_words=learning,
             mastered_words=mastered,
-            weak_words=weak,
             snoozed_words=snoozed,
             archived_words=archived,
             grammar_topics_total=g["topics_total"],
             grammar_topics_done=g["topics_done"],
-            grammar_items_mastered=g["items_mastered"],
-            grammar_items_in_progress=g["items_in_progress"],
+            stage_recognize=stages[STAGE_RECOGNIZE],
+            stage_choose=stages[STAGE_CHOOSE],
+            stage_write=stages[STAGE_WRITE],
+            plan_done=plan_done,
+            plan_total=plan_total,
+            level=level_from_coverage(band1, band2),
+            band1_mastered=band1,
+            band2_mastered=band2,
         )
 
     async def studied_today_count(

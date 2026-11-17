@@ -86,7 +86,7 @@ from app.bot.texts import (
 from app.config import get_settings
 from app.domain.enums import LearningPace, LearningTrack, ReviewResult, WordStatus
 from app.domain import mastery
-from app.domain.levels import ladder_stages, mastery_reps
+from app.domain.levels import STAGE_CHOOSE, STAGE_RECOGNIZE, mastery_reps, word_stage
 from app.domain.study_drill import is_typing_correct
 from app.domain.models import User, UserTrack
 from app.domain.push import in_window, normalize_window
@@ -1376,11 +1376,10 @@ class PushService:
             if self._cloze_possible(word):
                 choices.append(CARD_CLOZE)
             return random.choice(choices)
-        reverse_at, cloze_at = ladder_stages(mastery_reps(word.level, user_level))
-        reps = uw.repetitions_count or 0
-        if reps < reverse_at:
+        stage = word_stage(uw.repetitions_count, word.level, user_level)
+        if stage == STAGE_RECOGNIZE:
             return CARD_RECOGNITION
-        if reps < cloze_at:
+        if stage == STAGE_CHOOSE:
             return CARD_REVERSE
         return CARD_CLOZE if self._cloze_possible(word) else CARD_TYPE_IN
 

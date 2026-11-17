@@ -123,6 +123,24 @@ def ladder_stages(mastery_target: int) -> tuple[int, int]:
     return reverse_at, cloze_at
 
 
+# The step a word in work is on — which card it gets now. Shared by the push
+# (`PushService._card_type`) and the progress screen, so «✍️ пишешь сам — 14»
+# counts exactly the words that are getting typed cards.
+STAGE_RECOGNIZE = "recognize"
+STAGE_CHOOSE = "choose"
+STAGE_WRITE = "write"
+
+
+def word_stage(repetitions: int | None, word_level: str | None, user_level: str | None) -> str:
+    reverse_at, cloze_at = ladder_stages(mastery_reps(word_level, user_level))
+    reps = repetitions or 0
+    if reps < reverse_at:
+        return STAGE_RECOGNIZE
+    if reps < cloze_at:
+        return STAGE_CHOOSE
+    return STAGE_WRITE
+
+
 # Recalibration — the placement test is a one-minute guess, and people move.
 # Promotion needs a body of evidence at the user's own level or harder; a
 # handful of easy wins shouldn't push someone into material they can't read.
@@ -228,6 +246,7 @@ def block_passed(flags: list[bool]) -> bool:
 # words for a while — recoverable. So the bar to move up is set high.
 LEVEL_FROM_BAND1 = 500   # half of the first thousand — the band that carries ~85% of text
 LEVEL_FROM_BAND2 = 200   # and a real start on the second
+LEVEL_B1_BAND1 = 850     # most of the first thousand, alongside that start
 
 
 def level_from_coverage(band1_mastered: int, band2_mastered: int) -> str:
@@ -236,7 +255,7 @@ def level_from_coverage(band1_mastered: int, band2_mastered: int) -> str:
     Monotonic by construction: both inputs only grow, and each threshold is a
     plain `>=`, so the answer never moves backwards while the learner studies.
     """
-    if band1_mastered >= 850 and band2_mastered >= LEVEL_FROM_BAND2:
+    if band1_mastered >= LEVEL_B1_BAND1 and band2_mastered >= LEVEL_FROM_BAND2:
         return "B1"
     if band1_mastered >= LEVEL_FROM_BAND1:
         return "A2"

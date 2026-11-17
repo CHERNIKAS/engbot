@@ -28,20 +28,14 @@ router = Router(name="progress")
 _TRACK = LearningTrack.ENGLISH
 
 
-async def _progress_text(
+async def progress_text(
     session: AsyncSession, redis: Redis, user: User, uts: UserTrackService
 ) -> str:
+    """The 📊 Прогресс text — one builder for the menu button and the
+    «Назад» from the archive, which used to keep two copies of it."""
     progress = ProgressService(session)
     active = await uts.list_active(user.id)
-    views = [
-        await progress.track_view(
-            user.id,
-            LearningTrack(ut.track),
-            await progress.typical_goal(user.id, LearningTrack(ut.track)),
-            tz_name=user.timezone,
-        )
-        for ut in active
-    ]
+    views = [await progress.track_view(user, LearningTrack(ut.track)) for ut in active]
     course = await course_progress_or_none(session, redis, user, active)
     return format_progress(user.streak_days, views, course=course)
 
@@ -54,7 +48,7 @@ async def on_progress_open(
     redis: Redis,
     user_track_service: UserTrackService,
 ) -> None:
-    text = await _progress_text(session, redis, user, user_track_service)
+    text = await progress_text(session, redis, user, user_track_service)
     has_managed = await UserWordRepository(session).has_managed(user.id, _TRACK)
     offer = await BacklogService(session).offer(user.id, _TRACK)
     if query.message:

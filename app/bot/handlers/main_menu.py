@@ -51,8 +51,6 @@ from app.infrastructure.repositories.categories import CategoryRepository
 from app.infrastructure.repositories.user_words import UserWordRepository
 from app.services.category_service import CategoryService
 from app.services.interaction_state_service import InteractionStateService
-from app.services.course_service import course_progress_or_none
-from app.services.progress_service import ProgressService, format_progress
 from app.services.user_track_service import UserTrackService
 
 router = Router(name="main_menu")
@@ -347,19 +345,9 @@ async def msg_progress(
     redis: Redis,
 ) -> None:
     await state_service.clear(user.id)
-    progress = ProgressService(session)
-    active = await user_track_service.list_active(user.id)
-    views = [
-        await progress.track_view(
-            user.id,
-            LearningTrack(ut.track),
-            await progress.typical_goal(user.id, LearningTrack(ut.track)),
-            tz_name=user.timezone,
-        )
-        for ut in active
-    ]
-    course = await course_progress_or_none(session, redis, user, active)
-    text = format_progress(user.streak_days, views, course=course)
+    from app.bot.handlers.progress import progress_text
+
+    text = await progress_text(session, redis, user, user_track_service)
     has_managed = await UserWordRepository(session).has_managed(user.id, LearningTrack.ENGLISH)
     # The offer to rest an oversized pool lived only on the screen reached by
     # «Назад» from the archive — the menu entry itself never showed it.

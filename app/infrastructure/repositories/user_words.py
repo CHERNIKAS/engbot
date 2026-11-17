@@ -311,6 +311,25 @@ class UserWordRepository:
         )
         return (await self.session.execute(q)).scalar_one()
 
+    async def active_reps_and_levels(
+        self, user_id: int, track: LearningTrack, now: datetime | None = None
+    ) -> list[tuple[int | None, str | None]]:
+        """(repetitions, word level) for each word `count_active` counts — what
+        the progress screen needs to split them by step."""
+        now = now or datetime.now(timezone.utc)
+        q = (
+            select(UserWord.repetitions_count, Word.level)
+            .join(Word, Word.id == UserWord.word_id)
+            .where(
+                UserWord.user_id == user_id,
+                UserWord.track == track.value,
+                UserWord.archived.is_(False),
+                UserWord.status.in_([WordStatus.LEARNING.value, WordStatus.REVIEW.value]),
+                or_(UserWord.snooze_until.is_(None), UserWord.snooze_until <= now),
+            )
+        )
+        return [(r, lvl) for r, lvl in (await self.session.execute(q)).all()]
+
     async def count_overdue(
         self, user_id: int, track: LearningTrack, now: datetime | None = None
     ) -> int:

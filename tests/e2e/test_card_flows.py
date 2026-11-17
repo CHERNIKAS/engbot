@@ -243,7 +243,11 @@ async def test_grammar_answers_count_toward_the_daily_pace(h):
         async with h.sm() as session:
             return await WordReviewRepository(session).typical_daily_answers(UID, ps._TRACK, days=1) or 0.0
 
+    # Both kinds of answer, or yesterday's prod constructor answers make the
+    # one-day window span two days, and a 75th percentile of two days does not
+    # move by one (failed from 2026-11-17: 8.0 → 6.25).
     await h.sql("delete from word_reviews where user_id=:u", u=UID)
+    await h.sql("delete from analytics_events where user_id=:u and name='phrase_answered'", u=UID)
     before = await pace()
     card = await _constructor(h)
     for slot in await _phrase_slots(h, card["id"]):
