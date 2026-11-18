@@ -60,7 +60,20 @@ def is_typing_correct(user_input: str, writing: str) -> bool:
     # Forgive a single typo on longer words (a slip shouldn't fail the card and
     # tank the spacing interval). Short words must match exactly — there one
     # edit is a different word ("cat"/"car").
-    return len(target) >= 4 and _levenshtein(typed, target) <= 1
+    if len(target) < 4 or _levenshtein(typed, target) > 1:
+        return False
+    # Nor when the "typo" is itself another word: «mind» for «find» was taken
+    # as right (uid 2, 2026-11-18). A form of the same word («finds») still is.
+    return not _another_word(typed, target)
+
+
+def _another_word(typed: str, target: str) -> bool:
+    """`typed` is a real English word that isn't a form of `target`, as far as
+    the NGSL list knows — rarer words are not on it and still pass as slips."""
+    from app.domain.ngsl import headword
+
+    head = headword(typed)
+    return head is not None and head != (headword(target) or target)
 
 
 @dataclass

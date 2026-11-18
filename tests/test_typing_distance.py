@@ -28,3 +28,13 @@ def test_a_four_letter_word_forgives_one_typo():
 def test_a_three_letter_word_does_not():
     """One edit on a short word is a different word, cat and car."""
     assert not is_typing_correct("car", "cat")
+
+
+def test_one_letter_off_is_not_a_typo_when_it_spells_another_word():
+    """uid 2 typed «mind» for «find» on 2026-11-18 and got «Верно»."""
+    assert not is_typing_correct("mind", "find")
+    assert not is_typing_correct("work", "word")
+    assert not is_typing_correct("life", "live")
+    # a form of the same word is still a slip, and so is a non-word
+    assert is_typing_correct("finds", "find")
+    assert is_typing_correct("fimd", "find")
